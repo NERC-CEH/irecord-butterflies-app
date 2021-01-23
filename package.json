@@ -1,6 +1,6 @@
 {
   "name": "irecord-butterflies",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "scripts": {
     "start": "webpack serve --progress --watch --content-base build --port 8000",
     "build": "NODE_ENV=production webpack",
