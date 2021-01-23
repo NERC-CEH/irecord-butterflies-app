@@ -1,0 +1,17 @@
+/node_modules
+/dist
+/build
+/components
+/resources
+/backend
+.env*
+!.env.example
+*.patch
+coverage
+.vscode
+.nowbuild
+.now
+.DS_Store
+.npm-debug.log
+.vercel
+.gradle

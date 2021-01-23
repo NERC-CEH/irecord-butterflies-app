@@ -1,0 +1,203 @@
+{
+  "name": "irecord-butterflies",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "webpack serve --progress --watch --content-base build --port 8000",
+    "build": "NODE_ENV=production webpack",
+    "build:production": "npm run clean && npm run build && npx cap sync && npm run build:resources",
+    "build:resources": "mkdir -p resources && cp -R other/designs/android resources && cp -R other/designs/splash.png resources && npx sharp -i other/designs/icon.svg -o resources/icon.png resize 1024 1024 -- removeAlpha && npx cordova-res ios --skip-config --resources resources --copy && npx cordova-res android --skip-config --resources resources --copy",
+    "deploy": "vercel --prod -A other/now.json -t $VERCEL_TOKEN --confirm",
+    "deploy:production": "bitrise ci",
+    "clean": "rm -rf build resources",
+    "test": "jest --silent --passWithNoTests",
+    "test:watch": "jest --watchAll",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand --watch test",
+    "test:eslint": "eslint src --quiet --ext .jsx --ext .js && echo '\\033[37;42;1m PASS \\033[00m'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run test && npm run test:eslint"
+    }
+  },
+  "dependencies": {
+    "@bit/flumens.apps.attr-page": "^0.7.5",
+    "@bit/flumens.apps.device": "0.2.1",
+    "@bit/flumens.apps.header": "0.6.3",
+    "@bit/flumens.apps.helpers.alert": "0.4.2",
+    "@bit/flumens.apps.helpers.loader": "0.1.1",
+    "@bit/flumens.apps.helpers.toast": "0.2.0",
+    "@bit/flumens.apps.main": "0.2.0",
+    "@bit/flumens.apps.menu-attr-item": "^0.5.4",
+    "@bit/flumens.apps.models.init-stored-samples": "^0.1.0",
+    "@bit/flumens.apps.models.model": "^0.1.0",
+    "@bit/flumens.apps.models.store": "^0.3.1",
+    "@bit/flumens.apps.page": "0.2.0",
+    "@bit/flumens.apps.section": "^0.4.0",
+    "@bit/flumens.apps.utils.analytics": "^0.1.0",
+    "@capacitor/android": "^2.4.6",
+    "@capacitor/core": "2.4.6",
+    "@capacitor/ios": "^2.4.6",
+    "@ionic-native/core": "^5.30.0",
+    "@ionic/core": "5.5.2",
+    "@ionic/react": "5.5.2",
+    "@ionic/react-router": "5.5.2",
+    "cordova-plugin-network-information": "^2.0.2",
+    "cordova-sqlite-storage": "^5.1.0",
+    "i18next": "^19.8.4",
+    "ionicons": "5.3.0",
+    "mobx": "6.0.4",
+    "mobx-react": "7.0.5",
+    "mobx-react-devtools": "6.1.1",
+    "prop-types": "15.7.2",
+    "prop-types-exact": "^1.2.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-i18next": "^11.7.3",
+    "react-router": "^5.1.0",
+    "react-router-dom": "5.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.12.10",
+    "@babel/plugin-proposal-class-properties": "7.12.1",
+    "@babel/plugin-proposal-decorators": "7.12.12",
+    "@babel/plugin-syntax-dynamic-import": "7.8.3",
+    "@babel/plugin-transform-exponentiation-operator": "7.12.1",
+    "@babel/preset-env": "7.12.11",
+    "@babel/preset-react": "7.12.10",
+    "@capacitor/cli": "2.4.6",
+    "@flumens/eslint-config": "^0.4.0",
+    "@flumens/webpack-config": "0.2.9",
+    "babel-eslint": "10.1.0",
+    "babel-jest": "^26.6.3",
+    "babel-plugin-module-resolver": "4.1.0",
+    "cordova-res": "^0.15.2",
+    "dotenv": "8.2.0",
+    "eslint": "7.18.0",
+    "eslint-import-resolver-babel-module": "5.2.0",
+    "eslint-plugin-import": "2.22.1",
+    "husky": "4.3.8",
+    "jest": "^26.6.3",
+    "jest-transform-stub": "^2.0.0",
+    "prettier-eslint": "12.0.0",
+    "prettier-eslint-cli": "5.0.0",
+    "regenerator-runtime": "^0.13.7",
+    "sharp-cli": "1.14.1",
+    "vercel": "21.1.0",
+    "webpack": "5.16.0",
+    "webpack-cli": "4.4.0",
+    "webpack-dev-server": "3.11.2"
+  },
+  "browserslist": [
+    "Android >= 5.1",
+    "iOS >= 10"
+  ],
+  "engines": {
+    "node": ">=12",
+    "npm": ">=6"
+  },
+  "author": {
+    "name": "Flumens",
+    "email": "enquiries@flumens.io",
+    "url": "https://flumens.io"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react",
+      [
+        "@babel/env",
+        {
+          "targets": {
+            "android": "5.1",
+            "ios": "10.2"
+          },
+          "modules": "commonjs",
+          "corejs": "3.0.0",
+          "useBuiltIns": "usage"
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "module-resolver",
+        {
+          "root": [
+            "./src"
+          ],
+          "alias": {
+            "@apps": "./src/common/appsBitCollection",
+            "common": "./src/common",
+            "helpers": "./src/common/helpers",
+            "models": "./src/common/models",
+            "Components": "./src/common/Components"
+          }
+        }
+      ],
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      "@babel/plugin-transform-exponentiation-operator",
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ],
+      "@babel/plugin-syntax-dynamic-import"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    },
+    "parser": "babel-eslint",
+    "extends": "@flumens",
+    "settings": {
+      "import/resolver": {
+        "babel-module": {}
+      }
+    },
+    "rules": {
+      "jsx-a11y/accessible-emoji": 0
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "singleQuote": true,
+    "jsxBracketSameLine": false,
+    "trailingComma": "es5",
+    "arrowParens": "avoid"
+  },
+  "bit": {
+    "env": {
+      "compiler": "bit.envs/compilers/react@1.0.21"
+    },
+    "componentsDefaultDirectory": "components/{name}",
+    "packageManager": "npm"
+  },
+  "jest": {
+    "globals": {},
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "testRegex": "((src/\\.|/*.)(spec))\\.js?$",
+    "moduleNameMapper": {
+      "^.+.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
+      "ionic-native": "jest-transform-stub",
+      "react-photoswipe": "jest-transform-stub"
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "components",
+      "src"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setupTests.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!@ionic-native|@ionic|@bit)"
+    ]
+  }
+}
