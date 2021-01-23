@@ -4,7 +4,7 @@
   "scripts": {
     "start": "webpack serve --progress --watch --content-base build --port 8000",
     "build": "NODE_ENV=production webpack",
-    "build:production": "npm run clean && npm run build && npx cap sync && npm run build:resources",
+    "build:production": "npm run clean && npm run build && npx cap sync && sed -i '' 's/natural_apptitude/natural-apptitude/g' ios/App/App/capacitor.config.json && npm run build:resources",
     "build:resources": "mkdir -p resources && cp -R other/designs/android resources && cp -R other/designs/splash.png resources && npx sharp -i other/designs/icon.svg -o resources/icon.png resize 1024 1024 -- removeAlpha && npx cordova-res ios --skip-config --resources resources --copy && npx cordova-res android --skip-config --resources resources --copy",
     "deploy": "vercel --prod -A other/now.json -t $VERCEL_TOKEN --confirm",
     "deploy:production": "bitrise ci",
