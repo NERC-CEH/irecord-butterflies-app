@@ -1,0 +1,38 @@
+#species-guide {
+  .species-tile {
+    padding: 0;
+
+    .container {
+      position: relative;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      margin: 8px;
+      height: 42vw;
+      border-radius: 10px;
+      // box-shadow: 0px 0px 24px #d1741e42, 0px 0px 3px #d1741e47;
+
+      ion-icon {
+        // TODO: remove once real pics are available
+        width: 100%;
+        height: 100%;
+        --ionicon-stroke-width: 5px;
+        z-index: 1;
+
+        svg path {
+          fill: white !important;
+        }
+      }
+
+      ion-label {
+        text-align: center;
+        padding: 0.5em;
+        flex: 1;
+        max-height: 3em;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+    }
+  }
+}

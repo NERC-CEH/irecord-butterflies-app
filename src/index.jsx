@@ -2,15 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { setupConfig, isPlatform } from '@ionic/react';
 import appModel from 'models/app';
+import userModel from 'models/user';
+import savedSamples from 'models/savedSamples';
 import { Plugins, StatusBarStyle } from '@capacitor/core';
 import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 import config from 'common/config';
 import { initAnalytics } from '@apps';
-import { initReactI18next } from 'react-i18next';
 import App from './App';
 
 import '@ionic/core/css/core.css';
 import '@ionic/core/css/ionic.bundle.css';
+import 'common/fonts/Museo300-Regular.ttf';
+import 'common/fonts/Museo500-Regular.ttf';
 import 'common/theme.scss';
 
 const { App: AppPlugin, StatusBar, SplashScreen } = Plugins;
@@ -26,12 +30,18 @@ setupConfig({
 
 async function init() {
   await appModel._init;
+  await userModel._init;
+  await savedSamples._init;
 
   initAnalytics({
     dsn: config.sentryDNS,
     environment: config.environment,
     build: config.build,
     release: config.version,
+    userId: userModel.attrs.id,
+    tags: {
+      'app.appSession': appModel.attrs.appSession,
+    },
   });
 
   appModel.attrs.appSession += 1;

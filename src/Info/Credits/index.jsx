@@ -8,38 +8,51 @@ const { P, H } = Section;
 export default () => (
   <Page id="credits">
     <Header title="Credits" />
-    <Main class="ion-padding">
+    <Main>
       <Section>
         <P>
-          We are very grateful for all the people that helped to create this
-          app:
+          We thank the following for providing input into the development of
+          this app:
         </P>
-        <P skipTranslation>
-          <b>Karolis Kazlauskis</b> (Flumens)
-        </P>
-        <P skipTranslation>
-          <b>Vilius Stankaitis</b> (Flumens)
+        <P skipTranslation className="credits">
+          <span>
+            <b>Richard Fox</b> (Butterfly Conservation)
+          </span>
+          <span>
+            <b>Katie Cruickshanks</b> (Butterfly Conservation)
+          </span>
+          <span>
+            <b>David Roy</b> (UKCEH)
+          </span>
+          <span>
+            <b>Karolis Kazlauskis</b> (Flumens)
+          </span>
+          <span>
+            <b>Vilius Stankaitis</b> (Flumens)
+          </span>
         </P>
       </Section>
 
       <Section>
-        <p className="logo">
-          <a href="https://flumens.io">
-            <img src="/images/flumens.svg" alt="" />
-          </a>
-        </p>
+        <H>Photographs</H>
         <P>
-          This app was hand crafted with love by{' '}
+          We are very grateful to all of the photographers whose images we have
+          used in this app:
+        </P>
+        <P skipTranslation>
+          <i>WIP</i>
+        </P>
+      </Section>
+
+      <Section>
+        <H>Development</H>
+        <P>
+          This app was built by{' '}
           <a href="https://flumens.io" style={{ whiteSpace: 'nowrap' }}>
-            Flumens.
+            Flumens
           </a>{' '}
-          A technical consultancy that excels at building bespoke environmental
-          science and community focussed solutions. For suggestions and feedback
-          please do not hesitate to{' '}
-          <a href="mailto:enquiries%40flumens.io?subject=App%20Feedback">
-            contact us
-          </a>
-          .
+          which specialises in developing bespoke environmental science and
+          community focussed mobile applications.
         </P>
       </Section>
 

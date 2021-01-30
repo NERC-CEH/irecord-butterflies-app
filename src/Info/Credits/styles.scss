@@ -1,10 +1,20 @@
-#credits.ion-page ion-content {
-  .logo {
-    img {
-      width: 40%;
-      max-width: 200px;
-      margin: 0 auto;
+#credits {
+  ion-content {
+    --padding-top: 30px;
+    --padding-bottom: 30px;
+
+    .credits span {
       display: block;
+      margin-bottom: 10px;
+    }
+
+    .logo {
+      img {
+        width: 40%;
+        max-width: 200px;
+        margin: 0 auto;
+        display: block;
+      }
     }
   }
 }

@@ -1,0 +1,37 @@
+#user-reset {
+  ion-toolbar {
+    position: fixed;
+    --ion-toolbar-background: transparent;
+
+    ion-back-button {
+      color: var(--ion-color-light-contrast);
+    }
+  }
+
+  ion-content {
+    --padding-top: 40px; // header
+  }
+
+  ion-list,
+  ion-item {
+    --background: transparent;
+    background: transparent;
+  }
+
+  ion-content {
+    ion-icon {
+      color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 1);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 1em;
+      font-weight: 400;
+      padding: 20px 20px 40px;
+    }
+
+    ion-button[type='submit'] {
+      margin-bottom: 60px;
+    }
+  }
+}

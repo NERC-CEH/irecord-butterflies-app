@@ -1,0 +1,32 @@
+#menu {
+  h1 {
+    width: 100%;
+    text-align: center;
+  }
+
+  .app-menu {
+    img {
+      margin: 0 auto;
+      display: block;
+      height: 140px;
+    }
+  }
+
+  ion-footer {
+    div {
+      text-align: center;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 40px;
+      opacity: 0.6;
+      font-family: 'Museo300';
+      font-weight: normal;
+    }
+
+    img {
+      width: 40%;
+    }
+  }
+}

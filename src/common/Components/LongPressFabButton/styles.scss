@@ -1,0 +1,42 @@
+ion-fab-button .container {
+  height: 100%;
+  width: 100%;
+  padding: 5px 5px 0px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  * {
+    width: 100%;
+    flex: 1;
+  }
+
+  ion-label {
+    font-size: 10px;
+    max-height: 10px;
+    margin-bottom: 10px;
+
+    &.md {
+      margin-bottom: 19px;
+    }
+  }
+}
+
+ion-fab .fab-list-active .fab-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(100, 100, 100, 0.5);
+}
+
+ion-fab,
+ion-fab-list {
+  // padding needed for iOS with no toolbar
+  padding-bottom: var(--ion-safe-area-bottom, 0);
+}
+
+ion-fab {
+  position: fixed;
+}

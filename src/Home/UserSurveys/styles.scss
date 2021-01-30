@@ -1,0 +1,38 @@
+#home-user-surveys {
+  ion-header {
+    ion-badge {
+      display: inline;
+      margin-left: 10px;
+    }
+
+    ion-toolbar {
+      --ion-toolbar-background: transparent;
+      &.md {
+        --ion-toolbar-background: white;
+      }
+
+      position: fixed;
+      color: var(--ion-color-main);
+    }
+  }
+
+  ion-content {
+    --padding-top: 80px;
+  }
+
+  ion-list {
+    padding: 10px;
+  }
+
+  .info-background-message {
+    margin-bottom: 10vh;
+
+    ion-icon {
+      border-radius: 7px;
+      margin-bottom: -7px;
+      // margin: 3px;
+      --ionicon-stroke-width: 20px;
+      font-size: 1em;
+    }
+  }
+}

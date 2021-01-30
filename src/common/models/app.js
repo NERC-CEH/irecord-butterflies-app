@@ -5,6 +5,11 @@ class AppModel extends Model {}
 
 const defaults = {
   sendAnalytics: true,
+  appSession: 0,
+
+  // tips
+  showSurveysDeleteTip: true,
+  showSurveyUploadTip: true,
 };
 
 const appModel = new AppModel(genericStore, 'app', defaults);

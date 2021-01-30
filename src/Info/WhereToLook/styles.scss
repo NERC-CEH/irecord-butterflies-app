@@ -1,0 +1,14 @@
+#credits {
+  ion-content {
+    --padding-top: 30px;
+
+    .logo {
+      img {
+        width: 40%;
+        max-width: 200px;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+  }
+}
