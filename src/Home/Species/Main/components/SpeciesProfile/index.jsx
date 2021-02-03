@@ -93,11 +93,13 @@ class SpeciesProfile extends React.Component {
         <IonSlide
           key={src}
           class="species-profile-photo"
-          style={{
-            background: `url(${src})`,
-          }}
           onClick={showPhotoInFullScreenWrap}
-        />
+          // style={{
+          //   background: `url(${src})`,
+          // }}
+        >
+          <img src={src} />
+        </IonSlide>
       );
     };
 

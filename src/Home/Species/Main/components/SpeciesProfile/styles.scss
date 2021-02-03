@@ -48,6 +48,7 @@
       padding-left: 5px;
       text-transform: uppercase;
       margin: 30px auto 15px;
+      max-height: 22px;
     }
   }
 
@@ -95,7 +96,10 @@
   }
 
   .species-profile-photo {
-    height: 200px;
-    background-size: cover !important;
+    // height: 200px;
+    // background-size: cover !important;
+    img {
+      width: 100%;
+    }
   }
 }
