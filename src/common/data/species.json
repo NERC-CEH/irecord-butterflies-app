@@ -1,5 +1,6 @@
 [
   {
+    "id": "papilio_machaon",
     "sort": 1,
     "commonName": "Swallowtail",
     "scientificName": "Papilio machaon",
@@ -16,13 +17,12 @@
       "Stripes"
     ],
     "england": "Y",
-    "scotland": "N",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "L"
+    "size": [
+      "L"
+    ]
   },
   {
+    "id": "erynnis_tages",
     "sort": 2,
     "commonName": "Dingy Skipper",
     "scientificName": "Erynnis tages",
@@ -40,10 +40,12 @@
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "pyrgus_malvae",
     "sort": 3,
     "commonName": "Grizzled Skipper",
     "scientificName": "Pyrgus malvae",
@@ -59,13 +61,13 @@
       "Spots"
     ],
     "england": "Y",
-    "scotland": "N",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "carterocephalus_palaemon",
     "sort": 4,
     "commonName": "Chequered Skipper",
     "scientificName": "Carterocephalus palaemon",
@@ -83,12 +85,12 @@
     ],
     "england": "Y",
     "scotland": "Y",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "thymelicus_lineola",
     "sort": 5,
     "commonName": "Essex Skipper",
     "scientificName": "Thymelicus lineola",
@@ -100,13 +102,13 @@
       "Orange"
     ],
     "england": "Y",
-    "scotland": "N",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "thymelicus_sylvestris",
     "sort": 6,
     "commonName": "Small Skipper",
     "scientificName": "Thymelicus sylvestris",
@@ -120,11 +122,12 @@
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "thymelicus_acteon",
     "sort": 7,
     "commonName": "Lulworth Skipper",
     "scientificName": "Thymelicus acteon",
@@ -137,13 +140,12 @@
       "Brown"
     ],
     "england": "Y",
-    "scotland": "N",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "hesperia_comma",
     "sort": 8,
     "commonName": "Silver-spotted Skipper",
     "scientificName": "Hesperia comma",
@@ -159,13 +161,12 @@
       "Spots"
     ],
     "england": "Y",
-    "scotland": "N",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "ochlodes_sylvanus",
     "sort": 9,
     "commonName": "Large Skipper",
     "scientificName": "Ochlodes sylvanus",
@@ -182,11 +183,12 @@
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "leptidea_sinapis",
     "sort": 10,
     "commonName": "Wood White",
     "scientificName": "Leptidea sinapis",
@@ -199,13 +201,13 @@
       "Grey"
     ],
     "england": "Y",
-    "scotland": "N",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "leptidea_juvernica",
     "sort": 11,
     "commonName": "Cryptic Wood White",
     "scientificName": "Leptidea juvernica",
@@ -217,45 +219,23 @@
       "White",
       "Grey"
     ],
-    "england": "N",
-    "scotland": "N",
-    "wales": "N",
     "northern ireland": "Y",
-    "isle of may": "N",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "anthocharis_cardamines",
     "sort": 12,
-    "commonName": "Orange-tip (female)",
-    "scientificName": "Anthocharis cardamines (female)",
+    "commonName": "Orange-tip",
+    "scientificName": "Anthocharis cardamines",
     "app": "Main",
     "status": "Resident",
     "group": "Whites",
     "family": "Pieridae",
     "colour": [
       "White",
-      "Green"
-    ],
-    "markings": [
-      "Checks"
-    ],
-    "england": "Y",
-    "scotland": "Y",
-    "wales": "Y",
-    "northern ireland": "Y",
-    "isle of may": "Y",
-    "size": "M"
-  },
-  {
-    "sort": 12,
-    "commonName": "Orange-tip (male)",
-    "scientificName": "Anthocharis cardamines (male)",
-    "app": "Main",
-    "status": "Resident",
-    "group": "Whites",
-    "family": "Pieridae",
-    "colour": [
-      "White",
+      "Green",
       "Orange"
     ],
     "markings": [
@@ -266,9 +246,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "pieris_brassicae",
     "sort": 13,
     "commonName": "Large White",
     "scientificName": "Pieris brassicae",
@@ -288,9 +271,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "L"
+    "size": [
+      "L"
+    ]
   },
   {
+    "id": "pieris_rapae",
     "sort": 14,
     "commonName": "Small White",
     "scientificName": "Pieris rapae",
@@ -310,9 +296,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "pieris_napi",
     "sort": 15,
     "commonName": "Green-veined White",
     "scientificName": "Pieris napi",
@@ -333,9 +322,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "colias_croceus",
     "sort": 16,
     "commonName": "Clouded Yellow",
     "scientificName": "Colias croceus",
@@ -355,52 +347,36 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "gonepteryx_rhamni",
     "sort": 17,
-    "commonName": "Brimstone (female)",
-    "scientificName": "Gonepteryx rhamni (female)",
+    "commonName": "Brimstone",
+    "scientificName": "Gonepteryx rhamni",
     "app": "Main",
     "status": "Resident",
     "group": "Whites",
     "family": "Pieridae",
     "colour": [
       "Cream",
-      "White"
-    ],
-    "markings": [
-      "Spots"
-    ],
-    "england": "Y",
-    "scotland": "N",
-    "wales": "Y",
-    "northern ireland": "Y",
-    "isle of may": "N",
-    "size": "L"
-  },
-  {
-    "sort": 17,
-    "commonName": "Brimstone (male)",
-    "scientificName": "Gonepteryx rhamni (male)",
-    "app": "Main",
-    "status": "Resident",
-    "group": "Whites",
-    "family": "Pieridae",
-    "colour": [
+      "White",
       "Yellow"
     ],
     "markings": [
       "Spots"
     ],
     "england": "Y",
-    "scotland": "N",
     "wales": "Y",
     "northern ireland": "Y",
-    "isle of may": "N",
-    "size": "L"
+    "size": [
+      "L"
+    ]
   },
   {
+    "id": "danaus_plexippus",
     "sort": 18,
     "commonName": "Monarch",
     "scientificName": "Danaus plexippus",
@@ -417,13 +393,13 @@
       "Stripes"
     ],
     "england": "Y",
-    "scotland": "N",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "L"
+    "size": [
+      "L"
+    ]
   },
   {
+    "id": "lasiommata_megera",
     "sort": 19,
     "commonName": "Wall ",
     "scientificName": "Lasiommata megera",
@@ -442,9 +418,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "pararge_aegeria",
     "sort": 20,
     "commonName": "Speckled Wood",
     "scientificName": "Pararge aegeria",
@@ -463,9 +442,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "coenonympha_tullia",
     "sort": 21,
     "commonName": "Large Heath",
     "scientificName": "Coenonympha tullia",
@@ -483,10 +465,12 @@
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "coenonympha_pamphilus",
     "sort": 22,
     "commonName": "Small Heath",
     "scientificName": "Coenonympha pamphilus",
@@ -502,9 +486,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "erebia_epiphron",
     "sort": 23,
     "commonName": "Mountain Ringlet",
     "scientificName": "Erebia epiphron",
@@ -520,12 +507,12 @@
     ],
     "england": "Y",
     "scotland": "Y",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "erebia_aethiops",
     "sort": 24,
     "commonName": "Scotch Argus",
     "scientificName": "Erebia aethiops",
@@ -541,12 +528,12 @@
     ],
     "england": "Y",
     "scotland": "Y",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "aphantopus_hyperantus",
     "sort": 25,
     "commonName": "Ringlet",
     "scientificName": "Aphantopus hyperantus",
@@ -564,13 +551,15 @@
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
-    "isle of may": "N",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "maniola_jurtina",
     "sort": 26,
-    "commonName": "Meadow Brown (female)",
-    "scientificName": "Maniola jurtina (female)",
+    "commonName": "Meadow Brown",
+    "scientificName": "Maniola jurtina",
     "app": "Main",
     "status": "Resident",
     "group": "Browns",
@@ -587,30 +576,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
-    "sort": 26,
-    "commonName": "Meadow Brown (male)",
-    "scientificName": "Maniola jurtina (male)",
-    "app": "Main",
-    "status": "Resident",
-    "group": "Browns",
-    "family": "Nymphalidae",
-    "colour": [
-      "Brown"
-    ],
-    "markings": [
-      "Spots"
-    ],
-    "england": "Y",
-    "scotland": "Y",
-    "wales": "Y",
-    "northern ireland": "Y",
-    "isle of may": "Y",
-    "size": "M"
-  },
-  {
+    "id": "pyronia_tithonus",
     "sort": 27,
     "commonName": "Gatekeeper",
     "scientificName": "Pyronia tithonus",
@@ -625,13 +596,13 @@
       "Spots"
     ],
     "england": "Y",
-    "scotland": "N",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "melanargia_galathea",
     "sort": 28,
     "commonName": "Marbled White",
     "scientificName": "Melanargia galathea",
@@ -647,13 +618,13 @@
       "Checks"
     ],
     "england": "Y",
-    "scotland": "N",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "hipparchia_semele",
     "sort": 29,
     "commonName": "Grayling",
     "scientificName": "Hipparchia semele",
@@ -670,9 +641,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "boloria_euphrosyne",
     "sort": 30,
     "commonName": "Pearl-bordered Fritillary",
     "scientificName": "Boloria euphrosyne",
@@ -689,11 +663,12 @@
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "boloria_selene",
     "sort": 31,
     "commonName": "Small Pearl-bordered Fritillary",
     "scientificName": "Boloria selene",
@@ -710,11 +685,13 @@
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S + M"
+    "size": [
+      "S",
+      "M"
+    ]
   },
   {
+    "id": "issoria_lathonia",
     "sort": 32,
     "commonName": "Queen of Spain Fritillary",
     "scientificName": "Issoria lathonia",
@@ -729,13 +706,12 @@
       "Spots"
     ],
     "england": "Y",
-    "scotland": "N",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "argynnis_paphia",
     "sort": 33,
     "commonName": "Silver-washed Fritillary",
     "scientificName": "Argynnis paphia",
@@ -751,13 +727,14 @@
       "Stripes"
     ],
     "england": "Y",
-    "scotland": "N",
     "wales": "Y",
     "northern ireland": "Y",
-    "isle of may": "N",
-    "size": "L"
+    "size": [
+      "L"
+    ]
   },
   {
+    "id": "speyeria_aglaja",
     "sort": 34,
     "commonName": "Dark Green Fritillary",
     "scientificName": "Speyeria aglaja",
@@ -776,9 +753,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "L"
+    "size": [
+      "L"
+    ]
   },
   {
+    "id": "fabriciana_adippe",
     "sort": 35,
     "commonName": "High Brown Fritillary",
     "scientificName": "Fabriciana adippe",
@@ -793,13 +773,13 @@
       "Spots"
     ],
     "england": "Y",
-    "scotland": "N",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "L"
+    "size": [
+      "L"
+    ]
   },
   {
+    "id": "limenitis_camilla",
     "sort": 36,
     "commonName": "White Admiral",
     "scientificName": "Limenitis camilla",
@@ -815,42 +795,22 @@
       "Stripes"
     ],
     "england": "Y",
-    "scotland": "N",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "apatura_iris",
     "sort": 37,
-    "commonName": "Purple Emperor (female)",
-    "scientificName": "Apatura iris (female)",
+    "commonName": "Purple Emperor",
+    "scientificName": "Apatura iris",
     "app": "Main",
     "status": "Resident",
     "group": "Nymphalids",
     "family": "Nymphalidae",
     "colour": [
-      "Brown"
-    ],
-    "markings": [
-      "Stripes"
-    ],
-    "england": "Y",
-    "scotland": "N",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "L"
-  },
-  {
-    "sort": 37,
-    "commonName": "Purple Emperor (male)",
-    "scientificName": "Apatura iris (male)",
-    "app": "Main",
-    "status": "Resident",
-    "group": "Nymphalids",
-    "family": "Nymphalidae",
-    "colour": [
+      "Brown",
       "Purple",
       "Brown"
     ],
@@ -858,13 +818,12 @@
       "Stripes"
     ],
     "england": "Y",
-    "scotland": "N",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "L"
+    "size": [
+      "L"
+    ]
   },
   {
+    "id": "vanessa_atalanta",
     "sort": 38,
     "commonName": "Red Admiral",
     "scientificName": "Vanessa atalanta",
@@ -884,9 +843,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "L"
+    "size": [
+      "L"
+    ]
   },
   {
+    "id": "vanessa_cardui",
     "sort": 39,
     "commonName": "Painted Lady",
     "scientificName": "Vanessa cardui",
@@ -905,9 +867,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "L"
+    "size": [
+      "L"
+    ]
   },
   {
+    "id": "aglais_io",
     "sort": 40,
     "commonName": "Peacock",
     "scientificName": "Aglais io",
@@ -926,9 +891,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "L"
+    "size": [
+      "L"
+    ]
   },
   {
+    "id": "aglais_urticae",
     "sort": 41,
     "commonName": "Small Tortoiseshell",
     "scientificName": "Aglais urticae",
@@ -948,9 +916,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "nymphalis_antiopa",
     "sort": 42,
     "commonName": "Camberwell Beauty",
     "scientificName": "Nymphalis antiopa",
@@ -971,9 +942,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "L"
+    "size": [
+      "L"
+    ]
   },
   {
+    "id": "nymphalis_polychloros",
     "sort": 43,
     "commonName": "Large Tortoiseshell",
     "scientificName": "Nymphalis polychloros",
@@ -988,13 +962,12 @@
       "Spots"
     ],
     "england": "Y",
-    "scotland": "N",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "L"
+    "size": [
+      "L"
+    ]
   },
   {
+    "id": "polygonia_c-album",
     "sort": 44,
     "commonName": "Comma",
     "scientificName": "Polygonia c-album",
@@ -1013,9 +986,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "euphydryas_aurinia",
     "sort": 45,
     "commonName": "Marsh Fritillary",
     "scientificName": "Euphydryas aurinia",
@@ -1034,10 +1010,13 @@
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
-    "isle of may": "N",
-    "size": "S + M"
+    "size": [
+      "S",
+      "M"
+    ]
   },
   {
+    "id": "melitaea_cinxia",
     "sort": 46,
     "commonName": "Glanville Fritillary",
     "scientificName": "Melitaea cinxia",
@@ -1053,13 +1032,12 @@
       "Spots"
     ],
     "england": "Y",
-    "scotland": "N",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "melitaea_athalia",
     "sort": 47,
     "commonName": "Heath Fritillary",
     "scientificName": "Melitaea athalia",
@@ -1075,13 +1053,12 @@
       "Checks"
     ],
     "england": "Y",
-    "scotland": "N",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "hamearis_lucina",
     "sort": 48,
     "commonName": "Duke of Burgundy",
     "scientificName": "Hamearis lucina",
@@ -1098,13 +1075,12 @@
       "Spots"
     ],
     "england": "Y",
-    "scotland": "N",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "lycaena_phlaeas",
     "sort": 49,
     "commonName": "Small Copper",
     "scientificName": "Lycaena phlaeas",
@@ -1123,9 +1099,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "thecla_betulae",
     "sort": 50,
     "commonName": "Brown Hairstreak",
     "scientificName": "Thecla betulae",
@@ -1141,13 +1120,14 @@
       "Stripes"
     ],
     "england": "Y",
-    "scotland": "N",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S + M"
+    "size": [
+      "S",
+      "M"
+    ]
   },
   {
+    "id": "favonius_quercus",
     "sort": 51,
     "commonName": "Purple Hairstreak",
     "scientificName": "Favonius quercus",
@@ -1166,10 +1146,12 @@
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "callophrys_rubi",
     "sort": 52,
     "commonName": "Green Hairstreak",
     "scientificName": "Callophrys rubi",
@@ -1185,10 +1167,12 @@
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "satyrium_w-album",
     "sort": 53,
     "commonName": "White-letter Hairstreak",
     "scientificName": "Satyrium w-album",
@@ -1205,11 +1189,12 @@
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "satyrium_pruni",
     "sort": 54,
     "commonName": "Black Hairstreak",
     "scientificName": "Satyrium pruni",
@@ -1225,13 +1210,12 @@
       "Spots"
     ],
     "england": "Y",
-    "scotland": "N",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "lampides_boeticus",
     "sort": 55,
     "commonName": "Long-tailed Blue",
     "scientificName": "Lampides boeticus",
@@ -1249,11 +1233,12 @@
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "cupido_minimus",
     "sort": 56,
     "commonName": "Small Blue",
     "scientificName": "Cupido minimus",
@@ -1271,11 +1256,12 @@
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "celastrina_argiolus",
     "sort": 57,
     "commonName": "Holly Blue",
     "scientificName": "Celastrina argiolus",
@@ -1294,9 +1280,12 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "phengaris_arion",
     "sort": 58,
     "commonName": "Large Blue",
     "scientificName": "Phengaris arion",
@@ -1311,55 +1300,34 @@
       "Spots"
     ],
     "england": "Y",
-    "scotland": "N",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "M"
+    "size": [
+      "M"
+    ]
   },
   {
+    "id": "plebejus_argus",
     "sort": 59,
-    "commonName": "Silver-studded Blue (female)",
-    "scientificName": "Plebejus argus (female)",
+    "commonName": "Silver-studded Blue",
+    "scientificName": "Plebejus argus",
     "app": "Main",
     "status": "Resident",
     "group": "Blues & coppers",
     "family": "Lycaenidae",
     "colour": [
-      "Brown"
-    ],
-    "markings": [
-      "Spots"
-    ],
-    "england": "Y",
-    "scotland": "N",
-    "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
-  },
-  {
-    "sort": 59,
-    "commonName": "Silver-studded Blue (male)",
-    "scientificName": "Plebejus argus (male)",
-    "app": "Main",
-    "status": "Resident",
-    "group": "Blues & coppers",
-    "family": "Lycaenidae",
-    "colour": [
+      "Brown",
       "Blue"
     ],
     "markings": [
       "Spots"
     ],
     "england": "Y",
-    "scotland": "N",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "aricia_agestis",
     "sort": 60,
     "commonName": "Brown Argus",
     "scientificName": "Aricia agestis",
@@ -1374,13 +1342,13 @@
       "Spots"
     ],
     "england": "Y",
-    "scotland": "N",
     "wales": "Y",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "aricia_artaxerxes",
     "sort": 61,
     "commonName": "Northern Brown Argus",
     "scientificName": "Aricia artaxerxes",
@@ -1396,41 +1364,21 @@
     ],
     "england": "Y",
     "scotland": "Y",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "polyommatus_icarus",
     "sort": 62,
-    "commonName": "Common Blue (female)",
-    "scientificName": "Polyommatus icarus (female)",
+    "commonName": "Common Blue",
+    "scientificName": "Polyommatus icarus",
     "app": "Main",
     "status": "Resident",
     "group": "Blues & coppers",
     "family": "Lycaenidae",
     "colour": [
-      "Brown"
-    ],
-    "markings": [
-      "Spots"
-    ],
-    "england": "Y",
-    "scotland": "Y",
-    "wales": "Y",
-    "northern ireland": "Y",
-    "isle of may": "Y",
-    "size": "S"
-  },
-  {
-    "sort": 62,
-    "commonName": "Common Blue (male)",
-    "scientificName": "Polyommatus icarus (male)",
-    "app": "Main",
-    "status": "Resident",
-    "group": "Blues & coppers",
-    "family": "Lycaenidae",
-    "colour": [
+      "Brown",
       "Blue"
     ],
     "markings": [
@@ -1441,90 +1389,50 @@
     "wales": "Y",
     "northern ireland": "Y",
     "isle of may": "Y",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "polyommatus_bellargus",
     "sort": 63,
-    "commonName": "Adonis Blue (female)",
-    "scientificName": "Polyommatus bellargus (female)",
+    "commonName": "Adonis Blue",
+    "scientificName": "Polyommatus bellargus",
     "app": "Main",
     "status": "Resident",
     "group": "Blues & coppers",
     "family": "Lycaenidae",
     "colour": [
-      "Brown"
-    ],
-    "markings": [
-      "Spots"
-    ],
-    "england": "Y",
-    "scotland": "N",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
-  },
-  {
-    "sort": 63,
-    "commonName": "Adonis Blue (male)",
-    "scientificName": "Polyommatus bellargus (male)",
-    "app": "Main",
-    "status": "Resident",
-    "group": "Blues & coppers",
-    "family": "Lycaenidae",
-    "colour": [
+      "Brown",
       "Blue"
     ],
     "markings": [
       "Spots"
     ],
     "england": "Y",
-    "scotland": "N",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   },
   {
+    "id": "polyommatus_coridon",
     "sort": 64,
-    "commonName": "Chalk Hill Blue (female)",
-    "scientificName": "Polyommatus coridon (female)",
+    "commonName": "Chalk Hill Blue",
+    "scientificName": "Polyommatus coridon",
     "app": "Main",
     "status": "Resident",
     "group": "Blues & coppers",
     "family": "Lycaenidae",
     "colour": [
-      "Brown"
-    ],
-    "markings": [
-      "Spots"
-    ],
-    "england": "Y",
-    "scotland": "N",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
-  },
-  {
-    "sort": 64,
-    "commonName": "Chalk Hill Blue (male)",
-    "scientificName": "Polyommatus coridon (male)",
-    "app": "Main",
-    "status": "Resident",
-    "group": "Blues & coppers",
-    "family": "Lycaenidae",
-    "colour": [
+      "Brown",
       "Blue"
     ],
     "markings": [
       "Spots"
     ],
     "england": "Y",
-    "scotland": "N",
-    "wales": "N",
-    "northern ireland": "N",
-    "isle of may": "N",
-    "size": "S"
+    "size": [
+      "S"
+    ]
   }
 ]
