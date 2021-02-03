@@ -1,87 +1,202 @@
 import React from 'react';
 import {
   IonCardHeader,
-  IonCardSubtitle,
+  IonButton,
   IonCardContent,
-  IonCardTitle,
   IonLifeCycleContext,
+  IonIcon,
+  IonSlides,
+  IonSlide,
+  IonChip,
 } from '@ionic/react';
+import { expandOutline } from 'ionicons/icons';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import { Main, Gallery } from '@apps';
 import { Trans as T } from 'react-i18next';
 import './styles.scss';
 
+const fixIonicSlideBug = e => {
+  // TODO: remove once bug is fixed
+  // https://github.com/ionic-team/ionic/issues/19641
+  // https://github.com/ionic-team/ionic/issues/19638
+  e.target.update();
+};
+
 class SpeciesProfile extends React.Component {
   static contextType = IonLifeCycleContext;
 
   state = {
     showGallery: null,
+    showLifechart: false,
+    showMap: false,
   };
 
-  getGallery = () => {
+  getFullScreenPhotoViewer = () => {
     const { species } = this.props;
-    const { showGallery } = this.state;
+    const { showGallery, showLifechart, showMap } = this.state;
 
-    const items = [
-      {
-        src: `/images/${species.image}_image.jpg`,
-        w: species.image_width || 800,
-        h: species.image_height || 800,
-        title: `© ${species.image_copyright}`,
-      },
-    ];
+    let items = [];
 
-    const setShowGallery = () => this.setState({ showGallery: false });
+    const setShowGallery = () =>
+      this.setState({
+        showGallery: false,
+        showLifechart: false,
+        showMap: false,
+      });
+
+    if (Number.isInteger(showGallery)) {
+      const getImageSource = img => ({ src: img });
+      items = species.images.map(getImageSource);
+    }
+
+    if (showLifechart) {
+      items.push({ src: species.lifechart });
+    }
+    if (showMap) {
+      items.push({ src: species.map });
+    }
+
+    if (!items.length) {
+      return null;
+    }
 
     return (
       <Gallery
-        isOpen={!!showGallery}
+        isOpen
         items={items}
-        initialSlide={showGallery}
+        initialSlide={showGallery || 1}
         onClose={setShowGallery}
       />
     );
   };
 
-  render() {
+  showPhotoInFullScreen = index => this.setState({ showGallery: index });
+
+  showshowLifechartInFullScreen = () => this.setState({ showLifechart: true });
+
+  showMapInFullScreen = () => this.setState({ showMap: true });
+
+  getSlides = () => {
     const { species } = this.props;
+    const { images } = species;
+
+    const slideOpts = {
+      initialSlide: 0,
+      speed: 400,
+    };
+
+    const getSlide = (src, index) => {
+      const showPhotoInFullScreenWrap = () => this.showPhotoInFullScreen(index);
+
+      return (
+        <IonSlide
+          key={src}
+          class="species-profile-photo"
+          style={{
+            background: `url(${src})`,
+          }}
+          onClick={showPhotoInFullScreenWrap}
+        />
+      );
+    };
+
+    const slideImage = images.map(getSlide);
+
+    return (
+      <IonSlides
+        pager
+        options={slideOpts}
+        onIonSlidesDidLoad={fixIonicSlideBug}
+      >
+        {slideImage}
+      </IonSlides>
+    );
+  };
+
+  render() {
+    const { species, onRecord } = this.props;
 
     if (!species) {
       return null;
     }
 
-    /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
     return (
       <>
-        {this.getGallery()}
+        {this.getFullScreenPhotoViewer()}
 
         <Main id="species-profile" class="ion-padding">
-          {/* <img
-            src={`/images/${species.image}_image.jpg`}
-            alt="species"
-            onClick={() => this.setState({ showGallery: 1 })}
-          /> */}
+          {this.getSlides()}
 
           <IonCardHeader>
-            <IonCardTitle>{species.taxon}</IonCardTitle>
-            <IonCardSubtitle>{species.taxon}</IonCardSubtitle>
+            <div className="title">
+              <h1>{species.commonName}</h1>
+              <h3>
+                <i>{species.scientificName}</i>
+              </h3>
+            </div>
+            <IonButton
+              shape="round"
+              onClick={onRecord}
+              routerLink={`/survey/point?species=${species.id}`}
+            >
+              Record
+            </IonButton>
           </IonCardHeader>
 
           <IonCardContent>
-            <h3 className="species-label">
-              <T>Description</T>:
+            <h3>
+              <T>Identification Tips</T>:
             </h3>
+            <p>{species.idTips}</p>
+
+            <h3>
+              <T>Habitats</T>:
+            </h3>
+            <p>{species.habitats}</p>
+
+            <h3>
+              UK Status:{' '}
+              <IonChip className="species-status" outline>
+                {species.status}
+              </IonChip>
+            </h3>
+            <p>{species.ukStatus}</p>
+
+            <h3>
+              <T>When to see</T>:
+            </h3>
+            <div
+              className="lifechart"
+              onClick={this.showshowLifechartInFullScreen}
+            >
+              <IonIcon src={expandOutline} slot="end" color="secondary" />
+              <img src={species.lifechart} />
+            </div>
+
+            <h3>
+              <T>Distribution</T>:
+            </h3>
+            <div className="lifechart" onClick={this.showMapInFullScreen}>
+              <IonIcon src={expandOutline} slot="end" color="secondary" />
+              <img src={species.map} />
+            </div>
+
+            {species.webLink && (
+              <h3>
+                Further Info: <a href={species.webLink}>website</a>
+              </h3>
+            )}
           </IonCardContent>
         </Main>
       </>
     );
-    /* eslint-enable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
   }
 }
 
 SpeciesProfile.propTypes = exact({
   species: PropTypes.object,
+  onRecord: PropTypes.func.isRequired,
 });
 
 export default SpeciesProfile;

@@ -8,7 +8,7 @@ const file = '01UPL42ZXKCJ4BYXCWVJGYIWBOAQUXNNTK';
 
 function saveToFile(data, name) {
   const saveSpeciesToFileWrap = (resolve, reject) => {
-    const fileName = `./${name}.json`;
+    const fileName = `./cache/${name}.json`;
     console.log(`Writing ${fileName}`);
 
     const dataOption = err => {

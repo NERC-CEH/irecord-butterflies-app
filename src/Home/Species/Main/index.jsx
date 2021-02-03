@@ -9,21 +9,23 @@ import {
   IonRow,
   IonLabel,
   IonIcon,
+  IonButton,
+  IonButtons,
+  IonToolbar,
+  IonHeader,
 } from '@ionic/react';
-import { Main, toast, ModalHeader } from '@apps';
-import butterflyIcon from 'common/images/butterflyIcon.svg';
-import species from 'common/data/species.json';
+import { Main } from '@apps';
+import { arrowBack } from 'ionicons/icons';
+import species from 'common/data/species';
 import SpeciesProfile from './components/SpeciesProfile';
 import './styles.scss';
-
-const inWIP = () => toast.warn('Sorry, this is still WIP.');
 
 const colours = {
   Yellow: '#ffff00',
   Green: '#006400',
   Cream: '#f5fffa',
   Gray: '#a9a9a9',
-  Black: '#000',
+  Black: '#000000',
   Blue: '#007eff',
   White: '#ffffff',
   Purple: '#e42de4',
@@ -39,28 +41,24 @@ class SpeciesMainComponent extends React.Component {
   };
 
   hideSpeciesModal = () => {
-    // TODO:
+    this.setState({ species: null });
   };
 
   getSpeciesTile = (sp, i) => {
-    const { commonName } = sp;
+    const { commonName, thumbnail } = sp;
     const color = colours[sp.colour[0]];
 
+    const setSpecies = () => this.setState({ species: sp });
+
     return (
-      <IonCol
-        key={i}
-        className="species-tile"
-        size="6"
-        // onClick={() => this.setState({ species: sp })}
-        onClick={inWIP}
-      >
+      <IonCol key={i} className="species-tile" size="6" onClick={setSpecies}>
         <div
           className="container"
           style={{
-            boxShadow: `inset 0px 0px 35px ${color}17`,
+            boxShadow: `inset 0px 0px 70px ${color}25`,
           }}
         >
-          <IonIcon icon={butterflyIcon} alt="" />
+          <img src={thumbnail} />
           <IonLabel>{commonName}</IonLabel>
         </div>
       </IonCol>
@@ -69,6 +67,8 @@ class SpeciesMainComponent extends React.Component {
 
   getSpecies = () => species.map(this.getSpeciesTile);
 
+  onRecord = () => {};
+
   render() {
     return (
       <Main>
@@ -76,9 +76,21 @@ class SpeciesMainComponent extends React.Component {
           <IonRow>{this.getSpecies()}</IonRow>
         </IonGrid>
 
-        <IonModal isOpen={this.state.species} backdropDismiss={false}>
-          <ModalHeader onClose={this.hideSpeciesModal} />
-          <SpeciesProfile species={this.state.species} />
+        <IonModal isOpen={!!this.state.species} backdropDismiss={false}>
+          <IonHeader className="species-modal-header">
+            <IonToolbar>
+              <IonButtons slot="start">
+                <IonButton onClick={this.hideSpeciesModal}>
+                  <IonIcon slot="icon-only" icon={arrowBack} color="light" />
+                </IonButton>
+              </IonButtons>
+            </IonToolbar>
+          </IonHeader>
+
+          <SpeciesProfile
+            species={this.state.species}
+            onRecord={this.hideSpeciesModal}
+          />
         </IonModal>
       </Main>
     );

@@ -13,7 +13,7 @@
     "test:watch": "jest --watchAll",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand --watch test",
     "test:eslint": "eslint src --quiet --ext .jsx --ext .js && echo '\\033[37;42;1m PASS \\033[00m'",
-    "fetch:data": "cd src/common/data && node make.js"
+    "fetch:data": "cd src/common/data/species && node make.js"
   },
   "husky": {
     "hooks": {
@@ -91,7 +91,7 @@
     "@babel/preset-react": "7.12.10",
     "@capacitor/cli": "2.4.6",
     "@flumens/eslint-config": "0.4.0",
-    "@flumens/webpack-config": "0.2.9",
+    "@flumens/webpack-config": "0.3.0",
     "babel-eslint": "10.1.0",
     "babel-jest": "26.6.3",
     "babel-plugin-module-resolver": "4.1.0",
