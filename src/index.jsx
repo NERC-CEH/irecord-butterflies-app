@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { setupConfig, isPlatform } from '@ionic/react';
+import { setupConfig as ionicConfig, isPlatform } from '@ionic/react';
 import appModel from 'models/app';
 import userModel from 'models/user';
 import savedSamples from 'models/savedSamples';
@@ -8,6 +8,7 @@ import { Plugins, StatusBarStyle } from '@capacitor/core';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import config from 'common/config';
+import { configure as mobxConfig } from 'mobx';
 import { initAnalytics } from '@apps';
 import App from './App';
 
@@ -19,14 +20,13 @@ import 'common/theme.scss';
 
 const { App: AppPlugin, StatusBar, SplashScreen } = Plugins;
 
-i18n.use(initReactI18next).init({
-  lng: 'en',
-});
+console.log('🚩 App starting.'); // eslint-disable-line
 
-setupConfig({
-  hardwareBackButton: false, // android back button
-  swipeBackEnabled: false,
-});
+i18n.use(initReactI18next).init({ lng: 'en' });
+
+ionicConfig({ hardwareBackButton: false, swipeBackEnabled: false });
+
+mobxConfig({ enforceActions: 'never' });
 
 async function init() {
   await appModel._init;
