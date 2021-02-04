@@ -163,16 +163,20 @@ class SpeciesProfile extends React.Component {
             </h3>
             <p>{species.ukStatus}</p>
 
-            <h3>
-              <T>When to see</T>:
-            </h3>
-            <div
-              className="lifechart"
-              onClick={this.showshowLifechartInFullScreen}
-            >
-              <IonIcon src={expandOutline} slot="end" color="secondary" />
-              <img src={species.lifechart} />
-            </div>
+            {species.lifechart && (
+              <>
+                <h3>
+                  <T>When to see</T>:
+                </h3>
+                <div
+                  className="lifechart"
+                  onClick={this.showshowLifechartInFullScreen}
+                >
+                  <IonIcon src={expandOutline} slot="end" color="secondary" />
+                  <img src={species.lifechart} />
+                </div>
+              </>
+            )}
 
             <h3>
               <T>Distribution</T>:

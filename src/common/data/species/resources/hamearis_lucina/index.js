@@ -2,7 +2,7 @@ import thumbnail from './thumbnail.png';
 import img1 from './1.jpg';
 import img2 from './2.jpg';
 import map from './map.jpg';
-import lifechart from './lifechart.jpg';
+import lifechart from './Duke of Burgundy_lifecycle.jpg';
 
 export default {
   thumbnail,
