@@ -9,6 +9,10 @@
   }
 
   #menu-item-count-edit {
+    ion-button {
+      margin: 0;
+    }
+
     div[slot='end'] {
       margin-right: -20px;
 
