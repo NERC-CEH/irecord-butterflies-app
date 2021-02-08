@@ -134,7 +134,7 @@ class Component extends React.Component {
 
     return (
       <IonItem id="menu-item-count-edit" disabled={isDisabled}>
-        <IonLabel>Count</IonLabel>
+        <IonLabel>Number</IonLabel>
         <IonIcon icon={numberIcon} slot="start" />
         <div slot="end">
           {!isDisabled && (
