@@ -203,11 +203,14 @@ class SpeciesProfile extends React.Component {
                 </div>
               </>
             )}
-
-            <h3>
-              <T>Distribution</T>:
-            </h3>
-            {this.getMap()}
+            {species.map && (
+              <>
+                <h3>
+                  <T>Distribution</T>:
+                </h3>
+                {this.getMap()}
+              </>
+            )}
 
             {species.webLink && (
               <h3>
