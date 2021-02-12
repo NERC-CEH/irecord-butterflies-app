@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import {
   IonGrid,
@@ -15,7 +15,7 @@ import {
   IonHeader,
 } from '@ionic/react';
 import { Main } from '@apps';
-import { arrowBack } from 'ionicons/icons';
+import { arrowBack, informationCircleOutline } from 'ionicons/icons';
 import species from 'common/data/species';
 import SpeciesProfile from './components/SpeciesProfile';
 import './styles.scss';
@@ -34,7 +34,9 @@ const colours = {
 };
 @observer
 class SpeciesMainComponent extends React.Component {
-  static propTypes = exact({});
+  static propTypes = exact({
+    onSelect: PropTypes.func,
+  });
 
   state = {
     species: null,
@@ -45,19 +47,35 @@ class SpeciesMainComponent extends React.Component {
   };
 
   getSpeciesTile = (sp, i) => {
+    const { onSelect } = this.props;
+
     const { commonName, thumbnail } = sp;
     const color = colours[sp.colour[0]];
 
-    const setSpecies = () => this.setState({ species: sp });
+    const isSurvey = !!onSelect;
+    const viewSpecies = e => {
+      e.preventDefault();
+      e.stopPropagation();
+      this.setState({ species: sp });
+    };
+
+    const selectSpecies = () => onSelect(sp);
+
+    const onClick = isSurvey ? selectSpecies : viewSpecies;
 
     return (
-      <IonCol key={i} className="species-tile" size="6" onClick={setSpecies}>
+      <IonCol key={i} className="species-tile" size="6" onClick={onClick}>
         <div
           className="container"
           style={{
             boxShadow: `inset 0px 0px 70px ${color}25`,
           }}
         >
+          {isSurvey && (
+            <div className="info-box" onClick={viewSpecies}>
+              <IonIcon icon={informationCircleOutline} />
+            </div>
+          )}
           <img src={thumbnail} />
           <IonLabel>{commonName}</IonLabel>
         </div>
@@ -70,8 +88,10 @@ class SpeciesMainComponent extends React.Component {
   onRecord = () => {};
 
   render() {
+    const { onSelect } = this.props;
+
     return (
-      <Main>
+      <Main className="species-list">
         <IonGrid>
           <IonRow>{this.getSpecies()}</IonRow>
         </IonGrid>
@@ -90,6 +110,7 @@ class SpeciesMainComponent extends React.Component {
           <SpeciesProfile
             species={this.state.species}
             onRecord={this.hideSpeciesModal}
+            isSurvey={!!onSelect}
           />
         </IonModal>
       </Main>

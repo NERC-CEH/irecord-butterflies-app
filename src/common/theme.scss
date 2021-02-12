@@ -28,12 +28,12 @@
   --ion-color-success-shade: #00a617;
   --ion-color-success-tint: #1ac431;
 
-  --ion-color-warning: #e0b500;
+  --ion-color-warning: #d1741e;
   --ion-color-warning-rgb: 255, 206, 0;
   --ion-color-warning-contrast: #ffffff;
   --ion-color-warning-contrast-rgb: 255, 255, 255;
-  --ion-color-warning-shade: #c7a100;
-  --ion-color-warning-tint: #ffd31a;
+  --ion-color-warning-shade: #a76629;
+  --ion-color-warning-tint: #f18a29;
 
   --ion-color-danger: #f04141;
   --ion-color-danger-rgb: 245, 61, 61;
@@ -66,6 +66,7 @@
   --ion-text-color: var(--ion-color-dark);
 
   --ion-page-background: #f4f5f8;
+  --ion-item-border-color: #c8c7cc;
 }
 
 @font-face {
@@ -237,6 +238,26 @@ ion-radio-group {
   }
 }
 
-#img-picker-array .img-picker ion-button {
-  color: var(--ion-color-secondary);
+.photo-picker {
+  --inner-padding-end: 0;
+
+  #img-picker-array .img {
+    margin-right: 5px;
+    .delete {
+      background-color: #80808085;
+    }
+  }
+
+  #img-picker-array .img-picker {
+    border-right: none;
+
+    ion-button {
+      background: #3aa3644a;
+      margin: 5px;
+      height: calc(80px - 10px);
+      width: calc(80px - 10px);
+      border-radius: 15px;
+      transform: none;
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react';
 import React from 'react';
+import clsx from 'clsx';
 import {
   IonItemDivider,
   IonIcon,
@@ -8,6 +9,7 @@ import {
   IonItem,
   IonLabel,
   IonButton,
+  IonAvatar,
 } from '@ionic/react';
 import {
   Main,
@@ -17,7 +19,6 @@ import {
   MenuNote,
   MenuAttrItemFromModel,
   PhotoPicker,
-  toast,
 } from '@apps';
 import Image from 'models/image';
 import {
@@ -30,8 +31,7 @@ import PropTypes from 'prop-types';
 import numberIcon from 'common/images/number.svg';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
-
-const inWIP = () => toast.warn('Sorry, this is still WIP.');
+import species from 'common/data/species';
 
 @observer
 class Component extends React.Component {
@@ -143,7 +143,7 @@ class Component extends React.Component {
               fill="clear"
               size="default"
               onClick={this.decreaseCount}
-              color="secondary"
+              color="medium"
             >
               <IonIcon icon={removeCircleOutline} />
             </IonButton>
@@ -155,7 +155,7 @@ class Component extends React.Component {
               shape="round"
               fill="clear"
               size="default"
-              color="secondary"
+              color="medium"
               onClick={this.increaseCount}
             >
               <IonIcon icon={addCircleOutline} />
@@ -166,20 +166,83 @@ class Component extends React.Component {
     );
   };
 
+  getSpeciesButton = () => {
+    const { sample, match } = this.props;
+    const [occ] = sample.occurrences;
+
+    const { taxon } = occ.attrs;
+    if (!taxon) {
+      return (
+        <MenuAttrItem
+          routerLink={`${match.url}/species`}
+          icon={butterflyIcon}
+          label="Species"
+          required
+        />
+      );
+    }
+
+    const byId = ({ id: speciesID }) => speciesID === taxon.id;
+    const fullSpeciesProfile = species.find(byId);
+
+    const { commonName, scientificName, thumbnail } = fullSpeciesProfile;
+
+    return (
+      <IonItem
+        className="menu-attr-item species-item"
+        routerLink={`${match.url}/species`}
+        detail
+      >
+        <IonAvatar>
+          <img src={thumbnail} />
+        </IonAvatar>
+        <IonLabel position="stacked" mode="ios" slot="end">
+          <IonLabel>
+            <b>{commonName}</b>
+          </IonLabel>
+          <IonLabel>
+            <i>{scientificName}</i>
+          </IonLabel>
+        </IonLabel>
+      </IonItem>
+    );
+  };
+
+  getLocationButton = () => {
+    const { match, sample } = this.props;
+
+    const location = sample.attrs.location || {};
+    const hasLocation = location.latitude;
+    const hasName = location.name;
+    const empty = !hasLocation || !hasName;
+
+    const value = (
+      <IonLabel position="stacked" mode="ios">
+        <IonLabel color={clsx(empty && hasLocation && 'dark')}>
+          <GridRefValue sample={sample} requiredMessage="No location" />
+        </IonLabel>
+        <IonLabel color={clsx(empty && hasName && 'dark')}>
+          {location.name || 'No site name'}
+        </IonLabel>
+      </IonLabel>
+    );
+
+    return (
+      <MenuAttrItem
+        routerLink={`${match.url}/location`}
+        value={value}
+        icon={locationOutline}
+        label="Location"
+        skipValueTranslation
+        required
+        className={clsx({ empty })}
+      />
+    );
+  };
+
   render() {
     const { match, sample, isDisabled } = this.props;
     const [occ] = sample.occurrences;
-
-    const location = sample.attrs.location || {};
-
-    const prettyGridRef = (
-      <IonLabel position="stacked" mode="ios">
-        <IonLabel>
-          <GridRefValue sample={sample} />
-        </IonLabel>
-        <IonLabel>{location.name}</IonLabel>
-      </IonLabel>
-    );
 
     return (
       <Main>
@@ -192,18 +255,9 @@ class Component extends React.Component {
 
           <IonItemDivider>Details</IonItemDivider>
           <div className="rounded">
-            <IonItem className="menu-attr-item disabled" detail onClick={inWIP}>
-              <IonIcon icon={butterflyIcon} slot="start" />
-              <IonLabel>Species</IonLabel>
-            </IonItem>
+            {this.getSpeciesButton()}
             <MenuAttrItemFromModel model={sample} attr="date" />
-            <MenuAttrItem
-              routerLink={`${match.url}/location`}
-              value={prettyGridRef}
-              icon={locationOutline}
-              label="Location"
-              skipValueTranslation
-            />
+            {this.getLocationButton()}
           </div>
 
           <IonItemDivider>Other</IonItemDivider>

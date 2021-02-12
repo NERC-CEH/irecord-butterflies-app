@@ -65,7 +65,7 @@ const survey = {
     },
   },
 
-  create(AppSample, AppOccurrence) {
+  create(AppSample, AppOccurrence, options) {
     const sample = new AppSample({
       metadata: {
         survey: survey.name,
@@ -77,6 +77,11 @@ const survey = {
     });
 
     const occ = survey.occ.create(AppOccurrence);
+
+    if (options.species) {
+      occ.setSpecies(options.species);
+    }
+
     sample.occurrences.push(occ);
 
     sample.startGPS();

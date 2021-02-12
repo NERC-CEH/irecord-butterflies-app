@@ -14,14 +14,15 @@ function getValue(sample) {
   return prettyPrintLocation(sample.attrs.location);
 }
 
-function GridRefValue({ sample }) {
+function GridRefValue({ sample, requiredMessage = '' }) {
   const value = getValue(sample);
 
-  return <div className="gridref-label">{value}</div>;
+  return <div className="gridref-label">{value || requiredMessage}</div>;
 }
 
 GridRefValue.propTypes = exact({
   sample: PropTypes.object.isRequired,
+  requiredMessage: PropTypes.elementType,
 });
 
 export default observer(GridRefValue);

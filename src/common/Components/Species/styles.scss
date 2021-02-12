@@ -1,4 +1,4 @@
-#species-guide {
+.species-list {
   .species-tile {
     padding: 0;
 
@@ -31,6 +31,28 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
+      }
+
+      overflow: hidden;
+
+      .info-box {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background: #fffffff0;
+        border-radius: 50%;
+        transform: translate(50%, -50%);
+        box-shadow: 0 0 20px 9px #e6e6e6;
+
+        ion-icon {
+          width: 30%;
+          height: 30%;
+          margin-top: 50%;
+          margin-left: 15%;
+          --ionicon-stroke-width: 20;
+        }
       }
     }
   }

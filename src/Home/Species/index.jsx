@@ -1,7 +1,7 @@
 import React from 'react';
 import { Page } from '@apps';
+import Main from 'common/Components/Species';
 import Header from './Header';
-import Main from './Main';
 
 function SpeciesGuideController() {
   return (

@@ -6,6 +6,7 @@ import userModel from 'models/user';
 import config from 'common/config';
 import StartNewSurvey from 'Survey/common/Components/StartNewSurvey';
 import Home from './Home';
+import Species from './Species';
 import survey from './config';
 
 const baseURL = `/survey/${survey.name}`;
@@ -20,7 +21,7 @@ const ModelLocationWrap = props => (
     useGridRef
     useGridMap
     onLocationNameChange={ModelLocation.utils.onLocationNameChange}
-    placeholder="Nearest named place"
+    placeholder="Site name e.g. nearest village"
     onGPSClick={ModelLocation.utils.onGPSClick}
     {...props}
   />
@@ -32,6 +33,7 @@ const routes = [
   [`${baseURL}/:smpId/:attr`, Attr],
   [`${baseURL}/:smpId/occ/:occId/:attr`, Attr],
   [`${baseURL}/:smpId/location`, ModelLocationWrap],
+  [`${baseURL}/:smpId/species`, Species],
 ];
 
 export default RouteWithModels.fromArray(savedSamples, routes);

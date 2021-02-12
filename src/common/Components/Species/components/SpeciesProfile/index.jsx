@@ -116,8 +116,28 @@ class SpeciesProfile extends React.Component {
     );
   };
 
+  getMap = () => {
+    const { species } = this.props;
+
+    if (!species.map) {
+      return <p>Sorry, this species doesn't have a map.</p>;
+    }
+
+    return (
+      <div
+        className="fullscreen-tappable map"
+        onClick={this.showMapInFullScreen}
+      >
+        <img src={species.map} />
+        <div className="fullscreen-btn">
+          <IonIcon src={expandOutline} slot="end" color="secondary" />
+        </div>
+      </div>
+    );
+  };
+
   render() {
-    const { species, onRecord } = this.props;
+    const { species, onRecord, isSurvey } = this.props;
 
     if (!species) {
       return null;
@@ -137,13 +157,15 @@ class SpeciesProfile extends React.Component {
                 <i>{species.scientificName}</i>
               </h3>
             </div>
-            <IonButton
-              shape="round"
-              onClick={onRecord}
-              routerLink={`/survey/point?species=${species.id}`}
-            >
-              Record
-            </IonButton>
+            {!isSurvey && (
+              <IonButton
+                shape="round"
+                onClick={onRecord}
+                routerLink={`/survey/point?species=${species.id}`}
+              >
+                Record
+              </IonButton>
+            )}
           </IonCardHeader>
 
           <IonCardContent>
@@ -171,10 +193,12 @@ class SpeciesProfile extends React.Component {
                   <T>When to see</T>:
                 </h3>
                 <div
-                  className="lifechart"
+                  className="fullscreen-tappable"
                   onClick={this.showshowLifechartInFullScreen}
                 >
-                  <IonIcon src={expandOutline} slot="end" color="secondary" />
+                  <div className="fullscreen-btn">
+                    <IonIcon src={expandOutline} slot="end" color="secondary" />
+                  </div>
                   <img src={species.lifechart} />
                 </div>
               </>
@@ -183,10 +207,7 @@ class SpeciesProfile extends React.Component {
             <h3>
               <T>Distribution</T>:
             </h3>
-            <div className="lifechart" onClick={this.showMapInFullScreen}>
-              <IonIcon src={expandOutline} slot="end" color="secondary" />
-              <img src={species.map} />
-            </div>
+            {this.getMap()}
 
             {species.webLink && (
               <h3>
@@ -201,8 +222,9 @@ class SpeciesProfile extends React.Component {
 }
 
 SpeciesProfile.propTypes = exact({
-  species: PropTypes.object,
   onRecord: PropTypes.func.isRequired,
+  species: PropTypes.object,
+  isSurvey: PropTypes.bool,
 });
 
 export default SpeciesProfile;

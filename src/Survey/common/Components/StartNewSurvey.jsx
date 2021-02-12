@@ -6,8 +6,13 @@ import Sample from 'models/sample';
 import Occurrence from 'models/occurrence';
 import savedSamples from 'models/savedSamples';
 
-async function getNewSample(survey) {
-  const sample = await survey.create(Sample, Occurrence);
+async function getNewSample(survey, params) {
+  const toParam = (agg, v) => {
+    const [key, val] = v.split('=');
+    return { ...agg, [key]: val };
+  };
+  const options = params.replace('?', '').split('&').reduce(toParam, {});
+  const sample = await survey.create(Sample, Occurrence, options);
   await sample.save();
 
   savedSamples.push(sample);
@@ -15,11 +20,11 @@ async function getNewSample(survey) {
   return sample;
 }
 
-function StartNewSurvey({ match, survey }) {
+function StartNewSurvey({ match, survey, location }) {
   const context = useContext(NavContext);
 
   const createSample = async () => {
-    const sample = await getNewSample(survey);
+    const sample = await getNewSample(survey, location.search);
 
     const url = `${match.url}/${sample.cid}`;
 

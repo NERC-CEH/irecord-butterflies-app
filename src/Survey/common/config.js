@@ -27,6 +27,7 @@ export const dateAttr = {
   icon: calendarOutline,
   isValid: val => val && val.toString() !== 'Invalid Date',
   max: () => new Date(),
+  required: true,
   remote: {
     id: 'date',
     values: d => date.print(d),
