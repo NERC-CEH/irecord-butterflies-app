@@ -38,6 +38,7 @@ class SpeciesProfile extends React.Component {
 
     let items = [];
     let initialSlide = 0;
+    let className = 'white-background';
 
     const setShowGallery = () =>
       this.setState({
@@ -50,6 +51,7 @@ class SpeciesProfile extends React.Component {
       const getImageSource = img => ({ src: img });
       items = species.images.map(getImageSource);
       initialSlide = showGallery;
+      className = '';
     }
 
     if (showLifechart) {
@@ -69,6 +71,7 @@ class SpeciesProfile extends React.Component {
         items={items}
         initialSlide={initialSlide}
         onClose={setShowGallery}
+        className={className}
       />
     );
   };
@@ -96,9 +99,6 @@ class SpeciesProfile extends React.Component {
           key={src}
           class="species-profile-photo"
           onClick={showPhotoInFullScreenWrap}
-          // style={{
-          //   background: `url(${src})`,
-          // }}
         >
           <img src={src} />
         </IonSlide>

@@ -24,7 +24,7 @@
     "@bit/flumens.apps.attr-page": "0.7.6",
     "@bit/flumens.apps.date": "0.2.1",
     "@bit/flumens.apps.device": "0.2.1",
-    "@bit/flumens.apps.gallery": "1.0.0",
+    "@bit/flumens.apps.gallery": "1.1.0",
     "@bit/flumens.apps.header": "0.6.3",
     "@bit/flumens.apps.helpers.alert": "0.4.2",
     "@bit/flumens.apps.helpers.loader": "0.1.1",
