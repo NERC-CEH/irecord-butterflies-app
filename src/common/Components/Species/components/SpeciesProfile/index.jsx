@@ -37,6 +37,7 @@ class SpeciesProfile extends React.Component {
     const { showGallery, showLifechart, showMap } = this.state;
 
     let items = [];
+    let initialSlide = 0;
 
     const setShowGallery = () =>
       this.setState({
@@ -48,6 +49,7 @@ class SpeciesProfile extends React.Component {
     if (Number.isInteger(showGallery)) {
       const getImageSource = img => ({ src: img });
       items = species.images.map(getImageSource);
+      initialSlide = showGallery;
     }
 
     if (showLifechart) {
@@ -65,7 +67,7 @@ class SpeciesProfile extends React.Component {
       <Gallery
         isOpen
         items={items}
-        initialSlide={showGallery || 1}
+        initialSlide={initialSlide}
         onClose={setShowGallery}
       />
     );
