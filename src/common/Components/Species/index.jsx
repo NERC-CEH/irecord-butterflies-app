@@ -37,6 +37,7 @@ const colours = {
 class SpeciesMainComponent extends React.Component {
   static propTypes = exact({
     onSelect: PropTypes.func,
+    searchPhrase: PropTypes.string,
   });
 
   state = {
@@ -90,12 +91,29 @@ class SpeciesMainComponent extends React.Component {
     );
   };
 
+  getSpeciesData = () => {
+    const { searchPhrase } = this.props;
+    if (!searchPhrase) {
+      return species;
+    }
+
+    const filterBySearchPhrase = sp => {
+      const re = new RegExp(searchPhrase, 'i');
+      return re.test(sp.commonName);
+    };
+
+    return species.filter(filterBySearchPhrase);
+  };
+
   getSpecies = () => {
+    const speciesData = this.getSpeciesData();
     const isNotAditional = sp => !sp.additional;
-    const speciesList = species.filter(isNotAditional).map(this.getSpeciesTile);
+    const speciesList = speciesData
+      .filter(isNotAditional)
+      .map(this.getSpeciesTile);
 
     const isAditional = sp => sp.additional;
-    const additionalSpeciesList = species
+    const additionalSpeciesList = speciesData
       .filter(isAditional)
       .map(this.getSpeciesTile);
 
@@ -114,8 +132,6 @@ class SpeciesMainComponent extends React.Component {
       </>
     );
   };
-
-  onRecord = () => {};
 
   render() {
     const { onSelect } = this.props;

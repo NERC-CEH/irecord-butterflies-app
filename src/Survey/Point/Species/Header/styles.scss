@@ -1,0 +1,28 @@
+#species-search-header ion-toolbar.searchbar {
+  display: none;
+
+  &.searching {
+    display: block;
+  }
+
+  ion-searchbar {
+    height: 44px;
+    padding: 0;
+    padding-right: 10px;
+    text-align: left;
+    --cancel-button-color: var(--ion-color-dark);
+  }
+
+  &.searching ion-searchbar {
+    animation: right-animate 1s cubic-bezier(0.03, 0.79, 0.2, 1);
+  }
+
+  @keyframes right-animate {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+}
