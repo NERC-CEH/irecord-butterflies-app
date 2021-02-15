@@ -65,7 +65,13 @@ class SpeciesMainComponent extends React.Component {
     const onClick = isSurvey ? selectSpecies : viewSpecies;
 
     return (
-      <IonCol key={i} className="species-tile" size="6" onClick={onClick}>
+      <IonCol
+        key={i}
+        className="species-tile"
+        size="6"
+        sizeMd="4"
+        onClick={onClick}
+      >
         <div
           className="container"
           style={{
