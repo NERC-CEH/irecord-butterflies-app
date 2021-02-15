@@ -195,8 +195,6 @@ div.rounded {
 
 ion-list {
   padding: 0 10px !important;
-  max-width: 600px; // tablet friendly
-  margin: 0 auto; // tablet friendly
 }
 
 ion-list,
@@ -238,6 +236,15 @@ ion-radio-group {
     background-color: transparent !important;
     color: var(--ion-color-dark);
   }
+}
+
+.info-message,
+.item-datetime,
+ion-list,
+ion-textarea {
+  max-width: 600px; // tablet friendly
+  margin-left: auto; // tablet friendly
+  margin-right: auto; // tablet friendly
 }
 
 .photo-picker {
