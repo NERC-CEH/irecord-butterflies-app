@@ -13,6 +13,7 @@ import {
   IonIcon,
   IonAvatar,
 } from '@ionic/react';
+import clsx from 'clsx';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import OnlineStatus from './components/OnlineStatus';
 import ErrorMessage from './components/ErrorMessage';
@@ -39,7 +40,7 @@ function deleteSurvey(sample) {
 
 function getSampleInfo(sample) {
   const taxon = sample.occurrences[0].attrs.taxon || {};
-  const label = taxon.commonName || 'Species missing';
+  const label = taxon.commonName;
   const prettyDate = date.print(sample.attrs.date);
 
   return (
@@ -49,8 +50,8 @@ function getSampleInfo(sample) {
       </IonAvatar>
 
       <IonLabel position="stacked" mode="ios" color="dark">
-        <IonLabel class="ion-text-wrap" color="danger">
-          {label}
+        <IonLabel class="ion-text-wrap" color={clsx(!label && 'warning')}>
+          {label || 'Species missing'}
         </IonLabel>
         <IonLabel class="ion-text-wrap">{prettyDate}</IonLabel>
       </IonLabel>
