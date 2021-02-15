@@ -56,6 +56,19 @@
       }
     }
   }
+
+  ion-item-divider.item-divider-sticky {
+    background: var(--ion-color-primary) !important;
+    padding: 0;
+    color: white;
+    margin: 10px -2%;
+    width: 104%;
+
+    ion-label {
+      width: 100%;
+      text-align: center;
+    }
+  }
 }
 
 .species-modal-header ion-toolbar {

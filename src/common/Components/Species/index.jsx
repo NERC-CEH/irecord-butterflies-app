@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import {
   IonGrid,
+  IonItemDivider,
   IonCol,
   IonModal,
   IonRow,
@@ -83,7 +84,30 @@ class SpeciesMainComponent extends React.Component {
     );
   };
 
-  getSpecies = () => species.map(this.getSpeciesTile);
+  getSpecies = () => {
+    const isNotAditional = sp => !sp.additional;
+    const speciesList = species.filter(isNotAditional).map(this.getSpeciesTile);
+
+    const isAditional = sp => sp.additional;
+    const additionalSpeciesList = species
+      .filter(isAditional)
+      .map(this.getSpeciesTile);
+
+    const hasAdditional = !!additionalSpeciesList.length;
+
+    return (
+      <>
+        {speciesList}
+
+        {hasAdditional && (
+          <IonItemDivider sticky>
+            <IonLabel>Additional</IonLabel>
+          </IonItemDivider>
+        )}
+        {additionalSpeciesList}
+      </>
+    );
+  };
 
   onRecord = () => {};
 
