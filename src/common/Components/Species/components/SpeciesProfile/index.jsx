@@ -72,6 +72,7 @@ class SpeciesProfile extends React.Component {
         initialSlide={initialSlide}
         onClose={setShowGallery}
         className={className}
+        mode="md"
       />
     );
   };

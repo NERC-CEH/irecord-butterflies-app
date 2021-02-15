@@ -126,12 +126,16 @@ class SpeciesMainComponent extends React.Component {
           <IonRow>{this.getSpecies()}</IonRow>
         </IonGrid>
 
-        <IonModal isOpen={!!this.state.species} backdropDismiss={false}>
+        <IonModal
+          isOpen={!!this.state.species}
+          backdropDismiss={false}
+          mode="md"
+        >
           <IonHeader className="species-modal-header">
             <IonToolbar>
               <IonButtons slot="start">
                 <IonButton onClick={this.hideSpeciesModal}>
-                  <IonIcon slot="icon-only" icon={arrowBack} color="light" />
+                  <IonIcon slot="icon-only" icon={arrowBack} />
                 </IonButton>
               </IonButtons>
             </IonToolbar>
