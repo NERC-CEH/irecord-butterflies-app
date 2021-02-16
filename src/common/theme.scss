@@ -238,13 +238,16 @@ ion-radio-group {
   }
 }
 
-.info-message,
-.item-datetime,
-ion-list,
-ion-textarea {
-  max-width: 600px; // tablet friendly
-  margin-left: auto; // tablet friendly
-  margin-right: auto; // tablet friendly
+/* Tablet-friendly */
+html.plt-tablet {
+  .info-message,
+  .item-datetime,
+  ion-list,
+  ion-textarea {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .photo-picker {
