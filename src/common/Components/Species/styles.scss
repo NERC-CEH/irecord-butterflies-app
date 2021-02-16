@@ -23,13 +23,15 @@
       }
 
       ion-label {
-        text-align: center;
-        padding: 0.5em;
         flex: 1;
-        max-height: 3em;
         display: flex;
         justify-content: center;
         flex-direction: column;
+        padding: 0.5em;
+        min-height: 3.6em;
+        line-height: 1.3em;
+        text-align: center;
+        font-weight: 500;
       }
 
       overflow: hidden;
@@ -47,10 +49,11 @@
 
         ion-icon {
           width: 30%;
-          height: 30%;
-          margin-top: 50%;
-          margin-left: 15%;
+          height: 50%;
           --ionicon-stroke-width: 20;
+          position: absolute;
+          bottom: 4%;
+          left: 16%;
         }
       }
     }
