@@ -57,6 +57,7 @@ function Header({ onSearch: onSearchProp }) {
           slot="end"
           showCancelButton="always"
           onIonCancel={onSearchEnd}
+          type="search"
         />
       </IonToolbar>
     </IonHeader>
