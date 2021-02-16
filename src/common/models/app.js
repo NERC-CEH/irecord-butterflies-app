@@ -7,6 +7,9 @@ const defaults = {
   sendAnalytics: true,
   appSession: 0,
 
+  // draft survey pointers
+  'draftId:point': null,
+
   // tips
   showSurveysDeleteTip: true,
   showSurveyUploadTip: true,

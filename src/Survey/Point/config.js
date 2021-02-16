@@ -63,6 +63,20 @@ const survey = {
         },
       });
     },
+
+    verify(attrs) {
+      try {
+        const occurrenceScheme = Yup.object().shape({
+          taxon: Yup.object().required(),
+        });
+
+        occurrenceScheme.validateSync(attrs, { abortEarly: false });
+      } catch (attrError) {
+        return attrError;
+      }
+
+      return null;
+    },
   },
 
   create(AppSample, AppOccurrence, options) {
@@ -91,11 +105,11 @@ const survey = {
 
   verify(attrs) {
     try {
-      const transectSchema = Yup.object().shape({
+      const sampleSchema = Yup.object().shape({
         location: verifyLocationSchema,
       });
 
-      transectSchema.validateSync(attrs, { abortEarly: false });
+      sampleSchema.validateSync(attrs, { abortEarly: false });
     } catch (attrError) {
       return attrError;
     }

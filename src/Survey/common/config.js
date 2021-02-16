@@ -5,6 +5,7 @@ import { calendarOutline, locationOutline } from 'ionicons/icons';
 const fixedLocationSchema = Yup.object().shape({
   latitude: Yup.number().required(),
   longitude: Yup.number().required(),
+  name: Yup.string().required('Location name'),
 });
 
 const validateLocation = val => {
@@ -17,7 +18,7 @@ const validateLocation = val => {
 
 export const verifyLocationSchema = Yup.mixed().test(
   'location',
-  'Please select location.',
+  'Please enter location and its name.',
   validateLocation
 );
 

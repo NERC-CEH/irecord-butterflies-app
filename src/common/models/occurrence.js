@@ -19,10 +19,7 @@ export default class AppOccurrence extends Occurrence {
     intercept(this.attrs, 'taxon', setOnlyMinimalSpeciesValues);
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  validateRemote() {
-    return null;
-  }
+  validateRemote = () => this.getSurvey().verify(this.attrs);
 
   setSpecies(speciesId) {
     const byId = ({ id }) => id === speciesId;

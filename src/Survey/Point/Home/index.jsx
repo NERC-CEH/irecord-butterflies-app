@@ -1,17 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
-import {
-  Page,
-  Header,
-  toast,
-  device,
-  showInvalidsMessage,
-  loader,
-} from '@apps';
+import { Page, Header, toast, showInvalidsMessage } from '@apps';
 import { observer } from 'mobx-react';
-import { IonButton } from '@ionic/react';
-import i18n from 'i18next';
+import { IonButton, NavContext } from '@ionic/react';
 import Main from './Main';
 import './styles.scss';
 
@@ -19,88 +11,83 @@ const { warn } = toast;
 
 @observer
 class Controller extends React.Component {
+  static contextType = NavContext;
+
   static propTypes = exact({
     match: PropTypes.object,
-    history: PropTypes.object,
     location: PropTypes.object, // eslint-disable-line
     appModel: PropTypes.object.isRequired,
     userModel: PropTypes.object.isRequired,
     sample: PropTypes.object.isRequired,
   });
 
-  onUpload = async () => {
-    const { sample, userModel, history, match } = this.props;
+  _processSubmission = () => {
+    const { sample, userModel } = this.props;
 
     const invalids = sample.validateRemote();
-
     if (invalids) {
       showInvalidsMessage(invalids);
       return;
     }
 
-    if (!device.isOnline()) {
-      warn(i18n.t('Looks like you are offline!'));
-      return;
-    }
-
     const isLoggedIn = !!userModel.attrs.id;
     if (!isLoggedIn) {
-      warn(i18n.t('Please log in first to upload the records.'));
+      warn('Please log in first to upload the record.');
       return;
     }
 
-    if (!userModel.attrs.verified) {
-      await loader.show({
-        message: i18n.t('Please wait...'),
-      });
+    sample.saveRemote();
 
-      try {
-        await userModel.refreshProfile();
-      } catch (e) {
-        // do nothing
-      }
+    this.context.navigate(`/home/surveys`, 'root');
+  };
 
-      loader.hide();
+  _processDraft = async () => {
+    const { appModel, sample } = this.props;
 
-      if (!userModel.attrs.verified) {
-        warn(
-          i18n.t("Sorry, your account hasn't been verified yet or is blocked.")
-        );
-        return;
-      }
+    appModel.attrs['draftId:point'] = null;
+    await appModel.save();
+
+    const invalids = sample.validateRemote();
+    if (invalids) {
+      showInvalidsMessage(invalids);
+      return;
     }
 
-    await loader.show({
-      message: i18n.t('Uploading your survey...'),
-    });
+    sample.metadata.saved = true;
+    sample.save();
+    this.context.navigate(`/home/surveys`, 'root');
+  };
 
-    try {
-      await sample.saveRemote();
+  onFinish = async () => {
+    const { sample } = this.props;
 
-      history.push(`${match.url}/report`);
-    } catch (e) {
-      // do nothing
+    if (!sample.metadata.saved) {
+      await this._processDraft();
+      return;
     }
 
-    loader.hide();
+    await this._processSubmission();
   };
 
   render() {
     const { appModel, match, sample } = this.props;
+
     if (!sample) {
       return null;
     }
 
+    const isEditing = sample.metadata.saved;
+
     const isDisabled = sample.isUploaded();
 
-    const uploadButton = (
+    const finishButton = (
       <IonButton
-        onClick={this.onUpload}
+        onClick={this.onFinish}
         color="primary"
         fill="solid"
         shape="round"
       >
-        Save
+        {isEditing ? 'Upload' : 'Finish'}
       </IonButton>
     );
 
@@ -108,7 +95,7 @@ class Controller extends React.Component {
       <Page id="survey-point-edit">
         <Header
           title="New Sighting"
-          rightSlot={uploadButton}
+          rightSlot={finishButton}
           defaultHref="/home/surveys"
         />
         <Main
