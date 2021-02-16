@@ -8,6 +8,10 @@
   ion-item {
     --padding-start: 0;
     --border-style: none;
+
+    .species-name {
+      font-weight: 500;
+    }
   }
 
   ion-avatar {

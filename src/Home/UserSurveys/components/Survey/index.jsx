@@ -50,7 +50,7 @@ function getSampleInfo(sample) {
       </IonAvatar>
 
       <IonLabel position="stacked" mode="ios" color="dark">
-        <IonLabel class="ion-text-wrap" color={clsx(!label && 'warning')}>
+        <IonLabel className="species-name" color={clsx(!label && 'warning')}>
           {label || 'Species missing'}
         </IonLabel>
         <IonLabel class="ion-text-wrap">{prettyDate}</IonLabel>
