@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Page } from '@apps';
+import appModel from 'models/app';
 import Main from 'common/Components/Species';
 import Header from './Header';
 
 function SpeciesGuideController() {
+  const [searchPhrase, setSearchPhrase] = useState('');
+
   return (
     <Page id="species-guide">
-      <Header />
-      <Main />
+      <Header
+        onSearch={setSearchPhrase}
+        toggleFilter={appModel.toggleFilter}
+        filters={appModel.attrs.filters}
+      />
+      <Main searchPhrase={searchPhrase} filters={appModel.attrs.filters} />
     </Page>
   );
 }

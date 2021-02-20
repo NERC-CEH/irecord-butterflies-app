@@ -16,8 +16,8 @@ import {
 import clsx from 'clsx';
 import { searchOutline } from 'ionicons/icons';
 import { Plugins } from '@capacitor/core';
-import CurrentFilters from './Components/CurrentFilters';
-import FiltersMenu from './Components/FiltersMenu';
+import CurrentFilters from 'Components/CurrentFilters';
+import FiltersMenu from 'Components/FiltersMenu';
 
 import './styles.scss';
 

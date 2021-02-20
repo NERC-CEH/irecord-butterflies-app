@@ -6,6 +6,8 @@ ion-content.filters {
   ion-item.collapse-block {
     text-transform: uppercase;
     font-weight: bold;
+    --border-color: transparent;
+    border-top: 1px #ffffff45 solid;
   }
 
   ion-col {
@@ -15,7 +17,6 @@ ion-content.filters {
   }
 
   ion-item {
-    //TODO: remove?
     --background: transparent !important;
     color: white;
     ion-icon {

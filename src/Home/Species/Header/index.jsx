@@ -1,45 +1,127 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { useState, useRef } from 'react';
+import PropTypes from 'prop-types';
+import exact from 'prop-types-exact';
+import { observer } from 'mobx-react';
 import {
-  IonToolbar,
-  IonTitle,
-  IonButtons,
   IonHeader,
-  IonButton,
+  IonToolbar,
+  IonButtons,
   IonIcon,
+  IonButton,
+  IonTitle,
+  IonSearchbar,
+  isPlatform,
 } from '@ionic/react';
-import { toast } from '@apps';
-import { searchOutline, funnelOutline } from 'ionicons/icons';
+import clsx from 'clsx';
+import { Plugins } from '@capacitor/core';
+import CurrentFilters from 'Components/CurrentFilters';
+import FiltersMenu from 'Components/FiltersMenu';
+import { searchOutline } from 'ionicons/icons';
 import './styles.scss';
 
-const inWIP = () => toast.warn('Sorry, this is still WIP.');
-const onSearch = inWIP;
-const onFilter = inWIP;
+const { Keyboard } = Plugins;
 
-const Header = () => {
+const Header = ({ onSearch: onSearchProp, toggleFilter, filters }) => {
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchPhrase, setSearchPhrase] = useState('');
+  const searchInput = useRef();
+
+  function onSearch(e) {
+    const { value } = e.detail;
+    setSearchPhrase(value);
+    onSearchProp(value);
+  }
+
+  function onSearchStart() {
+    setIsSearching(true);
+    searchInput.current.setFocus();
+  }
+
+  function onSearchEnd() {
+    setIsSearching(false);
+  }
+
+  function onKeyUp({ code }) {
+    if (code === 'Enter') {
+      setIsSearching(false);
+      isPlatform('hybrid') && Keyboard.hide();
+    }
+  }
+
+  const addFilter = ({ type, value }) => {
+    setSearchPhrase('');
+    searchInput.current.setFocus();
+
+    type !== 'text' && toggleFilter(type, value);
+  };
+
+  const removeFilter = ({ type, value }) => {
+    if (type === 'text') {
+      setSearchPhrase('');
+      onSearchProp('');
+      return;
+    }
+
+    toggleFilter(type, value);
+  };
+
   return (
-    <IonHeader className="ion-no-border">
-      <IonToolbar>
-        <IonButtons slot="start">
-          <IonButton onClick={onSearch}>
-            <IonIcon slot="icon-only" icon={searchOutline} />
-          </IonButton>
-        </IonButtons>
+    <IonHeader id="species-search-header">
+      {!isSearching && (
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonButton style={{ visibility: 'hidden' }}>
+              <IonIcon slot="icon-only" icon={searchOutline} />
+            </IonButton>
+          </IonButtons>
 
-        <IonTitle size="large">
-          iRecord <b>Butterflies</b>
-        </IonTitle>
+          <IonTitle size="large">
+            iRecord <b>Butterflies</b>
+          </IonTitle>
 
-        <IonButtons slot="end">
-          <IonButton onClick={onFilter}>
-            <IonIcon slot="icon-only" icon={funnelOutline} />
-          </IonButton>
-        </IonButtons>
+          <IonButtons slot="end">
+            <IonButton onClick={onSearchStart}>
+              <IonIcon slot="icon-only" icon={searchOutline} color="dark" />
+            </IonButton>
+          </IonButtons>
+        </IonToolbar>
+      )}
+
+      <IonToolbar className={clsx('searchbar', isSearching && 'searching')}>
+        <IonSearchbar
+          ref={searchInput}
+          onIonChange={onSearch}
+          slot="end"
+          showCancelButton="always"
+          onIonCancel={onSearchEnd}
+          type="search"
+          enterkeyhint="search"
+          onKeyUp={onKeyUp}
+          value={searchPhrase}
+        />
       </IonToolbar>
+
+      <CurrentFilters
+        searchPhrase={searchPhrase}
+        filters={filters}
+        removeFilter={removeFilter}
+      />
+
+      {isSearching && (
+        <FiltersMenu
+          searchPhrase={searchPhrase}
+          filters={filters}
+          addFilter={addFilter}
+        />
+      )}
     </IonHeader>
   );
 };
 
-Header.propTypes = {};
+Header.propTypes = exact({
+  onSearch: PropTypes.func.isRequired,
+  toggleFilter: PropTypes.func.isRequired,
+  filters: PropTypes.object.isRequired,
+});
 
-export default Header;
+export default observer(Header);
