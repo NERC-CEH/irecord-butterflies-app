@@ -1,14 +1,16 @@
-#species-search-header ion-toolbar.searchbar {
-  display: none;
+#species-search-header {
+  ion-toolbar.searchbar {
+    display: none;
 
-  &.searching {
-    display: block;
-  }
+    &.searching {
+      display: block;
+    }
 
-  ion-searchbar {
-    height: 44px;
-    padding: 0 5px;
-    text-align: left;
-    --cancel-button-color: var(--ion-color-dark);
+    ion-searchbar {
+      height: 44px;
+      padding: 0 5px;
+      text-align: left;
+      --cancel-button-color: var(--ion-color-dark);
+    }
   }
 }

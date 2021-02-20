@@ -27,13 +27,15 @@ const ModelLocationWrap = props => (
   />
 );
 
+const SpeciesWrap = props => <Species appModel={appModel} {...props} />;
+
 const routes = [
   [`${baseURL}`, StartNewSurvey.with(survey), true],
   [`${baseURL}/:smpId`, HomeWrap],
   [`${baseURL}/:smpId/:attr`, Attr],
   [`${baseURL}/:smpId/occ/:occId/:attr`, Attr],
   [`${baseURL}/:smpId/location`, ModelLocationWrap],
-  [`${baseURL}/:smpId/species`, Species],
+  [`${baseURL}/:smpId/species`, SpeciesWrap],
 ];
 
 export default RouteWithModels.fromArray(savedSamples, routes);

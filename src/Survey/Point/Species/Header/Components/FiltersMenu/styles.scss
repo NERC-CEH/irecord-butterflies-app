@@ -1,0 +1,25 @@
+ion-content.filters {
+  --background: #000000c7;
+  position: absolute;
+  height: calc(100vh - 56px);
+
+  ion-item.collapse-block {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  ion-col {
+    height: 50px;
+    color: white;
+    padding: 15px;
+  }
+
+  ion-item {
+    //TODO: remove?
+    --background: transparent !important;
+    color: white;
+    ion-icon {
+      color: white;
+    }
+  }
+}

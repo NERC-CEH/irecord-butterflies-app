@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
+import { observer } from 'mobx-react';
 import {
   IonHeader,
   IonToolbar,
@@ -10,27 +11,61 @@ import {
   IonButton,
   IonTitle,
   IonSearchbar,
+  isPlatform,
 } from '@ionic/react';
 import clsx from 'clsx';
 import { searchOutline } from 'ionicons/icons';
+import { Plugins } from '@capacitor/core';
+import CurrentFilters from './Components/CurrentFilters';
+import FiltersMenu from './Components/FiltersMenu';
+
 import './styles.scss';
 
-function Header({ onSearch: onSearchProp }) {
+const { Keyboard } = Plugins;
+
+function Header({ onSearch: onSearchProp, toggleFilter, filters }) {
   const [isSearching, setIsSearching] = useState(false);
+  const [searchPhrase, setSearchPhrase] = useState('');
   const searchInput = useRef();
 
   function onSearch(e) {
-    onSearchProp(e.detail.value);
+    const { value } = e.detail;
+    setSearchPhrase(value);
+    onSearchProp(value);
   }
 
   function onSearchStart() {
     setIsSearching(true);
     searchInput.current.setFocus();
   }
+
   function onSearchEnd() {
     setIsSearching(false);
-    onSearchProp();
   }
+
+  function onKeyUp({ code }) {
+    if (code === 'Enter') {
+      setIsSearching(false);
+      isPlatform('hybrid') && Keyboard.hide();
+    }
+  }
+
+  const addFilter = ({ type, value }) => {
+    setSearchPhrase('');
+    searchInput.current.setFocus();
+
+    type !== 'text' && toggleFilter(type, value);
+  };
+
+  const removeFilter = ({ type, value }) => {
+    if (type === 'text') {
+      setSearchPhrase('');
+      onSearchProp('');
+      return;
+    }
+
+    toggleFilter(type, value);
+  };
 
   return (
     <IonHeader id="species-search-header">
@@ -58,14 +93,33 @@ function Header({ onSearch: onSearchProp }) {
           showCancelButton="always"
           onIonCancel={onSearchEnd}
           type="search"
+          enterkeyhint="search"
+          onKeyUp={onKeyUp}
+          value={searchPhrase}
         />
       </IonToolbar>
+
+      <CurrentFilters
+        searchPhrase={searchPhrase}
+        filters={filters}
+        removeFilter={removeFilter}
+      />
+
+      {isSearching && (
+        <FiltersMenu
+          searchPhrase={searchPhrase}
+          filters={filters}
+          addFilter={addFilter}
+        />
+      )}
     </IonHeader>
   );
 }
 
 Header.propTypes = exact({
   onSearch: PropTypes.func.isRequired,
+  toggleFilter: PropTypes.func.isRequired,
+  filters: PropTypes.object.isRequired,
 });
 
-export default Header;
+export default observer(Header);

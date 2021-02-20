@@ -36,6 +36,7 @@ const colours = {
 @observer
 class SpeciesMainComponent extends React.Component {
   static propTypes = exact({
+    filters: PropTypes.object.isRequired,
     onSelect: PropTypes.func,
     searchPhrase: PropTypes.string,
   });
@@ -92,17 +93,42 @@ class SpeciesMainComponent extends React.Component {
   };
 
   getSpeciesData = () => {
-    const { searchPhrase } = this.props;
-    if (!searchPhrase) {
-      return species;
-    }
+    const { searchPhrase, filters = {} } = this.props;
+
+    let filteredSpecies = [...species];
 
     const filterBySearchPhrase = sp => {
       const re = new RegExp(searchPhrase, 'i');
       return re.test(sp.commonName);
     };
 
-    return species.filter(filterBySearchPhrase);
+    if (searchPhrase) {
+      filteredSpecies = filteredSpecies.filter(filterBySearchPhrase);
+    }
+
+    if (Object.keys(filters).length) {
+      const processFilterType = ([type, values]) => {
+        const speciesMatchesFilter = sp => {
+          if (!values.length) {
+            return true;
+          }
+
+          if (Array.isArray(sp[type])) {
+            const matchesSpeciesValues = v => values.includes(v);
+            const intersection = sp[type].filter(matchesSpeciesValues);
+            return intersection.length;
+          }
+
+          return values.includes(sp[type]);
+        };
+
+        filteredSpecies = filteredSpecies.filter(speciesMatchesFilter);
+      };
+
+      Object.entries(filters).forEach(processFilterType);
+    }
+
+    return filteredSpecies;
   };
 
   getSpecies = () => {
