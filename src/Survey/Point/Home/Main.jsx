@@ -16,7 +16,7 @@ import {
   alert,
   MenuAttrItem,
   LongPressButton,
-  MenuNote,
+  InfoMessage,
   MenuAttrItemFromModel,
   PhotoPicker,
 } from '@apps';
@@ -227,16 +227,26 @@ class Component extends React.Component {
       </IonLabel>
     );
 
+    const isOutsideUK = hasLocation && !location.gridref;
+
     return (
-      <MenuAttrItem
-        routerLink={`${match.url}/location`}
-        value={value}
-        icon={locationOutline}
-        label="Location"
-        skipValueTranslation
-        required
-        className={clsx({ empty })}
-      />
+      <>
+        <MenuAttrItem
+          routerLink={`${match.url}/location`}
+          value={value}
+          icon={locationOutline}
+          label="Location"
+          skipValueTranslation
+          required
+          className={clsx({ empty })}
+        />
+        {isOutsideUK && (
+          <InfoMessage color="warning">
+            Please check if your location is not at sea or outside the British
+            Isles.
+          </InfoMessage>
+        )}
+      </>
     );
   };
 
@@ -248,9 +258,9 @@ class Component extends React.Component {
       <Main>
         <IonList lines="full">
           {isDisabled && (
-            <MenuNote>
+            <InfoMessage>
               This survey has been finished and cannot be updated.
-            </MenuNote>
+            </InfoMessage>
           )}
 
           <IonItemDivider>Details</IonItemDivider>
