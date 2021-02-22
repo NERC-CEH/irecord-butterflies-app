@@ -16,6 +16,7 @@ class Controller extends React.Component {
   static propTypes = exact({
     match: PropTypes.object,
     location: PropTypes.object, // eslint-disable-line
+    history: PropTypes.object, // eslint-disable-line
     appModel: PropTypes.object.isRequired,
     userModel: PropTypes.object.isRequired,
     sample: PropTypes.object.isRequired,
