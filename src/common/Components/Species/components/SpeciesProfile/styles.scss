@@ -4,6 +4,16 @@
   --padding-top: 0;
   --padding-bottom: 0;
 
+  ion-slides ion-slide.species-profile-photo {
+    img {
+      width: 100%;
+      max-height: 240px;
+    }
+
+    height: 240px;
+    background: black;
+  }
+
   ion-card-header {
     display: flex;
     justify-content: space-between;
@@ -107,14 +117,6 @@
     .swiper-pagination-bullet-active {
       opacity: 0.8;
       --bullet-background-active: var(--ion-color-primary);
-    }
-  }
-
-  .species-profile-photo {
-    // height: 200px;
-    // background-size: cover !important;
-    img {
-      width: 100%;
     }
   }
 }
