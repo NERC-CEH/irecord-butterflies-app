@@ -20,6 +20,7 @@ import {
   layersOutline,
   informationCircleOutline,
 } from 'ionicons/icons';
+import { alert } from '@apps';
 import LongPressFabButton from 'common/Components/LongPressFabButton';
 import PendingSurveysBadge from 'common/Components/PendingSurveysBadge';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
@@ -34,9 +35,49 @@ import './styles.scss';
 const UserSurveys = () => <Surveys savedSamples={savedSamples} />;
 const primarySurveyName = 'point';
 
+const showLongPressAlert = () =>
+  alert({
+    header: 'Tip: Adding Observations',
+    message: (
+      <>
+        Tap on the{' '}
+        <IonIcon icon={butterflyIcon} className="long-tap-tip-message-icon" />{' '}
+        button to capture a new record. <br />
+        <br />
+        Long-press{' '}
+        <IonIcon
+          icon={butterflyIcon}
+          className="long-tap-tip-message-icon"
+        />{' '}
+        button to see some more advanced options.
+      </>
+    ),
+    buttons: [
+      {
+        text: 'OK, got it',
+        role: 'cancel',
+        cssClass: 'primary',
+      },
+    ],
+  });
+
 const surveys = [];
 class HomeComponent extends React.Component {
   static contextType = NavContext;
+
+  showLongPressAlert = () => {
+    if (!appModel.attrs.showLongPressTip) {
+      return;
+    }
+
+    showLongPressAlert();
+    appModel.attrs.showLongPressTip = false;
+    appModel.save();
+  };
+
+  componentDidMount = async () => {
+    this.showLongPressAlert();
+  };
 
   navigateToPrimarySurvey = () => {
     this.context.navigate(`/survey/point`);

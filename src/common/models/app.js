@@ -30,6 +30,7 @@ const defaults = {
   // tips
   showSurveysDeleteTip: true,
   showSurveyUploadTip: true,
+  showLongPressTip: true,
 
   filters: {},
 };
