@@ -15,7 +15,7 @@ import {
   IonToolbar,
   IonHeader,
 } from '@ionic/react';
-import { Main } from '@apps';
+import { Main, InfoBackgroundMessage } from '@apps';
 import { arrowBack, informationCircleOutline } from 'ionicons/icons';
 import species from 'common/data/species';
 import SpeciesProfile from './components/SpeciesProfile';
@@ -144,6 +144,14 @@ class SpeciesMainComponent extends React.Component {
       .map(this.getSpeciesTile);
 
     const hasAdditional = !!additionalSpeciesList.length;
+
+    if (!speciesList.length && !hasAdditional) {
+      return (
+        <InfoBackgroundMessage>
+          Sorry, no species were found.
+        </InfoBackgroundMessage>
+      );
+    }
 
     return (
       <>
