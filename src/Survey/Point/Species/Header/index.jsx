@@ -14,7 +14,7 @@ import {
   isPlatform,
 } from '@ionic/react';
 import clsx from 'clsx';
-import { searchOutline } from 'ionicons/icons';
+import { searchOutline, checkmarkOutline } from 'ionicons/icons';
 import { Plugins } from '@capacitor/core';
 import CurrentFilters from 'Components/CurrentFilters';
 import FiltersMenu from 'Components/FiltersMenu';
@@ -91,10 +91,13 @@ function Header({ onSearch: onSearchProp, toggleFilter, filters }) {
           onIonChange={onSearch}
           slot="end"
           showCancelButton="always"
+          cancelButtonText="Done"
+          cancelButtonIcon={checkmarkOutline}
           onIonCancel={onSearchEnd}
           type="search"
-          enterkeyhint="search"
+          enterkeyhint="done"
           onKeyUp={onKeyUp}
+          placeholder="Species name or filter..."
           value={searchPhrase}
         />
       </IonToolbar>

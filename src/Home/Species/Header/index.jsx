@@ -16,7 +16,7 @@ import clsx from 'clsx';
 import { Plugins } from '@capacitor/core';
 import CurrentFilters from 'Components/CurrentFilters';
 import FiltersMenu from 'Components/FiltersMenu';
-import { searchOutline } from 'ionicons/icons';
+import { searchOutline, checkmarkOutline } from 'ionicons/icons';
 import './styles.scss';
 
 const { Keyboard } = Plugins;
@@ -93,10 +93,13 @@ const Header = ({ onSearch: onSearchProp, toggleFilter, filters }) => {
           onIonChange={onSearch}
           slot="end"
           showCancelButton="always"
+          cancelButtonText="Done"
+          cancelButtonIcon={checkmarkOutline}
           onIonCancel={onSearchEnd}
           type="search"
-          enterkeyhint="search"
+          enterkeyhint="done"
           onKeyUp={onKeyUp}
+          placeholder="Species name or filter..."
           value={searchPhrase}
         />
       </IonToolbar>
