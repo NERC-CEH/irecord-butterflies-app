@@ -14,8 +14,6 @@ import App from './App';
 
 import '@ionic/core/css/core.css';
 import '@ionic/core/css/ionic.bundle.css';
-import 'common/fonts/Museo300-Regular.ttf';
-import 'common/fonts/Museo500-Regular.ttf';
 import 'common/theme.scss';
 
 const { App: AppPlugin, StatusBar, SplashScreen } = Plugins;
