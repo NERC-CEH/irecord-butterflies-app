@@ -1,4 +1,4 @@
-import thumbnail from './thumbnail.png';
+import thumbnail from './Brown Argus (male)_Bob Eade(512px).png';
 import img1 from './1.jpg';
 import img2 from './2.jpg';
 import map from './Brown Argus_map.png';

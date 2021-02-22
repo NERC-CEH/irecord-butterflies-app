@@ -19,6 +19,7 @@ import { Main, InfoBackgroundMessage } from '@apps';
 import { arrowBack, informationCircleOutline } from 'ionicons/icons';
 import species from 'common/data/species';
 import SpeciesProfile from './components/SpeciesProfile';
+import thumbnailPlaceholder from './thumbnail.png';
 import './styles.scss';
 
 const colours = {
@@ -52,7 +53,7 @@ class SpeciesMainComponent extends React.Component {
   getSpeciesTile = (sp, i) => {
     const { onSelect } = this.props;
 
-    const { commonName, thumbnail } = sp;
+    const { commonName, thumbnail: thumbnailSrc } = sp;
     const color = colours[sp.colour[0]];
 
     const isSurvey = !!onSelect;
@@ -65,6 +66,9 @@ class SpeciesMainComponent extends React.Component {
     const selectSpecies = () => onSelect(sp);
 
     const onClick = isSurvey ? selectSpecies : viewSpecies;
+
+    const thumbnail =
+      typeof thumbnailSrc === 'string' ? thumbnailSrc : thumbnailPlaceholder;
 
     return (
       <IonCol
@@ -85,7 +89,7 @@ class SpeciesMainComponent extends React.Component {
               <IonIcon icon={informationCircleOutline} />
             </div>
           )}
-          <img src={thumbnail} />
+          <img className="thumbnail" src={thumbnail} />
           <IonLabel>{commonName}</IonLabel>
         </div>
       </IonCol>

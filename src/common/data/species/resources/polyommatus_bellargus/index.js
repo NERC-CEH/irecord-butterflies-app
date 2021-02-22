@@ -1,4 +1,4 @@
-import thumbnail from './thumbnail.png';
+import thumbnail from './Adonis Blue (male)__Iain H Leach_thumbnail.png';
 import img1 from './1.jpg';
 import img2 from './2.jpg';
 import map from './Adonis Blue_map.png';

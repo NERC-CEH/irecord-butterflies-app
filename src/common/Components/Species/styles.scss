@@ -36,6 +36,12 @@
 
       overflow: hidden;
 
+      .thumbnail {
+        margin: -8% -3% -16%;
+        width: 106%;
+        max-width: none;
+      }
+
       .info-box {
         position: absolute;
         right: 0;

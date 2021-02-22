@@ -1,4 +1,4 @@
-import thumbnail from './thumbnail.png';
+import thumbnail from 'common/Components/Species/thumbnail.png';
 import img1 from './1.jpg';
 import img2 from './2.jpg';
 import map from './Purple Emperor_map.png';
