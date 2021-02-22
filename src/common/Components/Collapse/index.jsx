@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import exact from 'prop-types-exact';
 import { Trans as T } from 'react-i18next';
 import { IonItem, IonIcon, IonLabel } from '@ionic/react';
 import { remove, add } from 'ionicons/icons';
@@ -40,7 +41,7 @@ class Collapse extends Component {
   }
 }
 
-Collapse.propTypes = {
+Collapse.propTypes = exact({
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -48,6 +49,6 @@ Collapse.propTypes = {
   title: PropTypes.string.isRequired,
   className: PropTypes.string,
   open: PropTypes.bool,
-};
+});
 
 export default Collapse;
