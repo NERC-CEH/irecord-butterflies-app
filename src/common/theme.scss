@@ -125,12 +125,12 @@ ion-back-button {
   color: var(--ion-color-dark);
 }
 
-.info-message {
-  background-color: #d0e4d8; // primary based
+.attr-page .info-message {
+  --background: #d0e4d8; // primary based
 
-  p {
-    font-size: 1.2em;
-    color: var(--ion-color-dark);
+  ion-icon,
+  ion-note {
+    color: var(--ion-color-primary-shade) !important;
   }
 }
 
@@ -154,7 +154,7 @@ ion-content {
   --background: var(--ion-page-background);
 }
 
-.info-message {
+*:not(.rounded) > .info-message {
   border-radius: 10px;
   margin: 10px;
 }

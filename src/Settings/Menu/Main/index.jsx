@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import exact from 'prop-types-exact';
-import { Main, alert, Toggle, MenuNote } from '@apps';
+import { Main, alert, Toggle, InfoMessage } from '@apps';
 import PropTypes from 'prop-types';
 import { IonIcon, IonList, IonItem, IonLabel } from '@ionic/react';
 import { arrowUndoSharp, shareSocialOutline } from 'ionicons/icons';
@@ -57,9 +57,9 @@ class Component extends React.Component {
                 checked={sendAnalytics}
               />
             </IonItem>
-            <MenuNote color="medium">
+            <InfoMessage color="medium">
               Share app crash data so we can make the app more reliable.
-            </MenuNote>
+            </InfoMessage>
           </div>
 
           <div className="rounded">
@@ -67,9 +67,9 @@ class Component extends React.Component {
               <IonIcon icon={arrowUndoSharp} size="small" slot="start" />
               Reset App
             </IonItem>
-            <MenuNote color="medium">
+            <InfoMessage color="medium">
               You can reset the app data to its default settings.
-            </MenuNote>
+            </InfoMessage>
           </div>
         </IonList>
       </Main>
