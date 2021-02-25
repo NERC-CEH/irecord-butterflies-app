@@ -48,7 +48,11 @@ class SpeciesProfile extends React.Component {
       });
 
     if (Number.isInteger(showGallery)) {
-      const getImageSource = img => ({ src: img });
+      const getImageSource = ({ file }) => {
+        const imageURL = `/images/${file}.jpg`;
+        return { src: imageURL };
+      };
+
       items = species.images.map(getImageSource);
       initialSlide = showGallery;
       className = '';
@@ -92,16 +96,18 @@ class SpeciesProfile extends React.Component {
       speed: 400,
     };
 
-    const getSlide = (src, index) => {
+    const getSlide = (image, index) => {
+      const { file } = image;
       const showPhotoInFullScreenWrap = () => this.showPhotoInFullScreen(index);
+      const imageURL = `/images/${file}.jpg`;
 
       return (
         <IonSlide
-          key={src}
+          key={imageURL}
           class="species-profile-photo"
           onClick={showPhotoInFullScreenWrap}
         >
-          <img src={src} />
+          <img src={imageURL} />
         </IonSlide>
       );
     };

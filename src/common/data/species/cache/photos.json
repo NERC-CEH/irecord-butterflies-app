@@ -1,0 +1,997 @@
+[
+  {
+    "speciesID": "AdonisBlue",
+    "file": "Adonis Blue male (Bob Eade)",
+    "author": "Bob Eade",
+    "title": "Male"
+  },
+  {
+    "speciesID": "AdonisBlue",
+    "file": "Adonis Blue underwing male1_Keith Warmington",
+    "author": "Keith Warmington",
+    "title": "Male"
+  },
+  {
+    "speciesID": "AdonisBlue",
+    "file": "Adonis Blue female (Bob Eade)",
+    "author": "Bob Eade",
+    "title": "Female"
+  },
+  {
+    "speciesID": "AdonisBlue",
+    "file": "Adonis Blue female2 (Bob Eade)",
+    "author": "Bob Eade",
+    "title": "Female"
+  },
+  {
+    "speciesID": "AdonisBlue",
+    "file": "Adonis Blues mating (Bob Eade)",
+    "author": "Bob Eade",
+    "title": "Male & Female"
+  },
+  {
+    "speciesID": "AdonisBlue",
+    "file": "AdonisBlue_immature_3",
+    "author": "Peter Eeles",
+    "title": "Egg"
+  },
+  {
+    "speciesID": "AdonisBlue",
+    "file": "AdonisBlue_immature_2",
+    "author": "Peter Eeles",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "AdonisBlue",
+    "file": "AdonisBlue_immature_1",
+    "author": "Peter Eeles",
+    "title": "Pupa"
+  },
+  {
+    "speciesID": "BlackHairstreak",
+    "file": "Black Hairstreak (Iain Leach)1",
+    "author": "Iain Leach"
+  },
+  {
+    "speciesID": "BlackHairstreak",
+    "file": "Black Hairstreak (Iain Leach)2",
+    "author": "Iain Leach"
+  },
+  {
+    "speciesID": "BlackHairstreak",
+    "file": "Black Hairstreak2 (Bob Eade)",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "BlackHairstreak",
+    "file": "BlackHairstreak_immature_3",
+    "author": "Peter Eeles",
+    "title": "Eggs"
+  },
+  {
+    "speciesID": "BlackHairstreak",
+    "file": "BlackHairstreak_immature_1",
+    "author": "Peter Eeles",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "BlackHairstreak",
+    "file": "BlackHairstreak_immature_2",
+    "author": "Peter Eeles",
+    "title": "Pupa"
+  },
+  {
+    "speciesID": "Brimstone",
+    "file": "Brimstone_immature_3",
+    "author": "Peter Eeles",
+    "title": "Egg"
+  },
+  {
+    "speciesID": "Brimstone",
+    "file": "Brimstone_immature_1",
+    "author": "Peter Eeles",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "Brimstone",
+    "file": "Brimstone_immature_2",
+    "author": "Peter Eeles",
+    "title": "Pupa"
+  },
+  {
+    "speciesID": "BrownArgus",
+    "file": "BrownArgus_immature_3",
+    "author": "Peter Eeles",
+    "title": "Egg"
+  },
+  {
+    "speciesID": "BrownArgus",
+    "file": "BrownArgus_immature_1",
+    "author": "Peter Eeles",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "BrownArgus",
+    "file": "BrownArgus_immature_2",
+    "author": "Peter Eeles",
+    "title": "Pupa"
+  },
+  {
+    "speciesID": "BrownHairstreak",
+    "file": "BrownHairstreak_immature_3",
+    "author": "Peter Eeles",
+    "title": "Egg"
+  },
+  {
+    "speciesID": "BrownHairstreak",
+    "file": "BrownHairstreak_immature_1",
+    "author": "Peter Eeles",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "BrownHairstreak",
+    "file": "BrownHairstreak_immature_2",
+    "author": "Peter Eeles",
+    "title": "Pupa"
+  },
+  {
+    "speciesID": "CamberwellBeauty",
+    "file": "CamberwellBeauty_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "CamberwellBeauty",
+    "file": "CamberwellBeauty_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "ChalkHillBlue",
+    "file": "ChalkHillBlue_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "ChalkHillBlue",
+    "file": "ChalkHillBlue_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "ChalkHillBlue",
+    "file": "ChalkHillBlue_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "ChequeredSkipper",
+    "file": "ChequeredSkipper_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "ChequeredSkipper",
+    "file": "ChequeredSkipper_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "ChequeredSkipper",
+    "file": "ChequeredSkipper_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "CloudedYellow",
+    "file": "CloudedYellow_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "CloudedYellow",
+    "file": "CloudedYellow_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "CloudedYellow",
+    "file": "CloudedYellow_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Comma",
+    "file": "Comma_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Comma",
+    "file": "Comma_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Comma",
+    "file": "Comma_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "CommonBlue",
+    "file": "CommonBlue_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "CommonBlue",
+    "file": "CommonBlue_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "CommonBlue",
+    "file": "CommonBlue_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "CrypticWoodWhite",
+    "file": "CrypticWoodWhite_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "CrypticWoodWhite",
+    "file": "CrypticWoodWhite_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "CrypticWoodWhite",
+    "file": "CrypticWoodWhite_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "DarkGreenFritillary",
+    "file": "DarkGreenFritillary_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "DarkGreenFritillary",
+    "file": "DarkGreenFritillary_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "DarkGreenFritillary",
+    "file": "DarkGreenFritillary_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "DingySkipper",
+    "file": "DingySkipper_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "DingySkipper",
+    "file": "DingySkipper_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "DingySkipper",
+    "file": "DingySkipper_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "DukeOfBurgundy",
+    "file": "DukeOfBurgundy_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "DukeOfBurgundy",
+    "file": "DukeOfBurgundy_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "DukeOfBurgundy",
+    "file": "DukeOfBurgundy_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "EssexSkipper",
+    "file": "EssexSkipper_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "EssexSkipper",
+    "file": "EssexSkipper_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "EssexSkipper",
+    "file": "EssexSkipper_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Gatekeeper",
+    "file": "Gatekeeper_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Gatekeeper",
+    "file": "Gatekeeper_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Gatekeeper",
+    "file": "Gatekeeper_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "GlanvilleFritillary",
+    "file": "GlanvilleFritillary_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "GlanvilleFritillary",
+    "file": "GlanvilleFritillary_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "GlanvilleFritillary",
+    "file": "GlanvilleFritillary_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Grayling",
+    "file": "Grayling_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Grayling",
+    "file": "Grayling_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Grayling",
+    "file": "Grayling_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "GreenHairstreak",
+    "file": "GreenHairstreak_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "GreenHairstreak",
+    "file": "GreenHairstreak_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "GreenHairstreak",
+    "file": "GreenHairstreak_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "GreenVeinedWhite",
+    "file": "GreenVeinedWhite_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "GreenVeinedWhite",
+    "file": "GreenVeinedWhite_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "GreenVeinedWhite",
+    "file": "GreenVeinedWhite_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "GrizzledSkipper",
+    "file": "GrizzledSkipper_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "GrizzledSkipper",
+    "file": "GrizzledSkipper_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "GrizzledSkipper",
+    "file": "GrizzledSkipper_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "HeathFritillary",
+    "file": "HeathFritillary_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "HeathFritillary",
+    "file": "HeathFritillary_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "HeathFritillary",
+    "file": "HeathFritillary_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "HighBrownFritillary",
+    "file": "HighBrownFritillary_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "HighBrownFritillary",
+    "file": "HighBrownFritillary_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "HighBrownFritillary",
+    "file": "HighBrownFritillary_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "HollyBlue",
+    "file": "HollyBlue_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "HollyBlue",
+    "file": "HollyBlue_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "HollyBlue",
+    "file": "HollyBlue_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LargeBlue",
+    "file": "LargeBlue_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LargeBlue",
+    "file": "LargeBlue_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LargeHeath",
+    "file": "LargeHeath_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LargeHeath",
+    "file": "LargeHeath_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LargeHeath",
+    "file": "LargeHeath_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LargeSkipper",
+    "file": "LargeSkipper_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LargeSkipper",
+    "file": "LargeSkipper_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LargeSkipper",
+    "file": "LargeSkipper_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LargeTortoiseshell",
+    "file": "LargeTortoiseshell_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LargeTortoiseshell",
+    "file": "LargeTortoiseshell_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LargeWhite",
+    "file": "LargeWhite_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LargeWhite",
+    "file": "LargeWhite_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LargeWhite",
+    "file": "LargeWhite_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LongTailedBlue",
+    "file": "LongTailedBlue_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LongTailedBlue",
+    "file": "LongTailedBlue_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LongTailedBlue",
+    "file": "LongTailedBlue_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LulworthSkipper",
+    "file": "LulworthSkipper_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LulworthSkipper",
+    "file": "LulworthSkipper_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "LulworthSkipper",
+    "file": "LulworthSkipper_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "MarbledWhite",
+    "file": "MarbledWhite_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "MarbledWhite",
+    "file": "MarbledWhite_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "MarbledWhite",
+    "file": "MarbledWhite_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "MarshFritillary",
+    "file": "MarshFritillary_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "MarshFritillary",
+    "file": "MarshFritillary_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "MarshFritillary",
+    "file": "MarshFritillary_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "MeadowBrown",
+    "file": "MeadowBrown_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "MeadowBrown",
+    "file": "MeadowBrown_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "MeadowBrown",
+    "file": "MeadowBrown_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Monarch",
+    "file": "Monarch_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Monarch",
+    "file": "Monarch_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Monarch",
+    "file": "Monarch_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "MountainRinglet",
+    "file": "MountainRinglet_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "MountainRinglet",
+    "file": "MountainRinglet_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "NorthernBrownArgus",
+    "file": "NorthernBrownArgus_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "NorthernBrownArgus",
+    "file": "NorthernBrownArgus_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "NorthernBrownArgus",
+    "file": "NorthernBrownArgus_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Orangetip",
+    "file": "Orangetip_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Orangetip",
+    "file": "Orangetip_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Orangetip",
+    "file": "Orangetip_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "PaintedLady",
+    "file": "PaintedLady_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "PaintedLady",
+    "file": "PaintedLady_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "PaintedLady",
+    "file": "PaintedLady_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Peacock",
+    "file": "Peacock_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Peacock",
+    "file": "Peacock_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Peacock",
+    "file": "Peacock_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "PearlBorderedFritillary",
+    "file": "PearlBorderedFritillary_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "PearlBorderedFritillary",
+    "file": "PearlBorderedFritillary_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "PearlBorderedFritillary",
+    "file": "PearlBorderedFritillary_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "PurpleEmperor",
+    "file": "PurpleEmperor_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "PurpleEmperor",
+    "file": "PurpleEmperor_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "PurpleEmperor",
+    "file": "PurpleEmperor_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "PurpleHairstreak",
+    "file": "PurpleHairstreak_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "PurpleHairstreak",
+    "file": "PurpleHairstreak_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "PurpleHairstreak",
+    "file": "PurpleHairstreak_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "QueenOfSpainFritillary",
+    "file": "QueenOfSpainFritillary_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "QueenOfSpainFritillary",
+    "file": "QueenOfSpainFritillary_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "RedAdmiral",
+    "file": "RedAdmiral_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "RedAdmiral",
+    "file": "RedAdmiral_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "RedAdmiral",
+    "file": "RedAdmiral_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Ringlet",
+    "file": "Ringlet_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Ringlet",
+    "file": "Ringlet_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Ringlet",
+    "file": "Ringlet_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "ScotchArgus",
+    "file": "ScotchArgus_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "ScotchArgus",
+    "file": "ScotchArgus_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "ScotchArgus",
+    "file": "ScotchArgus_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SilverSpottedSkipper",
+    "file": "SilverSpottedSkipper_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SilverSpottedSkipper",
+    "file": "SilverSpottedSkipper_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SilverSpottedSkipper",
+    "file": "SilverSpottedSkipper_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SilverStuddedBlue",
+    "file": "SilverStuddedBlue_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SilverStuddedBlue",
+    "file": "SilverStuddedBlue_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SilverStuddedBlue",
+    "file": "SilverStuddedBlue_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SilverWashedFritillary",
+    "file": "SilverWashedFritillary_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SilverWashedFritillary",
+    "file": "SilverWashedFritillary_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SilverWashedFritillary",
+    "file": "SilverWashedFritillary_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallBlue",
+    "file": "SmallBlue_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallBlue",
+    "file": "SmallBlue_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallBlue",
+    "file": "SmallBlue_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallCopper",
+    "file": "SmallCopper_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallCopper",
+    "file": "SmallCopper_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallCopper",
+    "file": "SmallCopper_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallHeath",
+    "file": "SmallHeath_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallHeath",
+    "file": "SmallHeath_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallHeath",
+    "file": "SmallHeath_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallPearlBorderedFritillary",
+    "file": "SmallPearlBorderedFritillary_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallPearlBorderedFritillary",
+    "file": "SmallPearlBorderedFritillary_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallPearlBorderedFritillary",
+    "file": "SmallPearlBorderedFritillary_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallSkipper",
+    "file": "SmallSkipper_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallSkipper",
+    "file": "SmallSkipper_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallSkipper",
+    "file": "SmallSkipper_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallTortoiseshell",
+    "file": "SmallTortoiseshell_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallTortoiseshell",
+    "file": "SmallTortoiseshell_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallTortoiseshell",
+    "file": "SmallTortoiseshell_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallWhite",
+    "file": "SmallWhite_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallWhite",
+    "file": "SmallWhite_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SmallWhite",
+    "file": "SmallWhite_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SpeckledWood",
+    "file": "SpeckledWood_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SpeckledWood",
+    "file": "SpeckledWood_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "SpeckledWood",
+    "file": "SpeckledWood_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Swallowtail",
+    "file": "Swallowtail_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Swallowtail",
+    "file": "Swallowtail_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Swallowtail",
+    "file": "Swallowtail_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Wall",
+    "file": "Wall_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Wall",
+    "file": "Wall_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "Wall",
+    "file": "Wall_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "WhiteAdmiral",
+    "file": "WhiteAdmiral_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "WhiteAdmiral",
+    "file": "WhiteAdmiral_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "WhiteAdmiral",
+    "file": "WhiteAdmiral_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "WhiteLetterHairstreak",
+    "file": "WhiteLetterHairstreak_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "WhiteLetterHairstreak",
+    "file": "WhiteLetterHairstreak_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "WhiteLetterHairstreak",
+    "file": "WhiteLetterHairstreak_immature_3",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "WoodWhite",
+    "file": "WoodWhite_immature_1",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "WoodWhite",
+    "file": "WoodWhite_immature_2",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "WoodWhite",
+    "file": "WoodWhite_immature_3",
+    "author": "Peter Eeles"
+  }
+]
