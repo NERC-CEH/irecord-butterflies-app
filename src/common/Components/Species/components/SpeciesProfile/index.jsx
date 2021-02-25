@@ -49,9 +49,9 @@ class SpeciesProfile extends React.Component {
       });
 
     if (Number.isInteger(showGallery)) {
-      const getImageSource = ({ file }) => {
+      const getImageSource = ({ file, title, author }) => {
         const imageURL = `/images/${file}.jpg`;
-        return { src: imageURL };
+        return { src: imageURL, title, author };
       };
 
       items = species.images.map(getImageSource);

@@ -82,6 +82,33 @@
   },
   {
     "speciesID": "Brimstone",
+    "file": "Brimstone (Julian Dowding)",
+    "author": "Julian Dowding"
+  },
+  {
+    "speciesID": "Brimstone",
+    "file": "Brimstone (Bob Eade)3",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "Brimstone",
+    "file": "Brimstone (Iain Leach)",
+    "author": "Iain Leach"
+  },
+  {
+    "speciesID": "Brimstone",
+    "file": "Brimstone upperwing male and female_Keith Warmington",
+    "author": "Keith Warmington",
+    "title": "Male & Female"
+  },
+  {
+    "speciesID": "Brimstone",
+    "file": "Brimstone roosting (Bob Eade)",
+    "author": "Bob Eade",
+    "title": "Roosting"
+  },
+  {
+    "speciesID": "Brimstone",
     "file": "Brimstone_immature_3",
     "author": "Peter Eeles",
     "title": "Egg"
@@ -100,6 +127,26 @@
   },
   {
     "speciesID": "BrownArgus",
+    "file": "Brown Argus (Bob Eade).jpg",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "BrownArgus",
+    "file": "Brown Argus underwing (Bob Eade).jpg",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "BrownArgus",
+    "file": "Brown Argus (Iain Leach).jpg",
+    "author": "Iain Leach"
+  },
+  {
+    "speciesID": "BrownArgus",
+    "file": "Brown Argus (Bob Eade)2.jpg",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "BrownArgus",
     "file": "BrownArgus_immature_3",
     "author": "Peter Eeles",
     "title": "Egg"
@@ -115,6 +162,28 @@
     "file": "BrownArgus_immature_2",
     "author": "Peter Eeles",
     "title": "Pupa"
+  },
+  {
+    "speciesID": "BrownHairstreak",
+    "file": "Brown Hairstreak (Bob Eade).jpg",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "BrownHairstreak",
+    "file": "Brown Hairstreak female (Iain Leach).jpg",
+    "author": "Iain Leach",
+    "title": "Female"
+  },
+  {
+    "speciesID": "BrownHairstreak",
+    "file": "Brown Hairstreak male (Iain Leach).jpg",
+    "author": "Iain Leach",
+    "title": "Male"
+  },
+  {
+    "speciesID": "BrownHairstreak",
+    "file": "Brown Hairstreak (Iain Leach).jpg",
+    "author": "Iain Leach"
   },
   {
     "speciesID": "BrownHairstreak",
