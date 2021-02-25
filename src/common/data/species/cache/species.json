@@ -1,6 +1,6 @@
 [
   {
-    "id": "papilio_machaon",
+    "id": "Swallowtail",
     "sort": 1,
     "commonName": "Swallowtail",
     "scientificName": "Papilio machaon",
@@ -17,7 +17,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/swallowtail"
   },
   {
-    "id": "erynnis_tages",
+    "id": "DingySkipper",
     "sort": 2,
     "commonName": "Dingy Skipper",
     "scientificName": "Erynnis tages",
@@ -37,7 +37,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/dingy-skipper"
   },
   {
-    "id": "pyrgus_malvae",
+    "id": "GrizzledSkipper",
     "sort": 3,
     "commonName": "Grizzled Skipper",
     "scientificName": "Pyrgus malvae",
@@ -55,7 +55,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/grizzled-skipper"
   },
   {
-    "id": "carterocephalus_palaemon",
+    "id": "ChequeredSkipper",
     "sort": 4,
     "commonName": "Chequered Skipper",
     "scientificName": "Carterocephalus palaemon",
@@ -73,7 +73,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/chequered-skipper"
   },
   {
-    "id": "thymelicus_lineola",
+    "id": "EssexSkipper",
     "sort": 5,
     "commonName": "Essex Skipper",
     "scientificName": "Thymelicus lineola",
@@ -90,7 +90,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/essex-skipper"
   },
   {
-    "id": "thymelicus_sylvestris",
+    "id": "SmallSkipper",
     "sort": 6,
     "commonName": "Small Skipper",
     "scientificName": "Thymelicus sylvestris",
@@ -108,7 +108,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/small-skipper"
   },
   {
-    "id": "thymelicus_acteon",
+    "id": "LulworthSkipper",
     "sort": 7,
     "commonName": "Lulworth Skipper",
     "scientificName": "Thymelicus acteon",
@@ -124,7 +124,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/lulworth-skipper"
   },
   {
-    "id": "hesperia_comma",
+    "id": "SilverSpottedSkipper",
     "sort": 8,
     "commonName": "Silver-spotted Skipper",
     "scientificName": "Hesperia comma",
@@ -141,7 +141,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/silver-spotted-skipper"
   },
   {
-    "id": "ochlodes_sylvanus",
+    "id": "LargeSkipper",
     "sort": 9,
     "commonName": "Large Skipper",
     "scientificName": "Ochlodes sylvanus",
@@ -160,7 +160,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/large-skipper"
   },
   {
-    "id": "leptidea_sinapis",
+    "id": "WoodWhite",
     "sort": 10,
     "commonName": "Wood White",
     "scientificName": "Leptidea sinapis",
@@ -177,7 +177,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/wood-white"
   },
   {
-    "id": "leptidea_juvernica",
+    "id": "CrypticWoodWhite",
     "sort": 11,
     "commonName": "Cryptic Wood White",
     "scientificName": "Leptidea juvernica",
@@ -193,7 +193,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/cryptic-wood-white"
   },
   {
-    "id": "anthocharis_cardamines",
+    "id": "Orangetip",
     "sort": 12,
     "commonName": "Orange-tip",
     "scientificName": "Anthocharis cardamines",
@@ -214,7 +214,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/orange-tip"
   },
   {
-    "id": "pieris_brassicae",
+    "id": "LargeWhite",
     "sort": 13,
     "commonName": "Large White",
     "scientificName": "Pieris brassicae",
@@ -235,7 +235,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/large-white"
   },
   {
-    "id": "pieris_rapae",
+    "id": "SmallWhite",
     "sort": 14,
     "commonName": "Small White",
     "scientificName": "Pieris rapae",
@@ -256,7 +256,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/small-white"
   },
   {
-    "id": "pieris_napi",
+    "id": "GreenVeinedWhite",
     "sort": 15,
     "commonName": "Green-veined White",
     "scientificName": "Pieris napi",
@@ -277,7 +277,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/green-veined-white"
   },
   {
-    "id": "colias_croceus",
+    "id": "CloudedYellow",
     "sort": 16,
     "commonName": "Clouded Yellow",
     "scientificName": "Colias croceus",
@@ -298,7 +298,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/clouded-yellow"
   },
   {
-    "id": "gonepteryx_rhamni",
+    "id": "Brimstone",
     "sort": 17,
     "commonName": "Brimstone",
     "scientificName": "Gonepteryx rhamni",
@@ -317,7 +317,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/brimstone"
   },
   {
-    "id": "danaus_plexippus",
+    "id": "Monarch",
     "sort": 18,
     "commonName": "Monarch",
     "scientificName": "Danaus plexippus",
@@ -335,7 +335,7 @@
     "ukStatus": "Scarce migrant"
   },
   {
-    "id": "lasiommata_megera",
+    "id": "Wall",
     "sort": 19,
     "commonName": "Wall ",
     "scientificName": "Lasiommata megera",
@@ -356,7 +356,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/wall"
   },
   {
-    "id": "pararge_aegeria",
+    "id": "SpeckledWood",
     "sort": 20,
     "commonName": "Speckled Wood",
     "scientificName": "Pararge aegeria",
@@ -377,7 +377,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/speckled-wood"
   },
   {
-    "id": "coenonympha_tullia",
+    "id": "LargeHeath",
     "sort": 21,
     "commonName": "Large Heath",
     "scientificName": "Coenonympha tullia",
@@ -397,7 +397,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/large-heath"
   },
   {
-    "id": "coenonympha_pamphilus",
+    "id": "SmallHeath",
     "sort": 22,
     "commonName": "Small Heath",
     "scientificName": "Coenonympha pamphilus",
@@ -417,7 +417,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/small-heath"
   },
   {
-    "id": "erebia_epiphron",
+    "id": "MountainRinglet",
     "sort": 23,
     "commonName": "Mountain Ringlet",
     "scientificName": "Erebia epiphron",
@@ -435,7 +435,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/mountain-ringlet"
   },
   {
-    "id": "erebia_aethiops",
+    "id": "ScotchArgus",
     "sort": 24,
     "commonName": "Scotch Argus",
     "scientificName": "Erebia aethiops",
@@ -453,7 +453,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/scotch-argus"
   },
   {
-    "id": "aphantopus_hyperantus",
+    "id": "Ringlet",
     "sort": 25,
     "commonName": "Ringlet",
     "scientificName": "Aphantopus hyperantus",
@@ -473,7 +473,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/ringlet"
   },
   {
-    "id": "maniola_jurtina",
+    "id": "MeadowBrown",
     "sort": 26,
     "commonName": "Meadow Brown",
     "scientificName": "Maniola jurtina",
@@ -494,7 +494,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/meadow-brown"
   },
   {
-    "id": "pyronia_tithonus",
+    "id": "Gatekeeper",
     "sort": 27,
     "commonName": "Gatekeeper",
     "scientificName": "Pyronia tithonus",
@@ -512,7 +512,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/gatekeeper"
   },
   {
-    "id": "melanargia_galathea",
+    "id": "MarbledWhite",
     "sort": 28,
     "commonName": "Marbled White",
     "scientificName": "Melanargia galathea",
@@ -530,7 +530,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/marbled-white"
   },
   {
-    "id": "hipparchia_semele",
+    "id": "Grayling",
     "sort": 29,
     "commonName": "Grayling",
     "scientificName": "Hipparchia semele",
@@ -550,7 +550,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/grayling"
   },
   {
-    "id": "boloria_euphrosyne",
+    "id": "PearlBorderedFritillary",
     "sort": 30,
     "commonName": "Pearl-bordered Fritillary",
     "scientificName": "Boloria euphrosyne",
@@ -569,7 +569,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/pearl-bordered-fritillary"
   },
   {
-    "id": "boloria_selene",
+    "id": "SmallPearlBorderedFritillary",
     "sort": 31,
     "commonName": "Small Pearl-bordered Fritillary",
     "scientificName": "Boloria selene",
@@ -588,7 +588,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/small-pearl-bordered-fritillary"
   },
   {
-    "id": "issoria_lathonia",
+    "id": "QueenOfSpainFritillary",
     "sort": 32,
     "commonName": "Queen of Spain Fritillary",
     "scientificName": "Issoria lathonia",
@@ -605,7 +605,7 @@
     "ukStatus": "Scarce migrant"
   },
   {
-    "id": "argynnis_paphia",
+    "id": "SilverWashedFritillary",
     "sort": 33,
     "commonName": "Silver-washed Fritillary",
     "scientificName": "Argynnis paphia",
@@ -624,7 +624,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/silver-washed-fritillary"
   },
   {
-    "id": "speyeria_aglaja",
+    "id": "DarkGreenFritillary",
     "sort": 34,
     "commonName": "Dark Green Fritillary",
     "scientificName": "Speyeria aglaja",
@@ -645,7 +645,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/dark-green-fritillary"
   },
   {
-    "id": "fabriciana_adippe",
+    "id": "HighBrownFritillary",
     "sort": 35,
     "commonName": "High Brown Fritillary",
     "scientificName": "Fabriciana adippe",
@@ -663,7 +663,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/high-brown-fritillary"
   },
   {
-    "id": "limenitis_camilla",
+    "id": "WhiteAdmiral",
     "sort": 36,
     "commonName": "White Admiral",
     "scientificName": "Limenitis camilla",
@@ -681,7 +681,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/white-admiral"
   },
   {
-    "id": "apatura_iris",
+    "id": "PurpleEmperor",
     "sort": 37,
     "commonName": "Purple Emperor",
     "scientificName": "Apatura iris",
@@ -698,7 +698,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/purple-emperor"
   },
   {
-    "id": "vanessa_atalanta",
+    "id": "RedAdmiral",
     "sort": 38,
     "commonName": "Red Admiral",
     "scientificName": "Vanessa atalanta",
@@ -719,7 +719,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/red-admiral"
   },
   {
-    "id": "vanessa_cardui",
+    "id": "PaintedLady",
     "sort": 39,
     "commonName": "Painted Lady",
     "scientificName": "Vanessa cardui",
@@ -740,7 +740,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/painted-lady"
   },
   {
-    "id": "aglais_io",
+    "id": "Peacock",
     "sort": 40,
     "commonName": "Peacock",
     "scientificName": "Aglais io",
@@ -761,7 +761,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/peacock"
   },
   {
-    "id": "aglais_urticae",
+    "id": "SmallTortoiseshell",
     "sort": 41,
     "commonName": "Small Tortoiseshell",
     "scientificName": "Aglais urticae",
@@ -782,7 +782,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/small-tortoiseshell"
   },
   {
-    "id": "nymphalis_antiopa",
+    "id": "CamberwellBeauty",
     "sort": 42,
     "commonName": "Camberwell Beauty",
     "scientificName": "Nymphalis antiopa",
@@ -803,7 +803,7 @@
     "ukStatus": "Scarce migrant"
   },
   {
-    "id": "nymphalis_polychloros",
+    "id": "LargeTortoiseshell",
     "sort": 43,
     "commonName": "Large Tortoiseshell",
     "scientificName": "Nymphalis polychloros",
@@ -820,7 +820,7 @@
     "ukStatus": "Now a scarce migrant"
   },
   {
-    "id": "polygonia_c_album",
+    "id": "Comma",
     "sort": 44,
     "commonName": "Comma",
     "scientificName": "Polygonia c-album",
@@ -841,7 +841,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/comma"
   },
   {
-    "id": "euphydryas_aurinia",
+    "id": "MarshFritillary",
     "sort": 45,
     "commonName": "Marsh Fritillary",
     "scientificName": "Euphydryas aurinia",
@@ -861,7 +861,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/marsh-fritillary"
   },
   {
-    "id": "melitaea_cinxia",
+    "id": "GlanvilleFritillary",
     "sort": 46,
     "commonName": "Glanville Fritillary",
     "scientificName": "Melitaea cinxia",
@@ -878,7 +878,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/glanville-fritillary"
   },
   {
-    "id": "melitaea_athalia",
+    "id": "HeathFritillary",
     "sort": 47,
     "commonName": "Heath Fritillary",
     "scientificName": "Melitaea athalia",
@@ -895,7 +895,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/heath-fritillary"
   },
   {
-    "id": "hamearis_lucina",
+    "id": "DukeOfBurgundy",
     "sort": 48,
     "commonName": "Duke of Burgundy",
     "scientificName": "Hamearis lucina",
@@ -912,7 +912,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/duke-of-burgundy"
   },
   {
-    "id": "lycaena_phlaeas",
+    "id": "SmallCopper",
     "sort": 49,
     "commonName": "Small Copper",
     "scientificName": "Lycaena phlaeas",
@@ -933,7 +933,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/small-copper"
   },
   {
-    "id": "thecla_betulae",
+    "id": "BrownHairstreak",
     "sort": 50,
     "commonName": "Brown Hairstreak",
     "scientificName": "Thecla betulae",
@@ -951,7 +951,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/brown-hairstreak"
   },
   {
-    "id": "favonius_quercus",
+    "id": "PurpleHairstreak",
     "sort": 51,
     "commonName": "Purple Hairstreak",
     "scientificName": "Favonius quercus",
@@ -971,7 +971,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/purple-hairstreak"
   },
   {
-    "id": "callophrys_rubi",
+    "id": "GreenHairstreak",
     "sort": 52,
     "commonName": "Green Hairstreak",
     "scientificName": "Callophrys rubi",
@@ -990,7 +990,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/green-hairstreak"
   },
   {
-    "id": "satyrium_w_album",
+    "id": "WhiteLetterHairstreak",
     "sort": 53,
     "commonName": "White-letter Hairstreak",
     "scientificName": "Satyrium w-album",
@@ -1009,7 +1009,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/white-letter-hairstreak"
   },
   {
-    "id": "satyrium_pruni",
+    "id": "BlackHairstreak",
     "sort": 54,
     "commonName": "Black Hairstreak",
     "scientificName": "Satyrium pruni",
@@ -1026,7 +1026,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/black-hairstreak"
   },
   {
-    "id": "lampides_boeticus",
+    "id": "LongTailedBlue",
     "sort": 55,
     "commonName": "Long-tailed Blue",
     "scientificName": "Lampides boeticus",
@@ -1045,7 +1045,7 @@
     "ukStatus": "Scarce migrant"
   },
   {
-    "id": "cupido_minimus",
+    "id": "SmallBlue",
     "sort": 56,
     "commonName": "Small Blue",
     "scientificName": "Cupido minimus",
@@ -1064,7 +1064,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/small-blue"
   },
   {
-    "id": "celastrina_argiolus",
+    "id": "HollyBlue",
     "sort": 57,
     "commonName": "Holly Blue",
     "scientificName": "Celastrina argiolus",
@@ -1085,7 +1085,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/holly-blue"
   },
   {
-    "id": "phengaris_arion",
+    "id": "LargeBlue",
     "sort": 58,
     "commonName": "Large Blue",
     "scientificName": "Phengaris arion",
@@ -1102,7 +1102,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/large-blue"
   },
   {
-    "id": "plebejus_argus",
+    "id": "SilverStuddedBlue",
     "sort": 59,
     "commonName": "Silver-studded Blue",
     "scientificName": "Plebejus argus",
@@ -1120,7 +1120,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/silver-studded-blue"
   },
   {
-    "id": "aricia_agestis",
+    "id": "BrownArgus",
     "sort": 60,
     "commonName": "Brown Argus",
     "scientificName": "Aricia agestis",
@@ -1138,7 +1138,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/brown-argus"
   },
   {
-    "id": "aricia_artaxerxes",
+    "id": "NorthernBrownArgus",
     "sort": 61,
     "commonName": "Northern Brown Argus",
     "scientificName": "Aricia artaxerxes",
@@ -1156,7 +1156,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/northern-brown-argus"
   },
   {
-    "id": "polyommatus_icarus",
+    "id": "CommonBlue",
     "sort": 62,
     "commonName": "Common Blue",
     "scientificName": "Polyommatus icarus",
@@ -1177,7 +1177,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/common-blue"
   },
   {
-    "id": "polyommatus_bellargus",
+    "id": "AdonisBlue",
     "sort": 63,
     "commonName": "Adonis Blue",
     "scientificName": "Polyommatus bellargus",
@@ -1194,7 +1194,7 @@
     "webLink": "https://butterfly-conservation.org/butterflies/adonis-blue"
   },
   {
-    "id": "polyommatus_coridon",
+    "id": "ChalkHillBlue",
     "sort": 64,
     "commonName": "Chalk Hill Blue",
     "scientificName": "Polyommatus coridon",

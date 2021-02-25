@@ -228,7 +228,7 @@ class Component extends React.Component {
     );
 
     const isOutsideUK = hasLocation && !location.gridref;
-    const inacurate = location.gridref && location.gridref.length <= 5;
+    const iqnacurate = location.gridref && location.gridref.length <= 5;
 
     return (
       <>
