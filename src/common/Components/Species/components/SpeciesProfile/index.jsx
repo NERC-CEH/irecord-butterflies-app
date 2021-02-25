@@ -97,7 +97,7 @@ class SpeciesProfile extends React.Component {
     };
 
     const getSlide = (image, index) => {
-      const { file } = image;
+      const { file, title } = image;
       const showPhotoInFullScreenWrap = () => this.showPhotoInFullScreen(index);
       const imageURL = `/images/${file}.jpg`;
 
@@ -108,6 +108,7 @@ class SpeciesProfile extends React.Component {
           onClick={showPhotoInFullScreenWrap}
         >
           <img src={imageURL} />
+          {!!title && <div className="title">{title}</div>}
         </IonSlide>
       );
     };
