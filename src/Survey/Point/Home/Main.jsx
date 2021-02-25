@@ -228,6 +228,7 @@ class Component extends React.Component {
     );
 
     const isOutsideUK = hasLocation && !location.gridref;
+    const inacurate = location.gridref && location.gridref.length <= 5;
 
     return (
       <>
@@ -244,6 +245,11 @@ class Component extends React.Component {
           <InfoMessage color="warning">
             Please check if your location is not at sea or outside the British
             Isles.
+          </InfoMessage>
+        )}
+        {inacurate && (
+          <InfoMessage color="warning">
+            Please select a more accurate location.
           </InfoMessage>
         )}
       </>
