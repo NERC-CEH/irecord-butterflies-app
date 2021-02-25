@@ -5,14 +5,14 @@
   --padding-bottom: 0;
 
   ion-slides ion-slide.species-profile-photo {
-    img {
-      width: 100%;
-    }
+    position: relative;
+    overflow: hidden;
 
     .title {
       position: absolute;
       bottom: 0;
       right: 0;
+      z-index: 100;
       background: #00000054;
       color: white;
       border-radius: 15px 0 0 0;
@@ -20,7 +20,7 @@
     }
 
     height: 240px;
-    background: black;
+    background: #808080;
   }
 
   ion-card-header {

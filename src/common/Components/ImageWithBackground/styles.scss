@@ -1,0 +1,32 @@
+.image-with-background {
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+  > * {
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+  }
+
+  .image {
+    background-size: contain !important;
+    // background-size: cover !important;
+    transform: scale(1.2); // fills in around edges for landscape images
+  }
+
+  .image-fill {
+    position: absolute;
+    transform: scale(1.2);
+    filter: blur(60px);
+    background-size: cover !important;
+  }
+
+  .image-fill-close {
+    position: absolute;
+    transform: scale(1.2);
+    filter: blur(10px);
+    background-size: contain !important;
+  }
+}
