@@ -22,6 +22,11 @@ import SpeciesProfile from './components/SpeciesProfile';
 import thumbnailPlaceholder from './thumbnail.png';
 import './styles.scss';
 
+// https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
+function escapeRegexCharacters(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 @observer
 class SpeciesMainComponent extends React.Component {
   static propTypes = exact({
@@ -87,7 +92,7 @@ class SpeciesMainComponent extends React.Component {
     let filteredSpecies = [...species];
 
     const filterBySearchPhrase = sp => {
-      const re = new RegExp(searchPhrase, 'i');
+      const re = new RegExp(escapeRegexCharacters(searchPhrase), 'i');
       return re.test(sp.commonName);
     };
 
