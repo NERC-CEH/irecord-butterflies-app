@@ -40,6 +40,7 @@ class SpeciesProfile extends React.Component {
     let items = [];
     let initialSlide = 0;
     let className = 'white-background';
+    let pageTitle = '';
 
     const setShowGallery = () =>
       this.setState({
@@ -51,7 +52,7 @@ class SpeciesProfile extends React.Component {
     if (Number.isInteger(showGallery)) {
       const getImageSource = ({ file, title, author }) => {
         const imageURL = `/images/${file}.jpg`;
-        return { src: imageURL, title, author };
+        return { src: imageURL, title, footer: `© ${author}` };
       };
 
       items = species.images.map(getImageSource);
@@ -60,9 +61,11 @@ class SpeciesProfile extends React.Component {
     }
 
     if (showLifechart) {
+      pageTitle = 'Lifechart';
       items.push({ src: species.lifechart });
     }
     if (showMap) {
+      pageTitle = 'Distribution';
       items.push({ src: species.map });
     }
 
@@ -77,6 +80,7 @@ class SpeciesProfile extends React.Component {
         initialSlide={initialSlide}
         onClose={setShowGallery}
         className={className}
+        title={pageTitle}
         mode="md"
       />
     );

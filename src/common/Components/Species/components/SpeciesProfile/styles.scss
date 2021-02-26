@@ -130,6 +130,11 @@
   }
 }
 
-.gallery-modal.white-background ion-content {
-  --background: white;
+.gallery-modal.white-background {
+  ion-title {
+    color: var(--ion-color-dark);
+  }
+  ion-content {
+    --background: white;
+  }
 }
