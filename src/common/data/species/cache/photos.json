@@ -27,7 +27,19 @@
     "speciesID": "AdonisBlue",
     "file": "Adonis Blues mating (Bob Eade)",
     "author": "Bob Eade",
-    "title": "Male & Female"
+    "title": "Male (left) & Female (right)"
+  },
+  {
+    "speciesID": "AdonisBlue",
+    "file": "Adonis Blue - Common Blue - upperside_comparison",
+    "author": "Peter Eeles",
+    "title": "Adonis Blue male (left) & Common Blue male (right)"
+  },
+  {
+    "speciesID": "AdonisBlue",
+    "file": "Adonis Blue - Chalkhill Blue - upperside_comparison",
+    "author": "Peter Eeles",
+    "title": "Adonis Blue female (left) & Chalk Hill Blue female (right)"
   },
   {
     "speciesID": "AdonisBlue",
@@ -61,6 +73,12 @@
     "speciesID": "BlackHairstreak",
     "file": "Black Hairstreak2 (Bob Eade)",
     "author": "Bob Eade"
+  },
+  {
+    "speciesID": "BlackHairstreak",
+    "file": "Black Hairstreak - White-letter Hairstreak_comparison",
+    "author": "Peter Eeles",
+    "title": "Black Hairstreak (left) & White-letter Hairstreak (right)"
   },
   {
     "speciesID": "BlackHairstreak",
@@ -99,7 +117,7 @@
     "speciesID": "Brimstone",
     "file": "Brimstone upperwing male and female_Keith Warmington",
     "author": "Keith Warmington",
-    "title": "Male & Female"
+    "title": "Male (left) & Female (right)"
   },
   {
     "speciesID": "Brimstone",
@@ -144,6 +162,12 @@
     "speciesID": "BrownArgus",
     "file": "Brown Argus (Bob Eade)2.jpg",
     "author": "Bob Eade"
+  },
+  {
+    "speciesID": "BrownArgus",
+    "file": "Brown Argus - Common Blue - underside_comparison",
+    "author": "Peter Eeles",
+    "title": "Brown Argus (left) & Common Blue (right)"
   },
   {
     "speciesID": "BrownArgus",
@@ -205,163 +229,481 @@
   },
   {
     "speciesID": "CamberwellBeauty",
-    "file": "CamberwellBeauty_immature_1",
+    "file": "Camberwell Beauty1 (Peter Eeles)",
     "author": "Peter Eeles"
   },
   {
     "speciesID": "CamberwellBeauty",
+    "file": "Camberwell Beauty2 (Peter Eeles)",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "CamberwellBeauty",
+    "file": "Camberwell Beauty3 (Peter Eeles)",
+    "author": "Peter Eeles"
+  },
+  {
+    "speciesID": "CamberwellBeauty",
+    "file": "CamberwellBeauty_immature_1 (Peter Eeles)",
+    "author": "Peter Eeles",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "CamberwellBeauty",
     "file": "CamberwellBeauty_immature_2",
-    "author": "Peter Eeles"
+    "author": "Peter Eeles",
+    "title": "Pupa"
   },
   {
     "speciesID": "ChalkHillBlue",
-    "file": "ChalkHillBlue_immature_1",
-    "author": "Peter Eeles"
+    "file": "Chalkhill-Blue male (Iain Leach)",
+    "author": "Iain Leach",
+    "title": "Male"
   },
   {
     "speciesID": "ChalkHillBlue",
-    "file": "ChalkHillBlue_immature_2",
-    "author": "Peter Eeles"
+    "file": "Chalk-Hill-Blue-female (Iain Leach)",
+    "author": "Iain Leach",
+    "title": "Female"
+  },
+  {
+    "speciesID": "ChalkHillBlue",
+    "file": "Chalk Hill Blue (Bob Eade)2",
+    "author": "Bob Eade",
+    "title": "Male"
+  },
+  {
+    "speciesID": "ChalkHillBlue",
+    "file": "Chalk Hill Blue mating  (Mike McKenzie)",
+    "author": "Mike McKenzie",
+    "title": "Male (left) & Female (right)"
+  },
+  {
+    "speciesID": "ChalkHillBlue",
+    "file": "Adonis Blue - Chalkhill Blue - upperside_comparison",
+    "author": "Peter Eeles",
+    "title": "Adonis Blue female (left) & Chalk Hill Blue female (right)"
   },
   {
     "speciesID": "ChalkHillBlue",
     "file": "ChalkHillBlue_immature_3",
+    "author": "Peter Eeles",
+    "title": "Egg"
+  },
+  {
+    "speciesID": "ChalkHillBlue",
+    "file": "ChalkHillBlue_immature_1",
+    "author": "Peter Eeles",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "ChalkHillBlue",
+    "file": "ChalkHillBlue_immature_2",
+    "author": "Peter Eeles",
+    "title": "Pupa"
+  },
+  {
+    "speciesID": "ChequeredSkipper",
+    "file": "Chequered-Skipper-(Iain Leach)",
+    "author": "Iain Leach"
+  },
+  {
+    "speciesID": "ChequeredSkipper",
+    "file": "Chequered Skipper underwing1_Peter Eeles",
     "author": "Peter Eeles"
   },
   {
     "speciesID": "ChequeredSkipper",
-    "file": "ChequeredSkipper_immature_1",
-    "author": "Peter Eeles"
+    "file": "Chequered Skipper (Bob Eade)",
+    "author": "Bob Eade"
   },
   {
     "speciesID": "ChequeredSkipper",
-    "file": "ChequeredSkipper_immature_2",
-    "author": "Peter Eeles"
+    "file": "Chequered Skipper underside (Bob Eade)",
+    "author": "Bob Eade"
   },
   {
     "speciesID": "ChequeredSkipper",
     "file": "ChequeredSkipper_immature_3",
-    "author": "Peter Eeles"
+    "author": "Peter Eeles",
+    "title": "Egg"
+  },
+  {
+    "speciesID": "ChequeredSkipper",
+    "file": "ChequeredSkipper_immature_1",
+    "author": "Peter Eeles",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "ChequeredSkipper",
+    "file": "ChequeredSkipper_immature_2",
+    "author": "Peter Eeles",
+    "title": "Pupa"
   },
   {
     "speciesID": "CloudedYellow",
-    "file": "CloudedYellow_immature_1",
-    "author": "Peter Eeles"
+    "file": "Clouded Yellow (Bob Eade)",
+    "author": "Bob Eade"
   },
   {
     "speciesID": "CloudedYellow",
-    "file": "CloudedYellow_immature_2",
-    "author": "Peter Eeles"
+    "file": "Clouded Yellow male above, female below (Philip Hambly)",
+    "author": "Philip Hambly",
+    "title": "Male (above) & Female (below)"
+  },
+  {
+    "speciesID": "CloudedYellow",
+    "file": "Clouded-Yellow-(Iain Leach)",
+    "author": "Iain Leach"
+  },
+  {
+    "speciesID": "CloudedYellow",
+    "file": "Clouded Yellow helice (Tim Melling)",
+    "author": "Tim Melling",
+    "title": "Female helice form"
   },
   {
     "speciesID": "CloudedYellow",
     "file": "CloudedYellow_immature_3",
-    "author": "Peter Eeles"
+    "author": "Peter Eeles",
+    "title": "Egg"
+  },
+  {
+    "speciesID": "CloudedYellow",
+    "file": "CloudedYellow_immature_1",
+    "author": "Peter Eeles",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "CloudedYellow",
+    "file": "CloudedYellow_immature_2",
+    "author": "Peter Eeles",
+    "title": "Pupa"
   },
   {
     "speciesID": "Comma",
-    "file": "Comma_immature_1",
-    "author": "Peter Eeles"
+    "file": "Comma (Keith Warmington Butterfly Conservation)",
+    "author": "Keith Warmington"
   },
   {
     "speciesID": "Comma",
-    "file": "Comma_immature_2",
-    "author": "Peter Eeles"
+    "file": "Comma underwing (Iain Leach)",
+    "author": "Iain Leach"
+  },
+  {
+    "speciesID": "Comma",
+    "file": "Comma underside (Bob Eade)",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "Comma",
+    "file": "Comma (hutchinsoni) (Bob Eade)",
+    "author": "Bob Eade",
+    "title": "Female hutchinsoni form"
   },
   {
     "speciesID": "Comma",
     "file": "Comma_immature_3",
-    "author": "Peter Eeles"
+    "author": "Peter Eeles",
+    "title": "Egg"
+  },
+  {
+    "speciesID": "Comma",
+    "file": "Comma_immature_1",
+    "author": "Peter Eeles",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "Comma",
+    "file": "Comma_immature_2",
+    "author": "Peter Eeles",
+    "title": "Pupa"
   },
   {
     "speciesID": "CommonBlue",
-    "file": "CommonBlue_immature_1",
-    "author": "Peter Eeles"
+    "file": "Common Blue male (Bob Eade)",
+    "author": "Bob Eade",
+    "title": "Male"
   },
   {
     "speciesID": "CommonBlue",
-    "file": "CommonBlue_immature_2",
-    "author": "Peter Eeles"
+    "file": "Common Blue female upper (Iain Leach)",
+    "author": "Iain Leach",
+    "title": "Female"
+  },
+  {
+    "speciesID": "CommonBlue",
+    "file": "Common Blue (Patrick Clement)",
+    "author": "Patrick Clement",
+    "title": "Male"
+  },
+  {
+    "speciesID": "CommonBlue",
+    "file": "Common-Blue-_underside (Iain Leach)",
+    "author": "Iain Leach"
+  },
+  {
+    "speciesID": "CommonBlue",
+    "file": "Common Blue female underwing (Bob Eade)",
+    "author": "Bob Eade",
+    "title": "Female"
+  },
+  {
+    "speciesID": "CommonBlue",
+    "file": "Common Blue - Holly Blue - upperside_comparison",
+    "author": "Peter Eeles",
+    "title": "Common Blue male (left) & Holly Blue (right)"
+  },
+  {
+    "speciesID": "CommonBlue",
+    "file": "Adonis Blue - Common Blue - upperside_comparison",
+    "author": "Peter Eeles",
+    "title": "Adonis Blue male (left) & Common Blue male (right)"
+  },
+  {
+    "speciesID": "CommonBlue",
+    "file": "Brown Argus - Common Blue - underside_comparison",
+    "author": "Peter Eeles",
+    "title": "Brown Argus (left) & Common Blue (right)"
+  },
+  {
+    "speciesID": "CommonBlue",
+    "file": "Common Blue - Northern Brown Argus - underside_comparison",
+    "author": "Peter Eeles",
+    "title": "Common Blue (left) & Northern Brown Argus (right)"
   },
   {
     "speciesID": "CommonBlue",
     "file": "CommonBlue_immature_3",
-    "author": "Peter Eeles"
+    "author": "Peter Eeles",
+    "title": "Egg"
+  },
+  {
+    "speciesID": "CommonBlue",
+    "file": "CommonBlue_immature_1",
+    "author": "Peter Eeles",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "CommonBlue",
+    "file": "CommonBlue_immature_2",
+    "author": "Peter Eeles",
+    "title": "Pupa"
   },
   {
     "speciesID": "CrypticWoodWhite",
-    "file": "CrypticWoodWhite_immature_1",
-    "author": "Peter Eeles"
+    "file": "Cryptic Wood White (Pair)_James O'Neill (1)",
+    "author": "James O'Neill"
   },
   {
     "speciesID": "CrypticWoodWhite",
-    "file": "CrypticWoodWhite_immature_2",
-    "author": "Peter Eeles"
+    "file": "Cryptic Wood White Underside1a Sam Ellis",
+    "author": "Sam Ellis"
+  },
+  {
+    "speciesID": "CrypticWoodWhite",
+    "file": "Cryptic Wood White Underside15a Sam Ellis",
+    "author": "Sam Ellis"
+  },
+  {
+    "speciesID": "CrypticWoodWhite",
+    "file": "Cryptic Wood White_James O'Neill (3)",
+    "author": "James O'Neill"
   },
   {
     "speciesID": "CrypticWoodWhite",
     "file": "CrypticWoodWhite_immature_3",
+    "author": "Peter Eeles",
+    "title": "Egg"
+  },
+  {
+    "speciesID": "CrypticWoodWhite",
+    "file": "CrypticWoodWhite_immature_1",
+    "author": "Peter Eeles",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "CrypticWoodWhite",
+    "file": "CrypticWoodWhite_immature_2",
+    "author": "Peter Eeles",
+    "title": "Pupa"
+  },
+  {
+    "speciesID": "DarkGreenFritillary",
+    "file": "Dark Green Fritillary male (Iain Leach)",
+    "author": "Iain Leach",
+    "title": "Male"
+  },
+  {
+    "speciesID": "DarkGreenFritillary",
+    "file": "Dark Green Fritillary female2 (Bob Eade)",
+    "author": "Bob Eade",
+    "title": "Female"
+  },
+  {
+    "speciesID": "DarkGreenFritillary",
+    "file": "Dark Green Fritillary female (Bob Eade)",
+    "author": "Bob Eade",
+    "title": "Female"
+  },
+  {
+    "speciesID": "DarkGreenFritillary",
+    "file": "Dark Green Fritillary male underside (Bob Eade)",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "DarkGreenFritillary",
+    "file": "Dark-Green-Fritillar mating (Iain Leach)",
+    "author": "Iain Leach"
+  },
+  {
+    "speciesID": "DarkGreenFritillary",
+    "file": "Dark Green Fritillary - High Brown Fritillary - underside_comparison (1)",
     "author": "Peter Eeles"
   },
   {
     "speciesID": "DarkGreenFritillary",
-    "file": "DarkGreenFritillary_immature_1",
-    "author": "Peter Eeles"
-  },
-  {
-    "speciesID": "DarkGreenFritillary",
-    "file": "DarkGreenFritillary_immature_2",
+    "file": "Dark Green Fritillary - High Brown Fritillary - underside_comparison (2)",
     "author": "Peter Eeles"
   },
   {
     "speciesID": "DarkGreenFritillary",
     "file": "DarkGreenFritillary_immature_3",
-    "author": "Peter Eeles"
+    "author": "Peter Eeles",
+    "title": "Egg"
+  },
+  {
+    "speciesID": "DarkGreenFritillary",
+    "file": "DarkGreenFritillary_immature_1",
+    "author": "Peter Eeles",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "DarkGreenFritillary",
+    "file": "DarkGreenFritillary_immature_2",
+    "author": "Peter Eeles",
+    "title": "Pupa"
   },
   {
     "speciesID": "DingySkipper",
-    "file": "DingySkipper_immature_1",
-    "author": "Peter Eeles"
+    "file": "Dingy Skipper (Iain Leach)",
+    "author": "Iain Leach"
+  },
+  {
+    "speciesID": "DingySkipper",
+    "file": "Dingy Skipper (Bob Eade)",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "DingySkipper",
+    "file": "Dingy Skipper 2(Iain Leach)",
+    "author": "Iain Leach"
+  },
+  {
+    "speciesID": "DingySkipper",
+    "file": "Dingy Skipper roosting (Bob Eade)",
+    "author": "Bob Eade",
+    "title": "Roosting"
+  },
+  {
+    "speciesID": "DingySkipper",
+    "file": "Dingy Skipper underwing (Bob Eade)",
+    "author": "Bob Eade"
   },
   {
     "speciesID": "DingySkipper",
     "file": "DingySkipper_immature_2",
-    "author": "Peter Eeles"
+    "author": "Peter Eeles",
+    "title": "Egg"
+  },
+  {
+    "speciesID": "DingySkipper",
+    "file": "DingySkipper_immature_1",
+    "author": "Peter Eeles",
+    "title": "Larva"
   },
   {
     "speciesID": "DingySkipper",
     "file": "DingySkipper_immature_3",
-    "author": "Peter Eeles"
+    "author": "Peter Eeles",
+    "title": "Pupa"
   },
   {
     "speciesID": "DukeOfBurgundy",
-    "file": "DukeOfBurgundy_immature_1",
-    "author": "Peter Eeles"
+    "file": "Duke of Burgundy (Iain Leach)",
+    "author": "Iain Leach",
+    "title": "Male"
   },
   {
     "speciesID": "DukeOfBurgundy",
-    "file": "DukeOfBurgundy_immature_2",
-    "author": "Peter Eeles"
+    "file": "Duke of Burgundy 2 (Iain Leach)",
+    "author": "Iain Leach",
+    "title": "Female"
+  },
+  {
+    "speciesID": "DukeOfBurgundy",
+    "file": "Duke of Burgundy male underside (Iain Leach)",
+    "author": "Iain Leach",
+    "title": "Male"
+  },
+  {
+    "speciesID": "DukeOfBurgundy",
+    "file": "Duke of Burgundy female underside (Bob Eade)",
+    "author": "Bob Eade",
+    "title": "Female"
+  },
+  {
+    "speciesID": "DukeOfBurgundy",
+    "file": "Duke of Burgundy 3 (Iain Leach)",
+    "author": "Iain Leach"
   },
   {
     "speciesID": "DukeOfBurgundy",
     "file": "DukeOfBurgundy_immature_3",
-    "author": "Peter Eeles"
+    "author": "Peter Eeles",
+    "title": "Egg"
   },
   {
-    "speciesID": "EssexSkipper",
-    "file": "EssexSkipper_immature_1",
-    "author": "Peter Eeles"
+    "speciesID": "DukeOfBurgundy",
+    "file": "DukeOfBurgundy_immature_1",
+    "author": "Peter Eeles",
+    "title": "Larva"
   },
   {
-    "speciesID": "EssexSkipper",
-    "file": "EssexSkipper_immature_2",
-    "author": "Peter Eeles"
+    "speciesID": "DukeOfBurgundy",
+    "file": "DukeOfBurgundy_immature_2",
+    "author": "Peter Eeles",
+    "title": "Pupa"
+  },
+  {
+    "speciesID": "EssexSkipper"
+  },
+  {
+    "speciesID": "EssexSkipper"
+  },
+  {
+    "speciesID": "EssexSkipper"
+  },
+  {
+    "speciesID": "EssexSkipper"
   },
   {
     "speciesID": "EssexSkipper",
     "file": "EssexSkipper_immature_3",
-    "author": "Peter Eeles"
+    "author": "Peter Eeles",
+    "title": "Egg"
+  },
+  {
+    "speciesID": "EssexSkipper",
+    "file": "EssexSkipper_immature_1",
+    "author": "Peter Eeles",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "EssexSkipper",
+    "file": "EssexSkipper_immature_2",
+    "author": "Peter Eeles",
+    "title": "Pupa"
   },
   {
     "speciesID": "Gatekeeper",

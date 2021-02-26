@@ -8,7 +8,7 @@ const extendWithResources = sp => {
 
   const removeJpg = photo => ({
     ...photo,
-    ...{ file: photo.file.replace('.jpg', '') },
+    ...{ file: (photo.file || '').replace('.jpg', '') },
   });
 
   const images = photos.filter(bySpeciesID).map(removeJpg);
