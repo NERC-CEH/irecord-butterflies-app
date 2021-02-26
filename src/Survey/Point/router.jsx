@@ -15,15 +15,18 @@ const HomeWrap = props => (
   <Home appModel={appModel} userModel={userModel} {...props} />
 );
 
+const getLocation = sample => sample.attrs.location || {};
+
 const ModelLocationWrap = props => (
   <ModelLocation
+    model={props.sample} // eslint-disable-line
     mapProviderOptions={config.map}
     useGridRef
     useGridMap
+    suggestLocations={savedSamples.map(getLocation)}
     onLocationNameChange={ModelLocation.utils.onLocationNameChange}
-    placeholder="Site name e.g. nearest village"
+    namePlaceholder="Site name e.g. nearest village"
     onGPSClick={ModelLocation.utils.onGPSClick}
-    {...props}
   />
 );
 
