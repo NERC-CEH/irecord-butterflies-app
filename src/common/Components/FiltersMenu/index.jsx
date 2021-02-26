@@ -24,6 +24,7 @@ const allFilters = [
   { type: 'markings', values: getOptions('markings') },
   { type: 'size', values: getOptions('size') },
   { type: 'group', values: getOptions('group') },
+  { type: 'country', values: getOptions('country') },
 ];
 
 function FiltersMenu({ searchPhrase, filters, addFilter }) {

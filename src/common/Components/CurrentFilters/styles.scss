@@ -14,6 +14,10 @@ ion-toolbar.filterbar {
     ion-chip {
       height: 1.5em;
       margin: 0 5px 0;
+
+      &:not(.text) {
+        text-transform: capitalize;
+      }
     }
   }
 }

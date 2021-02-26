@@ -13,8 +13,18 @@ const extendWithResources = sp => {
 
   const images = photos.filter(bySpeciesID).map(removeJpg);
 
+  const hasValue = v => !!v;
+  const country = [
+    sp.england && 'england',
+    sp.scotland && 'scotland',
+    sp.wales && 'wales',
+    sp['northern ireland'] && 'northern ireland',
+    sp['isle of may'] && 'isle of may',
+  ].filter(hasValue);
+
   Object.assign(sp, speciesResources[sp.id], {
     images,
+    country,
   });
 };
 

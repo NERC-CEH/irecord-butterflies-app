@@ -4,6 +4,7 @@ import exact from 'prop-types-exact';
 import { observer } from 'mobx-react';
 import { IonToolbar, IonIcon, IonChip, IonLabel } from '@ionic/react';
 import { closeOutline } from 'ionicons/icons';
+import clsx from 'clsx';
 import './styles.scss';
 
 const flattenFilterValuesByType = ([filterType, values]) => {
@@ -17,10 +18,16 @@ function CurrentFilters({ searchPhrase, filters: filtersProp, removeFilter }) {
       removeFilter({ type, value });
     };
 
-    const label = type === 'text' ? `"${value}"` : value;
+    const isTextType = type === 'text';
+    const label = isTextType ? `"${value}"` : value;
 
     return (
-      <IonChip key={value} outline onClick={removeFilterWrap}>
+      <IonChip
+        key={value}
+        className={clsx(isTextType && 'text')}
+        outline
+        onClick={removeFilterWrap}
+      >
         <IonLabel>{label}</IonLabel>
         <IonIcon icon={closeOutline} />
       </IonChip>
