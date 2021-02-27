@@ -37,7 +37,7 @@ export { default as MeadowBrown } from './MeadowBrown';
 export { default as Monarch } from './Monarch';
 export { default as MountainRinglet } from './MountainRinglet';
 export { default as NorthernBrownArgus } from './NorthernBrownArgus';
-export { default as Orangetip } from './Orangetip';
+export { default as OrangeTip } from './OrangeTip';
 export { default as PaintedLady } from './PaintedLady';
 export { default as Peacock } from './Peacock';
 export { default as PearlBorderedFritillary } from './PearlBorderedFritillary';
