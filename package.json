@@ -53,7 +53,7 @@
     "@bit/flumens.apps.section": "0.4.0",
     "@bit/flumens.apps.toggle": "0.1.0",
     "@bit/flumens.apps.utils.analytics": "0.1.0",
-    "@bit/flumens.apps.utils.location": "0.1.4",
+    "@bit/flumens.apps.utils.location": "0.1.5",
     "@bit/flumens.apps.utils.validation": "0.1.1",
     "@capacitor/android": "2.4.6",
     "@capacitor/core": "2.4.6",
