@@ -74,6 +74,7 @@
     "mobx": "6.1.4",
     "mobx-react": "7.1.0",
     "mobx-react-devtools": "6.1.1",
+    "mock-geolocation": "^1.0.11",
     "prop-types": "15.7.2",
     "prop-types-exact": "1.2.0",
     "react": "17.0.1",

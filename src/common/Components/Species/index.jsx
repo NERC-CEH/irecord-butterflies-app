@@ -16,6 +16,7 @@ import {
   IonHeader,
 } from '@ionic/react';
 import { Main, InfoBackgroundMessage } from '@apps';
+import appModel from 'models/app';
 import { arrowBack, informationCircleOutline } from 'ionicons/icons';
 import species from 'common/data/species';
 import getProbabilities from 'common/data/species/probabilities';
@@ -35,12 +36,13 @@ function getCurrentWeekNumber() {
   return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
 }
 
-const currentLocation = null; // 'SU68';
-const currentWeek = getCurrentWeekNumber();
-
 const byName = (sp1, sp2) => sp1.commonName.localeCompare(sp2.commonName);
 
 function organiseByProbability(allSpecies) {
+  const location = appModel.attrs.location || {};
+  const currentLocation = location.gridref;
+  const currentWeek = getCurrentWeekNumber();
+
   const probabilitiesForWeek = getProbabilities(currentWeek, currentLocation);
   const isProbable = ({ id }) => probabilitiesForWeek[id] >= 0;
   const byProbability = (s1, s2) =>

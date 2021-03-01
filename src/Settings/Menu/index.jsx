@@ -29,9 +29,23 @@ const MenuController = props => {
   const { savedSamples, appModel, userModel } = props;
 
   const resetApplication = () => resetApp(savedSamples, appModel, userModel);
-  const { sendAnalytics } = appModel.attrs;
+  const { sendAnalytics, useLocationForGuide, location } = appModel.attrs;
 
   const onToggleWrap = (...args) => onToggle(appModel, ...args);
+  const onToggleGuideLocation = checked => {
+    onToggle(appModel, 'useLocationForGuide', checked);
+
+    if (!checked) {
+      appModel.attrs.location = null;
+      appModel.updateCurrentLocation(false); // stops any current runs
+    } else {
+      appModel.updateCurrentLocation();
+    }
+
+    appModel.save();
+  };
+
+  const currentLocation = location && location.gridref;
 
   return (
     <Page id="settings">
@@ -39,7 +53,10 @@ const MenuController = props => {
       <Main
         resetApp={resetApplication}
         sendAnalytics={sendAnalytics}
+        useLocationForGuide={useLocationForGuide}
         onToggle={onToggleWrap}
+        onToggleGuideLocation={onToggleGuideLocation}
+        currentLocation={currentLocation}
       />
     </Page>
   );

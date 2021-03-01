@@ -69,6 +69,7 @@ export default function getProbablities(weekNo, hectad = '') {
     return cache[cacheKey];
   }
 
+  console.log(`Generating probabilities data for ${weekNo} - ${hectad}`);
   // We have only 52 weeks in the dataset but it can be 53 in a year
   weekNo = weekNo === 53 ? 52 : weekNo; // eslint-disable-line
 

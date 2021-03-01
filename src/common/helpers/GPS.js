@@ -14,8 +14,6 @@ const API = {
     // geolocation config
     const GPSoptions = {
       enableHighAccuracy: true,
-      maximumAge: 0,
-      timeout: 60000,
     };
 
     const onPosition = (position, err) => {
@@ -43,6 +41,10 @@ const API = {
   },
 
   stop(id) {
+    if (!id) {
+      return;
+    }
+
     Geolocation.clearWatch({ id });
   },
 };

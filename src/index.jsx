@@ -43,6 +43,7 @@ async function init() {
   });
 
   appModel.attrs.appSession += 1;
+  appModel.updateCurrentLocation();
   appModel.save();
 
   ReactDOM.render(<App />, document.getElementById('root'));
