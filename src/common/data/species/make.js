@@ -30,9 +30,35 @@ const fetchAndSave = async sheet => {
   saveToFile(sheetData, sheet);
 };
 
+const normalizeWeeklyProbabilities = (agg, row) => {
+  const { week, region, species, prob } = row;
+  if (region === 'U') {
+    return agg;
+  }
+  agg[week] = agg[week] || {}; // eslint-disable-line
+  agg[week][region] = agg[week][region] || {}; // eslint-disable-line
+  agg[week][region][species] = parseFloat(prob.toFixed(3)); // eslint-disable-line
+  return agg;
+};
+
+const normalizeHectadProbabilities = (agg, row) => {
+  const { hectad, species, prob } = row;
+  agg[hectad] = agg[hectad] || {}; // eslint-disable-line
+  agg[hectad][species] = parseFloat(prob.toFixed(3)); // eslint-disable-line
+  return agg;
+};
+
 const getData = async () => {
   await fetchAndSave('species');
   await fetchAndSave('photos');
+
+  let sheetData = await fetchSheet({ drive, file, sheet: 'probabilityByWeek' });
+  let normalized = sheetData.reduce(normalizeWeeklyProbabilities, {});
+  saveToFile(normalized, 'probabilityByWeek');
+
+  sheetData = await fetchSheet({ drive, file, sheet: 'probabilityByHectad' });
+  normalized = sheetData.reduce(normalizeHectadProbabilities, {});
+  saveToFile(normalized, 'probabilityByHectad');
 
   console.log('All done! 🚀');
 };

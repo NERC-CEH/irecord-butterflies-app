@@ -18,9 +18,41 @@ import {
 import { Main, InfoBackgroundMessage } from '@apps';
 import { arrowBack, informationCircleOutline } from 'ionicons/icons';
 import species from 'common/data/species';
+import getProbabilities from 'common/data/species/probabilities';
 import SpeciesProfile from './components/SpeciesProfile';
 import thumbnailPlaceholder from './thumbnail.png';
 import './styles.scss';
+
+// https://stackoverflow.com/questions/6117814/get-week-of-year-in-javascript-like-in-php
+function getCurrentWeekNumber() {
+  const d = new Date();
+  // Set to nearest Thursday: current date + 4 - current day number
+  // Make Sunday's day number 7
+  d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+  // Get first day of year
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  // Calculate full weeks to nearest Thursday
+  return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+}
+
+const currentLocation = null; // 'SU68';
+const currentWeek = getCurrentWeekNumber();
+
+const byName = (sp1, sp2) => sp1.commonName.localeCompare(sp2.commonName);
+
+function organiseByProbability(allSpecies) {
+  const probabilitiesForWeek = getProbabilities(currentWeek, currentLocation);
+  const isProbable = ({ id }) => probabilitiesForWeek[id] >= 0;
+  const byProbability = (s1, s2) =>
+    probabilitiesForWeek[s2.id] - probabilitiesForWeek[s1.id];
+
+  const probableSpecies = allSpecies.filter(isProbable).sort(byProbability);
+
+  const notInProbableList = sp => !probableSpecies.includes(sp);
+  const remainingSpecies = allSpecies.filter(notInProbableList).sort(byName);
+
+  return [probableSpecies, remainingSpecies];
+}
 
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
 function escapeRegexCharacters(str) {
@@ -127,15 +159,9 @@ class SpeciesMainComponent extends React.Component {
 
   getSpecies = () => {
     const speciesData = this.getSpeciesData();
-    const isNotAditional = sp => !sp.additional;
-    const speciesList = speciesData
-      .filter(isNotAditional)
-      .map(this.getSpeciesTile);
-
-    const isAditional = sp => sp.additional;
-    const additionalSpeciesList = speciesData
-      .filter(isAditional)
-      .map(this.getSpeciesTile);
+    const [speciesList, additionalSpeciesList] = organiseByProbability(
+      speciesData
+    );
 
     const hasAdditional = !!additionalSpeciesList.length;
 
@@ -149,14 +175,14 @@ class SpeciesMainComponent extends React.Component {
 
     return (
       <>
-        {speciesList}
+        {speciesList.map(this.getSpeciesTile)}
 
         {hasAdditional && (
           <IonItemDivider sticky>
             <IonLabel>Additional</IonLabel>
           </IonItemDivider>
         )}
-        {additionalSpeciesList}
+        {additionalSpeciesList.map(this.getSpeciesTile)}
       </>
     );
   };

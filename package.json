@@ -13,7 +13,8 @@
     "test:watch": "jest --watchAll",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand --watch test",
     "test:eslint": "eslint src --quiet --ext .jsx --ext .js && echo '\\033[37;42;1m PASS \\033[00m'",
-    "fetch:data": "cd src/common/data/species && node make.js"
+    "fetch:data": "cd src/common/data/species && node make.js",
+    "make:probabilities": "cd src/common/data/species && node makeProbabilities.js"
   },
   "husky": {
     "hooks": {
