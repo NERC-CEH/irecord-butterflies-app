@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import {
   dateAttr,
-  locationAttr,
+  locationAttrs,
   verifyLocationSchema,
 } from 'Survey/common/config';
 import { chatboxOutline } from 'ionicons/icons';
@@ -18,31 +18,36 @@ const stageOptions = [
 ];
 
 const survey = {
-  id: 626,
+  id: 101,
   name: 'point',
   label: '', // we'll use species name
   icon,
 
   attrs: {
+    appVersion: { id: 1139 },
     date: dateAttr,
-    location: locationAttr,
+    ...locationAttrs,
   },
 
   occ: {
     attrs: {
       taxon: {
-        id: 'taxa_taxon_list_id',
-        remote: { values: taxon => taxon.warehouse_id },
+        remote: {
+          id: 'taxa_taxon_list_id',
+          values: taxon => taxon.warehouseId,
+        },
       },
-      count: { id: 780 },
+      count: { id: 16 },
       stage: {
-        id: 293,
         label: 'Stage',
         type: 'radio',
         info: 'Pick the life stage.',
         icon: caterpillarIcon,
         options: stageOptions,
-        remote: { values: stageOptions },
+        remote: {
+          id: 293,
+          values: stageOptions,
+        },
       },
       comment: {
         label: 'Comment',
@@ -67,7 +72,7 @@ const survey = {
     verify(attrs) {
       try {
         const occurrenceScheme = Yup.object().shape({
-          taxon: Yup.object().required(),
+          taxon: Yup.object().nullable().required('Species is missing.'),
         });
 
         occurrenceScheme.validateSync(attrs, { abortEarly: false });
@@ -83,6 +88,7 @@ const survey = {
     const sample = new AppSample({
       metadata: {
         survey: survey.name,
+        survey_id: survey.id,
       },
 
       attrs: {

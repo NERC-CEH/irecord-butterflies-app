@@ -1,6 +1,7 @@
 import { Sample } from '@apps';
 import userModel from 'models/user';
 import config from 'common/config';
+import { observable } from 'mobx';
 import pointSurvey from 'Survey/Point/config';
 import GPSExtension from './sampleGPSExt';
 import { modelStore } from './store';
@@ -21,10 +22,12 @@ class AppSample extends Sample {
   constructor(...args) {
     super(...args);
 
-    this.remote.url = `${config.backend.indicia.url}/index.php/services/rest`;
-    // eslint-disable-next-line
-    this.remote.headers = async () => ({
-      Authorization: `Bearer ${await userModel.getAccessToken()}`,
+    this.remote = observable({
+      api_key: config.backend.apiKey,
+      host_url: `${config.backend.url}/`,
+      user: userModel.getUser.bind(userModel),
+      password: userModel.getPassword.bind(userModel),
+      synchronising: false,
     });
 
     this.survey = surveyConfig[this.metadata.survey];
@@ -32,8 +35,6 @@ class AppSample extends Sample {
     Object.assign(this, GPSExtension);
     this.gpsExtensionInit();
   }
-
-  isDisabled = () => this.isUploaded();
 }
 
 export default AppSample;

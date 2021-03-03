@@ -31,19 +31,47 @@ export const dateAttr = {
   required: true,
   remote: {
     id: 'date',
-    values: d => date.print(d),
+    values: d => date.print(d, false),
   },
 };
 
-export const locationAttr = {
-  label: 'Location',
-  icon: locationOutline,
-  remote: {
-    id: 'entered_sref',
-    values(location) {
-      return `${parseFloat(location.latitude).toFixed(7)}, ${parseFloat(
-        location.longitude
-      ).toFixed(7)}`;
+export const locationAttrs = {
+  location: {
+    label: 'Location',
+    icon: locationOutline,
+    remote: {
+      id: 'entered_sref',
+      values(location, submission) {
+        // convert accuracy for map and gridref sources
+        const { accuracy, source, gridref, altitude, name } = location;
+
+        const locationAttributes = {
+          location_name: name, // location_name is a native indicia attr
+          [locationAttrs.locationSource.remote.id]: source,
+          [locationAttrs.locationGridref.remote.id]: gridref,
+          [locationAttrs.locationAltitude.remote.id]: altitude,
+          [locationAttrs.locationAltitudeAccuracy.remote.id]:
+            location.altitudeAccuracy,
+          [locationAttrs.locationAccuracy.remote.id]: accuracy,
+        };
+
+        // add other location related attributes
+        // eslint-disable-next-line
+        submission.fields = { ...submission.fields, ...locationAttributes };
+
+        const lat = parseFloat(location.latitude);
+        const lon = parseFloat(location.longitude);
+        if (Number.isNaN(lat) || Number.isNaN(lat)) {
+          return null;
+        }
+
+        return `${lat.toFixed(7)}, ${lon.toFixed(7)}`;
+      },
     },
   },
+  locationAccuracy: { remote: { id: 282 } },
+  locationAltitude: { remote: { id: 283 } },
+  locationAltitudeAccuracy: { remote: { id: 284 } },
+  locationSource: { remote: { id: 760 } },
+  locationGridref: { remote: { id: 335 } },
 };

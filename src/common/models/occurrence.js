@@ -19,8 +19,6 @@ export default class AppOccurrence extends Occurrence {
     intercept(this.attrs, 'taxon', setOnlyMinimalSpeciesValues);
   }
 
-  validateRemote = () => this.getSurvey().verify(this.attrs);
-
   setSpecies(speciesId) {
     const byId = ({ id }) => id === speciesId;
     const sp = species.find(byId);
@@ -31,6 +29,4 @@ export default class AppOccurrence extends Occurrence {
 
     this.attrs.taxon = sp;
   }
-
-  isDisabled = () => this.parent.isDisabled();
 }
