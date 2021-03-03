@@ -1,5 +1,6 @@
 import React from 'react';
 import { Page, alert } from '@apps';
+import { observer } from 'mobx-react';
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
 import { IonFooter, IonItem, IonCheckbox, IonLabel } from '@ionic/react';
@@ -82,4 +83,4 @@ MenuController.propTypes = exact({
   savedSamples: PropTypes.array.isRequired,
 });
 
-export default MenuController;
+export default observer(MenuController);

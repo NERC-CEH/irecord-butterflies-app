@@ -25,7 +25,7 @@ const MenuMain = ({ isLoggedIn, user, logOut }) => {
               <IonIcon icon={exitOutline} size="small" slot="start" />
               Logout
               {': '}
-              {user.firstname} {user.secondname}
+              {user.firstName} {user.secondName}
             </IonItem>
           )}
 

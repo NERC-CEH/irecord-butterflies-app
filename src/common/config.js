@@ -19,9 +19,7 @@ const CONFIG = {
 
   backend: {
     url: backendUrl,
-    indicia: {
-      url: '', // TODO:
-    },
+    apiKey: process.env.APP_INDICIA_API_KEY,
   },
 };
 

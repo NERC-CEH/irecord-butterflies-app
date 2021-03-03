@@ -25,9 +25,6 @@ export { default as InputWithValidation } from '@bit/flumens.apps.input-with-val
 export { default as PhotoPicker } from '@bit/flumens.apps.photo-picker';
 export { default as Toggle } from '@bit/flumens.apps.toggle';
 export { default as date } from '@bit/flumens.apps.date';
-export { default as Sample } from '@bit/flumens.apps.models.sample';
-export { default as Media } from '@bit/flumens.apps.models.media';
-export { default as Occurrence } from '@bit/flumens.apps.models.occurrence';
-export { default as DrupalUserModel } from '@bit/flumens.apps.models.drupal-user-model';
+// export { default as DrupalUserModel } from '@bit/flumens.apps.models.drupal-user-model';
 export * from '@bit/flumens.apps.utils.location';
 export * from '@bit/flumens.apps.utils.validation';

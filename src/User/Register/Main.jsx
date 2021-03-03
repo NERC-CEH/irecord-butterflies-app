@@ -43,7 +43,7 @@ class Component extends React.Component {
             {...props}
           />
           <InputWithValidation
-            name="lastName"
+            name="secondName"
             placeholder="Last name"
             icon={personOutline}
             type="text"

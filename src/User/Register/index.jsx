@@ -11,14 +11,9 @@ import './styles.scss';
 const { warn, error } = toast;
 
 async function onRegister(userModel, details, onSuccess) {
-  const { password, firstName, lastName } = details;
+  const { password, firstName, secondName } = details;
 
   const email = details.email.trim();
-
-  const otherDetails = {
-    field_first_name: [{ value: firstName.trim() }],
-    field_last_name: [{ value: lastName.trim() }],
-  };
 
   if (!device.isOnline()) {
     warn(i18n.t("Sorry, looks like you're offline."));
@@ -30,10 +25,15 @@ async function onRegister(userModel, details, onSuccess) {
   });
 
   try {
-    await userModel.register(email, password, otherDetails);
+    await userModel.register(
+      email,
+      password,
+      firstName.trim(),
+      secondName.trim()
+    );
 
     userModel.attrs.firstName = firstName; // eslint-disable-line
-    userModel.attrs.lastName = lastName; // eslint-disable-line
+    userModel.attrs.secondName = secondName; // eslint-disable-line
     userModel.save();
 
     alert({
