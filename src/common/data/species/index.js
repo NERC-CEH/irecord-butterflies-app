@@ -19,7 +19,7 @@ const extendWithResources = sp => {
     sp.scotland && 'scotland',
     sp.wales && 'wales',
     sp['northern ireland'] && 'northern ireland',
-    sp['isle of may'] && 'isle of may',
+    sp['isle of man'] && 'isle of man',
   ].filter(hasValue);
 
   Object.assign(sp, speciesResources[sp.id], {
