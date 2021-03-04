@@ -47,7 +47,7 @@
         width: 106%;
         max-width: none;
         z-index: 10;
-        background-image: radial-gradient(white, transparent 80%);
+        background-image: radial-gradient(white, rgba(255, 255, 255, 0) 80%);
       }
       .thumbnail-background {
         position: absolute;
