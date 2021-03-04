@@ -32,6 +32,7 @@ import numberIcon from 'common/images/number.svg';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
 import species from 'common/data/species';
+import config from 'common/config';
 
 @observer
 class Component extends React.Component {
@@ -265,7 +266,15 @@ class Component extends React.Component {
         <IonList lines="full">
           {isDisabled && (
             <InfoMessage>
-              This survey has been finished and cannot be updated.
+              This record has been uploaded and can only be edited on our
+              website.
+              <IonButton
+                expand="block"
+                className="uploaded-message-website-link"
+                href={`${config.backend.url}/record-details?occurrence_id=${occ.id}`}
+              >
+                iRecord website
+              </IonButton>
             </InfoMessage>
           )}
 
