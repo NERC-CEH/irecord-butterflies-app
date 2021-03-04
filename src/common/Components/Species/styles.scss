@@ -45,6 +45,7 @@
       .thumbnail {
         margin: -8% -3% -16%;
         width: 106%;
+        min-height: 120px; // fixes loading image jitter
         max-width: none;
         z-index: 10;
         background-image: radial-gradient(white, rgba(255, 255, 255, 0) 80%);

@@ -11,7 +11,7 @@ function ImageWithBackground({ src }) {
         style={{ background: `url("${src}")` }}
         className="image-fill-close"
       />
-      <div style={{ background: `url("${src}")` }} className="image" />
+      <img src={src} />
     </div>
   );
 }
