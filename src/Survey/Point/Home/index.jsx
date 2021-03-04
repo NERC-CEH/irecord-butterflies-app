@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
-import { Page, Header, toast, showInvalidsMessage } from '@apps';
+import { Page, Header, showInvalidsMessage } from '@apps';
 import { observer } from 'mobx-react';
 import { IonButton, NavContext } from '@ionic/react';
 import Main from './Main';
 import './styles.scss';
-
-const { warn } = toast;
 
 @observer
 class Controller extends React.Component {

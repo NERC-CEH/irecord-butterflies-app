@@ -47,8 +47,8 @@ function organiseByProbability(allSpecies) {
     currentWeek,
     currentLocation
   );
-  const isProbable = probs => ({ id }) => probs[id] >= 0;
-  const byProbability = probs => (s1, s2) => probs[s2.id] - probs[s1.id];
+  const isProbable = probs => ({ id }) => probs[id] >= 0; //eslint-disable-line
+  const byProbability = probs => (s1, s2) => probs[s2.id] - probs[s1.id]; //eslint-disable-line
 
   const speciesHereAndNow = allSpecies
     .filter(isProbable(probsNowAndHere))
