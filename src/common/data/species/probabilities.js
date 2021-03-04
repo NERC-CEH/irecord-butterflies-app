@@ -27,40 +27,43 @@ function getAverage(probsForWeek) {
 }
 
 function getHectad(probsForWeek, hectad) {
-  const probsForHectad = {};
+  const hectadSpecies = {};
+  const remainingSpecies = {};
 
   const hectadProbs = probByLocationData[hectad];
   if (!hectadProbs) {
     console.warn('Hectad is missing from location data ', hectad);
-    return probsForHectad;
+    return hectadSpecies;
   }
 
   const region = hectadRegions[hectad];
   if (!region) {
     console.warn('Region is missing from hectad data ', hectad);
-    return probsForHectad;
+    return hectadSpecies;
   }
 
   const species = probsForWeek[region];
   if (!species) {
     console.warn('Region is missing from time data ', region);
-    return probsForHectad;
+    return hectadSpecies;
   }
 
   const addSpeciesProbToLocationProb = ([speciesId, prob]) => {
     const hectadProb = hectadProbs[speciesId];
 
-    if (!(hectadProb >= 0)) {
+    const speciesHasNoSpacialProbs = !(hectadProb >= 0);
+    if (speciesHasNoSpacialProbs) {
+      remainingSpecies[speciesId] = prob;
       return;
     }
 
     const totalProbability = parseFloat(prob) * parseFloat(hectadProb);
-    probsForHectad[speciesId] = parseFloat(totalProbability.toFixed(3));
+    hectadSpecies[speciesId] = parseFloat(totalProbability.toFixed(3));
   };
 
   Object.entries(species).forEach(addSpeciesProbToLocationProb);
 
-  return probsForHectad;
+  return [hectadSpecies, remainingSpecies];
 }
 
 export default function getProbablities(weekNo, hectad = '') {
@@ -76,11 +79,17 @@ export default function getProbablities(weekNo, hectad = '') {
   const probsForWeek = probByTimeData[weekNo];
   const probsForHectad = probByLocationData[hectad];
 
-  const probs = !probsForHectad
-    ? getAverage(probsForWeek)
-    : getHectad(probsForWeek, hectad);
+  let speciesNowAndHere = {};
+  let speciesNow = {};
+  if (!probsForHectad) {
+    speciesNow = getAverage(probsForWeek);
+  } else {
+    [speciesNowAndHere, speciesNow] = getHectad(probsForWeek, hectad);
+  }
 
-  cache[cacheKey] = probs;
+  const species = [speciesNowAndHere, speciesNow];
 
-  return probs;
+  cache[cacheKey] = species;
+
+  return species;
 }

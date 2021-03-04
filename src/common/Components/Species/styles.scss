@@ -1,4 +1,8 @@
 .species-list {
+  ion-grid {
+    padding: 0;
+  }
+
   .species-tile {
     padding: 0;
 
@@ -85,16 +89,27 @@
   }
 
   ion-item-divider.item-divider-sticky {
-    background: var(--ion-color-primary) !important;
     padding: 0;
     color: white;
-    margin: 10px -2%;
     width: 104%;
     z-index: 1000;
+
+    margin: 10px -2%;
+    &:first-child {
+      margin-top: 0;
+    }
 
     ion-label {
       width: 100%;
       text-align: center;
+    }
+
+    background: var(--ion-color-primary) !important;
+    &.species-now {
+      background: #51735f !important;
+    }
+    &.species-additional {
+      background: #696969 !important;
     }
   }
 }

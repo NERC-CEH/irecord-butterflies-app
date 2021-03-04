@@ -43,17 +43,25 @@ function organiseByProbability(allSpecies) {
   const currentLocation = location.gridref;
   const currentWeek = getCurrentWeekNumber();
 
-  const probabilitiesForWeek = getProbabilities(currentWeek, currentLocation);
-  const isProbable = ({ id }) => probabilitiesForWeek[id] >= 0;
-  const byProbability = (s1, s2) =>
-    probabilitiesForWeek[s2.id] - probabilitiesForWeek[s1.id];
+  const [probsNowAndHere, probsNow] = getProbabilities(
+    currentWeek,
+    currentLocation
+  );
+  const isProbable = probs => ({ id }) => probs[id] >= 0;
+  const byProbability = probs => (s1, s2) => probs[s2.id] - probs[s1.id];
 
-  const probableSpecies = allSpecies.filter(isProbable).sort(byProbability);
+  const speciesHereAndNow = allSpecies
+    .filter(isProbable(probsNowAndHere))
+    .sort(byProbability(probsNowAndHere));
 
-  const notInProbableList = sp => !probableSpecies.includes(sp);
+  const speciesNow = allSpecies
+    .filter(isProbable(probsNow))
+    .sort(byProbability(probsNow));
+
+  const notInProbableList = sp => !speciesHereAndNow.includes(sp);
   const remainingSpecies = allSpecies.filter(notInProbableList).sort(byName);
 
-  return [probableSpecies, remainingSpecies];
+  return [speciesHereAndNow, speciesNow, remainingSpecies];
 }
 
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
@@ -161,13 +169,17 @@ class SpeciesMainComponent extends React.Component {
 
   getSpecies = () => {
     const speciesData = this.getSpeciesData();
-    const [speciesList, additionalSpeciesList] = organiseByProbability(
-      speciesData
-    );
+    const [
+      speciesHereAndNow,
+      speciesNow,
+      remainingSpecies,
+    ] = organiseByProbability(speciesData);
 
-    const hasAdditional = !!additionalSpeciesList.length;
+    const hasSpeciesHereAndNow = !!speciesHereAndNow.length;
+    const hasSpeciesNow = !!speciesNow.length;
+    const hasAdditional = !!remainingSpecies.length;
 
-    if (!speciesList.length && !hasAdditional) {
+    if (!speciesHereAndNow.length && !hasAdditional) {
       return (
         <InfoBackgroundMessage>
           Sorry, no species were found.
@@ -177,14 +189,26 @@ class SpeciesMainComponent extends React.Component {
 
     return (
       <>
-        {speciesList.map(this.getSpeciesTile)}
+        {hasSpeciesHereAndNow && (
+          <IonItemDivider sticky mode="md">
+            <IonLabel>Now in your area</IonLabel>
+          </IonItemDivider>
+        )}
+        {speciesHereAndNow.map(this.getSpeciesTile)}
+
+        {hasSpeciesNow && (
+          <IonItemDivider sticky className="species-now" mode="md">
+            <IonLabel>This time of year</IonLabel>
+          </IonItemDivider>
+        )}
+        {speciesNow.map(this.getSpeciesTile)}
 
         {hasAdditional && (
-          <IonItemDivider sticky>
+          <IonItemDivider sticky className="species-additional" mode="md">
             <IonLabel>Additional</IonLabel>
           </IonItemDivider>
         )}
-        {additionalSpeciesList.map(this.getSpeciesTile)}
+        {remainingSpecies.map(this.getSpeciesTile)}
       </>
     );
   };
