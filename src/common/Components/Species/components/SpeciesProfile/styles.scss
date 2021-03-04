@@ -4,23 +4,43 @@
   --padding-top: 0;
   --padding-bottom: 0;
 
-  ion-slides ion-slide.species-profile-photo {
-    position: relative;
-    overflow: hidden;
+  ion-slides {
+    background: #808080;
+    overflow: visible;
+    margin-bottom: 10px;
 
-    .title {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      z-index: 100;
-      background: #00000054;
-      color: white;
-      border-radius: 15px 0 0 0;
-      padding: 5px 15px 5px 20px;
+    ion-slide.species-profile-photo {
+      position: relative;
+      overflow: hidden;
+
+      .title {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 100;
+        background: #00000054;
+        color: white;
+        border-radius: 15px 0 0 0;
+        padding: 5px 15px 5px 20px;
+      }
+
+      height: 240px;
+      background: #808080;
     }
 
-    height: 240px;
-    background: #808080;
+    .swiper-pagination {
+      position: absolute;
+      bottom: -20px;
+
+      .swiper-pagination-bullet {
+        opacity: 0.5;
+        --bullet-background: grey;
+      }
+      .swiper-pagination-bullet-active {
+        opacity: 0.8;
+        --bullet-background-active: var(--ion-color-primary);
+      }
+    }
   }
 
   ion-card-header {
@@ -112,20 +132,6 @@
 
     &.map {
       background: linear-gradient(271deg, #eaeaea3d 38%, #80808000 100%);
-    }
-  }
-
-  .swiper-pagination {
-    position: relative;
-    top: 3px;
-
-    .swiper-pagination-bullet {
-      opacity: 0.5;
-      --bullet-background: grey;
-    }
-    .swiper-pagination-bullet-active {
-      opacity: 0.8;
-      --bullet-background-active: var(--ion-color-primary);
     }
   }
 }
