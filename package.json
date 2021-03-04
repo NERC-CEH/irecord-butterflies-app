@@ -36,7 +36,7 @@
     "@bit/flumens.apps.long-press-button": "0.1.1",
     "@bit/flumens.apps.long-press-fab-button": "0.1.0",
     "@bit/flumens.apps.main": "0.2.0",
-    "@bit/flumens.apps.menu-attr-item": "1.1.1",
+    "@bit/flumens.apps.menu-attr-item": "1.1.2",
     "@bit/flumens.apps.menu-attr-item-from-model": "1.1.1",
     "@bit/flumens.apps.modal-header": "0.1.4",
     "@bit/flumens.apps.model-location-map": "2.0.2",
