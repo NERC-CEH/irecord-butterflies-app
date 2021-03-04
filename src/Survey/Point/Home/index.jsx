@@ -33,7 +33,7 @@ class Controller extends React.Component {
 
     const isLoggedIn = !!userModel.attrs.id;
     if (!isLoggedIn) {
-      warn('Please log in first to upload the record.');
+      this.context.navigate(`/user/register`);
       return;
     }
 
@@ -57,7 +57,7 @@ class Controller extends React.Component {
     sample.metadata.saved = true;
     sample.save();
 
-    this._processSubmission();
+    this.context.navigate(`/home/surveys`, 'root');
   };
 
   onFinish = async () => {
