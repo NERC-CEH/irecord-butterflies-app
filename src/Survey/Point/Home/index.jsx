@@ -45,14 +45,14 @@ class Controller extends React.Component {
   _processDraft = async () => {
     const { appModel, sample } = this.props;
 
-    appModel.attrs['draftId:point'] = null;
-    await appModel.save();
-
     const invalids = sample.validateRemote();
     if (invalids) {
       showInvalidsMessage(invalids);
       return;
     }
+
+    appModel.attrs['draftId:point'] = null;
+    await appModel.save();
 
     sample.metadata.saved = true;
     sample.save();
