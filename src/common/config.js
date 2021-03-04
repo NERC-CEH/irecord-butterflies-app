@@ -1,9 +1,12 @@
+import { Plugins, FilesystemDirectory } from '@capacitor/core';
+import { isPlatform } from '@ionic/react';
+
 const backendUrl =
   process.env.APP_BACKEND_URL || 'https://www.brc.ac.uk/irecord';
 
 const isTestEnv = process.env.NODE_ENV === 'test';
 
-const CONFIG = {
+const config = {
   environment: process.env.NODE_ENV,
   version: process.env.APP_VERSION,
   build: process.env.APP_BUILD,
@@ -23,4 +26,14 @@ const CONFIG = {
   },
 };
 
-export default CONFIG;
+(async function getMediaDirectory() {
+  if (isPlatform('hybrid')) {
+    const { uri } = await Plugins.Filesystem.getUri({
+      path: '',
+      directory: FilesystemDirectory.Data,
+    });
+    config.dataPath = uri;
+  }
+})();
+
+export default config;

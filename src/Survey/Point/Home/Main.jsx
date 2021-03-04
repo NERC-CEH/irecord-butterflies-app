@@ -307,6 +307,7 @@ class Component extends React.Component {
               model={sample}
               ImageClass={Image}
               isDisabled={isDisabled}
+              dataDirPath={config.dataPath}
             />
           </div>
         </IonList>
