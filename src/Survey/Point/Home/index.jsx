@@ -56,7 +56,8 @@ class Controller extends React.Component {
 
     sample.metadata.saved = true;
     sample.save();
-    this.context.navigate(`/home/surveys`, 'root');
+
+    this._processSubmission();
   };
 
   onFinish = async () => {
