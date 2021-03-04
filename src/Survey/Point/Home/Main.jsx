@@ -242,13 +242,13 @@ class Component extends React.Component {
           className={clsx({ empty })}
           disabled={isDisabled}
         />
-        {isOutsideUK && (
+        {isOutsideUK && !isDisabled && (
           <InfoMessage color="warning">
             Please check if your location is not at sea or outside the British
             Isles.
           </InfoMessage>
         )}
-        {inacurate && (
+        {inacurate && !isDisabled && (
           <InfoMessage color="warning">
             Please select a more accurate location.
           </InfoMessage>
