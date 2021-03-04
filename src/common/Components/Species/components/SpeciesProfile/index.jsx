@@ -17,12 +17,12 @@ import { Trans as T } from 'react-i18next';
 import ImageWithBackground from 'Components/ImageWithBackground';
 import './styles.scss';
 
-const fixIonicSlideBug = e => {
-  // TODO: remove once bug is fixed
+function fixIonicSlideBug() {
   // https://github.com/ionic-team/ionic/issues/19641
   // https://github.com/ionic-team/ionic/issues/19638
-  e.target.update();
-};
+  const updateSlides = () => this.update();
+  setTimeout(updateSlides, 50);
+}
 
 class SpeciesProfile extends React.Component {
   static contextType = IonLifeCycleContext;
