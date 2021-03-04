@@ -81,7 +81,7 @@ class Controller extends React.Component {
 
     const isDisabled = sample.isUploaded();
 
-    const finishButton = (
+    const finishButton = isDisabled ? null : (
       <IonButton
         onClick={this.onFinish}
         color="primary"

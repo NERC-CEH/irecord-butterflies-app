@@ -32,6 +32,10 @@
     }
 
     #menu-item-count-edit {
+      &.item-disabled {
+        opacity: 1;
+      }
+
       ion-button {
         margin: 0;
       }

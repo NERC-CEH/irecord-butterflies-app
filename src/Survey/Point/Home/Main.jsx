@@ -127,8 +127,7 @@ class Component extends React.Component {
   };
 
   getNumberAttr = () => {
-    const { isDisabled, sample } = this.props;
-
+    const { sample, isDisabled } = this.props;
     const [occurrence] = sample.occurrences;
     const { count } = occurrence.attrs;
 
@@ -167,7 +166,7 @@ class Component extends React.Component {
   };
 
   getSpeciesButton = () => {
-    const { sample, match } = this.props;
+    const { sample, match, isDisabled } = this.props;
     const [occ] = sample.occurrences;
 
     const { taxon } = occ.attrs;
@@ -190,8 +189,8 @@ class Component extends React.Component {
     return (
       <IonItem
         className="menu-attr-item species-item"
-        routerLink={`${match.url}/species`}
-        detail
+        routerLink={!isDisabled && `${match.url}/species`}
+        detail={!isDisabled}
       >
         <IonAvatar>
           <img src={thumbnail} />
@@ -209,7 +208,7 @@ class Component extends React.Component {
   };
 
   getLocationButton = () => {
-    const { match, sample } = this.props;
+    const { match, sample, isDisabled } = this.props;
 
     const location = sample.attrs.location || {};
     const hasLocation = location.latitude;
@@ -240,6 +239,7 @@ class Component extends React.Component {
           skipValueTranslation
           required
           className={clsx({ empty })}
+          disabled={isDisabled}
         />
         {isOutsideUK && (
           <InfoMessage color="warning">
@@ -294,7 +294,11 @@ class Component extends React.Component {
 
           <IonItemDivider>Species Photo</IonItemDivider>
           <div className="rounded">
-            <PhotoPicker model={sample} ImageClass={Image} />
+            <PhotoPicker
+              model={sample}
+              ImageClass={Image}
+              isDisabled={isDisabled}
+            />
           </div>
         </IonList>
       </Main>
