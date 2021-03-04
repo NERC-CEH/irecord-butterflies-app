@@ -63,7 +63,9 @@ function getSampleInfo(sample) {
 const Survey = ({ sample }) => {
   const survey = sample.getSurvey();
 
-  const href = `/survey/${survey.name}/${sample.cid}`;
+  const { synchronising } = sample.remote;
+
+  const href = !synchronising && `/survey/${survey.name}/${sample.cid}`;
 
   const deleteSurveyWrap = () => deleteSurvey(sample);
 
@@ -71,7 +73,7 @@ const Survey = ({ sample }) => {
     <IonItemSliding class="survey-list-item">
       <ErrorMessage sample={sample} />
 
-      <IonItem routerLink={href} detail>
+      <IonItem routerLink={href} detail={!synchronising}>
         {getSampleInfo(sample)}
         <OnlineStatus sample={sample} />
       </IonItem>
