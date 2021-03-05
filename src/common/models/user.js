@@ -80,7 +80,8 @@ class UserModel extends Model {
         throw new Error('Invalid backend response.');
       }
     } catch (e) {
-      throw new Error(e.message);
+      res = e.response || {};
+      throw new Error(res.statusText || 'The request was not successful.');
     }
 
     const user = { ...res.data, ...{ password } };
@@ -125,7 +126,8 @@ class UserModel extends Model {
         throw new Error('Invalid backend response.');
       }
     } catch (e) {
-      throw new Error(e.message);
+      res = e.response || {};
+      throw new Error(res.statusText || 'The request was not successful.');
     }
 
     const user = { ...res.data, ...{ password } };
@@ -162,7 +164,8 @@ class UserModel extends Model {
         throw new Error('Invalid backend response.');
       }
     } catch (e) {
-      throw new Error(e.message);
+      res = e.response || {};
+      throw new Error(res.statusText || 'The request was not successful.');
     }
   }
 
