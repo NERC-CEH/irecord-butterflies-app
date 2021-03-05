@@ -58,8 +58,9 @@ function organiseByProbability(allSpecies) {
     .filter(isProbable(probsNow))
     .sort(byProbability(probsNow));
 
-  const notInProbableList = sp => !speciesHereAndNow.includes(sp);
-  const remainingSpecies = allSpecies.filter(notInProbableList).sort(byName);
+  const notInProbableLists = sp =>
+    !speciesHereAndNow.includes(sp) && !speciesNow.includes(sp);
+  const remainingSpecies = allSpecies.filter(notInProbableLists).sort(byName);
 
   return [speciesHereAndNow, speciesNow, remainingSpecies];
 }
