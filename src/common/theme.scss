@@ -139,6 +139,10 @@ ion-back-button {
   }
 }
 
+.md ion-header ion-title:not(:last-child) {
+  padding: 0 10px; // header title to use the available space more effitiently
+}
+
 .info-background-message ion-button {
   margin-left: 10px;
 

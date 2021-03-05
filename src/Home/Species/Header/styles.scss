@@ -9,6 +9,10 @@
       font-weight: 400;
       text-align: center;
 
+      &.md {
+        padding: 0;
+      }
+
       b {
         font-family: 'Museo700';
         color: var(--ion-color-primary);
