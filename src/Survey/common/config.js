@@ -5,15 +5,16 @@ import { calendarOutline, locationOutline } from 'ionicons/icons';
 const fixedLocationSchema = Yup.object().shape({
   latitude: Yup.number().required(),
   longitude: Yup.number().required(),
-  name: Yup.string().required('Location name'),
+  name: Yup.string().required(),
 });
 
 const validateLocation = val => {
-  if (!val) {
+  try {
+    fixedLocationSchema.validateSync(val);
+    return true;
+  } catch (e) {
     return false;
   }
-  fixedLocationSchema.validateSync(val);
-  return true;
 };
 
 export const verifyLocationSchema = Yup.mixed().test(
