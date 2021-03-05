@@ -1,9 +1,16 @@
 import React from 'react';
 import { Header, Page, Main, Section } from '@apps';
 import 'common/images/flumens.svg';
+import photos from 'common/data/species/cache/photos.json';
 import './styles.scss';
 
 const { P, H } = Section;
+
+const getAuthorFromPhoto = photo => photo.author;
+const allAuthors = photos.map(getAuthorFromPhoto);
+const uniqueAuthors = [...new Set(allAuthors)].sort();
+const getAuthorComponent = author => <span>{author}</span>;
+const authors = uniqueAuthors.map(getAuthorComponent);
 
 export default () => (
   <Page id="credits">
@@ -34,17 +41,6 @@ export default () => (
       </Section>
 
       <Section>
-        <H>Photographs</H>
-        <P>
-          We are very grateful to all of the photographers whose images we have
-          used in this app:
-        </P>
-        <P skipTranslation>
-          <i>WIP</i>
-        </P>
-      </Section>
-
-      <Section>
         <H>Development</H>
         <P>
           This app was built by{' '}
@@ -67,6 +63,17 @@ export default () => (
           <a href="https://www.flaticon.com/" title="Flaticon">
             www.flaticon.com
           </a>
+        </P>
+      </Section>
+
+      <Section>
+        <H>Photographs</H>
+        <P>
+          We are very grateful to all of the photographers whose images we have
+          used in this app:
+        </P>
+        <P skipTranslation className="credits">
+          {authors}
         </P>
       </Section>
     </Main>
