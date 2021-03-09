@@ -31,7 +31,6 @@ export const dateAttr = {
   max: () => new Date(),
   required: true,
   remote: {
-    id: 'date',
     values: d => date.print(d, false),
   },
 };

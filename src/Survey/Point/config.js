@@ -43,7 +43,9 @@ const survey = {
         type: 'radio',
         info: 'Pick the life stage.',
         icon: caterpillarIcon,
-        options: stageOptions,
+        componentProps: {
+          options: stageOptions,
+        },
         remote: {
           id: 293,
           values: stageOptions,
@@ -51,7 +53,6 @@ const survey = {
       },
       comment: {
         label: 'Comment',
-        id: 'comment',
         icon: chatboxOutline,
         type: 'textarea',
         info: 'Add any extra information about your survey.',
