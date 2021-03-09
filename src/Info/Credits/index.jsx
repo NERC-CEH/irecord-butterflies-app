@@ -6,7 +6,7 @@ import './styles.scss';
 
 const { P, H } = Section;
 
-const getAuthorFromPhoto = photo => photo.author;
+const getAuthorFromPhoto = photo => photo.author || '';
 const allAuthors = photos.map(getAuthorFromPhoto);
 const uniqueAuthors = [...new Set(allAuthors)].sort();
 const getAuthorComponent = author => <span>{author}</span>;
