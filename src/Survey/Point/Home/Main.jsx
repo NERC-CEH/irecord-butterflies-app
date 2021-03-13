@@ -45,27 +45,6 @@ class Component extends React.Component {
     isDisabled: PropTypes.bool,
   };
 
-  getNewImageButton = photoSelect => {
-    const { isDisabled } = this.props;
-
-    if (isDisabled) {
-      return <br />;
-    }
-
-    return (
-      <LongPressButton
-        color="secondary"
-        onLongClick={this.navigateToSearch}
-        type="submit"
-        expand="block"
-        onClick={photoSelect}
-      >
-        <IonIcon slot="start" icon={camera} size="large" />
-        Plant
-      </LongPressButton>
-    );
-  };
-
   navigateToSearch = () => {
     const { match } = this.props;
 
