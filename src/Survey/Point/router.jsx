@@ -5,8 +5,8 @@ import appModel from 'models/app';
 import userModel from 'models/user';
 import config from 'common/config';
 import StartNewSurvey from 'Survey/common/Components/StartNewSurvey';
+import Species from 'Survey/common/Components/Species';
 import Home from './Home';
-import Species from './Species';
 import survey from './config';
 
 const baseURL = `/survey/${survey.name}`;
