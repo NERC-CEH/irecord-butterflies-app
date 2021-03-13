@@ -34,19 +34,28 @@ class LongPressFabButton extends Component {
         ev.event.preventDefault();
         ev.event.stopPropagation();
         ev.event.stopImmediatePropagation();
+        const isShowingList = this.fabRef.current.activated;
 
-        this.longPressActive = true;
-        this.longPressAction();
+        if (isShowingList) {
+          this.fabRef.current.close();
+        } else {
+          this.longPressActive = true;
+          this.longPressAction();
+        }
       },
       onEnd: ev => {
-        ev.event.preventDefault();
-        ev.event.stopPropagation();
-        ev.event.stopImmediatePropagation();
+        const isShowingList = this.fabRef.current.activated;
 
-        if (this.longPressActive) {
-          this.longPressActive = false;
-          onClick();
-          return;
+        if (!isShowingList) {
+          ev.event.preventDefault();
+          ev.event.stopPropagation();
+          ev.event.stopImmediatePropagation();
+
+          if (this.longPressActive) {
+            this.longPressActive = false;
+            onClick();
+            return;
+          }
         }
 
         this.longPressActive = false;
