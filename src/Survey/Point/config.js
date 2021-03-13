@@ -2,20 +2,11 @@ import * as Yup from 'yup';
 import {
   dateAttr,
   locationAttrs,
+  stageAttr,
   verifyLocationSchema,
 } from 'Survey/common/config';
 import { chatboxOutline } from 'ionicons/icons';
 import icon from 'common/images/butterflyIcon.svg';
-import caterpillarIcon from 'common/images/caterpillar.svg';
-
-const stageOptions = [
-  { value: null, isDefault: true, label: 'Not Recorded' },
-  { value: 'Adult', id: 3929 },
-  { value: 'Larva', id: 3931 },
-  { value: 'Egg', id: 3932 },
-  { value: 'Pupae', id: 3930 },
-  { value: 'Larval web', id: 14079 },
-];
 
 const survey = {
   id: 101,
@@ -38,19 +29,7 @@ const survey = {
         },
       },
       count: { id: 16 },
-      stage: {
-        label: 'Stage',
-        type: 'radio',
-        info: 'Pick the life stage.',
-        icon: caterpillarIcon,
-        componentProps: {
-          options: stageOptions,
-        },
-        remote: {
-          id: 293,
-          values: stageOptions,
-        },
-      },
+      stage: stageAttr,
       comment: {
         label: 'Comment',
         icon: chatboxOutline,

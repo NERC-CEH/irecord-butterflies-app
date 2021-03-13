@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 import { date } from '@apps';
 import { calendarOutline, locationOutline } from 'ionicons/icons';
+import caterpillarIcon from 'common/images/caterpillar.svg';
 
 const fixedLocationSchema = Yup.object().shape({
   latitude: Yup.number().required(),
@@ -74,4 +75,27 @@ export const locationAttrs = {
   locationAltitudeAccuracy: { remote: { id: 284 } },
   locationSource: { remote: { id: 760 } },
   locationGridref: { remote: { id: 335 } },
+};
+
+const stageOptions = [
+  { value: null, isDefault: true, label: 'Not Recorded' },
+  { value: 'Adult', id: 3929 },
+  { value: 'Larva', id: 3931 },
+  { value: 'Egg', id: 3932 },
+  { value: 'Pupae', id: 3930 },
+  { value: 'Larval web', id: 14079 },
+];
+
+export const stageAttr = {
+  label: 'Stage',
+  type: 'radio',
+  info: 'Pick the life stage.',
+  icon: caterpillarIcon,
+  componentProps: {
+    options: stageOptions,
+  },
+  remote: {
+    id: 293,
+    values: stageOptions,
+  },
 };
