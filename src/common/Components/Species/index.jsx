@@ -75,6 +75,7 @@ class SpeciesMainComponent extends React.Component {
   static propTypes = exact({
     filters: PropTypes.object.isRequired,
     onSelect: PropTypes.func,
+    ignore: PropTypes.array,
     searchPhrase: PropTypes.string,
   });
 
@@ -130,9 +131,14 @@ class SpeciesMainComponent extends React.Component {
   };
 
   getSpeciesData = () => {
-    const { searchPhrase, filters = {} } = this.props;
+    const { searchPhrase, filters = {}, ignore = [] } = this.props;
 
     let filteredSpecies = [...species];
+
+    if (ignore.length) {
+      const skipIgnored = ({ id }) => !ignore.includes(id);
+      filteredSpecies = filteredSpecies.filter(skipIgnored);
+    }
 
     const filterBySearchPhrase = sp => {
       const re = new RegExp(escapeRegexCharacters(searchPhrase), 'i');

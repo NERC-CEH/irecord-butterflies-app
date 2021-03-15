@@ -67,6 +67,7 @@ const defaults = {
   sendAnalytics: true,
   appSession: 0,
   useLocationForGuide: true,
+  listSurveyListSortedByTime: false,
   location: '',
 
   // draft survey pointers

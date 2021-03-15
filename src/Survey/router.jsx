@@ -1,3 +1,4 @@
 import PointRoutes from './Point/router';
+import ListRoutes from './List/router';
 
-export default [...PointRoutes];
+export default [...PointRoutes, ...ListRoutes];

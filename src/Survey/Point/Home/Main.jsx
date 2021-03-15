@@ -13,21 +13,19 @@ import {
 } from '@ionic/react';
 import {
   Main,
-  alert,
   MenuAttrItem,
-  LongPressButton,
   InfoMessage,
   MenuAttrItemFromModel,
   PhotoPicker,
 } from '@apps';
 import Image from 'models/image';
 import {
-  camera,
   locationOutline,
   addCircleOutline,
   removeCircleOutline,
 } from 'ionicons/icons';
 import PropTypes from 'prop-types';
+import exact from 'prop-types-exact';
 import numberIcon from 'common/images/number.svg';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
@@ -38,52 +36,17 @@ import config from 'common/config';
 class Component extends React.Component {
   static contextType = NavContext;
 
-  static propTypes = {
+  static propTypes = exact({
     sample: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
-    appModel: PropTypes.object.isRequired,
     isDisabled: PropTypes.bool,
-  };
+  });
 
   navigateToSearch = () => {
     const { match } = this.props;
 
     this.context.navigate(`${match.url}/taxon`);
   };
-
-  showFirstSurveyTip = () => {
-    const { appModel } = this.props;
-
-    if (!appModel.attrs.showFirstSurveyTip) {
-      return;
-    }
-
-    alert({
-      skipTranslation: true,
-      header: 'Your first survey',
-      message: (
-        <>
-          You can add plant photos using your camera and we will try to identify
-          them for you. Alternatively, you can long-press the button to enter
-          the species manually.
-        </>
-      ),
-      buttons: [
-        {
-          text: 'OK, got it',
-          role: 'cancel',
-          cssClass: 'primary',
-        },
-      ],
-    });
-
-    appModel.attrs.showFirstSurveyTip = false;
-    appModel.save();
-  };
-
-  componentDidMount() {
-    this.showFirstSurveyTip();
-  }
 
   increaseCount = () => {
     const { sample } = this.props;
@@ -283,7 +246,7 @@ class Component extends React.Component {
           <IonItemDivider>Species Photo</IonItemDivider>
           <div className="rounded">
             <PhotoPicker
-              model={sample}
+              model={occ}
               ImageClass={Image}
               isDisabled={isDisabled}
               dataDirPath={config.dataPath}

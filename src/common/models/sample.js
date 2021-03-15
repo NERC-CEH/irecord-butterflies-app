@@ -3,6 +3,7 @@ import userModel from 'models/user';
 import config from 'common/config';
 import { observable } from 'mobx';
 import pointSurvey from 'Survey/Point/config';
+import listSurvey from 'Survey/List/config';
 import GPSExtension from './sampleGPSExt';
 import { modelStore } from './store';
 import Occurrence from './occurrence';
@@ -10,6 +11,7 @@ import Media from './image';
 
 const surveyConfig = {
   point: pointSurvey,
+  list: listSurvey,
 };
 
 class AppSample extends Sample {

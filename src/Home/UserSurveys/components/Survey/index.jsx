@@ -39,9 +39,30 @@ function deleteSurvey(sample) {
 }
 
 function getSampleInfo(sample) {
-  const taxon = sample.occurrences[0].attrs.taxon || {};
-  const label = taxon.commonName;
+  const survey = sample.getSurvey();
+
   const prettyDate = date.print(sample.attrs.date);
+
+  if (survey.name === 'point') {
+    const taxon = sample.occurrences[0].attrs.taxon || {};
+    const label = taxon.commonName;
+
+    return (
+      <>
+        <IonAvatar>
+          <IonIcon icon={butterflyIcon} color="primary" />
+        </IonAvatar>
+
+        <IonLabel position="stacked" mode="ios" color="dark">
+          <IonLabel className="species-name" color={clsx(!label && 'warning')}>
+            {label || 'Species missing'}
+          </IonLabel>
+          <IonLabel class="ion-text-wrap">{prettyDate}</IonLabel>
+        </IonLabel>
+        <IonBadge color="medium" />
+      </>
+    );
+  }
 
   return (
     <>
@@ -50,9 +71,7 @@ function getSampleInfo(sample) {
       </IonAvatar>
 
       <IonLabel position="stacked" mode="ios" color="dark">
-        <IonLabel className="species-name" color={clsx(!label && 'warning')}>
-          {label || 'Species missing'}
-        </IonLabel>
+        <IonLabel className="species-name">List</IonLabel>
         <IonLabel class="ion-text-wrap">{prettyDate}</IonLabel>
       </IonLabel>
       <IonBadge color="medium" />

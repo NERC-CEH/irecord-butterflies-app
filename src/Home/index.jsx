@@ -11,9 +11,7 @@ import {
   IonLabel,
   IonTabBar,
   IonRouterOutlet,
-  IonFabList,
   NavContext,
-  IonFabButton,
 } from '@ionic/react';
 import {
   bookOutline,
@@ -33,7 +31,6 @@ import Surveys from './UserSurveys';
 import './styles.scss';
 
 const UserSurveys = () => <Surveys savedSamples={savedSamples} />;
-const primarySurveyName = 'point';
 
 const showLongPressAlert = () =>
   alert({
@@ -61,7 +58,6 @@ const showLongPressAlert = () =>
     ],
   });
 
-const surveys = [];
 class HomeComponent extends React.Component {
   static contextType = NavContext;
 
@@ -83,33 +79,11 @@ class HomeComponent extends React.Component {
     this.context.navigate(`/survey/point`);
   };
 
+  navigateToSecondarySurvey = () => {
+    this.context.navigate(`/survey/list`);
+  };
+
   render() {
-    const getOtherSurveys = () => {
-      const notPrimary = ({ name }) => name !== primarySurveyName;
-      const otherSurveys = Object.values(surveys).filter(notPrimary);
-
-      // eslint-disable-next-line
-      const getSurveyButton = ({ name, label }) => {
-        if (name === 'precise-area' && !appModel.attrs.useExperiments) {
-          // TODO: remove once survey approved
-          return null;
-        }
-        return (
-          <IonFabButton
-            class="fab-button-label"
-            routerLink={`/survey/${name}`}
-            key={name}
-          >
-            <IonLabel>
-              <T>{label}</T>
-            </IonLabel>
-          </IonFabButton>
-        );
-      };
-
-      return otherSurveys.map(getSurveyButton);
-    };
-
     const MenuWrap = () => (
       <Menu
         userModel={userModel}
@@ -147,17 +121,10 @@ class HomeComponent extends React.Component {
           <IonTabButton>
             <LongPressFabButton
               onClick={this.navigateToPrimarySurvey}
+              onLongClick={this.navigateToSecondarySurvey}
               icon={butterflyIcon}
               label="Record"
-            >
-              <IonFabList side="top">
-                {getOtherSurveys()}
-
-                <div className="long-press-surveys-label">
-                  <T>Click on other recording options from list below</T>
-                </div>
-              </IonFabList>
-            </LongPressFabButton>
+            />
           </IonTabButton>
 
           <IonTabButton tab="/home/about" href="/home/about">

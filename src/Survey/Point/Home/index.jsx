@@ -77,7 +77,7 @@ class Controller extends React.Component {
   };
 
   render() {
-    const { appModel, match, sample } = this.props;
+    const { match, sample } = this.props;
 
     if (!sample) {
       return null;
@@ -105,14 +105,7 @@ class Controller extends React.Component {
           rightSlot={finishButton}
           defaultHref="/home/surveys"
         />
-        <Main
-          match={match}
-          sample={sample}
-          appModel={appModel}
-          url={match.url}
-          photoSelect={this.photoSelect}
-          isDisabled={isDisabled}
-        />
+        <Main match={match} sample={sample} isDisabled={isDisabled} />
       </Page>
     );
   }

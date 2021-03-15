@@ -29,4 +29,8 @@ export default class AppOccurrence extends Occurrence {
 
     this.attrs.taxon = sp;
   }
+
+  isDisabled() {
+    this.parent.isDisabled();
+  }
 }
