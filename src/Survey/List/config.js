@@ -103,6 +103,7 @@ const survey = {
 
       attrs: {
         location: null,
+        area: null,
       },
     });
 
@@ -115,6 +116,9 @@ const survey = {
     try {
       const sampleSchema = Yup.object().shape({
         location: verifyLocationSchema,
+        area: Yup.string()
+          .nullable()
+          .required('Please enter surveyed area size.'),
       });
 
       sampleSchema.validateSync(attrs, { abortEarly: false });
