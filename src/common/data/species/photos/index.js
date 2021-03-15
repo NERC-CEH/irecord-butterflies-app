@@ -315,12 +315,12 @@ import './PearlBorderedFritillary/Pearl-borderedFritillary - SmallPearl-bordered
 import './PearlBorderedFritillary/PearlBorderedFritillary_immature_1.jpg?originalName';
 import './PearlBorderedFritillary/PearlBorderedFritillary_immature_2.jpg?originalName';
 import './PearlBorderedFritillary/PearlBorderedFritillary_immature_3.jpg?originalName';
-import './PurpleEmporer/Purple Emperor (Iain Leach).jpg?originalName';
-import './PurpleEmporer/Purple Emperor female (Bob Eade).jpg?originalName';
-import './PurpleEmporer/Purple Emperor male (Iain Leach).jpg?originalName';
-import './PurpleEmporer/PurpleEmporer_immature_1.jpg?originalName';
-import './PurpleEmporer/PurpleEmporer_immature_2.jpg?originalName';
-import './PurpleEmporer/PurpleEmporer_immature_3.jpg?originalName';
+import './PurpleEmperor/Purple Emperor (Iain Leach).jpg?originalName';
+import './PurpleEmperor/Purple Emperor female (Bob Eade).jpg?originalName';
+import './PurpleEmperor/Purple Emperor male (Iain Leach).jpg?originalName';
+import './PurpleEmperor/PurpleEmperor_immature_1.jpg?originalName';
+import './PurpleEmperor/PurpleEmperor_immature_2.jpg?originalName';
+import './PurpleEmperor/PurpleEmperor_immature_3.jpg?originalName';
 import './PurpleHairstreak/Purple Hairstreak (Mark Searle).jpg?originalName';
 import './PurpleHairstreak/Purple Hairstreak female upperwing (Tim Melling).jpg?originalName';
 import './PurpleHairstreak/Purple Hairstreak male (Iain Leach).jpg?originalName';
