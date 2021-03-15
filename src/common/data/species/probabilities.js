@@ -27,43 +27,43 @@ function getAverage(probsForWeek) {
 }
 
 function getHectad(probsForWeek, hectad) {
-  const hectadSpecies = {};
-  const remainingSpecies = {};
+  const speciesNowAndHere = {};
+  const speciesHere = {};
 
   const hectadProbs = probByLocationData[hectad];
   if (!hectadProbs) {
     console.warn('Hectad is missing from location data ', hectad);
-    return hectadSpecies;
+    return speciesNowAndHere;
   }
 
   const region = hectadRegions[hectad];
   if (!region) {
     console.warn('Region is missing from hectad data ', hectad);
-    return hectadSpecies;
+    return speciesNowAndHere;
   }
 
   const species = probsForWeek[region];
   if (!species) {
     console.warn('Region is missing from time data ', region);
-    return hectadSpecies;
+    return speciesNowAndHere;
   }
 
   const addSpeciesProbToLocationProb = ([speciesId, prob]) => {
-    const hectadProb = hectadProbs[speciesId];
+    const timeProb = species[speciesId];
 
-    const speciesHasNoSpacialProbs = !(hectadProb >= 0);
-    if (speciesHasNoSpacialProbs) {
-      remainingSpecies[speciesId] = prob;
+    const speciesHasNoTimeProbs = !(timeProb >= 0);
+    if (speciesHasNoTimeProbs) {
+      speciesHere[speciesId] = prob;
       return;
     }
 
-    const totalProbability = parseFloat(prob) * parseFloat(hectadProb);
-    hectadSpecies[speciesId] = parseFloat(totalProbability.toFixed(3));
+    const totalProbability = parseFloat(prob) * parseFloat(timeProb);
+    speciesNowAndHere[speciesId] = parseFloat(totalProbability.toFixed(3));
   };
 
-  Object.entries(species).forEach(addSpeciesProbToLocationProb);
+  Object.entries(hectadProbs).forEach(addSpeciesProbToLocationProb);
 
-  return [hectadSpecies, remainingSpecies];
+  return [speciesNowAndHere, speciesHere];
 }
 
 export default function getProbablities(weekNo, hectad = '') {
@@ -81,13 +81,14 @@ export default function getProbablities(weekNo, hectad = '') {
 
   let speciesNowAndHere = {};
   let speciesNow = {};
+  let speciesHere = {};
   if (!probsForHectad) {
     speciesNow = getAverage(probsForWeek);
   } else {
-    [speciesNowAndHere, speciesNow] = getHectad(probsForWeek, hectad);
+    [speciesNowAndHere, speciesHere] = getHectad(probsForWeek, hectad);
   }
 
-  const species = [speciesNowAndHere, speciesNow];
+  const species = [speciesNowAndHere, speciesHere, speciesNow];
 
   cache[cacheKey] = species;
 

@@ -43,7 +43,7 @@ function organiseByProbability(allSpecies) {
   const currentLocation = location.gridref;
   const currentWeek = getCurrentWeekNumber();
 
-  const [probsNowAndHere, probsNow] = getProbabilities(
+  const [probsNowAndHere, probsHere, probsNow] = getProbabilities(
     currentWeek,
     currentLocation
   );
@@ -54,15 +54,21 @@ function organiseByProbability(allSpecies) {
     .filter(isProbable(probsNowAndHere))
     .sort(byProbability(probsNowAndHere));
 
+  const speciesHere = allSpecies
+    .filter(isProbable(probsHere))
+    .sort(byProbability(probsHere));
+
   const speciesNow = allSpecies
     .filter(isProbable(probsNow))
     .sort(byProbability(probsNow));
 
   const notInProbableLists = sp =>
-    !speciesHereAndNow.includes(sp) && !speciesNow.includes(sp);
+    !speciesHereAndNow.includes(sp) &&
+    !speciesHere.includes(sp) &&
+    !speciesNow.includes(sp);
   const remainingSpecies = allSpecies.filter(notInProbableLists).sort(byName);
 
-  return [speciesHereAndNow, speciesNow, remainingSpecies];
+  return [speciesHereAndNow, speciesHere, speciesNow, remainingSpecies];
 }
 
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
@@ -178,11 +184,13 @@ class SpeciesMainComponent extends React.Component {
     const speciesData = this.getSpeciesData();
     const [
       speciesHereAndNow,
+      speciesHere,
       speciesNow,
       remainingSpecies,
     ] = organiseByProbability(speciesData);
 
     const hasSpeciesHereAndNow = !!speciesHereAndNow.length;
+    const hasSpeciesHere = !!speciesHere.length;
     const hasSpeciesNow = !!speciesNow.length;
     const hasAdditional = !!remainingSpecies.length;
 
@@ -202,6 +210,13 @@ class SpeciesMainComponent extends React.Component {
           </IonItemDivider>
         )}
         {speciesHereAndNow.map(this.getSpeciesTile)}
+
+        {hasSpeciesHere && (
+          <IonItemDivider sticky className="species-now" mode="md">
+            <IonLabel>In your area</IonLabel>
+          </IonItemDivider>
+        )}
+        {speciesHere.map(this.getSpeciesTile)}
 
         {hasSpeciesNow && (
           <IonItemDivider sticky className="species-now" mode="md">
