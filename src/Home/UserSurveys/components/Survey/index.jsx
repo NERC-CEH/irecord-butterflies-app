@@ -14,7 +14,9 @@ import {
   IonAvatar,
 } from '@ionic/react';
 import clsx from 'clsx';
+import species from 'common/data/species';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
+import butterflyListIcon from 'common/images/butterflyListIcon.svg';
 import OnlineStatus from './components/OnlineStatus';
 import ErrorMessage from './components/ErrorMessage';
 import './styles.scss';
@@ -44,14 +46,27 @@ function getSampleInfo(sample) {
   const prettyDate = date.print(sample.attrs.date);
 
   if (survey.name === 'point') {
-    const taxon = sample.occurrences[0].attrs.taxon || {};
+    const [occ] = sample.occurrences;
+    const taxon = occ.attrs.taxon || {};
     const label = taxon.commonName;
+
+    const byId = ({ id: speciesID }) => speciesID === taxon.id;
+    const fullSpeciesProfile = species.find(byId) || {};
+
+    const { thumbnail } = fullSpeciesProfile;
+
+    const image = occ.media[0];
+    let avatar = <IonIcon icon={butterflyIcon} color="warning" />;
+
+    if (image) {
+      avatar = <img src={image.getURL()} />;
+    } else if (thumbnail) {
+      avatar = <img src={thumbnail} />;
+    }
 
     return (
       <>
-        <IonAvatar>
-          <IonIcon icon={butterflyIcon} color="primary" />
-        </IonAvatar>
+        <IonAvatar>{avatar}</IonAvatar>
 
         <IonLabel position="stacked" mode="ios" color="dark">
           <IonLabel className="species-name" color={clsx(!label && 'warning')}>
@@ -67,7 +82,7 @@ function getSampleInfo(sample) {
   return (
     <>
       <IonAvatar>
-        <IonIcon icon={butterflyIcon} color="primary" />
+        <IonIcon icon={butterflyListIcon} color="primary" />
       </IonAvatar>
 
       <IonLabel position="stacked" mode="ios" color="dark">
