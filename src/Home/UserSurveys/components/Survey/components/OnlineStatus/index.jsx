@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { IonSpinner, IonLabel, IonChip } from '@ionic/react';
+import { IonSpinner, IonLabel, IonChip, IonButton } from '@ionic/react';
 import { observer } from 'mobx-react';
 import { Trans as T } from 'react-i18next';
 import './styles.scss';
 
-const UsersSurveys = props => {
-  const { sample } = props;
+const UsersSurveys = ({ onUpload, sample }) => {
   const { saved } = sample.metadata;
 
   if (!saved) {
@@ -19,15 +18,24 @@ const UsersSurveys = props => {
     );
   }
 
-  if (!sample.remote.synchronising) {
+  if (sample.remote.synchronising) {
+    return <IonSpinner class="survey-status" />;
+  }
+
+  if (sample.isUploaded()) {
     return null;
   }
 
-  return <IonSpinner class="survey-status" />;
+  return (
+    <IonButton class="survey-status-upload" onClick={onUpload}>
+      Upload
+    </IonButton>
+  );
 };
 
 UsersSurveys.propTypes = {
   sample: PropTypes.object.isRequired,
+  onUpload: PropTypes.func.isRequired,
 };
 
 export default observer(UsersSurveys);

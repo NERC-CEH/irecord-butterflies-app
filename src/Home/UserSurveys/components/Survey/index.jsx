@@ -87,6 +87,17 @@ const Survey = ({ sample }) => {
   const href = !synchronising && `/survey/${survey.name}/${sample.cid}`;
 
   const deleteSurveyWrap = () => deleteSurvey(sample);
+  const onUpload = e => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const invalids = sample.validateRemote();
+    if (sample.remote.synchronising || invalids) {
+      return;
+    }
+
+    sample.saveRemote();
+  };
 
   return (
     <IonItemSliding class="survey-list-item">
@@ -94,7 +105,7 @@ const Survey = ({ sample }) => {
 
       <IonItem routerLink={href} detail={!synchronising}>
         {getSampleInfo(sample)}
-        <OnlineStatus sample={sample} />
+        <OnlineStatus sample={sample} onUpload={onUpload} />
       </IonItem>
 
       <IonItemOptions side="end">
