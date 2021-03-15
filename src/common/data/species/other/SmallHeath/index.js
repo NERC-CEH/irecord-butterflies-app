@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Small Heath (underside)_Iain H Leach_(512px).png';
 import map from './Small Heath_map.png';
 import lifechart from './Small Heath_lifecycle.jpg';
 

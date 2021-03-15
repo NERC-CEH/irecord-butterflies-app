@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Grayling_(512px).png';
 import map from './Grayling_map.png';
 import lifechart from './Grayling_lifecycle.jpg';
 

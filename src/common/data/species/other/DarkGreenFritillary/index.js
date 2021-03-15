@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Dark Green Fritillary (upperside)_(512px).png';
 import map from './Dark Green Fritillary_map.png';
 import lifechart from './Dark Green Fritillary_lifecycle.jpg';
 

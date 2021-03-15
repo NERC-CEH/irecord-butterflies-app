@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Large Tortoiseshell (upperside)_Adam Gor_(512px).png';
 import map from './Large Tortoiseshell_map.png';
 
 export default {

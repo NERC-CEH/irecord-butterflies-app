@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Comma_Iain H Leach_(512px).png';
 import map from './Comma_map.png';
 import lifechart from './Comma_lifecycle.jpg';
 

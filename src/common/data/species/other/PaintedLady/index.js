@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Painted Lady_Iain H Leach_(512px).png';
 import map from './Painted Lady_map.png';
 import lifechart from './Painted Lady_lifecycle.jpg';
 

@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Marsh Fritillary (upperside)__(512px).png';
 import map from './Marsh Fritillary_map.png';
 import lifechart from './Marsh Fritillary_lifecycle.jpg';
 

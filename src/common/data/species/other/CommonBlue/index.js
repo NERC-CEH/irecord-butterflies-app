@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Common Blue (male)_(512px).png';
 import map from './Common Blue_map.png';
 import lifechart from './Common Blue_lifecycle.jpg';
 

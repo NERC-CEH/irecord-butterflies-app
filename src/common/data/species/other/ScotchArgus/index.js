@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Scotch Argus (female upperside)__(512px).png';
 import map from './Scotch Argus_map.png';
 import lifechart from './Scotch Argus_lifecycle.jpg';
 

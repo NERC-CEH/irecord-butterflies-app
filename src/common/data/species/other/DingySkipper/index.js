@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Dingy Skipper (upperside)__(512px).png';
 import map from './Dingy Skipper_map.png';
 import lifechart from './Dingy Skipper_lifecycle.jpg';
 

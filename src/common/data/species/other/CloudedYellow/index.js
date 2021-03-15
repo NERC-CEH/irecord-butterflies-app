@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Clouded Yellow_Iain H Leach_(512px).png';
 import map from './Clouded Yellow_map.png';
 import lifechart from './Clouded Yellow_lifecycle.jpg';
 

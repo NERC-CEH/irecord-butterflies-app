@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Duke of Burgundy_Iain H Leach_(512px).png';
 import map from './Duke of Burgundy_map.png';
 import lifechart from './Duke of Burgundy_lifecycle.jpg';
 

@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Ringlet (underside)_John Murray (512px).png';
 import map from './Ringlet_map.png';
 import lifechart from './Ringlet_lifecycle.jpg';
 

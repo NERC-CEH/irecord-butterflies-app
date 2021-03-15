@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Wood White (underside)_Iain H Leach_(512px).png';
 import map from './Wood White_map.png';
 import lifechart from './Wood White_lifecycle.jpg';
 

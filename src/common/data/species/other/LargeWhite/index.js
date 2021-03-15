@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Large White (female upperside)__(512px).png';
 import map from './Large White_map.png';
 import lifechart from './Large White_lifecycle.jpg';
 

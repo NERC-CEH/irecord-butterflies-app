@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Peacock (upperside)__(512px).png';
 import map from './Peacock_map.png';
 import lifechart from './Peacock_lifecycle.jpg';
 

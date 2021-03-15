@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Mountain Ringlet (upperside)_Iain H Leach_(512px).png';
 import map from './Mountain Ringlet_map.png';
 import lifechart from './Mountain Ringlet_lifecycle.jpg';
 

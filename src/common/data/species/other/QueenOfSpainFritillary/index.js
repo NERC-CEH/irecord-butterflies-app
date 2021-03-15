@@ -1,4 +1,4 @@
-import thumbnail from 'common/Components/Species/thumbnail.png';
+import thumbnail from './Queen of Spain Fritillary (upperside)_Mark Searle (512px).png';
 
 export default {
   thumbnail,
