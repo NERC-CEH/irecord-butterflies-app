@@ -11,14 +11,7 @@ import {
   IonButton,
   IonAvatar,
 } from '@ionic/react';
-import {
-  Main,
-  MenuAttrItem,
-  InfoMessage,
-  MenuAttrItemFromModel,
-  PhotoPicker,
-} from '@apps';
-import Image from 'models/image';
+import { Main, MenuAttrItem, InfoMessage, MenuAttrItemFromModel } from '@apps';
 import {
   locationOutline,
   addCircleOutline,
@@ -28,6 +21,7 @@ import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import numberIcon from 'common/images/number.svg';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
+import PhotoPicker from 'common/Components/PhotoPicker';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
 import species from 'common/data/species';
 import config from 'common/config';
@@ -245,12 +239,7 @@ class Component extends React.Component {
 
           <IonItemDivider>Species Photo</IonItemDivider>
           <div className="rounded">
-            <PhotoPicker
-              model={occ}
-              ImageClass={Image}
-              isDisabled={isDisabled}
-              dataDirPath={config.dataPath}
-            />
+            <PhotoPicker model={occ} />
           </div>
         </IonList>
       </Main>

@@ -15,13 +15,11 @@ import {
 } from '@ionic/react';
 import clsx from 'clsx';
 import { searchOutline, checkmarkOutline } from 'ionicons/icons';
-import { Plugins } from '@capacitor/core';
+import { Keyboard } from '@capacitor/keyboard';
 import CurrentFilters from 'Components/CurrentFilters';
 import FiltersMenu from 'Components/FiltersMenu';
 
 import './styles.scss';
-
-const { Keyboard } = Plugins;
 
 function Header({ onSearch: onSearchProp, toggleFilter, filters }) {
   const [isSearching, setIsSearching] = useState(false);
