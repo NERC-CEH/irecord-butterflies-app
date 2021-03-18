@@ -11,18 +11,13 @@ import {
   IonItem,
   IonItemSliding,
 } from '@ionic/react';
-import {
-  Main,
-  MenuAttrItem,
-  InfoMessage,
-  MenuAttrItemFromModel,
-  InfoBackgroundMessage,
-} from '@apps';
+import { Main, MenuAttrItem, InfoMessage, MenuAttrItemFromModel } from '@apps';
 import { observer } from 'mobx-react';
 import { locationOutline, filterOutline } from 'ionicons/icons';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
+import InfoBackgroundMessage from 'common/Components/InfoBackgroundMessage';
 import config from 'common/config';
 
 const speciesNameSort = (occ1, occ2) => {
@@ -183,6 +178,10 @@ function HomeMain({
 
             {speciesList}
           </div>
+
+          <InfoBackgroundMessage name="showSpeciesDeleteTip">
+            To delete any species swipe it to the left.
+          </InfoBackgroundMessage>
         </IonList>
       </>
     );

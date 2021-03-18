@@ -77,6 +77,8 @@ const defaults = {
   showSurveysDeleteTip: true,
   showSurveyUploadTip: true,
   showLongPressTip: true,
+  showListSurveyTip: true,
+  showSpeciesDeleteTip: true,
 
   filters: {},
 };

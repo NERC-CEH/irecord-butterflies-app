@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import { Page, Header, showInvalidsMessage, device, toast, alert } from '@apps';
@@ -9,6 +9,35 @@ import './styles.scss';
 
 const { warn } = toast;
 
+function showListSurveyTip() {
+  alert({
+    header: 'List survey',
+    message: (
+      <>
+        <p>
+          Use this to record all of the butterflies you see during a walk/survey
+          of a site. You can build up a list of the species seen and alter the
+          count of each by tapping on the number as you go along.
+        </p>
+
+        <p>
+          First you must set a spatial reference for your survey sightings. You
+          can choose a precise point to represent the whole site (appropriate
+          for small areas) or select a larger grid square size in order to
+          encompass a larger site.
+        </p>
+
+        <p>
+          Alternatively, if you are recording over a large area, you may want to
+          undertake separate surveys (i.e. go through the app recording process
+          several times) for different parts of the site or for different 1km
+          grid squares.
+        </p>
+      </>
+    ),
+    buttons: [{ text: 'OK, got it' }],
+  });
+}
 function increaseCount(occ) {
   occ.attrs.count++; // eslint-disable-line no-param-reassign
   occ.save();
@@ -39,6 +68,17 @@ function deleteOccurrence(occ) {
 
 function Home({ appModel, userModel, match, sample }) {
   const { navigate } = useContext(NavContext);
+
+  const showListSurveyTipOnce = () => {
+    if (appModel.attrs.showListSurveyTip) {
+      appModel.attrs.showListSurveyTip = false; // eslint-disable-line
+
+      appModel.save();
+      showListSurveyTip();
+    }
+  };
+
+  useEffect(showListSurveyTipOnce);
 
   if (!sample) {
     return null;
