@@ -12,6 +12,8 @@ import {
   IonTabBar,
   IonRouterOutlet,
   NavContext,
+  IonFabList,
+  IonFabButton,
 } from '@ionic/react';
 import {
   bookOutline,
@@ -79,10 +81,6 @@ class HomeComponent extends React.Component {
     this.context.navigate(`/survey/point`);
   };
 
-  navigateToSecondarySurvey = () => {
-    this.context.navigate(`/survey/list`);
-  };
-
   render() {
     const MenuWrap = () => (
       <Menu
@@ -121,10 +119,24 @@ class HomeComponent extends React.Component {
           <IonTabButton>
             <LongPressFabButton
               onClick={this.navigateToPrimarySurvey}
-              onLongClick={this.navigateToSecondarySurvey}
               icon={butterflyIcon}
               label="Record"
-            />
+            >
+              <IonFabList side="top">
+                <IonFabButton
+                  class="fab-button-label"
+                  routerLink="/survey/list"
+                >
+                  <IonLabel>
+                    <T>Species list</T>
+                  </IonLabel>
+                </IonFabButton>
+
+                <div className="long-press-surveys-label">
+                  <T>Click on other recording options from list below</T>
+                </div>
+              </IonFabList>
+            </LongPressFabButton>
           </IonTabButton>
 
           <IonTabButton tab="/home/about" href="/home/about">

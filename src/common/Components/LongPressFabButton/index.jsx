@@ -13,7 +13,6 @@ import './styles.scss';
 class LongPressFabButton extends Component {
   static propTypes = {
     onClick: PropTypes.func.isRequired,
-    onLongClick: PropTypes.func.isRequired,
     children: PropTypes.any,
     icon: PropTypes.any.isRequired,
     label: PropTypes.any,
@@ -24,7 +23,7 @@ class LongPressFabButton extends Component {
   fabRef = React.createRef();
 
   componentDidMount() {
-    const { onClick, onLongClick } = this.props;
+    const { onClick } = this.props;
 
     this.gesture = createGesture({
       el: this.buttonRef.current,
@@ -49,17 +48,12 @@ class LongPressFabButton extends Component {
         ev.event.stopPropagation();
         ev.event.stopImmediatePropagation();
 
-        const isShowingList = this.fabRef.current.activated;
-        if (!isShowingList) {
-          if (this.longPressActive) {
-            this.longPressActive = false;
-            onClick();
-            return;
-          }
+        if (this.longPressActive) {
+          this.longPressActive = false;
+          onClick();
+          return;
         }
 
-        onLongClick();
-        this.fabRef.current.close();
         this.longPressActive = false;
       },
     });
@@ -89,12 +83,7 @@ class LongPressFabButton extends Component {
     const { children, icon, label } = this.props;
 
     return (
-      <IonFab
-        ref={this.fabRef}
-        vertical="bottom"
-        horizontal="center"
-        activated={false}
-      >
+      <IonFab ref={this.fabRef} vertical="bottom" horizontal="center">
         <IonFabList side="top">
           <div className="fab-backdrop" />
         </IonFabList>
