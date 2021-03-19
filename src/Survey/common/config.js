@@ -78,7 +78,6 @@ export const locationAttrs = {
 };
 
 const stageOptions = [
-  { value: null, isDefault: true, label: 'Not Recorded' },
   { value: 'Adult', id: 3929 },
   { value: 'Larva', id: 3931 },
   { value: 'Egg', id: 3932 },

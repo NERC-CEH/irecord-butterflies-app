@@ -73,7 +73,7 @@ const survey = {
         attrs: {
           count: 1,
           comment: null,
-          stage: null,
+          stage: 'Adult',
           taxon,
         },
       });
