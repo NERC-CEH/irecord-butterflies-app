@@ -12,13 +12,39 @@
     .species-name {
       font-weight: 500;
     }
+
+    ion-label {
+      margin-left: 5px;
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  .count {
+    margin: 10px 15px;
+
+    .number {
+      background: #edeced;
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+      text-align: center;
+      line-height: 40px;
+      margin: 0 auto;
+    }
+
+    .label {
+      font-size: 0.6em;
+      text-align: center;
+    }
   }
 
   ion-avatar {
     width: 50px;
     height: 50px;
     background: #e7e7e738;
-    margin: 0 10px;
+    margin: 5px 10px;
 
     ion-icon {
       width: calc(100% - 20px);

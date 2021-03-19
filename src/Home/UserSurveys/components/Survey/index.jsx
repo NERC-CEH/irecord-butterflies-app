@@ -87,11 +87,14 @@ function getSampleInfo(sample) {
     );
   }
 
+  const speciesCount = sample.occurrences.length;
+
   return (
     <>
-      <IonAvatar>
-        <IonIcon icon={butterflyListIcon} color="primary" />
-      </IonAvatar>
+      <div className="count">
+        <div className="number">{speciesCount}</div>
+        <div className="label">Species</div>
+      </div>
 
       <IonLabel position="stacked" mode="ios" color="dark">
         <IonLabel className="species-name">List</IonLabel>
