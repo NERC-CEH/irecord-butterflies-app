@@ -1,13 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
-import { Page, Header, showInvalidsMessage, device, toast, alert } from '@apps';
+import { Page, Header, showInvalidsMessage, alert } from '@apps';
 import { observer } from 'mobx-react';
 import { IonButton, NavContext } from '@ionic/react';
 import Main from './Main';
 import './styles.scss';
-
-const { warn } = toast;
 
 function showListSurveyTip() {
   alert({
