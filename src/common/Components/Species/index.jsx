@@ -206,28 +206,32 @@ class SpeciesMainComponent extends React.Component {
       <>
         {hasSpeciesHereAndNow && (
           <IonItemDivider sticky mode="md">
-            <IonLabel>Now in your area</IonLabel>
+            <IonLabel>Flying now in your area</IonLabel>
           </IonItemDivider>
         )}
         {speciesHereAndNow.map(this.getSpeciesTile)}
 
         {hasSpeciesHere && (
           <IonItemDivider sticky className="species-now" mode="md">
-            <IonLabel>In your area</IonLabel>
+            <IonLabel>In your area at other times of year</IonLabel>
           </IonItemDivider>
         )}
         {speciesHere.map(this.getSpeciesTile)}
 
         {hasSpeciesNow && (
           <IonItemDivider sticky className="species-now" mode="md">
-            <IonLabel>This time of year</IonLabel>
+            <IonLabel>Flying at this time of year</IonLabel>
           </IonItemDivider>
         )}
         {speciesNow.map(this.getSpeciesTile)}
 
         {hasAdditional && (
           <IonItemDivider sticky className="species-additional" mode="md">
-            <IonLabel>Additional</IonLabel>
+            {hasSpeciesNow ? (
+              <IonLabel>Flying at other times of year</IonLabel>
+            ) : (
+              <IonLabel>Species not known from your area</IonLabel>
+            )}
           </IonItemDivider>
         )}
         {remainingSpecies.map(this.getSpeciesTile)}
