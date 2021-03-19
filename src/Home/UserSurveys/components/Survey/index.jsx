@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import { alert, date } from '@apps';
@@ -12,6 +12,7 @@ import {
   IonBadge,
   IonIcon,
   IonAvatar,
+  NavContext,
 } from '@ionic/react';
 import clsx from 'clsx';
 import species from 'common/data/species';
@@ -101,7 +102,9 @@ function getSampleInfo(sample) {
   );
 }
 
-const Survey = ({ sample }) => {
+const Survey = ({ sample, userModel }) => {
+  const { navigate } = useContext(NavContext);
+
   const survey = sample.getSurvey();
 
   const { synchronising } = sample.remote;
@@ -113,12 +116,14 @@ const Survey = ({ sample }) => {
     e.preventDefault();
     e.stopPropagation();
 
-    const invalids = sample.validateRemote();
-    if (sample.remote.synchronising || invalids) {
+    const isLoggedIn = !!userModel.attrs.id;
+    if (!isLoggedIn) {
+      navigate(`/user/register`);
       return;
     }
 
-    sample.saveRemote();
+    sample.upload();
+    navigate(`/home/surveys`, 'root');
   };
 
   return (
@@ -141,6 +146,7 @@ const Survey = ({ sample }) => {
 
 Survey.propTypes = exact({
   sample: PropTypes.object.isRequired,
+  userModel: PropTypes.object.isRequired,
 });
 
 export default observer(Survey);

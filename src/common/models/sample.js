@@ -1,4 +1,4 @@
-import { Sample } from '@apps';
+import { Sample, showInvalidsMessage, device, toast } from '@apps';
 import userModel from 'models/user';
 import config from 'common/config';
 import { observable } from 'mobx';
@@ -8,6 +8,8 @@ import GPSExtension from './sampleGPSExt';
 import { modelStore } from './store';
 import Occurrence from './occurrence';
 import Media from './image';
+
+const { warn } = toast;
 
 const surveyConfig = {
   point: pointSurvey,
@@ -36,6 +38,25 @@ class AppSample extends Sample {
 
     Object.assign(this, GPSExtension);
     this.gpsExtensionInit();
+  }
+
+  upload() {
+    if (this.remote.synchronising) {
+      return;
+    }
+
+    const invalids = this.validateRemote();
+    if (invalids) {
+      showInvalidsMessage(invalids);
+      return;
+    }
+
+    if (!device.isOnline()) {
+      warn('Looks like you are offline!');
+      return;
+    }
+
+    this.saveRemote();
   }
 }
 

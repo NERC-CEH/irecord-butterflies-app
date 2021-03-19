@@ -85,25 +85,13 @@ function Home({ appModel, userModel, match, sample }) {
   }
 
   const _processSubmission = () => {
-    const invalids = sample.validateRemote();
-    if (invalids) {
-      showInvalidsMessage(invalids);
-      return;
-    }
-
-    if (!device.isOnline()) {
-      warn('Looks like you are offline!');
-      return;
-    }
-
     const isLoggedIn = !!userModel.attrs.id;
     if (!isLoggedIn) {
       navigate(`/user/register`);
       return;
     }
 
-    sample.saveRemote();
-
+    sample.upload();
     navigate(`/home/surveys`, 'root');
   };
 

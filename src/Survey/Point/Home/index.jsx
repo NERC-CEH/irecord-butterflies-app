@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
-import { Page, Header, showInvalidsMessage, device, toast } from '@apps';
+import { Page, Header, showInvalidsMessage } from '@apps';
 import { observer } from 'mobx-react';
 import { IonButton, NavContext } from '@ionic/react';
 import Main from './Main';
 import './styles.scss';
-
-const { warn } = toast;
 
 @observer
 class Controller extends React.Component {
@@ -25,25 +23,13 @@ class Controller extends React.Component {
   _processSubmission = () => {
     const { sample, userModel } = this.props;
 
-    const invalids = sample.validateRemote();
-    if (invalids) {
-      showInvalidsMessage(invalids);
-      return;
-    }
-
-    if (!device.isOnline()) {
-      warn('Looks like you are offline!');
-      return;
-    }
-
     const isLoggedIn = !!userModel.attrs.id;
     if (!isLoggedIn) {
       this.context.navigate(`/user/register`);
       return;
     }
 
-    sample.saveRemote();
-
+    sample.upload();
     this.context.navigate(`/home/surveys`, 'root');
   };
 
