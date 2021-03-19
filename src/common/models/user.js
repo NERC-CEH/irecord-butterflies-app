@@ -203,6 +203,8 @@ const defaults = {
   password: null,
   name: null,
   id: null,
+
+  stats: null,
 };
 
 const userModel = new UserModel(genericStore, 'user', defaults);

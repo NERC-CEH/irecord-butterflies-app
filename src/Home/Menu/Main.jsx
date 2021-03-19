@@ -7,6 +7,7 @@ import {
   settingsOutline,
   personAddOutline,
   personOutline,
+  statsChartOutline,
   exitOutline,
   heartOutline,
 } from 'ionicons/icons';
@@ -26,6 +27,13 @@ const MenuMain = ({ isLoggedIn, user, logOut }) => {
               Logout
               {': '}
               {user.firstName} {user.secondName}
+            </IonItem>
+          )}
+
+          {isLoggedIn && (
+            <IonItem routerLink="/user/statistics" detail>
+              <IonIcon icon={statsChartOutline} size="small" slot="start" />
+              Statistics
             </IonItem>
           )}
 
