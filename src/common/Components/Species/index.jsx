@@ -182,6 +182,7 @@ class SpeciesMainComponent extends React.Component {
 
   getSpecies = () => {
     const speciesData = this.getSpeciesData();
+
     const [
       speciesHereAndNow,
       speciesHere,
@@ -194,7 +195,12 @@ class SpeciesMainComponent extends React.Component {
     const hasSpeciesNow = !!speciesNow.length;
     const hasAdditional = !!remainingSpecies.length;
 
-    if (!speciesHereAndNow.length && !hasAdditional) {
+    if (
+      !hasSpeciesHereAndNow &&
+      !hasSpeciesHere &&
+      !hasSpeciesNow &&
+      !hasAdditional
+    ) {
       return (
         <InfoBackgroundMessage>
           Sorry, no species were found.
