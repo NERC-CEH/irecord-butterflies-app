@@ -4,7 +4,30 @@ import exact from 'prop-types-exact';
 import { IonContent, IonList, IonCol, IonRow, IonGrid } from '@ionic/react';
 import species from 'common/data/species';
 import Collapse from 'common/Components/Collapse';
+import checks from './images/checks.jpg';
+import plain from './images/plain.jpg';
+import spots from './images/spots.jpg';
+import stripes from './images/stripes.jpg';
 import './styles.scss';
+
+const markingIllustrations = { checks, plain, spots, stripes };
+const sizeLabels = {
+  Small: (
+    <>
+      Small <small>{'(< 2cm)'}</small>
+    </>
+  ),
+  Medium: (
+    <>
+      Medium <small>(2 - 4cm)</small>
+    </>
+  ),
+  Large: (
+    <>
+      Large <small>{'(> 4cm)'}</small>
+    </>
+  ),
+};
 
 const getOptions = type => {
   const getOptionsFromSpecies = sp => sp[type];
@@ -20,16 +43,41 @@ const getOptions = type => {
 };
 
 const allFilters = [
-  { type: 'colour', values: getOptions('colour') },
-  { type: 'markings', values: getOptions('markings') },
-  { type: 'size', values: getOptions('size') },
+  {
+    type: 'colour',
+    values: getOptions('colour'),
+    renderValue: value => (
+      <>
+        <div
+          style={{ background: value === 'Cream' ? '#fffdd0' : value }}
+          className="colour"
+        />
+        {value}
+      </>
+    ),
+  },
+  {
+    type: 'markings',
+    values: getOptions('markings'),
+    renderValue: value => (
+      <>
+        <img src={markingIllustrations[value.toLowerCase()]} />
+        {value}
+      </>
+    ),
+  },
+  {
+    type: 'size',
+    values: getOptions('size'),
+    renderValue: value => sizeLabels[value],
+  },
   { type: 'group', values: getOptions('group') },
   { type: 'country', values: getOptions('country') },
 ];
 
 function FiltersMenu({ searchPhrase, filters, addFilter }) {
   function getFilters() {
-    const getFilterType = ({ type, values }) => {
+    const getFilterType = ({ type, values, renderValue }) => {
       let options = [...values];
 
       const notSelected = value =>
@@ -50,9 +98,11 @@ function FiltersMenu({ searchPhrase, filters, addFilter }) {
           addFilter({ type, value });
         };
 
+        const filterLabel = renderValue ? renderValue(value) : value;
+
         return (
           <IonCol key={value} size="6" lines="none" onClick={toggleFilterWrap}>
-            {value}
+            {filterLabel}
           </IonCol>
         );
       };

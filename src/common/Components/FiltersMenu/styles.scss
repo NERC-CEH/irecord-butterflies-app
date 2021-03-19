@@ -14,7 +14,23 @@ ion-content.filters {
     height: 50px;
     color: white;
     padding: 15px;
+    padding-right: 0;
     text-transform: capitalize;
+    display: flex;
+
+    div.colour,
+    img {
+      margin-right: 10px;
+      border-radius: 5px;
+      height: 1em;
+      width: 1em;
+    }
+
+    small {
+      margin-left: 5px;
+      align-self: center;
+      opacity: 0.8;
+    }
   }
 
   ion-item {
