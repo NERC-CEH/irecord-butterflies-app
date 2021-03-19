@@ -17,7 +17,6 @@ import {
 import clsx from 'clsx';
 import species from 'common/data/species';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
-import butterflyListIcon from 'common/images/butterflyListIcon.svg';
 import OnlineStatus from './components/OnlineStatus';
 import ErrorMessage from './components/ErrorMessage';
 import './styles.scss';
