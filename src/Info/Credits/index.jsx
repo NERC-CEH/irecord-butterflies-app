@@ -6,9 +6,23 @@ import './styles.scss';
 
 const { P, H } = Section;
 
+const extraPhotoAuthors = [
+  'Adam Gor',
+  'John Murray',
+  'Anthony Pope',
+  'Peter Withers',
+];
+
+const byLastName = (n1, n2) => {
+  const lastName1 = n1.split(' ').pop();
+  const lastName2 = n2.split(' ').pop();
+  return lastName1.localeCompare(lastName2);
+};
 const getAuthorFromPhoto = photo => photo.author || '';
 const allAuthors = photos.map(getAuthorFromPhoto);
-const uniqueAuthors = [...new Set(allAuthors)].sort();
+const uniqueAuthors = [...new Set([...allAuthors, ...extraPhotoAuthors])].sort(
+  byLastName
+);
 const getAuthorComponent = author => <span>{author}</span>;
 const authors = uniqueAuthors.map(getAuthorComponent);
 
@@ -33,6 +47,9 @@ export default () => (
           </span>
           <span>
             <b>Vilius Stankaitis</b> (Flumens)
+          </span>
+          <span>
+            <b>Anthony McCluskey</b>
           </span>
         </P>
       </Section>
@@ -80,6 +97,10 @@ export default () => (
         </P>
         <P skipTranslation className="credits">
           {authors}
+        </P>
+        <P>
+          Also, thanks to Andrew Cooper and Anthony McCluskey who were
+          responsible for the species photo cut-outs.
         </P>
       </Section>
     </Main>
