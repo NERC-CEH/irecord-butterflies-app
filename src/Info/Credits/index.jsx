@@ -26,9 +26,6 @@ export default () => (
             <b>Richard Fox</b> (Butterfly Conservation)
           </span>
           <span>
-            <b>Katie Cruickshanks</b> (Butterfly Conservation)
-          </span>
-          <span>
             <b>David Roy</b> (UKCEH)
           </span>
           <span>
@@ -37,6 +34,15 @@ export default () => (
           <span>
             <b>Vilius Stankaitis</b> (Flumens)
           </span>
+        </P>
+      </Section>
+
+      <Section>
+        <H>Funding</H>
+        <P>
+          We are grateful to Butterfly Conservation, Defra, the Joint Nature
+          Conservation Committee for all contributing to the funding of the
+          application.
         </P>
       </Section>
 
