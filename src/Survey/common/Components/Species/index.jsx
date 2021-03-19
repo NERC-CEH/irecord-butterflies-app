@@ -16,7 +16,13 @@ function SpeciesSelect({ sample, occurrence, appModel }) {
   function onSelect(species) {
     const survey = sample.getSurvey();
     if (survey.name === 'point') {
-      sample.occurrences[0].attrs.taxon = species; // eslint-disable-line
+      const occ = sample.occurrences[0];
+      if (!occ) {
+        // TODO: remove this check after Beta
+        console.error('No occurrence found when setting species');
+        return;
+      }
+      occ.attrs.taxon = species; // eslint-disable-line
     }
 
     if (survey.name === 'list') {

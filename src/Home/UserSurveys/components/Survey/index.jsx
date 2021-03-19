@@ -46,7 +46,14 @@ function getSampleInfo(sample) {
   const prettyDate = date.print(sample.attrs.date);
 
   if (survey.name === 'point') {
-    const [occ] = sample.occurrences;
+    const occ = sample.occurrences[0];
+    if (!occ) {
+      console.error('No occurrence found when showing record');
+      // TODO: remove this check after Beta
+      sample.destroy();
+      return null;
+    }
+
     const taxon = occ.attrs.taxon || {};
     const label = taxon.commonName;
 
