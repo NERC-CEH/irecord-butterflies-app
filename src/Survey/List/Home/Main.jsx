@@ -179,9 +179,11 @@ function HomeMain({
             {speciesList}
           </div>
 
-          <InfoBackgroundMessage name="showSpeciesDeleteTip">
-            To delete any species swipe it to the left.
-          </InfoBackgroundMessage>
+          {!isDisabled && (
+            <InfoBackgroundMessage name="showSpeciesDeleteTip">
+              To delete any species swipe it to the left.
+            </InfoBackgroundMessage>
+          )}
         </IonList>
       </>
     );
