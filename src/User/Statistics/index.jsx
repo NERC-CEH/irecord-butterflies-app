@@ -58,12 +58,12 @@ function Statistics({ userModel }) {
     }
 
     const {
-      myTotalRecords,
       projectRecordsCount,
       myProjectRecords,
       myProjectSpecies,
       myProjectRecordsThisYear,
       myProjectSpeciesThisYear,
+      // myTotalRecords,
       // projectSpeciesCount,
       // myProjectSpeciesRatio,
       // myProjectActivityRatio,
@@ -114,15 +114,6 @@ function Statistics({ userModel }) {
             </IonLabel>
             <IonLabel class="ion-text-right">
               <small>{myProjectSpeciesThisYear}/65</small>
-            </IonLabel>
-          </IonItem>
-
-          <IonItem lines="full" className="list-header-labels">
-            <IonLabel>
-              <small>iRecord records (total)</small>
-            </IonLabel>
-            <IonLabel class="ion-text-right">
-              <small>{myTotalRecords}</small>
             </IonLabel>
           </IonItem>
 
