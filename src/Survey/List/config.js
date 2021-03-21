@@ -2,11 +2,15 @@ import * as Yup from 'yup';
 import {
   dateAttr,
   locationAttrs,
+  deviceAttr,
+  appVersionAttr,
   stageAttr,
   verifyLocationSchema,
 } from 'Survey/common/config';
+import { isPlatform } from '@ionic/react';
 import { chatboxOutline, expandOutline } from 'ionicons/icons';
 import icon from 'common/images/butterflyIcon.svg';
+import config from 'common/config';
 
 const areaOptions = [
   {
@@ -30,9 +34,10 @@ const survey = {
   icon,
 
   attrs: {
-    appVersion: { id: 1139 },
     date: dateAttr,
     ...locationAttrs,
+    device: deviceAttr,
+    appVersion: appVersionAttr,
 
     area: {
       icon: expandOutline,
@@ -104,6 +109,8 @@ const survey = {
       attrs: {
         location: null,
         area: null,
+        device: isPlatform('android') ? 'android' : 'ios',
+        appVersion: config.version,
       },
     });
 

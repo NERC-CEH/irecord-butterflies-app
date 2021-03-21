@@ -77,6 +77,16 @@ export const locationAttrs = {
   locationGridref: { remote: { id: 335 } },
 };
 
+export const deviceAttr = {
+  id: 273,
+  values: {
+    ios: 2398,
+    android: 2399,
+  },
+};
+
+export const appVersionAttr = { id: 1139 };
+
 const stageOptions = [
   { value: 'Adult', id: 3929 },
   { value: 'Larva', id: 3931 },
