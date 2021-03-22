@@ -49,7 +49,7 @@ export default () => (
             <b>Vilius Stankaitis</b> (Flumens)
           </span>
           <span>
-            <b>Anthony McCluskey</b>
+            <b>Anthony McCluskey</b> (Butterfly Conservation)
           </span>
         </P>
       </Section>
@@ -76,6 +76,42 @@ export default () => (
       </Section>
 
       <Section>
+        <H>Photographs</H>
+
+        <P>
+          We are extremely grateful to Peter Eeles who has generously shared
+          images of immature stages of butterflies for use within this
+          application. To learn more about butterfly life-cycles please visit{' '}
+          <a href="https://www.butterflylifecycles.com">
+            butterflylifecycles.com
+          </a>{' '}
+          or refer to Peter's book: Eeles, P. (2019) Life Cycles of British and
+          Irish Butterflies. Pisces Publications, Newbury.
+        </P>
+        <P>
+          We are also grateful to all of the photographers whose images we have
+          used in this app:
+        </P>
+        <P skipTranslation className="credits">
+          {authors}
+        </P>
+        <P>
+          Finally, thanks to Andrew Cooper and Anthony McCluskey who were
+          responsible for the species photo cut-outs.
+        </P>
+      </Section>
+
+      <Section>
+        <H>Maps</H>
+        <P>
+          We are also extremely grateful to Chris Manley who prepared the
+          species distribution maps used in this app. His book British and Irish
+          Moths. A Photographic Guide (third edition) by Bloomsbury provides a
+          great identification guide to moths.
+        </P>
+      </Section>
+
+      <Section>
         <H>Graphics</H>
         <P>
           Icons made by{' '}
@@ -86,21 +122,6 @@ export default () => (
           <a href="https://www.flaticon.com/" title="Flaticon">
             www.flaticon.com
           </a>
-        </P>
-      </Section>
-
-      <Section>
-        <H>Photographs</H>
-        <P>
-          We are very grateful to all of the photographers whose images we have
-          used in this app:
-        </P>
-        <P skipTranslation className="credits">
-          {authors}
-        </P>
-        <P>
-          Also, thanks to Andrew Cooper and Anthony McCluskey who were
-          responsible for the species photo cut-outs.
         </P>
       </Section>
     </Main>
