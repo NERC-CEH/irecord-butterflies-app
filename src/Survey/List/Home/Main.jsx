@@ -198,7 +198,7 @@ function HomeMain({
             <IonButton
               expand="block"
               className="uploaded-message-website-link"
-              href={`${config.backend.url}/enter-record-list?sample_id=${sample.id}`}
+              href={`${config.backend.url}/sample-details?sample_id=${sample.id}`}
             >
               iRecord website
             </IonButton>
