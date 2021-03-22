@@ -73,10 +73,13 @@ export default function getProbablities(weekNo, hectad = '') {
   }
 
   console.log(`Generating probabilities data for ${weekNo} - ${hectad}`);
-  // We have only 52 weeks in the dataset but it can be 53 in a year
-  weekNo = weekNo === 53 ? 52 : weekNo; // eslint-disable-line
 
-  const probsForWeek = probByTimeData[weekNo];
+  let probsForWeek = probByTimeData[weekNo];
+  if (!probsForWeek) {
+    // We have only 52 weeks in the dataset but it can be 53 in a year
+    // Also, 13 is missing
+    probsForWeek = probByTimeData[weekNo - 1];
+  }
   const probsForHectad = probByLocationData[hectad];
 
   let speciesNowAndHere = {};
