@@ -79,6 +79,7 @@ const defaults = {
   showLongPressTip: true,
   showListSurveyTip: true,
   showSpeciesDeleteTip: true,
+  showStatsWIPTip: true,
 
   filters: {},
 };

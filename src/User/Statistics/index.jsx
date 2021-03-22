@@ -1,15 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
-import {
-  Page,
-  Header,
-  Main,
-  InfoBackgroundMessage,
-  device,
-  toast,
-  loader,
-} from '@apps';
+import { Page, Header, Main, device, toast, loader } from '@apps';
 import { observer } from 'mobx-react';
 import {
   IonLabel,
@@ -17,11 +9,34 @@ import {
   IonList,
   IonItem,
   IonButton,
+  useIonViewDidEnter,
 } from '@ionic/react';
+import InfoBackgroundMessage from 'common/Components/InfoBackgroundMessage';
 import fetchStats from './services';
 import './styles.scss';
 
 const { warn } = toast;
+
+async function fetchStatsWrap(userModel) {
+  if (!device.isOnline()) {
+    return;
+  }
+
+  await loader.show({
+    message: 'Please wait...',
+  });
+
+  try {
+    const stats = await fetchStats(userModel);
+    userModel.attrs.stats = stats; // eslint-disable-line
+    userModel.save();
+  } catch (err) {
+    console.error(err);
+    // do nothing
+  }
+
+  loader.hide();
+}
 
 function Statistics({ userModel }) {
   // userModel.getStatistics();
@@ -32,21 +47,15 @@ function Statistics({ userModel }) {
       return;
     }
 
-    await loader.show({
-      message: 'Please wait...',
-    });
-
-    try {
-      const stats = await fetchStats(userModel);
-      userModel.attrs.stats = stats; // eslint-disable-line
-      userModel.save();
-    } catch (err) {
-      console.error(err);
-      // do nothing
-    }
-
-    loader.hide();
+    fetchStatsWrap(userModel);
   };
+
+  const onViewEnteredRefreshStats = () => {
+    if (!userModel.attrs.stats) {
+      fetchStatsWrap(userModel);
+    }
+  };
+  useIonViewDidEnter(onViewEnteredRefreshStats);
 
   const getReport = () => {
     if (!userModel.attrs.stats) {
@@ -74,19 +83,17 @@ function Statistics({ userModel }) {
 
     return (
       <IonList lines="none">
-        <i>This is work in progress...</i>
-        <br />
-        <br />
-
         <div className="rounded">
-          <IonItemDivider mode="md">User</IonItemDivider>
+          <IonItemDivider mode="md">My totals</IonItemDivider>
 
           <IonItem lines="full" className="list-header-labels">
             <IonLabel>
-              <small>Records</small>
+              <small>Records (total)</small>
             </IonLabel>
             <IonLabel class="ion-text-right">
-              <small>{myProjectRecords}</small>
+              <small>
+                <b>{myProjectRecords}</b>
+              </small>
             </IonLabel>
           </IonItem>
 
@@ -95,16 +102,20 @@ function Statistics({ userModel }) {
               <small>Records ({yearName})</small>
             </IonLabel>
             <IonLabel class="ion-text-right">
-              <small>{myProjectRecordsThisYear}</small>
+              <small>
+                <b>{myProjectRecordsThisYear}</b>
+              </small>
             </IonLabel>
           </IonItem>
 
           <IonItem lines="full" className="list-header-labels">
             <IonLabel>
-              <small>Species recorded</small>
+              <small>Species recorded (total)</small>
             </IonLabel>
             <IonLabel class="ion-text-right">
-              <small>{myProjectSpecies}/65</small>
+              <small>
+                <b>{myProjectSpecies}</b>/64
+              </small>
             </IonLabel>
           </IonItem>
 
@@ -113,21 +124,29 @@ function Statistics({ userModel }) {
               <small>Species recorded ({yearName})</small>
             </IonLabel>
             <IonLabel class="ion-text-right">
-              <small>{myProjectSpeciesThisYear}/65</small>
+              <small>
+                <b>{myProjectSpeciesThisYear}</b>/64
+              </small>
             </IonLabel>
           </IonItem>
 
-          <IonItemDivider mode="md">Survey</IonItemDivider>
+          <IonItemDivider mode="md">Survey totals</IonItemDivider>
 
           <IonItem lines="full" className="list-header-labels">
             <IonLabel>
               <small>Records (total)</small>
             </IonLabel>
             <IonLabel class="ion-text-right">
-              <small>{projectRecordsCount}</small>
+              <small>
+                <b>{projectRecordsCount}</b>
+              </small>
             </IonLabel>
           </IonItem>
         </div>
+
+        <InfoBackgroundMessage name="showStatsWIPTip">
+          <i>We will be improving this page with the next app updates.</i>
+        </InfoBackgroundMessage>
       </IonList>
     );
   };
