@@ -130,7 +130,7 @@ function Statistics({ userModel }) {
             </IonLabel>
           </IonItem>
 
-          <IonItemDivider mode="md">Survey totals</IonItemDivider>
+          <IonItemDivider mode="md">App totals</IonItemDivider>
 
           <IonItem lines="full" className="list-header-labels">
             <IonLabel>
@@ -145,7 +145,7 @@ function Statistics({ userModel }) {
         </div>
 
         <InfoBackgroundMessage name="showStatsWIPTip">
-          <i>We will be improving this page with the next app updates.</i>
+          <i>We will be adding more functionality to this page soon.</i>
         </InfoBackgroundMessage>
       </IonList>
     );
