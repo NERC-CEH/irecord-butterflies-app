@@ -76,7 +76,7 @@ class UserSurveyComponent extends React.Component {
         <>
           <InfoBackgroundMessage>
             <div>
-              You have no finished surveys.
+              You have no finished records.
               <br />
               <br />
               Press
