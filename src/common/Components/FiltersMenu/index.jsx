@@ -4,6 +4,7 @@ import exact from 'prop-types-exact';
 import { IonContent, IonList, IonCol, IonRow, IonGrid } from '@ionic/react';
 import species from 'common/data/species';
 import Collapse from 'common/Components/Collapse';
+import { observer } from 'mobx-react';
 import checks from './images/checks.jpg';
 import plain from './images/plain.jpg';
 import spots from './images/spots.jpg';
@@ -137,4 +138,4 @@ FiltersMenu.propTypes = exact({
   searchPhrase: PropTypes.string,
 });
 
-export default FiltersMenu;
+export default observer(FiltersMenu);
