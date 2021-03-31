@@ -11,7 +11,6 @@ import {
   exitOutline,
   heartOutline,
 } from 'ionicons/icons';
-import binocularsLogo from './binoculars.svg';
 
 const MenuMain = ({ isLoggedIn, user, logOut }) => {
   return (
@@ -57,10 +56,6 @@ const MenuMain = ({ isLoggedIn, user, logOut }) => {
           <IonItem routerLink="/info/credits" detail>
             <IonIcon icon={heartOutline} size="small" slot="start" />
             Credits
-          </IonItem>{' '}
-          <IonItem routerLink="/info/where-to-look" detail>
-            <IonIcon icon={binocularsLogo} size="small" slot="start" />
-            Where to Look
           </IonItem>
         </div>
 
