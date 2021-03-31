@@ -26,20 +26,27 @@ const { Keyboard } = Plugins;
 function Header({ onSearch: onSearchProp, toggleFilter, filters }) {
   const [isSearching, setIsSearching] = useState(false);
   const [searchPhrase, setSearchPhrase] = useState('');
+  const [tappedSearchEnd, setTappedSearchEnd] = useState(false);
   const searchInput = useRef();
 
   function onSearch(e) {
     const { value } = e.detail;
+
+    if (tappedSearchEnd) {
+      return;
+    }
     setSearchPhrase(value);
     onSearchProp(value);
   }
 
   function onSearchStart() {
     setIsSearching(true);
+    setTappedSearchEnd(false);
     searchInput.current.setFocus();
   }
 
   function onSearchEnd() {
+    setTappedSearchEnd(true);
     setIsSearching(false);
   }
 

@@ -76,56 +76,57 @@ const allFilters = [
 ];
 
 function FiltersMenu({ searchPhrase, filters, addFilter }) {
-  function getFilters() {
-    const getFilterType = ({ type, values, renderValue }) => {
-      let options = [...values];
+  const getFilterType = ({ type, values, renderValue }) => {
+    let options = [...values];
 
-      const notSelected = value =>
-        !filters[type] || !filters[type].includes(value);
-      const matchesSearchString = value =>
-        searchPhrase
-          ? value.toLowerCase().includes(searchPhrase.toLowerCase())
-          : true;
+    const notSelected = value =>
+      !filters[type] || !filters[type].includes(value);
+    const matchesSearchString = value =>
+      searchPhrase
+        ? value.toLowerCase().includes(searchPhrase.toLowerCase())
+        : true;
 
-      options = options.filter(notSelected).filter(matchesSearchString);
+    options = options.filter(notSelected).filter(matchesSearchString);
 
-      if (!options.length) {
-        return null;
-      }
+    if (!options.length) {
+      return null;
+    }
 
-      const getOption = value => {
-        const toggleFilterWrap = () => {
-          addFilter({ type, value });
-        };
-
-        const filterLabel = renderValue ? renderValue(value) : value;
-
-        return (
-          <IonCol key={value} size="6" lines="none" onClick={toggleFilterWrap}>
-            {filterLabel}
-          </IonCol>
-        );
+    const getOption = value => {
+      const toggleFilterWrap = () => {
+        addFilter({ type, value });
       };
 
-      const filterTypeOptions = options.map(getOption);
+      const filterLabel = renderValue ? renderValue(value) : value;
 
       return (
-        <Collapse key={type} title={type} open={!!searchPhrase}>
-          <IonGrid>
-            <IonRow>{filterTypeOptions}</IonRow>
-          </IonGrid>
-        </Collapse>
+        <IonCol key={value} size="6" lines="none" onClick={toggleFilterWrap}>
+          {filterLabel}
+        </IonCol>
       );
     };
 
-    const filterTypes = allFilters.map(getFilterType);
+    const filterTypeOptions = options.map(getOption);
 
-    return <IonList>{filterTypes}</IonList>;
+    return (
+      <Collapse key={type} title={type} open={!!searchPhrase}>
+        <IonGrid>
+          <IonRow>{filterTypeOptions}</IonRow>
+        </IonGrid>
+      </Collapse>
+    );
+  };
+
+  const filterTypes = allFilters.map(getFilterType);
+
+  const hasFilters = !!filterTypes.find(filter => filter);
+  if (!hasFilters) {
+    return null;
   }
 
   return (
     <IonContent slot="fixed" className="filters">
-      {getFilters()}
+      <IonList>{filterTypes}</IonList>
     </IonContent>
   );
 }
