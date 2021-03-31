@@ -26,7 +26,7 @@
     "@bit/flumens.apps.auto-suggest-input": "1.0.3",
     "@bit/flumens.apps.date": "0.2.1",
     "@bit/flumens.apps.device": "0.2.1",
-    "@bit/flumens.apps.gallery": "1.2.1",
+    "@bit/flumens.apps.gallery": "1.2.2",
     "@bit/flumens.apps.header": "0.6.3",
     "@bit/flumens.apps.helpers.alert": "0.4.2",
     "@bit/flumens.apps.helpers.loader": "0.1.1",
