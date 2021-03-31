@@ -5,7 +5,30 @@ import { Page, Header, showInvalidsMessage, alert } from '@apps';
 import { observer } from 'mobx-react';
 import { IonButton, NavContext } from '@ionic/react';
 import Main from './Main';
+import buttonWithExplanationImage from './buttonWithExplanationImage.png';
 import './styles.scss';
+
+function showListSurveyHiddenButtonTip() {
+  alert({
+    header: 'List survey tip',
+    message: (
+      <>
+        <div>
+          <ol>
+            <li>
+              <p>Tap to increase the count.</p>
+            </li>
+            <li>
+              <p>Tap to see more options.</p>
+            </li>
+          </ol>
+          <img src={buttonWithExplanationImage} />
+        </div>
+      </>
+    ),
+    buttons: [{ text: 'OK, got it' }],
+  });
+}
 
 function showListSurveyTip() {
   alert({
@@ -73,6 +96,14 @@ function Home({ appModel, userModel, match, sample }) {
 
       appModel.save();
       showListSurveyTip();
+    }
+
+    const firstOccAdded = sample.occurrences.length === 1;
+    if (appModel.attrs.showListSurveyHiddenButtonTip && firstOccAdded) {
+      appModel.attrs.showListSurveyHiddenButtonTip = false; // eslint-disable-line
+
+      appModel.save();
+      showListSurveyHiddenButtonTip();
     }
   };
 

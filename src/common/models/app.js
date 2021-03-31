@@ -80,6 +80,7 @@ const defaults = {
   showListSurveyTip: true,
   showSpeciesDeleteTip: true,
   showStatsWIPTip: true,
+  showListSurveyHiddenButtonTip: true,
 
   filters: {},
 };
