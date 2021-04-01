@@ -10,6 +10,7 @@ import {
   IonBadge,
   IonIcon,
   IonList,
+  NavContext,
 } from '@ionic/react';
 import { observer } from 'mobx-react';
 import { Page, Main } from '@apps';
@@ -28,6 +29,8 @@ function byCreateTime(m1, m2) {
 
 @observer
 class UserSurveyComponent extends React.Component {
+  static contextType = NavContext;
+
   static propTypes = exact({
     savedSamples: PropTypes.array.isRequired,
   });
@@ -73,17 +76,19 @@ class UserSurveyComponent extends React.Component {
 
     if (!surveys.length) {
       return (
-        <>
-          <InfoBackgroundMessage>
-            <div>
-              You have no finished records.
-              <br />
-              <br />
-              Press
-              <IonIcon icon={butterflyIcon} /> to add.
-            </div>
-          </InfoBackgroundMessage>
-        </>
+        <InfoBackgroundMessage>
+          <div>
+            You have no finished records.
+            <br />
+            <br />
+            Press
+            <IonIcon
+              icon={butterflyIcon}
+              onClick={this.navigateToPrimarySurvey}
+            />{' '}
+            to add.
+          </div>
+        </InfoBackgroundMessage>
       );
     }
 
@@ -136,6 +141,10 @@ class UserSurveyComponent extends React.Component {
         {uploadedSurveys.length}
       </IonBadge>
     );
+  };
+
+  navigateToPrimarySurvey = () => {
+    this.context.navigate(`/survey/point`);
   };
 
   render() {
