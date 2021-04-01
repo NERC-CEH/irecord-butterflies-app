@@ -44,6 +44,7 @@ function getSampleInfo(sample) {
   const survey = sample.getSurvey();
 
   const prettyDate = date.print(sample.attrs.date);
+  const isOutsideUK = sample.attrs.location && !sample.attrs.location.gridref;
 
   if (survey.name === 'point') {
     const occ = sample.occurrences[0];
@@ -80,8 +81,12 @@ function getSampleInfo(sample) {
             {label || 'Species missing'}
           </IonLabel>
           <IonLabel class="ion-text-wrap">{prettyDate}</IonLabel>
+          {isOutsideUK && (
+            <IonBadge className="location-warning" color="warning">
+              Check location
+            </IonBadge>
+          )}
         </IonLabel>
-        <IonBadge color="medium" />
       </>
     );
   }
@@ -98,8 +103,12 @@ function getSampleInfo(sample) {
       <IonLabel position="stacked" mode="ios" color="dark">
         <IonLabel className="species-name">List</IonLabel>
         <IonLabel class="ion-text-wrap">{prettyDate}</IonLabel>
+        {isOutsideUK && (
+          <IonBadge className="location-warning" color="warning">
+            Check location
+          </IonBadge>
+        )}
       </IonLabel>
-      <IonBadge color="medium" />
     </>
   );
 }

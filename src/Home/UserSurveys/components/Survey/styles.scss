@@ -19,6 +19,16 @@
       flex-direction: column;
       justify-content: center;
     }
+
+    .location-warning {
+      margin-bottom: 5px;
+      font-size: 0.8em;
+      font-weight: normal;
+      width: -webkit-fit-content;
+      width: fit-content;
+      background-color: #d888441f;
+      color: var(--ion-color-warning);
+    }
   }
 
   .count {
