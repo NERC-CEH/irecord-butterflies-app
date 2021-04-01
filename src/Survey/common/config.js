@@ -89,10 +89,10 @@ export const appVersionAttr = { id: 1139 };
 
 const stageOptions = [
   { value: 'Adult', id: 3929 },
-  { value: 'Larva', id: 3931 },
   { value: 'Egg', id: 3932 },
-  { value: 'Pupae', id: 3930 },
+  { value: 'Larva', id: 3931 },
   { value: 'Larval web', id: 14079 },
+  { value: 'Pupa', id: 3930 },
 ];
 
 export const stageAttr = {
