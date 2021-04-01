@@ -186,8 +186,8 @@ class Component extends React.Component {
         />
         {isOutsideUK && !isDisabled && (
           <InfoMessage color="warning">
-            Please check if your location is not at sea or outside the British
-            Isles.
+            Your location is not in the UK, Republic of Ireland, Isle of Man or
+            Channel Islands. Please tap on Location to change if necessary.
           </InfoMessage>
         )}
         {inacurate && !isDisabled && (
