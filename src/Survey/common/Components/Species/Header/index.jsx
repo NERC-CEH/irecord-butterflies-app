@@ -50,8 +50,9 @@ function Header({ onSearch: onSearchProp, toggleFilter, filters }) {
     setIsSearching(false);
   }
 
-  function onKeyUp({ code }) {
-    if (code === 'Enter') {
+  function onKeyUp({ keyCode }) {
+    // 13 = Enter
+    if (keyCode === 13) {
       setIsSearching(false);
       isPlatform('hybrid') && Keyboard.hide();
     }
