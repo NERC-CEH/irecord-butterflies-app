@@ -78,7 +78,7 @@ const shouldShowFeedback = () => {
     return false;
   }
 
-  return appSession > 1;
+  return appSession > 10;
 };
 
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
