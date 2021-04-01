@@ -10,6 +10,7 @@ const config = {
   environment: process.env.NODE_ENV,
   version: process.env.APP_VERSION,
   build: process.env.APP_BUILD,
+  feedbackEmail: 'apps%40ceh.ac.uk',
 
   log: !isTestEnv,
 

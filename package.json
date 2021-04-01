@@ -47,6 +47,7 @@
     "@bit/flumens.apps.route-with-models": "0.3.1",
     "@bit/flumens.apps.section": "0.4.0",
     "@bit/flumens.apps.toggle": "0.1.0",
+    "@bit/flumens.apps.user-feedback-request": "^0.1.10",
     "@bit/flumens.apps.utils.analytics": "0.2.0",
     "@bit/flumens.apps.utils.location": "0.1.6",
     "@bit/flumens.apps.utils.validation": "0.1.2",

@@ -1,4 +1,15 @@
 .species-list {
+  .user-feedback-row {
+    padding: 10px 20px;
+
+    #feedback-request {
+      border-radius: 10px;
+      ion-card-title {
+        font-family: 'Museo500';
+      }
+    }
+  }
+
   ion-grid {
     padding: 0;
   }

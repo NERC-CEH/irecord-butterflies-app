@@ -28,5 +28,6 @@ export { default as date } from '@bit/flumens.apps.date';
 export { default as Sample } from '@bit/flumens.apps.models.sample-with-drupal-remote';
 export { default as Occurrence } from '@bit/flumens.apps.models.occurrence-with-drupal-remote';
 export { default as Media } from '@bit/flumens.apps.models.media-with-drupal-remote';
+export { default as UserFeedbackRequest } from '@bit/flumens.apps.user-feedback-request';
 export * from '@bit/flumens.apps.utils.location';
 export * from '@bit/flumens.apps.utils.validation';

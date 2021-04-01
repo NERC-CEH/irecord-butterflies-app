@@ -15,10 +15,11 @@ import {
   IonToolbar,
   IonHeader,
 } from '@ionic/react';
-import { Main, InfoBackgroundMessage } from '@apps';
+import { Main, InfoBackgroundMessage, UserFeedbackRequest } from '@apps';
 import appModel from 'models/app';
 import { arrowBack, informationCircleOutline } from 'ionicons/icons';
 import species from 'common/data/species';
+import config from 'common/config';
 import getProbabilities from 'common/data/species/probabilities';
 import SpeciesProfile from './components/SpeciesProfile';
 import thumbnailPlaceholder from './thumbnail.png';
@@ -71,6 +72,15 @@ function organiseByProbability(allSpecies) {
   return [speciesHereAndNow, speciesHere, speciesNow, remainingSpecies];
 }
 
+const shouldShowFeedback = () => {
+  const { feedbackGiven, appSession } = appModel.attrs;
+  if (feedbackGiven) {
+    return false;
+  }
+
+  return appSession > 1;
+};
+
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
 function escapeRegexCharacters(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -87,6 +97,11 @@ class SpeciesMainComponent extends React.Component {
 
   state = {
     species: null,
+  };
+
+  onFeedbackDone = () => {
+    appModel.attrs.feedbackGiven = true;
+    appModel.save();
   };
 
   hideSpeciesModal = () => {
@@ -247,10 +262,22 @@ class SpeciesMainComponent extends React.Component {
 
   render() {
     const { onSelect } = this.props;
+    const showFeedback = shouldShowFeedback();
 
     return (
       <Main className="species-list">
         <IonGrid>
+          {showFeedback && (
+            <IonRow className="user-feedback-row">
+              <IonCol size="12">
+                <UserFeedbackRequest
+                  email={config.feedbackEmail}
+                  onFeedbackDone={this.onFeedbackDone}
+                />
+              </IonCol>
+            </IonRow>
+          )}
+
           <IonRow>{this.getSpecies()}</IonRow>
         </IonGrid>
 
