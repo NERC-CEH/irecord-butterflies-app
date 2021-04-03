@@ -2,7 +2,7 @@
   "name": "irecord-butterflies",
   "version": "2.0.0",
   "scripts": {
-    "start": "webpack serve --progress --watch --content-base build --port 8000",
+    "start": "webpack serve --progress --content-base build --port 8000",
     "build": "NODE_ENV=production webpack",
     "build:production": "npm run clean && npm run build && npx cap sync && sed -i '' 's/natural_apptitude/natural-apptitude/g' ios/App/App/capacitor.config.json && npm run build:resources",
     "build:resources": "mkdir -p resources && cp -R other/designs/android resources && cp -R other/designs/*.png resources && npx cordova-res ios --skip-config --resources resources --copy && npx cordova-res android --skip-config --resources resources --copy",
@@ -93,7 +93,7 @@
     "@babel/preset-react": "7.12.13",
     "@capacitor/cli": "2.4.7",
     "@flumens/eslint-config": "0.4.0",
-    "@flumens/webpack-config": "1.0.0",
+    "@flumens/webpack-config": "2.0.0",
     "babel-eslint": "10.1.0",
     "babel-jest": "26.6.3",
     "babel-plugin-module-resolver": "4.1.0",
@@ -110,8 +110,8 @@
     "regenerator-runtime": "0.13.7",
     "sharp-cli": "1.14.1",
     "vercel": "21.3.3",
-    "webpack": "5.19.0",
-    "webpack-cli": "4.4.0",
+    "webpack": "5.30.0",
+    "webpack-cli": "4.6.0",
     "webpack-dev-server": "3.11.2"
   },
   "browserslist": [
