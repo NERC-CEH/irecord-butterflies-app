@@ -31,16 +31,17 @@ async function init() {
   await userModel._init;
   await savedSamples._init;
 
-  initAnalytics({
-    dsn: config.sentryDNS,
-    environment: config.environment,
-    build: config.build,
-    release: config.version,
-    userId: userModel.attrs.id,
-    tags: {
-      'app.appSession': appModel.attrs.appSession,
-    },
-  });
+  appModel.attrs.sendAnalytics &&
+    initAnalytics({
+      dsn: config.sentryDNS,
+      environment: config.environment,
+      build: config.build,
+      release: config.version,
+      userId: userModel.attrs.id,
+      tags: {
+        'app.appSession': appModel.attrs.appSession,
+      },
+    });
 
   appModel.attrs.appSession += 1;
   appModel.updateCurrentLocation();
