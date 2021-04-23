@@ -33,19 +33,19 @@ function getHectad(probsForWeek, hectad) {
   const hectadProbs = probByLocationData[hectad];
   if (!hectadProbs) {
     console.warn('Hectad is missing from location data ', hectad);
-    return speciesNowAndHere;
+    return [speciesNowAndHere, speciesHere];
   }
 
   const region = hectadRegions[hectad];
   if (!region) {
     console.warn('Region is missing from hectad data ', hectad);
-    return speciesNowAndHere;
+    return [speciesNowAndHere, speciesHere];
   }
 
   const species = probsForWeek[region];
   if (!species) {
     console.warn('Region is missing from time data ', region);
-    return speciesNowAndHere;
+    return [speciesNowAndHere, speciesHere];
   }
 
   const addSpeciesProbToLocationProb = ([speciesId, prob]) => {
@@ -58,6 +58,13 @@ function getHectad(probsForWeek, hectad) {
     }
 
     const totalProbability = parseFloat(prob) * parseFloat(timeProb);
+
+    if (totalProbability < 0.001) {
+      // threshold for rare species at this time of year in the current hectad
+      speciesHere[speciesId] = prob;
+      return;
+    }
+
     speciesNowAndHere[speciesId] = parseFloat(totalProbability.toFixed(3));
   };
 
