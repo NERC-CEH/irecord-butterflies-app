@@ -55,6 +55,7 @@ class Component extends React.Component {
               />
             </IonButton>
           </InputWithValidation>
+
           <IonRouterLink
             routerLink="/user/reset"
             defaultHref="/user/register"
@@ -64,6 +65,8 @@ class Component extends React.Component {
           </IonRouterLink>
         </IonList>
 
+        {/** https://github.com/formium/formik/issues/1418 */}
+        <input type="submit" style={{ display: 'none' }} />
         <IonButton color="primary" type="submit" expand="block">
           <T>Sign In</T>
         </IonButton>
