@@ -12,8 +12,9 @@ import savedSamples from 'models/savedSamples';
 async function showDraftAlert() {
   const alertWrap = resolve => {
     alert({
-      header: 'Draft',
-      message: 'Previous survey draft exists, would you like to continue it?',
+      header: 'Unfinished record',
+      message:
+        'You have an incomplete record than needs to be saved before starting another one. Would you like to continue it?',
       backdropDismiss: false,
       buttons: [
         {
