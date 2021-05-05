@@ -40,8 +40,8 @@ const survey = {
     appVersion: appVersionAttr,
 
     area: {
-      required: true,
       menuProps: {
+        required: true,
         icon: expandOutline,
         label: 'Area size',
       },
