@@ -55,9 +55,7 @@ function organiseByProbability(allSpecies) {
     .filter(isProbable(probsNowAndHere))
     .sort(byProbability(probsNowAndHere));
 
-  const speciesHere = allSpecies
-    .filter(isProbable(probsHere))
-    .sort(byProbability(probsHere));
+  const speciesHere = allSpecies.filter(isProbable(probsHere)).sort(byName);
 
   const speciesNow = allSpecies
     .filter(isProbable(probsNow))
