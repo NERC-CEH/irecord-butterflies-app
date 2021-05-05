@@ -11,6 +11,7 @@ import {
   IonItem,
   IonItemSliding,
 } from '@ionic/react';
+import { useRouteMatch } from 'react-router';
 import { Main, MenuAttrItem, InfoMessage, MenuAttrItemFromModel } from '@apps';
 import { observer } from 'mobx-react';
 import { locationOutline, filterOutline } from 'ionicons/icons';
@@ -38,7 +39,6 @@ const speciesOccAddedTimeSort = (occ1, occ2) => {
 
 function HomeMain({
   sample,
-  match,
   isDisabled,
   deleteOccurrence,
   navigateToOccurrence,
@@ -46,6 +46,8 @@ function HomeMain({
   increaseCount,
   onToggleSpeciesSort,
 }) {
+  const match = useRouteMatch();
+
   const getLocationButton = () => {
     const location = sample.attrs.location || {};
     const hasLocation = location.latitude;
@@ -227,7 +229,6 @@ HomeMain.propTypes = exact({
   increaseCount: PropTypes.func.isRequired,
   onToggleSpeciesSort: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool,
-  match: PropTypes.any,
   listSurveyListSortedByTime: PropTypes.bool,
 });
 

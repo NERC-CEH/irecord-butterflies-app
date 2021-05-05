@@ -23,7 +23,7 @@ const allAuthors = photos.map(getAuthorFromPhoto);
 const uniqueAuthors = [...new Set([...allAuthors, ...extraPhotoAuthors])].sort(
   byLastName
 );
-const getAuthorComponent = author => <span>{author}</span>;
+const getAuthorComponent = author => <span key={author}>{author}</span>;
 const authors = uniqueAuthors.map(getAuthorComponent);
 
 export default () => (

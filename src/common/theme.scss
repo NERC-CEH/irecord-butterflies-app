@@ -188,6 +188,7 @@ ion-radio-group ion-item {
 
 .info-background-message {
   border-radius: 15px;
+  margin-bottom: 40px;
 
   box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.05),
     0 2px 9px 0 rgba(62, 57, 107, 0.05);
@@ -234,17 +235,17 @@ ion-radio-group {
 /* ROUND-THEME END */
 
 #location-page-header ion-toolbar {
-  --ion-toolbar-background: var(--ion-color-light);
+  --ion-toolbar-background: var(--ion-color-light) !important;
 
   ion-input,
   ion-icon {
-    color: var(--ion-color-dark);
-    --placeholder-color: var(--ion-color-dark);
+    color: var(--ion-color-dark) !important;
+    --placeholder-color: var(--ion-color-dark) !important;
   }
 
   ion-back-button {
     background-color: transparent !important;
-    color: var(--ion-color-dark);
+    color: var(--ion-color-dark) !important;
   }
 }
 

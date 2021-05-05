@@ -12,9 +12,6 @@ class Controller extends React.Component {
   static contextType = NavContext;
 
   static propTypes = exact({
-    match: PropTypes.object,
-    location: PropTypes.object, // eslint-disable-line
-    history: PropTypes.object, // eslint-disable-line
     appModel: PropTypes.object.isRequired,
     userModel: PropTypes.object.isRequired,
     sample: PropTypes.object.isRequired,
@@ -63,7 +60,7 @@ class Controller extends React.Component {
   };
 
   render() {
-    const { match, sample } = this.props;
+    const { sample } = this.props;
 
     if (!sample) {
       return null;
@@ -91,7 +88,7 @@ class Controller extends React.Component {
           rightSlot={finishButton}
           defaultHref="/home/surveys"
         />
-        <Main match={match} sample={sample} isDisabled={isDisabled} />
+        <Main sample={sample} isDisabled={isDisabled} />
       </Page>
     );
   }

@@ -62,9 +62,6 @@ SpeciesSelect.propTypes = exact({
   sample: PropTypes.object.isRequired,
   appModel: PropTypes.object.isRequired,
   occurrence: PropTypes.object,
-  match: PropTypes.object, // eslint-disable-line
-  location: PropTypes.object, // eslint-disable-line
-  history: PropTypes.object, // eslint-disable-line
 });
 
 export default observer(SpeciesSelect);

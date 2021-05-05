@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
+import { useRouteMatch } from 'react-router';
 import { Page, Header, showInvalidsMessage, alert } from '@apps';
 import { observer } from 'mobx-react';
 import { IonButton, NavContext } from '@ionic/react';
@@ -87,7 +88,8 @@ function deleteOccurrence(occ) {
   });
 }
 
-function Home({ appModel, userModel, match, sample }) {
+function Home({ appModel, userModel, sample }) {
+  const match = useRouteMatch();
   const { navigate } = useContext(NavContext);
 
   const showListSurveyTipOnce = () => {
@@ -178,7 +180,6 @@ function Home({ appModel, userModel, match, sample }) {
         defaultHref="/home/surveys"
       />
       <Main
-        match={match}
         sample={sample}
         isDisabled={isDisabled}
         onToggleSpeciesSort={toggleSpeciesSort}
@@ -192,9 +193,6 @@ function Home({ appModel, userModel, match, sample }) {
 }
 
 Home.propTypes = exact({
-  match: PropTypes.object,
-  location: PropTypes.object, // eslint-disable-line
-  history: PropTypes.object, // eslint-disable-line
   appModel: PropTypes.object.isRequired,
   userModel: PropTypes.object.isRequired,
   sample: PropTypes.object.isRequired,

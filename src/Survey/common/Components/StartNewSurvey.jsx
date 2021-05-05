@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
+import { useRouteMatch } from 'react-router';
 import exact from 'prop-types-exact';
 import { NavContext } from '@ionic/react';
 import Sample from 'models/sample';
@@ -68,7 +69,8 @@ async function getDraft(draftIdKey) {
   return null;
 }
 
-function StartNewSurvey({ match, survey, location }) {
+function StartNewSurvey({ survey, location }) {
+  const match = useRouteMatch();
   const context = useContext(NavContext);
 
   const draftIdKey = `draftId:${survey.name}`;
@@ -92,18 +94,15 @@ function StartNewSurvey({ match, survey, location }) {
 }
 
 StartNewSurvey.propTypes = exact({
-  match: PropTypes.object.isRequired,
   survey: PropTypes.object.isRequired,
-  history: PropTypes.any.isRequired,
   location: PropTypes.any,
-  staticContext: PropTypes.any,
 });
 
 // eslint-disable-next-line @getify/proper-arrows/name
 StartNewSurvey.with = survey => {
-  const StartNewSurveyWrap = params => (
-    <StartNewSurvey survey={survey} {...params} />
-  );
+  const StartNewSurveyWrap = (
+    { location } // eslint-disable-line
+  ) => <StartNewSurvey survey={survey} location={location} />;
 
   return StartNewSurveyWrap;
 };

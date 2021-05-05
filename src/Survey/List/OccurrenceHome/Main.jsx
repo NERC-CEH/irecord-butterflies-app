@@ -10,15 +10,14 @@ import {
   IonAvatar,
 } from '@ionic/react';
 import { useRouteMatch } from 'react-router';
-import { Main, MenuAttrItem, MenuAttrItemFromModel, PhotoPicker } from '@apps';
-import Image from 'models/image';
+import { Main, MenuAttrItem, MenuAttrItemFromModel } from '@apps';
 import { addCircleOutline, removeCircleOutline } from 'ionicons/icons';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
+import PhotoPicker from 'common/Components/PhotoPicker';
 import numberIcon from 'common/images/number.svg';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import species from 'common/data/species';
-import config from 'common/config';
 
 function OccurrenceHomeMain({ occurrence }) {
   const match = useRouteMatch();
@@ -138,12 +137,7 @@ function OccurrenceHomeMain({ occurrence }) {
 
         <IonItemDivider>Species Photo</IonItemDivider>
         <div className="rounded">
-          <PhotoPicker
-            model={occurrence}
-            ImageClass={Image}
-            isDisabled={isDisabled}
-            dataDirPath={config.dataPath}
-          />
+          <PhotoPicker model={occurrence} />
         </div>
       </IonList>
     </Main>

@@ -33,13 +33,16 @@ const survey = {
           values: taxon => taxon.warehouseId,
         },
       },
-      count: { id: 16 },
+      count: { remote: { id: 16 } },
       stage: stageAttr,
       comment: {
-        label: 'Comment',
-        icon: chatboxOutline,
-        type: 'textarea',
-        info: 'Add any extra information about your survey.',
+        menuProps: { icon: chatboxOutline },
+        pageProps: {
+          attrProps: {
+            input: 'textarea',
+            info: 'Add any extra information about your survey.',
+          },
+        },
       },
     },
 

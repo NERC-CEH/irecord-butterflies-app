@@ -1,24 +1,17 @@
-import { observer } from 'mobx-react';
 import React from 'react';
+import { observer } from 'mobx-react';
 import clsx from 'clsx';
+import { useRouteMatch } from 'react-router';
 import {
   IonItemDivider,
   IonIcon,
   IonList,
-  NavContext,
   IonItem,
   IonLabel,
   IonButton,
   IonAvatar,
 } from '@ionic/react';
-import {
-  Main,
-  MenuAttrItem,
-  InfoMessage,
-  MenuAttrItemFromModel,
-  PhotoPicker,
-} from '@apps';
-import Image from 'models/image';
+import { Main, MenuAttrItem, InfoMessage, MenuAttrItemFromModel } from '@apps';
 import {
   locationOutline,
   addCircleOutline,
@@ -27,50 +20,32 @@ import {
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import numberIcon from 'common/images/number.svg';
+import PhotoPicker from 'common/Components/PhotoPicker';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
 import species from 'common/data/species';
 import config from 'common/config';
 
-@observer
-class Component extends React.Component {
-  static contextType = NavContext;
+function MainComponent({ sample, isDisabled }) {
+  const match = useRouteMatch();
 
-  static propTypes = exact({
-    sample: PropTypes.object.isRequired,
-    match: PropTypes.object.isRequired,
-    isDisabled: PropTypes.bool,
-  });
-
-  navigateToSearch = () => {
-    const { match } = this.props;
-
-    this.context.navigate(`${match.url}/taxon`);
-  };
-
-  increaseCount = () => {
-    const { sample } = this.props;
+  const increaseCount = () => {
     const [occurrence] = sample.occurrences;
 
     const { count } = occurrence.attrs;
     occurrence.attrs.count = count + 1;
   };
 
-  decreaseCount = () => {
-    const { sample } = this.props;
-
+  const decreaseCount = () => {
     const [occurrence] = sample.occurrences;
 
     const { count } = occurrence.attrs;
-    if (count <= 1) {
-      return;
-    }
+    if (count <= 1) return;
 
     occurrence.attrs.count = count - 1;
   };
 
-  getNumberAttr = () => {
-    const { sample, isDisabled } = this.props;
+  const getNumberAttr = () => {
     const [occurrence] = sample.occurrences;
     const { count } = occurrence.attrs;
 
@@ -84,7 +59,7 @@ class Component extends React.Component {
               shape="round"
               fill="clear"
               size="default"
-              onClick={this.decreaseCount}
+              onClick={decreaseCount}
               color="medium"
             >
               <IonIcon icon={removeCircleOutline} />
@@ -92,13 +67,14 @@ class Component extends React.Component {
           )}
 
           <span>{count}</span>
+
           {!isDisabled && (
             <IonButton
               shape="round"
               fill="clear"
               size="default"
               color="medium"
-              onClick={this.increaseCount}
+              onClick={increaseCount}
             >
               <IonIcon icon={addCircleOutline} />
             </IonButton>
@@ -108,8 +84,7 @@ class Component extends React.Component {
     );
   };
 
-  getSpeciesButton = () => {
-    const { sample, match, isDisabled } = this.props;
+  const getSpeciesButton = () => {
     const [occ] = sample.occurrences;
 
     const { taxon } = occ.attrs;
@@ -150,9 +125,7 @@ class Component extends React.Component {
     );
   };
 
-  getLocationButton = () => {
-    const { match, sample, isDisabled } = this.props;
-
+  const getLocationButton = () => {
     const location = sample.attrs.location || {};
     const hasLocation = location.latitude;
     const hasName = location.name;
@@ -199,63 +172,59 @@ class Component extends React.Component {
     );
   };
 
-  render() {
-    const { match, sample, isDisabled } = this.props;
-    const [occ] = sample.occurrences;
+  const [occ] = sample.occurrences;
 
-    return (
-      <Main>
-        <IonList lines="full">
-          {isDisabled && (
-            <InfoMessage>
-              This record has been uploaded and can only be edited on our
-              website.
-              <IonButton
-                expand="block"
-                className="uploaded-message-website-link"
-                href={`${config.backend.url}/record-details?occurrence_id=${occ.id}`}
-              >
-                iRecord website
-              </IonButton>
-            </InfoMessage>
-          )}
+  return (
+    <Main>
+      <IonList lines="full">
+        {isDisabled && (
+          <InfoMessage>
+            This record has been uploaded and can only be edited on our website.
+            <IonButton
+              expand="block"
+              className="uploaded-message-website-link"
+              href={`${config.backend.url}/record-details?occurrence_id=${occ.id}`}
+            >
+              iRecord website
+            </IonButton>
+          </InfoMessage>
+        )}
 
-          <IonItemDivider>Details</IonItemDivider>
-          <div className="rounded">
-            {this.getSpeciesButton()}
-            <MenuAttrItemFromModel model={sample} attr="date" />
-            {this.getLocationButton()}
-          </div>
+        <IonItemDivider>Details</IonItemDivider>
+        <div className="rounded">
+          {getSpeciesButton()}
+          <MenuAttrItemFromModel model={sample} attr="date" />
+          {getLocationButton()}
+        </div>
 
-          <IonItemDivider>Other</IonItemDivider>
-          <div className="rounded">
-            {this.getNumberAttr()}
+        <IonItemDivider>Other</IonItemDivider>
+        <div className="rounded">
+          {getNumberAttr()}
 
-            <MenuAttrItemFromModel
-              model={occ}
-              attr="stage"
-              routerLink={`${match.url}/occ/${occ.cid}/stage`}
-            />
-            <MenuAttrItemFromModel
-              model={occ}
-              attr="comment"
-              routerLink={`${match.url}/occ/${occ.cid}/comment`}
-            />
-          </div>
+          <MenuAttrItemFromModel
+            model={occ}
+            attr="stage"
+            routerLink={`${match.url}/occ/${occ.cid}/stage`}
+          />
+          <MenuAttrItemFromModel
+            model={occ}
+            attr="comment"
+            routerLink={`${match.url}/occ/${occ.cid}/comment`}
+          />
+        </div>
 
-          <IonItemDivider>Species Photo</IonItemDivider>
-          <div className="rounded">
-            <PhotoPicker
-              model={occ}
-              ImageClass={Image}
-              isDisabled={isDisabled}
-              dataDirPath={config.dataPath}
-            />
-          </div>
-        </IonList>
-      </Main>
-    );
-  }
+        <IonItemDivider>Species Photo</IonItemDivider>
+        <div className="rounded">
+          <PhotoPicker model={occ} />
+        </div>
+      </IonList>
+    </Main>
+  );
 }
 
-export default Component;
+MainComponent.propTypes = exact({
+  sample: PropTypes.object.isRequired,
+  isDisabled: PropTypes.bool,
+});
+
+export default observer(MainComponent);

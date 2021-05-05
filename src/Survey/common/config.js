@@ -25,21 +25,20 @@ export const verifyLocationSchema = Yup.mixed().test(
 );
 
 export const dateAttr = {
-  type: 'date',
-  label: 'Date',
-  icon: calendarOutline,
   isValid: val => val && val.toString() !== 'Invalid Date',
-  max: () => new Date(),
-  required: true,
-  remote: {
-    values: d => date.print(d, false),
+  menuProps: { parse: 'date', icon: calendarOutline },
+  pageProps: {
+    attrProps: {
+      input: 'date',
+      inputProps: { max: () => new Date() },
+    },
   },
+  remote: { values: d => date.print(d, false) },
 };
 
 export const locationAttrs = {
   location: {
-    label: 'Location',
-    icon: locationOutline,
+    menuProps: { icon: locationOutline },
     remote: {
       id: 'entered_sref',
       values(location, submission) {
@@ -96,15 +95,13 @@ const stageOptions = [
 ];
 
 export const stageAttr = {
-  label: 'Stage',
-  type: 'radio',
-  info: 'Pick the life stage.',
-  icon: caterpillarIcon,
-  componentProps: {
-    options: stageOptions,
+  menuProps: { icon: caterpillarIcon },
+  pageProps: {
+    attrProps: {
+      input: 'radio',
+      info: 'Pick the life stage.',
+      inputProps: { options: stageOptions },
+    },
   },
-  remote: {
-    id: 293,
-    values: stageOptions,
-  },
+  remote: { id: 293, values: stageOptions },
 };

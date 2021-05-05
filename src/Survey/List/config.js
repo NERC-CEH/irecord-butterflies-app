@@ -40,18 +40,19 @@ const survey = {
     appVersion: appVersionAttr,
 
     area: {
-      icon: expandOutline,
-      label: 'Area size',
-      info: 'Please select the approximate size of your survey area.',
-      type: 'radio',
       required: true,
-      componentProps: {
-        options: areaOptions,
+      menuProps: {
+        icon: expandOutline,
+        label: 'Area size',
       },
-      remote: {
-        id: 323,
-        values: areaOptions,
+      pageProps: {
+        attrProps: {
+          input: 'radio',
+          info: 'Please select the approximate size of your survey area.',
+          inputProps: { options: areaOptions },
+        },
       },
+      remote: { id: 323, values: areaOptions },
     },
   },
 
@@ -66,10 +67,13 @@ const survey = {
       count: { id: 16 },
       stage: stageAttr,
       comment: {
-        label: 'Comment',
-        icon: chatboxOutline,
-        type: 'textarea',
-        info: 'Add any extra information about your survey.',
+        menuProps: { icon: chatboxOutline },
+        pageProps: {
+          attrProps: {
+            input: 'textarea',
+            info: 'Add any extra information about your survey.',
+          },
+        },
       },
     },
 
