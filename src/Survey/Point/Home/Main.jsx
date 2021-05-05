@@ -107,7 +107,7 @@ function MainComponent({ sample, isDisabled }) {
     return (
       <IonItem
         className="menu-attr-item species-item"
-        routerLink={!isDisabled && `${match.url}/species`}
+        routerLink={!isDisabled ? `${match.url}/species` : undefined}
         detail={!isDisabled}
       >
         <IonAvatar>
