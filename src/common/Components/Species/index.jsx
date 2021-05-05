@@ -249,7 +249,7 @@ class SpeciesMainComponent extends React.Component {
             {hasSpeciesNow ? (
               <IonLabel>Flying at other times of year</IonLabel>
             ) : (
-              <IonLabel>Species not known from your area</IonLabel>
+              <IonLabel>Species not recorded from your area</IonLabel>
             )}
           </IonItemDivider>
         )}
