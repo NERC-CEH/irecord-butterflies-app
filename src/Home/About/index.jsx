@@ -20,6 +20,20 @@ function SpeciesGuide() {
           </P>
 
           <P>
+            If you have shared your location with the app, species are listed in
+            order of likelihood. This is to help speed up recording and to
+            assist with identification. Likelihood is based on a combination of
+            previous records from your area (specifically the 10km x 10km map
+            square) held in the UK butterfly database, as well as data on the
+            numbers of each species seen at different times of year. However,
+            the list for your area may not be complete as it is currently based
+            on records received by Butterfly Conservation between 2005 and 2014.
+            To improve future versions of the app, as well as helping
+            conservation, please enter records of species that you see, even if
+            they don't appear on the filtered lists for your area.
+          </P>
+
+          <P>
             Sightings will be stored within the iRecord website and passed onto
             the Butterflies for the New Millennium national recording scheme run
             by the charity Butterfly Conservation, with support from the
