@@ -77,6 +77,7 @@ const defaults = {
   'draftId:point': null,
 
   // tips
+  showLocationGPSTip: true,
   showSurveysDeleteTip: true,
   showSurveyUploadTip: true,
   showLongPressTip: true,
