@@ -3,22 +3,6 @@
     --ion-toolbar-background: white;
     --color: black;
 
-    ion-title {
-      font-family: 'Museo300';
-      font-size: 25px;
-      font-weight: 400;
-      text-align: center;
-
-      &.md {
-        padding: 0;
-      }
-
-      b {
-        font-family: 'Museo700';
-        color: var(--ion-color-primary);
-      }
-    }
-
     ion-icon {
       color: black;
       --ionicon-stroke-width: 20px;

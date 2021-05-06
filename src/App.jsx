@@ -3,9 +3,11 @@ import { Route, Redirect } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { observer } from 'mobx-react';
+import appModel from 'models/app';
 import Home from './Home';
 import Settings from './Settings/router';
 import Info from './Info/router';
+import OnBoardingScreens from './Info/OnBoardingScreens';
 import User from './User/router';
 import Survey from './Survey/router';
 
@@ -15,16 +17,18 @@ const HomeRedirect = () => {
 
 const App = () => (
   <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet id="main">
-        <Route exact path="/" component={HomeRedirect} />
-        <Route path="/home" component={Home} />
-        {User}
-        {Info}
-        {Settings}
-        {Survey}
-      </IonRouterOutlet>
-    </IonReactRouter>
+    <OnBoardingScreens appModel={appModel}>
+      <IonReactRouter>
+        <IonRouterOutlet id="main">
+          <Route exact path="/" component={HomeRedirect} />
+          <Route path="/home" component={Home} />
+          {User}
+          {Info}
+          {Settings}
+          {Survey}
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </OnBoardingScreens>
   </IonApp>
 );
 

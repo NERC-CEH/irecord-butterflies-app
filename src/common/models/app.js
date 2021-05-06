@@ -70,6 +70,9 @@ const defaults = {
   listSurveyListSortedByTime: false,
   location: '',
 
+  feedbackGiven: false,
+  showedWelcome: false,
+
   // draft survey pointers
   'draftId:point': null,
 

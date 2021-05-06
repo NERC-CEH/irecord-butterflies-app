@@ -99,6 +99,23 @@ h3 {
   font-family: 'Museo300';
 }
 
+.app-name {
+  font-family: 'Museo300';
+  font-size: 25px;
+  font-weight: 400;
+  text-align: center;
+  color: black;
+
+  &.md {
+    padding: 0;
+  }
+
+  b {
+    font-family: 'Museo700';
+    color: var(--ion-color-primary);
+  }
+}
+
 .apps-section .apps-section-h {
   font-family: 'Museo300';
   margin: 20px auto 10px;

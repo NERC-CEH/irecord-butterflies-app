@@ -83,7 +83,7 @@ const Header = ({ onSearch: onSearchProp, toggleFilter, filters }) => {
             </IonButton>
           </IonButtons>
 
-          <IonTitle size="large">
+          <IonTitle size="large" className="app-name">
             iRecord <b>Butterflies</b>
           </IonTitle>
 
