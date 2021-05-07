@@ -9,7 +9,9 @@
     --padding-start: 0;
     --border-style: none;
 
+    .location-name,
     .species-name {
+      display: block !important; // for ellipses
       font-weight: 500;
     }
 

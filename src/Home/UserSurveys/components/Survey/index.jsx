@@ -92,6 +92,7 @@ function getSampleInfo(sample) {
   }
 
   const speciesCount = sample.occurrences.length;
+  const locationName = sample.attrs.location.name || 'List';
 
   return (
     <>
@@ -101,7 +102,7 @@ function getSampleInfo(sample) {
       </div>
 
       <IonLabel position="stacked" mode="ios" color="dark">
-        <IonLabel className="species-name">List</IonLabel>
+        <IonLabel className="location-name">{locationName}</IonLabel>
         <IonLabel class="ion-text-wrap">{prettyDate}</IonLabel>
         {isOutsideUK && (
           <IonBadge className="location-warning" color="warning">
