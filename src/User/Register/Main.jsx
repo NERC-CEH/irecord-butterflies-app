@@ -94,13 +94,6 @@ class Component extends React.Component {
         <IonButton color="primary" type="submit" expand="block">
           <T>Sign Up</T>
         </IonButton>
-
-        <div className="signin-button">
-          <T>I am already a member</T>.{' '}
-          <IonRouterLink routerLink="/user/login">
-            <T>Sign In</T>
-          </IonRouterLink>
-        </div>
       </Form>
     );
 

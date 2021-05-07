@@ -118,7 +118,7 @@ function Home({ appModel, userModel, sample }) {
   const _processSubmission = () => {
     const isLoggedIn = !!userModel.attrs.id;
     if (!isLoggedIn) {
-      navigate(`/user/register`);
+      navigate(`/user/login`);
       return;
     }
 

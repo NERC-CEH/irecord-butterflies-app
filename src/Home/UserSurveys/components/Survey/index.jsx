@@ -129,7 +129,7 @@ const Survey = ({ sample, userModel }) => {
 
     const isLoggedIn = !!userModel.attrs.id;
     if (!isLoggedIn) {
-      navigate(`/user/register`);
+      navigate(`/user/login`);
       return;
     }
 
