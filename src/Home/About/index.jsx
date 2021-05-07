@@ -20,6 +20,13 @@ function SpeciesGuide() {
           </P>
 
           <P>
+            You can record a single butterfly or create a list of different
+            species seen during a survey. Tap on the green Record button to
+            record a single species sighting or hold the Record button down to
+            start a species list.
+          </P>
+
+          <P>
             If you have shared your location with the app, species are listed in
             order of likelihood. This is to help speed up recording and to
             assist with identification. Likelihood is based on a combination of
