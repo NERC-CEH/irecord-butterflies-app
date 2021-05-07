@@ -44,6 +44,7 @@ const ModelLocationWithInfo = props => {
       onLocationNameChange={ModelLocation.utils.onLocationNameChange}
       namePlaceholder="Site name e.g. nearest village"
       onGPSClick={ModelLocation.utils.onGPSClick}
+      backButtonProps={{ text: 'Back' }}
     />
   );
 };

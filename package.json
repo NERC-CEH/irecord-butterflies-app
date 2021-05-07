@@ -34,7 +34,7 @@
     "@bit/flumens.apps.menu-attr-item": "1.2.3",
     "@bit/flumens.apps.menu-attr-item-from-model": "2.0.3",
     "@bit/flumens.apps.modal-header": "0.1.4",
-    "@bit/flumens.apps.model-location-map": "2.1.3",
+    "@bit/flumens.apps.model-location-map": "2.2.0",
     "@bit/flumens.apps.models.init-stored-samples": "0.1.0",
     "@bit/flumens.apps.models.media-with-drupal-remote": "0.0.1",
     "@bit/flumens.apps.models.model": "0.1.0",
