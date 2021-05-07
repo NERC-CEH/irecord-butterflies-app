@@ -66,13 +66,16 @@ class UserSurveyComponent extends React.Component {
       return <InfoBackgroundMessage>No uploaded surveys</InfoBackgroundMessage>;
     }
 
-    return this.getSurveys(surveys);
+    return (
+      <>
+        {this.getSurveys(surveys)}
+        {this.getDeleteTip()}
+      </>
+    );
   };
 
   getPendingSurveys = () => {
     const surveys = this.getSamplesList(false);
-    const byMetadataSaved = sample => sample.metadata.saved;
-    const finishedSurvey = surveys.find(byMetadataSaved);
 
     if (!surveys.length) {
       return (
@@ -92,28 +95,19 @@ class UserSurveyComponent extends React.Component {
       );
     }
 
-    if (finishedSurvey) {
-      return (
-        <>
-          {this.getSurveys(surveys)}
-
-          <InfoBackgroundMessage name="showSurveyUploadTip">
-            Please do not forget to upload any pending surveys!
-          </InfoBackgroundMessage>
-        </>
-      );
-    }
-
     return (
       <>
         {this.getSurveys(surveys)}
-
-        <InfoBackgroundMessage name="showSurveysDeleteTip">
-          To delete any surveys swipe it to the left.
-        </InfoBackgroundMessage>
+        {this.getDeleteTip()}
       </>
     );
   };
+
+  getDeleteTip = () => (
+    <InfoBackgroundMessage name="showSurveysDeleteTip">
+      To delete any surveys swipe it to the left.
+    </InfoBackgroundMessage>
+  );
 
   getPendingSurveysCount = () => {
     const pendingSurveys = this.getSamplesList();
