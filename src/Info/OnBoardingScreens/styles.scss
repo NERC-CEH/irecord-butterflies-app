@@ -78,6 +78,7 @@
   ion-slide {
     @include slide;
     background-size: cover;
+    background-position: center;
 
     .app-logo-wrapper {
       background-color: #ffffff47;
@@ -110,6 +111,10 @@
       backdrop-filter: blur(5px);
       border-radius: 10px;
     }
+  }
+
+  ion-slide.record .message-container {
+    bottom: 150px;
   }
 
   ion-footer ion-toolbar {

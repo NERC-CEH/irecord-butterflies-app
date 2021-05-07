@@ -17,6 +17,7 @@ import peacock from './images/peacock.jpg';
 import brimstone from './images/brimstone.jpg';
 import fritillary from './images/fritillary.jpg';
 import list from './images/list.png';
+import button from './images/button.png';
 import './styles.scss';
 
 const SplashScreen = ({ appModel }) => {
@@ -92,6 +93,24 @@ const SplashScreen = ({ appModel }) => {
             <div className="message-container">
               <div className="message">
                 <p>Submit and share your sightings through iRecord.</p>
+              </div>
+            </div>
+          </IonSlide>
+
+          <IonSlide className="record">
+            <div className="slide-header">
+              <img src={button} alt="list" />
+            </div>
+            <div className="message-container">
+              <h2>
+                Record a single butterfly or create a list of different species
+                seen
+              </h2>
+              <div className="message">
+                <p>
+                  Tap on the Record button to record a single species or hold
+                  the Record button down to start a species list.
+                </p>
               </div>
             </div>
           </IonSlide>
