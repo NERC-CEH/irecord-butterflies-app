@@ -14,7 +14,7 @@ async function showDraftAlert() {
     alert({
       header: 'Unfinished record',
       message:
-        'You have an incomplete record than needs to be saved before starting another one. Would you like to continue it?',
+        'You have an incomplete record that needs to be saved before starting another one. Would you like to continue it?',
       backdropDismiss: false,
       buttons: [
         {
