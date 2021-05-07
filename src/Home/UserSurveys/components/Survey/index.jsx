@@ -113,7 +113,7 @@ function getSampleInfo(sample) {
   );
 }
 
-const Survey = ({ sample, userModel }) => {
+const Survey = ({ sample, userModel, uploadIsPrimary }) => {
   const { navigate } = useContext(NavContext);
 
   const survey = sample.getSurvey();
@@ -143,7 +143,11 @@ const Survey = ({ sample, userModel }) => {
 
       <IonItem routerLink={href} detail={!synchronising}>
         {getSampleInfo(sample)}
-        <OnlineStatus sample={sample} onUpload={onUpload} />
+        <OnlineStatus
+          sample={sample}
+          onUpload={onUpload}
+          uploadIsPrimary={uploadIsPrimary}
+        />
       </IonItem>
 
       <IonItemOptions side="end">
@@ -158,6 +162,7 @@ const Survey = ({ sample, userModel }) => {
 Survey.propTypes = exact({
   sample: PropTypes.object.isRequired,
   userModel: PropTypes.object.isRequired,
+  uploadIsPrimary: PropTypes.bool,
 });
 
 export default observer(Survey);

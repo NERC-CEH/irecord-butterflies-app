@@ -11,6 +11,7 @@ import {
   IonIcon,
   IonList,
   NavContext,
+  IonButton,
 } from '@ionic/react';
 import { observer } from 'mobx-react';
 import { Page, Main } from '@apps';
@@ -50,14 +51,21 @@ class UserSurveyComponent extends React.Component {
     return savedSamples.filter(byUploadStatus).sort(byCreateTime);
   }
 
-  getSurveys = surveys => {
+  getSurveys = (surveys, uploadIsPrimary) => {
     const getSurvey = sample => (
-      <Survey key={sample.cid} sample={sample} userModel={userModel} />
+      <Survey
+        key={sample.cid}
+        sample={sample}
+        userModel={userModel}
+        uploadIsPrimary={uploadIsPrimary}
+      />
     );
     const surveysList = surveys.map(getSurvey);
 
     return surveysList;
   };
+
+  onUploadAll = () => this.props.savedSamples.uploadAll();
 
   getUploadedSurveys = () => {
     const surveys = this.getSamplesList(true);
@@ -95,9 +103,11 @@ class UserSurveyComponent extends React.Component {
       );
     }
 
+    const withSecondaryUploadButtons = !this.hasManyPending();
+
     return (
       <>
-        {this.getSurveys(surveys)}
+        {this.getSurveys(surveys, withSecondaryUploadButtons)}
         {this.getDeleteTip()}
       </>
     );
@@ -141,11 +151,15 @@ class UserSurveyComponent extends React.Component {
     this.context.navigate(`/survey/point`);
   };
 
+  hasManyPending = () => this.getSamplesList().length > 5;
+
   render() {
     const { segment } = this.state;
 
     const showingPending = segment === 'pending';
     const showingUploaded = segment === 'uploaded';
+
+    const showUploadAll = this.hasManyPending();
 
     return (
       <Page id="home-user-surveys">
@@ -170,6 +184,17 @@ class UserSurveyComponent extends React.Component {
         </IonHeader>
 
         <Main>
+          {showingPending && showUploadAll && (
+            <IonButton
+              expand="block"
+              size="small"
+              className="upload-all-button"
+              onClick={this.onUploadAll}
+            >
+              Upload All
+            </IonButton>
+          )}
+
           <IonList>
             {showingPending && this.getPendingSurveys()}
             {showingUploaded && this.getUploadedSurveys()}

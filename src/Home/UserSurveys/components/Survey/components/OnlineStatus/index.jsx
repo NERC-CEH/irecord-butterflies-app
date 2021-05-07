@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import exact from 'prop-types-exact';
 import { IonSpinner, IonLabel, IonChip, IonButton } from '@ionic/react';
 import { observer } from 'mobx-react';
 import { Trans as T } from 'react-i18next';
 import './styles.scss';
 
-const UsersSurveys = ({ onUpload, sample }) => {
+const UsersSurveys = ({ onUpload, sample, uploadIsPrimary }) => {
   const { saved } = sample.metadata;
 
   if (!saved) {
@@ -27,15 +28,20 @@ const UsersSurveys = ({ onUpload, sample }) => {
   }
 
   return (
-    <IonButton class="survey-status-upload" onClick={onUpload}>
+    <IonButton
+      class="survey-status-upload"
+      onClick={onUpload}
+      fill={uploadIsPrimary ? undefined : 'outline'}
+    >
       Upload
     </IonButton>
   );
 };
 
-UsersSurveys.propTypes = {
+UsersSurveys.propTypes = exact({
   sample: PropTypes.object.isRequired,
   onUpload: PropTypes.func.isRequired,
-};
+  uploadIsPrimary: PropTypes.bool,
+});
 
 export default observer(UsersSurveys);

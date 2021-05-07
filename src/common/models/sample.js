@@ -40,14 +40,14 @@ class AppSample extends Sample {
     this.gpsExtensionInit();
   }
 
-  upload() {
+  upload(skipInvalidsMessage) {
     if (this.remote.synchronising) {
       return;
     }
 
     const invalids = this.validateRemote();
     if (invalids) {
-      showInvalidsMessage(invalids);
+      !skipInvalidsMessage && showInvalidsMessage(invalids);
       return;
     }
 
