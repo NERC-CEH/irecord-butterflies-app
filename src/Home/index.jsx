@@ -41,14 +41,14 @@ const showLongPressAlert = () =>
       <>
         Tap on the{' '}
         <IonIcon icon={butterflyIcon} className="long-tap-tip-message-icon" />{' '}
-        button to capture a new record. <br />
+        button to record a single species or sighting. <br />
         <br />
         Long-press{' '}
         <IonIcon
           icon={butterflyIcon}
           className="long-tap-tip-message-icon"
         />{' '}
-        button to see some more advanced options.
+        button to start a multi-species survey list.
       </>
     ),
     buttons: [
