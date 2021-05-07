@@ -42,7 +42,7 @@ const ModelLocationWithInfo = props => {
       useGridMap
       suggestLocations={savedSamples.map(getLocation)}
       onLocationNameChange={ModelLocation.utils.onLocationNameChange}
-      namePlaceholder="Site name e.g. nearest village"
+      namePlaceholder="Site name eg nearby village"
       onGPSClick={ModelLocation.utils.onGPSClick}
       backButtonProps={{ text: 'Back' }}
     />
