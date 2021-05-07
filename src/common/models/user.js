@@ -81,7 +81,12 @@ class UserModel extends Model {
       }
     } catch (e) {
       res = e.response || {};
-      throw new Error(res.statusText || 'The request was not successful.');
+      let message = res.statusText;
+      if (res.data && res.data.errors) {
+        const err = res.data.errors[0] || {};
+        message = err.title;
+      }
+      throw new Error(message || 'The request was not successful.');
     }
 
     const user = { ...res.data, ...{ password } };
@@ -127,7 +132,18 @@ class UserModel extends Model {
       }
     } catch (e) {
       res = e.response || {};
-      throw new Error(res.statusText || 'The request was not successful.');
+      let message = res.statusText;
+      if (res.data && res.data.errors) {
+        const err = res.data.errors[0] || {};
+        message = err.title;
+
+        if (message === 'Account already exists.') {
+          message =
+            'There is already an account with this email address, please login.';
+        }
+      }
+
+      throw new Error(message || 'The request was not successful.');
     }
 
     const user = { ...res.data, ...{ password } };
