@@ -92,7 +92,8 @@ function getSampleInfo(sample) {
   }
 
   const speciesCount = sample.occurrences.length;
-  const locationName = sample.attrs.location.name || 'List';
+  const location = sample.attrs.location || {};
+  const locationName = location.name || 'List';
 
   return (
     <>

@@ -30,7 +30,7 @@
     "@bit/flumens.apps.info-message": "1.2.1",
     "@bit/flumens.apps.input-with-validation": "0.3.0",
     "@bit/flumens.apps.long-press-fab-button": "0.1.1",
-    "@bit/flumens.apps.main": "0.2.0",
+    "@bit/flumens.apps.main": "0.2.1",
     "@bit/flumens.apps.menu-attr-item": "1.2.3",
     "@bit/flumens.apps.menu-attr-item-from-model": "2.0.3",
     "@bit/flumens.apps.modal-header": "0.1.4",
