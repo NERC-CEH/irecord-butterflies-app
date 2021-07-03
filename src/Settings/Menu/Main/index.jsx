@@ -3,9 +3,17 @@ import { observer } from 'mobx-react';
 import exact from 'prop-types-exact';
 import { Main, alert, Toggle, InfoMessage } from '@apps';
 import PropTypes from 'prop-types';
-import { IonIcon, IonList, IonItem, IonLabel } from '@ionic/react';
+import {
+  IonIcon,
+  IonList,
+  IonItem,
+  IonLabel,
+  isPlatform,
+  IonInput,
+} from '@ionic/react';
 import { arrowUndoSharp, shareSocialOutline } from 'ionicons/icons';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
+import getCurrentWeekNumber from 'helpers/weeks';
 import './styles.scss';
 
 function resetDialog(resetApp) {
@@ -40,7 +48,39 @@ class Component extends React.Component {
     useLocationForGuide: PropTypes.bool,
     sendAnalytics: PropTypes.bool,
     currentLocation: PropTypes.string,
+    adminChangeWeek: PropTypes.func,
+    adminChangeLocation: PropTypes.func,
   });
+
+  getAdminControls = () => {
+    const {
+      currentLocation,
+      adminChangeLocation,
+      adminChangeWeek,
+    } = this.props;
+
+    const demoOnly = !isPlatform('hybrid');
+    if (!demoOnly) return null;
+
+    return (
+      <div className="rounded">
+        <InfoMessage color="medium">
+          You can manually override the probability filter variables.
+        </InfoMessage>
+        <IonItem>
+          <IonLabel position="floating">Current Hectad</IonLabel>
+          <IonInput value={currentLocation} onIonChange={adminChangeLocation} />
+        </IonItem>
+        <IonItem>
+          <IonLabel position="floating">Current Week</IonLabel>
+          <IonInput
+            value={getCurrentWeekNumber()}
+            onIonChange={adminChangeWeek}
+          />
+        </IonItem>
+      </div>
+    );
+  };
 
   render() {
     const {
@@ -95,6 +135,7 @@ class Component extends React.Component {
               {currentLocationMessage}
             </InfoMessage>
           </div>
+          {this.getAdminControls()}
 
           <div className="rounded">
             <IonItem id="app-reset-btn" onClick={showAlertDialog}>

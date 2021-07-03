@@ -47,6 +47,16 @@ const MenuController = props => {
 
   const currentLocation = location && location.gridref;
 
+  const adminChangeLocation = e => {
+    appModel.attrs.location.gridref = e.target.value;
+    console.log('setting hectad', appModel.attrs.location.gridref);
+    appModel.save();
+  };
+  const adminChangeWeek = e => {
+    window.admin.currentWeek = parseInt(e.target.value, 10);
+    console.log('setting week', window.admin.currentWeek);
+  };
+
   return (
     <Page id="settings">
       <Header title="Settings" />
@@ -57,6 +67,9 @@ const MenuController = props => {
         onToggle={onToggleWrap}
         onToggleGuideLocation={onToggleGuideLocation}
         currentLocation={currentLocation}
+        // admin controls
+        adminChangeLocation={adminChangeLocation}
+        adminChangeWeek={adminChangeWeek}
       />
     </Page>
   );
