@@ -1,4 +1,4 @@
-import { Plugins, FilesystemDirectory } from '@capacitor/core';
+import { Filesystem, Directory } from '@capacitor/filesystem';
 import { isPlatform } from '@ionic/react';
 
 const backendUrl =
@@ -29,9 +29,9 @@ const config = {
 
 (async function getMediaDirectory() {
   if (isPlatform('hybrid')) {
-    const { uri } = await Plugins.Filesystem.getUri({
+    const { uri } = await Filesystem.getUri({
       path: '',
-      directory: FilesystemDirectory.Data,
+      directory: Directory.Data,
     });
     config.dataPath = uri;
   }

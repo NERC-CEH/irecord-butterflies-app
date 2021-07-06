@@ -1,8 +1,8 @@
 {
-  "appId": "com.natural_apptitude.butterfly",
-  "appName": "iRecord Butterflies",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "build",
-  "cordova": {}
+	"appId": "com.natural_apptitude.butterfly",
+	"appName": "iRecord Butterflies",
+	"bundledWebRuntime": false,
+	"npmClient": "npm",
+	"webDir": "build",
+	"cordova": {}
 }

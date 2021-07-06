@@ -1,10 +1,9 @@
 import { Media } from '@apps';
 import { observable } from 'mobx';
 import { isPlatform } from '@ionic/react';
-import { Capacitor, Plugins, FilesystemDirectory } from '@capacitor/core';
 import config from 'common/config';
-
-const { Filesystem } = Plugins;
+import { Capacitor } from '@capacitor/core';
+import { Filesystem, Directory } from '@capacitor/filesystem';
 
 export default class AppMedia extends Media {
   @observable identification = { identifying: false };
@@ -30,7 +29,7 @@ export default class AppMedia extends Media {
     try {
       await Filesystem.deleteFile({
         path: URL,
-        directory: FilesystemDirectory.Data,
+        directory: Directory.Data,
       });
 
       if (!this.parent) {

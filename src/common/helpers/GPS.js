@@ -1,6 +1,4 @@
-import { Plugins } from '@capacitor/core';
-
-const { Geolocation } = Plugins;
+import { Geolocation } from '@capacitor/geolocation';
 
 const API = {
   GPS_ACCURACY_LIMIT: 100, // meters
