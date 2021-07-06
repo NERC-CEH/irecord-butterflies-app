@@ -42,6 +42,8 @@ class SpeciesProfile extends React.Component {
     let className = 'white-background';
     let pageTitle = '';
 
+    const swiperProps = {};
+
     const setShowGallery = () =>
       this.setState({
         showGallery: false,
@@ -62,7 +64,19 @@ class SpeciesProfile extends React.Component {
 
     if (showLifechart) {
       pageTitle = 'Lifechart';
-      items.push({ src: species.lifechart });
+      swiperProps.zoom = false;
+
+      const lifechart = (
+        <IonSlide key={species.lifechart}>
+          <div style={{ width: '95vh' }}>
+            <img
+              src={species.lifechart}
+              style={{ transform: 'rotate(90deg)' }}
+            />
+          </div>
+        </IonSlide>
+      );
+      items.push({ item: lifechart });
     }
     if (showMap) {
       pageTitle = 'Distribution';
@@ -82,6 +96,7 @@ class SpeciesProfile extends React.Component {
         className={className}
         title={pageTitle}
         mode="md"
+        swiperProps={swiperProps}
       />
     );
   };
