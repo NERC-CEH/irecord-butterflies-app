@@ -18,6 +18,7 @@
   "dependencies": {
     "@bit/flumens.apps.attr-page": "3.0.8",
     "@bit/flumens.apps.auto-suggest-input": "2.0.2",
+    "@bit/flumens.apps.collapse": "^0.2.0",
     "@bit/flumens.apps.date": "0.2.1",
     "@bit/flumens.apps.device": "0.2.1",
     "@bit/flumens.apps.gallery": "1.2.3",

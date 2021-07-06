@@ -10,6 +10,7 @@ import {
   statsChartOutline,
   exitOutline,
   heartOutline,
+  informationCircleOutline,
 } from 'ionicons/icons';
 
 const MenuMain = ({ isLoggedIn, user, logOut }) => {
@@ -53,6 +54,14 @@ const MenuMain = ({ isLoggedIn, user, logOut }) => {
 
         <IonItemDivider>Info</IonItemDivider>
         <div className="rounded">
+          <IonItem routerLink="/info/faq" detail>
+            <IonIcon
+              icon={informationCircleOutline}
+              size="small"
+              slot="start"
+            />
+            Frequently Asked Questions
+          </IonItem>
           <IonItem routerLink="/info/credits" detail>
             <IonIcon icon={heartOutline} size="small" slot="start" />
             Credits
