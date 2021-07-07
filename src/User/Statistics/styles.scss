@@ -1,10 +1,28 @@
 #user-statistics {
+  .info-background-message-plain {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    font-weight: 200;
+    box-shadow: none;
+    --background: transparent;
+    max-width: none;
+
+    span {
+      padding: 0;
+    }
+  }
+
   ion-list {
-    margin-top: 30px;
+    margin-top: 10px;
 
     ion-item-divider {
       background: var(--ion-color-step-100, #e6e6e6) !important;
       color: black;
+    }
+
+    ion-label.ion-text-right {
+      max-width: 100px;
     }
   }
 }

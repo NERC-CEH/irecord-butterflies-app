@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import { Page, Header, Main, device, toast, loader } from '@apps';
@@ -8,9 +8,10 @@ import {
   IonItemDivider,
   IonList,
   IonItem,
-  IonButton,
-  useIonViewDidEnter,
+  IonRefresherContent,
+  IonRefresher,
 } from '@ionic/react';
+import { chevronDownOutline } from 'ionicons/icons';
 import InfoBackgroundMessage from 'common/Components/InfoBackgroundMessage';
 import fetchStats from './services';
 import './styles.scss';
@@ -41,7 +42,9 @@ async function fetchStatsWrap(userModel) {
 function Statistics({ userModel }) {
   // userModel.getStatistics();
 
-  const onRefresh = async () => {
+  const onRefresh = async event => {
+    event.detail.complete();
+
     if (!device.isOnline()) {
       warn("Sorry, looks like you're offline.");
       return;
@@ -50,18 +53,15 @@ function Statistics({ userModel }) {
     fetchStatsWrap(userModel);
   };
 
-  const onViewEnteredRefreshStats = () => {
-    if (!userModel.attrs.stats) {
-      fetchStatsWrap(userModel);
-    }
-  };
-  useIonViewDidEnter(onViewEnteredRefreshStats);
+  const refreshStats = () => fetchStatsWrap(userModel);
+  useEffect(refreshStats, []);
 
   const getReport = () => {
     if (!userModel.attrs.stats) {
       return (
         <InfoBackgroundMessage>
-          Sorry, no report data is available at the moment.
+          Sorry, no report data is available at the moment. Pull down to
+          refresh.
         </InfoBackgroundMessage>
       );
     }
@@ -82,85 +82,98 @@ function Statistics({ userModel }) {
     const yearName = new Date().getFullYear();
 
     return (
-      <IonList lines="none">
-        <div className="rounded">
-          <IonItemDivider mode="md">My totals</IonItemDivider>
-
-          <IonItem lines="full" className="list-header-labels">
-            <IonLabel>
-              <small>Records (total)</small>
-            </IonLabel>
-            <IonLabel class="ion-text-right">
-              <small>
-                <b>{myProjectRecords}</b>
-              </small>
-            </IonLabel>
-          </IonItem>
-
-          <IonItem lines="full" className="list-header-labels">
-            <IonLabel>
-              <small>Records ({yearName})</small>
-            </IonLabel>
-            <IonLabel class="ion-text-right">
-              <small>
-                <b>{myProjectRecordsThisYear}</b>
-              </small>
-            </IonLabel>
-          </IonItem>
-
-          <IonItem lines="full" className="list-header-labels">
-            <IonLabel>
-              <small>Species recorded (total)</small>
-            </IonLabel>
-            <IonLabel class="ion-text-right">
-              <small>
-                <b>{myProjectSpecies}</b>/64
-              </small>
-            </IonLabel>
-          </IonItem>
-
-          <IonItem lines="full" className="list-header-labels">
-            <IonLabel>
-              <small>Species recorded ({yearName})</small>
-            </IonLabel>
-            <IonLabel class="ion-text-right">
-              <small>
-                <b>{myProjectSpeciesThisYear}</b>/64
-              </small>
-            </IonLabel>
-          </IonItem>
-
-          <IonItemDivider mode="md">App totals</IonItemDivider>
-
-          <IonItem lines="full" className="list-header-labels">
-            <IonLabel>
-              <small>Records (total)</small>
-            </IonLabel>
-            <IonLabel class="ion-text-right">
-              <small>
-                <b>{projectRecordsCount}</b>
-              </small>
-            </IonLabel>
-          </IonItem>
-        </div>
-
-        <InfoBackgroundMessage name="showStatsWIPTip">
-          <i>We will be adding more functionality to this page soon.</i>
+      <>
+        <InfoBackgroundMessage className="info-background-message-plain">
+          Swipe down to refresh statistics.
         </InfoBackgroundMessage>
-      </IonList>
+
+        <IonList lines="none">
+          <div className="rounded">
+            <IonItemDivider mode="md">My totals</IonItemDivider>
+
+            <IonItem lines="full" className="list-header-labels">
+              <IonLabel>
+                <small>Records (total)</small>
+              </IonLabel>
+              <IonLabel class="ion-text-right">
+                <small>
+                  <b>{myProjectRecords}</b>
+                </small>
+              </IonLabel>
+            </IonItem>
+
+            <IonItem lines="full" className="list-header-labels">
+              <IonLabel>
+                <small>Records ({yearName})</small>
+              </IonLabel>
+              <IonLabel class="ion-text-right">
+                <small>
+                  <b>{myProjectRecordsThisYear}</b>
+                </small>
+              </IonLabel>
+            </IonItem>
+
+            <IonItem
+              lines="full"
+              className="list-header-labels"
+              // routerLink="/user/statistics/details"
+            >
+              <IonLabel>
+                <small>Species recorded (total)</small>
+              </IonLabel>
+              <IonLabel class="ion-text-right">
+                <small>
+                  <b>{myProjectSpecies}</b>/64
+                </small>
+              </IonLabel>
+            </IonItem>
+
+            <IonItem
+              lines="full"
+              className="list-header-labels"
+              // routerLink={`/user/statistics/details/${yearName}`}
+            >
+              <IonLabel>
+                <small>Species recorded ({yearName})</small>
+              </IonLabel>
+              <IonLabel class="ion-text-right">
+                <small>
+                  <b>{myProjectSpeciesThisYear}</b>/64
+                </small>
+              </IonLabel>
+            </IonItem>
+
+            <IonItemDivider mode="md">App totals</IonItemDivider>
+
+            <IonItem lines="full" className="list-header-labels">
+              <IonLabel>
+                <small>Records (total)</small>
+              </IonLabel>
+              <IonLabel class="ion-text-right">
+                <small>
+                  <b>{projectRecordsCount}</b>
+                </small>
+              </IonLabel>
+            </IonItem>
+          </div>
+
+          <InfoBackgroundMessage name="showStatsWIPTip">
+            <i>We will be adding more functionality to this page soon.</i>
+          </InfoBackgroundMessage>
+        </IonList>
+      </>
     );
   };
 
-  const refreshButton = (
-    <IonButton onClick={onRefresh} color="dark">
-      Refresh
-    </IonButton>
-  );
-
   return (
     <Page id="user-statistics">
-      <Header title="Statistics" rightSlot={refreshButton} />
-      <Main>{getReport()}</Main>
+      <Header title="Statistics" />
+      <Main>
+        <IonRefresher slot="fixed" onIonRefresh={onRefresh}>
+          <IonRefresherContent pullingIcon={chevronDownOutline} />
+        </IonRefresher>
+        {getReport()}
+      </Main>
     </Page>
   );
 }
