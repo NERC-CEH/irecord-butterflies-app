@@ -1,6 +1,6 @@
 import React from 'react';
 import { IonIcon } from '@ionic/react';
-import { Header, Page, Main, Section, Collapse } from '@apps';
+import { Header, Page, Main, Collapse } from '@apps';
 import 'common/images/flumens.svg';
 import './styles.scss';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
@@ -9,7 +9,7 @@ export default () => (
   <Page id="faq">
     <Header title="FAQ" />
     <Main>
-      <Section>
+      <div className="rounded">
         <Collapse title="Where are all my previous records?">
           <span>
             Records that you have submitted from previous versions of the
@@ -49,7 +49,7 @@ export default () => (
             enable the lists to be refined in future versions of the app.
           </span>
         </Collapse>
-      </Section>
+      </div>
     </Main>
   </Page>
 );

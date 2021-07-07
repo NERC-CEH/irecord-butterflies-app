@@ -1,12 +1,18 @@
 #faq {
-  ion-list {
-    padding: 5px 0 !important;
+  ion-content {
+    --padding-top: 25px;
+    --padding-start: 10px;
+    --padding-end: 10px;
   }
 
-  .collapse-block + .item {
+  .collapse-block + .item:not(.collapse-block) {
     --background: white;
     background: white;
     padding: 10px 0;
+
+    &:not(:first-of-type) {
+      --border-color: transparent;
+    }
   }
 
   .collapse-block {
