@@ -5,11 +5,13 @@ import Login from './Login';
 import Register from './Register';
 import Reset from './Reset';
 import Statistics from './Statistics';
+import StatisticsYear from './StatisticsYear';
 
 const LoginWrap = () => <Login userModel={userModel} />;
 const RegistrationWrap = () => <Register userModel={userModel} />;
 const ResetWrap = () => <Reset userModel={userModel} />;
 const StatisticsWrap = () => <Statistics userModel={userModel} />;
+const StatisticsYearWrap = () => <StatisticsYear userModel={userModel} />;
 
 export default [
   <Route path="/user/login" key="/user/login" exact render={LoginWrap} />,
@@ -25,5 +27,11 @@ export default [
     key="/user/statistics"
     exact
     render={StatisticsWrap}
+  />,
+  <Route
+    path="/user/statistics/details/:year?"
+    key="/user/statistics/details"
+    exact
+    render={StatisticsYearWrap}
   />,
 ];

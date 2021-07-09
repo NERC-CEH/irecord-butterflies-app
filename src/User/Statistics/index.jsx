@@ -40,8 +40,6 @@ async function fetchStatsWrap(userModel) {
 }
 
 function Statistics({ userModel }) {
-  // userModel.getStatistics();
-
   const onRefresh = async event => {
     event.detail.complete();
 
@@ -116,7 +114,7 @@ function Statistics({ userModel }) {
             <IonItem
               lines="full"
               className="list-header-labels"
-              // routerLink="/user/statistics/details"
+              routerLink="/user/statistics/details"
             >
               <IonLabel>
                 <small>Species recorded (total)</small>
@@ -131,7 +129,7 @@ function Statistics({ userModel }) {
             <IonItem
               lines="full"
               className="list-header-labels"
-              // routerLink={`/user/statistics/details/${yearName}`}
+              routerLink={`/user/statistics/details/${yearName}`}
             >
               <IonLabel>
                 <small>Species recorded ({yearName})</small>
@@ -172,6 +170,7 @@ function Statistics({ userModel }) {
         <IonRefresher slot="fixed" onIonRefresh={onRefresh}>
           <IonRefresherContent pullingIcon={chevronDownOutline} />
         </IonRefresher>
+
         {getReport()}
       </Main>
     </Page>

@@ -1,0 +1,77 @@
+#user-statistics-details {
+  .year-selector {
+    width: 100%;
+    overflow: scroll;
+    white-space: nowrap;
+    flex: 1;
+    flex-direction: row-reverse;
+    display: flex;
+    padding: 0 8px;
+
+    ion-badge {
+      background: white;
+      color: black;
+      font-size: 1.1em;
+      padding: 10px;
+      margin: 20px 5px;
+      min-width: fit-content;
+
+      font-family: 'Museo500';
+      font-weight: normal;
+
+      &.selected {
+        background: var(--ion-color-primary);
+        color: var(--ion-color-primary-contrast);
+      }
+    }
+  }
+
+  table {
+    width: 100%;
+    max-width: 95%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    font-family: 'Museo300';
+
+    thead {
+      font-weight: normal;
+      background-color: var(--ion-color-step-100, #e6e6e6) !important;
+
+      th {
+        white-space: nowrap;
+
+        ion-icon {
+          margin: -3px 5px;
+        }
+      }
+    }
+
+    tbody {
+      background-color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    th,
+    td {
+      padding: 15px;
+    }
+
+    td:not(:first-of-type) {
+      text-align: center;
+    }
+
+    th:last-of-type {
+      border-radius: 0 10px 0 0;
+    }
+    th:first-of-type {
+      text-align: left;
+      border-radius: 10px 0 0 0;
+    }
+    tr > td:first-of-type {
+      font-family: 'Museo500';
+    }
+  }
+}

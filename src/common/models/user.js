@@ -221,6 +221,7 @@ const defaults = {
   id: null,
 
   stats: null,
+  statsYears: {},
 };
 
 const userModel = new UserModel(genericStore, 'user', defaults);

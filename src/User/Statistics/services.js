@@ -3,6 +3,8 @@ import axios from 'axios';
 import surveyConfig from 'Survey/Point/config';
 
 export default async function fetchStats(userModel) {
+  console.log('Statistics: fetching user-stats');
+
   const url = `${config.backend.url}/api/v1/advanced_reports/user-stats?survey_id=${surveyConfig.id}`;
   const userAuth = btoa(`${userModel.attrs.email}:${userModel.attrs.password}`);
 
