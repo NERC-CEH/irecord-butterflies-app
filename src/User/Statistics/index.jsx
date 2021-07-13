@@ -115,6 +115,7 @@ function Statistics({ userModel }) {
               lines="full"
               className="list-header-labels"
               routerLink="/user/statistics/details"
+              detail
             >
               <IonLabel>
                 <small>Species recorded (total)</small>
@@ -130,6 +131,7 @@ function Statistics({ userModel }) {
               lines="full"
               className="list-header-labels"
               routerLink={`/user/statistics/details/${yearName}`}
+              detail
             >
               <IonLabel>
                 <small>Species recorded ({yearName})</small>

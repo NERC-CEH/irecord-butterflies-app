@@ -116,6 +116,14 @@ function StatisticsYear({ userModel }) {
         {getYearSelector()}
 
         {getReport()}
+
+        {!!data.length && (
+          <InfoBackgroundMessage className="source">
+            Currently, this report only includes records that you have submitted
+            through the iRecord Butterflies app and not other butterfly records
+            that you have uploaded to iRecord via other routes (e.g. UKBMS).
+          </InfoBackgroundMessage>
+        )}
       </Main>
     </Page>
   );

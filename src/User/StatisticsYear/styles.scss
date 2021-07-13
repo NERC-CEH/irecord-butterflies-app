@@ -74,4 +74,13 @@
       font-family: 'Museo500';
     }
   }
+
+  .source {
+    margin: 15px auto;
+    width: 100%;
+    max-width: 90%;
+    span {
+      text-align: left;
+    }
+  }
 }

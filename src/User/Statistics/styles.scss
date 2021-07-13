@@ -24,5 +24,13 @@
     ion-label.ion-text-right {
       max-width: 100px;
     }
+
+    ion-item.md[detail='true'] {
+      --inner-padding-end: 9px;
+
+      ion-label.ion-text-right {
+        padding: 0 10px;
+      }
+    }
   }
 }

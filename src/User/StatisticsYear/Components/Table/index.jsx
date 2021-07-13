@@ -3,9 +3,6 @@ import { useTable, useSortBy } from 'react-table';
 import { arrowDown, arrowUp } from 'ionicons/icons';
 import { IonIcon } from '@ionic/react';
 
-// TODO:
-/* eslint-disable */
-
 const columns = [
   {
     Header: 'Species',
@@ -14,6 +11,7 @@ const columns = [
   {
     Header: 'Records',
     accessor: 'record_count',
+    isSorted: true,
   },
   {
     Header: 'Count',
@@ -21,6 +19,7 @@ const columns = [
   },
 ];
 
+// eslint-disable-next-line
 function Table({ data }) {
   const {
     getTableProps,
@@ -32,52 +31,47 @@ function Table({ data }) {
     {
       columns,
       data,
+      initialState: {
+        sortBy: [
+          {
+            id: 'record_count',
+            desc: true,
+          },
+        ],
+      },
     },
     useSortBy
   );
 
+  const getColumn = column => (
+    <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+      {column.render('Header')}
+
+      <span>
+        {column.isSorted && column.isSortedDesc && <IonIcon src={arrowUp} />}
+        {column.isSorted && !column.isSortedDesc && <IonIcon src={arrowDown} />}
+      </span>
+    </th>
+  );
+
+  const getHeaderGroup = headerGroup => (
+    <tr {...headerGroup.getHeaderGroupProps()}>
+      {headerGroup.headers.map(getColumn)}
+    </tr>
+  );
+
+  const getRow = row => {
+    prepareRow(row);
+    const getCell = cell => (
+      <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+    );
+    return <tr {...row.getRowProps()}>{row.cells.map(getCell)}</tr>;
+  };
   return (
     <>
       <table {...getTableProps()}>
-        <thead>
-          {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
-                // Add the sorting props to control sorting. For this example
-                // we can add them into the header props
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                  {column.render('Header')}
-                  {/* Add a sort direction indicator */}
-                  <span>
-                    {column.isSorted ? (
-                      column.isSortedDesc ? (
-                        <IonIcon src={arrowUp} />
-                      ) : (
-                        <IonIcon src={arrowDown} />
-                      )
-                    ) : (
-                      ''
-                    )}
-                  </span>
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row, i) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
-                  return (
-                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
+        <thead>{headerGroups.map(getHeaderGroup)}</thead>
+        <tbody {...getTableBodyProps()}>{rows.map(getRow)}</tbody>
       </table>
     </>
   );
