@@ -34,7 +34,7 @@ function SpeciesGuide() {
             square) held in the UK butterfly database, as well as data on the
             numbers of each species seen at different times of year. However,
             the list for your area may not be complete as it is currently based
-            on records received by Butterfly Conservation between 2005 and 2014.
+            on records received by Butterfly Conservation between 2005 and 2019.
             To improve future versions of the app, as well as helping
             conservation, please enter records of species that you see, even if
             they don't appear on the filtered lists for your area.
