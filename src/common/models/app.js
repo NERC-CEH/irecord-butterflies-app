@@ -20,7 +20,7 @@ class AppModel extends Model {
     this.save();
   };
 
-  updateCurrentLocation = stop => {
+  updateCurrentLocation = async stop => {
     if (stop) {
       if (!this._gettingLocation) {
         return;
@@ -41,6 +41,7 @@ class AppModel extends Model {
         GPS.stop(this._gettingLocation);
         return;
       }
+
       if (!this.attrs.useLocationForGuide) {
         console.log(
           'AppModel: setting new location skipped - disabled setting.'
@@ -59,7 +60,7 @@ class AppModel extends Model {
       GPS.stop(this._gettingLocation);
     };
 
-    this._gettingLocation = GPS.start({ callback: onGPSSuccess });
+    this._gettingLocation = await GPS.start({ callback: onGPSSuccess });
   };
 }
 
