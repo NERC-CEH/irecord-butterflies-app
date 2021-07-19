@@ -9,7 +9,7 @@ import { modelStore } from './store';
 import Occurrence from './occurrence';
 import Media from './image';
 
-const { warn } = toast;
+const { warn, error } = toast;
 
 const surveyConfig = {
   point: pointSurvey,
@@ -56,7 +56,24 @@ class AppSample extends Sample {
       return;
     }
 
-    this.saveRemote();
+    const showError = e => {
+      if (e.message === 'Could not find/authenticate user.\n') {
+        // TODO: remove once it is clear why this happens.
+        console.error(
+          'Unauthenticated: userModel has credentials:',
+          userModel.attrs.email && 'email',
+          userModel.attrs.password && 'password'
+        );
+        error(
+          "For some reason we couldn't authenticate your account. Try logging out and back into the app.",
+          4000
+        );
+      } else {
+        error(e);
+      }
+      throw e;
+    };
+    this.saveRemote().catch(showError);
   }
 }
 
