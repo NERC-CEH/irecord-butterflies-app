@@ -48,17 +48,40 @@ const normalizeHectadProbabilities = (agg, row) => {
   return agg;
 };
 
+function checkIDsExist(normalized, species, time) {
+  console.log('Checking IDs exist');
+  let a = Object.values(normalized);
+  if (time) {
+    a = a.map(Object.values);
+  }
+  const names = [...new Set(a.flat().flatMap(Object.keys))];
+  const checkID = name => {
+    if (name === 'ScarceTortoiseshell') {
+      // not in the app
+      return;
+    }
+    const byId = sp => sp.id === name;
+    if (!species.find(byId)) throw new Error(`missing species ID ${name}`);
+  };
+  names.forEach(checkID);
+}
+
 const getData = async () => {
+  const species = await fetchSheet({ drive, file, sheet: 'species' });
+  saveToFile(species, 'species');
+
   await fetchAndSave('species');
   await fetchAndSave('photos');
 
   let sheetData = await fetchSheet({ drive, file, sheet: 'probabilityByWeek' });
   let normalized = sheetData.reduce(normalizeWeeklyProbabilities, {});
   saveToFile(normalized, 'probabilityByWeek');
+  checkIDsExist(normalized, species, true);
 
   sheetData = await fetchSheet({ drive, file, sheet: 'probabilityByHectad' });
   normalized = sheetData.reduce(normalizeHectadProbabilities, {});
   saveToFile(normalized, 'probabilityByHectad');
+  checkIDsExist(normalized, species);
 
   console.log('All done! 🚀');
 };
