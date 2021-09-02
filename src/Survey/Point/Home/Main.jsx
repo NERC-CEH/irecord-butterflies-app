@@ -4,19 +4,20 @@ import clsx from 'clsx';
 import { useRouteMatch } from 'react-router';
 import {
   IonItemDivider,
-  IonIcon,
   IonList,
   IonItem,
   IonLabel,
   IonButton,
   IonAvatar,
 } from '@ionic/react';
-import { Main, MenuAttrItem, InfoMessage, MenuAttrItemFromModel } from '@apps';
 import {
-  locationOutline,
-  addCircleOutline,
-  removeCircleOutline,
-} from 'ionicons/icons';
+  Attr,
+  Main,
+  MenuAttrItem,
+  InfoMessage,
+  MenuAttrItemFromModel,
+} from '@apps';
+import { locationOutline } from 'ionicons/icons';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import numberIcon from 'common/images/number.svg';
@@ -28,61 +29,6 @@ import config from 'common/config';
 
 function MainComponent({ sample, isDisabled }) {
   const match = useRouteMatch();
-
-  const increaseCount = () => {
-    const [occurrence] = sample.occurrences;
-
-    const { count } = occurrence.attrs;
-    occurrence.attrs.count = count + 1;
-  };
-
-  const decreaseCount = () => {
-    const [occurrence] = sample.occurrences;
-
-    const { count } = occurrence.attrs;
-    if (count <= 1) return;
-
-    occurrence.attrs.count = count - 1;
-  };
-
-  const getNumberAttr = () => {
-    const [occurrence] = sample.occurrences;
-    const { count } = occurrence.attrs;
-
-    return (
-      <IonItem id="menu-item-count-edit" disabled={isDisabled}>
-        <IonLabel>Number</IonLabel>
-        <IonIcon icon={numberIcon} slot="start" />
-        <div slot="end">
-          {!isDisabled && (
-            <IonButton
-              shape="round"
-              fill="clear"
-              size="default"
-              onClick={decreaseCount}
-              color="medium"
-            >
-              <IonIcon icon={removeCircleOutline} />
-            </IonButton>
-          )}
-
-          <span>{count}</span>
-
-          {!isDisabled && (
-            <IonButton
-              shape="round"
-              fill="clear"
-              size="default"
-              color="medium"
-              onClick={increaseCount}
-            >
-              <IonIcon icon={addCircleOutline} />
-            </IonButton>
-          )}
-        </div>
-      </IonItem>
-    );
-  };
 
   const getSpeciesButton = () => {
     const [occ] = sample.occurrences;
@@ -199,8 +145,16 @@ function MainComponent({ sample, isDisabled }) {
 
         <IonItemDivider>Other</IonItemDivider>
         <div className="rounded">
-          {getNumberAttr()}
-
+          <Attr
+            model={occ}
+            input="counter"
+            inputProps={{
+              icon: numberIcon,
+              label: 'Number',
+              isDisabled,
+            }}
+            attr="count"
+          />
           <MenuAttrItemFromModel
             model={occ}
             attr="stage"

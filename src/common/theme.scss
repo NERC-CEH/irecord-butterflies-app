@@ -216,6 +216,10 @@ div.rounded {
   overflow: hidden;
   margin-bottom: 20px;
 
+  .counter-input-attr-item {
+    border-bottom: 1px solid var(--ion-item-border-color);
+  }
+
   ion-item:last-of-type {
     --border-style: none;
   }

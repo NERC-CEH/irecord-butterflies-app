@@ -2,16 +2,13 @@ import { observer } from 'mobx-react';
 import React from 'react';
 import {
   IonItemDivider,
-  IonIcon,
   IonList,
   IonItem,
   IonLabel,
-  IonButton,
   IonAvatar,
 } from '@ionic/react';
 import { useRouteMatch } from 'react-router';
-import { Main, MenuAttrItem, MenuAttrItemFromModel } from '@apps';
-import { addCircleOutline, removeCircleOutline } from 'ionicons/icons';
+import { Attr, Main, MenuAttrItem, MenuAttrItemFromModel } from '@apps';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import PhotoPicker from 'common/Components/PhotoPicker';
@@ -23,57 +20,6 @@ function OccurrenceHomeMain({ occurrence }) {
   const match = useRouteMatch();
 
   const isDisabled = occurrence.isDisabled();
-
-  const increaseCount = () => {
-    const { count } = occurrence.attrs;
-    occurrence.attrs.count = count + 1; // eslint-disable-line
-  };
-
-  const decreaseCount = () => {
-    const { count } = occurrence.attrs;
-    if (count <= 1) {
-      return;
-    }
-
-    occurrence.attrs.count = count - 1; // eslint-disable-line
-  };
-
-  const getNumberAttr = () => {
-    const { count } = occurrence.attrs;
-
-    return (
-      <IonItem id="menu-item-count-edit" disabled={isDisabled}>
-        <IonLabel>Number</IonLabel>
-        <IonIcon icon={numberIcon} slot="start" />
-        <div slot="end">
-          {!isDisabled && (
-            <IonButton
-              shape="round"
-              fill="clear"
-              size="default"
-              onClick={decreaseCount}
-              color="medium"
-            >
-              <IonIcon icon={removeCircleOutline} />
-            </IonButton>
-          )}
-
-          <span>{count}</span>
-          {!isDisabled && (
-            <IonButton
-              shape="round"
-              fill="clear"
-              size="default"
-              color="medium"
-              onClick={increaseCount}
-            >
-              <IonIcon icon={addCircleOutline} />
-            </IonButton>
-          )}
-        </div>
-      </IonItem>
-    );
-  };
 
   const getSpeciesButton = () => {
     const { taxon } = occurrence.attrs;
@@ -121,7 +67,16 @@ function OccurrenceHomeMain({ occurrence }) {
         <div className="rounded">
           {getSpeciesButton()}
 
-          {getNumberAttr()}
+          <Attr
+            model={occurrence}
+            input="counter"
+            inputProps={{
+              icon: numberIcon,
+              label: 'Number',
+              isDisabled,
+            }}
+            attr="count"
+          />
 
           <MenuAttrItemFromModel
             model={occurrence}
