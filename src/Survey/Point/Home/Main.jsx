@@ -152,6 +152,7 @@ function MainComponent({ sample, isDisabled }) {
               icon: numberIcon,
               label: 'Number',
               isDisabled,
+              min: 1,
             }}
             attr="count"
           />

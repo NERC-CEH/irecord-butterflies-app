@@ -16,7 +16,7 @@
     "fetch:data": "cd src/common/data/species && node make.js"
   },
   "dependencies": {
-    "@bit/flumens.apps.attr": "^2.2.3",
+    "@bit/flumens.apps.attr": "^2.2.4",
     "@bit/flumens.apps.attr-page": "3.0.8",
     "@bit/flumens.apps.auto-suggest-input": "2.0.2",
     "@bit/flumens.apps.collapse": "^0.2.0",

@@ -74,6 +74,7 @@ function OccurrenceHomeMain({ occurrence }) {
               icon: numberIcon,
               label: 'Number',
               isDisabled,
+              min: 1,
             }}
             attr="count"
           />
