@@ -68,7 +68,7 @@
     "@ionic/core": "5.6.11",
     "@ionic/react": "5.6.11",
     "@ionic/react-router": "5.6.11",
-    "axios": "0.21.1",
+    "axios": "0.21.2",
     "clsx": "1.1.1",
     "cordova-launch-review": "4.0.1",
     "cordova-plugin-device": "2.0.3",
