@@ -67,6 +67,7 @@ class AppModel extends Model {
 const defaults = {
   sendAnalytics: true,
   appSession: 0,
+  useProbabilitiesForGuide: true,
   useLocationForGuide: true,
   listSurveyListSortedByTime: false,
   location: '',

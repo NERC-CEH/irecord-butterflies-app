@@ -11,9 +11,14 @@ import {
   isPlatform,
   IonInput,
 } from '@ionic/react';
-import { arrowUndoSharp, shareSocialOutline } from 'ionicons/icons';
+import {
+  arrowUndoSharp,
+  shareSocialOutline,
+  locationOutline,
+} from 'ionicons/icons';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import getCurrentWeekNumber from 'helpers/weeks';
+import clsx from 'clsx';
 import './styles.scss';
 
 function resetDialog(resetApp) {
@@ -45,6 +50,8 @@ class Component extends React.Component {
     resetApp: PropTypes.func.isRequired,
     onToggle: PropTypes.func.isRequired,
     onToggleGuideLocation: PropTypes.func.isRequired,
+    onToggleProbabilitiesForGuide: PropTypes.func.isRequired,
+    useProbabilitiesForGuide: PropTypes.bool,
     useLocationForGuide: PropTypes.bool,
     sendAnalytics: PropTypes.bool,
     currentLocation: PropTypes.string,
@@ -90,6 +97,8 @@ class Component extends React.Component {
       useLocationForGuide,
       currentLocation,
       onToggleGuideLocation,
+      onToggleProbabilitiesForGuide,
+      useProbabilitiesForGuide,
     } = this.props;
 
     const showAlertDialog = () => resetDialog(resetApp);
@@ -126,12 +135,27 @@ class Component extends React.Component {
               <IonIcon icon={butterflyIcon} size="small" slot="start" />
               <IonLabel>Smart species lists</IonLabel>
               <Toggle
+                onToggle={onToggleProbabilitiesForGuide}
+                checked={useProbabilitiesForGuide}
+              />
+            </IonItem>
+            <InfoMessage color="medium">
+              Use our species lists based on your current time and location.
+            </InfoMessage>
+            <IonItem disabled={!useProbabilitiesForGuide}>
+              <IonIcon icon={locationOutline} size="small" slot="start" />
+              <IonLabel>Use current location</IonLabel>
+              <Toggle
                 onToggle={onToggleGuideLocation}
                 checked={useLocationForGuide}
               />
             </IonItem>
-            <InfoMessage color="medium">
-              This will filter the species list based on your current location.{' '}
+
+            <InfoMessage
+              color="medium"
+              className={clsx(!useProbabilitiesForGuide && 'disabled')}
+            >
+              Filter the species list based on your current location.{' '}
               {currentLocationMessage}
             </InfoMessage>
           </div>

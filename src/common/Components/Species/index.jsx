@@ -184,6 +184,7 @@ class SpeciesMainComponent extends React.Component {
 
   getSpecies = () => {
     const speciesData = this.getSpeciesData();
+    const { useProbabilitiesForGuide } = appModel.attrs;
 
     const [
       speciesHereAndNow,
@@ -208,6 +209,13 @@ class SpeciesMainComponent extends React.Component {
           Sorry, no species were found.
         </InfoBackgroundMessage>
       );
+    }
+
+    const alphabetically = (sp1, sp2) =>
+      sp1.commonName.localeCompare(sp2.commonName);
+
+    if (!useProbabilitiesForGuide) {
+      return speciesData.sort(alphabetically).map(this.getSpeciesTile);
     }
 
     return (

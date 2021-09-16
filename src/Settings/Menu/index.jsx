@@ -29,7 +29,12 @@ const MenuController = props => {
   const { savedSamples, appModel, userModel } = props;
 
   const resetApplication = () => resetApp(savedSamples, appModel, userModel);
-  const { sendAnalytics, useLocationForGuide, location } = appModel.attrs;
+  const {
+    sendAnalytics,
+    useLocationForGuide,
+    useProbabilitiesForGuide,
+    location,
+  } = appModel.attrs;
 
   const onToggleWrap = (...args) => onToggle(appModel, ...args);
   const onToggleGuideLocation = checked => {
@@ -44,6 +49,9 @@ const MenuController = props => {
 
     appModel.save();
   };
+
+  const onToggleProbabilitiesForGuide = checked =>
+    onToggle(appModel, 'useProbabilitiesForGuide', checked);
 
   const currentLocation = location && location.gridref;
 
@@ -66,6 +74,8 @@ const MenuController = props => {
         useLocationForGuide={useLocationForGuide}
         onToggle={onToggleWrap}
         onToggleGuideLocation={onToggleGuideLocation}
+        onToggleProbabilitiesForGuide={onToggleProbabilitiesForGuide}
+        useProbabilitiesForGuide={useProbabilitiesForGuide}
         currentLocation={currentLocation}
         // admin controls
         adminChangeLocation={adminChangeLocation}
