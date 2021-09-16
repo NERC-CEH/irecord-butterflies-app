@@ -49,6 +49,35 @@ export default () => (
             enable the lists to be refined in future versions of the app.
           </span>
         </Collapse>
+        <Collapse title="How to edit your sightings after they are uploaded">
+          <div className="collapse-content-wrapper">
+            <span>
+              Once records are uploaded from the app, they can no longer be
+              edited from within the app, and instead you need to do the
+              following:
+            </span>
+            <ol>
+              <li>
+                Go to the{' '}
+                <a href="https://www.brc.ac.uk/irecord">iRecord website</a> and
+                log in (using the same username and password as you have used to
+                register on the app)
+              </li>
+              <li>
+                Go to the Explore -{' '}
+                <a href="https://www.brc.ac.uk/irecord/my-records">
+                  My records page
+                </a>{' '}
+                and find the record that needs to be edited
+              </li>
+              <li>
+                Click on the edit button (on the right-hand side of the page,
+                pencil and pad icon)
+              </li>
+              <li>Make the required edits and then click on Submit to save</li>
+            </ol>
+          </div>
+        </Collapse>
         <Collapse title="What if I am not sure which species it is?">
           <div className="collapse-content-wrapper">
             <p>

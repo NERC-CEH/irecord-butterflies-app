@@ -26,4 +26,15 @@
       --background: #eaeaea;
     }
   }
+
+  .collapse-content-wrapper {
+    width: 100%;
+
+    ol {
+      li {
+        margin-bottom: 10px;
+      }
+    }
+
+  }
 }
