@@ -1,9 +1,10 @@
 import React from 'react';
-import { IonIcon } from '@ionic/react';
+import { IonIcon, IonImg } from '@ionic/react';
 import { Header, Page, Main, Collapse } from '@apps';
 import 'common/images/flumens.svg';
-import './styles.scss';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
+import deleteOccExplanationImage from './deleteOccExplanationImage.png';
+import './styles.scss';
 
 export default () => (
   <Page id="faq">
@@ -76,6 +77,15 @@ export default () => (
               </li>
               <li>Make the required edits and then click on Submit to save</li>
             </ol>
+          </div>
+        </Collapse>
+        <Collapse title="How to delete a species from survey list">
+          <div className="collapse-content-wrapper">
+            <span>
+              To delete a species from your list, swipe it left and click the
+              delete button.
+            </span>
+            <IonImg src={deleteOccExplanationImage} />
           </div>
         </Collapse>
         <Collapse title="What if I am not sure which species it is?">
