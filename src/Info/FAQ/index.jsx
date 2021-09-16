@@ -49,6 +49,29 @@ export default () => (
             enable the lists to be refined in future versions of the app.
           </span>
         </Collapse>
+        <Collapse title="What if I am not sure which species it is?">
+          <div className="collapse-content-wrapper">
+            <p>
+              Identifying butterflies is not always straightforward and some
+              very common and widespread species can be challenging to identify
+              (e.g. Large, Small and Green-veined White). Please don't submit
+              sightings if you are not sure of the identification.
+            </p>
+            <p>
+              The species pages in this app provide some guidance on
+              identification (and we plan to add more in the future), including
+              comparison photos for some species that are easily mistaken. You
+              can also filter the species list (using the magnifying glass icon
+              in the top right corner of the screen) by main colour, markings
+              and/or size to help narrow down your options. If you are still not
+              sure then post a photo on{' '}
+              <a href="https://twitter.com/savebutterflies">@savebutterflies</a>{' '}
+              social media accounts to get an identification. But remember, only
+              submit a record if you are sure it is correct - if in doubt, leave
+              it out.
+            </p>
+          </div>
+        </Collapse>
       </div>
     </Main>
   </Page>
