@@ -184,7 +184,7 @@ class SpeciesMainComponent extends React.Component {
 
   getSpecies = () => {
     const speciesData = this.getSpeciesData();
-    const { useProbabilitiesForGuide } = appModel.attrs;
+    const { useProbabilitiesForGuide, useSmartSorting } = appModel.attrs;
 
     const [
       speciesHereAndNow,
@@ -197,6 +197,14 @@ class SpeciesMainComponent extends React.Component {
     const hasSpeciesHere = !!speciesHere.length;
     const hasSpeciesNow = !!speciesNow.length;
     const hasAdditional = !!remainingSpecies.length;
+
+    const alphabetically = (sp1, sp2) =>
+      sp1.commonName.localeCompare(sp2.commonName);
+
+    const speciesTiles = speciesList =>
+      useSmartSorting
+        ? speciesList.map(this.getSpeciesTile)
+        : speciesList.sort(alphabetically).map(this.getSpeciesTile);
 
     if (
       !hasSpeciesHereAndNow &&
@@ -211,9 +219,6 @@ class SpeciesMainComponent extends React.Component {
       );
     }
 
-    const alphabetically = (sp1, sp2) =>
-      sp1.commonName.localeCompare(sp2.commonName);
-
     if (!useProbabilitiesForGuide) {
       return speciesData.sort(alphabetically).map(this.getSpeciesTile);
     }
@@ -225,21 +230,20 @@ class SpeciesMainComponent extends React.Component {
             <IonLabel>Flying now in your area</IonLabel>
           </IonItemDivider>
         )}
-        {speciesHereAndNow.map(this.getSpeciesTile)}
-
+        {speciesTiles(speciesHereAndNow)}
         {hasSpeciesHere && (
           <IonItemDivider sticky className="species-now" mode="md">
             <IonLabel>In your area at other times of year</IonLabel>
           </IonItemDivider>
         )}
-        {speciesHere.map(this.getSpeciesTile)}
+        {speciesTiles(speciesHere)}
 
         {hasSpeciesNow && (
           <IonItemDivider sticky className="species-now" mode="md">
             <IonLabel>Flying at this time of year</IonLabel>
           </IonItemDivider>
         )}
-        {speciesNow.map(this.getSpeciesTile)}
+        {speciesTiles(speciesNow)}
 
         {hasAdditional && (
           <IonItemDivider sticky className="species-additional" mode="md">
@@ -250,7 +254,7 @@ class SpeciesMainComponent extends React.Component {
             )}
           </IonItemDivider>
         )}
-        {remainingSpecies.map(this.getSpeciesTile)}
+        {speciesTiles(remainingSpecies)}
       </>
     );
   };

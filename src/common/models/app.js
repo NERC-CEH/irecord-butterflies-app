@@ -69,6 +69,7 @@ const defaults = {
   appSession: 0,
   useProbabilitiesForGuide: true,
   useLocationForGuide: true,
+  useSmartSorting: true,
   listSurveyListSortedByTime: false,
   location: '',
 

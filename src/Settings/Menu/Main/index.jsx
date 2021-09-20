@@ -15,6 +15,7 @@ import {
   arrowUndoSharp,
   shareSocialOutline,
   locationOutline,
+  filterOutline,
 } from 'ionicons/icons';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import getCurrentWeekNumber from 'helpers/weeks';
@@ -51,6 +52,8 @@ class Component extends React.Component {
     onToggle: PropTypes.func.isRequired,
     onToggleGuideLocation: PropTypes.func.isRequired,
     onToggleProbabilitiesForGuide: PropTypes.func.isRequired,
+    onToggleSmartSorting: PropTypes.func.isRequired,
+    useSmartSorting: PropTypes.bool,
     useProbabilitiesForGuide: PropTypes.bool,
     useLocationForGuide: PropTypes.bool,
     sendAnalytics: PropTypes.bool,
@@ -98,6 +101,8 @@ class Component extends React.Component {
       currentLocation,
       onToggleGuideLocation,
       onToggleProbabilitiesForGuide,
+      onToggleSmartSorting,
+      useSmartSorting,
       useProbabilitiesForGuide,
     } = this.props;
 
@@ -142,6 +147,7 @@ class Component extends React.Component {
             <InfoMessage color="medium">
               Use our species lists based on your current time and location.
             </InfoMessage>
+
             <IonItem disabled={!useProbabilitiesForGuide}>
               <IonIcon icon={locationOutline} size="small" slot="start" />
               <IonLabel>Use current location</IonLabel>
@@ -157,6 +163,23 @@ class Component extends React.Component {
             >
               Filter the species list based on your current location.{' '}
               {currentLocationMessage}
+            </InfoMessage>
+
+            <IonItem disabled={!useProbabilitiesForGuide}>
+              <IonIcon icon={filterOutline} size="small" slot="start" />
+              <IonLabel>Use smart sorting</IonLabel>
+              <Toggle
+                onToggle={onToggleSmartSorting}
+                checked={useSmartSorting}
+              />
+            </IonItem>
+
+            <InfoMessage
+              color="medium"
+              className={clsx(!useProbabilitiesForGuide && 'disabled')}
+            >
+              Sort the species using probability information. Disabling it will
+              default to alphabetical sorting.
             </InfoMessage>
           </div>
           {this.getAdminControls()}
