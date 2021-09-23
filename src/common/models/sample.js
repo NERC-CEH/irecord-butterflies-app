@@ -40,7 +40,7 @@ class AppSample extends Sample {
     this.gpsExtensionInit();
   }
 
-  upload(skipInvalidsMessage) {
+  upload(skipInvalidsMessage, skipRefreshUploadCountStat) {
     if (this.remote.synchronising) {
       return;
     }
@@ -74,19 +74,8 @@ class AppSample extends Sample {
       throw e;
     };
 
-
-     const storeTemporarilyUserStats = async () => {
-       try {
-         await userModel.fetchStats();
-         // we store this temporarily because to use the stats thank you message only after upload action instead of stats page refresh
-         userModel.uploadCounter.count = userModel.attrs?.stats?.myProjectRecordsThisYear;
-       } catch (e) {
-         // skip showing stats error to the user - less important than upload errors
-         console.error(e);
-       }
-
-     };
-    this.saveRemote().then(storeTemporarilyUserStats).catch(showError)
+    const refreshUploadCountStatWrap = () => !skipRefreshUploadCountStat && userModel.refreshUploadCountStat();
+    return this.saveRemote().then(refreshUploadCountStatWrap).catch(showError)
   }
 }
 

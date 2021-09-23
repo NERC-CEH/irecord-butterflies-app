@@ -34,6 +34,8 @@ async function fetchStats(userModel) {
     if (axios.isCancel(e)) {
       return null;
     }
+
+    throw e
   }
 
   return res.data;
@@ -42,9 +44,22 @@ async function fetchStats(userModel) {
 const extension = {
   async fetchStats() {
     const stats = await fetchStats(this);
+    if (!stats) return;
+
     this.attrs.stats = stats; // eslint-disable-line
 
     this.save();
+  },
+
+  async refreshUploadCountStat() {
+    try {
+      await this.fetchStats();
+      // we store this temporarily because to use the stats thank you message only after upload action instead of stats page refresh
+      this.uploadCounter.count = this.attrs?.stats?.myProjectRecordsThisYear;
+    } catch (e) {
+      // skip showing stats error to the user - less important than upload errors
+      console.error(e);
+    }
   },
 
   getAchievedStatsMilestone() {
