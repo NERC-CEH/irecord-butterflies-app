@@ -13,7 +13,6 @@ import {
 } from '@ionic/react';
 import { chevronDownOutline } from 'ionicons/icons';
 import InfoBackgroundMessage from 'common/Components/InfoBackgroundMessage';
-import fetchStats from './services';
 import './styles.scss';
 
 const { warn } = toast;
@@ -28,9 +27,7 @@ async function fetchStatsWrap(userModel) {
   });
 
   try {
-    const stats = await fetchStats(userModel);
-    userModel.attrs.stats = stats; // eslint-disable-line
-    userModel.save();
+    await userModel.fetchStats();
   } catch (err) {
     console.error(err);
     // do nothing

@@ -5,7 +5,9 @@ import CONFIG from 'common/config';
 import * as Yup from 'yup';
 import { Model } from '@apps';
 import axios from 'axios';
+import { observable } from 'mobx';
 import { genericStore } from './store';
+import serviceExtension from './userStatsExt';
 
 class UserModel extends Model {
   loginSchema = Yup.object().shape({
@@ -50,6 +52,13 @@ class UserModel extends Model {
     secondname: Yup.string().required(),
     name: Yup.string().required(),
   });
+
+  uploadCounter = observable({ count: 0 })
+
+  constructor(...args) {
+    super(...args);
+    Object.assign(this, serviceExtension);
+  }
 
   async logOut() {
     return this.resetDefaults();
@@ -219,6 +228,8 @@ const defaults = {
   password: null,
   name: null,
   id: null,
+
+  lastThankYouMilestoneShown: 0,
 
   stats: null,
   statsYears: {},
