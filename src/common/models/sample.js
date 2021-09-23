@@ -42,18 +42,18 @@ class AppSample extends Sample {
 
   upload(skipInvalidsMessage, skipRefreshUploadCountStat) {
     if (this.remote.synchronising) {
-      return;
+      return null;
     }
 
     const invalids = this.validateRemote();
     if (invalids) {
       !skipInvalidsMessage && showInvalidsMessage(invalids);
-      return;
+      return null;
     }
 
     if (!device.isOnline()) {
       warn('Looks like you are offline!');
-      return;
+      return null;
     }
 
     const showError = e => {
@@ -75,7 +75,7 @@ class AppSample extends Sample {
     };
 
     const refreshUploadCountStatWrap = () => !skipRefreshUploadCountStat && userModel.refreshUploadCountStat();
-    return this.saveRemote().then(refreshUploadCountStatWrap).catch(showError)
+    return this.saveRemote().then(refreshUploadCountStatWrap).catch(showError);
   }
 }
 
