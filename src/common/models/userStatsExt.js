@@ -35,7 +35,7 @@ async function fetchStats(userModel) {
       return null;
     }
 
-    throw e
+    throw e;
   }
 
   return res.data;
@@ -65,13 +65,18 @@ const extension = {
   getAchievedStatsMilestone() {
     const { lastThankYouMilestoneShown } = this.attrs;
 
-      if (this.uploadCounter.count >= 1000 && (lastThankYouMilestoneShown < 1000))  return 1000;
-      if (this.uploadCounter.count >= 500 && (lastThankYouMilestoneShown < 500))  return 500;
-      if (this.uploadCounter.count >= 100 && (lastThankYouMilestoneShown < 100))  return 100;
-      if (this.uploadCounter.count >= 50 && (lastThankYouMilestoneShown < 50))  return 50;
-      if (this.uploadCounter.count >= 25 && (lastThankYouMilestoneShown < 25)) return 25;
+    if (this.uploadCounter.count >= 1000 && lastThankYouMilestoneShown < 1000)
+      return 1000;
+    if (this.uploadCounter.count >= 500 && lastThankYouMilestoneShown < 500)
+      return 500;
+    if (this.uploadCounter.count >= 100 && lastThankYouMilestoneShown < 100)
+      return 100;
+    if (this.uploadCounter.count >= 50 && lastThankYouMilestoneShown < 50)
+      return 50;
+    if (this.uploadCounter.count >= 25 && lastThankYouMilestoneShown < 25)
+      return 25;
 
-      return null
+    return null;
   },
 };
 

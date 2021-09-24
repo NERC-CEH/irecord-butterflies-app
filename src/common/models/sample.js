@@ -74,7 +74,8 @@ class AppSample extends Sample {
       throw e;
     };
 
-    const refreshUploadCountStatWrap = () => !skipRefreshUploadCountStat && userModel.refreshUploadCountStat();
+    const refreshUploadCountStatWrap = () =>
+      !skipRefreshUploadCountStat && userModel.refreshUploadCountStat();
     return this.saveRemote().then(refreshUploadCountStatWrap).catch(showError);
   }
 }

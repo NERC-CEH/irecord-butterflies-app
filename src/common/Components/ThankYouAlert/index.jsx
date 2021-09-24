@@ -8,8 +8,8 @@ import './styles.scss';
 
 function ThankYouAlert({ userModel }) {
   const milestone = userModel.getAchievedStatsMilestone();
-  if (!milestone) return null
-  
+  if (!milestone) return null;
+
   let stars = [];
   if (milestone >= 25) stars = Array.from(Array(1));
   if (milestone >= 50) stars = Array.from(Array(2));
