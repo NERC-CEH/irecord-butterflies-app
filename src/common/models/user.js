@@ -53,7 +53,7 @@ class UserModel extends Model {
     name: Yup.string().required(),
   });
 
-  uploadCounter = observable({ count: 0 })
+  uploadCounter = observable({ count: 0 });
 
   constructor(...args) {
     super(...args);
@@ -229,7 +229,7 @@ const defaults = {
   name: null,
   id: null,
 
-  lastThankYouMilestoneShown: 0,
+  lastThankYouMilestoneShown: {},
 
   stats: null,
   statsYears: {},

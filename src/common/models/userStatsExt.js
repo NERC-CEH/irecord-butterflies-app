@@ -65,15 +65,34 @@ const extension = {
   getAchievedStatsMilestone() {
     const { lastThankYouMilestoneShown } = this.attrs;
 
-    if (this.uploadCounter.count >= 1000 && lastThankYouMilestoneShown < 1000)
+    const currentYear = new Date().getFullYear();
+    const lastThankYouMilestoneShownThisYear =
+      lastThankYouMilestoneShown[currentYear] || 0;
+
+    if (
+      this.uploadCounter.count >= 1000 &&
+      lastThankYouMilestoneShownThisYear < 1000
+    )
       return 1000;
-    if (this.uploadCounter.count >= 500 && lastThankYouMilestoneShown < 500)
+    if (
+      this.uploadCounter.count >= 500 &&
+      lastThankYouMilestoneShownThisYear < 500
+    )
       return 500;
-    if (this.uploadCounter.count >= 100 && lastThankYouMilestoneShown < 100)
+    if (
+      this.uploadCounter.count >= 100 &&
+      lastThankYouMilestoneShownThisYear < 100
+    )
       return 100;
-    if (this.uploadCounter.count >= 50 && lastThankYouMilestoneShown < 50)
+    if (
+      this.uploadCounter.count >= 50 &&
+      lastThankYouMilestoneShownThisYear < 50
+    )
       return 50;
-    if (this.uploadCounter.count >= 25 && lastThankYouMilestoneShown < 25)
+    if (
+      this.uploadCounter.count >= 25 &&
+      lastThankYouMilestoneShownThisYear < 25
+    )
       return 25;
 
     return null;
