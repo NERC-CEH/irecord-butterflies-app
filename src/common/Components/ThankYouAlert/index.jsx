@@ -37,8 +37,8 @@ function ThankYouAlert({ userModel }) {
           Over <b>{milestone}</b> records submitted
         </p>
         <p className="message-content-with-background">
-          You have now uploaded over <b>{milestone}</b> butterfly records since
-          the start of <b>{currentYear}</b>, many thanks!
+          You have now uploaded over <b>{milestone}</b> butterfly records
+          through this app since the start of <b>{currentYear}</b>, many thanks!
         </p>
 
         <p>Every record you submit helps us to conserve the UK's butterflies</p>
