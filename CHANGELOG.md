@@ -1,3 +1,12 @@
+## 2.2.0
+
+Added option to sort species alphabetically.
+Added option to disable smart lists.
+Added uploaded record feedback to user.
+Improved past location name search.
+Improved FAQ section.
+Other minor fixes.
+
 ## 2.1.0
 
 Updated probability filters
