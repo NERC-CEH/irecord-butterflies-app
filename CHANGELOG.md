@@ -1,3 +1,7 @@
+## 2.2.1
+
+Fixed the communication with the new iRecord site.
+
 ## 2.2.0
 
 Added option to sort species alphabetically.

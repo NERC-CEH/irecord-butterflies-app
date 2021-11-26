@@ -1,8 +1,7 @@
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { isPlatform } from '@ionic/react';
 
-const backendUrl =
-  process.env.APP_BACKEND_URL || 'https://www.brc.ac.uk/irecord';
+const backendUrl = process.env.APP_BACKEND_URL || 'https://irecord.org.uk';
 
 const isTestEnv = process.env.NODE_ENV === 'test';
 
