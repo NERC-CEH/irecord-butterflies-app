@@ -3,6 +3,9 @@ default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: ios
 app:
   envs:
+    - BITRISE_PROJECT_NAME: com.natural_apptitude.butterfly
+      opts:
+        is_expand: false
     - BITRISE_PROJECT_PATH: ios/App/App.xcworkspace
       opts:
         is_expand: false
