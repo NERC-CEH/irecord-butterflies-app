@@ -15,8 +15,8 @@ export default () => (
           <span>
             Records that you have submitted from previous versions of the
             iRecord Butterflies app are all stored safely in the iRecord
-            website. To see these, download them or make changes, visit{' '}
-            <a href="https://www.brc.ac.uk/irecord">iRecord site</a> and log
+            website. To see these, download them or make changes, visit the{' '}
+            <a href="https://www.brc.ac.uk/irecord">iRecord website</a> and log
             into your account. Although this app keeps a record of your pending
             and uploaded sightings, this is not designed to be a permanent
             repository. The only way to ensure that your records are safe and
