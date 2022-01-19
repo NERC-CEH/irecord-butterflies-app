@@ -45,9 +45,9 @@ export default () => (
             Millennium recording scheme for the period 2005-2019 provide the
             basis for the species known in your area. Other species may be
             present but not yet recorded in the BNM scheme and therefore will
-            not in 'your area' lists. Submitting records of such species will
-            not alter the ordering of these lists in the short-term but will
-            enable the lists to be refined in future versions of the app.
+            not appear in 'your area' lists. Submitting records of such species
+            will not alter the ordering of these lists in the short-term but
+            will enable the lists to be refined in future versions of the app.
           </span>
         </Collapse>
         <Collapse title="How to edit your sightings after they are uploaded">
