@@ -94,6 +94,14 @@
   },
   "devDependencies": {
     "@babel/core": "7.14.6",
+    "@babel/preset-typescript": "7.15.0",
+    "@types/react": "17.0.24",
+    "@types/react-dom": "17.0.9",
+    "@types/react-router": "5.1.16",
+    "@types/react-router-dom": "5.3.0",
+    "@typescript-eslint/eslint-plugin": "4.31.2",
+    "@typescript-eslint/parser": "4.31.2",
+    "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/plugin-proposal-decorators": "7.14.5",
     "@babel/plugin-syntax-dynamic-import": "7.8.3",
     "@babel/plugin-transform-exponentiation-operator": "7.14.5",
@@ -111,6 +119,7 @@
     "eslint": "7.30.0",
     "eslint-import-resolver-babel-module": "5.3.1",
     "eslint-plugin-import": "2.23.4",
+    "typescript": "4.5.4",
     "husky": "7.0.1",
     "jest": "27.0.6",
     "jest-transform-stub": "2.0.0",
@@ -138,7 +147,8 @@
   },
   "babel": {
     "presets": [
-      "@babel/preset-react",
+      "@babel/react",
+      "@babel/typescript",
       [
         "@babel/env",
         {
@@ -153,6 +163,12 @@
       ]
     ],
     "plugins": [
+      [
+        "@babel/transform-runtime",
+        {
+          "regenerator": true
+        }
+      ],
       [
         "module-resolver",
         {
@@ -182,15 +198,56 @@
     "env": {
       "browser": true
     },
-    "parser": "babel-eslint",
-    "extends": "@flumens",
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "@flumens",
+      "plugin:@typescript-eslint/recommended"
+    ],
     "settings": {
       "import/resolver": {
-        "babel-module": {}
-      }
+        "babel-module": {
+          "extensions": [
+            ".js",
+            ".jsx",
+            ".ts",
+            ".tsx"
+          ]
+        }
+      },
+      "plugins": [
+        "@typescript-eslint"
+      ]
     },
     "rules": {
-      "jsx-a11y/accessible-emoji": 0
+      "jsx-a11y/accessible-emoji": 0,
+      "@typescript-eslint/no-var-requires": 0,
+      "import/extensions": [
+        "error",
+        "ignorePackages",
+        {
+          "js": "never",
+          "jsx": "never",
+          "ts": "never",
+          "tsx": "never"
+        }
+      ],
+      "@typescript-eslint/no-empty-interface": "off",
+      "no-use-before-define": "off",
+      "@typescript-eslint/no-use-before-define": [
+        "error"
+      ],
+      "react/prop-types": "off",
+      "react/jsx-filename-extension": [
+        2,
+        {
+          "extensions": [
+            ".js",
+            ".jsx",
+            ".ts",
+            ".tsx"
+          ]
+        }
+      ]
     }
   },
   "prettier": {
