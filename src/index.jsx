@@ -18,6 +18,10 @@ import '@ionic/core/css/core.css';
 import '@ionic/core/css/ionic.bundle.css';
 import 'common/theme.scss';
 
+import 'leaflet/dist/leaflet.css';
+import 'leaflet-draw/dist/leaflet.draw.css';
+import 'leaflet-draw/dist/images/spritesheet.svg';
+
 console.log('🚩 App starting.'); // eslint-disable-line
 
 i18n.use(initReactI18next).init({ lng: 'en' });
