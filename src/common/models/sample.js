@@ -4,6 +4,7 @@ import config from 'common/config';
 import { observable } from 'mobx';
 import pointSurvey from 'Survey/Point/config';
 import listSurvey from 'Survey/List/config';
+import timeSurvey from 'Survey/Time/config';
 import GPSExtension from './sampleGPSExt';
 import { modelStore } from './store';
 import Occurrence from './occurrence';
@@ -14,6 +15,7 @@ const { warn, error } = toast;
 const surveyConfig = {
   point: pointSurvey,
   list: listSurvey,
+  'single-species-count': timeSurvey,
 };
 
 class AppSample extends Sample {

@@ -93,7 +93,10 @@ function getSampleInfo(sample) {
 
   const speciesCount = sample.occurrences.length;
   const location = sample.attrs.location || {};
-  const locationName = location.name || 'List';
+  const locationName =
+    survey.name === 'single-species-count'
+      ? 'Single species count'
+      : location.name || 'List';
 
   return (
     <>
