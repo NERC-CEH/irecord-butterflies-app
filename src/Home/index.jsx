@@ -90,6 +90,8 @@ class HomeComponent extends React.Component {
       />
     );
 
+    const { useExperiments } = appModel.attrs;
+
     return (
       <IonTabs>
         <IonRouterOutlet>
@@ -132,14 +134,16 @@ class HomeComponent extends React.Component {
                   </IonLabel>
                 </IonFabButton>
 
-                <IonFabButton
-                  class="fab-button-label"
-                  routerLink="/survey/single-species-count"
-                >
-                  <IonLabel>
-                    <T>Single species count</T>
-                  </IonLabel>
-                </IonFabButton>
+                {useExperiments && (
+                  <IonFabButton
+                    class="fab-button-label"
+                    routerLink="/survey/single-species-count"
+                  >
+                    <IonLabel>
+                      <T>Single species count</T>
+                    </IonLabel>
+                  </IonFabButton>
+                )}
 
                 <div className="long-press-surveys-label">
                   <T>Click on other recording options from list below</T>

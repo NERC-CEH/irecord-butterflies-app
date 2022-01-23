@@ -76,6 +76,8 @@ const defaults = {
   feedbackGiven: false,
   showedWelcome: false,
 
+  useExperiments: false,
+
   // draft survey pointers
   'draftId:point': null,
 

@@ -24,6 +24,7 @@ export { default as ModelLocation } from '@bit/flumens.apps.model-location-map';
 export { default as Gallery } from '@bit/flumens.apps.gallery';
 export { default as LongPressFabButton } from '@bit/flumens.apps.long-press-fab-button';
 export { default as InputWithValidation } from '@bit/flumens.apps.input-with-validation';
+export { default as MenuAttrToggle } from '@bit/flumens.apps.menu-attr-toggle';
 export { default as PhotoPicker } from '@bit/flumens.apps.photo-picker';
 export { default as Toggle } from '@bit/flumens.apps.toggle';
 export { default as date } from '@bit/flumens.apps.date';

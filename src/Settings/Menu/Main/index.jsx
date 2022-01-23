@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import exact from 'prop-types-exact';
-import { Main, alert, Toggle, InfoMessage } from '@apps';
+import { Main, alert, Toggle, InfoMessage, MenuAttrToggle } from '@apps';
 import PropTypes from 'prop-types';
 import {
   IonIcon,
@@ -16,6 +16,7 @@ import {
   shareSocialOutline,
   locationOutline,
   filterOutline,
+  flameOutline,
 } from 'ionicons/icons';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import getCurrentWeekNumber from 'helpers/weeks';
@@ -60,6 +61,7 @@ class Component extends React.Component {
     currentLocation: PropTypes.string,
     adminChangeWeek: PropTypes.func,
     adminChangeLocation: PropTypes.func,
+    useExperiments: PropTypes.bool.isRequired,
   });
 
   getAdminControls = () => {
@@ -104,11 +106,14 @@ class Component extends React.Component {
       onToggleSmartSorting,
       useSmartSorting,
       useProbabilitiesForGuide,
+      useExperiments,
     } = this.props;
 
     const showAlertDialog = () => resetDialog(resetApp);
 
     const onSendAnalyticsToggle = checked => onToggle('sendAnalytics', checked);
+
+    const onUseExperiments = checked => onToggle('useExperiments', checked);
 
     const currentLocationMessage = currentLocation ? (
       <>
@@ -181,6 +186,13 @@ class Component extends React.Component {
               Sort the species using probability information. Disabling it will
               default to alphabetical sorting.
             </InfoMessage>
+
+            <MenuAttrToggle
+              icon={flameOutline}
+              label="Experimental Features"
+              value={useExperiments}
+              onChange={onUseExperiments}
+            />
           </div>
           {this.getAdminControls()}
 

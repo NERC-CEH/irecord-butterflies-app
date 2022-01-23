@@ -35,6 +35,7 @@ const MenuController = props => {
     useProbabilitiesForGuide,
     location,
     useSmartSorting,
+    useExperiments,
   } = appModel.attrs;
 
   const onToggleWrap = (...args) => onToggle(appModel, ...args);
@@ -83,6 +84,7 @@ const MenuController = props => {
         onToggleSmartSorting={onToggleSmartSorting}
         useSmartSorting={useSmartSorting}
         currentLocation={currentLocation}
+        useExperiments={useExperiments}
         // admin controls
         adminChangeLocation={adminChangeLocation}
         adminChangeWeek={adminChangeWeek}

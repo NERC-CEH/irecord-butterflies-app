@@ -1,5 +1,11 @@
 #settings {
   ion-content {
     --padding-top: 10px;
+
+    .menu-attr-toggle {
+      ion-icon {
+        font-size: 18px;
+      }
+    }
   }
 }
