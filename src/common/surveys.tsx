@@ -1,5 +1,7 @@
 /* eslint-disable camelcase */
 import timeSurvey from 'Survey/Time/config';
+import AppOccurrence from 'models/occurrence';
+import AppSample from 'models/sample';
 
 export default {
   [timeSurvey.name]: timeSurvey,
@@ -14,7 +16,25 @@ export interface Survey {
   attrs: Attrs;
 
   smp?: {
-    occ?: {};
+    attrs: Attrs;
+
+    occ: {
+      attrs: Attrs | any;
+
+      create: (
+        Occurrence: typeof AppOccurrence,
+        taxon: any,
+        zeroAbundance?: string | null
+      ) => typeof AppOccurrence;
+      verify?: any;
+    };
+
+    create: (
+      SAmple: typeof AppSample,
+      Occurrence: typeof AppOccurrence,
+      taxon: any,
+      zeroAbundance?: string | null
+    ) => typeof AppSample;
   };
 
   verify?: (attrs: any) => any;

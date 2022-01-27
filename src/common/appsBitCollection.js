@@ -32,5 +32,6 @@ export { default as Sample } from '@bit/flumens.apps.models.sample-with-drupal-r
 export { default as Occurrence } from '@bit/flumens.apps.models.occurrence-with-drupal-remote';
 export { default as Media } from '@bit/flumens.apps.models.media-with-drupal-remote';
 export { default as UserFeedbackRequest } from '@bit/flumens.apps.user-feedback-request';
+export { default as MenuNoteItem } from '@bit/flumens.apps.menu-note-item';
 export * from '@bit/flumens.apps.utils.location';
 export * from '@bit/flumens.apps.utils.validation';

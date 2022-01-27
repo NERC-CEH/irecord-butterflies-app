@@ -8,8 +8,8 @@ export default class AppOccurrence extends Occurrence {
     return super.fromJSON(json, Media);
   }
 
-  constructor(props) {
-    super(props);
+  constructor(...props) {
+    super(...props);
 
     const setOnlyMinimalSpeciesValues = change => {
       const { warehouseId, id, scientificName, commonName } = change.newValue;

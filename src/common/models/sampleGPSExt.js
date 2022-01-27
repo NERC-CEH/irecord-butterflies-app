@@ -38,38 +38,6 @@ function calculateLineLenght(lineString) {
 }
 
 const extension = {
-  setAreaLocation(shape, accuracy, altitude, altitudeAccuracy) {
-    if (!shape) {
-      this.attrs.location = null;
-      return this.save();
-    }
-
-    let area;
-    let [longitude, latitude] = shape.coordinates[0];
-
-    if (shape.type === 'Polygon') {
-      area = geojsonArea.geometry(shape);
-      [longitude, latitude] = shape.coordinates[0][0]; // eslint-disable-line
-    } else {
-      area = DEFAULT_TRANSECT_BUFFER * calculateLineLenght(shape.coordinates);
-    }
-
-    area = Math.floor(area);
-
-    this.attrs.location = {
-      latitude,
-      longitude,
-      area,
-      shape,
-      source: 'map',
-      accuracy,
-      altitude,
-      altitudeAccuracy,
-    };
-
-    return this.save();
-  },
-
   setLocation([longitude, latitude], source = 'map', accuracy) {
     this.attrs.location = {
       latitude,

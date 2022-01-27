@@ -91,12 +91,50 @@ function getSampleInfo(sample) {
     );
   }
 
+  if (survey.name === 'single-species-count') {
+    const occ = sample?.samples[0]?.occurrences[0];
+
+    const count = sample?.samples?.length;
+
+    const taxon = occ?.attrs?.taxon || {};
+    const label = 'Single Species Count';
+
+    const byId = ({ id: speciesID }) => speciesID === taxon.id;
+    const fullSpeciesProfile = species.find(byId) || {};
+
+    const { thumbnail } = fullSpeciesProfile;
+
+    const image = occ?.media[0];
+    let avatar = <IonIcon icon={butterflyIcon} color="warning" />;
+
+    if (image) {
+      avatar = <img src={image.getURL()} />;
+    } else if (thumbnail) {
+      avatar = <img src={thumbnail} />;
+    }
+
+    return (
+      <>
+        <IonAvatar>{avatar}</IonAvatar>
+        <IonLabel position="stacked" mode="ios" color="dark">
+          <IonLabel className="species-name">
+            {label || 'Species missing'}
+          </IonLabel>
+          <IonLabel class="ion-text-wrap">{prettyDate}</IonLabel>
+          <div style={{ display: 'inline' }}>
+            {!!count && !sample.hasZeroAbundance() && (
+              <IonBadge className="occurrence-badge">Count: {count}</IonBadge>
+            )}
+            <IonBadge className="time-badge">Time: 5:40</IonBadge>
+          </div>
+        </IonLabel>
+      </>
+    );
+  }
+
   const speciesCount = sample.occurrences.length;
   const location = sample.attrs.location || {};
-  const locationName =
-    survey.name === 'single-species-count'
-      ? 'Single species count'
-      : location.name || 'List';
+  const locationName = location.name || 'List';
 
   return (
     <>

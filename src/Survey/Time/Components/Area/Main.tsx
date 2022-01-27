@@ -14,7 +14,7 @@ import 'leaflet/dist/images/marker-shadow.png';
 
 L.Icon.Default.imagePath = '/images';
 
-const DEFAULT_ZOOM = 5;
+const DEFAULT_ZOOM = 6;
 
 type Props = {
   sample: typeof Sample;

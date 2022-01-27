@@ -24,6 +24,9 @@ const config = {
     url: backendUrl,
     apiKey: process.env.APP_INDICIA_API_KEY,
   },
+
+  weatherSiteApiKey: 'befdf7b31c238cb233a6958b9d47441c',
+  weatherSiteUrl: 'https://api.openweathermap.org/data/2.5/weather',
 };
 
 (async function getMediaDirectory() {

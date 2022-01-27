@@ -330,3 +330,13 @@ html.plt-tablet {
 .md .picker-opt {
   font-size: 1em;
 }
+
+.slider-input-attr {
+  margin: 0 10px;
+  border-radius: 10px;
+  --border-color: transparent;
+}
+
+.info-message {
+  --inner-border-width: 0;
+}

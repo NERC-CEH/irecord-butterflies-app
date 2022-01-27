@@ -6,6 +6,8 @@ import pointSurvey from 'Survey/Point/config';
 import listSurvey from 'Survey/List/config';
 import timeSurvey from 'Survey/Time/config';
 import GPSExtension from './sampleGPSExt';
+import GPSAreaExtension from './sample_gps_ext';
+import MetOfficeExtension from './sample_metoffice_ext';
 import { modelStore } from './store';
 import Occurrence from './occurrence';
 import Media from './image';
@@ -38,9 +40,20 @@ class AppSample extends Sample {
 
     this.survey = surveyConfig[this.metadata.survey];
 
-    Object.assign(this, GPSExtension);
+    // Object.assign(this, GPSExtension);
+    Object.assign(this, GPSAreaExtension);
+    Object.assign(this, MetOfficeExtension);
+
     this.gpsExtensionInit();
   }
+
+  hasZeroAbundance = () => {
+    if (this.parent) {
+      return this.parent.samples[0].occurrences[0].attrs.zero_abundance;
+    }
+
+    return this.samples[0]?.occurrences[0]?.attrs?.zero_abundance;
+  };
 
   upload(skipInvalidsMessage, skipRefreshUploadCountStat) {
     if (this.remote.synchronising) {

@@ -42,14 +42,14 @@ function getAreaCountMarker(sample) {
 
   return L.circleMarker([latitude, longitude], {
     color: 'white',
-    fillColor: '#745a8f',
+    fillColor: '#3aa264',
     fillOpacity: 1,
     weight: 4,
   });
 }
 
-const DEFAULT_POSITION = [51.505, -0.09];
-const DEFAULT_LOCATED_ZOOM = 18;
+const DEFAULT_POSITION = [55, -3.09];
+const DEFAULT_LOCATED_ZOOM = 14;
 const DEFAULT_SHAPE_COLOR = '#3aa264';
 
 class MapInfo extends React.Component {
@@ -59,7 +59,7 @@ class MapInfo extends React.Component {
     locating: false,
   };
 
-  recors = [];
+  _recordMarkers = [];
 
   setExistingShape(shape) {
     const { map } = this.props;
