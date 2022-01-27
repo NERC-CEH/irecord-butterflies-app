@@ -94,95 +94,97 @@ export function updateSampleArea(sample, location) {
 }
 
 const extension = {
-  setAreaLocation(shape, accuracy, altitude, altitudeAccuracy) {
-    if (!shape) {
-      this.attrs.location = null;
+  area: {
+    setAreaLocation(shape, accuracy, altitude, altitudeAccuracy) {
+      if (!shape) {
+        this.attrs.location = null;
+        return this.save();
+      }
+
+      let area;
+      let [longitude, latitude] = shape.coordinates[0];
+
+      if (shape.type === 'Polygon') {
+        area = geojsonArea.geometry(shape);
+        [longitude, latitude] = shape.coordinates[0][0]; // eslint-disable-line
+      } else {
+        area = DEFAULT_TRANSECT_BUFFER * calculateLineLenght(shape.coordinates);
+      }
+
+      area = Math.floor(area);
+
+      this.attrs.location = {
+        latitude,
+        longitude,
+        area,
+        shape,
+        source: 'map',
+        accuracy,
+        altitude,
+        altitudeAccuracy,
+      };
+
       return this.save();
-    }
+    },
 
-    let area;
-    let [longitude, latitude] = shape.coordinates[0];
-
-    if (shape.type === 'Polygon') {
-      area = geojsonArea.geometry(shape);
-      [longitude, latitude] = shape.coordinates[0][0]; // eslint-disable-line
-    } else {
-      area = DEFAULT_TRANSECT_BUFFER * calculateLineLenght(shape.coordinates);
-    }
-
-    area = Math.floor(area);
-
-    this.attrs.location = {
-      latitude,
-      longitude,
-      area,
-      shape,
-      source: 'map',
-      accuracy,
-      altitude,
-      altitudeAccuracy,
-    };
-
-    return this.save();
-  },
-
-  toggleGPStracking(state) {
-    if (this.isGPSRunning() || state === false) {
-      this.stopGPS();
-      return;
-    }
-
-    this.startGPS();
-  },
-
-  gpsExtensionInit() {
-    this.gps = observable({ locating: null });
-  },
-
-  startGPS() {
-    console.log('SampleModel:GPS start');
-
-    // eslint-disable-next-line
-    const onPosition = (error, location) => {
-      if (error) {
-        console.error('GPS: error', error);
-
+    toggleGPStracking(state) {
+      if (this.isGPSRunning() || state === false) {
         this.stopGPS();
         return;
       }
 
-      const isPreciseAreaSubSample = !!this.parent;
-      if (isPreciseAreaSubSample) {
-        updateModelLocation(this, location);
-        this.stopGPS();
+      this.startGPS();
+    },
+
+    gpsExtensionInit() {
+      this.gps = observable({ locating: null });
+    },
+
+    startGPS() {
+      console.log('SampleModel:GPS start');
+
+      // eslint-disable-next-line
+      const onPosition = (error, location) => {
+        if (error) {
+          console.error('GPS: error', error);
+
+          this.stopGPS();
+          return;
+        }
+
+        const isPreciseAreaSubSample = !!this.parent;
+        if (isPreciseAreaSubSample) {
+          updateModelLocation(this, location);
+          this.stopGPS();
+          return;
+        }
+
+        updateSampleArea(this, location);
+      };
+
+      this.gps.locating = GPS.start(onPosition);
+    },
+
+    stopGPS() {
+      if (!this.isGPSRunning()) {
         return;
       }
 
-      updateSampleArea(this, location);
-    };
+      console.log('SampleModel:GPS stop');
+      GPS.stop(this.gps.locating);
+      this.gps.locating = null;
+    },
 
-    this.gps.locating = GPS.start(onPosition);
-  },
+    isGPSRunning() {
+      return !!(this.gps.locating || this.gps.locating === 0);
+    },
 
-  stopGPS() {
-    if (!this.isGPSRunning()) {
-      return;
-    }
-
-    console.log('SampleModel:GPS stop');
-    GPS.stop(this.gps.locating);
-    this.gps.locating = null;
-  },
-
-  isGPSRunning() {
-    return !!(this.gps.locating || this.gps.locating === 0);
-  },
-
-  hasLoctionMissingAndIsnotLocating() {
-    return (
-      (!this.attrs.location || !this.attrs.location.latitude) &&
-      !this.isGPSRunning()
-    );
+    hasLoctionMissingAndIsnotLocating() {
+      return (
+        (!this.attrs.location || !this.attrs.location.latitude) &&
+        !this.isGPSRunning()
+      );
+    },
   },
 };
 
