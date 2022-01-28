@@ -1,5 +1,6 @@
 // @ts-ignore
 import Wkt from 'wicket';
+import { date as dateHelp } from '@apps';
 import { toJS } from 'mobx';
 import L from 'leaflet';
 import { Survey } from 'common/surveys';
@@ -10,64 +11,64 @@ const temperatureValues = [
   {
     value: '',
     label: 'Not recorded/no data',
-    id: -1,
+    id: 16556,
     isDefault: true,
   },
-  { value: 10, id: -1 },
-  { value: 11, id: -1 },
-  { value: 12, id: -1 },
-  { value: 13, id: -1 },
-  { value: 14, id: -1 },
-  { value: 15, id: -1 },
-  { value: 16, id: -1 },
-  { value: 17, id: -1 },
-  { value: 18, id: -1 },
-  { value: 19, id: -1 },
-  { value: 20, id: -1 },
-  { value: 21, id: -1 },
-  { value: 22, id: -1 },
-  { value: 23, id: -1 },
-  { value: 24, id: -1 },
-  { value: 25, id: -1 },
-  { value: 26, id: -1 },
-  { value: 27, id: -1 },
-  { value: 28, id: -1 },
-  { value: 29, id: -1 },
-  { value: 30, id: -1 },
-  { value: 31, id: -1 },
-  { value: 32, id: -1 },
-  { value: 33, id: -1 },
-  { value: 34, id: -1 },
-  { value: 35, id: -1 },
-  { value: 36, id: -1 },
-  { value: 37, id: -1 },
-  { value: 38, id: -1 },
-  { value: 39, id: -1 },
-  { value: '40+', id: -1 },
+  { value: 10, id: 16530 },
+  { value: 11, id: 16531 },
+  { value: 12, id: 16532 },
+  { value: 13, id: 16533 },
+  { value: 14, id: 16534 },
+  { value: 15, id: 16535 },
+  { value: 16, id: 16536 },
+  { value: 17, id: 16537 },
+  { value: 18, id: 16538 },
+  { value: 19, id: 16539 },
+  { value: 20, id: 16540 },
+  { value: 21, id: 16541 },
+  { value: 22, id: 16542 },
+  { value: 23, id: 16543 },
+  { value: 24, id: 16544 },
+  { value: 25, id: 16545 },
+  { value: 26, id: 16546 },
+  { value: 27, id: 16547 },
+  { value: 28, id: 16548 },
+  { value: 29, id: 16549 },
+  { value: 30, id: 16550 },
+  { value: 31, id: 16551 },
+  { value: 32, id: 16552 },
+  { value: 33, id: 16553 },
+  { value: 34, id: 16554 },
+  { value: 35, id: 16555 },
+  { value: 36, id: 17759 },
+  { value: 37, id: 17760 },
+  { value: 38, id: 17761 },
+  { value: 39, id: 17762 },
+  { value: '40+', id: 18878 },
 ];
 
 const windDirectionValues = [
-  { value: '', label: 'Not recorded/no data', id: -1, isDefault: true },
-  { value: 'S', id: -1 },
-  { value: 'SW', id: -1 },
-  { value: 'W', id: -1 },
-  { value: 'NW', id: -1 },
-  { value: 'N', id: -1 },
-  { value: 'NE', id: -1 },
-  { value: 'E', id: -1 },
-  { value: 'SE', id: -1 },
-  { value: 'No direction', id: -1 },
+  { value: '', label: 'Not recorded/no data', id: 2460, isDefault: true },
+  { value: 'S', id: 2461 },
+  { value: 'SW', id: 2462 },
+  { value: 'W', id: 2463 },
+  { value: 'NW', id: 2464 },
+  { value: 'N', id: 2465 },
+  { value: 'NE', id: 2466 },
+  { value: 'E', id: 2467 },
+  { value: 'SE', id: 2468 },
+  { value: 'No direction', id: 2469 },
 ];
 
 const windSpeedValues = [
-  { value: '', label: 'Not recorded/no data', id: -1, isDefault: true },
-  { value: 'Smoke rises vertically', id: -1 },
-  { value: 'Slight smoke drift', id: -1 },
-  { value: 'Wind felt on face, leaves rustle', id: -1 },
-  { value: 'Leaves and twigs in slight motion', id: -1 },
-  { value: 'Dust raised and small branches move', id: -1 },
-  { value: 'Small trees in leaf begin to sway', id: -1 },
-  { value: 'Large branches move and trees sway', id: -1 },
+  { value: '', label: 'Not recorded/no data', id: 2459, isDefault: true },
+  { value: 'Smoke rises vertically', id: 2606 },
+  { value: 'Slight smoke drift', id: 2453 },
+  { value: 'Wind felt on face, leaves rustle', id: 2454 },
+  { value: 'Leaves and twigs in slight motion', id: 2455 },
+  { value: 'Dust raised and small branches move', id: 2456 },
+  { value: 'Small trees in leaf begin to sway', id: 2457 },
+  { value: 'Large branches move and trees sway', id: 2458 },
 ];
 
 function transformToMeters(coordinates: any) {
@@ -91,7 +92,7 @@ function getGeomString(shape: any) {
 }
 
 const survey: Survey = {
-  id: -1,
+  id: 685,
   name: 'single-species-count',
 
   attrs: {
@@ -107,10 +108,10 @@ const survey: Survey = {
             geom: getGeomString(location.shape),
           };
 
-          submission.values['smpAttr:-1'] = accuracy; // eslint-disable-line
-          submission.values['smpAttr:-1'] = altitude; // eslint-disable-line
-          submission.values['smpAttr:-1'] = altitudeAccuracy; // eslint-disable-line
-          submission.values['smpAttr:-1'] = location.area; // eslint-disable-line
+          submission.values['smpAttr:282'] = accuracy; // eslint-disable-line
+          submission.values['smpAttr:283'] = altitude; // eslint-disable-line
+          submission.values['smpAttr:284'] = altitudeAccuracy; // eslint-disable-line
+          submission.values['smpAttr:723'] = location.area; // eslint-disable-line
 
           return `${parseFloat(location.latitude).toFixed(7)}, ${parseFloat(
             location.longitude
@@ -118,6 +119,18 @@ const survey: Survey = {
         },
       },
     },
+
+    startTime: {
+      remote: {
+        id: 1385,
+        values: (date: any) => dateHelp.format(new Date(date)),
+      },
+    },
+
+    duration: {
+      remote: { id: -1 },
+    },
+
     cloud: {
       pageProps: {
         attrProps: {
@@ -126,7 +139,7 @@ const survey: Survey = {
           inputProps: { max: 100, min: 0 },
         },
       },
-      remote: { id: -1 },
+      remote: { id: 1457 },
     },
 
     temperature: {
@@ -137,7 +150,7 @@ const survey: Survey = {
           inputProps: { options: temperatureValues },
         },
       },
-      remote: { id: -1, values: temperatureValues },
+      remote: { id: 1388, values: temperatureValues },
     },
 
     windDirection: {
@@ -150,7 +163,7 @@ const survey: Survey = {
           inputProps: { options: windDirectionValues },
         },
       },
-      remote: { id: -1, values: windDirectionValues },
+      remote: { id: 1389, values: windDirectionValues },
     },
 
     windSpeed: {
@@ -163,7 +176,7 @@ const survey: Survey = {
           inputProps: { options: windSpeedValues },
         },
       },
-      remote: { id: -1, values: windSpeedValues },
+      remote: { id: 1390, values: windSpeedValues },
     },
 
     comment: {
@@ -185,9 +198,9 @@ const survey: Survey = {
           values(location: any, submission: any) {
             const { accuracy, altitude, altitudeAccuracy } = location;
 
-            submission.values['smpAttr:-1'] = accuracy; // eslint-disable-line
-            submission.values['smpAttr:-1'] = altitude; // eslint-disable-line
-            submission.values['smpAttr:-1'] = altitudeAccuracy; // eslint-disable-line
+            submission.values['smpAttr:282'] = accuracy; // eslint-disable-line
+            submission.values['smpAttr:283'] = altitude; // eslint-disable-line
+            submission.values['smpAttr:284'] = altitudeAccuracy; // eslint-disable-line
 
             if (!location.latitude) {
               return null; // if missing then sub-sample will be removed
@@ -245,7 +258,7 @@ const survey: Survey = {
           },
         },
 
-        count: { remote: { id: -1 } },
+        count: { remote: { id: 780 } },
 
         stage: stageAttr,
       },
@@ -275,6 +288,7 @@ const survey: Survey = {
       },
     });
 
+    sample.attrs.surveyStartTime = sample.metadata.created_on; // this can't be done in defaults
     sample.startBackgroundGPS();
 
     return sample;
