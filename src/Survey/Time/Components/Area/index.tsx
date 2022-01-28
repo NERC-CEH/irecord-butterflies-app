@@ -11,12 +11,12 @@ type Props = {
 };
 
 const AreaController: FC<Props> = ({ sample }) => {
-  const toggleGPStracking = (on: boolean) => sample.toggleGPStracking(on);
+  const toggleGPStracking = (on: boolean) => sample.toggleBackgroundGPS(on);
 
   const setAreaLocation = (shape: number) => sample.setAreaLocation(shape);
 
   const location = sample.attrs.location || {};
-  const isGPSTracking = sample.isGPSRunning();
+  const isGPSTracking = sample.isBackgroundGPSRunning();
   const { area } = location;
 
   let areaPretty;

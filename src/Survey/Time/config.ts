@@ -275,7 +275,7 @@ const survey: Survey = {
       },
     });
 
-    sample.toggleGPStracking();
+    sample.startBackgroundGPS();
 
     return sample;
   },

@@ -68,7 +68,7 @@ const HomeMain: FC<Props> = ({ sample, increaseCount, deleteSpecies }) => {
     <IonIcon icon={warningOutline} color="danger" />
   );
 
-  if (Number.isFinite(area) || sample.isGPSRunning()) {
+  if (Number.isFinite(area) || sample.isBackgroundGPSRunning()) {
     areaPretty = area ? `${area} m²` : '';
   }
 

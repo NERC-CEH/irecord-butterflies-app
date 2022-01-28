@@ -22,12 +22,27 @@ declare const appModel: {
   hasZeroAbundance: () => boolean;
   destroy: () => void;
   save: () => void;
+  upload: () => void;
 
   // should return config
   getSurvey: () => any;
   validateRemote: () => any;
 
   hasLoctionMissingAndIsnotLocating: () => boolean;
+
+  // background GPS extension
+  setAreaLocation: (
+    shape: any,
+    accuracy: any,
+    altitude: any,
+    altitudeAccuracy: any
+  ) => any;
+  toggleBackgroundGPS: (state?: any) => any;
+  backgroundGPSExtensionInit: () => any;
+  startBackgroundGPS: () => any;
+  stopBackgroundGPS: () => any;
+  isBackgroundGPSRunning: () => any;
+  hasLoctionMissingAndIsnotLocating: () => any;
 };
 
 export default appModel;

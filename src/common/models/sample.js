@@ -6,7 +6,7 @@ import pointSurvey from 'Survey/Point/config';
 import listSurvey from 'Survey/List/config';
 import timeSurvey from 'Survey/Time/config';
 import GPSExtension from './sampleGPSExt';
-import GPSAreaExtension from './sample_gps_ext';
+import BackgroundGPSExtension from './sampleBackgroundGPSExt';
 import MetOfficeExtension from './sample_metoffice_ext';
 import { modelStore } from './store';
 import Occurrence from './occurrence';
@@ -40,11 +40,12 @@ class AppSample extends Sample {
 
     this.survey = surveyConfig[this.metadata.survey];
 
-    // Object.assign(this, GPSExtension);
-    Object.assign(this, GPSAreaExtension);
+    Object.assign(this, GPSExtension);
+    Object.assign(this, BackgroundGPSExtension);
     Object.assign(this, MetOfficeExtension);
 
     this.gpsExtensionInit();
+    this.backgroundGPSExtensionInit();
   }
 
   hasZeroAbundance = () => {
@@ -53,6 +54,22 @@ class AppSample extends Sample {
     }
 
     return this.samples[0]?.occurrences[0]?.attrs?.zero_abundance;
+  };
+
+  destroy = () => {
+    this.cleanUp();
+    super.destroy();
+  };
+
+  cleanUp = () => {
+    this.stopGPS();
+    this.stopBackgroundGPS();
+
+    const stopGPS = smp => {
+      smp.stopGPS();
+      smp.stopBackgroundGPS();
+    };
+    this.samples.forEach(stopGPS);
   };
 
   upload(skipInvalidsMessage, skipRefreshUploadCountStat) {
@@ -70,6 +87,8 @@ class AppSample extends Sample {
       warn('Looks like you are offline!');
       return null;
     }
+
+    this.cleanUp();
 
     const showError = e => {
       if (e.message === 'Could not find/authenticate user.\n') {

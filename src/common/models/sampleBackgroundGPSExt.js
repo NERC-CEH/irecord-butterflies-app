@@ -7,7 +7,7 @@
 import { observable } from 'mobx';
 import geojsonArea from '@mapbox/geojson-area';
 import { updateModelLocation } from '@apps';
-import GPS from './GPS';
+import GPS from 'helpers/BackgroundGPS';
 
 const METERS_SINCE_LAST_LOCATION = 15;
 
@@ -94,97 +94,99 @@ export function updateSampleArea(sample, location) {
 }
 
 const extension = {
-  area: {
-    setAreaLocation(shape, accuracy, altitude, altitudeAccuracy) {
-      if (!shape) {
-        this.attrs.location = null;
-        return this.save();
+  backgroundGPSExtensionInit() {
+    this.backgroundGPS = observable({ locating: null });
+  },
+
+  startBackgroundGPS() {
+    console.log('SampleModel:Background GPS start');
+
+    // eslint-disable-next-line
+    const onPosition = (error, location) => {
+      if (error) {
+        console.error('Background GPS: error', error);
+
+        this.stopBackgroundGPS();
+        return;
       }
 
-      let area;
-      let [longitude, latitude] = shape.coordinates[0];
-
-      if (shape.type === 'Polygon') {
-        area = geojsonArea.geometry(shape);
-        [longitude, latitude] = shape.coordinates[0][0]; // eslint-disable-line
-      } else {
-        area = DEFAULT_TRANSECT_BUFFER * calculateLineLenght(shape.coordinates);
+      const isPreciseAreaSubSample = !!this.parent;
+      if (isPreciseAreaSubSample) {
+        updateModelLocation(this, location);
+        this.stopBackgroundGPS();
+        return;
       }
 
-      area = Math.floor(area);
+      updateSampleArea(this, location);
+    };
 
-      this.attrs.location = {
-        latitude,
-        longitude,
-        area,
-        shape,
-        source: 'map',
-        accuracy,
-        altitude,
-        altitudeAccuracy,
-      };
+    this.backgroundGPS.locating = GPS.start(onPosition);
+  },
 
+  stopBackgroundGPS() {
+    if (!this.isBackgroundGPSRunning()) {
+      return;
+    }
+
+    console.log('SampleModel:Background GPS stop');
+    GPS.stop(this.backgroundGPS.locating);
+    this.backgroundGPS.locating = null;
+  },
+
+  isBackgroundGPSRunning() {
+    return !!(this.backgroundGPS.locating || this.backgroundGPS.locating === 0);
+  },
+
+  toggleBackgroundGPS(state) {
+    if (this.isBackgroundGPSRunning() || state === false) {
+      this.stopBackgroundGPS();
+      return;
+    }
+
+    this.startBackgroundGPS();
+  },
+
+  /**
+   * Other helper functions.
+   */
+
+  setAreaLocation(shape, accuracy, altitude, altitudeAccuracy) {
+    if (!shape) {
+      this.attrs.location = null;
       return this.save();
-    },
+    }
 
-    toggleGPStracking(state) {
-      if (this.isGPSRunning() || state === false) {
-        this.stopGPS();
-        return;
-      }
+    let area;
+    let [longitude, latitude] = shape.coordinates[0];
 
-      this.startGPS();
-    },
+    if (shape.type === 'Polygon') {
+      area = geojsonArea.geometry(shape);
+      [longitude, latitude] = shape.coordinates[0][0]; // eslint-disable-line
+    } else {
+      area = DEFAULT_TRANSECT_BUFFER * calculateLineLenght(shape.coordinates);
+    }
 
-    gpsExtensionInit() {
-      this.gps = observable({ locating: null });
-    },
+    area = Math.floor(area);
 
-    startGPS() {
-      console.log('SampleModel:GPS start');
+    this.attrs.location = {
+      latitude,
+      longitude,
+      area,
+      shape,
+      source: 'map',
+      accuracy,
+      altitude,
+      altitudeAccuracy,
+    };
 
-      // eslint-disable-next-line
-      const onPosition = (error, location) => {
-        if (error) {
-          console.error('GPS: error', error);
+    return this.save();
+  },
 
-          this.stopGPS();
-          return;
-        }
-
-        const isPreciseAreaSubSample = !!this.parent;
-        if (isPreciseAreaSubSample) {
-          updateModelLocation(this, location);
-          this.stopGPS();
-          return;
-        }
-
-        updateSampleArea(this, location);
-      };
-
-      this.gps.locating = GPS.start(onPosition);
-    },
-
-    stopGPS() {
-      if (!this.isGPSRunning()) {
-        return;
-      }
-
-      console.log('SampleModel:GPS stop');
-      GPS.stop(this.gps.locating);
-      this.gps.locating = null;
-    },
-
-    isGPSRunning() {
-      return !!(this.gps.locating || this.gps.locating === 0);
-    },
-
-    hasLoctionMissingAndIsnotLocating() {
-      return (
-        (!this.attrs.location || !this.attrs.location.latitude) &&
-        !this.isGPSRunning()
-      );
-    },
+  hasLoctionMissingAndIsnotLocating() {
+    return (
+      (!this.attrs.location || !this.attrs.location.latitude) &&
+      !this.isBackgroundGPSRunning()
+    );
   },
 };
 
