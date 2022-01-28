@@ -131,15 +131,15 @@ const survey: Survey = {
       remote: { id: -1 },
     },
 
-    cloud: {
+    sun: {
       pageProps: {
         attrProps: {
           input: 'slider',
-          info: 'Please specify the % of cloud cover.',
+          info: 'Please specify the % of sunshine.',
           inputProps: { max: 100, min: 0 },
         },
       },
-      remote: { id: 1457 },
+      remote: { id: 286 },
     },
 
     temperature: {

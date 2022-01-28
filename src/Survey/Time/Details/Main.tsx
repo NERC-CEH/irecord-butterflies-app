@@ -5,7 +5,7 @@ import { IonList, IonItemDivider, IonLabel } from '@ionic/react';
 import {
   clipboardOutline,
   thermometerOutline,
-  cloudyOutline,
+  sunnyOutline,
 } from 'ionicons/icons';
 import { Trans as T } from 'react-i18next';
 import { useRouteMatch } from 'react-router';
@@ -21,13 +21,7 @@ const MainDetails: FC<Props> = ({ sample }) => {
   const { url } = useRouteMatch();
 
   const isDisabled = sample.isUploaded();
-  const {
-    comment,
-    cloud,
-    temperature,
-    windDirection,
-    windSpeed,
-  } = sample.attrs;
+  const { comment, sun, temperature, windDirection, windSpeed } = sample.attrs;
 
   return (
     <Main>
@@ -48,11 +42,11 @@ const MainDetails: FC<Props> = ({ sample }) => {
           />
 
           <MenuAttrItem
-            routerLink={`${url}/cloud`}
+            routerLink={`${url}/sun`}
             disabled={isDisabled}
-            icon={cloudyOutline}
-            label="Cloud"
-            value={cloud}
+            icon={sunnyOutline}
+            label="Sun"
+            value={sun}
             skipValueTranslation
           />
 
