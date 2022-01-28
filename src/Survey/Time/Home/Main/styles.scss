@@ -1,4 +1,9 @@
 #single-species-count-home {
+  ion-header ion-button {
+    --padding-end: 20px;
+    --padding-start: 20px;
+  }
+
   ion-label[slot='end'] {
     text-align: right;
     opacity: 0.5;
