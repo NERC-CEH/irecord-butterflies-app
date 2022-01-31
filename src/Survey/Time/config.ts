@@ -263,7 +263,7 @@ const survey: Survey = {
         stage: stageAttr,
       },
 
-      create(Occurrence: any, taxon: any, zeroAbundance) {
+      create(Occurrence: any, taxon: any) {
         return new Occurrence({
           attrs: {
             comment: null,
