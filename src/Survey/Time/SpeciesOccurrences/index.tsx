@@ -41,7 +41,6 @@ type Props = {
 const SpeciesController: FC<Props> = ({ sample }) => {
   const match = useRouteMatch();
   const { goBack, navigate } = useContext(NavContext);
-  // const isDisabled = subSample.isUploaded();
 
   const navigateToOccurrence = (smp: typeof Sample) => {
     const urlPath = match.url.split('/speciesOccurrences');
