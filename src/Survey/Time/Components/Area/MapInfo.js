@@ -49,7 +49,7 @@ function getAreaCountMarker(sample) {
 }
 
 const DEFAULT_POSITION = [55, -3.09];
-const DEFAULT_LOCATED_ZOOM = 14;
+const DEFAULT_LOCATED_ZOOM = 18;
 const DEFAULT_SHAPE_COLOR = '#ff9700';
 
 class MapInfo extends React.Component {
