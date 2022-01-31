@@ -3,17 +3,12 @@ import Sample from 'models/sample';
 import Occurrence from 'models/occurrence';
 import { observer } from 'mobx-react';
 import { IonList, IonIcon, IonItemDivider } from '@ionic/react';
-import {
-  chatboxOutline,
-  locationOutline,
-  warningOutline,
-} from 'ionicons/icons';
+import { locationOutline, warningOutline } from 'ionicons/icons';
 import { Trans as T } from 'react-i18next';
 import PhotoPicker from 'common/Components/PhotoPicker';
 import { useRouteMatch } from 'react-router';
-import { Main, MenuAttrItem } from '@apps';
+import { Main, MenuAttrItem, MenuAttrItemFromModel } from '@apps';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
-import caterpillarIcon from 'common/images/caterpillar.svg';
 import './styles.scss';
 
 type Props = {
@@ -24,9 +19,6 @@ type Props = {
 const OccurrenceMain: FC<Props> = ({ subSample, occurrence }) => {
   const { url } = useRouteMatch();
   const isDisabled = subSample.isUploaded();
-
-  const { stage } = occurrence.attrs;
-  const { comment } = occurrence.attrs;
 
   const sampleBaseUrl = url.split('/occ');
   sampleBaseUrl.pop();
@@ -53,19 +45,17 @@ const OccurrenceMain: FC<Props> = ({ subSample, occurrence }) => {
             value={location}
             skipTranslation
           />
-          <MenuAttrItem
-            routerLink={`${url}/stage`}
-            disabled={isDisabled}
-            icon={caterpillarIcon}
-            label="Stage"
-            value={stage}
+
+          <MenuAttrItemFromModel
+            model={occurrence}
+            attr="stage"
+            skipValueTranslation
           />
-          <MenuAttrItem
-            routerLink={`${url}/comment`}
-            disabled={isDisabled}
-            icon={chatboxOutline}
-            label="Comment"
-            value={comment}
+
+          <MenuAttrItemFromModel
+            model={occurrence}
+            attr="comment"
+            skipValueTranslation
           />
         </div>
 

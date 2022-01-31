@@ -8,7 +8,7 @@ import { NavContext, useIonViewWillEnter } from '@ionic/react';
 import Main from './Main';
 import './styles.scss';
 
-function deleteSamplePrompt(cb: any) {
+function deleteSamplePrompt(callback: () => void) {
   alert({
     header: 'Delete',
     message: 'Are you sure you want to delete this occurrence?',
@@ -21,7 +21,7 @@ function deleteSamplePrompt(cb: any) {
       {
         text: 'Delete',
         cssClass: 'secondary',
-        handler: cb,
+        handler: callback,
       },
     ],
   });
