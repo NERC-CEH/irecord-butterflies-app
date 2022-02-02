@@ -1,8 +1,15 @@
 import React from 'react';
-import { Main } from '@apps';
+import { InfoMessage, Main } from '@apps';
 import exact from 'prop-types-exact';
+import { observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { IonIcon, IonList, IonItem, IonItemDivider } from '@ionic/react';
+import {
+  IonIcon,
+  IonList,
+  IonItem,
+  IonItemDivider,
+  IonButton,
+} from '@ionic/react';
 import {
   settingsOutline,
   personAddOutline,
@@ -13,7 +20,16 @@ import {
   informationCircleOutline,
 } from 'ionicons/icons';
 
-const MenuMain = ({ isLoggedIn, user, logOut }) => {
+const MenuMain = ({
+  isLoggedIn,
+  userModel,
+  logOut,
+  refreshAccount,
+  resendVerificationEmail,
+}) => {
+  const isNotVerified = userModel.attrs.verified === false; // verified is undefined in old versions
+  const userEmail = userModel.attrs.email;
+
   return (
     <Main className="app-menu">
       <h1>Menu</h1>
@@ -26,8 +42,23 @@ const MenuMain = ({ isLoggedIn, user, logOut }) => {
               <IonIcon icon={exitOutline} size="small" slot="start" />
               Logout
               {': '}
-              {user.firstName} {user.secondName}
+              {userModel.attrs.firstName} {userModel.attrs.secondName}
             </IonItem>
+          )}
+
+          {isLoggedIn && isNotVerified && (
+            <InfoMessage className="verification-warning">
+              Looks like your <b>{{ userEmail }}</b> email hasn't been verified
+              yet.
+              <div>
+                <IonButton fill="outline" onClick={refreshAccount}>
+                  Refresh
+                </IonButton>
+                <IonButton fill="clear" onClick={resendVerificationEmail}>
+                  Resend Email
+                </IonButton>
+              </div>
+            </InfoMessage>
           )}
 
           {isLoggedIn && (
@@ -82,8 +113,10 @@ const MenuMain = ({ isLoggedIn, user, logOut }) => {
 
 MenuMain.propTypes = exact({
   logOut: PropTypes.func.isRequired,
+  refreshAccount: PropTypes.func,
+  resendVerificationEmail: PropTypes.func,
   isLoggedIn: PropTypes.bool.isRequired,
-  user: PropTypes.object.isRequired,
+  userModel: PropTypes.object.isRequired,
 });
 
-export default MenuMain;
+export default observer(MenuMain);

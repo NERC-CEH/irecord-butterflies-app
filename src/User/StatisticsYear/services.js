@@ -6,13 +6,11 @@ export default async function fetchStats(userModel, year) {
   console.log(`Statistics: fetching recorded-taxa-list for ${year} year`);
 
   const normalizedYear = year === 'all' ? '' : year;
-  const url = `${config.backend.url}/api/v1/advanced_reports/recorded-taxa-list?survey_id=${surveyConfig.id}&year=${normalizedYear}&user_id=${userModel.attrs.indiciaUserId}`;
-  const userAuth = btoa(`${userModel.attrs.email}:${userModel.attrs.password}`);
+  const url = `${config.backend.url}/api/v2/advanced_reports/recorded-taxa-list?survey_id=${surveyConfig.id}&year=${normalizedYear}&user_id=${userModel.attrs.indiciaUserId}`;
 
   const options = {
     headers: {
-      'x-api-key': config.backend.apiKey,
-      authorization: `Basic ${userAuth}`,
+      Authorization: `Bearer ${await userModel.getAccessToken()}`,
       'content-type': 'application/json',
     },
     timeout: 80000,

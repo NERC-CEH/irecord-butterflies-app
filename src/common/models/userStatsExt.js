@@ -7,8 +7,7 @@ let requestCancelToken;
 async function fetchStats(userModel) {
   console.log('Statistics: fetching user-stats');
 
-  const url = `${config.backend.url}/api/v1/advanced_reports/user-stats?survey_id=${surveyConfig.id}`;
-  const userAuth = btoa(`${userModel.attrs.email}:${userModel.attrs.password}`);
+  const url = `${config.backend.url}/api/v2/advanced_reports/user-stats?survey_id=${surveyConfig.id}`;
 
   if (requestCancelToken) {
     requestCancelToken.cancel();
@@ -18,8 +17,7 @@ async function fetchStats(userModel) {
 
   const options = {
     headers: {
-      'x-api-key': config.backend.apiKey,
-      authorization: `Basic ${userAuth}`,
+      Authorization: `Bearer ${await userModel.getAccessToken()}`,
       'content-type': 'application/json',
     },
     timeout: 80000,

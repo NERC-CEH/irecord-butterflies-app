@@ -35,6 +35,7 @@ async function onLogin(userModel, details, onSuccess) {
 
 function LoginContainer({ userModel, onSuccess }) {
   const context = useContext(NavContext);
+
   const onSuccessReturn = () => {
     onSuccess && onSuccess();
 

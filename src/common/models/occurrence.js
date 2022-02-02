@@ -1,4 +1,4 @@
-import { Occurrence } from '@apps';
+import { Occurrence, validateRemoteModel } from '@apps';
 import { intercept } from 'mobx';
 import species from 'common/data/species';
 import Media from './image';
@@ -7,6 +7,8 @@ export default class AppOccurrence extends Occurrence {
   static fromJSON(json) {
     return super.fromJSON(json, Media);
   }
+
+  validateRemote = validateRemoteModel;
 
   constructor(...props) {
     super(...props);
@@ -30,7 +32,5 @@ export default class AppOccurrence extends Occurrence {
     this.attrs.taxon = sp;
   }
 
-  isDisabled() {
-    this.parent.isDisabled();
-  }
+  isDisabled = () => this.isUploaded();
 }

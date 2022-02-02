@@ -61,9 +61,18 @@ const MenuController = ({ userModel, appModel, savedSamples }) => {
 
   const isLoggedIn = !!userModel.attrs.id;
 
+  const checkActivation = () => userModel.checkActivation();
+  const resendVerificationEmail = () => userModel.resendVerificationEmail();
+
   return (
     <Page id="menu">
-      <Main user={userModel.attrs} isLoggedIn={isLoggedIn} logOut={logOut} />
+      <Main
+        userModel={userModel}
+        isLoggedIn={isLoggedIn}
+        logOut={logOut}
+        refreshAccount={checkActivation}
+        resendVerificationEmail={resendVerificationEmail}
+      />
       <IonFooter className="ion-no-border">
         <div>
           <a href="https://flumens.io">

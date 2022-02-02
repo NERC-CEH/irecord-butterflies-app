@@ -1,7 +1,6 @@
 import { Sample, showInvalidsMessage, device, toast } from '@apps';
 import userModel from 'models/user';
 import config from 'common/config';
-import { observable } from 'mobx';
 import pointSurvey from 'Survey/Point/config';
 import listSurvey from 'Survey/List/config';
 import timeSurvey from 'Survey/Time/config';
@@ -29,13 +28,10 @@ class AppSample extends Sample {
 
   constructor(...args) {
     super(...args);
-
-    this.remote = observable({
-      api_key: config.backend.apiKey,
-      host_url: `${config.backend.url}/`,
-      user: userModel.getUser.bind(userModel),
-      password: userModel.getPassword.bind(userModel),
-      synchronising: false,
+    this.remote.url = `${config.backend.indicia.url}/index.php/services/rest`;
+    // eslint-disable-next-line
+    this.remote.headers = async () => ({
+      Authorization: `Bearer ${await userModel.getAccessToken()}`,
     });
 
     this.survey = surveyConfig[this.metadata.survey];
@@ -72,45 +68,40 @@ class AppSample extends Sample {
     this.samples.forEach(stopGPS);
   };
 
-  upload(skipInvalidsMessage, skipRefreshUploadCountStat) {
+  async upload(skipInvalidsMessage, skipRefreshUploadCountStat) {
     if (this.remote.synchronising) {
-      return null;
+      return true;
     }
 
     const invalids = this.validateRemote();
     if (invalids) {
       !skipInvalidsMessage && showInvalidsMessage(invalids);
-      return null;
+      return false;
     }
 
     if (!device.isOnline()) {
       warn('Looks like you are offline!');
-      return null;
+      return false;
+    }
+
+    const isActivated = await userModel.checkActivation();
+    if (!isActivated) {
+      return false;
     }
 
     this.cleanUp();
 
     const showError = e => {
-      if (e.message === 'Could not find/authenticate user.\n') {
-        // TODO: remove once it is clear why this happens.
-        console.error(
-          'Unauthenticated: userModel has credentials:',
-          userModel.attrs.email && 'email',
-          userModel.attrs.password && 'password'
-        );
-        error(
-          "For some reason we couldn't authenticate your account. Try logging out and back into the app.",
-          4000
-        );
-      } else {
-        error(e);
-      }
+      error(e);
       throw e;
     };
+    const refreshUploadCountStatWrap = () => {
+      if (skipRefreshUploadCountStat) return;
+      userModel.refreshUploadCountStat();
+    };
+    this.saveRemote().catch(showError).then(refreshUploadCountStatWrap);
 
-    const refreshUploadCountStatWrap = () =>
-      !skipRefreshUploadCountStat && userModel.refreshUploadCountStat();
-    return this.saveRemote().then(refreshUploadCountStatWrap).catch(showError);
+    return true;
   }
 }
 

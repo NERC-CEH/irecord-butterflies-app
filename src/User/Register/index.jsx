@@ -15,6 +15,11 @@ async function onRegister(userModel, details, onSuccess) {
 
   const email = details.email.trim();
 
+  const otherDetails = {
+    field_first_name: [{ value: firstName.trim() }],
+    field_last_name: [{ value: secondName.trim() }],
+  };
+
   if (!device.isOnline()) {
     warn(i18n.t("Sorry, looks like you're offline."));
     return;
@@ -25,12 +30,7 @@ async function onRegister(userModel, details, onSuccess) {
   });
 
   try {
-    await userModel.register(
-      email,
-      password,
-      firstName.trim(),
-      secondName.trim()
-    );
+    await userModel.register(email, password, otherDetails);
 
     userModel.attrs.firstName = firstName; // eslint-disable-line
     userModel.attrs.secondName = secondName; // eslint-disable-line

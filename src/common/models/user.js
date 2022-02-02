@@ -3,54 +3,19 @@
  **************************************************************************** */
 import CONFIG from 'common/config';
 import * as Yup from 'yup';
-import { Model } from '@apps';
-import axios from 'axios';
+import { DrupalUserModel, toast, loader } from '@apps';
 import { observable } from 'mobx';
 import { genericStore } from './store';
 import serviceExtension from './userStatsExt';
 
-class UserModel extends Model {
-  loginSchema = Yup.object().shape({
-    email: Yup.string().required(),
-    password: Yup.string().required(),
-  });
+const { warn, error, success } = toast;
 
-  loginSchemaBackend = Yup.object().shape({
-    id: Yup.number().required(),
-    warehouse_id: Yup.number().required(),
-    email: Yup.string().email().required(),
-    firstname: Yup.string().required(),
-    secondname: Yup.string().required(),
-    name: Yup.string().required(),
-  });
-
-  resetSchema = Yup.object().shape({
-    email: Yup.string().required(),
-  });
-
-  resetSchemaBackend = Yup.object().shape({
-    data: Yup.object().shape({
-      id: Yup.number().required(),
-      firstname: Yup.string().required(),
-      secondname: Yup.string().required(),
-      type: Yup.string().required(),
-    }),
-  });
-
+class UserModel extends DrupalUserModel {
   registerSchema = Yup.object().shape({
-    email: Yup.string().email('email is not valid').required(),
-    firstName: Yup.string().required(),
-    secondName: Yup.string().required(),
-    password: Yup.string().required(),
-  });
-
-  registerSchemaBackend = Yup.object().shape({
-    id: Yup.number().required(),
-    warehouse_id: Yup.number().required(),
-    email: Yup.string().email().required(),
-    firstname: Yup.string().required(),
-    secondname: Yup.string().required(),
-    name: Yup.string().required(),
+    email: Yup.string().email('email is not valid').required('Please fill in'),
+    password: Yup.string().required('Please fill in'),
+    firstName: Yup.string().required('Please fill in'),
+    secondName: Yup.string().required('Please fill in'),
   });
 
   uploadCounter = observable({ count: 0 });
@@ -58,166 +23,107 @@ class UserModel extends Model {
   constructor(...args) {
     super(...args);
     Object.assign(this, serviceExtension);
-  }
 
-  async logOut() {
-    return this.resetDefaults();
-  }
-
-  async logIn(email, password) {
-    console.log('User: logging in.');
-
-    const userAuth = btoa(`${email}:${password}`);
-    const url = `${CONFIG.backend.url}/api/v1/users/${encodeURIComponent(
-      email
-    )}`;
-    const options = {
-      headers: {
-        authorization: `Basic ${userAuth}`,
-        'x-api-key': CONFIG.backend.apiKey,
-        'content-type': 'application/json',
-      },
-      timeout: 80000,
+    const checkForValidation = () => {
+      if (this.hasLogIn() && !this.attrs.verified) {
+        console.log('User: refreshing profile for validation');
+        this.refreshProfile();
+      }
     };
-
-    let res;
-    try {
-      res = await axios(url, options);
-      res = res.data;
-      const isValidResponse = await this.loginSchemaBackend.isValid(res.data);
-      if (!isValidResponse) {
-        throw new Error('Invalid backend response.');
-      }
-    } catch (e) {
-      res = e.response || {};
-      let message = res.statusText;
-      if (res.data && res.data.errors) {
-        const err = res.data.errors[0] || {};
-        message = err.title;
-      }
-      throw new Error(message || 'The request was not successful.');
-    }
-
-    const user = { ...res.data, ...{ password } };
-    this._logIn(user);
-  }
-
-  async register(email, password, firstName, secondName) {
-    console.log('User: registering.');
-
-    const userAuth = btoa(`${email}:${password}`);
-    const options = {
-      headers: {
-        authorization: `Basic ${userAuth}`,
-        'x-api-key': CONFIG.backend.apiKey,
-        'content-type': 'plain/text',
-      },
-      timeout: 80000,
-    };
-
-    const data = JSON.stringify({
-      data: {
-        type: 'users',
-        email,
-        password,
-        secondname: secondName,
-        firstname: firstName,
-      },
-    });
-
-    let res;
-    try {
-      res = await axios.post(
-        `${CONFIG.backend.url}/api/v1/users/`,
-        data,
-        options
-      );
-      res = res.data;
-      const isValidResponse = await this.registerSchemaBackend.isValid(
-        res.data
-      );
-      if (!isValidResponse) {
-        throw new Error('Invalid backend response.');
-      }
-    } catch (e) {
-      res = e.response || {};
-      let message = res.statusText;
-      if (res.data && res.data.errors) {
-        const err = res.data.errors[0] || {};
-        message = err.title;
-
-        if (message === 'Account already exists.') {
-          message =
-            'There is already an account with this email address, please login.';
-        }
-      }
-
-      throw new Error(message || 'The request was not successful.');
-    }
-
-    const user = { ...res.data, ...{ password } };
-    this._logIn(user);
-  }
-
-  async reset(email) {
-    console.log('User: resetting.');
-
-    const options = {
-      headers: {
-        'x-api-key': CONFIG.backend.apiKey,
-        'content-type': 'plain/text',
-      },
-      timeout: 80000,
-    };
-
-    const data = JSON.stringify({
-      data: {
-        type: 'users',
-        password: ' ', // reset password
-      },
-    });
-
-    let res;
-    try {
-      const url = `${CONFIG.backend.url}/api/v1/users/${encodeURIComponent(
-        email
-      )}`;
-      res = await axios.put(url, data, options);
-      res = res.data;
-      const isValidResponse = await this.resetSchemaBackend.isValid(res);
-      if (!isValidResponse) {
-        throw new Error('Invalid backend response.');
-      }
-    } catch (e) {
-      res = e.response || {};
-      throw new Error(res.statusText || 'The request was not successful.');
-    }
-  }
-
-  _logIn(user) {
-    console.log('UserModel: logging in.');
-
-    this.attrs.id = user.id;
-    this.attrs.indiciaUserId = user.warehouse_id;
-    this.attrs.password = user.password || '';
-    this.attrs.email = user.email || '';
-    this.attrs.name = user.name || '';
-    this.attrs.firstName = user.firstname || ''; // note: no camel
-    this.attrs.secondName = user.secondname || ''; // note: no camel
-
-    return this.save();
+    this._init.then(checkForValidation);
   }
 
   hasLogIn() {
     return !!this.attrs.email;
   }
 
-  getUser() {
-    return this.attrs.email;
+  async checkActivation() {
+    const isLoggedIn = !!this.attrs.id;
+    if (!isLoggedIn) {
+      warn('Please log in first.');
+      return false;
+    }
+
+    if (!this.attrs.verified) {
+      await loader.show({
+        message: 'Please wait...',
+      });
+
+      try {
+        await this.refreshProfile();
+      } catch (e) {
+        // do nothing
+      }
+
+      loader.hide();
+
+      if (!this.attrs.verified) {
+        warn('The user has not been activated or is blocked.');
+        return false;
+      }
+    }
+
+    return true;
   }
 
-  getPassword() {
-    return this.attrs.password;
+  async resendVerificationEmail() {
+    const isLoggedIn = !!this.attrs.id;
+    if (!isLoggedIn) {
+      warn('Please log in first.');
+      return false;
+    }
+
+    if (this.attrs.verified) {
+      warn('You are already verified.');
+      return false;
+    }
+
+    await loader.show({
+      message: 'Please wait...',
+    });
+
+    try {
+      await super.resendVerificationEmail();
+      success(
+        'A new verification email was successfully sent now. If you did not receive the email, then check your Spam or Junk email folders.',
+        5000
+      );
+    } catch (e) {
+      error(e);
+    }
+
+    loader.hide();
+
+    return true;
+  }
+
+  getPrettyName = () => {
+    if (!this.hasLogIn()) return '';
+
+    return `${this.attrs.firstName} ${this.attrs.lastName}`;
+  };
+
+  async getAccessToken(...args) {
+    if (this.attrs.password) await this._migrateAuth();
+
+    return super.getAccessToken(...args);
+  }
+
+  /**
+   * Migrate from Indicia API auth to JWT. Remove in the future versions.
+   */
+  async _migrateAuth() {
+    console.log('Migrating user auth.');
+
+    const tokens = await this._exchangePasswordToTokens(
+      this.attrs.email,
+      this.attrs.password
+    );
+    this.attrs.tokens = tokens;
+    delete this.attrs.password;
+
+    await this._refreshAccessToken();
+    return this.save();
   }
 }
 
@@ -225,9 +131,6 @@ const defaults = {
   firstName: '',
   secondName: '',
   email: null,
-  password: null,
-  name: null,
-  id: null,
 
   lastThankYouMilestoneShown: {},
 
@@ -235,5 +138,5 @@ const defaults = {
   statsYears: {},
 };
 
-const userModel = new UserModel(genericStore, 'user', defaults);
+const userModel = new UserModel(genericStore, 'user', defaults, CONFIG.backend);
 export { userModel as default, UserModel };
