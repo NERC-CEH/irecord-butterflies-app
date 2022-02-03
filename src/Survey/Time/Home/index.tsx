@@ -95,7 +95,7 @@ const HomeController: FC<Props> = ({ sample }) => {
       return;
     }
 
-    appModel.attrs['draftId:list'] = null; // eslint-disable-line
+    appModel.attrs['draftId:single-species-count'] = null; // eslint-disable-line
     await appModel.save();
 
     sample.metadata.saved = Date.now(); // eslint-disable-line
