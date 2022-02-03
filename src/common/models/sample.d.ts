@@ -45,6 +45,7 @@ declare const appModel: {
   hasLoctionMissingAndIsnotLocating: () => any;
   isTimerPaused: () => boolean;
   startMetOfficePull: any;
+  cleanUp: () => void;
 };
 
 export default appModel;

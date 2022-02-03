@@ -64,7 +64,7 @@ const HomeController: FC<Props> = ({ sample }) => {
     if (sample.hasZeroAbundance()) {
       // eslint-disable-next-line no-param-reassign
       sample.samples[0].occurrences[0].attrs.zero_abundance = null;
-      sample.samples[0].startGPS();
+      sample.samples[0].startBackgroundGPS();
       sample.save();
       return;
     }
@@ -78,7 +78,7 @@ const HomeController: FC<Props> = ({ sample }) => {
     const newSubSample = survey.smp.create(Sample, Occurrence, taxon);
 
     sample.samples.push(newSubSample);
-    newSubSample.startGPS();
+    newSubSample.startBackgroundGPS();
     sample.save();
 
     // isPlatform('hybrid') && hapticsImpact();
@@ -94,7 +94,8 @@ const HomeController: FC<Props> = ({ sample }) => {
     appModel.attrs['draftId:list'] = null; // eslint-disable-line
     await appModel.save();
 
-    sample.metadata.saved = true; // eslint-disable-line
+    sample.metadata.saved = Date.now(); // eslint-disable-line
+    sample.cleanUp();
     sample.save();
 
     navigate(`/home/surveys`, 'root');

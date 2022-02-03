@@ -334,6 +334,7 @@ const survey: Survey = {
     });
 
     sample.attrs.surveyStartTime = sample.metadata.created_on; // this can't be done in defaults
+    sample.toggleBackgroundGPS();
     sample.startMetOfficePull();
 
     return sample;
