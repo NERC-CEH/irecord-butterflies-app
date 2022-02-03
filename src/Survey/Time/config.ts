@@ -309,9 +309,12 @@ const survey: Survey = {
       metadata: {
         survey: survey.name,
         survey_id: survey.id,
+        pausedTime: 0,
+        timerPausedTime: null,
       },
       attrs: {
         location: {},
+        duration: 0,
       },
     });
 

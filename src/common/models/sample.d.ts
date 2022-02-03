@@ -43,6 +43,7 @@ declare const appModel: {
   stopBackgroundGPS: () => any;
   isBackgroundGPSRunning: () => any;
   hasLoctionMissingAndIsnotLocating: () => any;
+  isTimerPaused: () => boolean;
   startMetOfficePull: any;
 };
 

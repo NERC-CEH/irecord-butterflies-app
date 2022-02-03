@@ -113,6 +113,17 @@ function getSampleInfo(sample) {
       avatar = <img src={thumbnail} />;
     }
 
+    const seconds = new Date(sample.attrs.duration).getSeconds();
+    const minutes = new Date(sample.attrs.duration).getMinutes();
+    const getSeconds = seconds > 9 ? seconds : `0${seconds}`;
+    const getMinutes = minutes > 9 ? minutes : `0${minutes}`;
+
+    const durationTime = <span>{`${getMinutes}:${getSeconds}`}</span>;
+
+    const showSurveyDuration = sample.metadata.saved ? (
+      <IonBadge className="time-badge">Time: {durationTime}</IonBadge>
+    ) : null;
+
     return (
       <>
         <IonAvatar>{avatar}</IonAvatar>
@@ -125,7 +136,7 @@ function getSampleInfo(sample) {
             {!!count && !sample.hasZeroAbundance() && (
               <IonBadge className="occurrence-badge">Count: {count}</IonBadge>
             )}
-            <IonBadge className="time-badge">Time: 5:40</IonBadge>
+            {showSurveyDuration}
           </div>
         </IonLabel>
       </>

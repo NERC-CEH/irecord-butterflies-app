@@ -1,0 +1,11 @@
+#stopwatch {
+  ion-label.ios span {
+    display: inline-block;
+    width: 50px;
+    text-align: left;
+  }
+
+  ion-label.md span {
+    margin-right: 5px;
+  }
+}

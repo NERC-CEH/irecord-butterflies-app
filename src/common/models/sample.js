@@ -68,6 +68,8 @@ class AppSample extends Sample {
     this.samples.forEach(stopGPS);
   };
 
+  isTimerPaused = () => !!this.metadata.timerPausedTime;
+
   async upload(skipInvalidsMessage, skipRefreshUploadCountStat) {
     if (this.remote.synchronising) {
       return true;
