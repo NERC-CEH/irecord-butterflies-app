@@ -4,9 +4,22 @@ import { observe } from 'mobx';
 
 // TODO get values from config
 
+interface API_TYPES {
+  main: { temp: string };
+  wind: { speed: string; deg: string };
+  clouds: { all: string };
+}
+
+interface WEATHER_TYPES {
+  sun: number | null;
+  temperature: string | number | null;
+  windDirection: string | null;
+  windSpeed: string | null;
+}
+
 const url = config.weatherSiteUrl;
 
-function getCelsiusTemperature(fahrenheitFromService) {
+function getCelsiusTemperature(fahrenheitFromService: string) {
   const fahrenheit = parseFloat(fahrenheitFromService);
 
   if (Number.isNaN(fahrenheit)) {
@@ -26,7 +39,7 @@ function getCelsiusTemperature(fahrenheitFromService) {
   return temperature;
 }
 
-const getWindDirection = degreesFromService => {
+const getWindDirection = (degreesFromService: string) => {
   const degrees = parseFloat(degreesFromService);
 
   if (Number.isNaN(degrees) || degrees > 360) {
@@ -58,7 +71,7 @@ const getWindDirection = degreesFromService => {
   return 'NW';
 };
 
-const getWindSpeed = speedFromService => {
+const getWindSpeed = (speedFromService: string) => {
   const speed = parseFloat(speedFromService);
 
   if (Number.isNaN(speed)) {
@@ -87,31 +100,38 @@ const getWindSpeed = speedFromService => {
   return 'Large branches move and trees sway';
 };
 
-const getCloud = cloudFromService => {
+const getCloud = (cloudFromService: string) => {
   const cloud = parseFloat(cloudFromService);
 
   if (Number.isNaN(cloud)) {
     return null;
   }
 
-  return Math.round(cloud);
+  // invert clouds to sunshine
+  return Math.round(100 - cloud);
 };
 
-const fetchWeatherData = ({ latitude, longitude }) => {
-  const toResponseJson = response => response.json();
+const fetchWeatherData = ({
+  latitude,
+  longitude,
+}: {
+  latitude: number;
+  longitude: number;
+}) => {
+  const toResponseJson = (response: any) => response.json();
   return fetch(
     `${url}?lat=${latitude}&lon=${longitude}&units=Imperial&appid=${config.weatherSiteApiKey}`
   ).then(toResponseJson);
 };
 
-const normaliseResponseValues = ({ main, wind, clouds }) => ({
+const normaliseResponseValues = ({ main, wind, clouds }: API_TYPES) => ({
   temperature: getCelsiusTemperature((main || {}).temp),
   windSpeed: getWindSpeed((wind || {}).speed),
   windDirection: getWindDirection((wind || {}).deg),
-  clouds: getCloud((clouds || {}).all),
+  sun: getCloud((clouds || {}).all),
 });
 
-function setNewWeatherValues(sample, newWeatherValues) {
+function setNewWeatherValues(sample: any, newWeatherValues: WEATHER_TYPES) {
   if (!sample.attrs.temperature && newWeatherValues.temperature) {
     sample.attrs.temperature = newWeatherValues.temperature; // eslint-disable-line
   }
@@ -121,20 +141,20 @@ function setNewWeatherValues(sample, newWeatherValues) {
   if (!sample.attrs.windSpeed && newWeatherValues.windSpeed) {
     sample.attrs.windSpeed = newWeatherValues.windSpeed; // eslint-disable-line
   }
-  if (!sample.attrs.cloud && newWeatherValues.clouds) {
-    sample.attrs.cloud = newWeatherValues.clouds; // eslint-disable-line
+  if (!sample.attrs.sun && newWeatherValues.sun) {
+    sample.attrs.sun = newWeatherValues.sun; // eslint-disable-line
   }
 
   sample.save();
 }
 
-const extension = {
-  startMetOfficePull() {
+const extension: any = {
+  startMetOfficePull(): any {
     // Log('SampleModel:MetOffice: start.');
 
-    let stopLocationObserver;
+    let stopLocationObserver: any;
 
-    const observeLocation = async ({ newValue }) => {
+    const observeLocation = async ({ newValue }: any) => {
       const sampleWasSetForSubmission = this.metadata.saved;
 
       if (
@@ -151,7 +171,7 @@ const extension = {
 
         const response = await fetchWeatherData(newValue);
 
-        const weatherValues = normaliseResponseValues(response);
+        const weatherValues: WEATHER_TYPES = normaliseResponseValues(response);
 
         setNewWeatherValues(this, weatherValues);
       } catch (err) {

@@ -36,7 +36,7 @@ const config = {
     },
   },
 
-  weatherSiteApiKey: 'befdf7b31c238cb233a6958b9d47441c',
+  weatherSiteApiKey: process.env.APP_WEATHER_SITE_API_KEY,
   weatherSiteUrl: 'https://api.openweathermap.org/data/2.5/weather',
 };
 

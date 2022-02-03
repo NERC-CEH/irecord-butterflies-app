@@ -1,5 +1,6 @@
 // @ts-ignore
 import Wkt from 'wicket';
+import * as Yup from 'yup';
 import { date as dateHelp } from '@apps';
 import { toJS } from 'mobx';
 import L from 'leaflet';
@@ -275,7 +276,33 @@ const survey: Survey = {
     },
   },
 
-  verify() {},
+  verify(attrs) {
+    try {
+      Yup.object()
+        .shape({
+          site: Yup.string().required(
+            'Please ensure you fill in the site name field'
+          ),
+          sun: Yup.mixed()
+            .notOneOf([null])
+            .required('Please ensure you fill in the sun field'),
+          windDirection: Yup.mixed()
+            .notOneOf([null])
+            .required('Please ensure you fill in the wind direction field'),
+          windSpeed: Yup.mixed()
+            .notOneOf([null])
+            .required('Please ensure you fill in the wind speed field'),
+          temperature: Yup.mixed()
+            .notOneOf([null])
+            .required('Please ensure you fill in the temperature field'),
+        })
+
+        .validateSync(attrs, { abortEarly: false });
+    } catch (attrError) {
+      return attrError;
+    }
+    return null;
+  },
 
   create(AppSample: any) {
     const sample = new AppSample({
@@ -289,7 +316,7 @@ const survey: Survey = {
     });
 
     sample.attrs.surveyStartTime = sample.metadata.created_on; // this can't be done in defaults
-    sample.startBackgroundGPS();
+    sample.startMetOfficePull();
 
     return sample;
   },

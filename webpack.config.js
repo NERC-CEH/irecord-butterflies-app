@@ -7,6 +7,7 @@ const required = [
   'APP_SENTRY_KEY',
   'APP_BACKEND_CLIENT_ID',
   'APP_BACKEND_CLIENT_PASS',
+  'APP_WEATHER_SITE_API_KEY',
 ];
 
 const development = {

@@ -6,7 +6,7 @@ import listSurvey from 'Survey/List/config';
 import timeSurvey from 'Survey/Time/config';
 import GPSExtension from './sampleGPSExt';
 import BackgroundGPSExtension from './sampleBackgroundGPSExt';
-import MetOfficeExtension from './sample_metoffice_ext';
+import MetOfficeExtension from './sampleMetofficeExt';
 import { modelStore } from './store';
 import Occurrence from './occurrence';
 import Media from './image';
