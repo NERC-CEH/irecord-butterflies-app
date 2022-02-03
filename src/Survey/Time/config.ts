@@ -5,8 +5,7 @@ import { date as dateHelp } from '@apps';
 import { toJS } from 'mobx';
 import L from 'leaflet';
 import { Survey } from 'common/surveys';
-import { chatboxOutline } from 'ionicons/icons';
-import { stageAttr } from 'Survey/common/config';
+import { stageAttr, deviceAttr, appVersionAttr } from 'Survey/common/config';
 
 const temperatureValues = [
   {
@@ -97,6 +96,9 @@ const survey: Survey = {
   name: 'single-species-count',
 
   attrs: {
+    device: deviceAttr,
+    appVersion: appVersionAttr,
+
     location: {
       remote: {
         id: 'entered_sref',
