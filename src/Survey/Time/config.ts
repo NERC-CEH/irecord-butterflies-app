@@ -5,6 +5,7 @@ import { date as dateHelp } from '@apps';
 import { toJS } from 'mobx';
 import L from 'leaflet';
 import { Survey } from 'common/surveys';
+import { chatboxOutline, business } from 'ionicons/icons';
 import { stageAttr, deviceAttr, appVersionAttr } from 'Survey/common/config';
 
 const temperatureValues = [
@@ -128,6 +129,18 @@ const survey: Survey = {
         id: 287,
         values: (date: any) => dateHelp.format(new Date(date)),
       },
+    },
+
+    site: {
+      menuProps: { icon: business, label: 'Site name' },
+      pageProps: {
+        headerProps: { title: 'Site name' },
+        attrProps: {
+          input: 'input',
+          info: 'Site name eg neay village',
+        },
+      },
+      remote: { id: 'location_name' },
     },
 
     duration: {

@@ -2,7 +2,12 @@ import React, { FC, useContext } from 'react';
 import { observer } from 'mobx-react';
 import { toJS } from 'mobx';
 import Sample from 'models/sample';
-import { Main, MenuAttrItem, InfoBackgroundMessage } from '@apps';
+import {
+  Main,
+  MenuAttrItem,
+  InfoBackgroundMessage,
+  MenuAttrItemFromModel,
+} from '@apps';
 import {
   IonList,
   IonItemDivider,
@@ -201,6 +206,12 @@ const HomeMain: FC<Props> = ({ sample, increaseCount, deleteSpecies }) => {
             icon={mapOutline}
             label="Area"
             value={areaPretty}
+            skipValueTranslation
+          />
+
+          <MenuAttrItemFromModel
+            model={sample as any}
+            attr="site"
             skipValueTranslation
           />
 

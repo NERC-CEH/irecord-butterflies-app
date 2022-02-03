@@ -28,6 +28,7 @@ const Location = observer(ModelLocationWrap);
 const routes = [
   [`${baseURL}`, StartNewSurvey.with(survey), true],
   [`${baseURL}/:smpId`, Home],
+  [`${baseURL}/:smpId/:attr`, AttrPageFromRoute],
   [`${baseURL}/:smpId/area`, AreaAttr],
   [`${baseURL}/:smpId/details`, Details],
   [`${baseURL}/:smpId/details/:attr`, AttrPageFromRoute],
