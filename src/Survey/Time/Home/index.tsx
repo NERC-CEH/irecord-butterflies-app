@@ -5,9 +5,13 @@ import appModel from 'models/app';
 import userModel from 'models/user';
 import { observer } from 'mobx-react';
 import { Page, Header, alert, showInvalidsMessage } from '@apps';
-import { IonButton, NavContext } from '@ionic/react';
-import { Trans as T } from 'react-i18next';
+import { IonButton, NavContext, isPlatform } from '@ionic/react';
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import Main from './Main';
+
+const hapticsImpact = async () => {
+  await Haptics.impact({ style: ImpactStyle.Heavy });
+};
 
 type Props = {
   sample: typeof Sample;
@@ -81,7 +85,7 @@ const HomeController: FC<Props> = ({ sample }) => {
     newSubSample.startBackgroundGPS();
     sample.save();
 
-    // isPlatform('hybrid') && hapticsImpact();
+    isPlatform('hybrid') && hapticsImpact();
   };
 
   const _processDraft = async () => {
