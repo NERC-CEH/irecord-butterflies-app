@@ -98,6 +98,12 @@ const HomeController: FC<Props> = ({ sample }) => {
     appModel.attrs['draftId:single-species-count'] = null; // eslint-disable-line
     await appModel.save();
 
+    // eslint-disable-next-line no-param-reassign
+    sample.attrs.duration =
+      Date.now() -
+      new Date(sample.attrs.surveyStartTime).getTime() -
+      new Date(sample.metadata.pausedTime).getTime();
+
     sample.metadata.saved = Date.now(); // eslint-disable-line
     sample.cleanUp();
     sample.save();
