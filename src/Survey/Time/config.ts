@@ -9,12 +9,6 @@ import { chatboxOutline, business } from 'ionicons/icons';
 import { stageAttr, deviceAttr, appVersionAttr } from 'Survey/common/config';
 
 const temperatureValues = [
-  {
-    value: '',
-    label: 'Not recorded/no data',
-    id: 16556,
-    isDefault: true,
-  },
   { value: 10, id: 16530 },
   { value: 11, id: 16531 },
   { value: 12, id: 16532 },
@@ -49,7 +43,6 @@ const temperatureValues = [
 ];
 
 const windDirectionValues = [
-  { value: '', label: 'Not recorded/no data', id: 2460, isDefault: true },
   { value: 'S', id: 2461 },
   { value: 'SW', id: 2462 },
   { value: 'W', id: 2463 },
@@ -62,7 +55,6 @@ const windDirectionValues = [
 ];
 
 const windSpeedValues = [
-  { value: '', label: 'Not recorded/no data', id: 2459, isDefault: true },
   { value: 'Smoke rises vertically', id: 2606 },
   { value: 'Slight smoke drift', id: 2453 },
   { value: 'Wind felt on face, leaves rustle', id: 2454 },
@@ -298,17 +290,17 @@ const survey: Survey = {
           site: Yup.string().required(
             'Please ensure you fill in the site name field'
           ),
-          sun: Yup.mixed()
-            .notOneOf([null])
+          sun: Yup.number()
+            .nullable()
             .required('Please ensure you fill in the sun field'),
-          windDirection: Yup.mixed()
-            .notOneOf([null])
+          windDirection: Yup.string()
+            .nullable()
             .required('Please ensure you fill in the wind direction field'),
-          windSpeed: Yup.mixed()
-            .notOneOf([null])
+          windSpeed: Yup.string()
+            .nullable()
             .required('Please ensure you fill in the wind speed field'),
-          temperature: Yup.mixed()
-            .notOneOf([null])
+          temperature: Yup.string()
+            .nullable()
             .required('Please ensure you fill in the temperature field'),
         })
 
