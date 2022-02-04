@@ -10,6 +10,7 @@ import {
   playOutline,
   flagOutline,
 } from 'ionicons/icons';
+import getFormattedDuration from 'common/helpers/getFormattedDuration';
 import './styles.scss';
 
 type Props = {
@@ -21,10 +22,10 @@ const Stopwatch: FC<Props> = ({ sample }) => {
   const [stopwatchID, setStopwatchID] = useState<any>(null);
 
   const isDisabled = sample.isUploaded();
-  const isSurveyFinnished = sample.metadata.saved;
+  const finishedSurveyTimestamp = sample.metadata.saved;
 
   const startStopwatch = () => {
-    if (isSurveyFinnished) return null;
+    if (finishedSurveyTimestamp) return null;
 
     const forceRefresh = () => setRefresh(Math.random());
 
@@ -32,7 +33,7 @@ const Stopwatch: FC<Props> = ({ sample }) => {
   };
 
   const toggleTimer = () => {
-    if (isSurveyFinnished) return;
+    if (finishedSurveyTimestamp) return;
 
     if (sample.metadata.timerPausedTime) {
       const pausedTime =
@@ -52,25 +53,15 @@ const Stopwatch: FC<Props> = ({ sample }) => {
   const formatTime = () => {
     const startTime = new Date(sample.attrs.surveyStartTime).getTime();
     const pauseTime = new Date(sample.metadata.pausedTime).getTime();
-
-    const durationTime = sample.metadata.timerPausedTime
+    const timestamp = sample.metadata.timerPausedTime
       ? new Date(sample.metadata.timerPausedTime).getTime()
       : Date.now();
 
-    const referenceTime = isSurveyFinnished || durationTime;
+    const referenceTime = finishedSurveyTimestamp || timestamp;
 
-    const durationInSeconds: any =
-      (referenceTime - startTime - pauseTime) / 1000;
+    const duration = referenceTime - startTime - pauseTime;
 
-    const duration: any = parseInt(durationInSeconds, 10);
-
-    const seconds = duration % 60;
-    const getSeconds = seconds > 9 ? seconds : `0${seconds}`;
-
-    const minutes: any = `${Math.floor(durationInSeconds / 60)}`;
-    const getMinutes = minutes > 9 ? minutes : `0${minutes}`;
-
-    return <span>{`${getMinutes}:${getSeconds}`}</span>;
+    return <span>{getFormattedDuration(duration)}</span>;
   };
 
   const initComponentRefresh = () => {

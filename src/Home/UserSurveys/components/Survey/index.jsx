@@ -16,6 +16,7 @@ import {
 } from '@ionic/react';
 import clsx from 'clsx';
 import species from 'common/data/species';
+import getFormattedDuration from 'common/helpers/getFormattedDuration';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import OnlineStatus from './components/OnlineStatus';
 import ErrorMessage from './components/ErrorMessage';
@@ -113,12 +114,9 @@ function getSampleInfo(sample) {
       avatar = <img src={thumbnail} />;
     }
 
-    const seconds = new Date(sample.attrs.duration).getSeconds();
-    const minutes = new Date(sample.attrs.duration).getMinutes();
-    const getSeconds = seconds > 9 ? seconds : `0${seconds}`;
-    const getMinutes = minutes > 9 ? minutes : `0${minutes}`;
-
-    const durationTime = <span>{`${getMinutes}:${getSeconds}`}</span>;
+    const durationTime = (
+      <span>{getFormattedDuration(sample.attrs.duration)}</span>
+    );
 
     const showSurveyDuration = sample.metadata.saved ? (
       <IonBadge className="time-badge">Time: {durationTime}</IonBadge>
