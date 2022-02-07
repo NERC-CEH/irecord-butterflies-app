@@ -98,7 +98,7 @@ function getSampleInfo(sample) {
     const count = sample?.samples?.length;
 
     const taxon = occ?.attrs?.taxon || {};
-    const label = 'Single Species Count';
+    const label = 'Time';
 
     const byId = ({ id: speciesID }) => speciesID === taxon.id;
     const fullSpeciesProfile = species.find(byId) || {};

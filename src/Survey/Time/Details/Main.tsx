@@ -91,7 +91,8 @@ const MainDetails: FC<Props> = ({ sample }) => {
         <div className="rounded">
           <PhotoPicker model={sample} />
           <MenuNoteItem color="medium">
-            Representative photo of where the 'Single species count' was made
+            Representative photo of where the 'Single species timed count' was
+            made
           </MenuNoteItem>
         </div>
       </IonList>
