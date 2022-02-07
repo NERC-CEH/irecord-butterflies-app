@@ -140,7 +140,7 @@ class HomeComponent extends React.Component {
                     routerLink="/survey/single-species-count"
                   >
                     <IonLabel>
-                      <T>Single species count</T>
+                      <T>Single species timed count</T>
                     </IonLabel>
                   </IonFabButton>
                 )}
