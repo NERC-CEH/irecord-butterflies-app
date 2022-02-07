@@ -11,7 +11,7 @@ import GPS from 'helpers/BackgroundGPS';
 
 const METERS_SINCE_LAST_LOCATION = 15;
 
-const DEFAULT_TRANSECT_BUFFER = 10; // 5x2 meters
+const DEFAULT_TRANSECT_BUFFER = 5; // 2.5x2 meters
 
 function calculateLineLenght(lineString) {
   /**
