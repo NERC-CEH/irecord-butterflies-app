@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import L from 'leaflet';
 import { CircleMarker } from 'react-leaflet';
 import { alert } from '@apps';
 import SpeciesProfile from './Components/SpeciesProfile';
@@ -28,14 +27,22 @@ const Marker: FC<Props> = ({ record }) => {
     });
   };
 
+  let fillColor = 'var(--ion-color-medium)';
+  const status = record.identification.verification_status;
+  if (status === 'V') {
+    fillColor = 'var(--ion-color-primary)';
+  } else if (status === 'R') {
+    fillColor = 'var(--ion-color-danger)';
+  }
+
   return (
     <CircleMarker
       center={[latitude, longititude]}
       radius={10}
       className="record-marker"
-      color="#ff5b00"
-      fillColor="#ff5b00"
-      fillOpacity={0.8}
+      color="white"
+      fillColor={fillColor}
+      fillOpacity={1}
       eventHandlers={{ click: showRecordInfo }}
     />
   );
