@@ -6,7 +6,8 @@ import {
   IonSlides,
 } from '@ionic/react';
 import ImageWithBackground from 'Components/ImageWithBackground';
-import { Record, Media } from '../../../esResponse.d';
+import { Record, Media } from '../../../../esResponse.d';
+import './styles.scss';
 
 type Props = {
   record: Record;
@@ -89,6 +90,8 @@ export default function SpeciesProfile({ record }: Props) {
       </IonCardHeader>
 
       <IonCardContent>
+        <h3>Status:</h3>
+        <p>{statusText}</p>
         <h3>Date:</h3>
         <p>{date}</p>
         <h3>Survey:</h3>
@@ -102,8 +105,6 @@ export default function SpeciesProfile({ record }: Props) {
         <h3>Stage:</h3>
         <p>{stage}</p>
       </IonCardContent>
-
-      <div className="alert-record-status">{statusText}</div>
     </div>
   );
 }

@@ -1,0 +1,23 @@
+ion-alert.alert-species-profile-container {
+  ion-slides {
+    max-height: 150px;
+  }
+
+  ion-card-header {
+    .title {
+      h1 {
+        font-size: 1.2em;
+        margin: 0 !important;
+      }
+      h3 {
+        font-size: 1.1em;
+        margin: 0 !important;
+      }
+    }
+  }
+
+  ion-card-content {
+    background-color: #f3f3f3;
+    padding: 8px 20px;
+  }
+}

@@ -1,39 +1,12 @@
-.record-marker {
-  span {
-    background-color: var(--ion-color-primary);
-    width: 5px;
-    height: 5px;
-    display: block;
-    position: relative;
-    border-radius: 50%;
-    border: 2px solid #ffffff;
-  }
-
-  &.V span {
-    background-color: var(--ion-color-primary);
-  }
-}
-
 .record-marker.selected span {
   background-color: #f59c05;
 }
 
 ion-alert.alert-species-profile-container {
+  --max-width: 300px;
+
   .alert-head,
   .alert-message {
     padding: 0;
-  }
-
-  ion-slides {
-    max-height: 100px;
-  }
-
-  .title {
-    h1 {
-      font-size: 1.2em;
-    }
-    h3 {
-      font-size: 1.1em;
-    }
   }
 }
