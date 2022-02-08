@@ -141,7 +141,7 @@ const HomeController: FC<Props> = ({ sample }) => {
 
   return (
     <Page id="single-species-count-home">
-      <Header title="Details" rightSlot={finishButton} />
+      <Header title="Survey" rightSlot={finishButton} />
       <Main
         sample={sample}
         increaseCount={increaseCount}
