@@ -26,7 +26,7 @@ import { Trans as T } from 'react-i18next';
 import { mapOutline, warningOutline, clipboardOutline } from 'ionicons/icons';
 import { useRouteMatch } from 'react-router';
 import Stopwatch from 'Survey/Time/Components/Stopwatch';
-import ukBMSIcon from 'common/images/ukBMSIcon.jpg';
+import UKBMSlogo from './UKBMSlogo.png';
 import './styles.scss';
 
 type Props = {
@@ -198,7 +198,7 @@ const HomeMain: FC<Props> = ({ sample, increaseCount, deleteSpecies }) => {
 
   return (
     <Main>
-      <IonImg src={ukBMSIcon} />
+      <IonImg src={UKBMSlogo} />
       <IonList lines="full">
         <IonItemDivider>
           <T>Details</T>
