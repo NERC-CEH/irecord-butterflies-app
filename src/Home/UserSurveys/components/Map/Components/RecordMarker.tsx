@@ -1,31 +1,16 @@
 import React, { FC } from 'react';
 import { CircleMarker } from 'react-leaflet';
-import { alert } from '@apps';
-import SpeciesProfile from './Components/SpeciesProfile';
-import { Record } from '../../esResponse.d';
-import './styles.scss';
+import { Record } from '../esResponse.d';
 
 interface Props {
   record: Record;
+  onClick: any;
 }
 
-const Marker: FC<Props> = ({ record }) => {
+const Marker: FC<Props> = ({ record, onClick }) => {
   const location = record.location.point.split(',');
   const latitude = parseFloat(location[0]);
   const longititude = parseFloat(location[1]);
-
-  const showRecordInfo = (..._: any) => {
-    alert({
-      cssClass: 'alert-species-profile-container',
-      message: <SpeciesProfile record={record} />,
-      buttons: [
-        {
-          text: 'OK',
-          cssClass: 'primary',
-        },
-      ],
-    });
-  };
 
   let fillColor = 'var(--ion-color-medium)';
   const status = record.identification.verification_status;
@@ -35,6 +20,8 @@ const Marker: FC<Props> = ({ record }) => {
     fillColor = 'var(--ion-color-danger)';
   }
 
+  const onClickWrap = () => onClick(record);
+
   return (
     <CircleMarker
       center={[latitude, longititude]}
@@ -43,7 +30,7 @@ const Marker: FC<Props> = ({ record }) => {
       color="white"
       fillColor={fillColor}
       fillOpacity={1}
-      eventHandlers={{ click: showRecordInfo }}
+      eventHandlers={{ click: onClickWrap }}
     />
   );
 };
