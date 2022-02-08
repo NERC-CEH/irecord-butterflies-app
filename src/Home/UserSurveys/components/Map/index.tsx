@@ -41,18 +41,21 @@ const Map: FC = () => {
   const assignRef = (mapRef: Leaflet.Map) => setMap(mapRef);
 
   const updateRecords = async () => {
+    if (!map || !userIsLoggedIn) return;
+
     const bounds: LatLngBounds = map.getBounds();
     bounds.pad(1); // +100%
 
     const zoomLevel = map.getZoom();
+    const northWest = bounds.getNorthWest();
+    const southEast = bounds.getSouthEast();
+
+    if (northWest.lat === southEast.lat) return; // first time the bounds can be flat
 
     const shouldFetchRecords = zoomLevel >= 13;
     if (shouldFetchRecords) {
       setFetchingRecords(true);
-      const fetchedRecords = await fetchRecords(
-        bounds.getNorthWest(),
-        bounds.getSouthEast()
-      );
+      const fetchedRecords = await fetchRecords(northWest, southEast);
       setRecords(fetchedRecords);
       setSquares([]);
       setFetchingRecords(false);
@@ -62,32 +65,21 @@ const Map: FC = () => {
     const squareSize = getSquareSize(zoomLevel);
 
     setFetchingRecords(true);
-    const fetchedSquares = await fetchSquares(
-      bounds.getNorthWest(),
-      bounds.getSouthEast(),
-      squareSize
-    );
+    const fetchedSquares = await fetchSquares(northWest, southEast, squareSize);
     setRecords([]);
     setSquares(fetchedSquares);
     setFetchingRecords(false);
   };
 
-  const attachOnMoveWrap = () => {
-    const attachOnMove = () => {
-      if (!map || !userIsLoggedIn) return;
+  const attachMoveListener = (): any => {
+    if (!map) return;
 
-      map.on('moveend', updateRecords);
-    };
-    attachOnMove();
+    map.on('moveend', updateRecords);
 
-    return function cleanup() {
-      if (!map) return;
-
-      map.off('moveend');
-    };
+    // eslint-disable-next-line
+    return () => map.off('moveend');
   };
-
-  useEffect(attachOnMoveWrap, [map]);
+  useEffect(attachMoveListener, [map]);
 
   const updateRecordsFirstTime = () => {
     updateRecords();
@@ -106,7 +98,7 @@ const Map: FC = () => {
   );
 
   const getTotalSquares = () => {
-    if (!squares.length) return;
+    if (!squares?.length) return;
 
     const addSquares = (acc: number, square: Square): number => {
       if (!square) return 0;
