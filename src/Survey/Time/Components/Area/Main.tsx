@@ -42,7 +42,7 @@ const AreaMain: FC<Props> = ({
         <IonTitle slot="start">{areaPretty}</IonTitle>
       </IonToolbar>
 
-      <MapContainer tap={disableTapForIOS} zoom={DEFAULT_ZOOM}>
+      <MapContainer tap={disableTapForIOS} zoom={6} center={[50, 0.1]}>
         <MapInfo
           sample={sample}
           isDisabled={isDisabled}

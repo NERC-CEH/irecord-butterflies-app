@@ -22,7 +22,7 @@ declare const appModel: {
   hasZeroAbundance: () => boolean;
   destroy: () => void;
   save: () => void;
-  upload: () => void;
+  upload: (a?: any, b?: any) => void;
 
   // should return config
   getSurvey: () => any;
@@ -46,6 +46,8 @@ declare const appModel: {
   isTimerPaused: () => boolean;
   startMetOfficePull: any;
   cleanUp: () => void;
+
+  uploadAll: any;
 };
 
 export default appModel;
