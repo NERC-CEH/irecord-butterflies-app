@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect } from 'react';
 import userModel from 'models/user';
 import { observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
-import Leaflet, { LatLngBounds } from 'leaflet';
+import Leaflet, { LatLngBounds, LatLngTuple } from 'leaflet';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import { isPlatform, IonSpinner } from '@ionic/react';
 import CONFIG from 'common/config';
@@ -14,6 +14,7 @@ import { Square, Record } from './esResponse.d';
 import './styles.scss';
 
 const DEFAULT_ZOOM = 5;
+const DEFAULT_CENTER: LatLngTuple = [53.7326306, -2.6546124]; // UK center
 
 /**
  * Returns square size in meters.
@@ -115,7 +116,7 @@ const Map: FC = () => {
       whenCreated={assignRef}
       tap={disableTapForIOS}
       zoom={DEFAULT_ZOOM}
-      center={[50, 1]}
+      center={DEFAULT_CENTER}
       minZoom={5}
     >
       <TileLayer
