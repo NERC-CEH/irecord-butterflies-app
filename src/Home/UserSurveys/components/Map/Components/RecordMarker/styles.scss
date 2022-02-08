@@ -9,4 +9,8 @@ ion-alert.alert-species-profile-container {
   .alert-message {
     padding: 0;
   }
+
+  .alert-message {
+    max-height: 70vh;
+  }
 }

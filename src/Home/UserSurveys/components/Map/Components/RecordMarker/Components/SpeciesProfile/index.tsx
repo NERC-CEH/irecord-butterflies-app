@@ -6,6 +6,7 @@ import {
   IonSlides,
 } from '@ionic/react';
 import ImageWithBackground from 'Components/ImageWithBackground';
+import config from 'common/config';
 import { Record, Media } from '../../../../esResponse.d';
 import './styles.scss';
 
@@ -31,7 +32,8 @@ function fixIonicSlideBug() {
 
 export default function SpeciesProfile({ record }: Props) {
   const date = record.metadata.created_on.split(' ')[0];
-  const statusText = statuses[record.identification.verification_status];
+  const status = record.identification.verification_status;
+  const statusText = statuses[status];
 
   const commonName = record.taxon.vernacular_name;
   const scientificName = record.taxon.accepted_name;
@@ -43,6 +45,8 @@ export default function SpeciesProfile({ record }: Props) {
   const stage = record.occurrence.life_stage;
 
   const getSlides = (media?: Media[]) => {
+    if (!media?.length) return null;
+
     const slideOpts = {
       initialSlide: 0,
       speed: 400,
@@ -51,7 +55,7 @@ export default function SpeciesProfile({ record }: Props) {
     const getSlide = (image: Media, index: number) => {
       const { path } = image;
       // const showPhotoInFullScreenWrap = () => showPhotoInFullScreen(index);
-      const imageURL = `https://warehouse1.indicia.org.uk/upload/${path}`;
+      const imageURL = `${config.backend.mediaUrl}${path}`;
 
       return (
         <IonSlide
@@ -80,6 +84,7 @@ export default function SpeciesProfile({ record }: Props) {
   return (
     <div className="alert-species-profile">
       <div className="gallery">{getSlides(record.occurrence.media)}</div>
+
       <IonCardHeader>
         <div className="title">
           {commonName && <h1>{commonName}</h1>}
@@ -90,20 +95,25 @@ export default function SpeciesProfile({ record }: Props) {
       </IonCardHeader>
 
       <IonCardContent>
-        <h3>Status:</h3>
-        <p>{statusText}</p>
-        <h3>Date:</h3>
-        <p>{date}</p>
-        <h3>Survey:</h3>
-        <p>{surveyName}</p>
-        <h3>Location:</h3>
-        <p>{gridRef}</p>
-        <h3>Survey:</h3>
-        <p>{surveyName}</p>
-        <h3>Count:</h3>
-        <p>{count}</p>
-        <h3>Stage:</h3>
-        <p>{stage}</p>
+        <div>
+          <span className="record-attribute">Status:</span> {statusText}
+        </div>
+        <div>
+          <span className="record-attribute">Survey:</span> {surveyName}
+        </div>
+        <div>
+          <span className="record-attribute">Date:</span> {date}
+        </div>
+
+        <div>
+          <span className="record-attribute">Location:</span> {gridRef}
+        </div>
+        <div>
+          <span className="record-attribute">Count:</span> {count}
+        </div>
+        <div>
+          <span className="record-attribute">Stage:</span> {stage}
+        </div>
       </IonCardContent>
     </div>
   );
