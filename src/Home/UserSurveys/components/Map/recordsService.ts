@@ -33,12 +33,12 @@ const getRecordsQuery = (northWest: LatLng, southEast: LatLng) =>
     },
   });
 
+let requestCancelToken: any;
+
 export async function fetchRecords(
   northWest: LatLng,
   southEast: LatLng
-): Promise<Record[]> {
-  let requestCancelToken: any;
-
+): Promise<Record[] | null> {
   if (requestCancelToken) {
     requestCancelToken.cancel();
   }
@@ -53,6 +53,7 @@ export async function fetchRecords(
       'Content-Type': 'application/json',
     },
     timeout: 80000,
+    cancelToken: requestCancelToken.token,
     data: getRecordsQuery(northWest, southEast),
   };
 
@@ -64,7 +65,7 @@ export async function fetchRecords(
     records = data;
   } catch (e) {
     if (axios.isCancel(e)) {
-      return [];
+      return null;
     }
   }
 
@@ -127,9 +128,7 @@ export async function fetchSquares(
   northWest: LatLng,
   southEast: LatLng,
   squareSize: number // in meters
-): Promise<Square[]> {
-  let requestCancelToken: any;
-
+): Promise<Square[] | null> {
   if (requestCancelToken) {
     requestCancelToken.cancel();
   }
@@ -146,6 +145,7 @@ export async function fetchSquares(
       'Content-Type': 'application/json',
     },
     timeout: 80000,
+    cancelToken: requestCancelToken.token,
     data: getSquaresQuery(northWest, southEast, squareSizeInKm),
   };
 
@@ -157,7 +157,7 @@ export async function fetchSquares(
     records = data;
   } catch (e) {
     if (axios.isCancel(e)) {
-      return [];
+      return null;
     }
   }
 

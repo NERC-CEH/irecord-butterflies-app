@@ -70,6 +70,8 @@ const Map: FC = () => {
     if (shouldFetchRecords) {
       setFetchingRecords(true);
       const fetchedRecords = await fetchRecords(northWest, southEast);
+      // Previous request was cancelled
+      if (!fetchedRecords) return;
       setRecords(fetchedRecords);
       setSquares([]);
       setFetchingRecords(false);
@@ -80,6 +82,8 @@ const Map: FC = () => {
 
     setFetchingRecords(true);
     const fetchedSquares = await fetchSquares(northWest, southEast, squareSize);
+    // Previous request was cancelled
+    if (!fetchedSquares) return;
     setRecords([]);
 
     setTotalSquares(getTotalSquares(fetchedSquares));
