@@ -119,14 +119,23 @@ export default function SpeciesProfile({ record, onClose }: Props) {
     );
   };
 
-  const byWarehouseId = ({ warehouseId }: any) =>
-    warehouseId === Number(record.taxon.taxa_taxon_list_id);
-  const sp = species.find(byWarehouseId);
-  const thumbnail = sp?.thumbnail;
+  const byWarehouseId = (sp: any) =>
+    sp.warehouseId === Number(record.taxon.taxa_taxon_list_id);
+  let thumbnail = species.find(byWarehouseId)?.thumbnail;
+  if (!thumbnail) {
+    const byScientificName = (sp: any) =>
+      sp.scientificName === record.taxon.species;
+    thumbnail = species.find(byScientificName)?.thumbnail;
+  }
+
   const avatar = thumbnail ? (
     <img src={thumbnail} />
   ) : (
-    <IonIcon icon={butterflyIcon} color="warning" />
+    <IonIcon
+      className="default-thumbnail"
+      icon={butterflyIcon}
+      color="warning"
+    />
   );
 
   let statusIcon;
@@ -173,12 +182,16 @@ export default function SpeciesProfile({ record, onClose }: Props) {
           <div>
             <span className="record-attribute">Location:</span> {gridRef}
           </div>
-          <div>
-            <span className="record-attribute">Count:</span> {count}
-          </div>
-          <div>
-            <span className="record-attribute">Stage:</span> {stage}
-          </div>
+          {count && (
+            <div>
+              <span className="record-attribute">Count:</span> {count}
+            </div>
+          )}
+          {stage && (
+            <div>
+              <span className="record-attribute">Stage:</span> {stage}
+            </div>
+          )}
         </IonCardContent>
 
         {getFullScreenPhotoViewer()}

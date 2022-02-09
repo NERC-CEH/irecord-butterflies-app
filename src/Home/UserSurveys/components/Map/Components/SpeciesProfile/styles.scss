@@ -48,6 +48,13 @@
           flex-shrink: 0;
           position: relative;
 
+          ion-icon.default-thumbnail {
+            width: 70%;
+            height: 70%;
+            padding: 15%;
+            --ionicon-stroke-width: 25px;
+          }
+
           .verification-status {
             position: absolute;
             bottom: -12px;
