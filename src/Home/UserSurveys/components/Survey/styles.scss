@@ -32,25 +32,18 @@
       color: var(--ion-color-warning);
     }
 
-    .time-badge {
-      margin-bottom: 5px;
-      margin-left: 5px;
-      font-size: 0.8em;
-      font-weight: normal;
-      width: -webkit-fit-content;
-      width: fit-content;
-      background-color: var(--ion-color-medium-tint);
-      color: var(--ion-color-light);
-    }
+    .badge-wrapper {
+      display: flex;
+      justify-content: flex-start;
+      margin: 3px 0px;
+      gap: 5px;
 
-    .occurrence-badge {
-      margin-bottom: 5px;
-      font-size: 0.8em;
-      font-weight: normal;
-      width: -webkit-fit-content;
-      width: fit-content;
-      background-color: var(--ion-color-primary);
-      color: var(--ion-color-light);
+      ion-badge {
+        font-size: 0.8em;
+        font-weight: 400;
+        background-color: var(--ion-color-medium-tint);
+        color: var(--ion-color-light);
+      }
     }
   }
 

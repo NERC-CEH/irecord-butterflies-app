@@ -119,7 +119,9 @@ function getSampleInfo(sample) {
     );
 
     const showSurveyDuration = sample.metadata.saved ? (
-      <IonBadge className="time-badge">Time: {durationTime}</IonBadge>
+      <IonBadge>
+        Time: <b>{durationTime}</b>
+      </IonBadge>
     ) : null;
 
     return (
@@ -130,9 +132,11 @@ function getSampleInfo(sample) {
             {label || 'Species missing'}
           </IonLabel>
           <IonLabel class="ion-text-wrap">{prettyDate}</IonLabel>
-          <div style={{ display: 'inline' }}>
+          <div className="badge-wrapper">
             {!!count && !sample.hasZeroAbundance() && (
-              <IonBadge className="occurrence-badge">Count: {count}</IonBadge>
+              <IonBadge>
+                Count: <b>{count}</b>
+              </IonBadge>
             )}
             {showSurveyDuration}
           </div>
