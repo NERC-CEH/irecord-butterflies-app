@@ -166,7 +166,9 @@ export async function fetchSquares(
     size: squareSize,
   });
 
-  return records?.aggregations?.by_srid?.buckets[0]?.by_square?.buckets.map(
+  const squares = records?.aggregations?.by_srid?.buckets[0]?.by_square?.buckets.map(
     addSize
   );
+
+  return squares || [];
 }
