@@ -6,6 +6,7 @@ import { Hit, Bucket, Record, Square } from './esResponse.d';
 
 const getRecordsQuery = (northWest: LatLng, southEast: LatLng) =>
   JSON.stringify({
+    size: 1000,
     query: {
       bool: {
         must: [

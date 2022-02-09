@@ -39,7 +39,6 @@ const getTotalSquares = (squares: Square[]) => {
 const Map: FC = () => {
   const [map, setMap]: any = useState(null);
   const [isFetchingRecords, setFetchingRecords] = useState<any>(null);
-  // const [mapCenter, setMapCenter] = useState(DEFAULT_CENTER);
 
   const [totalSquares, setTotalSquares] = useState<number>(1);
   const [squares, setSquares] = useState<Square[]>([]);
@@ -57,8 +56,7 @@ const Map: FC = () => {
   const updateRecords = async () => {
     if (!map || !userIsLoggedIn) return;
 
-    const bounds: LatLngBounds = map.getBounds();
-    bounds.pad(1); // +100%
+    const bounds: LatLngBounds = map.getBounds().pad(0.5); // padding +50%
 
     const zoomLevel = map.getZoom();
     const northWest = bounds.getNorthWest();
@@ -66,7 +64,7 @@ const Map: FC = () => {
 
     if (northWest.lat === southEast.lat) return; // first time the bounds can be flat
 
-    const shouldFetchRecords = zoomLevel >= 13;
+    const shouldFetchRecords = zoomLevel >= 14;
     if (shouldFetchRecords) {
       setFetchingRecords(true);
       const fetchedRecords = await fetchRecords(northWest, southEast);
