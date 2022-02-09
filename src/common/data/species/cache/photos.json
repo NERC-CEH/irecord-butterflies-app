@@ -2535,5 +2535,310 @@
     "file": "WoodWhite_immature_2",
     "author": "Peter Eeles",
     "title": "Pupa"
+  },
+  {
+    "speciesID": "GoldSwift",
+    "file": "Gold Swift (Iain Leach)",
+    "author": "Iain Leach"
+  },
+  {
+    "speciesID": "GoldSwift",
+    "file": "Gold Swift (Dan Lombard)",
+    "author": "Dan Lombard"
+  },
+  {
+    "speciesID": "SixspotBurnet",
+    "file": "Six-spot Burnet + cocoon (Bob Eade)",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "SixspotBurnet",
+    "file": "Six-spot Burnet underwing (Bob Eade)",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "OakEggar",
+    "file": "Oak Eggar male (Tim Melling)",
+    "author": "Tim Melling",
+    "title": "Male"
+  },
+  {
+    "speciesID": "OakEggar",
+    "file": "Oak Eggar female (Iain Leach)",
+    "author": "Iain Leach",
+    "title": "Female"
+  },
+  {
+    "speciesID": "OakEggar",
+    "file": "Oak Eggar larva (Bob Eade)2",
+    "author": "Bob Eade",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "FoxMoth",
+    "file": "Fox Moth male (Dave Green)",
+    "author": "Dave Green",
+    "title": "Male"
+  },
+  {
+    "speciesID": "FoxMoth",
+    "file": "Fox Moth female (Bob Eade)",
+    "author": "Bob Eade",
+    "title": "Female"
+  },
+  {
+    "speciesID": "FoxMoth",
+    "file": "Fox Moth young larva (Dan Lombard)",
+    "author": "Dan Lombard",
+    "title": "Young larva"
+  },
+  {
+    "speciesID": "FoxMoth",
+    "file": "Fox Moth larva (Bob Eade)",
+    "author": "Bob Eade",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "EmperorMoth",
+    "file": "Emperor Moth male (Iain Leach)",
+    "author": "Iain Leach",
+    "title": "Male"
+  },
+  {
+    "speciesID": "EmperorMoth",
+    "file": "Emperor Moth female (Iain Leach)",
+    "author": "Iain Leach",
+    "title": "Female"
+  },
+  {
+    "speciesID": "EmperorMoth",
+    "file": "Emperor Moth young larva (Dan Lombard)",
+    "author": "Dan Lombard",
+    "title": "Young larva"
+  },
+  {
+    "speciesID": "EmperorMoth",
+    "file": "Emperor Moth larva (Bob Eade)",
+    "author": "Bob Eade",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "HummingbirdHawkmoth",
+    "file": "Humming-bird-hawk-moth (Bob Eade)3",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "HummingbirdHawkmoth",
+    "file": "Humming-bird Hawk-moth (David Green)",
+    "author": "Dave Green"
+  },
+  {
+    "speciesID": "ShadedBroadbar",
+    "file": "Shaded Broad-bar (Mark Parsons)",
+    "author": "Mark Parsons"
+  },
+  {
+    "speciesID": "SilvergroundCarpet",
+    "file": "Silver-ground Carpet (Keith Tailby)",
+    "author": "Keith Tailby"
+  },
+  {
+    "speciesID": "YellowShell",
+    "file": "Yellow Shell (Peter Maton)",
+    "author": "Peter Maton"
+  },
+  {
+    "speciesID": "YellowShell",
+    "file": "Yellow Shell (Peter Maton)2",
+    "author": "Peter Maton"
+  },
+  {
+    "speciesID": "CommonCarpet",
+    "file": "Common Carpet (Keith Tailby)",
+    "author": "Keith Tailby"
+  },
+  {
+    "speciesID": "ChimneySweeper",
+    "file": "Chimney Sweeper (Bob Eade)",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "GrassRivulet",
+    "file": "Grass Rivulet (Patrick Clement)",
+    "author": "Patrick Clement"
+  },
+  {
+    "speciesID": "MagpieMoth",
+    "file": "Magpie Moth (Patrick Clement)",
+    "author": "Patrick Clement"
+  },
+  {
+    "speciesID": "LatticedHeath",
+    "file": "Latticed Heath (Keith Tailby)",
+    "author": "Keith Tailby"
+  },
+  {
+    "speciesID": "LatticedHeath",
+    "file": "Latticed Heath (Chris Manley)2",
+    "author": "Chris Manley"
+  },
+  {
+    "speciesID": "BrownSilverline",
+    "file": "Brown Silver-line (Keith Tailby)",
+    "author": "Keith Tailby"
+  },
+  {
+    "speciesID": "SpeckledYellow",
+    "file": "Speckled Yellow (Iain Leach)",
+    "author": "Iain Leach"
+  },
+  {
+    "speciesID": "SpeckledYellow",
+    "file": "Speckled Yellow (Bob Eade)2",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "CommonHeath",
+    "file": "Common Heath male (Patrick Clement)",
+    "author": "Patrick Clement",
+    "title": "Male"
+  },
+  {
+    "speciesID": "CommonHeath",
+    "file": "Common Heath male (Bob Eade)",
+    "author": "Bob Eade",
+    "title": "Male"
+  },
+  {
+    "speciesID": "CommonHeath",
+    "file": "Common Heath female (Patrick Clement)",
+    "author": "Patrick Clement",
+    "title": "Female"
+  },
+  {
+    "speciesID": "BorderedWhite",
+    "file": "Bordered White (Iain Leach)",
+    "author": "Iain Leach"
+  },
+  {
+    "speciesID": "VapourerMoth",
+    "file": "Vapourer male (Iain Leach)",
+    "author": "Iain Leach",
+    "title": "Male"
+  },
+  {
+    "speciesID": "VapourerMoth",
+    "file": "Vapourer female and eggs (Patrick Clement)",
+    "author": "Patrick Clement",
+    "title": "Female and eggs"
+  },
+  {
+    "speciesID": "VapourerMoth",
+    "file": "Vapourer larva (Iain Leach)",
+    "author": "Iain Leach",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "CloudedBuff",
+    "file": "Clouded Buff male (Dave Green)",
+    "author": "Dave Green"
+  },
+  {
+    "speciesID": "ScarletTiger",
+    "file": "Scarlet Tiger (Patrick Clement)",
+    "author": "Patrick Clement"
+  },
+  {
+    "speciesID": "ScarletTiger",
+    "file": "Scarlet Tiger (Bob Eade)",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "ScarletTiger",
+    "file": "Scarlet Tiger larva (Patrick Clement)",
+    "author": "Patrick Clement",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "JerseyTiger",
+    "file": "Jersey Tiger (Peter Maton)",
+    "author": "Peter Maton"
+  },
+  {
+    "speciesID": "JerseyTiger",
+    "file": "Jersey Tiger (Bob Eade)",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "Cinnabar",
+    "file": "Cinnabar (Bob Eade)",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "Cinnabar",
+    "file": "Cinnabar (Mark Parsons)",
+    "author": "Mark Parsons"
+  },
+  {
+    "speciesID": "Cinnabar",
+    "file": "Cinnabar larva (Dan Lombard)",
+    "author": "Dan Lombard",
+    "title": "Larva"
+  },
+  {
+    "speciesID": "SmallPurplebarred",
+    "file": "Small Purple-barred (Keith Tailby)",
+    "author": "Keith Tailby"
+  },
+  {
+    "speciesID": "SmallPurplebarred",
+    "file": "Small Purple-barred (Bob Eade)",
+    "author": "Bob Eade"
+  },
+  {
+    "speciesID": "BurnetCompanion",
+    "file": "Burnet Companion (Patrick Clement)",
+    "author": "Patrick Clement"
+  },
+  {
+    "speciesID": "MotherShipton",
+    "file": "Mother Shipton (Patrick Clement)",
+    "author": "Patrick Clement"
+  },
+  {
+    "speciesID": "MotherShipton",
+    "file": "Mother Shipton (Chris Manley)",
+    "author": "Chris Manley"
+  },
+  {
+    "speciesID": "SilverY",
+    "file": "Silver Y (Iain Leach)",
+    "author": "Iain Leach"
+  },
+  {
+    "speciesID": "SilverY",
+    "file": "Silver Y (Iain Leach)2",
+    "author": "Iain Leach"
+  },
+  {
+    "speciesID": "SmallYellowUnderwing",
+    "file": "Small Yellow Underwing (Keith Tailby)",
+    "author": "Keith Tailby"
+  },
+  {
+    "speciesID": "AntlerMoth",
+    "file": "Antler Moth (Iain Leach)",
+    "author": "Iain Leach"
+  },
+  {
+    "speciesID": "BeautifulYellowUnderwing",
+    "file": "Beautiful Yellow Underwing (Keith Tailby)",
+    "author": "Keith Tailby"
+  },
+  {
+    "speciesID": "BeautifulYellowUnderwing",
+    "file": "Beautiful Yellow Underwing larva (Bob Eade)",
+    "author": "Bob Eade",
+    "title": "Larva"
   }
 ]

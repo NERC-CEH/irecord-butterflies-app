@@ -1,16 +1,25 @@
 [
   {
     "id": "Swallowtail",
+    "type": "butterfly",
     "warehouseId": 162096,
     "commonName": "Swallowtail",
     "scientificName": "Papilio machaon",
     "status": "Resident",
     "group": "Swallowtails",
     "family": "Papilionidae",
-    "colour": ["Yellow", "Black"],
-    "markings": ["Checks", "Stripes"],
+    "colour": [
+      "Yellow",
+      "Black"
+    ],
+    "markings": [
+      "Checks",
+      "Stripes"
+    ],
     "england": "Y",
-    "size": ["Large"],
+    "size": [
+      "Large"
+    ],
     "idTips": "Unmistakeable large, yellow and black butterfly with long 'tails' on the hindwings",
     "habitats": "Fens and marshes in the Norfolk Broads, but wanders to other habitats including gardens. Also occurs as a scarce immigrant across southern Britain.",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -18,19 +27,26 @@
   },
   {
     "id": "DingySkipper",
+    "type": "butterfly",
     "warehouseId": 18220,
     "commonName": "Dingy Skipper",
     "scientificName": "Erynnis tages",
     "status": "Resident",
     "group": "Skippers",
     "family": "Hesperiidae",
-    "colour": ["Brown"],
-    "markings": ["Spots"],
+    "colour": [
+      "Brown"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Small mottled brown and grey butterfly unlike any others. Distinguished from similar-looking moths by thickened tips of antennae (moths have pointed or feathery antennae)",
     "habitats": "Open, sunny places including chalk grassland, coasts, woodland clearings, heathland and brownfield sites",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -38,17 +54,25 @@
   },
   {
     "id": "GrizzledSkipper",
+    "type": "butterfly",
     "warehouseId": 60001,
     "commonName": "Grizzled Skipper",
     "scientificName": "Pyrgus malvae",
     "status": "Resident",
     "group": "Skippers",
     "family": "Hesperiidae",
-    "colour": ["Grey"],
-    "markings": ["Checks", "Spots"],
+    "colour": [
+      "Grey"
+    ],
+    "markings": [
+      "Checks",
+      "Spots"
+    ],
     "england": "Y",
     "wales": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Small grey and white chequered butterfly unlike any others.",
     "habitats": "Unimproved grassland, woodland clearings and brownfield sites",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -56,17 +80,26 @@
   },
   {
     "id": "ChequeredSkipper",
+    "type": "butterfly",
     "warehouseId": 148290,
     "commonName": "Chequered Skipper",
     "scientificName": "Carterocephalus palaemon",
     "status": "Resident",
     "group": "Skippers",
     "family": "Hesperiidae",
-    "colour": ["Brown", "Yellow"],
-    "markings": ["Spots", "Checks"],
+    "colour": [
+      "Brown",
+      "Yellow"
+    ],
+    "markings": [
+      "Spots",
+      "Checks"
+    ],
     "england": "Y",
     "scotland": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Brown wings chequered with golden yellow spots distinguish from other skippers",
     "habitats": "Damp grassland in open woodland and wood edges in western Scotland. Also in woodland rides in a Northamptonshire landscape, where the butterfly has recently been reintroduced. ",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -74,16 +107,21 @@
   },
   {
     "id": "EssexSkipper",
+    "type": "butterfly",
     "warehouseId": 204311,
     "commonName": "Essex Skipper",
     "scientificName": "Thymelicus lineola",
     "status": "Resident",
     "group": "Skippers",
     "family": "Hesperiidae",
-    "colour": ["Orange"],
+    "colour": [
+      "Orange"
+    ],
     "england": "Y",
     "wales": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Plain orange forewings held up at an angle. Distinguished from Small Skipper by glossy black underside of tip of antennae",
     "habitats": "Sunny grasslands, verges, woodland clearings and coast with areas of long grass",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -91,17 +129,22 @@
   },
   {
     "id": "SmallSkipper",
+    "type": "butterfly",
     "warehouseId": 26762,
     "commonName": "Small Skipper",
     "scientificName": "Thymelicus sylvestris",
     "status": "Resident",
     "group": "Skippers",
     "family": "Hesperiidae",
-    "colour": ["Orange"],
+    "colour": [
+      "Orange"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Plain orange forewings held up at an angle. Distinguished from Essex Skipper by orange/brown underside of tip of antennae",
     "habitats": "Grassland, downs, verges, woodland clearings and other places with long grass",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -109,15 +152,21 @@
   },
   {
     "id": "LulworthSkipper",
+    "type": "butterfly",
     "warehouseId": 106967,
     "commonName": "Lulworth Skipper",
     "scientificName": "Thymelicus acteon",
     "status": "Resident",
     "group": "Skippers",
     "family": "Hesperiidae",
-    "colour": ["Orange", "Brown"],
+    "colour": [
+      "Orange",
+      "Brown"
+    ],
     "england": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Dull brownish-orange forewings held up at an angle. Small size and dull colour distinguish from other orange skippers. Female has a crescent of brighter orange on the forewing.",
     "habitats": "Chalk and limestone grassland in south Dorset",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -125,16 +174,24 @@
   },
   {
     "id": "SilverSpottedSkipper",
+    "type": "butterfly",
     "warehouseId": 135062,
     "commonName": "Silver-spotted Skipper",
     "scientificName": "Hesperia comma",
     "status": "Resident",
     "group": "Skippers",
     "family": "Hesperiidae",
-    "colour": ["Orange", "Brown"],
-    "markings": ["Spots"],
+    "colour": [
+      "Orange",
+      "Brown"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Forewings held up at an angle. Pearly-white spots on the underside of the wings distinguish from other orange skippers",
     "habitats": "Chalk grassland with short turf in southern England",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -142,18 +199,25 @@
   },
   {
     "id": "LargeSkipper",
+    "type": "butterfly",
     "warehouseId": 398429,
     "commonName": "Large Skipper",
     "scientificName": "Ochlodes sylvanus",
     "status": "Resident",
     "group": "Skippers",
     "family": "Hesperiidae",
-    "colour": ["Orange"],
-    "markings": ["Spots"],
+    "colour": [
+      "Orange"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Forewings held up at an angle. Mottled pattern of dark markings distinguishes from other orange skippers",
     "habitats": "A variety of sunny habitats with long grass",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -161,16 +225,22 @@
   },
   {
     "id": "WoodWhite",
+    "type": "butterfly",
     "warehouseId": 151131,
     "commonName": "Wood White",
     "scientificName": "Leptidea sinapis",
     "status": "Resident",
     "group": "Whites",
     "family": "Pieridae",
-    "colour": ["White", "Grey"],
+    "colour": [
+      "White",
+      "Grey"
+    ],
     "england": "Y",
     "wales": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Small size, delicate flight and shaded grey underside of hindwing distinguish from other whites",
     "habitats": "Sheltered grassland in woodland rides and clearings, hedgerows and undercliffs in England and Wales",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -178,15 +248,21 @@
   },
   {
     "id": "CrypticWoodWhite",
+    "type": "butterfly",
     "warehouseId": 316980,
     "commonName": "Cryptic Wood White",
     "scientificName": "Leptidea juvernica",
     "status": "Resident",
     "group": "Whites",
     "family": "Pieridae",
-    "colour": ["White", "Grey"],
+    "colour": [
+      "White",
+      "Grey"
+    ],
     "northern ireland": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Small size, delicate flight and shaded grey underside of hindwing distinguish from other whites.",
     "habitats": "Sheltered, flowery grassland in meadows, woodland, dunes, verges and quarries in Ireland",
     "ukStatus": "Butterfly Conservation UK threat level: Medium Priority",
@@ -194,20 +270,29 @@
   },
   {
     "id": "OrangeTip",
+    "type": "butterfly",
     "warehouseId": 99973,
     "commonName": "Orange-tip",
     "scientificName": "Anthocharis cardamines",
     "status": "Resident",
     "group": "Whites",
     "family": "Pieridae",
-    "colour": ["White", "Green", "Orange"],
-    "markings": ["Checks"],
+    "colour": [
+      "White",
+      "Green",
+      "Orange"
+    ],
+    "markings": [
+      "Checks"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "The male's bright-orange wing-tips are diagnostic. Females have grey-black wing-tips but the green camouflage pattern on underside of hindwing distinguishes from other whites.",
     "habitats": "Many, but especially damp grassy habitats, hedges and verges",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -215,20 +300,28 @@
   },
   {
     "id": "LargeWhite",
+    "type": "butterfly",
     "warehouseId": 112604,
     "commonName": "Large White",
     "scientificName": "Pieris brassicae",
     "status": "Resident",
     "group": "Whites",
     "family": "Pieridae",
-    "colour": ["White", "Cream"],
-    "markings": ["Spots"],
+    "colour": [
+      "White",
+      "Cream"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Large"],
+    "size": [
+      "Large"
+    ],
     "idTips": "Prominent black tip to forewing which extends equally down both sides of the forewing, distinguishes from Small White ",
     "habitats": "Many, but particularly gardens, allotments and farmland where cabbages are grown",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -236,20 +329,28 @@
   },
   {
     "id": "SmallWhite",
+    "type": "butterfly",
     "warehouseId": 56209,
     "commonName": "Small White",
     "scientificName": "Pieris rapae",
     "status": "Resident",
     "group": "Whites",
     "family": "Pieridae",
-    "colour": ["White", "Cream"],
-    "markings": ["Spots"],
+    "colour": [
+      "White",
+      "Cream"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Black tip to forewing less prominent and does not extend as far down the wing as on Large White",
     "habitats": "Many, but particularly gardens, allotments and farmland where cabbages are grown",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -257,20 +358,29 @@
   },
   {
     "id": "GreenVeinedWhite",
+    "type": "butterfly",
     "warehouseId": 61033,
     "commonName": "Green-veined White",
     "scientificName": "Pieris napi",
     "status": "Resident",
     "group": "Whites",
     "family": "Pieridae",
-    "colour": ["White", "Cream"],
-    "markings": ["Spots", "Stripes"],
+    "colour": [
+      "White",
+      "Cream"
+    ],
+    "markings": [
+      "Spots",
+      "Stripes"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Distinctive dark lines along the underside wing veins separates it from other white butterflies",
     "habitats": "Many, but favours damp areas",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -278,20 +388,28 @@
   },
   {
     "id": "CloudedYellow",
+    "type": "butterfly",
     "warehouseId": 10850,
     "commonName": "Clouded Yellow",
     "scientificName": "Colias croceus",
     "status": "Regular migrant",
     "group": "Whites",
     "family": "Pieridae",
-    "colour": ["Yellow", "Orange"],
-    "markings": ["Spots"],
+    "colour": [
+      "Yellow",
+      "Orange"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Mustard-yellow wings without points distinguish from male Brimstone",
     "habitats": "Any, particularly flowery places in southern Britain ",
     "ukStatus": "Regular migrant and summer-breeding species. Possibly overwintering at sheltered sites on the south coast of England.",
@@ -299,18 +417,27 @@
   },
   {
     "id": "Brimstone",
+    "type": "butterfly",
     "warehouseId": 42648,
     "commonName": "Brimstone",
     "scientificName": "Gonepteryx rhamni",
     "status": "Resident",
     "group": "Whites",
     "family": "Pieridae",
-    "colour": ["Cream", "White", "Yellow"],
-    "markings": ["Spots"],
+    "colour": [
+      "Cream",
+      "White",
+      "Yellow"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "wales": "Y",
     "northern ireland": "Y",
-    "size": ["Large"],
+    "size": [
+      "Large"
+    ],
     "idTips": "Males are a deep, bright lemon-yellow with females being paler. They have pointed ‘leaf-shaped’ wings which can help to distinguish them from other species.",
     "habitats": "Many, particularly woodland, road verges and hedgerows",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -318,37 +445,53 @@
   },
   {
     "id": "Monarch",
+    "type": "butterfly",
     "warehouseId": 148341,
     "commonName": "Monarch",
     "scientificName": "Danaus plexippus",
     "status": "Scarce migrant",
     "group": "Monarchs",
     "family": "Nymphalidae",
-    "colour": ["Orange", "Black"],
-    "markings": ["Spots", "Stripes"],
+    "colour": [
+      "Orange",
+      "Black"
+    ],
+    "markings": [
+      "Spots",
+      "Stripes"
+    ],
     "england": "Y",
     "wales": "Y",
-    "size": ["Large"],
+    "size": [
+      "Large"
+    ],
     "idTips": "Unmistakeable, very large orange and black butterflies with white spots around wing edges and on body",
     "habitats": "Flowery places, including gardens, near coasts",
     "ukStatus": "Scarce migrant, not breeding or overwintering in the UK"
   },
   {
     "id": "Wall",
+    "type": "butterfly",
     "warehouseId": 230169,
     "commonName": "Wall ",
     "scientificName": "Lasiommata megera",
     "status": "Resident",
     "group": "Browns",
     "family": "Nymphalidae",
-    "colour": ["Orange"],
-    "markings": ["Spots"],
+    "colour": [
+      "Orange"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Golden-orange with marbling of brown lines distinguishes from other browns",
     "habitats": "Grassland with bare ground, particularly around the coast but also on field edges and brownfield sites",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -356,20 +499,27 @@
   },
   {
     "id": "SpeckledWood",
+    "type": "butterfly",
     "warehouseId": 115293,
     "commonName": "Speckled Wood",
     "scientificName": "Pararge aegeria",
     "status": "Resident",
     "group": "Browns",
     "family": "Nymphalidae",
-    "colour": ["Brown"],
-    "markings": ["Spots"],
+    "colour": [
+      "Brown"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Dark chocolate-brown wings flecked with cream or yellowish spots distinguish from other browns",
     "habitats": "Woodland, but also tall, sheltered grass in gardens, parks and hedgerows",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -377,19 +527,26 @@
   },
   {
     "id": "LargeHeath",
+    "type": "butterfly",
     "warehouseId": 136485,
     "commonName": "Large Heath",
     "scientificName": "Coenonympha tullia",
     "status": "Resident",
     "group": "Browns",
     "family": "Nymphalidae",
-    "colour": ["Orange"],
-    "markings": ["Spots"],
+    "colour": [
+      "Orange"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Orange-brown wings, cream-ringed eyespots on underside and habitat distinguish from other browns. Some individuals lack eyespots and closely resemble Small Heaths",
     "habitats": "Bogs and moors in northern Britain",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -397,19 +554,24 @@
   },
   {
     "id": "SmallHeath",
+    "type": "butterfly",
     "warehouseId": 31678,
     "commonName": "Small Heath",
     "scientificName": "Coenonympha pamphilus",
     "status": "Resident",
     "group": "Browns",
     "family": "Nymphalidae",
-    "colour": ["Orange"],
+    "colour": [
+      "Orange"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Small size and orange wings distinguish from other browns. Can be very similar to some forms of Large Heath. Never rests with its wings open",
     "habitats": "Dry grasslands such as downs, heaths and on coasts, but also verges, moors, woodland clearings and brownfield sites",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -417,17 +579,24 @@
   },
   {
     "id": "MountainRinglet",
+    "type": "butterfly",
     "warehouseId": 134500,
     "commonName": "Mountain Ringlet",
     "scientificName": "Erebia epiphron",
     "status": "Resident",
     "group": "Browns",
     "family": "Nymphalidae",
-    "colour": ["Brown"],
-    "markings": ["Spots"],
+    "colour": [
+      "Brown"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Small, mainly brown butterfly with row of black spots (without white pupils) on wings",
     "habitats": "Mountain grassland in Scotland and the Lake District",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -435,17 +604,24 @@
   },
   {
     "id": "ScotchArgus",
+    "type": "butterfly",
     "warehouseId": 194290,
     "commonName": "Scotch Argus",
     "scientificName": "Erebia aethiops",
     "status": "Resident",
     "group": "Browns",
     "family": "Nymphalidae",
-    "colour": ["Brown"],
-    "markings": ["Spots"],
+    "colour": [
+      "Brown"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Dark brown wings with orange band containing multiple eyespots",
     "habitats": "Damp, sheltered grasslands in Scotland, plus two limestone grassland sites in northern England",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -453,19 +629,26 @@
   },
   {
     "id": "Ringlet",
+    "type": "butterfly",
     "warehouseId": 203248,
     "commonName": "Ringlet",
     "scientificName": "Aphantopus hyperantus",
     "status": "Resident",
     "group": "Browns",
     "family": "Nymphalidae",
-    "colour": ["Brown"],
-    "markings": ["Spots"],
+    "colour": [
+      "Brown"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Underside of wings have distinctive eyespots each typically consisting of a cream spot with a black ring and a white centre",
     "habitats": "Tall, damp grass in woodland or pasture, and along hedgerows and verges",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -473,20 +656,28 @@
   },
   {
     "id": "MeadowBrown",
+    "type": "butterfly",
     "warehouseId": 85982,
     "commonName": "Meadow Brown",
     "scientificName": "Maniola jurtina",
     "status": "Resident",
     "group": "Browns",
     "family": "Nymphalidae",
-    "colour": ["Brown", "Orange"],
-    "markings": ["Spots"],
+    "colour": [
+      "Brown",
+      "Orange"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "A generally brown butterfly on upperwing with some orange (the similar but smaller Gatekeeper generally appears more orange with some brown). Meadow browns of both sexes have a single black eyespot near tip of forewing - usually containing a single white pupil. The absence of tiny pale dots on underside of hindwing distinguishes from Gatekeeper when wings are closed. ",
     "habitats": "Sunny grasslands",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -494,17 +685,24 @@
   },
   {
     "id": "Gatekeeper",
+    "type": "butterfly",
     "warehouseId": 46354,
     "commonName": "Gatekeeper",
     "scientificName": "Pyronia tithonus",
     "status": "Resident",
     "group": "Browns",
     "family": "Nymphalidae",
-    "colour": ["Orange"],
-    "markings": ["Spots"],
+    "colour": [
+      "Orange"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "wales": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "A fairly small butterfly which gives the impression of being predominantly orange with some brown (often mistaken for Meadow Brown which is larger and generally brown with some orange). Single black eyespot on forewing normally has two white pupils (c.f. Meadow Brown which has one white pupil). Small white spots on the hindwing underside distinguish it from Meadow Brown when wings are closed.",
     "habitats": "Long grass sheltered by hedgerows, scrub or woodland",
     "ukStatus": "Butterfly Conservation UK threat level: Medium Priority",
@@ -512,17 +710,25 @@
   },
   {
     "id": "MarbledWhite",
+    "type": "butterfly",
     "warehouseId": 57327,
     "commonName": "Marbled White",
     "scientificName": "Melanargia galathea",
     "status": "Resident",
     "group": "Browns",
     "family": "Nymphalidae",
-    "colour": ["White", "Black"],
-    "markings": ["Checks"],
+    "colour": [
+      "White",
+      "Black"
+    ],
+    "markings": [
+      "Checks"
+    ],
     "england": "Y",
     "wales": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Unmistakable black and white chequered pattern",
     "habitats": "Tall grass on chalk and limestone grassland, coast, verges, woodland and brownfield sites",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -530,19 +736,25 @@
   },
   {
     "id": "Grayling",
+    "type": "butterfly",
     "warehouseId": 113441,
     "commonName": "Grayling",
     "scientificName": "Hipparchia semele",
     "status": "Resident",
     "group": "Browns",
     "family": "Nymphalidae",
-    "colour": ["Brown", "Grey"],
+    "colour": [
+      "Brown",
+      "Grey"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Mottled brown and grey pattern on underside distinguishes from other browns. Never rests with its wings open",
     "habitats": "Open areas with bare ground patches, mainly on coast but also heathland, chalk grassland, quarries and brownfield sites",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -550,18 +762,25 @@
   },
   {
     "id": "PearlBorderedFritillary",
+    "type": "butterfly",
     "warehouseId": 230089,
     "commonName": "Pearl-bordered Fritillary",
     "scientificName": "Boloria euphrosyne",
     "status": "Resident",
     "group": "Fritillaries",
     "family": "Nymphalidae",
-    "colour": ["Orange"],
-    "markings": ["Spots"],
+    "colour": [
+      "Orange"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Small size and silvery spots on underside of hindwing distinguish from most other fritillaries. Difficult to distinguish from Small Pearl-bordered Fritillary, but has fewer silvery spots on hindwing underside.",
     "habitats": "Open woodland and bracken slopes",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -569,18 +788,26 @@
   },
   {
     "id": "SmallPearlBorderedFritillary",
+    "type": "butterfly",
     "warehouseId": 396137,
     "commonName": "Small Pearl-bordered Fritillary",
     "scientificName": "Boloria selene",
     "status": "Resident",
     "group": "Fritillaries",
     "family": "Nymphalidae",
-    "colour": ["Orange"],
-    "markings": ["Spots"],
+    "colour": [
+      "Orange"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
-    "size": ["Small", "Medium"],
+    "size": [
+      "Small",
+      "Medium"
+    ],
     "idTips": "Small size and silvery spots on underside of hindwing distinguish from most other fritillaries. Difficult to distinguish from Pearl-bordered Fritillary, but has more silvery spots on hindwing underside.",
     "habitats": "Many, including woodland clearings, damp grassland, moor, bracken-slopes and coast",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -588,34 +815,49 @@
   },
   {
     "id": "QueenOfSpainFritillary",
+    "type": "butterfly",
     "warehouseId": 21909,
     "commonName": "Queen of Spain Fritillary",
     "scientificName": "Issoria lathonia",
     "status": "Scarce migrant",
     "group": "Fritillaries",
     "family": "Nymphalidae",
-    "colour": ["Orange"],
-    "markings": ["Spots"],
+    "colour": [
+      "Orange"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Large silver spots on hindwing underside distinguish from other fritillaries ",
     "habitats": "Open sunny places",
     "ukStatus": "Scarce migrant with occasional evidence of breeding and overwintering in the UK"
   },
   {
     "id": "SilverWashedFritillary",
+    "type": "butterfly",
     "warehouseId": 177531,
     "commonName": "Silver-washed Fritillary",
     "scientificName": "Argynnis paphia",
     "status": "Resident",
     "group": "Fritillaries",
     "family": "Nymphalidae",
-    "colour": ["Orange"],
-    "markings": ["Spots", "Stripes"],
+    "colour": [
+      "Orange"
+    ],
+    "markings": [
+      "Spots",
+      "Stripes"
+    ],
     "england": "Y",
     "wales": "Y",
     "northern ireland": "Y",
-    "size": ["Large"],
+    "size": [
+      "Large"
+    ],
     "idTips": "Large butterfly with silvery stripes on hindwing underside",
     "habitats": "Woodland",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -623,20 +865,27 @@
   },
   {
     "id": "DarkGreenFritillary",
+    "type": "butterfly",
     "warehouseId": 471438,
     "commonName": "Dark Green Fritillary",
     "scientificName": "Speyeria aglaja",
     "status": "Resident",
     "group": "Fritillaries",
     "family": "Nymphalidae",
-    "colour": ["Orange"],
-    "markings": ["Spots"],
+    "colour": [
+      "Orange"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Large"],
+    "size": [
+      "Large"
+    ],
     "idTips": "Large butterfly, with large white spots on hindwing underside. Difficult to distinguish from High Brown Fritillary, which has red-ringed spots on underside. ",
     "habitats": "Bracken slopes, chalk and limestone grassland, coast, moors and woodland clearings",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -644,17 +893,24 @@
   },
   {
     "id": "HighBrownFritillary",
+    "type": "butterfly",
     "warehouseId": 399087,
     "commonName": "High Brown Fritillary",
     "scientificName": "Fabriciana adippe",
     "status": "Resident",
     "group": "Fritillaries",
     "family": "Nymphalidae",
-    "colour": ["Orange"],
-    "markings": ["Spots"],
+    "colour": [
+      "Orange"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "wales": "Y",
-    "size": ["Large"],
+    "size": [
+      "Large"
+    ],
     "idTips": "Large butterfly, with row of red-ringed white spots on hindwing underside that distinguish from the very similar Dark Green Fritillary",
     "habitats": "Bracken slopes and woodland clearings",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -662,17 +918,25 @@
   },
   {
     "id": "WhiteAdmiral",
+    "type": "butterfly",
     "warehouseId": 144115,
     "commonName": "White Admiral",
     "scientificName": "Limenitis camilla",
     "status": "Resident",
     "group": "Nymphalids",
     "family": "Nymphalidae",
-    "colour": ["Black", "Brown"],
-    "markings": ["Stripes"],
+    "colour": [
+      "Black",
+      "Brown"
+    ],
+    "markings": [
+      "Stripes"
+    ],
     "england": "Y",
     "wales": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Dark wings with broad white stripe. Rows of black spots on underside distinguish from Purple Emperor",
     "habitats": "Woodland in mid and southern England",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -680,16 +944,25 @@
   },
   {
     "id": "PurpleEmperor",
+    "type": "butterfly",
     "warehouseId": 155506,
     "commonName": "Purple Emperor",
     "scientificName": "Apatura iris",
     "status": "Resident",
     "group": "Nymphalids",
     "family": "Nymphalidae",
-    "colour": ["Brown", "Purple", "Brown"],
-    "markings": ["Stripes"],
+    "colour": [
+      "Brown",
+      "Purple",
+      "Brown"
+    ],
+    "markings": [
+      "Stripes"
+    ],
     "england": "Y",
-    "size": ["Large"],
+    "size": [
+      "Large"
+    ],
     "idTips": "Male: Very large size and beautiful purple sheen on upper wing in sunlight. Unlike the similar White Admiral there are no rows of black spots on underside, but large orange-fringed eye spot is diagnostic.Female: Very large size, dark upper wings with broad white stripe. Underside same as for male.",
     "habitats": "Woodland in mid and southern England",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -697,20 +970,28 @@
   },
   {
     "id": "RedAdmiral",
+    "type": "butterfly",
     "warehouseId": 141375,
     "commonName": "Red Admiral",
     "scientificName": "Vanessa atalanta",
     "status": "Resident",
     "group": "Nymphalids",
     "family": "Nymphalidae",
-    "colour": ["Black", "Red"],
-    "markings": ["Stripes"],
+    "colour": [
+      "Black",
+      "Red"
+    ],
+    "markings": [
+      "Stripes"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Large"],
+    "size": [
+      "Large"
+    ],
     "idTips": "Distinctive pattern of brilliant red stripes on black wings and with small white patches near wing tip",
     "habitats": "Any",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -718,20 +999,27 @@
   },
   {
     "id": "PaintedLady",
+    "type": "butterfly",
     "warehouseId": 94622,
     "commonName": "Painted Lady",
     "scientificName": "Vanessa cardui",
     "status": "Regular migrant",
     "group": "Nymphalids",
     "family": "Nymphalidae",
-    "colour": ["Orange"],
-    "markings": ["Spots"],
+    "colour": [
+      "Orange"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Large"],
+    "size": [
+      "Large"
+    ],
     "idTips": "Salmon-pink to pale orange wings with distinctive pattern of black and white patches",
     "habitats": "Any",
     "ukStatus": "Regular migrant and summer-breeding species",
@@ -739,20 +1027,27 @@
   },
   {
     "id": "Peacock",
+    "type": "butterfly",
     "warehouseId": 396181,
     "commonName": "Peacock",
     "scientificName": "Aglais io",
     "status": "Resident",
     "group": "Nymphalids",
     "family": "Nymphalidae",
-    "colour": ["Purple"],
-    "markings": ["Spots"],
+    "colour": [
+      "Purple"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Large"],
+    "size": [
+      "Large"
+    ],
     "idTips": "Distinctive large eyespots on rich purple-red wings",
     "habitats": "Any, including woodland and gardens",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -760,20 +1055,28 @@
   },
   {
     "id": "SmallTortoiseshell",
+    "type": "butterfly",
     "warehouseId": 222946,
     "commonName": "Small Tortoiseshell",
     "scientificName": "Aglais urticae",
     "status": "Resident",
     "group": "Nymphalids",
     "family": "Nymphalidae",
-    "colour": ["Orange", "Red"],
-    "markings": ["Spots"],
+    "colour": [
+      "Orange",
+      "Red"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Orange-red wings with black and yellow band along front edge and white patch near tip. Blue spots around margin",
     "habitats": "Any",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -781,56 +1084,79 @@
   },
   {
     "id": "CamberwellBeauty",
+    "type": "butterfly",
     "warehouseId": 37640,
     "commonName": "Camberwell Beauty",
     "scientificName": "Nymphalis antiopa",
     "status": "Scarce migrant",
     "group": "Nymphalids",
     "family": "Nymphalidae",
-    "colour": ["Purple", "Brown"],
-    "markings": ["Stripes", "Spots"],
+    "colour": [
+      "Purple",
+      "Brown"
+    ],
+    "markings": [
+      "Stripes",
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Large"],
+    "size": [
+      "Large"
+    ],
     "idTips": "Distinctive dark brown-purple wings with blue border and pale wing edge",
     "habitats": "Usually near trees or scrub",
     "ukStatus": "Scarce migrant that can overwinter. No evidence of breeding in the UK."
   },
   {
     "id": "LargeTortoiseshell",
+    "type": "butterfly",
     "warehouseId": 158983,
     "commonName": "Large Tortoiseshell",
     "scientificName": "Nymphalis polychloros",
     "status": "Former resident",
     "group": "Nymphalids",
     "family": "Nymphalidae",
-    "colour": ["Orange"],
-    "markings": ["Spots"],
+    "colour": [
+      "Orange"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
-    "size": ["Large"],
+    "size": [
+      "Large"
+    ],
     "idTips": "Very similar to Small Tortoiseshell, but distinguished by yellowy rather than white patch near forewing tip and additional dark spot on forewing",
     "habitats": "Usually wooded areas",
     "ukStatus": "Currently a scarce migrant that appears to be recolonising parts of southern England"
   },
   {
     "id": "Comma",
+    "type": "butterfly",
     "warehouseId": 128138,
     "commonName": "Comma",
     "scientificName": "Polygonia c-album",
     "status": "Resident",
     "group": "Nymphalids",
     "family": "Nymphalidae",
-    "colour": ["Orange"],
-    "markings": ["Spots"],
+    "colour": [
+      "Orange"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Scalloped or ‘ragged’ wing edges distinguish from all other butterflies",
     "habitats": "Woodland and other places with trees inlcuding gardens",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -838,19 +1164,28 @@
   },
   {
     "id": "MarshFritillary",
+    "type": "butterfly",
     "warehouseId": 30887,
     "commonName": "Marsh Fritillary",
     "scientificName": "Euphydryas aurinia",
     "status": "Resident",
     "group": "Fritillaries",
     "family": "Nymphalidae",
-    "colour": ["Orange", "Cream"],
-    "markings": ["Checks"],
+    "colour": [
+      "Orange",
+      "Cream"
+    ],
+    "markings": [
+      "Checks"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
-    "size": ["Small", "Medium"],
+    "size": [
+      "Small",
+      "Medium"
+    ],
     "idTips": "Mixture of cream, orange and brown chequered markings distinguish from other fritillaries",
     "habitats": "Damp grassland and heaths, chalk and limestone grassland",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -858,16 +1193,24 @@
   },
   {
     "id": "GlanvilleFritillary",
+    "type": "butterfly",
     "warehouseId": 165256,
     "commonName": "Glanville Fritillary",
     "scientificName": "Melitaea cinxia",
     "status": "Resident",
     "group": "Fritillaries",
     "family": "Nymphalidae",
-    "colour": ["Orange"],
-    "markings": ["Checks", "Spots"],
+    "colour": [
+      "Orange"
+    ],
+    "markings": [
+      "Checks",
+      "Spots"
+    ],
     "england": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Geographical location and habitat, as well as beautifully patterned underwing, distinguish from other fritillaries",
     "habitats": "Coastal grasslands on the Isle of Wight",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -875,16 +1218,24 @@
   },
   {
     "id": "HeathFritillary",
+    "type": "butterfly",
     "warehouseId": 179856,
     "commonName": "Heath Fritillary",
     "scientificName": "Melitaea athalia",
     "status": "Resident",
     "group": "Fritillaries",
     "family": "Nymphalidae",
-    "colour": ["Orange", "Brown"],
-    "markings": ["Checks"],
+    "colour": [
+      "Orange",
+      "Brown"
+    ],
+    "markings": [
+      "Checks"
+    ],
     "england": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Small with darker wings than other fritillaries",
     "habitats": "Woodland clearings and sheltered heathland in southern England",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -892,16 +1243,25 @@
   },
   {
     "id": "DukeOfBurgundy",
+    "type": "butterfly",
     "warehouseId": 197180,
     "commonName": "Duke of Burgundy",
     "scientificName": "Hamearis lucina",
     "status": "Resident",
     "group": "Metalmarks",
     "family": "Riodinidae",
-    "colour": ["Orange", "Brown"],
-    "markings": ["Checks", "Spots"],
+    "colour": [
+      "Orange",
+      "Brown"
+    ],
+    "markings": [
+      "Checks",
+      "Spots"
+    ],
     "england": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Small size distinguishes from other butterflies with orange-brown chequered markings (fritillaries)",
     "habitats": "Sheltered chalk and limestone grassland or woodland clearings",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -909,20 +1269,27 @@
   },
   {
     "id": "SmallCopper",
+    "type": "butterfly",
     "warehouseId": 188039,
     "commonName": "Small Copper",
     "scientificName": "Lycaena phlaeas",
     "status": "Resident",
     "group": "Blues & coppers",
     "family": "Lycaenidae",
-    "colour": ["Orange"],
-    "markings": ["Spots"],
+    "colour": [
+      "Orange"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Bright metallic copper-coloured forewing with dark black-brown spots and fringe is unlike any other butterflies",
     "habitats": "Many, including dry grassland, heathland, moorland and brownfield sites ",
     "ukStatus": "Butterfly Conservation UK threat level: Medium Priority",
@@ -930,17 +1297,26 @@
   },
   {
     "id": "BrownHairstreak",
+    "type": "butterfly",
     "warehouseId": 52956,
     "commonName": "Brown Hairstreak",
     "scientificName": "Thecla betulae",
     "status": "Resident",
     "group": "Hairstreaks",
     "family": "Lycaenidae",
-    "colour": ["Orange", "Brown"],
-    "markings": ["Stripes"],
+    "colour": [
+      "Orange",
+      "Brown"
+    ],
+    "markings": [
+      "Stripes"
+    ],
     "england": "Y",
     "wales": "Y",
-    "size": ["Small", "Medium"],
+    "size": [
+      "Small",
+      "Medium"
+    ],
     "idTips": "Short tail on each hindwing. Bright orange-brown undersides distinguish from other hairstreaks",
     "habitats": "Hedges, scrub and woodland edge in distinct areas of southern Britain",
     "ukStatus": "Butterfly Conservation UK threat level: Medium Priority",
@@ -948,19 +1324,27 @@
   },
   {
     "id": "PurpleHairstreak",
+    "type": "butterfly",
     "warehouseId": 317184,
     "commonName": "Purple Hairstreak",
     "scientificName": "Favonius quercus",
     "status": "Resident",
     "group": "Hairstreaks",
     "family": "Lycaenidae",
-    "colour": ["Purple", "Grey"],
-    "markings": ["Stripes"],
+    "colour": [
+      "Purple",
+      "Grey"
+    ],
+    "markings": [
+      "Stripes"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Irridescent purple sheen on upperside of wings, short tail on hindwing. Silvery underside of wings distinguish from other hairstreaks",
     "habitats": "Oak trees in woods, hedges and scrub, even in parks and gardens",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -968,18 +1352,24 @@
   },
   {
     "id": "GreenHairstreak",
+    "type": "butterfly",
     "warehouseId": 195697,
     "commonName": "Green Hairstreak",
     "scientificName": "Callophrys rubi",
     "status": "Resident",
     "group": "Hairstreaks",
     "family": "Lycaenidae",
-    "colour": ["Green", "Brown"],
+    "colour": [
+      "Green",
+      "Brown"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Bright green undersides distinguish from all other butterflies",
     "habitats": "Many, including chalk grassland, moors, heaths, woodland clearings, bogs and brownfield sites",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -987,18 +1377,25 @@
   },
   {
     "id": "WhiteLetterHairstreak",
+    "type": "butterfly",
     "warehouseId": 257138,
     "commonName": "White-letter Hairstreak",
     "scientificName": "Satyrium w-album",
     "status": "Resident",
     "group": "Hairstreaks",
     "family": "Lycaenidae",
-    "colour": ["Brown"],
-    "markings": ["Stripes"],
+    "colour": [
+      "Brown"
+    ],
+    "markings": [
+      "Stripes"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Short tail on each hindwing. 'W'-shaped white line on hindwing underside distinguishes from other hairstreaks",
     "habitats": "Elm trees in woods, hedges and scrub ",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -1006,16 +1403,24 @@
   },
   {
     "id": "BlackHairstreak",
+    "type": "butterfly",
     "warehouseId": 94188,
     "commonName": "Black Hairstreak",
     "scientificName": "Satyrium pruni",
     "status": "Resident",
     "group": "Hairstreaks",
     "family": "Lycaenidae",
-    "colour": ["Brown"],
-    "markings": ["Stripes", "Spots"],
+    "colour": [
+      "Brown"
+    ],
+    "markings": [
+      "Stripes",
+      "Spots"
+    ],
     "england": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Short tail on each hindwing. Row of black spots on hindwing underside distinguishes from other hairstreaks",
     "habitats": "Tall blackthorn thickets in woods and hedgerows in English midlands",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -1023,36 +1428,52 @@
   },
   {
     "id": "LongTailedBlue",
+    "type": "butterfly",
     "warehouseId": 249848,
     "commonName": "Long-tailed Blue",
     "scientificName": "Lampides boeticus",
     "status": "Scarce migrant",
     "group": "Blues & coppers",
     "family": "Lycaenidae",
-    "colour": ["Blue", "Brown"],
-    "markings": ["Stripes"],
+    "colour": [
+      "Blue",
+      "Brown"
+    ],
+    "markings": [
+      "Stripes"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Purply-blue wings with a tail on each hindwing. Wavy white lines on underside distinguish from other blue butterflies",
     "habitats": "Sightings tend to be in sunny grasslands or gardens",
     "ukStatus": "Scarce migrant and summer-breeding species, but unable to overwinter in the UK"
   },
   {
     "id": "SmallBlue",
+    "type": "butterfly",
     "warehouseId": 198557,
     "commonName": "Small Blue",
     "scientificName": "Cupido minimus",
     "status": "Resident",
     "group": "Blues & coppers",
     "family": "Lycaenidae",
-    "colour": ["Brown", "Grey"],
-    "markings": ["Spots"],
+    "colour": [
+      "Brown",
+      "Grey"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Small size and plain, dark grey-brown wings distinguish from other blues",
     "habitats": "Dry, sheltered grasslands, including chalk, limestone, coast, quarries and brownfield sites",
     "ukStatus": "Butterfly Conservation UK threat level: Medium Priority",
@@ -1060,20 +1481,27 @@
   },
   {
     "id": "HollyBlue",
+    "type": "butterfly",
     "warehouseId": 218627,
     "commonName": "Holly Blue",
     "scientificName": "Celastrina argiolus",
     "status": "Resident",
     "group": "Blues & coppers",
     "family": "Lycaenidae",
-    "colour": ["Blue"],
-    "markings": ["Spots"],
+    "colour": [
+      "Blue"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Wings are blue on upperside and pale silvery-blue with small black dots but no orange spots on underside",
     "habitats": "Gardens, parks, hedgerows and woodland",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -1081,16 +1509,23 @@
   },
   {
     "id": "LargeBlue",
+    "type": "butterfly",
     "warehouseId": 298217,
     "commonName": "Large Blue",
     "scientificName": "Phengaris arion",
     "status": "Resident",
     "group": "Blues & coppers",
     "family": "Lycaenidae",
-    "colour": ["Blue"],
-    "markings": ["Spots"],
+    "colour": [
+      "Blue"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
-    "size": ["Medium"],
+    "size": [
+      "Medium"
+    ],
     "idTips": "Large size and large black spots on forewing distinguish from other blues",
     "habitats": "Unimproved dry limestone or coastal grassland in southern England",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -1098,17 +1533,25 @@
   },
   {
     "id": "SilverStuddedBlue",
+    "type": "butterfly",
     "warehouseId": 121501,
     "commonName": "Silver-studded Blue",
     "scientificName": "Plebejus argus",
     "status": "Resident",
     "group": "Blues & coppers",
     "family": "Lycaenidae",
-    "colour": ["Brown", "Blue"],
-    "markings": ["Spots"],
+    "colour": [
+      "Brown",
+      "Blue"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "wales": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Male: Small size, habitat and black border around blue wings help to distinguish from other blues. Defining characteristic is row of tiny, metallic blue dots on underside of hindwing.Female: Can have brown or blue wings. Small size and habitat help to distinguish from other female blues. Defining characteristic is row of tiny, metallic blue dots on underside of hindwing",
     "habitats": "Usually lowland heathland, but also sometimes on chalk and limestone grassland and dunes",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -1116,17 +1559,24 @@
   },
   {
     "id": "BrownArgus",
+    "type": "butterfly",
     "warehouseId": 399196,
     "commonName": "Brown Argus",
     "scientificName": "Aricia agestis",
     "status": "Resident",
     "group": "Blues & coppers",
     "family": "Lycaenidae",
-    "colour": ["Brown"],
-    "markings": ["Spots"],
+    "colour": [
+      "Brown"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "wales": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Difficult to distinguish from female Common Blue - hindwing underside of Common Blue has uppermost pair of spots in . . pattern as opposed to : pattern in Brown Argus",
     "habitats": "Many, including chalk and limestone grassland, coast and dunes, heath, woodland clearings, fallow fields and brownfield sites",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -1134,17 +1584,24 @@
   },
   {
     "id": "NorthernBrownArgus",
+    "type": "butterfly",
     "warehouseId": 138951,
     "commonName": "Northern Brown Argus",
     "scientificName": "Aricia artaxerxes",
     "status": "Resident",
     "group": "Blues & coppers",
     "family": "Lycaenidae",
-    "colour": ["Brown"],
-    "markings": ["Spots"],
+    "colour": [
+      "Brown"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Prominent white spot in middle of each forewing distinguishes from other blues, but not all individuals have this spot. Georgraphic location and fainter underwing spots distinguish from Brown Argus ",
     "habitats": "Unimproved, sheltered grassland in northern Britain",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
@@ -1152,20 +1609,28 @@
   },
   {
     "id": "CommonBlue",
+    "type": "butterfly",
     "warehouseId": 156017,
     "commonName": "Common Blue",
     "scientificName": "Polyommatus icarus",
     "status": "Resident",
     "group": "Blues & coppers",
     "family": "Lycaenidae",
-    "colour": ["Brown", "Blue"],
-    "markings": ["Spots"],
+    "colour": [
+      "Brown",
+      "Blue"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
     "scotland": "Y",
     "wales": "Y",
     "northern ireland": "Y",
     "isle of man": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Male: Bright blue wing with plain white edge distinguish from other blues.Female: Brown or blueish wing with orange spots near wing edge. Plain white wing edges distinguish from Chalkhill and Adonis Blue. Difficult to distinguish from Brown Argus - hindwing underside of Common Blue has uppermost pair of spots in . . pattern as opposed to : pattern in Brown Argus",
     "habitats": "Many, particularly sunny, sheltered places",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -1173,16 +1638,24 @@
   },
   {
     "id": "AdonisBlue",
+    "type": "butterfly",
     "warehouseId": 397483,
     "commonName": "Adonis Blue",
     "scientificName": "Polyommatus bellargus",
     "status": "Resident",
     "group": "Blues & coppers",
     "family": "Lycaenidae",
-    "colour": ["Brown", "Blue"],
-    "markings": ["Spots"],
+    "colour": [
+      "Brown",
+      "Blue"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Male: Brilliant sky-blue wings with black lines crossing the white wing edge distinguish from other bluesFemale: Difficult to distinguish from female Chalkhill Blue, but black spots on wing upperside are edged with blue in Adonis Blue",
     "habitats": "Chalk and limestone grassland in southern England",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
@@ -1190,19 +1663,919 @@
   },
   {
     "id": "ChalkHillBlue",
+    "type": "butterfly",
     "warehouseId": 293348,
     "commonName": "Chalk Hill Blue",
     "scientificName": "Polyommatus coridon",
     "status": "Resident",
     "group": "Blues & coppers",
     "family": "Lycaenidae",
-    "colour": ["Brown", "Blue"],
-    "markings": ["Spots"],
+    "colour": [
+      "Brown",
+      "Blue"
+    ],
+    "markings": [
+      "Spots"
+    ],
     "england": "Y",
-    "size": ["Small"],
+    "size": [
+      "Small"
+    ],
     "idTips": "Male: Pale, powder blue wings with black lines crossing white wing edge distinguish from other blues Female: Difficult to distinguish from female Adonis Blue, but black spots on wing upperside are edged with white in Chalkhill Blue",
     "habitats": "Chalk and limestone grassland in southern England",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
     "webLink": "https://butterfly-conservation.org/butterflies/chalk-hill-blue"
+  },
+  {
+    "id": "GoldSwift",
+    "type": "moth",
+    "warehouseId": 395335,
+    "commonName": "Gold Swift",
+    "scientificName": "Phymatopus hecta",
+    "status": "Resident",
+    "group": "Swift moths",
+    "family": "Hepialidae",
+    "colour": [
+      "Orange",
+      "Gold"
+    ],
+    "markings": [
+      "Spots",
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Silvery-gold markings on the wing distinguish the males from other Swift moths, which have white markings. Flies in late afternoon, dusk and dawn",
+    "habitats": "Usually found around Bracken in woodland, scrub and open places",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "Late May - late August, with the peak in late June and early July",
+    "webLink": "https://butterfly-conservation.org/moths/gold-swift"
+  },
+  {
+    "id": "SixspotBurnet",
+    "type": "moth",
+    "warehouseId": 6368,
+    "commonName": "Six-spot Burnet",
+    "scientificName": "Zygaena filipendulae",
+    "status": "Resident",
+    "group": "Burnets",
+    "family": "Zygaenidae",
+    "colour": [
+      "Black",
+      "Red"
+    ],
+    "markings": [
+      "Spots"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Six crimson spots on each forewing distinguishes from other Burnet moths",
+    "habitats": "Flowery grasslands including downland, woodland rides and sand dunes",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "June to August, peaking in mid- to late July",
+    "webLink": "https://butterfly-conservation.org/moths/six-spot-burnet"
+  },
+  {
+    "id": "OakEggar",
+    "type": "moth",
+    "warehouseId": 51512,
+    "commonName": "Oak Eggar",
+    "scientificName": "Lasiocampa quercus",
+    "status": "Resident",
+    "group": "Eggars and Lappets",
+    "family": "Lasiocampidae",
+    "colour": [
+      "Brown",
+      "Cream"
+    ],
+    "markings": [
+      "Spots",
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "size": [
+      "Large"
+    ],
+    "idTips": "Large size, white spot and cream band are distinctive. The darker brown males fly during the day, the larger, paler females are nocturnal",
+    "habitats": "Many habitats with woody plants, including heaths, moors, hedgerows, scrub and woodland edge",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "June to August, peaking in early August",
+    "webLink": "https://butterfly-conservation.org/moths/oak-eggar/northern-eggar"
+  },
+  {
+    "id": "FoxMoth",
+    "type": "moth",
+    "warehouseId": 79597,
+    "commonName": "Fox Moth",
+    "scientificName": "Macrothylacia rubi",
+    "status": "Resident",
+    "group": "Eggars and Lappets",
+    "family": "Lasiocampidae",
+    "colour": [
+      "Brown",
+      "Cream"
+    ],
+    "markings": [
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Medium"
+    ],
+    "idTips": "Parallel cream stripes and lack of spot on forewing. Males fly during the day, the greyer females at night",
+    "habitats": "Open habitats including grasslands, heaths, moors and dunes",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "May to mid-July, peaking in early June",
+    "webLink": "https://butterfly-conservation.org/moths/fox-moth"
+  },
+  {
+    "id": "EmperorMoth",
+    "type": "moth",
+    "warehouseId": 194112,
+    "commonName": "Emperor Moth",
+    "scientificName": "Saturnia pavonia",
+    "status": "Resident",
+    "group": "Emperors",
+    "family": "Saturniidae",
+    "colour": [
+      "Orange",
+      "Grey"
+    ],
+    "markings": [
+      "Spots"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Large"
+    ],
+    "idTips": "Large eye spots on each wing. Males fly by day, females are nocturnal",
+    "habitats": "Many, including heaths and moors, hedgerows and woodland rides and bogs and fens",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "April and May, peaking in late April",
+    "webLink": "https://butterfly-conservation.org/moths/emperor-moth"
+  },
+  {
+    "id": "HummingbirdHawkmoth",
+    "type": "moth",
+    "warehouseId": 137226,
+    "commonName": "Humming-bird Hawk-moth",
+    "scientificName": "Macroglossum stellatarum",
+    "status": "Regular migrant",
+    "group": "Hawk-moths",
+    "family": "Sphingidae",
+    "colour": [
+      "Brown",
+      "Orange"
+    ],
+    "markings": [
+      "Spots"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Medium"
+    ],
+    "idTips": "Distinctive hovering flight while drinking nectar with very long proboscis. Larger size and white spots along sides of body distinguish from Bee-flies",
+    "habitats": "Any",
+    "ukStatus": "Regular migrant and summer-breeding species, although some may successfully hibernate",
+    "whenToSee": "Any month but mainly June to October, with peaks in late June/early July and early September",
+    "webLink": "https://butterfly-conservation.org/moths/humming-bird-hawk-moth"
+  },
+  {
+    "id": "ShadedBroadbar",
+    "type": "moth",
+    "warehouseId": 59140,
+    "commonName": "Shaded Broad-bar",
+    "scientificName": "Scotopteryx chenopodiata",
+    "status": "Resident",
+    "group": "Geometrids",
+    "family": "Geometridae",
+    "colour": [
+      "Brown"
+    ],
+    "markings": [
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Darker central band across brown forewings and dark diagonal line at wing tip. Nocturnal but easily disturbed from vegetation during the day",
+    "habitats": "Open habitats including grasslands, heaths, rides, road verges and dunes",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "Late June to early September, with peak at the end of July / beginning of August",
+    "webLink": "https://butterfly-conservation.org/moths/shaded-broad-bar"
+  },
+  {
+    "id": "SilvergroundCarpet",
+    "type": "moth",
+    "warehouseId": 114782,
+    "commonName": "Silver-ground Carpet",
+    "scientificName": "Xanthorhoe montanata",
+    "status": "Resident",
+    "group": "Geometrids",
+    "family": "Geometridae",
+    "colour": [
+      "White",
+      "Cream"
+    ],
+    "markings": [
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "White or off-white wings with irregular dark stripe across each forewing. Nocturnal but easily disturbed from vegetation during the day",
+    "habitats": "Most habitats, including grasslands, scrub, wetlands, hedgerows and woodland clearings ",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "Mid-May to mid-August, with a peak in early June",
+    "webLink": "https://butterfly-conservation.org/moths/silver-ground-carpet"
+  },
+  {
+    "id": "YellowShell",
+    "type": "moth",
+    "warehouseId": 121683,
+    "commonName": "Yellow Shell",
+    "scientificName": "Camptogramma bilineata",
+    "status": "Resident",
+    "group": "Geometrids",
+    "family": "Geometridae",
+    "colour": [
+      "Yellow",
+      "Brown"
+    ],
+    "markings": [
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Varies from bright yellow to brown but always with many thin wavy lines across the wings. Mainly flies after dusk but easily disturbed during the day",
+    "habitats": "Any",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "Late May to mid-September, with greatest numbers in July and August",
+    "webLink": "https://butterfly-conservation.org/moths/yellow-shell"
+  },
+  {
+    "id": "CommonCarpet",
+    "type": "moth",
+    "warehouseId": 216117,
+    "commonName": "Common Carpet",
+    "scientificName": "Epirrhoe alternata",
+    "status": "Resident",
+    "group": "Geometrids",
+    "family": "Geometridae",
+    "colour": [
+      "Grey",
+      "Brown",
+      "White"
+    ],
+    "markings": [
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Grey brown with a wavy white stripe that contains a thin dark line. Nocturnal but easily disturbed from vegetation during the day",
+    "habitats": "Any",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "April to September, with peak numbers in late July and August",
+    "webLink": "https://butterfly-conservation.org/moths/common-carpet"
+  },
+  {
+    "id": "ChimneySweeper",
+    "type": "moth",
+    "warehouseId": 229031,
+    "commonName": "Chimney Sweeper",
+    "scientificName": "Odezia atrata",
+    "status": "Resident",
+    "group": "Geometrids",
+    "family": "Geometridae",
+    "colour": [
+      "Black",
+      "White"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Black or dark brown with white fringe to wing tips",
+    "habitats": "Grasslands, including along hedgerows and woodland edge",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "Late May to late July, peaking in late June",
+    "webLink": "https://butterfly-conservation.org/moths/chimney-sweeper"
+  },
+  {
+    "id": "GrassRivulet",
+    "type": "moth",
+    "warehouseId": 113199,
+    "commonName": "Grass Rivulet",
+    "scientificName": "Perizoma albulata",
+    "status": "Resident",
+    "group": "Geometrids",
+    "family": "Geometridae",
+    "colour": [
+      "White",
+      "Brown"
+    ],
+    "markings": [
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Small and whitish with several pale brown stripes across the wings. Flies in the daytime, particularly near dusk",
+    "habitats": "Grasslands, sand dunes and coastal shingle",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "May to August, with peak in early June",
+    "webLink": "https://butterfly-conservation.org/moths/grass-rivulet"
+  },
+  {
+    "id": "MagpieMoth",
+    "type": "moth",
+    "warehouseId": 154507,
+    "commonName": "Magpie Moth",
+    "scientificName": "Abraxas grossulariata",
+    "status": "Resident",
+    "group": "Geometrids",
+    "family": "Geometridae",
+    "colour": [
+      "White",
+      "Black",
+      "Yellow"
+    ],
+    "markings": [
+      "Spots",
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Medium"
+    ],
+    "idTips": "White wings with yellow stripes and extensive black spotting. Mainly nocturnal but sometimes flies during the day",
+    "habitats": "Gardens, woods and hedgerows, plus moorland in northern Scotland",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "June to mid-September, peaking in early August",
+    "webLink": "https://butterfly-conservation.org/moths/magpie"
+  },
+  {
+    "id": "LatticedHeath",
+    "type": "moth",
+    "warehouseId": 22234,
+    "commonName": "Latticed Heath",
+    "scientificName": "Chiasmia clathrata",
+    "status": "Resident",
+    "group": "Geometrids",
+    "family": "Geometridae",
+    "colour": [
+      "Yellow",
+      "White",
+      "Brown"
+    ],
+    "markings": [
+      "Checks",
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Yellow to white wings strongly chequered with sharp brown lines. Often rests with wings half raised",
+    "habitats": "Open habitats including farmland, grasslands, dunes, heaths and moors",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "May to September in the south, June and July in the north",
+    "webLink": "https://butterfly-conservation.org/moths/latticed-heath"
+  },
+  {
+    "id": "BrownSilverline",
+    "type": "moth",
+    "warehouseId": 46970,
+    "commonName": "Brown Silver-line",
+    "scientificName": "Petrophora chlorosata",
+    "status": "Resident",
+    "group": "Geometrids",
+    "family": "Geometridae",
+    "colour": [
+      "Brown"
+    ],
+    "markings": [
+      "Stripe",
+      "Spots"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Pale brown wings with a dark spot on each forewing and a straight pale line edged in dark brown. Nocturnal but very easily disturbed from vegetation during the day",
+    "habitats": "Wherever Bracken grows",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "Mid-April to mid-July, peaking in early June",
+    "webLink": "https://butterfly-conservation.org/moths/brown-silver-line"
+  },
+  {
+    "id": "SpeckledYellow",
+    "type": "moth",
+    "warehouseId": 35739,
+    "commonName": "Speckled Yellow",
+    "scientificName": "Pseudopanthera macularia",
+    "status": "Resident",
+    "group": "Geometrids",
+    "family": "Geometridae",
+    "colour": [
+      "Yellow",
+      "Brown"
+    ],
+    "markings": [
+      "Spots"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Bright yellow wings with numerous large brown spots",
+    "habitats": "Mainly open woodland and scrub",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "Late April to late June, with a peak in late May",
+    "webLink": "https://butterfly-conservation.org/moths/speckled-yellow"
+  },
+  {
+    "id": "CommonHeath",
+    "type": "moth",
+    "warehouseId": 187868,
+    "commonName": "Common Heath",
+    "scientificName": "Ematurga atomaria",
+    "status": "Resident",
+    "group": "Geometrids",
+    "family": "Geometridae",
+    "colour": [
+      "Brown",
+      "Yellow",
+      "White"
+    ],
+    "markings": [
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Wings vary from whitish grey to yellowy brown, often heavily speckled, and with several dark stripes. Male has strongly feathered antennae",
+    "habitats": "Moorland, heathland and some grasslands",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "April to early August, with peak in late May and early June",
+    "webLink": "https://butterfly-conservation.org/moths/common-heath"
+  },
+  {
+    "id": "BorderedWhite",
+    "type": "moth",
+    "warehouseId": 149893,
+    "commonName": "Bordered White",
+    "scientificName": "Bupalus piniaria",
+    "status": "Resident",
+    "group": "Geometrids",
+    "family": "Geometridae",
+    "colour": [
+      "Brown",
+      "White"
+    ],
+    "markings": [
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Rests with wings folded vertically, like a butterfly, showing a white stripe on brown wings ",
+    "habitats": "Conifer woodland and plantations",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "May to early August, peaking at end of June",
+    "webLink": "https://butterfly-conservation.org/moths/bordered-white"
+  },
+  {
+    "id": "VapourerMoth",
+    "type": "moth",
+    "warehouseId": 112513,
+    "commonName": "Vapourer Moth",
+    "scientificName": "Orgyia antiqua",
+    "status": "Resident",
+    "group": "Tussocks and Tigers",
+    "family": "Erebidae",
+    "colour": [
+      "Orange",
+      "Brown"
+    ],
+    "markings": [
+      "Spots"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Orange-brown males are active during the day, often flying high along trees and hedgerows. Females are flightless and remain on their coccoon",
+    "habitats": "Wide range of habitats with trees or scrub",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "Late June to late October, with numbers reaching a peak at the end of August",
+    "webLink": "https://butterfly-conservation.org/moths/vapourer"
+  },
+  {
+    "id": "CloudedBuff",
+    "type": "moth",
+    "warehouseId": 192128,
+    "commonName": "Clouded Buff",
+    "scientificName": "Diacrisia sannio",
+    "status": "Resident",
+    "group": "Tussocks and Tigers",
+    "family": "Erebidae",
+    "colour": [
+      "Yellow",
+      "Pink"
+    ],
+    "markings": [
+      "Spots"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Forewings of the male are yellow with a pink fringe and a pink central spot. Often flies during the day but also active at night",
+    "habitats": "Mainly heaths and moors but also some calcareous grassland and woodland clearings",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "Mainly end of May to mid-July, peaking in mid-June, but small numbers sometimes seen in August and early September in the south",
+    "webLink": "https://butterfly-conservation.org/moths/clouded-buff"
+  },
+  {
+    "id": "ScarletTiger",
+    "type": "moth",
+    "warehouseId": 203721,
+    "commonName": "Scarlet Tiger",
+    "scientificName": "Callimorpha dominula",
+    "status": "Resident",
+    "group": "Tussocks and Tigers",
+    "family": "Erebidae",
+    "colour": [
+      "Black",
+      "Red",
+      "White"
+    ],
+    "markings": [
+      "Spots"
+    ],
+    "england": "Y",
+    "wales": "Y",
+    "size": [
+      "Medium"
+    ],
+    "idTips": "Irredescent black forewings with large white and yellow spots. Scarlet and black hindwings and abdomen. Flies by day and at night",
+    "habitats": "Mainly damp places such as meadows, wetlands, riverbanks and along the coast, but also seen in gardens and woodland",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "End of May to end of July, peaking in late June",
+    "webLink": "https://butterfly-conservation.org/moths/scarlet-tiger"
+  },
+  {
+    "id": "JerseyTiger",
+    "type": "moth",
+    "warehouseId": 130137,
+    "commonName": "Jersey Tiger",
+    "scientificName": "Euplagia quadripunctaria",
+    "status": "Resident",
+    "group": "Tussocks and Tigers",
+    "family": "Erebidae",
+    "colour": [
+      "Black",
+      "White",
+      "Orange"
+    ],
+    "markings": [
+      "Stripes"
+    ],
+    "england": "Y",
+    "wales": "Y",
+    "size": [
+      "Medium"
+    ],
+    "idTips": "Zebra-striped forewing and bright red, orange or yellow hindwing. Active during the day and at night",
+    "habitats": "Gardens, hedgerows, coastal habitats and disturbed ground",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "July to early September, with a peak in early August",
+    "webLink": "https://butterfly-conservation.org/moths/jersey-tiger"
+  },
+  {
+    "id": "Cinnabar",
+    "type": "moth",
+    "warehouseId": 95578,
+    "commonName": "Cinnabar",
+    "scientificName": "Tyria jacobaeae",
+    "status": "Resident",
+    "group": "Tussocks and Tigers",
+    "family": "Erebidae",
+    "colour": [
+      "Black",
+      "Red"
+    ],
+    "markings": [
+      "Spots",
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Black forewing with red stripe and spots and a red hindwing. Mainly nocturnal but sometimes disturbed during the day",
+    "habitats": "Grasslands, farmland, dunes and other open places",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "Mid-April to mid-August, with numbers peaking in early June",
+    "webLink": "https://butterfly-conservation.org/moths/cinnabar"
+  },
+  {
+    "id": "SmallPurplebarred",
+    "type": "moth",
+    "warehouseId": 123304,
+    "commonName": "Small Purple-barred",
+    "scientificName": "Phytometra viridaria",
+    "status": "Resident",
+    "group": "Erebids",
+    "family": "Erebidae",
+    "colour": [
+      "Brown",
+      "Purple"
+    ],
+    "markings": [
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Greeny brown wings with broad purple stripes, although the stripes may be reduced or even absent on some moths ",
+    "habitats": "Chalk and limestone grasslands, heaths, moors and sand dunes",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "April to August, with peaks in early June and late July",
+    "webLink": "https://butterfly-conservation.org/moths/small-purple-barred"
+  },
+  {
+    "id": "BurnetCompanion",
+    "type": "moth",
+    "warehouseId": 112399,
+    "commonName": "Burnet Companion",
+    "scientificName": "Euclidia glyphica",
+    "status": "Resident",
+    "group": "Erebids",
+    "family": "Erebidae",
+    "colour": [
+      "Brown",
+      "Yellow"
+    ],
+    "markings": [
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Striped brown forewings and yellowy hindwings. Sometimes confused with Dingy Skipper butterfly ",
+    "habitats": "Grasslands and open areas in woodland",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "Mid-April to mid-July, peaking in late May and early June",
+    "webLink": "https://butterfly-conservation.org/moths/burnet-companion"
+  },
+  {
+    "id": "MotherShipton",
+    "type": "moth",
+    "warehouseId": 400621,
+    "commonName": "Mother Shipton",
+    "scientificName": "Callistege mi",
+    "status": "Resident",
+    "group": "Erebids",
+    "family": "Erebidae",
+    "colour": [
+      "Brown",
+      "Cream"
+    ],
+    "markings": [
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "The cream lines on each forewing resemble the profile of a witch, with long nose and chin and a small dark eye",
+    "habitats": "Rough, grassy habitats such as heaths, downs, woodland rides, flowery meadows, verges and embankments",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "May to early July, with a peak at the end of May",
+    "webLink": "https://butterfly-conservation.org/moths/mother-shipton"
+  },
+  {
+    "id": "SilverY",
+    "type": "moth",
+    "warehouseId": 159500,
+    "commonName": "Silver Y",
+    "scientificName": "Autographa gamma",
+    "status": "Regular migrant",
+    "group": "Noctuids",
+    "family": "Noctuidae",
+    "colour": [
+      "Brown",
+      "Grey"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Grey brown forewing with silver \"y\" mark in centre. Hindwing pale with darker fringe. Active during the day and at night",
+    "habitats": "Any",
+    "ukStatus": "Regular migrant and summer-breeding species",
+    "whenToSee": "Any month but mainly May to October, with peak in July and early August",
+    "webLink": "https://butterfly-conservation.org/moths/silver-y"
+  },
+  {
+    "id": "SmallYellowUnderwing",
+    "type": "moth",
+    "warehouseId": 132255,
+    "commonName": "Small Yellow Underwing",
+    "scientificName": "Panemeria tenebrata",
+    "status": "Resident",
+    "group": "Noctuids",
+    "family": "Noctuidae",
+    "colour": [
+      "Brown",
+      "Yellow"
+    ],
+    "markings": [
+      "Stripes"
+    ],
+    "england": "Y",
+    "wales": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Small size and bright yellow band across black hindwings are distinctive. Most likely to be confused with micro-moths such as Mint Moth ",
+    "habitats": "Flower-rich grasslands",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "Late April to mid-June, peaking in the second half of May",
+    "webLink": "https://butterfly-conservation.org/moths/small-yellow-underwing"
+  },
+  {
+    "id": "AntlerMoth",
+    "type": "moth",
+    "warehouseId": 5365,
+    "commonName": "Antler Moth",
+    "scientificName": "Cerapteryx graminis",
+    "status": "Resident",
+    "group": "Noctuids",
+    "family": "Noctuidae",
+    "colour": [
+      "Brown",
+      "White",
+      "Black"
+    ],
+    "markings": [
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "isle of man": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Long, branched creamy white stripe on each forewing. Flies during the day and at night",
+    "habitats": "Grasslands and moors",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "Late June to mid-September, with a peak in late July",
+    "webLink": "https://butterfly-conservation.org/moths/antler"
+  },
+  {
+    "id": "BeautifulYellowUnderwing",
+    "type": "moth",
+    "warehouseId": 73035,
+    "commonName": "Beautiful Yellow Underwing",
+    "scientificName": "Anarta myrtilli",
+    "status": "Resident",
+    "group": "Noctuids",
+    "family": "Noctuidae",
+    "colour": [
+      "Orange",
+      "Brown",
+      "Yellow"
+    ],
+    "markings": [
+      "Stripes"
+    ],
+    "england": "Y",
+    "scotland": "Y",
+    "wales": "Y",
+    "northern ireland": "Y",
+    "size": [
+      "Small"
+    ],
+    "idTips": "Reddish brown forewing with white stripes and spots, yellow hindwing with black fringe",
+    "habitats": "Heaths and moors",
+    "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
+    "whenToSee": "Mid-April to early September, with numbers peaking in late July and early August",
+    "webLink": "https://butterfly-conservation.org/moths/beautiful-yellow-underwing"
   }
 ]
