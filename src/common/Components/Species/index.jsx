@@ -140,12 +140,18 @@ class SpeciesMainComponent extends React.Component {
 
   getSpeciesData = () => {
     const { searchPhrase, filters = {}, ignore = [] } = this.props;
+    const { useMoths } = appModel.attrs;
 
     let filteredSpecies = [...species];
 
     if (ignore.length) {
       const skipIgnored = ({ id }) => !ignore.includes(id);
       filteredSpecies = filteredSpecies.filter(skipIgnored);
+    }
+
+    if (!useMoths) {
+      const isNotMoth = ({ type }) => type !== 'moth';
+      filteredSpecies = filteredSpecies.filter(isNotMoth);
     }
 
     const filterBySearchPhrase = sp => {

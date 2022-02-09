@@ -71,6 +71,7 @@ const defaults = {
   useLocationForGuide: true,
   useSmartSorting: true,
   listSurveyListSortedByTime: false,
+  useMoths: false,
   location: '',
 
   feedbackGiven: false,

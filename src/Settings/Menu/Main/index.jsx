@@ -19,6 +19,7 @@ import {
   flameOutline,
 } from 'ionicons/icons';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
+import mothIcon from 'common/images/mothIcon.svg';
 import getCurrentWeekNumber from 'helpers/weeks';
 import clsx from 'clsx';
 import './styles.scss';
@@ -62,6 +63,7 @@ class Component extends React.Component {
     adminChangeWeek: PropTypes.func,
     adminChangeLocation: PropTypes.func,
     useExperiments: PropTypes.bool.isRequired,
+    useMoths: PropTypes.bool.isRequired,
   });
 
   getAdminControls = () => {
@@ -107,6 +109,7 @@ class Component extends React.Component {
       useSmartSorting,
       useProbabilitiesForGuide,
       useExperiments,
+      useMoths,
     } = this.props;
 
     const showAlertDialog = () => resetDialog(resetApp);
@@ -114,6 +117,8 @@ class Component extends React.Component {
     const onSendAnalyticsToggle = checked => onToggle('sendAnalytics', checked);
 
     const onUseExperiments = checked => onToggle('useExperiments', checked);
+
+    const onUseMoths = checked => onToggle('useMoths', checked);
 
     const currentLocationMessage = currentLocation ? (
       <>
@@ -141,6 +146,12 @@ class Component extends React.Component {
           </div>
 
           <div className="rounded">
+            <MenuAttrToggle
+              icon={mothIcon}
+              label="Enable moth species"
+              value={useMoths}
+              onChange={onUseMoths}
+            />
             <IonItem>
               <IonIcon icon={butterflyIcon} size="small" slot="start" />
               <IonLabel>Smart species lists</IonLabel>
@@ -186,7 +197,9 @@ class Component extends React.Component {
               Sort the species using probability information. Disabling it will
               default to alphabetical sorting.
             </InfoMessage>
+          </div>
 
+          <div className="rounded">
             <MenuAttrToggle
               icon={flameOutline}
               label="Experimental Features"
@@ -194,6 +207,7 @@ class Component extends React.Component {
               onChange={onUseExperiments}
             />
           </div>
+
           {this.getAdminControls()}
 
           <div className="rounded">
