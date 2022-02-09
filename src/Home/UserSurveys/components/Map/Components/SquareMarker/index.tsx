@@ -1,22 +1,14 @@
 import React, { FC } from 'react';
-import L from 'leaflet';
 import { Circle } from 'react-leaflet';
-import clsx from 'clsx';
 import { Square } from '../../esResponse.d';
-
-import './styles.scss';
 
 interface Props {
   square: Square;
-  totalSquares: number;
+  fillOpacity: number;
 }
 
 // const Marker: FC<Props> = ({ square }) => {
-const Marker: FC<Props> = ({ square, totalSquares }) => {
-  console.log(square.doc_count, totalSquares);
-
-  const opacity = square.doc_count / totalSquares;
-
+const Marker: FC<Props> = ({ square, fillOpacity }) => {
   const location = square.key.split(' ');
   const latitude = parseFloat(location[1]);
   const longititude = parseFloat(location[0]);
@@ -27,8 +19,7 @@ const Marker: FC<Props> = ({ square, totalSquares }) => {
     <Circle
       center={[latitude, longititude]}
       radius={radius}
-      // className={clsx('square-marker', opacity)}
-      fillOpacity={opacity}
+      fillOpacity={fillOpacity}
     />
   );
 };

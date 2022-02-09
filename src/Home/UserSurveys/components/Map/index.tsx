@@ -27,12 +27,21 @@ const getSquareSize = (zoomLevel: number) => {
   return 1000;
 };
 
+const getTotalSquares = (squares: Square[]) => {
+  const addSquares = (acc: number, square: Square): number => {
+    return acc + square.doc_count;
+  };
+
+  // protection division from 0, defaulting to 1
+  return squares?.reduce(addSquares, 0) || 1;
+};
+
 const Map: FC = () => {
   const [map, setMap]: any = useState(null);
   const [isFetchingRecords, setFetchingRecords] = useState<any>(null);
   // const [mapCenter, setMapCenter] = useState(DEFAULT_CENTER);
 
-  const [totalSquares, setTotalSquares] = useState<any>(1);
+  const [totalSquares, setTotalSquares] = useState<number>(1);
   const [squares, setSquares] = useState<Square[]>([]);
   const [records, setRecords] = useState<Record[]>([]);
 
@@ -72,6 +81,8 @@ const Map: FC = () => {
     setFetchingRecords(true);
     const fetchedSquares = await fetchSquares(northWest, southEast, squareSize);
     setRecords([]);
+
+    setTotalSquares(getTotalSquares(fetchedSquares));
     setSquares(fetchedSquares);
     setFetchingRecords(false);
   };
@@ -94,26 +105,20 @@ const Map: FC = () => {
   const getRecordMarker = (record: Record) => (
     <RecordMarker key={record.id} record={record} onClick={setShowRecordInfo} />
   );
+  const getSquareMarker = (square: Square) => {
+    const opacity = Number((square.doc_count / totalSquares).toFixed(2));
 
-  const getSquareMarker = (square: Square) => (
-    <SquareMarker
-      key={square.key}
-      square={square}
-      totalSquares={totalSquares}
-    />
-  );
+    // max 80%, min 20%
+    const normalizedOpacity = Math.min(Math.max(opacity, 0.2), 0.8);
 
-  const getTotalSquares = () => {
-    if (!squares?.length) return;
-
-    const addSquares = (acc: number, square: Square): number => {
-      if (!square) return 0;
-
-      return acc + square.doc_count;
-    };
-    setTotalSquares(squares.reduce(addSquares, 0));
+    return (
+      <SquareMarker
+        key={square.key}
+        square={square}
+        fillOpacity={normalizedOpacity}
+      />
+    );
   };
-  useEffect(getTotalSquares, [squares]);
 
   return (
     <>
