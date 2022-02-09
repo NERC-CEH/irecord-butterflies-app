@@ -5,11 +5,17 @@ import {
   IonSlide,
   IonSlides,
   IonButton,
+  IonAvatar,
+  IonIcon,
 } from '@ionic/react';
+import clsx from 'clsx';
+import butterflyIcon from 'common/images/butterflyIcon.svg';
 import CustomAlert from 'Components/CustomAlert';
 import ImageWithBackground from 'Components/ImageWithBackground';
+import { closeCircle, helpCircle, checkmarkCircle } from 'ionicons/icons';
 import { Gallery } from '@apps';
 import config from 'common/config';
+import species from 'common/data/species';
 import { Record, Media } from '../../esResponse.d';
 import './styles.scss';
 
@@ -100,9 +106,11 @@ export default function SpeciesProfile({ record, onClose }: Props) {
 
     const slideImage = media?.map(getSlide);
 
+    const pager = media.length > 1;
     return (
       <IonSlides
-        pager={media.length > 1}
+        pager={pager}
+        className={clsx(pager && 'paginated')}
         options={slideOpts}
         onIonSlidesDidLoad={fixIonicSlideBug}
       >
@@ -111,12 +119,39 @@ export default function SpeciesProfile({ record, onClose }: Props) {
     );
   };
 
+  const byWarehouseId = ({ warehouseId }: any) =>
+    warehouseId === Number(record.taxon.taxa_taxon_list_id);
+  const sp = species.find(byWarehouseId);
+  const thumbnail = sp?.thumbnail;
+  const avatar = thumbnail ? (
+    <img src={thumbnail} />
+  ) : (
+    <IonIcon icon={butterflyIcon} color="warning" />
+  );
+
+  let statusIcon;
+  if (status) {
+    if (status === 'V') {
+      statusIcon = <IonIcon icon={checkmarkCircle} className="id-green" />;
+    } else if (status === 'C') {
+      statusIcon = <IonIcon icon={helpCircle} className="id-amber" />;
+    } else {
+      statusIcon = <IonIcon icon={closeCircle} className="id-red" />;
+    }
+    statusIcon = <div className="verification-status">{statusIcon}</div>;
+  }
+
   return (
     <CustomAlert>
       <div className="alert-species-profile">
         <div className="gallery">{getSlides(record.occurrence.media)}</div>
 
         <IonCardHeader>
+          <IonAvatar>
+            {avatar}
+            {statusIcon}
+          </IonAvatar>
+
           <div className="title">
             {commonName && <h1>{commonName}</h1>}
             <h3>
