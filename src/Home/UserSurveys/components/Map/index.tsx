@@ -21,8 +21,8 @@ const DEFAULT_CENTER: LatLngTuple = [53.7326306, -2.6546124]; // UK center
  * Returns square size in meters.
  */
 const getSquareSize = (zoomLevel: number) => {
-  if (zoomLevel < 9) return 10000;
-  if (zoomLevel < 11) return 2000;
+  if (zoomLevel < 10) return 10000;
+  if (zoomLevel < 12) return 2000;
 
   return 1000;
 };
