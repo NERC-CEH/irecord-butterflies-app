@@ -136,7 +136,7 @@ const survey: Survey = {
     },
 
     duration: {
-      remote: { id: -1 },
+      remote: { id: 1643 },
     },
 
     sun: {
