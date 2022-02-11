@@ -55,7 +55,17 @@ function SpeciesGuide() {
             Any records you submit using the{' '}
             <strong>iRecord Butterflies</strong> app will be displayed to users
             of the iRecord website and be examined and verified by an expert
-            before being added to local and national butterfly databases.
+            before being added to local and national butterfly databases. Your
+            registration with this app also creates an account on the iRecord
+            website, and you may receive notification emails from iRecord
+            informing you about any checks and feedback on your records. If you
+            wish, you can log on to the iRecord website using the same email and
+            password combination. On the website, you can view your records by
+            choosing the "Explore" menu and then "My records", and you can
+            control your notifications by editing your account settings.
+          </P>
+
+          <P>
             Records may be collated and disseminated manually or electronically,
             including via the internet, for conservation, environmental
             decision-making, education, scientific research and other public
