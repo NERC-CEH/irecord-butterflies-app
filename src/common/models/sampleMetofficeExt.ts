@@ -141,7 +141,7 @@ function setNewWeatherValues(sample: any, newWeatherValues: WEATHER_TYPES) {
   if (!sample.attrs.windSpeed && newWeatherValues.windSpeed) {
     sample.attrs.windSpeed = newWeatherValues.windSpeed; // eslint-disable-line
   }
-  if (!sample.attrs.sun && newWeatherValues.sun) {
+  if (!sample.attrs.sun && typeof newWeatherValues.sun === 'number') {
     sample.attrs.sun = newWeatherValues.sun; // eslint-disable-line
   }
 
