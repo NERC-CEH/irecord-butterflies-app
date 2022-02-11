@@ -17,57 +17,17 @@ type Props = {
   sample: typeof Sample;
 };
 
-function showDeleteSpeciesPrompt(taxon: any) {
-  const prompt = (resolve: any) => {
-    const name = taxon.commonName;
-    alert({
-      header: 'Delete',
-      message: (
-        <>
-          Are you sure you want to delete <b>{name}</b> species ?
-        </>
-      ),
-
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'primary',
-        },
-        {
-          text: 'Delete',
-          cssClass: 'secondary',
-          handler: resolve,
-        },
-      ],
-    });
-  };
-
-  return new Promise(prompt);
-}
-
 const HomeController: FC<Props> = ({ sample }) => {
   const { navigate } = useContext(NavContext);
   const isDisabled = sample.isUploaded();
   const isEditing = sample.metadata.saved;
 
-  const deleteSpecies = (taxon: any) => {
-    const deleteSp = () => {
-      const matchingTaxon = (smp: typeof Sample) =>
-        smp.occurrences[0].attrs.taxon.warehouse_id === taxon.warehouse_id;
-      const subSamplesMatchingTaxon = sample.samples.filter(matchingTaxon);
-
-      const destroy = (s: typeof Sample) => s.destroy();
-      subSamplesMatchingTaxon.forEach(destroy);
-    };
-
-    showDeleteSpeciesPrompt(taxon).then(deleteSp);
-  };
-
   const increaseCount = (taxon: any) => {
     if (sample.hasZeroAbundance()) {
       // eslint-disable-next-line no-param-reassign
       sample.samples[0].occurrences[0].attrs.zero_abundance = null;
+      // eslint-disable-next-line no-param-reassign
+      sample.samples[0].occurrences[0].attrs.stage = sample.attrs.stage;
       sample.samples[0].startGPS();
 
       sample.save();
@@ -79,8 +39,16 @@ const HomeController: FC<Props> = ({ sample }) => {
     }
 
     const survey = sample.getSurvey();
+    const defaultStage = sample.attrs.stage;
+    const zeroAbundance = null;
 
-    const newSubSample = survey.smp.create(Sample, Occurrence, taxon);
+    const newSubSample = survey.smp.create(
+      Sample,
+      Occurrence,
+      taxon,
+      zeroAbundance,
+      defaultStage
+    );
 
     sample.samples.push(newSubSample);
     newSubSample.startGPS();
@@ -105,7 +73,7 @@ const HomeController: FC<Props> = ({ sample }) => {
     // eslint-disable-next-line no-param-reassign
     sample.attrs.duration =
       sample.metadata.saved -
-      new Date(sample.attrs.surveyStartTime).getTime() -
+      new Date(sample.attrs.startTimerTimestamp).getTime() -
       new Date(sample.metadata.pausedTime).getTime();
 
     sample.cleanUp();
@@ -143,11 +111,7 @@ const HomeController: FC<Props> = ({ sample }) => {
   return (
     <Page id="single-species-count-home">
       <Header title="Survey" rightSlot={finishButton} />
-      <Main
-        sample={sample}
-        increaseCount={increaseCount}
-        deleteSpecies={deleteSpecies}
-      />
+      <Main sample={sample} increaseCount={increaseCount} />
     </Page>
   );
 };

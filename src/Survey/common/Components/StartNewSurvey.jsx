@@ -84,7 +84,10 @@ function StartNewSurvey({ survey, location }) {
         sample = await getNewSample(survey, draftIdKey, location.search);
       }
 
-      const url = `${match.url}/${sample.cid}`;
+      const url = sample.isSurveySingleSpeciesTimedCount()
+        ? `${match.url}/${sample.cid}/species`
+        : `${match.url}/${sample.cid}`;
+
       context.navigate(url, 'none', 'replace');
     })();
   };

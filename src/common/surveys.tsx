@@ -23,17 +23,17 @@ export interface Survey {
 
       create: (
         Occurrence: typeof AppOccurrence,
-        taxon: any,
-        zeroAbundance?: string | null
+        taxon: any
       ) => typeof AppOccurrence;
       verify?: any;
     };
 
     create: (
-      SAmple: typeof AppSample,
+      Sample: typeof AppSample,
       Occurrence: typeof AppOccurrence,
       taxon: any,
-      zeroAbundance?: string | null
+      zeroAbundance?: string | null,
+      stage?: string
     ) => typeof AppSample;
   };
 

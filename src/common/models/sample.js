@@ -72,6 +72,9 @@ class AppSample extends Sample {
 
   isTimerPaused = () => !!this.metadata.timerPausedTime;
 
+  isSurveySingleSpeciesTimedCount = () =>
+    this.metadata.survey === 'single-species-count';
+
   async upload(skipInvalidsMessage, skipRefreshUploadCountStat) {
     if (this.remote.synchronising) {
       return true;

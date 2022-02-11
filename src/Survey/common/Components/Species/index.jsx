@@ -46,14 +46,22 @@ function SpeciesSelect({ sample, occurrence, appModel }) {
         return;
       }
       const zeroAbundance = 't';
+      const defaultStage = sample.attrs.stage;
       const newSubSample = survey.smp.create(
         AppSample,
         AppOccurrence,
         species,
-        zeroAbundance
+        zeroAbundance,
+        defaultStage
       );
+
       sample.samples.push(newSubSample);
-      // newSubSample.startGPS();
+      sample.save();
+
+      const url = match.url.replace('/species', '/details');
+      navigate(url, 'forward', 'pop');
+
+      return;
     }
 
     if (survey.name === 'list') {
@@ -72,10 +80,9 @@ function SpeciesSelect({ sample, occurrence, appModel }) {
   const getSpeciesID = occ => (occ.attrs.taxon || {}).id;
 
   const isSpeciesSelected = sample?.samples[0]?.occurrences || [];
-  const isSurveySingleCount =
-    sample.metadata.survey === 'single-species-count'
-      ? isSpeciesSelected
-      : sample.occurrences;
+  const isSurveySingleCount = sample.isSurveySingleSpeciesTimedCount()
+    ? isSpeciesSelected
+    : sample.occurrences;
 
   const currentSpecies = isSurveySingleCount.map(getSpeciesID);
 
@@ -85,6 +92,8 @@ function SpeciesSelect({ sample, occurrence, appModel }) {
         onSearch={setSearchPhrase}
         toggleFilter={appModel.toggleFilter}
         filters={appModel?.attrs?.filters}
+        isSurveySingleSpeciesTimedCount={!!isSurveySingleCount}
+        sample={sample}
       />
       <Main
         onSelect={onSelect}

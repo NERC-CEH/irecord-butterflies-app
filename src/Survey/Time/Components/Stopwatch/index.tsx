@@ -51,7 +51,7 @@ const Stopwatch: FC<Props> = ({ sample }) => {
   };
 
   const formatTime = () => {
-    const startTime = new Date(sample.attrs.surveyStartTime).getTime();
+    const startTime = new Date(sample.attrs.startTimerTimestamp).getTime();
     const pauseTime = new Date(sample.metadata.pausedTime).getTime();
     const timestamp = sample.metadata.timerPausedTime
       ? new Date(sample.metadata.timerPausedTime).getTime()

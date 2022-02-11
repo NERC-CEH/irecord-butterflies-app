@@ -18,10 +18,16 @@ import { searchOutline, checkmarkOutline } from 'ionicons/icons';
 import { Keyboard } from '@capacitor/keyboard';
 import CurrentFilters from 'Components/CurrentFilters';
 import FiltersMenu from 'Components/FiltersMenu';
-
+import CancelBackButton from '../../CancelBackButton';
 import './styles.scss';
 
-function Header({ onSearch: onSearchProp, toggleFilter, filters }) {
+function Header({
+  onSearch: onSearchProp,
+  toggleFilter,
+  filters,
+  isSurveySingleSpeciesTimedCount,
+  sample,
+}) {
   const [isSearching, setIsSearching] = useState(false);
   const [searchPhrase, setSearchPhrase] = useState('');
   const [tappedSearchEnd, setTappedSearchEnd] = useState(false);
@@ -73,15 +79,29 @@ function Header({ onSearch: onSearchProp, toggleFilter, filters }) {
     toggleFilter(type, value);
   };
 
+  const title = isSurveySingleSpeciesTimedCount
+    ? 'Select target species'
+    : 'Select Species';
+
   return (
     <IonHeader id="species-search-header">
       {!isSearching && (
         <IonToolbar>
-          <IonButtons slot="start">
-            <IonBackButton text="Back" data-label="back" defaultHref="/home" />
-          </IonButtons>
+          {!isSurveySingleSpeciesTimedCount && (
+            <IonButtons slot="start">
+              <IonBackButton
+                text="Back"
+                data-label="back"
+                defaultHref="/home"
+              />
+            </IonButtons>
+          )}
 
-          <IonTitle>Select Species</IonTitle>
+          {isSurveySingleSpeciesTimedCount && (
+            <CancelBackButton sample={sample} />
+          )}
+
+          <IonTitle>{title}</IonTitle>
 
           <IonButtons slot="end">
             <IonButton onClick={onSearchStart}>
@@ -129,6 +149,8 @@ Header.propTypes = exact({
   onSearch: PropTypes.func.isRequired,
   toggleFilter: PropTypes.func.isRequired,
   filters: PropTypes.object.isRequired,
+  isSurveySingleSpeciesTimedCount: PropTypes.bool,
+  sample: PropTypes.object,
 });
 
 export default observer(Header);

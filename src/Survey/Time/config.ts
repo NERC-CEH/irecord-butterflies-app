@@ -1,9 +1,9 @@
 // @ts-ignore
 import Wkt from 'wicket';
 import * as Yup from 'yup';
-import { date as dateHelp } from '@apps';
 import { toJS } from 'mobx';
 import L from 'leaflet';
+import { date as dateHelp } from '@apps';
 import { Survey } from 'common/surveys';
 import { chatboxOutline, business } from 'ionicons/icons';
 import { stageAttr, deviceAttr, appVersionAttr } from 'Survey/common/config';
@@ -116,7 +116,7 @@ const survey: Survey = {
       },
     },
 
-    startTime: {
+    startTimerTimestamp: {
       remote: {
         id: 287,
         values: (date: any) => dateHelp.format(new Date(date)),
@@ -196,6 +196,8 @@ const survey: Survey = {
         },
       },
     },
+
+    stage: stageAttr,
   },
 
   smp: {
@@ -222,7 +224,7 @@ const survey: Survey = {
       },
     },
 
-    create(AppSample, AppOccurrence, taxon, zeroAbundance) {
+    create(AppSample, AppOccurrence, taxon, zeroAbundance, stage) {
       const sample = new AppSample({
         metadata: {
           survey_id: survey.id,
@@ -241,15 +243,12 @@ const survey: Survey = {
         sample.metadata.survey_id = survey.id; // eslint-disable-line
       }
 
-      const occurrence = survey?.smp?.occ.create(
-        AppOccurrence,
-        taxon,
-        zeroAbundance
-      );
+      const occurrence = survey?.smp?.occ.create(AppOccurrence, taxon);
 
       sample.occurrences.push(occurrence);
 
       sample.occurrences[0].attrs.zero_abundance = zeroAbundance;
+      sample.occurrences[0].attrs.stage = stage;
 
       return sample;
     },
@@ -275,7 +274,6 @@ const survey: Survey = {
         return new Occurrence({
           attrs: {
             comment: null,
-            stage: 'Adult',
             taxon,
           },
         });
@@ -318,10 +316,12 @@ const survey: Survey = {
         survey_id: survey.id,
         pausedTime: 0,
         timerPausedTime: null,
+        startStopwatchTime: null,
       },
       attrs: {
         location: {},
         duration: 0,
+        stage: 'Adult',
       },
     });
 

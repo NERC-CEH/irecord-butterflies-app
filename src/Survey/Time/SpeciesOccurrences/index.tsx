@@ -72,11 +72,27 @@ const SpeciesController: FC<Props> = ({ sample }) => {
   useIonViewWillEnter(navigateBackIfThereIsNoSubSamples);
 
   const deleteSampleWrap = (smp: typeof Sample) => {
+    const taxon = { ...smp.occurrences[0].attrs.taxon };
     const deleteSample = async () => {
       await smp.destroy();
 
       const samples = getSamples();
-      if (!samples.length) goBack();
+      if (!samples.length) {
+        const survey = sample.getSurvey();
+
+        const defaultStage = sample.attrs.stage;
+        const zeroAbundace = 't';
+        const newSubSample = survey.smp.create(
+          Sample,
+          Occurrence,
+          taxon,
+          zeroAbundace,
+          defaultStage
+        );
+        sample.samples.push(newSubSample);
+        sample.save();
+        goBack();
+      }
     };
 
     deleteSamplePrompt(deleteSample);

@@ -2,12 +2,7 @@ import React, { FC, useContext } from 'react';
 import { observer } from 'mobx-react';
 import { toJS } from 'mobx';
 import Sample from 'models/sample';
-import {
-  Main,
-  MenuAttrItem,
-  InfoBackgroundMessage,
-  MenuAttrItemFromModel,
-} from '@apps';
+import { Main, MenuAttrItem, InfoBackgroundMessage } from '@apps';
 import {
   IonImg,
   IonList,
@@ -17,10 +12,7 @@ import {
   IonLabel,
   NavContext,
   IonSpinner,
-  IonItemSliding,
   IonItem,
-  IonItemOptions,
-  IonItemOption,
 } from '@ionic/react';
 import { Trans as T } from 'react-i18next';
 import { mapOutline, warningOutline, clipboardOutline } from 'ionicons/icons';
@@ -32,7 +24,6 @@ import './styles.scss';
 type Props = {
   sample: typeof Sample;
   increaseCount: any;
-  deleteSpecies: any;
 };
 
 const getDefaultTaxonCount = (taxon: any) => ({ count: 0, taxon });
@@ -65,11 +56,10 @@ const buildSpeciesCount = (agg: any, smp: typeof Sample) => {
   return agg;
 };
 
-const HomeMain: FC<Props> = ({ sample, increaseCount, deleteSpecies }) => {
+const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
   const { navigate } = useContext(NavContext);
   const { url } = useRouteMatch();
   const { area } = sample.attrs.location || {};
-  const isDisabled = sample.isUploaded();
 
   let areaPretty: JSX.Element | string = (
     <IonIcon icon={warningOutline} color="danger" />
@@ -78,32 +68,6 @@ const HomeMain: FC<Props> = ({ sample, increaseCount, deleteSpecies }) => {
   if (Number.isFinite(area) || sample.isBackgroundGPSRunning()) {
     areaPretty = area ? `${area} m²` : '';
   }
-
-  const getSpeciesAddButton = () => {
-    if (isDisabled) {
-      // placeholder
-      return <div style={{ height: '44px' }} />;
-    }
-
-    const hasAlreadySpecies = !!sample.samples.length;
-
-    if (hasAlreadySpecies) return null;
-
-    const navigateToSearch = () => navigate(`${url}/species`);
-
-    return (
-      <IonButton
-        className="species-add-button"
-        color="primary"
-        id="add"
-        onClick={navigateToSearch}
-      >
-        <IonLabel>
-          <T>Add species</T>
-        </IonLabel>
-      </IonButton>
-    );
-  };
 
   const getSpeciesEntry = ([id, species]: any) => {
     const hasZeroAbundance = sample.hasZeroAbundance();
@@ -124,8 +88,6 @@ const HomeMain: FC<Props> = ({ sample, increaseCount, deleteSpecies }) => {
       !hasZeroAbundance &&
       navigate(`${url}/speciesOccurrences/${taxon.warehouseId}`);
 
-    const deleteSpeciesWrap = () => deleteSpecies(taxon);
-
     let location;
     if (species.hasLocationMissing) {
       location = <IonIcon icon={warningOutline} color="danger" />;
@@ -134,32 +96,24 @@ const HomeMain: FC<Props> = ({ sample, increaseCount, deleteSpecies }) => {
     }
 
     return (
-      <IonItemSliding key={id}>
-        <IonItem
-          detail={!isSpeciesDisabled && !hasZeroAbundance}
-          onClick={navigateToSpeciesOccurrences}
+      <IonItem
+        key={id}
+        detail={!isSpeciesDisabled && !hasZeroAbundance}
+        onClick={navigateToSpeciesOccurrences}
+      >
+        <IonButton
+          className="precise-area-count-edit-count"
+          onClick={increaseCountWrap}
+          fill="clear"
         >
-          <IonButton
-            className="precise-area-count-edit-count"
-            onClick={increaseCountWrap}
-            fill="clear"
-          >
-            {species.count}
-            <div className="label-divider" />
-          </IonButton>
-          <IonLabel>{speciesName}</IonLabel>
-          <IonLabel slot="end" className="location-spinner">
-            {location}
-          </IonLabel>
-        </IonItem>
-        {!isDisabled && (
-          <IonItemOptions side="end">
-            <IonItemOption color="danger" onClick={deleteSpeciesWrap}>
-              <T>Delete</T>
-            </IonItemOption>
-          </IonItemOptions>
-        )}
-      </IonItemSliding>
+          {species.count}
+          <div className="label-divider" />
+        </IonButton>
+        <IonLabel>{speciesName}</IonLabel>
+        <IonLabel slot="end" className="location-spinner">
+          {location}
+        </IonLabel>
+      </IonItem>
     );
   };
 
@@ -212,22 +166,14 @@ const HomeMain: FC<Props> = ({ sample, increaseCount, deleteSpecies }) => {
             skipValueTranslation
           />
 
-          <MenuAttrItemFromModel
-            model={sample as any}
-            attr="site"
-            skipValueTranslation
-          />
-
           <Stopwatch sample={sample} />
 
           <MenuAttrItem
             routerLink={`${url}/details`}
             icon={clipboardOutline}
-            label="Additional Details"
+            label="Survey details"
           />
         </div>
-
-        {getSpeciesAddButton()}
       </IonList>
 
       {getSpeciesList()}

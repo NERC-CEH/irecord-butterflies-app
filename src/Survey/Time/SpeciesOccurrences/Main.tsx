@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { useRouteMatch } from 'react-router';
 import Sample from 'models/sample';
 import {
   IonList,
@@ -15,9 +14,8 @@ import {
 import { warningOutline } from 'ionicons/icons';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
 import { observer } from 'mobx-react';
-import { Main, MenuAttrItem, InfoBackgroundMessage } from '@apps';
+import { Main, InfoBackgroundMessage } from '@apps';
 import { Trans as T } from 'react-i18next';
-import butterflyIcon from 'common/images/butterflyIcon.svg';
 import './styles.scss';
 
 type Props = {
@@ -33,7 +31,6 @@ const MainComponent: FC<Props> = ({
   navigateToOccurrence,
   deleteSample,
 }) => {
-  const match = useRouteMatch();
   const isDisabled = sample.isUploaded();
 
   const getSamplesList = () => {
@@ -93,21 +90,9 @@ const MainComponent: FC<Props> = ({
 
   const count = samples.length > 1 ? samples.length : null;
 
-  const species = samples[0].occurrences[0].attrs.taxon.commonName;
-
   return (
     <Main id="area-count-occurrence-edit">
       <IonList lines="full">
-        <div className="rounded">
-          <MenuAttrItem
-            routerLink={`${match.url}/taxon`}
-            disabled={isDisabled}
-            icon={butterflyIcon}
-            label="Species"
-            value={species}
-          />
-        </div>
-
         <div className="rounded">
           <IonItemDivider className="species-list-header">
             <IonLabel>
