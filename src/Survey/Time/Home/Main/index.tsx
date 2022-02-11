@@ -48,7 +48,7 @@ const buildSpeciesCount = (agg: any, smp: typeof Sample) => {
   }
 
   agg[id].count++; // eslint-disable-line
-  agg[id].isGeolocating = agg[id].isGeolocating || smp.isBackgroundGPSRunning(); // eslint-disable-line
+  agg[id].isGeolocating = agg[id].isGeolocating || smp.isGPSRunning(); // eslint-disable-line
   // eslint-disable-next-line
   agg[id].hasLocationMissing =
     agg[id].hasLocationMissing || smp.hasLoctionMissingAndIsnotLocating(); // eslint-disable-line

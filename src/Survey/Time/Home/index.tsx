@@ -68,7 +68,8 @@ const HomeController: FC<Props> = ({ sample }) => {
     if (sample.hasZeroAbundance()) {
       // eslint-disable-next-line no-param-reassign
       sample.samples[0].occurrences[0].attrs.zero_abundance = null;
-      sample.samples[0].startBackgroundGPS();
+      sample.samples[0].startGPS();
+
       sample.save();
       return;
     }
@@ -82,7 +83,7 @@ const HomeController: FC<Props> = ({ sample }) => {
     const newSubSample = survey.smp.create(Sample, Occurrence, taxon);
 
     sample.samples.push(newSubSample);
-    newSubSample.startBackgroundGPS();
+    newSubSample.startGPS();
     sample.save();
 
     isPlatform('hybrid') && hapticsImpact();

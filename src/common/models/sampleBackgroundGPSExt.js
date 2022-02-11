@@ -181,13 +181,6 @@ const extension = {
 
     return this.save();
   },
-
-  hasLoctionMissingAndIsnotLocating() {
-    return (
-      (!this.attrs.location || !this.attrs.location.latitude) &&
-      !this.isBackgroundGPSRunning()
-    );
-  },
 };
 
 export { extension as default };
