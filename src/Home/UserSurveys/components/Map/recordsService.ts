@@ -2,6 +2,8 @@ import axios, { AxiosRequestConfig } from 'axios';
 import { LatLng } from 'leaflet';
 import userModel from 'models/user';
 import CONFIG from 'common/config';
+import pointSurvey from 'Survey/Point/config';
+import singleSpeciesSurvey from 'Survey/Time/config';
 import { Hit, Bucket, Record, Square } from './esResponse.d';
 
 const getRecordsQuery = (northWest: LatLng, southEast: LatLng) =>
@@ -11,8 +13,19 @@ const getRecordsQuery = (northWest: LatLng, southEast: LatLng) =>
       bool: {
         must: [
           {
-            match: {
-              'metadata.survey.id': 101,
+            bool: {
+              should: [
+                {
+                  match: {
+                    'metadata.survey.id': pointSurvey.id,
+                  },
+                },
+                {
+                  match: {
+                    'metadata.survey.id': singleSpeciesSurvey.id,
+                  },
+                },
+              ],
             },
           },
         ],
@@ -87,8 +100,19 @@ const getSquaresQuery = (
       bool: {
         must: [
           {
-            match: {
-              'metadata.survey.id': 101,
+            bool: {
+              should: [
+                {
+                  match: {
+                    'metadata.survey.id': pointSurvey.id,
+                  },
+                },
+                {
+                  match: {
+                    'metadata.survey.id': singleSpeciesSurvey.id,
+                  },
+                },
+              ],
             },
           },
         ],
