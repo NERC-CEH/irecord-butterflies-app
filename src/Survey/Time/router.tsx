@@ -6,6 +6,7 @@ import StartNewSurvey from 'Survey/common/Components/StartNewSurvey';
 import { RouteWithModels, AttrPage, ModelLocation } from '@apps';
 import Species from 'Survey/common/Components/Species';
 import CONFIG from 'common/config';
+import CancelButton from 'Survey/Time/Components/CancelButton';
 import Home from './Home';
 import AreaAttr from './Components/Area';
 import SpeciesOccurrences from './SpeciesOccurrences';
@@ -18,7 +19,14 @@ const { AttrPageFromRoute } = AttrPage;
 
 const baseURL = `/survey/${survey.name}`;
 
-const SpeciesWrap = (props: any) => <Species appModel={appModel} {...props} />;
+const SpeciesWrap = (props: any) => (
+  <Species
+    appModel={appModel}
+    backButton={<CancelButton sample={props.sample} />}
+    title="Select Target Species"
+    {...props}
+  />
+);
 
 const ModelLocationWrap = (props: any) => (
   <ModelLocation model={props.subSample} mapProviderOptions={CONFIG.map} />

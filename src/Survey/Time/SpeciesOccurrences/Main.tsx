@@ -14,20 +14,25 @@ import {
 import { warningOutline } from 'ionicons/icons';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
 import { observer } from 'mobx-react';
-import { Main, InfoBackgroundMessage } from '@apps';
+import { Main } from '@apps';
 import { Trans as T } from 'react-i18next';
 import './styles.scss';
 
+function byCreationDate(s1: typeof Sample, s2: typeof Sample) {
+  const date1 = new Date(s1.metadata.updated_on);
+  const date2 = new Date(s2.metadata.updated_on);
+
+  return date2.getTime() - date1.getTime();
+}
+
 type Props = {
   sample: typeof Sample;
-  samples: typeof Sample[];
   navigateToOccurrence: any;
   deleteSample: any;
 };
 
 const MainComponent: FC<Props> = ({
   sample,
-  samples,
   navigateToOccurrence,
   deleteSample,
 }) => {
@@ -75,20 +80,10 @@ const MainComponent: FC<Props> = ({
       );
     };
 
-    return samples.map(getOccurrence);
+    return sample.samples.slice().sort(byCreationDate).map(getOccurrence);
   };
 
-  if (!samples[0]) {
-    return (
-      <Main id="area-count-occurrence-edit">
-        <IonList id="list" lines="full">
-          <InfoBackgroundMessage>No species added</InfoBackgroundMessage>
-        </IonList>
-      </Main>
-    );
-  }
-
-  const count = samples.length > 1 ? samples.length : null;
+  const count = sample.samples.length > 1 ? sample.samples.length : null;
 
   return (
     <Main id="area-count-occurrence-edit">

@@ -86,7 +86,7 @@ export const deviceAttr = {
 
 export const appVersionAttr = { id: 1139 };
 
-const stageOptions = [
+export const stageOptions = [
   { value: 'Adult', id: 3929 },
   { value: 'Egg', id: 3932 },
   { value: 'Larva', id: 3931 },

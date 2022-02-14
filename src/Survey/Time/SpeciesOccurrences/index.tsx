@@ -4,7 +4,7 @@ import Occurrence from 'models/occurrence';
 import { observer } from 'mobx-react';
 import { Page, Header, alert } from '@apps';
 import { useRouteMatch } from 'react-router';
-import { NavContext, useIonViewWillEnter } from '@ionic/react';
+import { NavContext } from '@ionic/react';
 import Main from './Main';
 import './styles.scss';
 
@@ -27,13 +27,6 @@ function deleteSamplePrompt(callback: () => void) {
   });
 }
 
-function byCreationDate(s1: typeof Sample, s2: typeof Sample) {
-  const date1 = new Date(s1.metadata.updated_on);
-  const date2 = new Date(s2.metadata.updated_on);
-
-  return date2.getTime() - date1.getTime();
-}
-
 type Props = {
   sample: typeof Sample;
 };
@@ -50,37 +43,16 @@ const SpeciesController: FC<Props> = ({ sample }) => {
     navigate(`${urlPath}/samples/${smp.cid}/occ/${occ.cid}`);
   };
 
-  const getSamples = () => {
-    const { taxa }: any = match.params;
-
-    const matchesTaxa = ({
-      occurrences,
-    }: {
-      occurrences: typeof Occurrence[];
-    }) => {
-      const [occ] = occurrences; // always one
-      return occ.attrs.taxon.warehouseId === parseInt(taxa, 10);
-    };
-
-    const samples = sample.samples.filter(matchesTaxa).sort(byCreationDate);
-
-    return samples;
-  };
-
-  const navigateBackIfThereIsNoSubSamples = () =>
-    !sample.samples.length && goBack();
-  useIonViewWillEnter(navigateBackIfThereIsNoSubSamples);
-
   const deleteSampleWrap = (smp: typeof Sample) => {
     const taxon = { ...smp.occurrences[0].attrs.taxon };
     const deleteSample = async () => {
       await smp.destroy();
 
-      const samples = getSamples();
-      if (!samples.length) {
+      const isLastSampleDeleted = sample.samples.length;
+      if (!isLastSampleDeleted) {
         const survey = sample.getSurvey();
 
-        const defaultStage = sample.attrs.stage;
+        const { defaultStage } = sample.attrs;
         const zeroAbundace = 't';
         const newSubSample = survey.smp.create(
           Sample,
@@ -91,6 +63,7 @@ const SpeciesController: FC<Props> = ({ sample }) => {
         );
         sample.samples.push(newSubSample);
         sample.save();
+
         goBack();
       }
     };
@@ -103,7 +76,6 @@ const SpeciesController: FC<Props> = ({ sample }) => {
       <Header title="Occurrences" />
       <Main
         sample={sample}
-        samples={getSamples()}
         deleteSample={deleteSampleWrap}
         navigateToOccurrence={navigateToOccurrence}
       />

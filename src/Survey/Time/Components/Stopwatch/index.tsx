@@ -51,7 +51,7 @@ const Stopwatch: FC<Props> = ({ sample }) => {
   };
 
   const formatTime = () => {
-    const startTime = new Date(sample.attrs.startTimerTimestamp).getTime();
+    const startTime = new Date(sample.attrs.startTime).getTime();
     const pauseTime = new Date(sample.metadata.pausedTime).getTime();
     const timestamp = sample.metadata.timerPausedTime
       ? new Date(sample.metadata.timerPausedTime).getTime()
@@ -92,7 +92,6 @@ const Stopwatch: FC<Props> = ({ sample }) => {
       detail={!isDisabled}
       detailIcon={detailIcon}
       onClick={toggleTimer}
-      disabled={isDisabled}
       id="stopwatch"
     >
       <IonIcon icon={timeOutline} slot="start" />

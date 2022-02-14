@@ -4,7 +4,7 @@ import Occurrence from 'models/occurrence';
 import appModel from 'models/app';
 import userModel from 'models/user';
 import { observer } from 'mobx-react';
-import { Page, Header, alert, showInvalidsMessage } from '@apps';
+import { Page, Header, showInvalidsMessage } from '@apps';
 import { IonButton, NavContext, isPlatform } from '@ionic/react';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import Main from './Main';
@@ -23,23 +23,21 @@ const HomeController: FC<Props> = ({ sample }) => {
   const isEditing = sample.metadata.saved;
 
   const increaseCount = (taxon: any) => {
+    if (sample.isUploaded()) return;
+
     if (sample.hasZeroAbundance()) {
       // eslint-disable-next-line no-param-reassign
       sample.samples[0].occurrences[0].attrs.zero_abundance = null;
       // eslint-disable-next-line no-param-reassign
-      sample.samples[0].occurrences[0].attrs.stage = sample.attrs.stage;
+      sample.samples[0].occurrences[0].attrs.stage = sample.attrs.defaultStage;
       sample.samples[0].startGPS();
 
       sample.save();
       return;
     }
 
-    if (sample.isUploaded()) {
-      return;
-    }
-
     const survey = sample.getSurvey();
-    const defaultStage = sample.attrs.stage;
+    const { defaultStage } = sample.attrs;
     const zeroAbundance = null;
 
     const newSubSample = survey.smp.create(
@@ -73,7 +71,7 @@ const HomeController: FC<Props> = ({ sample }) => {
     // eslint-disable-next-line no-param-reassign
     sample.attrs.duration =
       sample.metadata.saved -
-      new Date(sample.attrs.startTimerTimestamp).getTime() -
+      new Date(sample.attrs.startTime).getTime() -
       new Date(sample.metadata.pausedTime).getTime();
 
     sample.cleanUp();

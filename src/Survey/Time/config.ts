@@ -6,7 +6,41 @@ import L from 'leaflet';
 import { date as dateHelp } from '@apps';
 import { Survey } from 'common/surveys';
 import { chatboxOutline, business } from 'ionicons/icons';
-import { stageAttr, deviceAttr, appVersionAttr } from 'Survey/common/config';
+import {
+  stageAttr,
+  deviceAttr,
+  appVersionAttr,
+  stageOptions,
+} from 'Survey/common/config';
+import caterpillarIcon from 'common/images/caterpillar.svg';
+
+const locationSchema = Yup.object().shape({
+  latitude: Yup.number().required(),
+  longitude: Yup.number().required(),
+  area: Yup.number()
+    .min(1, 'Please add survey area information.')
+    .max(20000000, 'Please select a smaller area.')
+    .required(),
+  shape: Yup.object().required(),
+  source: Yup.string().required('Please add survey area information.'),
+});
+
+const validateLocation = (val: any) => {
+  if (!val) {
+    return false;
+  }
+
+  locationSchema.validateSync(val);
+  return true;
+};
+
+const areaCountSchema = Yup.object().shape({
+  location: Yup.mixed().test(
+    'area',
+    'Please add survey area information.',
+    validateLocation
+  ),
+});
 
 const temperatureValues = [
   { value: 10, id: 16530 },
@@ -84,6 +118,21 @@ function getGeomString(shape: any) {
   return wkt.write();
 }
 
+export const dateAttr = {
+  pageProps: {
+    attrProps: {
+      input: 'date',
+      inputProps: { max: () => new Date() },
+    },
+  },
+  remote: { values: (date: number) => dateHelp.print(date, false) },
+};
+
+const dateTimeFormat = new Intl.DateTimeFormat('en-GB', {
+  hour: 'numeric',
+  minute: 'numeric',
+});
+
 const survey: Survey = {
   id: 685,
   name: 'single-species-count',
@@ -116,10 +165,12 @@ const survey: Survey = {
       },
     },
 
-    startTimerTimestamp: {
+    date: dateAttr,
+
+    startTime: {
       remote: {
         id: 287,
-        values: (date: any) => dateHelp.format(new Date(date)),
+        values: (date: number) => dateTimeFormat.format(new Date(date)),
       },
     },
 
@@ -136,7 +187,17 @@ const survey: Survey = {
     },
 
     duration: {
-      remote: { id: 1643 },
+      remote: {
+        id: 1643,
+        values(timestamp: number) {
+          // regex validation -> /^\d+:\d\d$/
+          const seconds = Math.round((timestamp / 1000) % 60);
+          const formattedSeconds = seconds > 9 ? seconds : `0${seconds}`;
+          const minutes = Math.round(seconds / 60);
+
+          return `${minutes}:${formattedSeconds}`;
+        },
+      },
     },
 
     sun: {
@@ -197,11 +258,23 @@ const survey: Survey = {
       },
     },
 
-    stage: stageAttr,
+    defaultStage: {
+      menuProps: { label: 'Default Stage', icon: caterpillarIcon },
+      pageProps: {
+        headerProps: { title: 'Default Stage' },
+        attrProps: {
+          input: 'radio',
+          info: 'Pick the default life stage.',
+          inputProps: { options: stageOptions },
+        },
+      },
+    },
   },
 
   smp: {
     attrs: {
+      date: dateAttr,
+
       location: {
         remote: {
           id: 'entered_sref',
@@ -224,7 +297,7 @@ const survey: Survey = {
       },
     },
 
-    create(AppSample, AppOccurrence, taxon, zeroAbundance, stage) {
+    create(AppSample, AppOccurrence, taxon, zeroAbundance, defaultStage) {
       const sample = new AppSample({
         metadata: {
           survey_id: survey.id,
@@ -248,7 +321,7 @@ const survey: Survey = {
       sample.occurrences.push(occurrence);
 
       sample.occurrences[0].attrs.zero_abundance = zeroAbundance;
-      sample.occurrences[0].attrs.stage = stage;
+      sample.occurrences[0].attrs.stage = defaultStage;
 
       return sample;
     },
@@ -267,6 +340,13 @@ const survey: Survey = {
 
         count: { remote: { id: 780 } },
 
+        taxon: {
+          remote: {
+            id: 'taxa_taxon_list_id',
+            values: (taxon: any) => taxon.warehouseId,
+          },
+        },
+
         stage: stageAttr,
       },
 
@@ -283,6 +363,11 @@ const survey: Survey = {
 
   verify(attrs) {
     try {
+      // surveys details page dont set area attr
+      if (attrs.startTime) {
+        areaCountSchema.validateSync(attrs, { abortEarly: false });
+      }
+
       Yup.object()
         .shape({
           site: Yup.string().required(
@@ -321,15 +406,32 @@ const survey: Survey = {
       attrs: {
         location: {},
         duration: 0,
-        stage: 'Adult',
+        defaultStage: 'Adult',
       },
     });
 
-    sample.attrs.surveyStartTime = sample.metadata.created_on; // this can't be done in defaults
     sample.toggleBackgroundGPS();
     sample.startMetOfficePull();
 
     return sample;
+  },
+
+  modifySubmission(submission: any) {
+    const subSamples = submission.samples;
+    submission.samples = []; // eslint-disable-line
+
+    const removeSubSamplesLayerIfNoLocation = (subSample: any) => {
+      const locationIsMissing = !subSample.values.entered_sref;
+      if (locationIsMissing) {
+        submission.occurrences.push(subSample.occurrences[0]);
+        return;
+      }
+      submission.samples.push(subSample);
+    };
+
+    subSamples.forEach(removeSubSamplesLayerIfNoLocation);
+
+    return submission;
   },
 };
 

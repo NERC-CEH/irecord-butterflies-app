@@ -4,8 +4,9 @@ import Sample from 'models/sample';
 import { observer } from 'mobx-react';
 import { Page, Header, showInvalidsMessage } from '@apps';
 import { NavContext, IonButton } from '@ionic/react';
-import BackCancelButton from '../../common/Components/CancelBackButton';
+import CancelButton from 'Survey/Time/Components/CancelButton';
 import Main from './Main';
+import './styles.scss';
 
 type Props = {
   sample: typeof Sample;
@@ -14,7 +15,7 @@ type Props = {
 const DetailsController: FC<Props> = ({ sample }) => {
   const { navigate } = useContext(NavContext);
   const { url } = useRouteMatch();
-  const hasTimerStarted = sample.attrs.startTimerTimestamp;
+  const hasTimerStarted = sample.attrs.startTime;
 
   const onStartTimer = () => {
     const invalids = sample.validateRemote();
@@ -24,33 +25,31 @@ const DetailsController: FC<Props> = ({ sample }) => {
     }
 
     // eslint-disable-next-line no-param-reassign
-    sample.attrs.startTimerTimestamp = new Date();
+    sample.attrs.startTime = new Date();
     sample.save();
 
     const path = url.replace('/details', '');
     navigate(path, 'forward', 'replace');
   };
 
-  const isDisabled = sample.isUploaded();
+  const startTimerButton = !hasTimerStarted && (
+    <IonButton
+      onClick={onStartTimer}
+      color="primary"
+      fill="solid"
+      shape="round"
+      className="start-count-button"
+    >
+      Start Count
+    </IonButton>
+  );
 
-  const startTimerButton =
-    !hasTimerStarted || isDisabled ? (
-      <IonButton
-        onClick={onStartTimer}
-        color="primary"
-        fill="solid"
-        shape="round"
-      >
-        {!hasTimerStarted ? 'Start Count' : null}
-      </IonButton>
-    ) : null;
-
-  const BackCancelButtonWrap = () => <BackCancelButton sample={sample} />;
+  const CancelButtonWrap = () => <CancelButton sample={sample} />;
 
   return (
     <Page id="single-species-count-detail">
       <Header
-        BackButton={!hasTimerStarted ? BackCancelButtonWrap : undefined}
+        BackButton={!hasTimerStarted ? CancelButtonWrap : undefined}
         title="Survey Details"
         rightSlot={startTimerButton}
       />

@@ -46,7 +46,9 @@ const BackCancelButton: FC<Props> = ({ sample }) => {
 
   return (
     <IonButtons slot="start">
-      <IonButton onClick={onDeleteSurvey}>Cancel</IonButton>
+      <IonButton color="dark" onClick={onDeleteSurvey}>
+        Cancel
+      </IonButton>
     </IonButtons>
   );
 };

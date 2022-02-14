@@ -10,7 +10,7 @@ import Main from 'common/Components/Species';
 import { useRouteMatch } from 'react-router';
 import Header from './Header';
 
-function SpeciesSelect({ sample, occurrence, appModel }) {
+function SpeciesSelect({ sample, occurrence, appModel, title, backButton }) {
   const { navigate, goBack } = useContext(NavContext);
   const match = useRouteMatch();
 
@@ -46,13 +46,11 @@ function SpeciesSelect({ sample, occurrence, appModel }) {
         return;
       }
       const zeroAbundance = 't';
-      const defaultStage = sample.attrs.stage;
       const newSubSample = survey.smp.create(
         AppSample,
         AppOccurrence,
         species,
-        zeroAbundance,
-        defaultStage
+        zeroAbundance
       );
 
       sample.samples.push(newSubSample);
@@ -92,8 +90,8 @@ function SpeciesSelect({ sample, occurrence, appModel }) {
         onSearch={setSearchPhrase}
         toggleFilter={appModel.toggleFilter}
         filters={appModel?.attrs?.filters}
-        isSurveySingleSpeciesTimedCount={!!isSurveySingleCount}
-        sample={sample}
+        backButton={backButton}
+        title={title}
       />
       <Main
         onSelect={onSelect}
@@ -109,6 +107,8 @@ SpeciesSelect.propTypes = exact({
   sample: PropTypes.object.isRequired,
   appModel: PropTypes.object.isRequired,
   occurrence: PropTypes.object,
+  title: PropTypes.string,
+  backButton: PropTypes.elementType,
 });
 
 export default observer(SpeciesSelect);
