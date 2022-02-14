@@ -118,6 +118,7 @@ const getSquaresQuery = (
           by_square: {
             terms: {
               field: `location.grid_square.${squareSize}km.centre`,
+              size: 100000,
             },
           },
         },
