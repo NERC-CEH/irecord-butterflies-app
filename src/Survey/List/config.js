@@ -28,7 +28,7 @@ const areaOptions = [
 ];
 
 const survey = {
-  id: 101,
+  id: 101, // same as the point
   name: 'list',
   label: 'List', // we'll use species name
   icon,
