@@ -37,7 +37,7 @@ class UserModel extends DrupalUserModel {
     return !!this.attrs.email;
   }
 
-  async checkActivation() {
+  async checkActivation(skipEmailVerificationMessage) {
     const isLoggedIn = !!this.attrs.id;
     if (!isLoggedIn) {
       warn('Please log in first.');
@@ -58,7 +58,8 @@ class UserModel extends DrupalUserModel {
       loader.hide();
 
       if (!this.attrs.verified) {
-        warn('The user has not been activated or is blocked.');
+        !skipEmailVerificationMessage &&
+          warn('The user has not been activated or is blocked.');
         return false;
       }
     }

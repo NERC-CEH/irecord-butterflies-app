@@ -1,4 +1,6 @@
-import { Sample, showInvalidsMessage, device, toast } from '@apps';
+import React from 'react';
+import { Sample, showInvalidsMessage, device, toast, alert } from '@apps';
+import { IonNote } from '@ionic/react';
 import userModel from 'models/user';
 import config from 'common/config';
 import pointSurvey from 'Survey/Point/config';
@@ -86,8 +88,30 @@ class AppSample extends Sample {
       return false;
     }
 
-    const isActivated = await userModel.checkActivation();
+    const isActivated = await userModel.checkActivation(true);
     if (!isActivated) {
+      alert({
+        message: (
+          <>
+            <IonNote color="warning">
+              <b>Looks like your email hasn't been verified yet.</b>
+            </IonNote>
+            <p>Should we resend the verification email?</p>
+          </>
+        ),
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'secondary',
+          },
+          {
+            text: 'Resend',
+            cssClass: 'primary',
+            handler: () => userModel.resendVerificationEmail(),
+          },
+        ],
+      });
       return false;
     }
 
