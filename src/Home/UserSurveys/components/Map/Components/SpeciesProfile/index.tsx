@@ -53,7 +53,6 @@ export default function SpeciesProfile({ record, onClose }: Props) {
   const scientificName = record.taxon.accepted_name;
 
   const gridRef = record.location.output_sref;
-  const surveyName = record.metadata.survey.title;
 
   const count = record.occurrence.individual_count;
   const stage = record.occurrence.life_stage;
@@ -174,9 +173,6 @@ export default function SpeciesProfile({ record, onClose }: Props) {
         <IonCardContent>
           <div>
             <span className="record-attribute">Status:</span> {statusText}
-          </div>
-          <div>
-            <span className="record-attribute">Survey:</span> {surveyName}
           </div>
           <div>
             <span className="record-attribute">Date:</span> {date}
