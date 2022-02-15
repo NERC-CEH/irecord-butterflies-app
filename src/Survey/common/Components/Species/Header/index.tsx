@@ -1,6 +1,4 @@
-import React, { useState, useRef } from 'react';
-import PropTypes from 'prop-types';
-import exact from 'prop-types-exact';
+import React, { FC, useState, useRef } from 'react';
 import { observer } from 'mobx-react';
 import {
   IonHeader,
@@ -20,25 +18,33 @@ import CurrentFilters from 'Components/CurrentFilters';
 import FiltersMenu from 'Components/FiltersMenu';
 import './styles.scss';
 
-const BackButton = () => (
+const DeaultBackButton = () => (
   <IonButtons slot="start">
     <IonBackButton text="Back" data-label="back" defaultHref="/home" />
   </IonButtons>
 );
 
-function Header({
+type Props = {
+  onSearch: (e: any) => void;
+  toggleFilter: (type: string, value: string) => void;
+  filters: any;
+  title?: string;
+  backButton?: JSX.Element;
+};
+
+const Header: FC<Props> = ({
   onSearch: onSearchProp,
   toggleFilter,
   filters,
-  backButton = BackButton,
+  backButton = DeaultBackButton,
   title = 'Select Species',
-}) {
+}) => {
   const [isSearching, setIsSearching] = useState(false);
   const [searchPhrase, setSearchPhrase] = useState('');
   const [tappedSearchEnd, setTappedSearchEnd] = useState(false);
-  const searchInput = useRef();
+  const searchInput: any = useRef();
 
-  function onSearch(e) {
+  function onSearch(e: any) {
     const { value } = e.detail;
 
     if (tappedSearchEnd) {
@@ -59,7 +65,7 @@ function Header({
     setIsSearching(false);
   }
 
-  function onKeyUp({ keyCode }) {
+  function onKeyUp({ keyCode }: { keyCode: number }) {
     // 13 = Enter
     if (keyCode === 13) {
       setIsSearching(false);
@@ -67,14 +73,14 @@ function Header({
     }
   }
 
-  const addFilter = ({ type, value }) => {
+  const addFilter = ({ type, value }: { type: string; value: string }) => {
     setSearchPhrase('');
     searchInput.current.setFocus();
 
     type !== 'text' && toggleFilter(type, value);
   };
 
-  const removeFilter = ({ type, value }) => {
+  const removeFilter = ({ type, value }: { type: string; value: string }) => {
     if (type === 'text') {
       setSearchPhrase('');
       onSearchProp('');
@@ -132,14 +138,6 @@ function Header({
       )}
     </IonHeader>
   );
-}
-
-Header.propTypes = exact({
-  onSearch: PropTypes.func.isRequired,
-  toggleFilter: PropTypes.func.isRequired,
-  filters: PropTypes.object.isRequired,
-  title: PropTypes.string,
-  backButton: PropTypes.elementType,
-});
+};
 
 export default observer(Header);

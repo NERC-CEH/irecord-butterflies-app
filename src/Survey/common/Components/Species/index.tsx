@@ -1,22 +1,36 @@
-import React, { useContext, useState } from 'react';
-import PropTypes from 'prop-types';
-import exact from 'prop-types-exact';
+import React, { FC, useContext, useState } from 'react';
+import Sample from 'models/sample';
+import Occurrence from 'models/occurrence';
+import AppModelTypes from 'models/app';
 import { NavContext } from '@ionic/react';
 import { Page } from '@apps';
 import { observer } from 'mobx-react';
-import AppOccurrence from 'models/occurrence';
-import AppSample from 'models/sample';
 import Main from 'common/Components/Species';
 import { useRouteMatch } from 'react-router';
+import { Species } from 'common/types';
 import Header from './Header';
 
-function SpeciesSelect({ sample, occurrence, appModel, title, backButton }) {
+type Props = {
+  sample: typeof Sample;
+  occurrence: typeof Occurrence;
+  appModel: typeof AppModelTypes;
+  title?: string;
+  BackButton?: JSX.Element;
+};
+
+const SpeciesSelect: FC<Props> = ({
+  sample,
+  occurrence,
+  appModel,
+  title,
+  BackButton,
+}) => {
   const { navigate, goBack } = useContext(NavContext);
   const match = useRouteMatch();
 
   const [searchPhrase, setSearchPhrase] = useState('');
 
-  function onSelect(species) {
+  function onSelect(species: Species) {
     const survey = sample.getSurvey();
     if (survey.name === 'point') {
       const occ = sample.occurrences[0];
@@ -29,26 +43,10 @@ function SpeciesSelect({ sample, occurrence, appModel, title, backButton }) {
     }
 
     if (survey.name === 'single-species-count') {
-      const { taxa } = match.params;
-      if (taxa) {
-        const assignTaxon = ({ occurrences }) => {
-          const [occ] = occurrences; // always one
-          occ.attrs.taxon = species;
-        };
-
-        sample.samples.forEach(assignTaxon);
-
-        sample.save();
-
-        const [url] = match.url.split('/speciesOccurrences');
-        navigate(url, 'pop');
-
-        return;
-      }
       const zeroAbundance = 't';
       const newSubSample = survey.smp.create(
-        AppSample,
-        AppOccurrence,
+        Sample,
+        Occurrence,
         species,
         zeroAbundance
       );
@@ -66,7 +64,7 @@ function SpeciesSelect({ sample, occurrence, appModel, title, backButton }) {
       if (occurrence) {
         occurrence.attrs.taxon = species; // eslint-disable-line
       } else {
-        const occ = survey.occ.create(AppOccurrence, species);
+        const occ = survey.occ.create(Occurrence, species);
         sample.occurrences.push(occ);
       }
     }
@@ -75,7 +73,7 @@ function SpeciesSelect({ sample, occurrence, appModel, title, backButton }) {
     goBack();
   }
 
-  const getSpeciesID = occ => (occ.attrs.taxon || {}).id;
+  const getSpeciesID = (occ: typeof Occurrence) => (occ.attrs.taxon || {}).id;
 
   const isSpeciesSelected = sample?.samples[0]?.occurrences || [];
   const isSurveySingleCount = sample.isSurveySingleSpeciesTimedCount()
@@ -90,7 +88,7 @@ function SpeciesSelect({ sample, occurrence, appModel, title, backButton }) {
         onSearch={setSearchPhrase}
         toggleFilter={appModel.toggleFilter}
         filters={appModel?.attrs?.filters}
-        backButton={backButton}
+        backButton={BackButton}
         title={title}
       />
       <Main
@@ -101,14 +99,6 @@ function SpeciesSelect({ sample, occurrence, appModel, title, backButton }) {
       />
     </Page>
   );
-}
-
-SpeciesSelect.propTypes = exact({
-  sample: PropTypes.object.isRequired,
-  appModel: PropTypes.object.isRequired,
-  occurrence: PropTypes.object,
-  title: PropTypes.string,
-  backButton: PropTypes.elementType,
-});
+};
 
 export default observer(SpeciesSelect);

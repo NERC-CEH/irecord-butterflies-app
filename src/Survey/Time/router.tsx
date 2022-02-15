@@ -22,7 +22,7 @@ const baseURL = `/survey/${survey.name}`;
 const SpeciesWrap = (props: any) => (
   <Species
     appModel={appModel}
-    backButton={<CancelButton sample={props.sample} />}
+    BackButton={<CancelButton sample={props.sample} />}
     title="Select Target Species"
     {...props}
   />

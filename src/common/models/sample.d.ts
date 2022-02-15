@@ -46,7 +46,7 @@ declare const appModel: {
   isTimerPaused: () => boolean;
   startMetOfficePull: any;
   cleanUp: () => void;
-
+  isSurveySingleSpeciesTimedCount: () => boolean;
   uploadAll: any;
 };
 
