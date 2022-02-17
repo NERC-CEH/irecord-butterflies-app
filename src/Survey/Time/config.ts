@@ -263,6 +263,21 @@ const survey: Survey = {
       pageProps: {
         headerProps: { title: 'Default Stage' },
         attrProps: {
+          set: (value: string, sample: any) => {
+            const getSamples = (subSample: any) => {
+              const setDefaultStageValueToOcc = (occ: any) => {
+                // eslint-disable-next-line no-param-reassign
+                occ.attrs.stage = value;
+                occ.save();
+              };
+              subSample.occurrences.forEach(setDefaultStageValueToOcc);
+            };
+            sample.samples.forEach(getSamples);
+
+            // eslint-disable-next-line no-param-reassign
+            sample.attrs.defaultStage = value;
+            sample.save();
+          },
           input: 'radio',
           info: 'Pick the default life stage.',
           inputProps: { options: stageOptions },

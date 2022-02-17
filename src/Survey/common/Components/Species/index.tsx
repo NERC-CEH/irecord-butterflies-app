@@ -44,11 +44,13 @@ const SpeciesSelect: FC<Props> = ({
 
     if (survey.name === 'single-species-count') {
       const zeroAbundance = 't';
+      const { defaultStage } = sample.attrs;
       const newSubSample = survey.smp.create(
         Sample,
         Occurrence,
         species,
-        zeroAbundance
+        zeroAbundance,
+        defaultStage
       );
 
       sample.samples.push(newSubSample);
