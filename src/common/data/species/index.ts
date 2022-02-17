@@ -1,3 +1,5 @@
+import mothThumbnail from 'common/images/mothThumbnailSmall.svg';
+import butterflyThumbnail from 'common/images/butterflyIcon.svg';
 import { Species, Photo, Resource } from 'common/types';
 import species from './cache/species.json';
 import * as resources from './other';
@@ -29,7 +31,22 @@ const extendWithResources = (sp: Species): ExtendedResource => {
     sp['isle of man'] && 'isle of man',
   ].filter(hasValue);
 
-  return { ...sp, ...speciesResources[sp.id], images, country };
+  const spExt = { ...sp, ...speciesResources[sp.id], images, country };
+
+  let thumbnail;
+  if (spExt.thumbnail) {
+    thumbnail = spExt.thumbnail;
+  }
+
+  if (!spExt.thumbnail && spExt.type === 'moth') {
+    thumbnail = mothThumbnail;
+  }
+
+  if (!spExt.thumbnail && spExt.type !== 'moth') {
+    thumbnail = butterflyThumbnail;
+  }
+
+  return { ...spExt, thumbnail };
 };
 
 const extendedSpecies = (species as Species[]).map(extendWithResources);

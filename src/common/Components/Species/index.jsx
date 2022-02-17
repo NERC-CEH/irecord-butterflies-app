@@ -23,7 +23,6 @@ import config from 'common/config';
 import getCurrentWeekNumber from 'helpers/weeks';
 import getProbabilities from 'common/data/species/probabilities';
 import SpeciesProfile from './components/SpeciesProfile';
-import thumbnailPlaceholder from './thumbnail.png';
 import './styles.scss';
 
 const byName = (sp1, sp2) => sp1.commonName.localeCompare(sp2.commonName);
@@ -111,9 +110,6 @@ class SpeciesMainComponent extends React.Component {
 
     const onClick = isSurvey ? selectSpecies : viewSpecies;
 
-    const thumbnail =
-      typeof thumbnailSrc === 'string' ? thumbnailSrc : thumbnailPlaceholder;
-
     return (
       <IonCol
         key={i}
@@ -128,9 +124,9 @@ class SpeciesMainComponent extends React.Component {
               <IonIcon icon={informationCircleOutline} />
             </div>
           )}
-          <img className="thumbnail" src={thumbnail} />
+          <img className="thumbnail" src={thumbnailSrc} />
           <div className="thumbnail-background">
-            <img src={thumbnail} />
+            <img src={thumbnailSrc} />
           </div>
           <IonLabel>{commonName}</IonLabel>
         </div>
