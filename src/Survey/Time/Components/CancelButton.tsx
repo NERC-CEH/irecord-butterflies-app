@@ -32,7 +32,7 @@ interface Props {
   sample: typeof Sample;
 }
 
-const BackCancelButton: FC<Props> = ({ sample }) => {
+const CancelButton: FC<Props> = ({ sample }) => {
   const { navigate } = useContext(NavContext);
 
   const onDeleteSurvey = async () => {
@@ -53,4 +53,4 @@ const BackCancelButton: FC<Props> = ({ sample }) => {
   );
 };
 
-export default BackCancelButton;
+export default CancelButton;

@@ -15,7 +15,7 @@ type Props = {
   occurrence: typeof Occurrence;
   appModel: typeof AppModelTypes;
   title?: string;
-  BackButton?: JSX.Element;
+  BackButton?: React.ElementType;
 };
 
 const SpeciesSelect: FC<Props> = ({
@@ -88,7 +88,7 @@ const SpeciesSelect: FC<Props> = ({
         onSearch={setSearchPhrase}
         toggleFilter={appModel.toggleFilter}
         filters={appModel?.attrs?.filters}
-        backButton={BackButton}
+        BackButton={BackButton}
         title={title}
       />
       <Main

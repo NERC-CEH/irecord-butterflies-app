@@ -29,14 +29,14 @@ type Props = {
   toggleFilter: (type: string, value: string) => void;
   filters: any;
   title?: string;
-  backButton?: JSX.Element;
+  BackButton?: React.ElementType;
 };
 
 const Header: FC<Props> = ({
   onSearch: onSearchProp,
   toggleFilter,
   filters,
-  backButton = DeaultBackButton,
+  BackButton = DeaultBackButton,
   title = 'Select Species',
 }) => {
   const [isSearching, setIsSearching] = useState(false);
@@ -94,7 +94,7 @@ const Header: FC<Props> = ({
     <IonHeader id="species-search-header">
       {!isSearching && (
         <IonToolbar>
-          {backButton}
+          <BackButton />
 
           <IonTitle>{title}</IonTitle>
 

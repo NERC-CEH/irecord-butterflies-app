@@ -19,14 +19,18 @@ const { AttrPageFromRoute } = AttrPage;
 
 const baseURL = `/survey/${survey.name}`;
 
-const SpeciesWrap = (props: any) => (
-  <Species
-    appModel={appModel}
-    BackButton={<CancelButton sample={props.sample} />}
-    title="Select Target Species"
-    {...props}
-  />
-);
+const SpeciesWrap = (props: any) => {
+  const CancelButtonWrap = () => CancelButton(props);
+
+  return (
+    <Species
+      appModel={appModel}
+      BackButton={CancelButtonWrap}
+      title="Select Target Species"
+      {...props}
+    />
+  );
+};
 
 const ModelLocationWrap = (props: any) => (
   <ModelLocation model={props.subSample} mapProviderOptions={CONFIG.map} />
