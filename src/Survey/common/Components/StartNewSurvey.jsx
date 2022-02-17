@@ -72,7 +72,7 @@ async function getDraft(draftIdKey) {
 
 function StartNewSurvey({ survey, location }) {
   const match = useRouteMatch();
-  const context = useContext(NavContext);
+  const { navigate } = useContext(NavContext);
 
   const draftIdKey = `draftId:${survey.name}`;
 
@@ -84,11 +84,9 @@ function StartNewSurvey({ survey, location }) {
         sample = await getNewSample(survey, draftIdKey, location.search);
       }
 
-      const url = sample.isSurveySingleSpeciesTimedCount()
-        ? `${match.url}/${sample.cid}/species`
-        : `${match.url}/${sample.cid}`;
+      const url = sample.getCurrentEditRoute();
 
-      context.navigate(url, 'none', 'replace');
+      navigate(url, 'none', 'replace');
     })();
   };
 

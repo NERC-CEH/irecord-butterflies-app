@@ -75,6 +75,23 @@ class AppSample extends Sample {
   isSurveySingleSpeciesTimedCount = () =>
     this.metadata.survey === 'single-species-count';
 
+  getCurrentEditRoute = () => {
+    if (!this.isSurveySingleSpeciesTimedCount())
+      return `/survey/${this.metadata.survey}/${this.cid}`;
+
+    const hasTaxonBeenSelected = this.samples.length;
+    if (!hasTaxonBeenSelected) {
+      return `/survey/${this.metadata.survey}/${this.cid}/species`;
+    }
+
+    const hasTimerStarted = this.attrs.startTime;
+    if (!hasTimerStarted) {
+      return `/survey/${this.metadata.survey}/${this.cid}/details`;
+    }
+
+    return `/survey/${this.metadata.survey}/${this.cid}`;
+  };
+
   async upload(skipInvalidsMessage, skipRefreshUploadCountStat) {
     if (this.remote.synchronising) {
       return true;

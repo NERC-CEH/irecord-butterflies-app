@@ -172,11 +172,9 @@ function getSampleInfo(sample) {
 const Survey = ({ sample, userModel, uploadIsPrimary }) => {
   const { navigate } = useContext(NavContext);
 
-  const survey = sample.getSurvey();
-
   const { synchronising } = sample.remote;
 
-  const href = !synchronising && `/survey/${survey.name}/${sample.cid}`;
+  const href = !synchronising && sample.getCurrentEditRoute();
 
   const deleteSurveyWrap = () => deleteSurvey(sample);
   const onUpload = e => {
