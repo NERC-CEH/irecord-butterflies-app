@@ -203,12 +203,10 @@ class SpeciesProfile extends React.Component {
               <T>Identification Tips</T>:
             </h3>
             <p>{species.idTips}</p>
-
             <h3>
               <T>Habitats</T>:
             </h3>
             <p>{species.habitats}</p>
-
             <h3>
               UK Status:{' '}
               <IonChip className="species-status" outline>
@@ -217,22 +215,32 @@ class SpeciesProfile extends React.Component {
             </h3>
             <p>{species.ukStatus}</p>
 
-            {species.lifechart && (
-              <>
-                <h3>
-                  <T>When to see</T>:
-                </h3>
-                <div
-                  className="fullscreen-tappable"
-                  onClick={this.showshowLifechartInFullScreen}
-                >
-                  <div className="fullscreen-btn">
-                    <IonIcon src={expandOutline} slot="end" color="secondary" />
-                  </div>
-                  <img src={species.lifechart} />
-                </div>
-              </>
-            )}
+            {species.lifechart ||
+              (species.whenToSee && (
+                <>
+                  <h3>
+                    <T>When to see</T>:
+                  </h3>
+                  {species.lifechart && (
+                    <div
+                      className="fullscreen-tappable"
+                      onClick={this.showshowLifechartInFullScreen}
+                    >
+                      <div className="fullscreen-btn">
+                        <IonIcon
+                          src={expandOutline}
+                          slot="end"
+                          color="secondary"
+                        />
+                      </div>
+                      <img src={species.lifechart} />
+                    </div>
+                  )}
+
+                  {species.whenToSee && <p>{species.whenToSee}</p>}
+                </>
+              ))}
+
             {species.map && (
               <>
                 <h3>
@@ -241,7 +249,6 @@ class SpeciesProfile extends React.Component {
                 {this.getMap()}
               </>
             )}
-
             {species.webLink && (
               <h3>
                 Further Info: <a href={species.webLink}>website</a>
