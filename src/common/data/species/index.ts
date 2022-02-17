@@ -1,45 +1,9 @@
+import { Species, Photo, Resource } from 'common/types';
 import species from './cache/species.json';
 import * as resources from './other';
 import photos from './cache/photos.json';
 import './photos'; // webpack-loading only
 import './photos-moth'; // webpack-loading only
-
-interface Species {
-  id: string;
-  type?: string;
-  warehouseId: number;
-  commonName: string;
-  scientificName: string;
-  status: string;
-  group: string;
-  family: string;
-  colour: string[];
-  markings: string[];
-  england: string;
-  scotland: string;
-  wales: string;
-  'northern ireland': string;
-  'isle of man': string;
-  size: string[];
-  idTips: string;
-  habitats: string;
-  ukStatus: string;
-  whenToSee?: string;
-  webLink: string;
-}
-
-interface Photo {
-  speciesID: string;
-  file: string;
-  author: string;
-  title: string;
-}
-
-interface Resource {
-  thumbnail: string;
-  map?: string;
-  lifechart?: string;
-}
 
 const speciesResources: { [key: string]: Resource } = resources;
 

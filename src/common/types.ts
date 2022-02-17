@@ -1,10 +1,3 @@
-export interface Image {
-  speciesID: string;
-  file: string;
-  author: string;
-  title: string;
-}
-
 export interface Species {
   id: string;
   type: string;
@@ -29,6 +22,19 @@ export interface Species {
   thumbnail: string;
   map: string;
   lifechart: string;
-  images: Image[];
+  images: Photo[];
   country: string[];
+}
+
+export interface Photo {
+  speciesID: string;
+  file: string;
+  author: string;
+  title: string;
+}
+
+export interface Resource {
+  thumbnail: string;
+  map?: string;
+  lifechart?: string;
 }
