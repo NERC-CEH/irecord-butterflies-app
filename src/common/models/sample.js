@@ -184,6 +184,17 @@ class AppSample extends Sample {
 
     return '';
   }
+
+  getSurveySpeciesFilters() {
+    const survey = this.getSurvey();
+    if (survey.name === 'single-species-count') {
+      return {
+        survey: ['single-species-count'],
+      };
+    }
+
+    return null;
+  }
 }
 
 export default AppSample;

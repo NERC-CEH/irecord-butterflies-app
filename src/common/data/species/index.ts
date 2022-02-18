@@ -30,6 +30,7 @@ interface SpeciesInfo {
   thumbnail: string;
   map: string;
   lifechart: string;
+  survey?: string[];
 }
 
 interface Photo {

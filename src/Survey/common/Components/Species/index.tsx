@@ -2,6 +2,7 @@ import React, { FC, useContext, useState } from 'react';
 import Sample from 'models/sample';
 import Occurrence from 'models/occurrence';
 import appModel from 'models/app';
+import { Filters } from 'models/app.d';
 import { NavContext } from '@ionic/react';
 import { Page } from '@apps';
 import { observer } from 'mobx-react';
@@ -25,6 +26,11 @@ const SpeciesSelect: FC<Props> = ({
   const { navigate, goBack } = useContext(NavContext);
 
   const [searchPhrase, setSearchPhrase] = useState('');
+  const [surveyFilters, setSurveyFilters] = useState<Filters | null>(
+    sample.getSurveySpeciesFilters()
+  );
+
+  const filters = { ...surveyFilters, ...appModel.attrs.filters };
 
   function onSelect(species: Species) {
     const navNextPath = sample.setSpecies(species, occurrence);
@@ -41,19 +47,28 @@ const SpeciesSelect: FC<Props> = ({
   const getSpeciesID = (occ: typeof Occurrence) => (occ.attrs.taxon || {}).id;
   const currentSpecies = sample.occurrences.map(getSpeciesID);
 
+  const toggleFilter = (type: string, value: string) => {
+    if (type === 'survey') {
+      // this only belongs in memory and reset for each survey
+      setSurveyFilters(null);
+      return;
+    }
+    appModel.toggleFilter(type, value);
+  };
+
   return (
     <Page id="species-attr">
       <Header
         onSearch={setSearchPhrase}
-        toggleFilter={appModel.toggleFilter}
-        filters={appModel?.attrs?.filters}
+        toggleFilter={toggleFilter}
+        filters={filters}
         BackButton={BackButton}
         title={title}
       />
       <Main
         onSelect={onSelect}
         searchPhrase={searchPhrase}
-        filters={appModel.attrs.filters}
+        filters={filters}
         ignore={currentSpecies}
       />
     </Page>

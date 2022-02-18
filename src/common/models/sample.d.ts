@@ -1,4 +1,5 @@
 import { Species } from 'common/data/species';
+import { Filters } from 'models/app.d';
 import occurrenceModel from './occurrence';
 
 declare const appModel: {
@@ -50,6 +51,7 @@ declare const appModel: {
   setSpecies: (species: Species, occurrence?: occurrenceModel) => string;
   isSurveySingleSpeciesTimedCount: () => boolean;
   uploadAll: any;
+  getSurveySpeciesFilters: () => null | Filters;
 };
 
 export default appModel;

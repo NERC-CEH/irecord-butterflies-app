@@ -15,6 +15,7 @@ import {
 } from '@ionic/react';
 import { Main, InfoBackgroundMessage, UserFeedbackRequest } from '@apps';
 import appModel from 'models/app';
+import { FilterGroup, Filter, Filters } from 'models/app.d';
 import { arrowBack, informationCircleOutline } from 'ionicons/icons';
 import species, { Species } from 'common/data/species';
 import config from 'common/config';
@@ -78,12 +79,6 @@ const shouldShowFeedback = () => {
 function escapeRegexCharacters(str: string) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
-
-type FilterGroup = 'colour' | 'markings' | 'size' | 'group' | 'country';
-type Filter = string;
-type Filters = {
-  [key in FilterGroup]: Filter[];
-};
 
 type Props = {
   filters: Filters;
