@@ -23,17 +23,15 @@ const OccurrenceHomeWrap = ({ occurrence }) => (
   <OccurrenceHome occurrence={occurrence} />
 );
 
-const SpeciesWrap = props => <Species appModel={appModel} {...props} />;
-
 const routes = [
   [`${baseURL}`, StartNewSurvey.with(survey), true],
   [`${baseURL}/:smpId`, HomeWrap],
   [`${baseURL}/:smpId/:attr`, AttrPageFromRoute],
   [`${baseURL}/:smpId/occ/:occId`, OccurrenceHomeWrap],
   [`${baseURL}/:smpId/occ/:occId/:attr`, AttrPageFromRoute],
-  [`${baseURL}/:smpId/occ/:occId/species`, SpeciesWrap],
+  [`${baseURL}/:smpId/occ/:occId/species`, Species],
   [`${baseURL}/:smpId/location`, ModelLocationWithInfo],
-  [`${baseURL}/:smpId/species`, SpeciesWrap],
+  [`${baseURL}/:smpId/species`, Species],
 ];
 
 export default RouteWithModels.fromArray(savedSamples, routes);

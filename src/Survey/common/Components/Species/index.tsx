@@ -1,11 +1,11 @@
 import React, { FC, useContext, useState } from 'react';
 import Sample from 'models/sample';
 import Occurrence from 'models/occurrence';
-import AppModelTypes from 'models/app';
+import appModel from 'models/app';
 import { NavContext } from '@ionic/react';
 import { Page } from '@apps';
 import { observer } from 'mobx-react';
-import Main from 'common/Components/Species';
+import Main from 'common/Components/SpeciesList';
 import { useRouteMatch } from 'react-router';
 import { Species } from 'common/data/species';
 import Header from './Header';
@@ -13,7 +13,6 @@ import Header from './Header';
 type Props = {
   sample: typeof Sample;
   occurrence: typeof Occurrence;
-  appModel: typeof AppModelTypes;
   title?: string;
   BackButton?: React.ElementType;
 };
@@ -21,7 +20,6 @@ type Props = {
 const SpeciesSelect: FC<Props> = ({
   sample,
   occurrence,
-  appModel,
   title,
   BackButton,
 }) => {
@@ -96,7 +94,7 @@ const SpeciesSelect: FC<Props> = ({
       <Main
         onSelect={onSelect}
         searchPhrase={searchPhrase}
-        filters={appModel?.attrs?.filters}
+        filters={appModel.attrs.filters}
         ignore={currentSpecies}
       />
     </Page>

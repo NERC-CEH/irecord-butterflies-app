@@ -92,7 +92,7 @@ type Props = {
   searchPhrase?: string;
 };
 
-const SpeciesMainComponent: FC<Props> = ({
+const SpeciesList: FC<Props> = ({
   filters = {},
   onSelect,
   ignore = [],
@@ -317,4 +317,4 @@ const SpeciesMainComponent: FC<Props> = ({
   );
 };
 
-export default observer(SpeciesMainComponent);
+export default observer(SpeciesList);

@@ -24,7 +24,6 @@ const SpeciesWrap = (props: any) => {
 
   return (
     <Species
-      appModel={appModel}
       BackButton={CancelButtonWrap}
       title="Select Target Species"
       {...props}
