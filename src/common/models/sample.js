@@ -149,6 +149,41 @@ class AppSample extends Sample {
 
     return true;
   }
+
+  setSpecies(species, occurrence) {
+    const survey = this.getSurvey();
+
+    if (survey.name === 'point') {
+      this.occurrences[0].attrs.taxon = species; // eslint-disable-line
+    }
+
+    if (survey.name === 'single-species-count') {
+      const zeroAbundance = 't';
+      const { defaultStage } = this.attrs;
+      const newSubSample = survey.smp.create(
+        AppSample,
+        Occurrence,
+        species,
+        zeroAbundance,
+        defaultStage
+      );
+
+      this.samples.push(newSubSample);
+
+      return this.getCurrentEditRoute();
+    }
+
+    if (survey.name === 'list') {
+      if (occurrence) {
+        occurrence.attrs.taxon = species; // eslint-disable-line
+      } else {
+        const occ = survey.occ.create(Occurrence, species);
+        this.occurrences.push(occ);
+      }
+    }
+
+    return '';
+  }
 }
 
 export default AppSample;

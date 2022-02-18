@@ -6,7 +6,6 @@ import { NavContext } from '@ionic/react';
 import { Page } from '@apps';
 import { observer } from 'mobx-react';
 import Main from 'common/Components/SpeciesList';
-import { useRouteMatch } from 'react-router';
 import { Species } from 'common/data/species';
 import Header from './Header';
 
@@ -24,47 +23,18 @@ const SpeciesSelect: FC<Props> = ({
   BackButton,
 }) => {
   const { navigate, goBack } = useContext(NavContext);
-  const match = useRouteMatch();
 
   const [searchPhrase, setSearchPhrase] = useState('');
 
   function onSelect(species: Species) {
-    const survey = sample.getSurvey();
+    const navNextPath = sample.setSpecies(species, occurrence);
+    sample.save();
 
-    if (survey.name === 'point') {
-      sample.occurrences[0].attrs.taxon = species; // eslint-disable-line
-    }
-
-    if (survey.name === 'single-species-count') {
-      const zeroAbundance = 't';
-      const { defaultStage } = sample.attrs;
-      const newSubSample = survey.smp.create(
-        Sample,
-        Occurrence,
-        species,
-        zeroAbundance,
-        defaultStage
-      );
-
-      sample.samples.push(newSubSample);
-      sample.save();
-
-      const url = match.url.replace('/species', '/details');
-      navigate(url, 'forward', 'pop');
-
+    if (navNextPath) {
+      navigate(navNextPath, 'forward', 'pop');
       return;
     }
 
-    if (survey.name === 'list') {
-      if (occurrence) {
-        occurrence.attrs.taxon = species; // eslint-disable-line
-      } else {
-        const occ = survey.occ.create(Occurrence, species);
-        sample.occurrences.push(occ);
-      }
-    }
-
-    sample.save();
     goBack();
   }
 

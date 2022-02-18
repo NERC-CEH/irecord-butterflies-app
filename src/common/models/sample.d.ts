@@ -1,3 +1,4 @@
+import { Species } from 'common/data/species';
 import occurrenceModel from './occurrence';
 
 declare const appModel: {
@@ -46,6 +47,7 @@ declare const appModel: {
   isTimerPaused: () => boolean;
   startMetOfficePull: any;
   cleanUp: () => void;
+  setSpecies: (species: Species, occurrence?: occurrenceModel) => string;
   isSurveySingleSpeciesTimedCount: () => boolean;
   uploadAll: any;
 };
