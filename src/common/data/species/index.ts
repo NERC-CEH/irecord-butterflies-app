@@ -1,18 +1,56 @@
 import mothThumbnail from 'common/images/mothThumbnailSmall.svg';
 import butterflyThumbnail from 'common/images/butterflyIcon.svg';
-import { Species, Photo, Resource } from 'common/types';
 import species from './cache/species.json';
 import * as resources from './other';
 import photos from './cache/photos.json';
 import './photos'; // webpack-loading only
 import './photos-moth'; // webpack-loading only
 
+interface SpeciesInfo {
+  id: string;
+  type: string;
+  warehouseId: number;
+  commonName: string;
+  scientificName: string;
+  status: string;
+  group: string;
+  family: string;
+  colour: string[];
+  markings: string[];
+  england: string;
+  scotland: string;
+  wales: string;
+  'northern ireland': string;
+  'isle of man': string;
+  size: string[];
+  idTips: string;
+  habitats: string;
+  ukStatus: string;
+  webLink: string;
+  thumbnail: string;
+  map: string;
+  lifechart: string;
+}
+
+interface Photo {
+  speciesID: string;
+  file: string;
+  author: string;
+  title: string;
+}
+
+interface Resource {
+  thumbnail: string;
+  map?: string;
+  lifechart?: string;
+}
+
 const speciesResources: { [key: string]: Resource } = resources;
 
-type ExtendedResource = Species &
-  Resource & { images: Photo[] } & { country: string[] };
+export type Species = SpeciesInfo &
+  Resource & { images: Photo[]; country: string[] };
 
-const extendWithResources = (sp: Species): ExtendedResource => {
+const extendWithResources = (sp: SpeciesInfo): Species => {
   const bySpeciesID = ({ speciesID }: Photo) => speciesID === sp.id;
 
   const removeJpg = (photo: Photo) => ({
@@ -49,7 +87,9 @@ const extendWithResources = (sp: Species): ExtendedResource => {
   return { ...spExt, thumbnail };
 };
 
-const extendedSpecies = (species as Species[]).map(extendWithResources);
+const extendedSpecies: Species[] = (species as SpeciesInfo[]).map(
+  extendWithResources
+);
 
 /* After adding new images run this script to quick-check all are present */
 // (async () => {

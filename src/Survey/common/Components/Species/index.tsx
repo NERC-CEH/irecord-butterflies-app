@@ -7,7 +7,7 @@ import { Page } from '@apps';
 import { observer } from 'mobx-react';
 import Main from 'common/Components/Species';
 import { useRouteMatch } from 'react-router';
-import { Species } from 'common/types';
+import { Species } from 'common/data/species';
 import Header from './Header';
 
 type Props = {
