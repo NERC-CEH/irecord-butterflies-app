@@ -30,14 +30,9 @@ const SpeciesSelect: FC<Props> = ({
 
   function onSelect(species: Species) {
     const survey = sample.getSurvey();
+
     if (survey.name === 'point') {
-      const occ = sample.occurrences[0];
-      if (!occ) {
-        // TODO: remove this check after Beta
-        console.error('No occurrence found when setting species');
-        return;
-      }
-      occ.attrs.taxon = species; // eslint-disable-line
+      sample.occurrences[0].attrs.taxon = species; // eslint-disable-line
     }
 
     if (survey.name === 'single-species-count') {
