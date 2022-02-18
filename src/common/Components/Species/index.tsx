@@ -1,7 +1,5 @@
+import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react';
-import React from 'react';
-import PropTypes from 'prop-types';
-import exact from 'prop-types-exact';
 import {
   IonGrid,
   IonItemDivider,
@@ -18,16 +16,17 @@ import {
 import { Main, InfoBackgroundMessage, UserFeedbackRequest } from '@apps';
 import appModel from 'models/app';
 import { arrowBack, informationCircleOutline } from 'ionicons/icons';
-import species from 'common/data/species';
+import species, { Species } from 'common/data/species';
 import config from 'common/config';
 import getCurrentWeekNumber from 'helpers/weeks';
 import getProbabilities from 'common/data/species/probabilities';
 import SpeciesProfile from './components/SpeciesProfile';
 import './styles.scss';
 
-const byName = (sp1, sp2) => sp1.commonName.localeCompare(sp2.commonName);
+const byName = (sp1: Species, sp2: Species) =>
+  sp1.commonName.localeCompare(sp2.commonName);
 
-function organiseByProbability(allSpecies) {
+function organiseByProbability(allSpecies: Species[]) {
   const location = appModel.attrs.location || {};
   const currentLocation = location.gridref;
   const currentWeek = getCurrentWeekNumber();
@@ -36,20 +35,28 @@ function organiseByProbability(allSpecies) {
     currentWeek,
     currentLocation
   );
-  const isProbable = probs => ({ id }) => probs[id] >= 0; //eslint-disable-line
-  const byProbability = probs => (s1, s2) => probs[s2.id] - probs[s1.id]; //eslint-disable-line
+
+  const isProbableHOF = (probs: any) => {
+    const isProbable = ({ id }: Species) => probs[id] >= 0;
+    return isProbable;
+  };
+  const byProbabilityHOF = (probs: any) => {
+    const byProbability = (s1: Species, s2: Species) =>
+      probs[s2.id] - probs[s1.id];
+    return byProbability;
+  };
 
   const speciesHereAndNow = allSpecies
-    .filter(isProbable(probsNowAndHere))
-    .sort(byProbability(probsNowAndHere));
+    .filter(isProbableHOF(probsNowAndHere))
+    .sort(byProbabilityHOF(probsNowAndHere));
 
-  const speciesHere = allSpecies.filter(isProbable(probsHere)).sort(byName);
+  const speciesHere = allSpecies.filter(isProbableHOF(probsHere)).sort(byName);
 
   const speciesNow = allSpecies
-    .filter(isProbable(probsNow))
-    .sort(byProbability(probsNow));
+    .filter(isProbableHOF(probsNow))
+    .sort(byProbabilityHOF(probsNow));
 
-  const notInProbableLists = sp =>
+  const notInProbableLists = (sp: Species) =>
     !speciesHereAndNow.includes(sp) &&
     !speciesHere.includes(sp) &&
     !speciesNow.includes(sp);
@@ -68,45 +75,49 @@ const shouldShowFeedback = () => {
 };
 
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
-function escapeRegexCharacters(str) {
+function escapeRegexCharacters(str: string) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-@observer
-class SpeciesMainComponent extends React.Component {
-  static propTypes = exact({
-    filters: PropTypes.object.isRequired,
-    onSelect: PropTypes.func,
-    ignore: PropTypes.array,
-    searchPhrase: PropTypes.string,
-  });
+type FilterGroup = 'colour' | 'markings' | 'size' | 'group' | 'country';
+type Filter = string;
+type Filters = {
+  [key in FilterGroup]: Filter[];
+};
 
-  state = {
-    species: null,
-  };
+type Props = {
+  filters: Filters;
+  onSelect?: (sp: Species) => void;
+  ignore?: any[];
+  searchPhrase?: string;
+};
 
-  onFeedbackDone = () => {
+const SpeciesMainComponent: FC<Props> = ({
+  filters = {},
+  onSelect,
+  ignore = [],
+  searchPhrase = '',
+}) => {
+  const [speciesProfile, setSpeciesProfile] = useState<Species | null>(null);
+
+  const onFeedbackDone = () => {
     appModel.attrs.feedbackGiven = true;
     appModel.save();
   };
 
-  hideSpeciesModal = () => {
-    this.setState({ species: null });
-  };
+  const hideSpeciesModal = () => setSpeciesProfile(null);
 
-  getSpeciesTile = (sp, i) => {
-    const { onSelect } = this.props;
-
+  const getSpeciesTile = (sp: Species, i: number) => {
     const { commonName, thumbnail: thumbnailSrc } = sp;
 
     const isSurvey = !!onSelect;
-    const viewSpecies = e => {
+    const viewSpecies = (e: any) => {
       e.preventDefault();
       e.stopPropagation();
-      this.setState({ species: sp });
+      setSpeciesProfile(sp);
     };
 
-    const selectSpecies = () => onSelect(sp);
+    const selectSpecies = () => onSelect && onSelect(sp);
 
     const onClick = isSurvey ? selectSpecies : viewSpecies;
 
@@ -134,23 +145,22 @@ class SpeciesMainComponent extends React.Component {
     );
   };
 
-  getSpeciesData = () => {
-    const { searchPhrase, filters = {}, ignore = [] } = this.props;
+  const getSpeciesData = () => {
     const { useMoths } = appModel.attrs;
 
-    let filteredSpecies = [...species];
+    let filteredSpecies: Species[] = [...species];
 
     if (ignore.length) {
-      const skipIgnored = ({ id }) => !ignore.includes(id);
+      const skipIgnored = ({ id }: Species) => !ignore.includes(id);
       filteredSpecies = filteredSpecies.filter(skipIgnored);
     }
 
     if (!useMoths) {
-      const isNotMoth = ({ type }) => type !== 'moth';
+      const isNotMoth = ({ type }: Species) => type !== 'moth';
       filteredSpecies = filteredSpecies.filter(isNotMoth);
     }
 
-    const filterBySearchPhrase = sp => {
+    const filterBySearchPhrase = (sp: Species) => {
       const re = new RegExp(escapeRegexCharacters(searchPhrase), 'i');
       return re.test(sp.commonName);
     };
@@ -160,19 +170,25 @@ class SpeciesMainComponent extends React.Component {
     }
 
     if (Object.keys(filters).length) {
-      const processFilterType = ([type, values]) => {
-        const speciesMatchesFilter = sp => {
-          if (!values.length) {
+      const processFilterType = ([key, values]: any) => {
+        const filterGroup = key as FilterGroup;
+        const filterGroupValues = values as Filter[];
+
+        const speciesMatchesFilter = (sp: Species) => {
+          if (!filterGroupValues.length) {
             return true;
           }
 
-          if (Array.isArray(sp[type])) {
-            const matchesSpeciesValues = v => values.includes(v);
-            const intersection = sp[type].filter(matchesSpeciesValues);
+          if (Array.isArray(sp[filterGroup])) {
+            const matchesSpeciesValues = (v: Filter) =>
+              filterGroupValues.includes(v);
+            const intersection = (sp[filterGroup] as Filter[]).filter(
+              matchesSpeciesValues
+            );
             return intersection.length;
           }
 
-          return values.includes(sp[type]);
+          return filterGroupValues.includes(sp[filterGroup] as Filter);
         };
 
         filteredSpecies = filteredSpecies.filter(speciesMatchesFilter);
@@ -184,8 +200,8 @@ class SpeciesMainComponent extends React.Component {
     return filteredSpecies;
   };
 
-  getSpecies = () => {
-    const speciesData = this.getSpeciesData();
+  const getSpecies = () => {
+    const speciesData = getSpeciesData();
     const { useProbabilitiesForGuide, useSmartSorting } = appModel.attrs;
 
     const [
@@ -200,13 +216,13 @@ class SpeciesMainComponent extends React.Component {
     const hasSpeciesNow = !!speciesNow.length;
     const hasAdditional = !!remainingSpecies.length;
 
-    const alphabetically = (sp1, sp2) =>
+    const alphabetically = (sp1: Species, sp2: Species) =>
       sp1.commonName.localeCompare(sp2.commonName);
 
-    const speciesTiles = speciesList =>
+    const speciesTiles = (speciesList: Species[]) =>
       useSmartSorting
-        ? speciesList.map(this.getSpeciesTile)
-        : speciesList.sort(alphabetically).map(this.getSpeciesTile);
+        ? speciesList.map(getSpeciesTile)
+        : speciesList.sort(alphabetically).map(getSpeciesTile);
 
     if (
       !hasSpeciesHereAndNow &&
@@ -222,7 +238,7 @@ class SpeciesMainComponent extends React.Component {
     }
 
     if (!useProbabilitiesForGuide) {
-      return speciesData.sort(alphabetically).map(this.getSpeciesTile);
+      return speciesData.sort(alphabetically).map(getSpeciesTile);
     }
 
     return (
@@ -261,51 +277,44 @@ class SpeciesMainComponent extends React.Component {
     );
   };
 
-  render() {
-    const { onSelect } = this.props;
-    const showFeedback = shouldShowFeedback();
+  const showFeedback = shouldShowFeedback();
 
-    return (
-      <Main className="species-list">
-        <IonGrid>
-          {showFeedback && (
-            <IonRow className="user-feedback-row">
-              <IonCol size="12">
-                <UserFeedbackRequest
-                  email={config.feedbackEmail}
-                  onFeedbackDone={this.onFeedbackDone}
-                />
-              </IonCol>
-            </IonRow>
-          )}
+  return (
+    <Main className="species-list">
+      <IonGrid>
+        {showFeedback && (
+          <IonRow className="user-feedback-row">
+            <IonCol size="12">
+              <UserFeedbackRequest
+                email={config.feedbackEmail}
+                onFeedbackDone={onFeedbackDone}
+              />
+            </IonCol>
+          </IonRow>
+        )}
 
-          <IonRow>{this.getSpecies()}</IonRow>
-        </IonGrid>
+        <IonRow>{getSpecies()}</IonRow>
+      </IonGrid>
 
-        <IonModal
-          isOpen={!!this.state.species}
-          backdropDismiss={false}
-          mode="md"
-        >
-          <IonHeader className="species-modal-header">
-            <IonToolbar>
-              <IonButtons slot="start">
-                <IonButton onClick={this.hideSpeciesModal}>
-                  <IonIcon slot="icon-only" icon={arrowBack} />
-                </IonButton>
-              </IonButtons>
-            </IonToolbar>
-          </IonHeader>
+      <IonModal isOpen={!!speciesProfile} backdropDismiss={false} mode="md">
+        <IonHeader className="species-modal-header">
+          <IonToolbar>
+            <IonButtons slot="start">
+              <IonButton onClick={hideSpeciesModal}>
+                <IonIcon slot="icon-only" icon={arrowBack} />
+              </IonButton>
+            </IonButtons>
+          </IonToolbar>
+        </IonHeader>
 
-          <SpeciesProfile
-            species={this.state.species}
-            onRecord={this.hideSpeciesModal}
-            isSurvey={!!onSelect}
-          />
-        </IonModal>
-      </Main>
-    );
-  }
-}
+        <SpeciesProfile
+          species={speciesProfile}
+          onRecord={hideSpeciesModal}
+          isSurvey={!!onSelect}
+        />
+      </IonModal>
+    </Main>
+  );
+};
 
-export default SpeciesMainComponent;
+export default observer(SpeciesMainComponent);
