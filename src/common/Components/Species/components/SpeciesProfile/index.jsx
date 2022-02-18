@@ -215,31 +215,30 @@ class SpeciesProfile extends React.Component {
             </h3>
             <p>{species.ukStatus}</p>
 
-            {species.lifechart ||
-              (species.whenToSee && (
-                <>
-                  <h3>
-                    <T>When to see</T>:
-                  </h3>
-                  {species.lifechart && (
-                    <div
-                      className="fullscreen-tappable"
-                      onClick={this.showshowLifechartInFullScreen}
-                    >
-                      <div className="fullscreen-btn">
-                        <IonIcon
-                          src={expandOutline}
-                          slot="end"
-                          color="secondary"
-                        />
-                      </div>
-                      <img src={species.lifechart} />
+            {(species.lifechart || species.whenToSee) && (
+              <>
+                <h3>
+                  <T>When to see</T>:
+                </h3>
+                {species.lifechart && (
+                  <div
+                    className="fullscreen-tappable"
+                    onClick={this.showshowLifechartInFullScreen}
+                  >
+                    <div className="fullscreen-btn">
+                      <IonIcon
+                        src={expandOutline}
+                        slot="end"
+                        color="secondary"
+                      />
                     </div>
-                  )}
+                    <img src={species.lifechart} />
+                  </div>
+                )}
 
-                  {species.whenToSee && <p>{species.whenToSee}</p>}
-                </>
-              ))}
+                {species.whenToSee && <p>{species.whenToSee}</p>}
+              </>
+            )}
 
             {species.map && (
               <>
