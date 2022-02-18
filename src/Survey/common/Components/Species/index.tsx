@@ -74,13 +74,7 @@ const SpeciesSelect: FC<Props> = ({
   }
 
   const getSpeciesID = (occ: typeof Occurrence) => (occ.attrs.taxon || {}).id;
-
-  const isSpeciesSelected = sample?.samples[0]?.occurrences || [];
-  const isSurveySingleCount = sample.isSurveySingleSpeciesTimedCount()
-    ? isSpeciesSelected
-    : sample.occurrences;
-
-  const currentSpecies = isSurveySingleCount.map(getSpeciesID);
+  const currentSpecies = sample.occurrences.map(getSpeciesID);
 
   return (
     <Page id="species-attr">
