@@ -185,6 +185,12 @@ class AppSample extends Sample {
     return '';
   }
 
+  hasRecordBeenVerified = () => {
+    const hasBeenVerified = occ => occ.metadata?.verification;
+
+    return this.isUploaded() && !!this.occurrences.some(hasBeenVerified);
+  };
+
   getSurveySpeciesFilters() {
     const survey = this.getSurvey();
     if (survey.name === 'single-species-count') {
@@ -194,6 +200,15 @@ class AppSample extends Sample {
     }
 
     return null;
+  }
+
+  async saveRemote() {
+    console.log('upload');
+    this.remote.synchronising = true;
+    // eslint-disable-next-line @getify/proper-arrows/name
+    await new Promise(resolve => setTimeout(() => resolve(), 1500));
+    this.remote.synchronising = false;
+    this.metadata.synced_on = Date.now();
   }
 }
 

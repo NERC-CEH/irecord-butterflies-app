@@ -348,3 +348,55 @@ html.plt-tablet {
   width: initial;
   margin: 0px 10px;
 }
+
+.updated-records-dialog {
+  margin-top: 10px;
+  --padding-start: 0;
+
+  ion-checkbox {
+    margin-right: 10px;
+  }
+}
+
+ion-content.disable-top-padding {
+  --padding-top: 0 !important;
+}
+
+ion-icon[slot='end'].verificationIcon {
+  background: #ff5151;
+  color: white;
+  border-radius: 3px !important;
+  --ionicon-stroke-width: 2em;
+  font-size: 1.2em;
+}
+
+ion-icon[slot='end'].verificationIcon.id-green {
+  background: #29d46e !important;
+}
+
+ion-icon[slot='end'].verificationIcon.id-amber {
+  background: orange !important;
+}
+
+ion-icon[slot='end'].verificationIcon.id-red {
+  background: #ff5151 !important;
+}
+
+ion-label[slot='end'].verificationIcon {
+  max-width: 25px;
+  color: white;
+  margin: 0;
+  text-align: center;
+}
+
+ion-label[slot='end'].verificationIcon.id-green {
+  background: #29d46e !important;
+}
+
+ion-label[slot='end'].verificationIcon.id-amber {
+  background: orange !important;
+}
+
+ion-label[slot='end'].verificationIcon.id-red {
+  background: #ff5151 !important;
+}

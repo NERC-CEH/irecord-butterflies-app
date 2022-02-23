@@ -1,0 +1,39 @@
+.verification-message {
+  --border-width: 0 !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+
+  ion-label {
+    padding: 10px 0;
+  }
+
+  &.verified {
+    --background: #dffdec;
+    ion-icon,
+    .info-button,
+    ion-label ion-note {
+      color: #0a3100 !important;
+      --border-color: #0a3100;
+    }
+  }
+
+  &.plausible {
+    --background: #fae0b0;
+    ion-icon,
+    .info-button,
+    ion-label ion-note {
+      color: #3e0600 !important;
+      --border-color: #3e0600;
+    }
+  }
+
+  &.rejected {
+    --background: #ffd7d5;
+    ion-icon,
+    .info-button,
+    ion-label ion-note {
+      color: #4a3610 !important;
+      --border-color: #4a3610;
+    }
+  }
+}

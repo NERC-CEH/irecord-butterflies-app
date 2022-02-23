@@ -13,6 +13,9 @@ declare const occurrenceModel: {
   isDisabled: () => boolean;
   destroy: () => void;
   save: () => void;
+  getVerificationStatus: () => string;
+  getVerificationStatusMessage: () => string;
+  isUploaded: () => boolean;
 };
 
 export default occurrenceModel;

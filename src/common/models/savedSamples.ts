@@ -2,6 +2,8 @@ import { initStoredSamples } from '@apps';
 import { modelStore } from './store';
 import Sample from './sample';
 import userModel from './user';
+import appModel from './app';
+import remotePullExtInit from './savedSamplesRemotePullExt';
 
 console.log('SavedSamples: initializing');
 const savedSamples = initStoredSamples(modelStore, Sample);
@@ -16,5 +18,7 @@ savedSamples.uploadAll = async () => {
   console.log('SavedSamples: all records were uploaded!');
   userModel.refreshUploadCountStat();
 };
+
+remotePullExtInit(savedSamples, userModel, appModel);
 
 export default savedSamples;

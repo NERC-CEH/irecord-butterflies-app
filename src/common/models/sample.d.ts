@@ -13,6 +13,10 @@ declare const appModel: {
   attrs: any;
   metadata: any;
 
+  remote: {
+    synchronising: boolean;
+  };
+
   samples: appModel[];
 
   occurrences: occurrenceModel[];
@@ -52,6 +56,8 @@ declare const appModel: {
   isSurveySingleSpeciesTimedCount: () => boolean;
   uploadAll: any;
   getSurveySpeciesFilters: () => null | Filters;
+  hasRecordBeenVerified: () => boolean;
+  getCurrentEditRoute: () => string;
 };
 
 export default appModel;

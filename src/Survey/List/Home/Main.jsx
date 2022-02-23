@@ -19,6 +19,7 @@ import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
 import InfoBackgroundMessage from 'common/Components/InfoBackgroundMessage';
+import VerificationIcon from 'common/Components/VerificationIcon';
 import config from 'common/config';
 
 const speciesNameSort = (occ1, occ2) => {
@@ -136,7 +137,11 @@ function HomeMain({
 
       return (
         <IonItemSliding key={occ.cid}>
-          <IonItem detail={!isSpeciesDisabled}>
+          <IonItem
+            detail={!isSpeciesDisabled && !sample.hasRecordBeenVerified()}
+          >
+            <VerificationIcon occ={occ} />
+
             <IonButton
               class="area-count-edit-count"
               onClick={increaseCountWrap}
