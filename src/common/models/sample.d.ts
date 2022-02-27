@@ -24,7 +24,11 @@ declare const appModel: {
   hasZeroAbundance: () => boolean;
   destroy: () => void;
   save: () => void;
-  upload: (a?: any, b?: any) => void;
+  upload: (
+    skipInvalidsMessage?: boolean,
+    skipRefreshUploadCountStat?: boolean,
+    skipActivationCheckForUploadAll?: boolean
+  ) => void;
 
   // should return config
   getSurvey: () => any;

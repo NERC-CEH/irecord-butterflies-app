@@ -10,7 +10,7 @@ const savedSamples = initStoredSamples(modelStore, Sample);
 savedSamples.uploadAll = async () => {
   console.log('SavedSamples: uploading all.');
   const getUploadPromise = (s: typeof Sample) =>
-    !s.isUploaded() && s.upload(true, true);
+    !s.isUploaded() && s.upload(true, true, true);
   await Promise.all(savedSamples.map(getUploadPromise));
 
   console.log('SavedSamples: all records were uploaded!');

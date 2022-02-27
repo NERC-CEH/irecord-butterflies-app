@@ -92,7 +92,11 @@ class AppSample extends Sample {
     return `/survey/${this.metadata.survey}/${this.cid}`;
   };
 
-  async upload(skipInvalidsMessage, skipRefreshUploadCountStat) {
+  async upload(
+    skipInvalidsMessage,
+    skipRefreshUploadCountStat,
+    skipActivationCheckForUploadAll
+  ) {
     if (this.remote.synchronising) {
       return true;
     }
@@ -108,31 +112,33 @@ class AppSample extends Sample {
       return false;
     }
 
-    const isActivated = await userModel.checkActivation(true);
-    if (!isActivated) {
-      alert({
-        message: (
-          <>
-            <IonNote color="warning">
-              <b>Looks like your email hasn't been verified yet.</b>
-            </IonNote>
-            <p>Should we resend the verification email?</p>
-          </>
-        ),
-        buttons: [
-          {
-            text: 'Cancel',
-            role: 'cancel',
-            cssClass: 'secondary',
-          },
-          {
-            text: 'Resend',
-            cssClass: 'primary',
-            handler: () => userModel.resendVerificationEmail(),
-          },
-        ],
-      });
-      return false;
+    if (!skipActivationCheckForUploadAll) {
+      const isActivated = await userModel.checkActivation(true);
+      if (!isActivated) {
+        alert({
+          message: (
+            <>
+              <IonNote color="warning">
+                <b>Looks like your email hasn't been verified yet.</b>
+              </IonNote>
+              <p>Should we resend the verification email?</p>
+            </>
+          ),
+          buttons: [
+            {
+              text: 'Cancel',
+              role: 'cancel',
+              cssClass: 'secondary',
+            },
+            {
+              text: 'Resend',
+              cssClass: 'primary',
+              handler: () => userModel.resendVerificationEmail(),
+            },
+          ],
+        });
+        return false;
+      }
     }
 
     this.cleanUp();

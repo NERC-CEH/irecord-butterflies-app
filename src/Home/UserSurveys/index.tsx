@@ -67,7 +67,15 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
     return surveysList;
   };
 
-  const onUploadAll = () => savedSamples.uploadAll();
+  const onUploadAll = () => {
+    const isLoggedIn = !!userModel.hasLogIn();
+    if (!isLoggedIn) {
+      navigate(`/user/login`);
+      return null;
+    }
+
+    return savedSamples.uploadAll();
+  };
 
   const getUploadedSurveys = () => {
     const surveys = getSamplesList(true);
