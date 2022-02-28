@@ -14,7 +14,7 @@ const getVerificationText = (
   taxonName: string
 ) => {
   const verifierName = verificationObject?.verifier?.name;
-  const verifyDate = verificationObject?.verified_on.split(' ')[0];
+  const verifyDate = verificationObject?.verified_on?.split(' ')[0];
 
   const hasVerifyDetails = verifierName && verifyDate;
 

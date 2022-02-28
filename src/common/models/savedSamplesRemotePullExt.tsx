@@ -201,16 +201,16 @@ function init(
       formattedTimestamp
     );
 
-    // eslint-disable-next-line no-param-reassign
-    appModel.attrs.verifiedRecordsTimestamp = new Date().getTime();
-    appModel.save();
-
     const updatedLocalSamples = await appendVerificationAndReturnOccurrences(
       savedSamples,
       updatedRemoteSamples
     );
 
-    if (!updatedLocalSamples.length) return;
+    if (!updatedLocalSamples?.length) return;
+
+    // eslint-disable-next-line no-param-reassign
+    appModel.attrs.verifiedRecordsTimestamp = new Date().getTime();
+    appModel.save();
 
     showVerifiedRecordsNotification &&
       alert({
