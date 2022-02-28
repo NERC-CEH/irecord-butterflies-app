@@ -69,7 +69,7 @@ const getVerificationText = (
         </h2>
 
         <p>
-          Thanks for sending in your record. app. We do not think this is{' '}
+          Thanks for sending in your record. We do not think this is{' '}
           <b>{taxonName}</b> species.
         </p>
 
