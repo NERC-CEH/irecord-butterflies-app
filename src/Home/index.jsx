@@ -125,15 +125,6 @@ class HomeComponent extends React.Component {
               label="Record"
             >
               <IonFabList side="top">
-                <IonFabButton
-                  class="fab-button-label"
-                  routerLink="/survey/list"
-                >
-                  <IonLabel>
-                    <T>Species list</T>
-                  </IonLabel>
-                </IonFabButton>
-
                 {useExperiments && (
                   <IonFabButton
                     class="fab-button-label"
@@ -145,6 +136,14 @@ class HomeComponent extends React.Component {
                   </IonFabButton>
                 )}
 
+                <IonFabButton
+                  class="fab-button-label"
+                  routerLink="/survey/list"
+                >
+                  <IonLabel>
+                    <T>Species list</T>
+                  </IonLabel>
+                </IonFabButton>
                 <div className="long-press-surveys-label">
                   <T>Click on other recording options from list below</T>
                 </div>
