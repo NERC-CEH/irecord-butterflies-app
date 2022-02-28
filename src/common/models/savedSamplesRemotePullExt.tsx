@@ -131,6 +131,8 @@ function appendVerificationAndReturnOccurrences(
   if (updatedRemoteSamples.length <= 0) return updatedSamples;
 
   const findMatchingLocalSamples = (sample: typeof Sample) => {
+    if (sample.isSurveySingleSpeciesTimedCount()) return;
+
     const appendVerification = (occ: typeof Occurrence) => {
       const updatedSample = updatedRemoteSamples[occ.cid];
 
