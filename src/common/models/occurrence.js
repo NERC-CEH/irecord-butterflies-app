@@ -69,6 +69,7 @@ export default class AppOccurrence extends Occurrence {
       R4: 'Not accepted as unable to verify',
       R5: 'Not accepted as correct',
 
+      // not supported
       D: 'Dubious',
       T: 'Test',
       I: 'Incomplete',
