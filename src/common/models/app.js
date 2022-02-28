@@ -92,6 +92,9 @@ const defaults = {
   showStatsWIPTip: true,
   showListSurveyHiddenButtonTip: true,
 
+  showVerifiedRecordsNotification: true,
+  verifiedRecordsTimestamp: null,
+
   filters: {},
 };
 

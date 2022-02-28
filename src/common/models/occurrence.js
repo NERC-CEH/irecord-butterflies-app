@@ -32,5 +32,52 @@ export default class AppOccurrence extends Occurrence {
     this.attrs.taxon = sp;
   }
 
+  getVerificationStatus = () => {
+    const status = this.metadata?.verification?.verification_status;
+
+    if (!status) return ''; // pending
+
+    const substatus = this.metadata?.verification?.verification_substatus;
+
+    if (status.match(/V/i)) return 'verified';
+    if (status.match(/C/i) && substatus === '3') return 'plausible';
+    if (status.match(/R/i)) return 'rejected';
+
+    return ''; // pending
+  };
+
+  hasOccurrenceBeenVerified = () => {
+    const isRecordInReview =
+      this.metadata?.verification?.verification_status === 'C' &&
+      this.metadata?.verification?.verification_substatus !== '3';
+
+    return (
+      this.isUploaded() && this.metadata?.verification && !isRecordInReview
+    );
+  };
+
+  getVerificationStatusMessage = () => {
+    const codes = {
+      V: 'Accepted',
+      V1: 'Accepted as correct',
+      V2: 'Accepted as considered correct',
+
+      C: 'Pending review',
+      C3: 'Plausible',
+
+      R: 'Not accepted',
+      R4: 'Not accepted as unable to verify',
+      R5: 'Not accepted as correct',
+
+      D: 'Dubious',
+      T: 'Test',
+      I: 'Incomplete',
+    };
+
+    const statusWithSubstatus = `${this.metadata?.verification?.verification_status}${this.metadata?.verification?.verification_substatus}`;
+
+    return codes[statusWithSubstatus];
+  };
+
   isDisabled = () => this.isUploaded();
 }

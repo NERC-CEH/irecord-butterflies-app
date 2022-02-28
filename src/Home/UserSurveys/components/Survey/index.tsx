@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
-import exact from 'prop-types-exact';
+import React, { FC, useContext, SyntheticEvent } from 'react';
 import { alert, date } from '@apps';
+import Sample from 'models/sample';
+import Occurrence from 'models/occurrence';
+import UserModelProps from 'models/user';
 import { observer } from 'mobx-react';
 import {
   IonItem,
@@ -15,14 +16,16 @@ import {
   NavContext,
 } from '@ionic/react';
 import clsx from 'clsx';
-import species from 'common/data/species';
+import species, { Species } from 'common/data/species';
 import getFormattedDuration from 'common/helpers/getFormattedDuration';
+import VerificationListIcon from 'common/Components/VerificationListIcon';
+import VerificationIcon from 'common/Components/VerificationIcon';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import OnlineStatus from './components/OnlineStatus';
 import ErrorMessage from './components/ErrorMessage';
 import './styles.scss';
 
-function deleteSurvey(sample) {
+function deleteSurvey(sample: typeof Sample) {
   alert({
     header: 'Delete',
     message: 'Are you sure you want to delete this survey?',
@@ -41,7 +44,7 @@ function deleteSurvey(sample) {
   });
 }
 
-function getSampleInfo(sample) {
+function getSampleInfo(sample: typeof Sample) {
   const survey = sample.getSurvey();
 
   const prettyDate = date.print(sample.attrs.date);
@@ -59,8 +62,8 @@ function getSampleInfo(sample) {
     const taxon = occ.attrs.taxon || {};
     const label = taxon.commonName;
 
-    const byId = ({ id: speciesID }) => speciesID === taxon.id;
-    const fullSpeciesProfile = species.find(byId) || {};
+    const byId = ({ id: speciesID }: Species) => speciesID === taxon.id;
+    const fullSpeciesProfile: any = species.find(byId) || {};
 
     const { thumbnail } = fullSpeciesProfile;
 
@@ -100,8 +103,8 @@ function getSampleInfo(sample) {
     const taxon = occ?.attrs?.taxon || {};
     const label = 'Timed count';
 
-    const byId = ({ id: speciesID }) => speciesID === taxon.id;
-    const fullSpeciesProfile = species.find(byId) || {};
+    const byId = ({ id: speciesID }: Species) => speciesID === taxon.id;
+    const fullSpeciesProfile: any = species.find(byId) || {};
 
     const { thumbnail } = fullSpeciesProfile;
 
@@ -169,15 +172,21 @@ function getSampleInfo(sample) {
   );
 }
 
-const Survey = ({ sample, userModel, uploadIsPrimary }) => {
+interface Props {
+  sample: typeof Sample;
+  userModel: typeof UserModelProps;
+  uploadIsPrimary?: boolean;
+}
+
+const Survey: FC<Props> = ({ sample, userModel, uploadIsPrimary }) => {
   const { navigate } = useContext(NavContext);
 
   const { synchronising } = sample.remote;
 
-  const href = !synchronising && sample.getCurrentEditRoute();
+  const href = !synchronising ? sample.getCurrentEditRoute() : undefined;
 
   const deleteSurveyWrap = () => deleteSurvey(sample);
-  const onUpload = e => {
+  const onUpload = (e: SyntheticEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -191,17 +200,33 @@ const Survey = ({ sample, userModel, uploadIsPrimary }) => {
     navigate(`/home/surveys`, 'root');
   };
 
+  const getVerificationIconForPointSurvey = (occ: typeof Occurrence) => (
+    <VerificationIcon occ={occ} key={occ.cid} />
+  );
+
+  const getVerificationIcon =
+    sample.metadata.survey === 'point' ? (
+      sample.occurrences.map(getVerificationIconForPointSurvey)
+    ) : (
+      <VerificationListIcon sample={sample} key={sample.cid} />
+    );
+
   return (
     <IonItemSliding class="survey-list-item">
       <ErrorMessage sample={sample} />
 
-      <IonItem routerLink={href} detail={!synchronising}>
+      <IonItem
+        routerLink={href}
+        detail={!synchronising && !sample.hasOccurrencesBeenVerified()}
+      >
         {getSampleInfo(sample)}
         <OnlineStatus
           sample={sample}
           onUpload={onUpload}
           uploadIsPrimary={uploadIsPrimary}
         />
+
+        {getVerificationIcon}
       </IonItem>
 
       <IonItemOptions side="end">
@@ -212,11 +237,5 @@ const Survey = ({ sample, userModel, uploadIsPrimary }) => {
     </IonItemSliding>
   );
 };
-
-Survey.propTypes = exact({
-  sample: PropTypes.object.isRequired,
-  userModel: PropTypes.object.isRequired,
-  uploadIsPrimary: PropTypes.bool,
-});
 
 export default observer(Survey);

@@ -7,6 +7,8 @@
         max-width: 90%;
         margin: 8px auto;
         z-index: 100000000;
+        border-radius: 10px;
+        background: #fff;
 
         &[value='map'] {
           border-radius: 10px;

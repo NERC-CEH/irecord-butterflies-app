@@ -348,3 +348,61 @@ html.plt-tablet {
   width: initial;
   margin: 0px 10px;
 }
+
+.updated-records-dialog {
+  margin-top: 10px;
+  --padding-start: 0;
+
+  ion-checkbox {
+    margin-right: 10px;
+  }
+}
+
+ion-content.disable-top-padding {
+  --padding-top: 0 !important;
+}
+
+ion-icon[slot='end'].verificationIcon {
+  color: white;
+  border-radius: 5px !important;
+  --ionicon-stroke-width: 2em;
+  font-size: 1.2em;
+}
+
+ion-icon[slot='end'].verificationIcon.id-green {
+  background: var(--ion-color-primary-tint) !important;
+}
+
+ion-icon[slot='end'].verificationIcon.id-amber {
+  background: var(--ion-color-warning-tint) !important;
+}
+
+ion-icon[slot='end'].verificationIcon.id-red {
+  background: var(--ion-color-danger-shade) !important;
+}
+
+ion-label.verification-list-icons {
+  max-width: min-content;
+  border-radius: 5px;
+  display: flex !important;
+  flex-direction: row !important;
+
+  ion-label[slot='end'].verificationIcon {
+    width: 25px;
+    color: white;
+    margin: 0;
+    text-align: center;
+  }
+
+  ion-label[slot='end'].verificationIcon.id-green {
+    background: var(--ion-color-primary-tint) !important;
+  }
+
+  ion-label[slot='end'].verificationIcon.id-amber {
+    background: var(--ion-color-warning-tint) !important;
+  }
+
+  ion-label[slot='end'].verificationIcon.id-red {
+    background: var(--ion-color-danger-shade) !important;
+  }
+}

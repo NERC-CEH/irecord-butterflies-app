@@ -191,6 +191,18 @@ class AppSample extends Sample {
     return '';
   }
 
+  hasOccurrencesBeenVerified = () => {
+    const hasBeenVerified = occ => {
+      const isRecordInReview =
+        occ.metadata?.verification?.verification_status === 'C' &&
+        occ.metadata?.verification?.verification_substatus !== '3';
+
+      return occ.metadata?.verification && !isRecordInReview;
+    };
+
+    return this.isUploaded() && !!this.occurrences.some(hasBeenVerified);
+  };
+
   getSurveySpeciesFilters() {
     const survey = this.getSurvey();
     if (survey.name === 'single-species-count') {

@@ -34,5 +34,7 @@ export { default as Media } from '@bit/flumens.apps.models.media';
 export { default as UserFeedbackRequest } from '@bit/flumens.apps.user-feedback-request';
 export { default as MenuNoteItem } from '@bit/flumens.apps.menu-note-item';
 export { default as DrupalUserModel } from '@bit/flumens.apps.models.drupal-user-model';
+export { default as InfoButton } from '@bit/flumens.apps.info-button';
+
 export * from '@bit/flumens.apps.utils.location';
 export * from '@bit/flumens.apps.utils.validation';

@@ -7,6 +7,7 @@ import {
   IonLabel,
   IonAvatar,
 } from '@ionic/react';
+import clsx from 'clsx';
 import { useRouteMatch } from 'react-router';
 import { Attr, Main, MenuAttrItem, MenuAttrItemFromModel } from '@apps';
 import PropTypes from 'prop-types';
@@ -15,6 +16,7 @@ import PhotoPicker from 'common/Components/PhotoPicker';
 import numberIcon from 'common/images/number.svg';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import species from 'common/data/species';
+import VerificationMessage from 'Survey/common/Components/VerificationMessage';
 
 function OccurrenceHomeMain({ occurrence }) {
   const match = useRouteMatch();
@@ -61,7 +63,9 @@ function OccurrenceHomeMain({ occurrence }) {
   };
 
   return (
-    <Main>
+    <Main className={clsx(isDisabled && 'disable-top-padding')}>
+      {isDisabled && <VerificationMessage occurrence={occurrence} />}
+
       <IonList lines="full">
         <IonItemDivider>Details</IonItemDivider>
         <div className="rounded">

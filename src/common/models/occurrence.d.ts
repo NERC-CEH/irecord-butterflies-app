@@ -1,3 +1,5 @@
+import { Identification } from './savedSamplesRemotePullExt';
+
 declare const occurrenceModel: {
   new (obj: any): MyInterface;
   _init: any;
@@ -5,7 +7,9 @@ declare const occurrenceModel: {
 
   attrs: any;
 
-  metadata: any;
+  metadata: {
+    verification?: Identification;
+  };
 
   media: any;
   getSurvey: any;
@@ -13,6 +17,9 @@ declare const occurrenceModel: {
   isDisabled: () => boolean;
   destroy: () => void;
   save: () => void;
+  getVerificationStatus: () => string;
+  getVerificationStatusMessage: () => string;
+  isUploaded: () => boolean;
 };
 
 export default occurrenceModel;

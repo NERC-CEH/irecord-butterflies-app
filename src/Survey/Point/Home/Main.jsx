@@ -24,6 +24,7 @@ import numberIcon from 'common/images/number.svg';
 import PhotoPicker from 'common/Components/PhotoPicker';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
+import VerificationMessage from 'Survey/common/Components/VerificationMessage';
 import species from 'common/data/species';
 import config from 'common/config';
 
@@ -121,7 +122,9 @@ function MainComponent({ sample, isDisabled }) {
   const [occ] = sample.occurrences;
 
   return (
-    <Main>
+    <Main className={clsx(isDisabled && 'disable-top-padding')}>
+      {isDisabled && <VerificationMessage occurrence={occ} />}
+
       <IonList lines="full">
         {isDisabled && (
           <InfoMessage>
