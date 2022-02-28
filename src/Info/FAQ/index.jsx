@@ -111,6 +111,35 @@ export default () => (
             </p>
           </div>
         </Collapse>
+
+        <Collapse title="Will my single-species timed count contribute to the UK Butterfly Monitoring Scheme (UKBMS)?">
+          <div className="collapse-content-wrapper">
+            <p>
+              Timed counts form an important part of the UKBMS dataset, enabling
+              more robust national and regional trends to be calculated for
+              priority species when transect data are limited. Single species
+              timed counts submitted via this app will be made available to the
+              UKBMS and may contribute to the species trends.
+            </p>
+            <p>
+              In order to contribute, counts should be carried out in accordance
+              with{' '}
+              <a href="https://ukbms.org/guidance-recording-forms">
+                UKBMS guidance notes
+              </a>
+              , conducted at the peak of the species’ flight period and carried
+              out in suitable weather conditions. Data are much more useful to
+              the UKBMS, and more likely to contribute, when the same species is
+              monitored at the same site over many years.
+            </p>
+
+            <p>
+              The UKBMS has also published guidance for Marsh Fritillary larval
+              web counts and Brown Hairstreak egg counts. These counts can also
+              be entered via the app in the same way.
+            </p>
+          </div>
+        </Collapse>
       </div>
     </Main>
   </Page>
