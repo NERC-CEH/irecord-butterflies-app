@@ -49,7 +49,7 @@ const MainDetails: FC<Props> = ({ sample }) => {
 
           <MenuAttrItemFromModel
             model={sample as any}
-            attr="defaultStage"
+            attr="stage"
             skipValueTranslation
           />
 

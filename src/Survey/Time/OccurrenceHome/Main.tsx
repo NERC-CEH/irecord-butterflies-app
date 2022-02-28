@@ -48,12 +48,6 @@ const OccurrenceMain: FC<Props> = ({ subSample, occurrence }) => {
 
           <MenuAttrItemFromModel
             model={occurrence}
-            attr="stage"
-            skipValueTranslation
-          />
-
-          <MenuAttrItemFromModel
-            model={occurrence}
             attr="comment"
             skipValueTranslation
           />

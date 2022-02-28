@@ -258,10 +258,9 @@ const survey: Survey = {
       },
     },
 
-    defaultStage: {
-      menuProps: { label: 'Default Stage', icon: caterpillarIcon },
+    stage: {
+      menuProps: { icon: caterpillarIcon },
       pageProps: {
-        headerProps: { title: 'Default Stage' },
         attrProps: {
           set: (value: string, sample: any) => {
             const getSamples = (subSample: any) => {
@@ -275,7 +274,7 @@ const survey: Survey = {
             sample.samples.forEach(getSamples);
 
             // eslint-disable-next-line no-param-reassign
-            sample.attrs.defaultStage = value;
+            sample.attrs.stage = value;
             sample.save();
           },
           input: 'radio',
@@ -312,7 +311,7 @@ const survey: Survey = {
       },
     },
 
-    create(AppSample, AppOccurrence, taxon, zeroAbundance, defaultStage) {
+    create(AppSample, AppOccurrence, taxon, zeroAbundance, stage) {
       const sample = new AppSample({
         metadata: {
           survey_id: survey.id,
@@ -336,7 +335,7 @@ const survey: Survey = {
       sample.occurrences.push(occurrence);
 
       sample.occurrences[0].attrs.zero_abundance = zeroAbundance;
-      sample.occurrences[0].attrs.stage = defaultStage;
+      sample.occurrences[0].attrs.stage = stage;
 
       return sample;
     },
@@ -361,8 +360,6 @@ const survey: Survey = {
             values: (taxon: any) => taxon.warehouseId,
           },
         },
-
-        stage: stageAttr,
       },
 
       create(Occurrence: any, taxon: any) {
@@ -421,7 +418,7 @@ const survey: Survey = {
       attrs: {
         location: {},
         duration: 0,
-        defaultStage: 'Adult',
+        stage: 'Adult',
       },
     });
 

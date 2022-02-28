@@ -29,7 +29,7 @@ const HomeController: FC<Props> = ({ sample }) => {
       // eslint-disable-next-line no-param-reassign
       sample.samples[0].occurrences[0].attrs.zero_abundance = null;
       // eslint-disable-next-line no-param-reassign
-      sample.samples[0].occurrences[0].attrs.stage = sample.attrs.defaultStage;
+      sample.samples[0].occurrences[0].attrs.stage = sample.attrs.stage;
       sample.samples[0].startGPS();
 
       sample.save();
@@ -37,7 +37,7 @@ const HomeController: FC<Props> = ({ sample }) => {
     }
 
     const survey = sample.getSurvey();
-    const { defaultStage } = sample.attrs;
+    const { stage } = sample.attrs;
     const zeroAbundance = null;
 
     const newSubSample = survey.smp.create(
@@ -45,7 +45,7 @@ const HomeController: FC<Props> = ({ sample }) => {
       Occurrence,
       taxon,
       zeroAbundance,
-      defaultStage
+      stage
     );
 
     sample.samples.push(newSubSample);

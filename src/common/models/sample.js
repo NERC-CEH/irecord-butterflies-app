@@ -165,13 +165,13 @@ class AppSample extends Sample {
 
     if (survey.name === 'single-species-count') {
       const zeroAbundance = 't';
-      const { defaultStage } = this.attrs;
+      const { stage } = this.attrs;
       const newSubSample = survey.smp.create(
         AppSample,
         Occurrence,
         species,
         zeroAbundance,
-        defaultStage
+        stage
       );
 
       this.samples.push(newSubSample);

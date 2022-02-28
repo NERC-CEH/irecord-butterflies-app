@@ -52,14 +52,14 @@ const SpeciesController: FC<Props> = ({ sample }) => {
       if (!isLastSampleDeleted) {
         const survey = sample.getSurvey();
 
-        const { defaultStage } = sample.attrs;
+        const { stage } = sample.attrs;
         const zeroAbundace = 't';
         const newSubSample = survey.smp.create(
           Sample,
           Occurrence,
           taxon,
           zeroAbundace,
-          defaultStage
+          stage
         );
         sample.samples.push(newSubSample);
         sample.save();
