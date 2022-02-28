@@ -176,7 +176,7 @@ function init(
   }
 
   async function sync() {
-    if (!userModel.attrs.indiciaUserId || !device.isOnline()) return;
+    if (!userModel.hasLogIn() || !device.isOnline()) return;
 
     const {
       verifiedRecordsTimestamp,
