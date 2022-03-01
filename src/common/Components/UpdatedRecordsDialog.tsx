@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import AppModelProps from 'models/app';
-
 import { IonItem, IonCheckbox, IonLabel } from '@ionic/react';
 
 interface Props {
@@ -16,10 +15,12 @@ const UpdatedRecordsDialog: FC<Props> = ({ appModel }) => {
 
   return (
     <>
-      Some of your records have been verified. Please check your records list.
-      <IonItem lines="none" className="updated-records-dialog">
-        <IonLabel>Do not show again</IonLabel>
+      <p>
+        Some of your records have been verified. Please check your records list.
+      </p>
+      <IonItem lines="none" className="updated-records-dialog alert-message">
         <IonCheckbox slot="start" checked={false} onIonChange={toggleMessage} />
+        <IonLabel>Do not show again</IonLabel>
       </IonItem>
     </>
   );

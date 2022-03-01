@@ -10,6 +10,30 @@ import { alert, device } from '@apps';
 import UpdatedRecordsDialog from 'common/Components/UpdatedRecordsDialog';
 import CONFIG from 'common/config';
 
+let isPopupVisible = true;
+
+const showAlert = (appModel: typeof AppModelProps) => {
+  isPopupVisible = false;
+
+  return alert({
+    header: 'New verified records',
+    message: <UpdatedRecordsDialog appModel={appModel} />,
+    backdropDismiss: false,
+    buttons: [
+      {
+        text: 'Ok',
+        cssClass: 'primary',
+        role: 'cancel',
+
+        handler: () => {
+          isPopupVisible = false;
+          appModel.save();
+        },
+      },
+    ],
+  });
+};
+
 // export type
 interface Occurrence {
   source_system_key: string;
@@ -212,17 +236,7 @@ function init(
     appModel.attrs.verifiedRecordsTimestamp = new Date().getTime();
     appModel.save();
 
-    showVerifiedRecordsNotification &&
-      alert({
-        message: <UpdatedRecordsDialog appModel={appModel} />,
-        buttons: [
-          {
-            text: 'Ok',
-            cssClass: 'primary',
-            handler: () => appModel.save(),
-          },
-        ],
-      });
+    showVerifiedRecordsNotification && isPopupVisible && showAlert(appModel);
   }
 
   savedSamples._init.then(sync);

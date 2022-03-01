@@ -356,6 +356,10 @@ html.plt-tablet {
   ion-checkbox {
     margin-right: 10px;
   }
+
+  ion-label.md {
+    --color: var(--ion-color-step-550, #737373);
+  }
 }
 
 ion-content.disable-top-padding {

@@ -24,7 +24,7 @@
     "@bit/flumens.apps.device": "0.2.1",
     "@bit/flumens.apps.gallery": "1.4.0",
     "@bit/flumens.apps.header": "0.7.0",
-    "@bit/flumens.apps.helpers.alert": "0.5.0",
+    "@bit/flumens.apps.helpers.alert": "0.6.0",
     "@bit/flumens.apps.helpers.loader": "0.1.1",
     "@bit/flumens.apps.helpers.toast": "0.3.0",
     "@bit/flumens.apps.info-background-message": "1.0.1",
