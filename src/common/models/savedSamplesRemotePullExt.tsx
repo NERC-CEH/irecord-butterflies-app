@@ -97,7 +97,7 @@ async function fetchUpdatedRemoteSamples(
 
   const OPTIONS: AxiosRequestConfig = {
     method: 'post',
-    url: CONFIG.recordsServiceURL,
+    url: CONFIG.backend.recordsServiceURL,
     headers: {
       authorization: `Bearer ${await userModel.getAccessToken()}`,
       'Content-Type': 'application/json',

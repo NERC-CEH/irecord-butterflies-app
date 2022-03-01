@@ -13,8 +13,6 @@ const config = {
   version: process.env.APP_VERSION,
   build: process.env.APP_BUILD,
   feedbackEmail: 'apps%40ceh.ac.uk',
-  recordsServiceURL:
-    'https://warehouse1.indicia.org.uk/index.php/services/rest/es-occurrences/_search',
 
   log: !isTestEnv,
 
@@ -30,6 +28,8 @@ const config = {
     websiteId: 118,
     clientId: process.env.APP_BACKEND_CLIENT_ID,
     clientPass: process.env.APP_BACKEND_CLIENT_PASS,
+
+    recordsServiceURL: `${indiciaUrl}/index.php/services/rest/es-occurrences/_search`,
 
     mediaUrl: `${indiciaUrl}/upload/`,
 

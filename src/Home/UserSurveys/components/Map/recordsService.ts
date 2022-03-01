@@ -61,7 +61,7 @@ export async function fetchRecords(
 
   const OPTIONS: AxiosRequestConfig = {
     method: 'post',
-    url: CONFIG.recordsServiceURL,
+    url: CONFIG.backend.recordsServiceURL,
     headers: {
       authorization: `Bearer ${await userModel.getAccessToken()}`,
       'Content-Type': 'application/json',
@@ -165,7 +165,7 @@ export async function fetchSquares(
 
   const OPTIONS: AxiosRequestConfig = {
     method: 'post',
-    url: CONFIG.recordsServiceURL,
+    url: CONFIG.backend.recordsServiceURL,
     headers: {
       authorization: `Bearer ${await userModel.getAccessToken()}`,
       'Content-Type': 'application/json',
