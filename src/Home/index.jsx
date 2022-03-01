@@ -90,8 +90,6 @@ class HomeComponent extends React.Component {
       />
     );
 
-    const { useExperiments } = appModel.attrs;
-
     return (
       <IonTabs>
         <IonRouterOutlet>
@@ -125,16 +123,14 @@ class HomeComponent extends React.Component {
               label="Record"
             >
               <IonFabList side="top">
-                {useExperiments && (
-                  <IonFabButton
-                    class="fab-button-label"
-                    routerLink="/survey/single-species-count"
-                  >
-                    <IonLabel>
-                      <T>Single species timed count</T>
-                    </IonLabel>
-                  </IonFabButton>
-                )}
+                <IonFabButton
+                  class="fab-button-label"
+                  routerLink="/survey/single-species-count"
+                >
+                  <IonLabel>
+                    <T>Single species timed count</T>
+                  </IonLabel>
+                </IonFabButton>
 
                 <IonFabButton
                   class="fab-button-label"

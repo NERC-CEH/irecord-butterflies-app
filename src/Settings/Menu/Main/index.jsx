@@ -16,7 +16,6 @@ import {
   shareSocialOutline,
   locationOutline,
   filterOutline,
-  flameOutline,
 } from 'ionicons/icons';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import mothIcon from 'common/images/mothIcon.svg';
@@ -62,7 +61,6 @@ class Component extends React.Component {
     currentLocation: PropTypes.string,
     adminChangeWeek: PropTypes.func,
     adminChangeLocation: PropTypes.func,
-    useExperiments: PropTypes.bool.isRequired,
     useMoths: PropTypes.bool.isRequired,
   });
 
@@ -108,15 +106,12 @@ class Component extends React.Component {
       onToggleSmartSorting,
       useSmartSorting,
       useProbabilitiesForGuide,
-      useExperiments,
       useMoths,
     } = this.props;
 
     const showAlertDialog = () => resetDialog(resetApp);
 
     const onSendAnalyticsToggle = checked => onToggle('sendAnalytics', checked);
-
-    const onUseExperiments = checked => onToggle('useExperiments', checked);
 
     const onUseMoths = checked => onToggle('useMoths', checked);
 
@@ -197,15 +192,6 @@ class Component extends React.Component {
               Sort the species using probability information. Disabling it will
               default to alphabetical sorting.
             </InfoMessage>
-          </div>
-
-          <div className="rounded">
-            <MenuAttrToggle
-              icon={flameOutline}
-              label="Experimental Features"
-              value={useExperiments}
-              onChange={onUseExperiments}
-            />
           </div>
 
           {this.getAdminControls()}

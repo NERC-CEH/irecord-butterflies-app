@@ -35,7 +35,6 @@ const MenuController = props => {
     useProbabilitiesForGuide,
     location,
     useSmartSorting,
-    useExperiments,
     useMoths,
   } = appModel.attrs;
 
@@ -86,7 +85,6 @@ const MenuController = props => {
         useSmartSorting={useSmartSorting}
         useMoths={useMoths}
         currentLocation={currentLocation}
-        useExperiments={useExperiments}
         // admin controls
         adminChangeLocation={adminChangeLocation}
         adminChangeWeek={adminChangeWeek}
