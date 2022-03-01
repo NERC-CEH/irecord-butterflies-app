@@ -23,7 +23,8 @@
     "idTips": "Unmistakeable large, yellow and black butterfly with long 'tails' on the hindwings",
     "habitats": "Fens and marshes in the Norfolk Broads, but wanders to other habitats including gardens. Also occurs as a scarce immigrant across southern Britain.",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/swallowtail"
+    "webLink": "https://butterfly-conservation.org/butterflies/swallowtail",
+    "survey": "single-species-count"
   },
   {
     "id": "DingySkipper",
@@ -50,7 +51,8 @@
     "idTips": "Small mottled brown and grey butterfly unlike any others. Distinguished from similar-looking moths by thickened tips of antennae (moths have pointed or feathery antennae)",
     "habitats": "Open, sunny places including chalk grassland, coasts, woodland clearings, heathland and brownfield sites",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/dingy-skipper"
+    "webLink": "https://butterfly-conservation.org/butterflies/dingy-skipper",
+    "survey": "single-species-count"
   },
   {
     "id": "GrizzledSkipper",
@@ -76,7 +78,8 @@
     "idTips": "Small grey and white chequered butterfly unlike any others.",
     "habitats": "Unimproved grassland, woodland clearings and brownfield sites",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/grizzled-skipper"
+    "webLink": "https://butterfly-conservation.org/butterflies/grizzled-skipper",
+    "survey": "single-species-count"
   },
   {
     "id": "ChequeredSkipper",
@@ -103,7 +106,8 @@
     "idTips": "Brown wings chequered with golden yellow spots distinguish from other skippers",
     "habitats": "Damp grassland in open woodland and wood edges in western Scotland. Also in woodland rides in a Northamptonshire landscape, where the butterfly has recently been reintroduced. ",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/chequered-skipper"
+    "webLink": "https://butterfly-conservation.org/butterflies/chequered-skipper",
+    "survey": "single-species-count"
   },
   {
     "id": "EssexSkipper",
@@ -170,7 +174,8 @@
     "idTips": "Dull brownish-orange forewings held up at an angle. Small size and dull colour distinguish from other orange skippers. Female has a crescent of brighter orange on the forewing.",
     "habitats": "Chalk and limestone grassland in south Dorset",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/lulworth-skipper"
+    "webLink": "https://butterfly-conservation.org/butterflies/lulworth-skipper",
+    "survey": "single-species-count"
   },
   {
     "id": "SilverSpottedSkipper",
@@ -195,7 +200,8 @@
     "idTips": "Forewings held up at an angle. Pearly-white spots on the underside of the wings distinguish from other orange skippers",
     "habitats": "Chalk grassland with short turf in southern England",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/silver-spotted-skipper"
+    "webLink": "https://butterfly-conservation.org/butterflies/silver-spotted-skipper",
+    "survey": "single-species-count"
   },
   {
     "id": "LargeSkipper",
@@ -244,7 +250,8 @@
     "idTips": "Small size, delicate flight and shaded grey underside of hindwing distinguish from other whites",
     "habitats": "Sheltered grassland in woodland rides and clearings, hedgerows and undercliffs in England and Wales",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/wood-white"
+    "webLink": "https://butterfly-conservation.org/butterflies/wood-white",
+    "survey": "single-species-count"
   },
   {
     "id": "CrypticWoodWhite",
@@ -266,7 +273,8 @@
     "idTips": "Small size, delicate flight and shaded grey underside of hindwing distinguish from other whites.",
     "habitats": "Sheltered, flowery grassland in meadows, woodland, dunes, verges and quarries in Ireland",
     "ukStatus": "Butterfly Conservation UK threat level: Medium Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/cryptic-wood-white"
+    "webLink": "https://butterfly-conservation.org/butterflies/cryptic-wood-white",
+    "survey": "single-species-count"
   },
   {
     "id": "OrangeTip",
@@ -523,7 +531,8 @@
     "idTips": "Dark chocolate-brown wings flecked with cream or yellowish spots distinguish from other browns",
     "habitats": "Woodland, but also tall, sheltered grass in gardens, parks and hedgerows",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/speckled-wood"
+    "webLink": "https://butterfly-conservation.org/butterflies/speckled-wood",
+    "survey": "single-species-count"
   },
   {
     "id": "LargeHeath",
@@ -550,7 +559,8 @@
     "idTips": "Orange-brown wings, cream-ringed eyespots on underside and habitat distinguish from other browns. Some individuals lack eyespots and closely resemble Small Heaths",
     "habitats": "Bogs and moors in northern Britain",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/large-heath"
+    "webLink": "https://butterfly-conservation.org/butterflies/large-heath",
+    "survey": "single-species-count"
   },
   {
     "id": "SmallHeath",
@@ -600,7 +610,8 @@
     "idTips": "Small, mainly brown butterfly with row of black spots (without white pupils) on wings",
     "habitats": "Mountain grassland in Scotland and the Lake District",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/mountain-ringlet"
+    "webLink": "https://butterfly-conservation.org/butterflies/mountain-ringlet",
+    "survey": "single-species-count"
   },
   {
     "id": "ScotchArgus",
@@ -758,7 +769,8 @@
     "idTips": "Mottled brown and grey pattern on underside distinguishes from other browns. Never rests with its wings open",
     "habitats": "Open areas with bare ground patches, mainly on coast but also heathland, chalk grassland, quarries and brownfield sites",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/grayling"
+    "webLink": "https://butterfly-conservation.org/butterflies/grayling",
+    "survey": "single-species-count"
   },
   {
     "id": "PearlBorderedFritillary",
@@ -784,7 +796,8 @@
     "idTips": "Small size and silvery spots on underside of hindwing distinguish from most other fritillaries. Difficult to distinguish from Small Pearl-bordered Fritillary, but has fewer silvery spots on hindwing underside.",
     "habitats": "Open woodland and bracken slopes",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/pearl-bordered-fritillary"
+    "webLink": "https://butterfly-conservation.org/butterflies/pearl-bordered-fritillary",
+    "survey": "single-species-count"
   },
   {
     "id": "SmallPearlBorderedFritillary",
@@ -889,7 +902,8 @@
     "idTips": "Large butterfly, with large white spots on hindwing underside. Difficult to distinguish from High Brown Fritillary, which has red-ringed spots on underside. ",
     "habitats": "Bracken slopes, chalk and limestone grassland, coast, moors and woodland clearings",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/dark-green-fritillary"
+    "webLink": "https://butterfly-conservation.org/butterflies/dark-green-fritillary",
+    "survey": "single-species-count"
   },
   {
     "id": "HighBrownFritillary",
@@ -914,7 +928,8 @@
     "idTips": "Large butterfly, with row of red-ringed white spots on hindwing underside that distinguish from the very similar Dark Green Fritillary",
     "habitats": "Bracken slopes and woodland clearings",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/high-brown-fritillary"
+    "webLink": "https://butterfly-conservation.org/butterflies/high-brown-fritillary",
+    "survey": "single-species-count"
   },
   {
     "id": "WhiteAdmiral",
@@ -940,7 +955,8 @@
     "idTips": "Dark wings with broad white stripe. Rows of black spots on underside distinguish from Purple Emperor",
     "habitats": "Woodland in mid and southern England",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/white-admiral"
+    "webLink": "https://butterfly-conservation.org/butterflies/white-admiral",
+    "survey": "single-species-count"
   },
   {
     "id": "PurpleEmperor",
@@ -966,7 +982,8 @@
     "idTips": "Male: Very large size and beautiful purple sheen on upper wing in sunlight. Unlike the similar White Admiral there are no rows of black spots on underside, but large orange-fringed eye spot is diagnostic.Female: Very large size, dark upper wings with broad white stripe. Underside same as for male.",
     "habitats": "Woodland in mid and southern England",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/purple-emperor"
+    "webLink": "https://butterfly-conservation.org/butterflies/purple-emperor",
+    "survey": "single-species-count"
   },
   {
     "id": "RedAdmiral",
@@ -1189,7 +1206,8 @@
     "idTips": "Mixture of cream, orange and brown chequered markings distinguish from other fritillaries",
     "habitats": "Damp grassland and heaths, chalk and limestone grassland",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/marsh-fritillary"
+    "webLink": "https://butterfly-conservation.org/butterflies/marsh-fritillary",
+    "survey": "single-species-count"
   },
   {
     "id": "GlanvilleFritillary",
@@ -1214,7 +1232,8 @@
     "idTips": "Geographical location and habitat, as well as beautifully patterned underwing, distinguish from other fritillaries",
     "habitats": "Coastal grasslands on the Isle of Wight",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/glanville-fritillary"
+    "webLink": "https://butterfly-conservation.org/butterflies/glanville-fritillary",
+    "survey": "single-species-count"
   },
   {
     "id": "HeathFritillary",
@@ -1239,7 +1258,8 @@
     "idTips": "Small with darker wings than other fritillaries",
     "habitats": "Woodland clearings and sheltered heathland in southern England",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/heath-fritillary"
+    "webLink": "https://butterfly-conservation.org/butterflies/heath-fritillary",
+    "survey": "single-species-count"
   },
   {
     "id": "DukeOfBurgundy",
@@ -1265,7 +1285,8 @@
     "idTips": "Small size distinguishes from other butterflies with orange-brown chequered markings (fritillaries)",
     "habitats": "Sheltered chalk and limestone grassland or woodland clearings",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/duke-of-burgundy"
+    "webLink": "https://butterfly-conservation.org/butterflies/duke-of-burgundy",
+    "survey": "single-species-count"
   },
   {
     "id": "SmallCopper",
@@ -1320,7 +1341,8 @@
     "idTips": "Short tail on each hindwing. Bright orange-brown undersides distinguish from other hairstreaks",
     "habitats": "Hedges, scrub and woodland edge in distinct areas of southern Britain",
     "ukStatus": "Butterfly Conservation UK threat level: Medium Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/brown-hairstreak"
+    "webLink": "https://butterfly-conservation.org/butterflies/brown-hairstreak",
+    "survey": "single-species-count"
   },
   {
     "id": "PurpleHairstreak",
@@ -1348,7 +1370,8 @@
     "idTips": "Irridescent purple sheen on upperside of wings, short tail on hindwing. Silvery underside of wings distinguish from other hairstreaks",
     "habitats": "Oak trees in woods, hedges and scrub, even in parks and gardens",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/purple-hairstreak"
+    "webLink": "https://butterfly-conservation.org/butterflies/purple-hairstreak",
+    "survey": "single-species-count"
   },
   {
     "id": "GreenHairstreak",
@@ -1373,7 +1396,8 @@
     "idTips": "Bright green undersides distinguish from all other butterflies",
     "habitats": "Many, including chalk grassland, moors, heaths, woodland clearings, bogs and brownfield sites",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/green-hairstreak"
+    "webLink": "https://butterfly-conservation.org/butterflies/green-hairstreak",
+    "survey": "single-species-count"
   },
   {
     "id": "WhiteLetterHairstreak",
@@ -1399,7 +1423,8 @@
     "idTips": "Short tail on each hindwing. 'W'-shaped white line on hindwing underside distinguishes from other hairstreaks",
     "habitats": "Elm trees in woods, hedges and scrub ",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/white-letter-hairstreak"
+    "webLink": "https://butterfly-conservation.org/butterflies/white-letter-hairstreak",
+    "survey": "single-species-count"
   },
   {
     "id": "BlackHairstreak",
@@ -1424,7 +1449,8 @@
     "idTips": "Short tail on each hindwing. Row of black spots on hindwing underside distinguishes from other hairstreaks",
     "habitats": "Tall blackthorn thickets in woods and hedgerows in English midlands",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/black-hairstreak"
+    "webLink": "https://butterfly-conservation.org/butterflies/black-hairstreak",
+    "survey": "single-species-count"
   },
   {
     "id": "LongTailedBlue",
@@ -1529,7 +1555,8 @@
     "idTips": "Large size and large black spots on forewing distinguish from other blues",
     "habitats": "Unimproved dry limestone or coastal grassland in southern England",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/large-blue"
+    "webLink": "https://butterfly-conservation.org/butterflies/large-blue",
+    "survey": "single-species-count"
   },
   {
     "id": "SilverStuddedBlue",
@@ -1580,7 +1607,8 @@
     "idTips": "Difficult to distinguish from female Common Blue - hindwing underside of Common Blue has uppermost pair of spots in . . pattern as opposed to : pattern in Brown Argus",
     "habitats": "Many, including chalk and limestone grassland, coast and dunes, heath, woodland clearings, fallow fields and brownfield sites",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/brown-argus"
+    "webLink": "https://butterfly-conservation.org/butterflies/brown-argus",
+    "survey": "single-species-count"
   },
   {
     "id": "NorthernBrownArgus",
@@ -1605,7 +1633,8 @@
     "idTips": "Prominent white spot in middle of each forewing distinguishes from other blues, but not all individuals have this spot. Georgraphic location and fainter underwing spots distinguish from Brown Argus ",
     "habitats": "Unimproved, sheltered grassland in northern Britain",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/northern-brown-argus"
+    "webLink": "https://butterfly-conservation.org/butterflies/northern-brown-argus",
+    "survey": "single-species-count"
   },
   {
     "id": "CommonBlue",
@@ -1659,7 +1688,8 @@
     "idTips": "Male: Brilliant sky-blue wings with black lines crossing the white wing edge distinguish from other bluesFemale: Difficult to distinguish from female Chalkhill Blue, but black spots on wing upperside are edged with blue in Adonis Blue",
     "habitats": "Chalk and limestone grassland in southern England",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/adonis-blue"
+    "webLink": "https://butterfly-conservation.org/butterflies/adonis-blue",
+    "survey": "single-species-count"
   },
   {
     "id": "ChalkHillBlue",
@@ -1684,7 +1714,8 @@
     "idTips": "Male: Pale, powder blue wings with black lines crossing white wing edge distinguish from other blues Female: Difficult to distinguish from female Adonis Blue, but black spots on wing upperside are edged with white in Chalkhill Blue",
     "habitats": "Chalk and limestone grassland in southern England",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/chalk-hill-blue"
+    "webLink": "https://butterfly-conservation.org/butterflies/chalk-hill-blue",
+    "survey": "single-species-count"
   },
   {
     "id": "GoldSwift",
