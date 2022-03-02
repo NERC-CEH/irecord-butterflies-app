@@ -27,10 +27,16 @@
     padding: 10px 20px;
     border-radius: 10px;
     font-size: 1.2em;
+    transform: translateY(-50%);
+    top: 45%;
+
+    a {
+      text-decoration: none;
+    }
   }
 
   .leaflet-top .leaflet-control {
-    margin-top: 40px;
+    margin-top: 55px;
   }
 
   .leaflet-control-zoom.leaflet-control a,
