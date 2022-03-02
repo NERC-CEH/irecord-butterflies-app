@@ -23,22 +23,22 @@
 
   &.plausible {
     h2 {
-      color: var(--ion-color-warning-shade) !important;
+      color: var(--ion-color-warning-tint) !important;
       margin-bottom: 20px;
     }
 
-    --background: #fcf3e2;
+    --background: #fff9ef;
     ion-icon,
     .info-button,
     ion-label ion-note {
-      color: var(--ion-color-warning-shade) !important;
-      --border-color: var(--ion-color-warning-shade) !important;
+      color: var(--ion-color-warning-tint) !important;
+      --border-color: var(--ion-color-warning-tint) !important;
     }
   }
 
   &.rejected {
     h2 {
-      color: var(--ion-color-danger) !important;
+      color: var(--ion-color-danger-shade) !important;
       margin-bottom: 20px;
     }
 
@@ -47,8 +47,8 @@
     .info-button,
     .h1,
     ion-label ion-note {
-      color: var(--ion-color-danger) !important;
-      --border-color: var(--ion-color-danger);
+      color: var(--ion-color-danger-shade) !important;
+      --border-color: var(--ion-color-danger-shade);
     }
   }
 }
