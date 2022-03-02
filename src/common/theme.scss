@@ -397,16 +397,34 @@ ion-label.verification-list-icons {
     margin: 0;
     text-align: center;
   }
+}
 
-  ion-label[slot='end'].verificationIcon.id-green {
-    background: var(--ion-color-primary-tint) !important;
-  }
+ion-icon[slot='end'].verificationIcon {
+  color: white;
+  border-radius: 5px !important;
+  --ionicon-stroke-width: 2em;
+  font-size: 1.2em;
+}
 
-  ion-label[slot='end'].verificationIcon.id-amber {
-    background: var(--ion-color-warning-tint) !important;
-  }
+.verificationIcon.id-green {
+  background: var(--ion-color-primary-shade) !important;
+}
 
-  ion-label[slot='end'].verificationIcon.id-red {
-    background: var(--ion-color-danger-shade) !important;
-  }
+.verificationIcon.id-amber {
+  background: var(--ion-color-warning-tint) !important;
+}
+
+.verificationIcon.id-red {
+  background: var(--ion-color-danger-shade) !important;
+}
+
+html.ios.plt-hybrid #status-bar-background {
+  background: transparent;
+  width: 100vw;
+  height: env(safe-area-inset-top);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
 }
