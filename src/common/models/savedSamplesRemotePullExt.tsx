@@ -26,7 +26,6 @@ const showAlert = (appModel: typeof AppModelProps) => {
         role: 'cancel',
 
         handler: () => {
-          isPopupVisible = false;
           appModel.save();
         },
       },
