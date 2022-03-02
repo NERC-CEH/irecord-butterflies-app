@@ -161,9 +161,6 @@ function appendVerificationAndReturnOccurrences(
 
       if (!updatedSample) return;
 
-      const hasBeenVerified = occ.metadata?.verification;
-      if (hasBeenVerified) return;
-
       // eslint-disable-next-line no-param-reassign
       occ.metadata.verification = {
         ...updatedSample._source.identification,
