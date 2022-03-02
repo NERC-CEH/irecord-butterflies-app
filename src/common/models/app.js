@@ -89,6 +89,7 @@ const defaults = {
   showSpeciesDeleteTip: true,
   showStatsWIPTip: true,
   showListSurveyHiddenButtonTip: true,
+  showTimeSurveyTip: true,
 
   showVerifiedRecordsNotification: true,
   verifiedRecordsTimestamp: null,
