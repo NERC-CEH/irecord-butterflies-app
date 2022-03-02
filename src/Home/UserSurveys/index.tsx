@@ -166,33 +166,29 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
 
   return (
     <Page id="home-user-surveys">
-      <IonHeader className="ion-no-border">
-        <IonToolbar>
-          <IonSegment onIonChange={onSegmentClick} value={segment}>
-            <IonSegmentButton value="pending">
-              <IonLabel className="ion-text-wrap">
-                <T>Pending</T>
-                {getPendingSurveysCount()}
-              </IonLabel>
-            </IonSegmentButton>
-
-            <IonSegmentButton value="uploaded">
-              <IonLabel className="ion-text-wrap">
-                <T>Uploaded</T>
-                {getUploadedSurveysCount()}
-              </IonLabel>
-            </IonSegmentButton>
-
-            <IonSegmentButton value="map">
-              <IonLabel className="ion-text-wrap">
-                <T>Map</T>
-              </IonLabel>
-            </IonSegmentButton>
-          </IonSegment>
-        </IonToolbar>
-      </IonHeader>
-
       <Main>
+        <IonSegment onIonChange={onSegmentClick} value={segment}>
+          <IonSegmentButton value="pending">
+            <IonLabel className="ion-text-wrap">
+              <T>Pending</T>
+              {getPendingSurveysCount()}
+            </IonLabel>
+          </IonSegmentButton>
+
+          <IonSegmentButton value="uploaded">
+            <IonLabel className="ion-text-wrap">
+              <T>Uploaded</T>
+              {getUploadedSurveysCount()}
+            </IonLabel>
+          </IonSegmentButton>
+
+          <IonSegmentButton value="map">
+            <IonLabel className="ion-text-wrap">
+              <T>Map</T>
+            </IonLabel>
+          </IonSegmentButton>
+        </IonSegment>
+
         {showingPending && showUploadAll && (
           <IonButton
             expand="block"

@@ -1,55 +1,36 @@
 #home-user-surveys {
-  ion-header {
-    ion-toolbar {
-      --ion-toolbar-background: transparent;
+  --ion-toolbar-background: transparent;
 
-      ion-segment {
-        max-width: 90%;
-        margin: 8px auto;
-        z-index: 100000000;
-        border-radius: 10px;
-        background: #fff;
+  ion-segment {
+    max-width: 90%;
+    margin: 8px auto;
+    z-index: 100000000;
+    border-radius: 10px;
+    background: #fff;
 
-        &[value='map'] {
-          border-radius: 10px;
-          background: rgba(255, 255, 255, 0.9);
-        }
-
-        ion-badge {
-          display: inline;
-          vertical-align: top;
-          margin: 3px;
-          margin-left: 3px;
-        }
-
-        ion-label {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          align-items: center;
-          margin-left: 1px;
-        }
-
-        ion-segment-button {
-          padding-left: 10px;
-          padding-right: 10px;
-        }
-      }
-
-      position: fixed;
-      color: var(--ion-color-main);
-    }
-  }
-
-  ion-content {
-    --padding-top: 80px;
-    &.md {
-      --padding-top: 100px;
+    &[value='map'] {
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.9);
     }
 
-    .upload-all-button {
-      margin: 0 auto 20px;
-      max-width: 60%;
+    ion-badge {
+      display: inline;
+      vertical-align: top;
+      margin: 3px;
+      margin-left: 3px;
+    }
+
+    ion-label {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-left: 1px;
+    }
+
+    ion-segment-button {
+      padding-left: 10px;
+      padding-right: 10px;
     }
   }
 

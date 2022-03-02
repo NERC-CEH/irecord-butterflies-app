@@ -1,11 +1,15 @@
 #species-guide {
   ion-toolbar {
-    --ion-toolbar-background: white;
+    --ion-toolbar-background: transparent;
     --color: black;
 
     ion-icon {
       color: black;
       --ionicon-stroke-width: 20px;
     }
+  }
+
+  ion-toolbar.ios {
+    padding-top: 0 !important;
   }
 }
