@@ -204,7 +204,7 @@ const Survey: FC<Props> = ({ sample, userModel, uploadIsPrimary }) => {
     <VerificationIcon occ={occ} key={occ.cid} />
   );
 
-  const getVerificationIcon =
+  const verificationIcon =
     sample.metadata.survey === 'point' ? (
       sample.occurrences.map(getVerificationIconForPointSurvey)
     ) : (
@@ -226,7 +226,7 @@ const Survey: FC<Props> = ({ sample, userModel, uploadIsPrimary }) => {
           uploadIsPrimary={uploadIsPrimary}
         />
 
-        {getVerificationIcon}
+        {verificationIcon}
       </IonItem>
 
       <IonItemOptions side="end">
