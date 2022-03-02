@@ -1,23 +1,15 @@
-// TOOD: REVIEW THE CODE
 import React, { FC } from 'react';
 import Occurrence from 'models/occurrence';
 import { InfoMessage, InfoButton } from '@apps';
 import clsx from 'clsx';
 import { checkmarkCircle, helpCircle, closeCircle } from 'ionicons/icons';
-import { Identification } from 'common/models/savedSamplesRemotePullExt';
 import './styles.scss';
 
 const getVerificationText = (
   status: string,
-  verificationObject: Identification | undefined,
   message: string,
   taxonName: string
 ) => {
-  const verifierName = verificationObject?.verifier?.name;
-  const verifyDate = verificationObject?.verified_on?.split(' ')[0];
-
-  const hasVerifyDetails = verifierName && verifyDate;
-
   const statusMessage = message || status;
   const verifyStatus: { [key: string]: JSX.Element } = {
     verified: (
@@ -27,17 +19,6 @@ const getVerificationText = (
         </h2>
 
         <p>Thanks for sending in your record.</p>
-
-        {hasVerifyDetails && (
-          <InfoButton label="Details" header="Details">
-            <p>
-              Verified by: <b>{verifierName}</b>
-            </p>
-            <p>
-              Verified on: <b>{verifyDate}</b>
-            </p>
-          </InfoButton>
-        )}
       </>
     ),
     plausible: (
@@ -49,17 +30,6 @@ const getVerificationText = (
           Thanks for sending in your record. From this record details, we think
           it could be the <b>{taxonName}</b> species.
         </p>
-
-        {hasVerifyDetails && (
-          <InfoButton label="Details" header="Details">
-            <p>
-              Verified by: <b>{verifierName}</b>
-            </p>
-            <p>
-              Verified on: <b>{verifyDate}</b>
-            </p>
-          </InfoButton>
-        )}
       </>
     ),
     rejected: (
@@ -72,17 +42,6 @@ const getVerificationText = (
           Thanks for sending in your record. We do not think this is{' '}
           <b>{taxonName}</b> species.
         </p>
-
-        {hasVerifyDetails && (
-          <InfoButton label="Details" header="Details">
-            <p>
-              Verified by: <b>{verifierName}</b>
-            </p>
-            <p>
-              Verified on: <b>{verifyDate}</b>
-            </p>
-          </InfoButton>
-        )}
       </>
     ),
   };
@@ -110,20 +69,30 @@ const VerificationMessage: FC<Props> = ({ occurrence }) => {
 
   const textCode = status;
 
-  const verificationText = getVerificationText(
-    textCode,
-    verificationObject,
-    message,
-    taxonName
-  );
+  const verificationText = getVerificationText(textCode, message, taxonName);
 
   if (!verificationText) return null;
 
   const icon: string = icons[status];
 
+  const verifierName = verificationObject?.verifier?.name;
+  const verifyDate = verificationObject?.verified_on?.split(' ')[0];
+
+  const hasVerifyDetails = verifierName && verifyDate;
+
   return (
     <InfoMessage className={clsx('verification-message', status)} icon={icon}>
       {verificationText}
+      {hasVerifyDetails && (
+        <InfoButton label="Details" header="Details">
+          <p>
+            Verified by: <b>{verifierName}</b>
+          </p>
+          <p>
+            Verified on: <b>{verifyDate}</b>
+          </p>
+        </InfoButton>
+      )}
     </InfoMessage>
   );
 };
