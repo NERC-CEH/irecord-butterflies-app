@@ -354,6 +354,8 @@ const survey: Survey = {
 
         count: { remote: { id: 780 } },
 
+        stage: stageAttr,
+
         taxon: {
           remote: {
             id: 'taxa_taxon_list_id',
