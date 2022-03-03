@@ -1,6 +1,6 @@
 #species-guide {
   ion-toolbar {
-    --ion-toolbar-background: transparent;
+    --ion-toolbar-background: white;
     --color: black;
 
     ion-icon {
@@ -9,7 +9,7 @@
     }
   }
 
-  ion-toolbar.ios {
-    padding-top: 0 !important;
+  ion-toolbar {
+    padding-top: env(safe-area-inset-top) !important;
   }
 }
