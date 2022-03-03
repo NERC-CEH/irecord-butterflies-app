@@ -178,24 +178,26 @@ function appendVerificationAndReturnOccurrences(
   return updatedSamples;
 }
 
-function init(
+const setTimestamp = async (appModel: typeof AppModelProps) => {
+  // set one month back timestamp
+  const currentTime = new Date();
+  const getTimeOneMonthBack = currentTime.setMonth(currentTime.getMonth() - 1);
+
+  // eslint-disable-next-line no-param-reassign
+  appModel.attrs.verifiedRecordsTimestamp = new Date(getTimeOneMonthBack);
+  return appModel.save();
+};
+
+async function init(
   savedSamples: typeof SavedSamplesProps,
   userModel: typeof UserModelProps,
   appModel: typeof AppModelProps
 ) {
-  if (!appModel.attrs.verifiedRecordsTimestamp) {
-    // set one month back timestamp
-    const currentTime = new Date();
-    const getTimeOneMonthBack = currentTime.setMonth(
-      currentTime.getMonth() - 1
-    );
-
-    // eslint-disable-next-line no-param-reassign
-    appModel.attrs.verifiedRecordsTimestamp = new Date(getTimeOneMonthBack);
-    appModel.save();
-  }
-
   async function sync() {
+    if (!appModel.attrs.verifiedRecordsTimestamp) {
+      await setTimestamp(appModel);
+    }
+
     if (!userModel.hasLogIn() || !device.isOnline()) return;
 
     const {
