@@ -45,7 +45,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Allow geolocation so we can improve your records.</string>
   <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-  <string>Allow Geolocation while your device is locked?</string>
+  <string>Allow background geolocation to set your survey transect.</string>
   <key>UIBackgroundModes</key>
   <array>
     <string>location</string>
