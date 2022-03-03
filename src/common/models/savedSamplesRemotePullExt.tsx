@@ -149,9 +149,9 @@ function appendVerificationAndReturnOccurrences(
   savedSamples: typeof SavedSamplesProps,
   updatedRemoteSamples: any
 ) {
-  const updatedSamples: any = [];
+  const nonPendingUpdatedSamples: any = [];
 
-  if (updatedRemoteSamples.length <= 0) return updatedSamples;
+  if (updatedRemoteSamples.length <= 0) return nonPendingUpdatedSamples;
 
   const findMatchingLocalSamples = (sample: typeof Sample) => {
     if (sample.isSurveySingleSpeciesTimedCount()) return;
@@ -166,7 +166,12 @@ function appendVerificationAndReturnOccurrences(
         ...updatedSample._source.identification,
       };
 
-      updatedSamples.push(updatedSample);
+      const isNonPending =
+        updatedSample._source.identification.verification_status === 'C' &&
+        updatedSample._source.identification.verification_substatus === '0';
+      if (isNonPending) return;
+
+      nonPendingUpdatedSamples.push(updatedSample);
     };
 
     sample.occurrences.forEach(appendVerification);
@@ -175,7 +180,7 @@ function appendVerificationAndReturnOccurrences(
 
   savedSamples.forEach(findMatchingLocalSamples);
 
-  return updatedSamples;
+  return nonPendingUpdatedSamples;
 }
 
 const setTimestamp = async (appModel: typeof AppModelProps) => {
