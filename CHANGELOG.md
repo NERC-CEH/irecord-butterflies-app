@@ -1,3 +1,13 @@
+## 2.3.0
+
+Added single species survey.
+Added moths species.
+Added map view of user records.
+Added verification updates.
+Updated FAQ.
+Made app more secure.
+Other minor fixes.
+
 ## 2.2.1
 
 Fixed the communication with the new iRecord site.
