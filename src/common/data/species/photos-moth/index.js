@@ -53,7 +53,7 @@ import './ShadedBroadbar/Shaded Broad-bar (Mark Parsons).jpg?originalName';
 import './SilverY/Silver Y (Iain Leach).jpg?originalName';
 import './SilverY/Silver Y (Iain Leach)2.jpg?originalName';
 import './SilvergroundCarpet/Silver-ground Carpet (Keith Tailby).jpg?originalName';
-import './SixspotBurnet/Six-spot Burnet-cocoon (Bob Eade).jpg?originalName';
+import './SixspotBurnet/Six-spot Burnet cocoon (Bob Eade).jpg?originalName';
 import './SixspotBurnet/Six-spot Burnet underwing (Bob Eade).jpg?originalName';
 import './SmallPurplebarred/Small Purple-barred (Bob Eade).jpg?originalName';
 import './SmallPurplebarred/Small Purple-barred (Keith Tailby).jpg?originalName';
