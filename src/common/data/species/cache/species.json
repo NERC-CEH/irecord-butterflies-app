@@ -824,7 +824,8 @@
     "idTips": "Small size and silvery spots on underside of hindwing distinguish from most other fritillaries. Difficult to distinguish from Pearl-bordered Fritillary, but has more silvery spots on hindwing underside.",
     "habitats": "Many, including woodland clearings, damp grassland, moor, bracken-slopes and coast",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/small-pearl-bordered-fritillary"
+    "webLink": "https://butterfly-conservation.org/butterflies/small-pearl-bordered-fritillary",
+    "survey": "single-species-count"
   },
   {
     "id": "QueenOfSpainFritillary",
@@ -1582,7 +1583,8 @@
     "idTips": "Male: Small size, habitat and black border around blue wings help to distinguish from other blues. Defining characteristic is row of tiny, metallic blue dots on underside of hindwing.Female: Can have brown or blue wings. Small size and habitat help to distinguish from other female blues. Defining characteristic is row of tiny, metallic blue dots on underside of hindwing",
     "habitats": "Usually lowland heathland, but also sometimes on chalk and limestone grassland and dunes",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/silver-studded-blue"
+    "webLink": "https://butterfly-conservation.org/butterflies/silver-studded-blue",
+    "survey": "single-species-count"
   },
   {
     "id": "BrownArgus",
