@@ -61,7 +61,12 @@ function organiseByProbability(allSpecies: Species[]) {
     !speciesHereAndNow.includes(sp) &&
     !speciesHere.includes(sp) &&
     !speciesNow.includes(sp);
-  const remainingSpecies = allSpecies.filter(notInProbableLists).sort(byName);
+
+  const notMothsSpecies = (sp: Species) => sp.type !== 'moth';
+  const remainingSpecies = allSpecies
+    .filter(notInProbableLists)
+    .filter(notMothsSpecies)
+    .sort(byName);
 
   return [speciesHereAndNow, speciesHere, speciesNow, remainingSpecies];
 }
@@ -202,6 +207,9 @@ const SpeciesList: FC<Props> = ({
 
   const getSpecies = () => {
     const speciesData = getSpeciesData();
+    const mothsSpecies = (sp: Species): boolean => sp.type === 'moth';
+    const mothData = getSpeciesData().filter(mothsSpecies);
+
     const { useProbabilitiesForGuide, useSmartSorting } = appModel.attrs;
 
     const [
@@ -249,6 +257,14 @@ const SpeciesList: FC<Props> = ({
           </IonItemDivider>
         )}
         {speciesTiles(speciesHereAndNow)}
+
+        {!!mothData.length && (
+          <IonItemDivider className="species-moths" sticky mode="md">
+            <IonLabel>Moths</IonLabel>
+          </IonItemDivider>
+        )}
+        {speciesTiles(mothData)}
+
         {hasSpeciesHere && (
           <IonItemDivider sticky className="species-now" mode="md">
             <IonLabel>In your area at other times of year</IonLabel>
