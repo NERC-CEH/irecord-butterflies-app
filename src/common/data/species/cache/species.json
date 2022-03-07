@@ -503,7 +503,8 @@
     "idTips": "Golden-orange with marbling of brown lines distinguishes from other browns",
     "habitats": "Grassland with bare ground, particularly around the coast but also on field edges and brownfield sites",
     "ukStatus": "Butterfly Conservation UK threat level: High Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/wall"
+    "webLink": "https://butterfly-conservation.org/butterflies/wall",
+    "survey": "single-species-count"
   },
   {
     "id": "SpeckledWood",
@@ -531,8 +532,7 @@
     "idTips": "Dark chocolate-brown wings flecked with cream or yellowish spots distinguish from other browns",
     "habitats": "Woodland, but also tall, sheltered grass in gardens, parks and hedgerows",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/speckled-wood",
-    "survey": "single-species-count"
+    "webLink": "https://butterfly-conservation.org/butterflies/speckled-wood"
   },
   {
     "id": "LargeHeath",
@@ -875,7 +875,8 @@
     "idTips": "Large butterfly with silvery stripes on hindwing underside",
     "habitats": "Woodland",
     "ukStatus": "Butterfly Conservation UK threat level: Lower Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/silver-washed-fritillary"
+    "webLink": "https://butterfly-conservation.org/butterflies/silver-washed-fritillary",
+    "survey": "single-species-count"
   },
   {
     "id": "DarkGreenFritillary",
@@ -1504,7 +1505,8 @@
     "idTips": "Small size and plain, dark grey-brown wings distinguish from other blues",
     "habitats": "Dry, sheltered grasslands, including chalk, limestone, coast, quarries and brownfield sites",
     "ukStatus": "Butterfly Conservation UK threat level: Medium Priority",
-    "webLink": "https://butterfly-conservation.org/butterflies/small-blue"
+    "webLink": "https://butterfly-conservation.org/butterflies/small-blue",
+    "survey": "single-species-count"
   },
   {
     "id": "HollyBlue",
