@@ -200,6 +200,20 @@ class AppSample extends Sample {
       return occ.metadata?.verification && !isRecordInReview;
     };
 
+    const hasSubSample = this.samples.length;
+    if (hasSubSample) {
+      let status;
+
+      const getSamples = subSample => {
+        status =
+          this.isUploaded() && !!subSample.occurrences.some(hasBeenVerified);
+        return status;
+      };
+
+      this.samples.forEach(getSamples);
+      return status;
+    }
+
     return this.isUploaded() && !!this.occurrences.some(hasBeenVerified);
   };
 

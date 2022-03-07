@@ -9,6 +9,8 @@ import Sample from 'models/sample';
 import { alert, device } from '@apps';
 import UpdatedRecordsDialog from 'common/Components/UpdatedRecordsDialog';
 import CONFIG from 'common/config';
+import pointSurvey from 'Survey/Point/config';
+import singleSpeciesSurvey from 'Survey/Time/config';
 
 let isPopupVisible = true;
 
@@ -76,10 +78,22 @@ const getRecordsQuery = (timestamp: string) =>
       bool: {
         must: [
           {
-            match: {
-              'metadata.survey.id': 101,
+            bool: {
+              should: [
+                {
+                  match: {
+                    'metadata.survey.id': pointSurvey.id,
+                  },
+                },
+                {
+                  match: {
+                    'metadata.survey.id': singleSpeciesSurvey.id,
+                  },
+                },
+              ],
             },
           },
+
           {
             bool: {
               should: [
@@ -155,8 +169,6 @@ function appendVerificationAndReturnOccurrences(
   if (updatedRemoteSamples.length <= 0) return nonPendingUpdatedSamples;
 
   const findMatchingLocalSamples = (sample: typeof Sample) => {
-    if (sample.isSurveySingleSpeciesTimedCount()) return;
-
     const appendVerification = (occ: typeof Occurrence) => {
       const updatedSample = updatedRemoteSamples[occ.cid];
 
@@ -175,7 +187,15 @@ function appendVerificationAndReturnOccurrences(
       nonPendingUpdatedSamples.push(updatedSample);
     };
 
-    sample.occurrences.forEach(appendVerification);
+    const hasSubSample = sample.samples.length;
+    if (hasSubSample) {
+      const getSamples = (subSample: typeof Sample) => {
+        subSample.occurrences.forEach(appendVerification);
+      };
+      sample.samples.forEach(getSamples);
+    } else {
+      sample.occurrences.forEach(appendVerification);
+    }
     sample.save();
   };
 

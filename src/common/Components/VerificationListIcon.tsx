@@ -32,7 +32,16 @@ const VerificationListIcon: FC<Props> = ({ sample }) => {
 
     return null;
   };
-  sample.occurrences.forEach(aggregateStatus);
+
+  const hasSubSample = sample.samples.length;
+  if (hasSubSample) {
+    const getSamples = (subSample: typeof Sample) => {
+      subSample.occurrences.forEach(aggregateStatus);
+    };
+    sample.samples.forEach(getSamples);
+  } else {
+    sample.occurrences.forEach(aggregateStatus);
+  }
 
   if (!rejected && !plausible && !verified) return null;
 

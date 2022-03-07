@@ -9,6 +9,8 @@ import PhotoPicker from 'common/Components/PhotoPicker';
 import { useRouteMatch } from 'react-router';
 import { Main, MenuAttrItem, MenuAttrItemFromModel } from '@apps';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
+import VerificationMessage from 'Survey/common/Components/VerificationMessage';
+import clsx from 'clsx';
 import './styles.scss';
 
 type Props = {
@@ -31,7 +33,12 @@ const OccurrenceMain: FC<Props> = ({ subSample, occurrence }) => {
   }
 
   return (
-    <Main id="area-count-occurrence-edit">
+    <Main
+      id="area-count-occurrence-edit"
+      className={clsx(isDisabled && 'disable-top-padding')}
+    >
+      {isDisabled && <VerificationMessage occurrence={occurrence} />}
+
       <IonList lines="full">
         <IonItemDivider>
           <T>Details</T>

@@ -18,6 +18,7 @@ import { Trans as T } from 'react-i18next';
 import { mapOutline, warningOutline, clipboardOutline } from 'ionicons/icons';
 import { useRouteMatch } from 'react-router';
 import Stopwatch from 'Survey/Time/Components/Stopwatch';
+import VerificationListIcon from 'common/Components/VerificationListIcon';
 import UKBMSlogo from './UKBMSlogo.png';
 import './styles.scss';
 
@@ -98,7 +99,11 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
     return (
       <IonItem
         key={id}
-        detail={!isSpeciesDisabled && !hasZeroAbundance}
+        detail={
+          !isSpeciesDisabled &&
+          !hasZeroAbundance &&
+          !sample.hasOccurrencesBeenVerified()
+        }
         onClick={navigateToSpeciesOccurrences}
       >
         <IonButton
@@ -113,6 +118,8 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
         <IonLabel slot="end" className="location-spinner">
           {location}
         </IonLabel>
+
+        <VerificationListIcon sample={sample} key={sample.cid} />
       </IonItem>
     );
   };

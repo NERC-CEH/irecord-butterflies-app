@@ -16,6 +16,7 @@ import GridRefValue from 'Survey/common/Components/GridRefValue';
 import { observer } from 'mobx-react';
 import { Main } from '@apps';
 import { Trans as T } from 'react-i18next';
+import VerificationIcon from 'common/Components/VerificationIcon';
 import './styles.scss';
 
 function byCreationDate(s1: typeof Sample, s2: typeof Sample) {
@@ -60,7 +61,10 @@ const MainComponent: FC<Props> = ({
 
       return (
         <IonItemSliding key={smp.cid}>
-          <IonItem detail onClick={navigateToOccurrenceWithSample}>
+          <IonItem
+            detail={!smp.isUploaded() && !occ.hasOccurrenceBeenVerified()}
+            onClick={navigateToOccurrenceWithSample}
+          >
             <IonLabel className="time">{prettyTime}</IonLabel>
             <IonLabel>
               <IonBadge color="medium">
@@ -68,6 +72,7 @@ const MainComponent: FC<Props> = ({
               </IonBadge>
             </IonLabel>
             <IonLabel slot="end">{location}</IonLabel>
+            <VerificationIcon occ={occ} />
           </IonItem>
           {!isDisabled && (
             <IonItemOptions side="end">
