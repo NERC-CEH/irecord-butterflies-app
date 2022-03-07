@@ -59,9 +59,12 @@
         min-height: 120px; // fixes loading image jitter
         max-width: none;
         z-index: 10;
-        background-image: radial-gradient(white, rgba(255, 255, 255, 0) 80%);
       }
-      .thumbnail-background {
+      img.thumbnail-background {
+        position: absolute;
+        height: 100%;
+      }
+      div.thumbnail-background {
         position: absolute;
         top: 0;
         width: 100%;

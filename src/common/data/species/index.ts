@@ -42,6 +42,7 @@ interface Photo {
 
 interface Resource {
   thumbnail: string;
+  thumbnailBackground?: string;
   map?: string;
   lifechart?: string;
 }

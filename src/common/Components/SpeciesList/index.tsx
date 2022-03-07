@@ -103,7 +103,7 @@ const SpeciesList: FC<Props> = ({
   const hideSpeciesModal = () => setSpeciesProfile(null);
 
   const getSpeciesTile = (sp: Species, i: number) => {
-    const { commonName, thumbnail: thumbnailSrc } = sp;
+    const { commonName, thumbnail: thumbnailSrc, thumbnailBackground } = sp;
 
     const isSurvey = !!onSelect;
     const viewSpecies = (e: any) => {
@@ -131,9 +131,14 @@ const SpeciesList: FC<Props> = ({
             </div>
           )}
           <img className="thumbnail" src={thumbnailSrc} />
-          <div className="thumbnail-background">
-            <img src={thumbnailSrc} />
-          </div>
+          {thumbnailBackground && (
+            <img className="thumbnail-background" src={thumbnailBackground} />
+          )}
+          {!thumbnailBackground && (
+            <div className="thumbnail-background">
+              <img src={thumbnailSrc} />
+            </div>
+          )}
           <IonLabel>{commonName}</IonLabel>
         </div>
       </IonCol>
