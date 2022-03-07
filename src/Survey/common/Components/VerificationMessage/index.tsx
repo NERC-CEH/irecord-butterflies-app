@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import Occurrence from 'models/occurrence';
 import { InfoMessage, InfoButton } from '@apps';
 import clsx from 'clsx';
-import { checkmarkCircle, helpCircle, closeCircle } from 'ionicons/icons';
+import { checkmarkCircle, closeCircle } from 'ionicons/icons';
 import './styles.scss';
 
 const getVerificationText = (
@@ -55,7 +55,7 @@ interface Props {
 
 const icons: { [key: string]: string } = {
   verified: checkmarkCircle,
-  plausible: helpCircle,
+  plausible: checkmarkCircle,
   rejected: closeCircle,
 };
 

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import Occurrence from 'models/occurrence';
 import { IonIcon } from '@ionic/react';
-import { checkmarkOutline, helpOutline, closeOutline } from 'ionicons/icons';
+import { checkmarkCircle, closeCircle } from 'ionicons/icons';
 
 interface Props {
   occ: typeof Occurrence;
@@ -18,17 +18,17 @@ const VerificationIcon: FC<Props> = ({ occ }) => {
 
   if (status === 'verified') {
     idClass = 'id-green';
-    detailIcon = checkmarkOutline;
+    detailIcon = checkmarkCircle;
   }
 
   if (status === 'plausible') {
     idClass = 'id-amber';
-    detailIcon = helpOutline;
+    detailIcon = checkmarkCircle;
   }
 
   if (status === 'rejected') {
     idClass = 'id-red';
-    detailIcon = closeOutline;
+    detailIcon = closeCircle;
   }
 
   return (

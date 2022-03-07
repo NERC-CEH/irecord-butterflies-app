@@ -12,7 +12,7 @@ import clsx from 'clsx';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import CustomAlert from 'Components/CustomAlert';
 import ImageWithBackground from 'Components/ImageWithBackground';
-import { closeCircle, helpCircle, checkmarkCircle } from 'ionicons/icons';
+import { closeCircle, checkmarkCircle } from 'ionicons/icons';
 import { Gallery } from '@apps';
 import config from 'common/config';
 import species from 'common/data/species';
@@ -144,7 +144,7 @@ export default function SpeciesProfile({ record, onClose }: Props) {
     if (status === 'V') {
       statusIcon = <IonIcon icon={checkmarkCircle} className="id-green" />;
     } else if (status === 'C') {
-      statusIcon = <IonIcon icon={helpCircle} className="id-amber" />;
+      statusIcon = <IonIcon icon={checkmarkCircle} className="id-amber" />;
     } else {
       statusIcon = <IonIcon icon={closeCircle} className="id-red" />;
     }
