@@ -21,7 +21,7 @@ const showAlert = (appModel: typeof AppModelProps) => {
     backdropDismiss: false,
     buttons: [
       {
-        text: 'Ok',
+        text: 'OK',
         cssClass: 'primary',
         role: 'cancel',
 
