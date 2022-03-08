@@ -72,7 +72,7 @@ const defaults = {
   useSmartSorting: true,
   listSurveyListSortedByTime: false,
   useMoths: false,
-  location: '',
+  location: {},
 
   feedbackGiven: false,
   showedWelcome: false,

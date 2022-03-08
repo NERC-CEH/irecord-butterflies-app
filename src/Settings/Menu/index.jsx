@@ -61,6 +61,10 @@ const MenuController = props => {
   const currentLocation = location && location.gridref;
 
   const adminChangeLocation = e => {
+    if (!appModel.attrs.location) {
+      appModel.attrs.location = {};
+    }
+
     appModel.attrs.location.gridref = e.target.value;
     console.log('setting hectad', appModel.attrs.location.gridref);
     appModel.save();
