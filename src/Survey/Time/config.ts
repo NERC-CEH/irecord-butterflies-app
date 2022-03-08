@@ -14,6 +14,8 @@ import {
 } from 'Survey/common/config';
 import caterpillarIcon from 'common/images/caterpillar.svg';
 
+const MINUTE = 60000; // in milliseconds
+
 const locationSchema = Yup.object().shape({
   latitude: Yup.number().required(),
   longitude: Yup.number().required(),
@@ -191,9 +193,10 @@ const survey: Survey = {
         id: 1643,
         values(timestamp: number) {
           // regex validation -> /^\d+:\d\d$/
-          const seconds = Math.round((timestamp / 1000) % 60);
+          const seconds = Math.floor((timestamp / 1000) % 60);
           const formattedSeconds = seconds > 9 ? seconds : `0${seconds}`;
-          const minutes = Math.floor(timestamp / 60000);
+
+          const minutes = Math.floor(timestamp / MINUTE);
 
           return `${minutes}:${formattedSeconds}`;
         },
