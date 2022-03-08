@@ -68,7 +68,17 @@ function organiseByProbability(allSpecies: Species[]) {
     .filter(notMothsSpecies)
     .sort(byName);
 
-  return [speciesHereAndNow, speciesHere, speciesNow, remainingSpecies];
+  // temporary added
+  const isMothSpecies = (sp: Species) => sp.type === 'moth';
+  const mothSpecies = allSpecies.filter(isMothSpecies).sort(byName);
+
+  return [
+    speciesHereAndNow,
+    speciesHere,
+    speciesNow,
+    remainingSpecies,
+    mothSpecies,
+  ];
 }
 
 const shouldShowFeedback = () => {
@@ -207,7 +217,6 @@ const SpeciesList: FC<Props> = ({
 
   const getSpecies = () => {
     const speciesData = getSpeciesData();
-    const mothsSpecies = (sp: Species): boolean => sp.type === 'moth';
 
     const { useProbabilitiesForGuide, useSmartSorting } = appModel.attrs;
 
@@ -216,6 +225,7 @@ const SpeciesList: FC<Props> = ({
       speciesHere,
       speciesNow,
       remainingSpecies,
+      mothSpecies,
     ] = organiseByProbability(speciesData);
 
     const hasSpeciesHereAndNow = !!speciesHereAndNow.length;
@@ -226,8 +236,6 @@ const SpeciesList: FC<Props> = ({
     const alphabetically = (sp1: Species, sp2: Species) =>
       sp1.commonName.localeCompare(sp2.commonName);
 
-    const mothData = getSpeciesData().filter(mothsSpecies).sort(alphabetically);
-
     const speciesTiles = (speciesList: Species[]) =>
       useSmartSorting
         ? speciesList.map(getSpeciesTile)
@@ -237,7 +245,8 @@ const SpeciesList: FC<Props> = ({
       !hasSpeciesHereAndNow &&
       !hasSpeciesHere &&
       !hasSpeciesNow &&
-      !hasAdditional
+      !hasAdditional &&
+      !mothSpecies
     ) {
       return (
         <InfoBackgroundMessage>
@@ -266,12 +275,12 @@ const SpeciesList: FC<Props> = ({
         )}
         {speciesTiles(speciesNow)}
 
-        {!!mothData.length && (
+        {!!mothSpecies.length && (
           <IonItemDivider className="species-moths" sticky mode="md">
             <IonLabel>Moths</IonLabel>
           </IonItemDivider>
         )}
-        {speciesTiles(mothData)}
+        {speciesTiles(mothSpecies)}
 
         {hasSpeciesHere && (
           <IonItemDivider sticky className="species-now" mode="md">
