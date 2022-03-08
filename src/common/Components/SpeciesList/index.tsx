@@ -208,7 +208,6 @@ const SpeciesList: FC<Props> = ({
   const getSpecies = () => {
     const speciesData = getSpeciesData();
     const mothsSpecies = (sp: Species): boolean => sp.type === 'moth';
-    const mothData = getSpeciesData().filter(mothsSpecies);
 
     const { useProbabilitiesForGuide, useSmartSorting } = appModel.attrs;
 
@@ -226,6 +225,8 @@ const SpeciesList: FC<Props> = ({
 
     const alphabetically = (sp1: Species, sp2: Species) =>
       sp1.commonName.localeCompare(sp2.commonName);
+
+    const mothData = getSpeciesData().filter(mothsSpecies).sort(alphabetically);
 
     const speciesTiles = (speciesList: Species[]) =>
       useSmartSorting
@@ -258,6 +259,13 @@ const SpeciesList: FC<Props> = ({
         )}
         {speciesTiles(speciesHereAndNow)}
 
+        {hasSpeciesNow && (
+          <IonItemDivider sticky className="species-now" mode="md">
+            <IonLabel>Flying at this time of year</IonLabel>
+          </IonItemDivider>
+        )}
+        {speciesTiles(speciesNow)}
+
         {!!mothData.length && (
           <IonItemDivider className="species-moths" sticky mode="md">
             <IonLabel>Moths</IonLabel>
@@ -271,13 +279,6 @@ const SpeciesList: FC<Props> = ({
           </IonItemDivider>
         )}
         {speciesTiles(speciesHere)}
-
-        {hasSpeciesNow && (
-          <IonItemDivider sticky className="species-now" mode="md">
-            <IonLabel>Flying at this time of year</IonLabel>
-          </IonItemDivider>
-        )}
-        {speciesTiles(speciesNow)}
 
         {hasAdditional && (
           <IonItemDivider sticky className="species-additional" mode="md">
