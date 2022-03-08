@@ -66,12 +66,14 @@ const MainComponent: FC<Props> = ({
             onClick={navigateToOccurrenceWithSample}
           >
             <IonLabel className="time">{prettyTime}</IonLabel>
-            <IonLabel>
+            <IonLabel className="stage">
               <IonBadge color="medium">
                 <T>{stage}</T>
               </IonBadge>
             </IonLabel>
-            <IonLabel slot="end">{location}</IonLabel>
+            <IonLabel className="location" slot="end">
+              {location}
+            </IonLabel>
             <VerificationIcon occ={occ} />
           </IonItem>
           {!isDisabled && (

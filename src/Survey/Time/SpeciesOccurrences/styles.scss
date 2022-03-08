@@ -22,6 +22,20 @@
       margin: 0;
     }
 
+    ion-label.stage {
+      ion-badge {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+      }
+    }
+    ion-label.location {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: max-content;
+    }
+
     .species-list-header {
       background: #e6e6e6 !important;
       color: #777777;
