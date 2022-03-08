@@ -46,8 +46,12 @@
         &:first-of-type {
           max-width: 65px;
         }
-        &:last-of-type {
-          max-width: 50px;
+        &:last-of-type.md {
+          max-width: 56px;
+        }
+
+        &:last-of-type.ios {
+          max-width: 40px;
         }
       }
     }
