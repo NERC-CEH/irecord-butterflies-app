@@ -193,7 +193,7 @@ const survey: Survey = {
           // regex validation -> /^\d+:\d\d$/
           const seconds = Math.round((timestamp / 1000) % 60);
           const formattedSeconds = seconds > 9 ? seconds : `0${seconds}`;
-          const minutes = Math.round(seconds / 60);
+          const minutes = Math.floor(timestamp / 60000);
 
           return `${minutes}:${formattedSeconds}`;
         },
