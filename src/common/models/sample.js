@@ -210,8 +210,8 @@ class AppSample extends Sample {
         return status;
       };
 
-      this.samples.forEach(getSamples);
-      return status;
+      this.samples.some(getSamples);
+      return this.isUploaded() && !!status;
     }
 
     return this.isUploaded() && !!this.occurrences.some(hasBeenVerified);

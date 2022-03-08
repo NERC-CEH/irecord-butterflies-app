@@ -62,7 +62,7 @@ const MainComponent: FC<Props> = ({
       return (
         <IonItemSliding key={smp.cid}>
           <IonItem
-            detail={!smp.isUploaded() && !occ.hasOccurrenceBeenVerified()}
+            detail={!occ.hasOccurrenceBeenVerified()}
             onClick={navigateToOccurrenceWithSample}
           >
             <IonLabel className="time">{prettyTime}</IonLabel>
