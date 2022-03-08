@@ -12,12 +12,12 @@ const Marker: FC<Props> = ({ record, onClick }) => {
   const latitude = parseFloat(location[0]);
   const longititude = parseFloat(location[1]);
 
-  let fillColor = 'var(--ion-color-medium)';
+  let fillColor = 'var(--ion-color-warning-tint)';
   const status = record.identification.verification_status;
   if (status === 'V') {
-    fillColor = 'var(--ion-color-primary)';
+    fillColor = 'var(--ion-color-primary-shade)';
   } else if (status === 'R') {
-    fillColor = 'var(--ion-color-danger)';
+    fillColor = 'var(--ion-color-danger-shade)';
   }
 
   const onClickWrap = () => onClick(record);

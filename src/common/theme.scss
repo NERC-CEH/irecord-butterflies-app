@@ -367,36 +367,56 @@ ion-content.disable-top-padding {
 }
 
 ion-label.verification-list-icons {
-  max-width: min-content;
+  max-width: max-content !important;
   border-radius: 5px;
   display: flex !important;
   flex-direction: row !important;
+  margin-left: 0 !important;
+  opacity: 1 !important;
+  margin: 0;
 
   ion-label[slot='end'].verificationIcon {
-    width: 25px;
-    color: white;
+    width: 25px !important;
+    max-width: 25px !important;
+    color: white !important;
     margin: 0;
-    text-align: center;
+    text-align: center !important;
+    margin-left: 0 !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+  }
+
+  .id-green {
+    background: var(--ion-color-primary-shade) !important;
+  }
+
+  .id-amber {
+    background: var(--ion-color-warning-tint) !important;
+  }
+
+  .id-red {
+    background: var(--ion-color-danger-shade) !important;
   }
 }
 
 ion-icon[slot='end'].verificationIcon {
-  color: white;
   border-radius: 5px !important;
   --ionicon-stroke-width: 2em;
-  font-size: 1.2em;
+  font-size: 1.6em;
+  margin: 0;
+  margin-left: 5px;
 }
 
 .verificationIcon.id-green {
-  background: var(--ion-color-primary-shade) !important;
+  color: var(--ion-color-primary-shade) !important;
 }
 
 .verificationIcon.id-amber {
-  background: var(--ion-color-warning-tint) !important;
+  color: var(--ion-color-warning-tint) !important;
 }
 
 .verificationIcon.id-red {
-  background: var(--ion-color-danger-shade) !important;
+  color: var(--ion-color-danger-shade) !important;
 }
 
 html.ios.plt-hybrid #status-bar-background {

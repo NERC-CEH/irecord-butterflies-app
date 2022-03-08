@@ -63,15 +63,15 @@
 
             ion-icon {
               &.id-green {
-                color: var(--ion-color-primary);
+                color: var(--ion-color-primary-shade);
               }
 
               &.id-amber {
-                color: var(--ion-color-warning);
+                color: var(--ion-color-warning-tint);
               }
 
               &.id-red {
-                color: var(--ion-color-danger);
+                color: var(--ion-color-danger-shade);
               }
             }
           }
