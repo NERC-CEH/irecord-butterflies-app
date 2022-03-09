@@ -43,21 +43,19 @@ export const locationAttrs = {
       id: 'entered_sref',
       values(location, submission) {
         // convert accuracy for map and gridref sources
-        const { accuracy, source, gridref, altitude, name } = location;
-
-        const locationAttributes = {
-          location_name: name, // location_name is a native indicia attr
-          [locationAttrs.locationSource.remote.id]: source,
-          [locationAttrs.locationGridref.remote.id]: gridref,
-          [locationAttrs.locationAltitude.remote.id]: altitude,
-          [locationAttrs.locationAltitudeAccuracy.remote.id]:
-            location.altitudeAccuracy,
-          [locationAttrs.locationAccuracy.remote.id]: accuracy,
-        };
+        const { accuracy, source, gridref, altitude, name, altitudeAccuracy } =
+          location;
 
         // add other location related attributes
         // eslint-disable-next-line
-        submission.fields = { ...submission.fields, ...locationAttributes };
+        submission.values = { ...submission.values };
+
+        submission.values['smpAttr:760'] = source; // eslint-disable-line
+        submission.values['smpAttr:335'] = gridref; // eslint-disable-line
+        submission.values['smpAttr:282'] = accuracy; // eslint-disable-line
+        submission.values['smpAttr:283'] = altitude; // eslint-disable-line
+        submission.values['smpAttr:284'] = altitudeAccuracy; // eslint-disable-line
+        submission.values['location_name'] = name; // eslint-disable-line
 
         const lat = parseFloat(location.latitude);
         const lon = parseFloat(location.longitude);
@@ -69,11 +67,6 @@ export const locationAttrs = {
       },
     },
   },
-  locationAccuracy: { remote: { id: 282 } },
-  locationAltitude: { remote: { id: 283 } },
-  locationAltitudeAccuracy: { remote: { id: 284 } },
-  locationSource: { remote: { id: 760 } },
-  locationGridref: { remote: { id: 335 } },
 };
 
 export const deviceAttr = {
