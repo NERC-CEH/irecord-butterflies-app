@@ -23,6 +23,8 @@
     }
 
     ion-label.stage {
+      display: flex;
+
       ion-badge {
         overflow: hidden;
         text-overflow: ellipsis;
