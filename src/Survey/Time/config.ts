@@ -182,7 +182,7 @@ const survey: Survey = {
         headerProps: { title: 'Site name' },
         attrProps: {
           input: 'input',
-          info: 'Site name eg neay village',
+          info: 'Site name, e.g. nearby village',
         },
       },
       remote: { id: 'location_name' },
