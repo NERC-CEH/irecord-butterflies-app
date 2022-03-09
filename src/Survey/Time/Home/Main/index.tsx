@@ -2,7 +2,7 @@ import React, { FC, useContext } from 'react';
 import { observer } from 'mobx-react';
 import { toJS } from 'mobx';
 import Sample from 'models/sample';
-import { Main, MenuAttrItem, InfoBackgroundMessage } from '@apps';
+import { Main, MenuAttrItem, InfoBackgroundMessage, InfoMessage } from '@apps';
 import {
   IonImg,
   IonList,
@@ -14,6 +14,7 @@ import {
   IonSpinner,
   IonItem,
 } from '@ionic/react';
+import config from 'common/config';
 import { Trans as T } from 'react-i18next';
 import { mapOutline, warningOutline, clipboardOutline } from 'ionicons/icons';
 import { useRouteMatch } from 'react-router';
@@ -61,6 +62,7 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
   const { navigate } = useContext(NavContext);
   const { url } = useRouteMatch();
   const { area } = sample.attrs.location || {};
+  const isDisabled = sample.isUploaded();
 
   let areaPretty: JSX.Element | string = (
     <IonIcon icon={warningOutline} color="danger" />
@@ -159,6 +161,19 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
 
   return (
     <Main>
+      {isDisabled && (
+        <InfoMessage>
+          This record has been uploaded and can only be edited on our website.
+          <IonButton
+            expand="block"
+            className="uploaded-message-website-link"
+            href={`${config.backend.url}`}
+          >
+            iRecord website
+          </IonButton>
+        </InfoMessage>
+      )}
+
       <IonImg src={UKBMSlogo} />
       <IonList lines="full">
         <IonItemDivider>
