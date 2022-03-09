@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import exact from 'prop-types-exact';
-import { Main, alert, Toggle, InfoMessage, MenuAttrToggle } from '@apps';
+import { Main, alert, InfoMessage, MenuAttrToggle } from '@apps';
 import PropTypes from 'prop-types';
 import {
   IonIcon,
@@ -127,14 +127,12 @@ class Component extends React.Component {
       <Main>
         <IonList lines="full">
           <div className="rounded">
-            <IonItem>
-              <IonIcon icon={shareSocialOutline} size="small" slot="start" />
-              <IonLabel>Share App Analytics</IonLabel>
-              <Toggle
-                onToggle={onSendAnalyticsToggle}
-                checked={sendAnalytics}
-              />
-            </IonItem>
+            <MenuAttrToggle
+              icon={shareSocialOutline}
+              label="Share App Analytics"
+              value={sendAnalytics}
+              onChange={onSendAnalyticsToggle}
+            />
             <InfoMessage color="medium">
               Share app crash data so we can make the app more reliable.
             </InfoMessage>
@@ -147,27 +145,26 @@ class Component extends React.Component {
               value={useMoths}
               onChange={onUseMoths}
             />
-            <IonItem>
-              <IonIcon icon={butterflyIcon} size="small" slot="start" />
-              <IonLabel>Smart species lists</IonLabel>
-              <Toggle
-                onToggle={onToggleProbabilitiesForGuide}
-                checked={useProbabilitiesForGuide}
-              />
-            </IonItem>
+
+            <MenuAttrToggle
+              icon={butterflyIcon}
+              label="Smart species lists"
+              value={useProbabilitiesForGuide}
+              onChange={onToggleProbabilitiesForGuide}
+            />
+
             <InfoMessage color="medium">
               Use our species lists based on your current time and location.
             </InfoMessage>
 
-            <IonItem disabled={!useProbabilitiesForGuide}>
-              <IonIcon icon={locationOutline} size="small" slot="start" />
-              <IonLabel>Use current location</IonLabel>
-              <Toggle
-                onToggle={onToggleGuideLocation}
-                checked={useLocationForGuide}
-              />
-            </IonItem>
-
+            <MenuAttrToggle
+              icon={locationOutline}
+              label="Use current location"
+              value={useLocationForGuide}
+              onChange={onToggleGuideLocation}
+              disabled={!useProbabilitiesForGuide}
+              className={clsx(!useProbabilitiesForGuide && 'item-disabled')}
+            />
             <InfoMessage
               color="medium"
               className={clsx(!useProbabilitiesForGuide && 'disabled')}
@@ -176,14 +173,14 @@ class Component extends React.Component {
               {currentLocationMessage}
             </InfoMessage>
 
-            <IonItem disabled={!useProbabilitiesForGuide}>
-              <IonIcon icon={filterOutline} size="small" slot="start" />
-              <IonLabel>Use smart sorting</IonLabel>
-              <Toggle
-                onToggle={onToggleSmartSorting}
-                checked={useSmartSorting}
-              />
-            </IonItem>
+            <MenuAttrToggle
+              icon={filterOutline}
+              label="Use smart sorting"
+              value={useSmartSorting}
+              onChange={onToggleSmartSorting}
+              disabled={!useProbabilitiesForGuide}
+              className={clsx(!useProbabilitiesForGuide && 'item-disabled')}
+            />
 
             <InfoMessage
               color="medium"
