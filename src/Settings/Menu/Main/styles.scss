@@ -11,5 +11,11 @@
     ion-item ion-toggle {
       padding-right: 0;
     }
+
+    .rounded {
+      .menu-attr-toggle:first-of-type {
+        --border-radius: 15px 15px 0 0;
+      }
+    }
   }
 }
