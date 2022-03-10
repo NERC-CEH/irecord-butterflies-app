@@ -27,6 +27,8 @@ import './styles.scss';
 const byName = (sp1: Species, sp2: Species) =>
   sp1.commonName.localeCompare(sp2.commonName);
 
+const existing = (sp: any): sp is Species => !!sp;
+
 function organiseByProbability(allSpecies: Species[]) {
   const location = appModel.attrs.location || {};
   const currentLocation = location.gridref;
@@ -37,11 +39,23 @@ function organiseByProbability(allSpecies: Species[]) {
     currentLocation
   );
 
-  const byId = (id: string) => allSpecies.find((sp: Species) => sp.id === id);
-  const byWasFound = (sp: Species | undefined) => !!sp;
-  const speciesHereAndNow = probsNowAndHere.map(byId).filter(byWasFound);
-  const speciesHere = probsHere.map(byId).filter(byWasFound).sort(byName);
-  const speciesNow = probsNow.map(byId).filter(byWasFound);
+  const getSpeciesProfile = (id: string) => {
+    const byId = (sp: Species) => sp.id === id;
+    return allSpecies.find(byId);
+  };
+
+  const speciesHereAndNow: Species[] = probsNowAndHere
+    .map(getSpeciesProfile)
+    .filter(existing);
+
+  const speciesHere: Species[] = probsHere
+    .map(getSpeciesProfile)
+    .filter(existing)
+    .sort(byName);
+
+  const speciesNow: Species[] = probsNow
+    .map(getSpeciesProfile)
+    .filter(existing);
 
   const notInProbableLists = (sp: Species) =>
     !speciesHereAndNow.includes(sp) &&
