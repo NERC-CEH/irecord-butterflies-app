@@ -216,11 +216,11 @@ div.rounded {
   overflow: hidden;
   margin-bottom: 20px;
 
-  .counter-input-attr-item {
-    border-bottom: 1px solid var(--ion-item-border-color);
+  > :last-child {
+    --border-style: none;
   }
 
-  ion-item:last-of-type {
+  ion-item-sliding ion-item:last-of-type {
     --border-style: none;
   }
 }
