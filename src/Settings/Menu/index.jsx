@@ -70,7 +70,9 @@ const MenuController = props => {
     appModel.save();
   };
   const adminChangeWeek = e => {
-    window.admin.currentWeek = parseInt(e.target.value, 10);
+    const currentWeek = parseInt(e.target.value, 10);
+    if (currentWeek > 53) return;
+    window.admin.currentWeek = currentWeek;
     console.log('setting week', window.admin.currentWeek);
   };
 
