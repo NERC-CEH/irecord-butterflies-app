@@ -7,6 +7,7 @@ import './photos'; // webpack-loading only
 import './photos-moth'; // webpack-loading only
 
 interface SpeciesInfo {
+  probabilityId: number;
   id: string;
   type: string;
   warehouseId: number;

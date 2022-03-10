@@ -1,0 +1,9921 @@
+[
+  {
+    "Column1": 1,
+    "species": 5791,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 1
+  },
+  {
+    "Column1": 2,
+    "species": 5638,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 1
+  },
+  {
+    "Column1": 3,
+    "species": 5647,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 1
+  },
+  {
+    "Column1": 4,
+    "species": 5650,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 1
+  },
+  {
+    "Column1": 5,
+    "species": 5770,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 1
+  },
+  {
+    "Column1": 6,
+    "species": 5779,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 1
+  },
+  {
+    "Column1": 7,
+    "species": 5791,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 2
+  },
+  {
+    "Column1": 8,
+    "species": 5638,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 2
+  },
+  {
+    "Column1": 9,
+    "species": 5647,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 2
+  },
+  {
+    "Column1": 10,
+    "species": 5650,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 2
+  },
+  {
+    "Column1": 11,
+    "species": 5770,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 2
+  },
+  {
+    "Column1": 12,
+    "species": 5779,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 2
+  },
+  {
+    "Column1": 13,
+    "species": 5794,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 2
+  },
+  {
+    "Column1": 14,
+    "species": 5770,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 3
+  },
+  {
+    "Column1": 15,
+    "species": 5779,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 3
+  },
+  {
+    "Column1": 16,
+    "species": 5791,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 3
+  },
+  {
+    "Column1": 17,
+    "species": 5794,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 3
+  },
+  {
+    "Column1": 18,
+    "species": 5779,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 4
+  },
+  {
+    "Column1": 19,
+    "species": 5770,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 4
+  },
+  {
+    "Column1": 20,
+    "species": 5791,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 4
+  },
+  {
+    "Column1": 21,
+    "species": 5794,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 4
+  },
+  {
+    "Column1": 22,
+    "species": 5770,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 5
+  },
+  {
+    "Column1": 23,
+    "species": 5779,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 5
+  },
+  {
+    "Column1": 24,
+    "species": 5638,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 5
+  },
+  {
+    "Column1": 25,
+    "species": 5791,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 5
+  },
+  {
+    "Column1": 26,
+    "species": 5794,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 5
+  },
+  {
+    "Column1": 27,
+    "species": 5770,
+    "nrec": 12,
+    "sq_10": "SU68",
+    "weekSum": 6
+  },
+  {
+    "Column1": 28,
+    "species": 5638,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 6
+  },
+  {
+    "Column1": 29,
+    "species": 5791,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 6
+  },
+  {
+    "Column1": 30,
+    "species": 5779,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 6
+  },
+  {
+    "Column1": 31,
+    "species": 5773,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 6
+  },
+  {
+    "Column1": 32,
+    "species": 5794,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 6
+  },
+  {
+    "Column1": 33,
+    "species": 5638,
+    "nrec": 55,
+    "sq_10": "SU68",
+    "weekSum": 7
+  },
+  {
+    "Column1": 34,
+    "species": 5770,
+    "nrec": 17,
+    "sq_10": "SU68",
+    "weekSum": 7
+  },
+  {
+    "Column1": 35,
+    "species": 5779,
+    "nrec": 8,
+    "sq_10": "SU68",
+    "weekSum": 7
+  },
+  {
+    "Column1": 36,
+    "species": 5791,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 7
+  },
+  {
+    "Column1": 37,
+    "species": 5794,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 7
+  },
+  {
+    "Column1": 38,
+    "species": 5650,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 7
+  },
+  {
+    "Column1": 39,
+    "species": 5773,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 7
+  },
+  {
+    "Column1": 40,
+    "species": 5638,
+    "nrec": 103,
+    "sq_10": "SU68",
+    "weekSum": 8
+  },
+  {
+    "Column1": 41,
+    "species": 5770,
+    "nrec": 19,
+    "sq_10": "SU68",
+    "weekSum": 8
+  },
+  {
+    "Column1": 42,
+    "species": 5779,
+    "nrec": 18,
+    "sq_10": "SU68",
+    "weekSum": 8
+  },
+  {
+    "Column1": 43,
+    "species": 5791,
+    "nrec": 17,
+    "sq_10": "SU68",
+    "weekSum": 8
+  },
+  {
+    "Column1": 44,
+    "species": 5794,
+    "nrec": 14,
+    "sq_10": "SU68",
+    "weekSum": 8
+  },
+  {
+    "Column1": 45,
+    "species": 5650,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 8
+  },
+  {
+    "Column1": 46,
+    "species": 5647,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 8
+  },
+  {
+    "Column1": 47,
+    "species": 5773,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 8
+  },
+  {
+    "Column1": 48,
+    "species": 6952,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 8
+  },
+  {
+    "Column1": 49,
+    "species": 5638,
+    "nrec": 267,
+    "sq_10": "SU68",
+    "weekSum": 9
+  },
+  {
+    "Column1": 50,
+    "species": 5791,
+    "nrec": 81,
+    "sq_10": "SU68",
+    "weekSum": 9
+  },
+  {
+    "Column1": 51,
+    "species": 5779,
+    "nrec": 71,
+    "sq_10": "SU68",
+    "weekSum": 9
+  },
+  {
+    "Column1": 52,
+    "species": 5794,
+    "nrec": 58,
+    "sq_10": "SU68",
+    "weekSum": 9
+  },
+  {
+    "Column1": 53,
+    "species": 5770,
+    "nrec": 25,
+    "sq_10": "SU68",
+    "weekSum": 9
+  },
+  {
+    "Column1": 54,
+    "species": 5650,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 9
+  },
+  {
+    "Column1": 55,
+    "species": 5647,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 9
+  },
+  {
+    "Column1": 56,
+    "species": 5659,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 9
+  },
+  {
+    "Column1": 57,
+    "species": 6952,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 9
+  },
+  {
+    "Column1": 58,
+    "species": 5638,
+    "nrec": 416,
+    "sq_10": "SU68",
+    "weekSum": 10
+  },
+  {
+    "Column1": 59,
+    "species": 5779,
+    "nrec": 152,
+    "sq_10": "SU68",
+    "weekSum": 10
+  },
+  {
+    "Column1": 60,
+    "species": 5791,
+    "nrec": 142,
+    "sq_10": "SU68",
+    "weekSum": 10
+  },
+  {
+    "Column1": 61,
+    "species": 5794,
+    "nrec": 116,
+    "sq_10": "SU68",
+    "weekSum": 10
+  },
+  {
+    "Column1": 62,
+    "species": 5770,
+    "nrec": 37,
+    "sq_10": "SU68",
+    "weekSum": 10
+  },
+  {
+    "Column1": 63,
+    "species": 5650,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 10
+  },
+  {
+    "Column1": 64,
+    "species": 5647,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 10
+  },
+  {
+    "Column1": 65,
+    "species": 6952,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 10
+  },
+  {
+    "Column1": 66,
+    "species": 5659,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 10
+  },
+  {
+    "Column1": 67,
+    "species": 5638,
+    "nrec": 533,
+    "sq_10": "SU68",
+    "weekSum": 11
+  },
+  {
+    "Column1": 68,
+    "species": 5779,
+    "nrec": 232,
+    "sq_10": "SU68",
+    "weekSum": 11
+  },
+  {
+    "Column1": 69,
+    "species": 5791,
+    "nrec": 216,
+    "sq_10": "SU68",
+    "weekSum": 11
+  },
+  {
+    "Column1": 70,
+    "species": 5794,
+    "nrec": 157,
+    "sq_10": "SU68",
+    "weekSum": 11
+  },
+  {
+    "Column1": 71,
+    "species": 5770,
+    "nrec": 42,
+    "sq_10": "SU68",
+    "weekSum": 11
+  },
+  {
+    "Column1": 72,
+    "species": 5650,
+    "nrec": 12,
+    "sq_10": "SU68",
+    "weekSum": 11
+  },
+  {
+    "Column1": 73,
+    "species": 5659,
+    "nrec": 11,
+    "sq_10": "SU68",
+    "weekSum": 11
+  },
+  {
+    "Column1": 74,
+    "species": 5740,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 11
+  },
+  {
+    "Column1": 75,
+    "species": 5647,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 11
+  },
+  {
+    "Column1": 76,
+    "species": 5842,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 11
+  },
+  {
+    "Column1": 77,
+    "species": 6952,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 11
+  },
+  {
+    "Column1": 78,
+    "species": 5638,
+    "nrec": 709,
+    "sq_10": "SU68",
+    "weekSum": 12
+  },
+  {
+    "Column1": 79,
+    "species": 5791,
+    "nrec": 374,
+    "sq_10": "SU68",
+    "weekSum": 12
+  },
+  {
+    "Column1": 80,
+    "species": 5779,
+    "nrec": 320,
+    "sq_10": "SU68",
+    "weekSum": 12
+  },
+  {
+    "Column1": 81,
+    "species": 5794,
+    "nrec": 241,
+    "sq_10": "SU68",
+    "weekSum": 12
+  },
+  {
+    "Column1": 82,
+    "species": 5659,
+    "nrec": 83,
+    "sq_10": "SU68",
+    "weekSum": 12
+  },
+  {
+    "Column1": 83,
+    "species": 5770,
+    "nrec": 46,
+    "sq_10": "SU68",
+    "weekSum": 12
+  },
+  {
+    "Column1": 84,
+    "species": 5740,
+    "nrec": 41,
+    "sq_10": "SU68",
+    "weekSum": 12
+  },
+  {
+    "Column1": 85,
+    "species": 5650,
+    "nrec": 29,
+    "sq_10": "SU68",
+    "weekSum": 12
+  },
+  {
+    "Column1": 86,
+    "species": 5842,
+    "nrec": 16,
+    "sq_10": "SU68",
+    "weekSum": 12
+  },
+  {
+    "Column1": 87,
+    "species": 5653,
+    "nrec": 8,
+    "sq_10": "SU68",
+    "weekSum": 12
+  },
+  {
+    "Column1": 88,
+    "species": 5647,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 12
+  },
+  {
+    "Column1": 89,
+    "species": 5602,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 12
+  },
+  {
+    "Column1": 90,
+    "species": 5635,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 12
+  },
+  {
+    "Column1": 91,
+    "species": 5773,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 12
+  },
+  {
+    "Column1": 92,
+    "species": 6952,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 12
+  },
+  {
+    "Column1": 93,
+    "species": 5638,
+    "nrec": 942,
+    "sq_10": "SU68",
+    "weekSum": 13
+  },
+  {
+    "Column1": 94,
+    "species": 5791,
+    "nrec": 676,
+    "sq_10": "SU68",
+    "weekSum": 13
+  },
+  {
+    "Column1": 95,
+    "species": 5779,
+    "nrec": 487,
+    "sq_10": "SU68",
+    "weekSum": 13
+  },
+  {
+    "Column1": 96,
+    "species": 5794,
+    "nrec": 309,
+    "sq_10": "SU68",
+    "weekSum": 13
+  },
+  {
+    "Column1": 97,
+    "species": 5659,
+    "nrec": 266,
+    "sq_10": "SU68",
+    "weekSum": 13
+  },
+  {
+    "Column1": 98,
+    "species": 5740,
+    "nrec": 127,
+    "sq_10": "SU68",
+    "weekSum": 13
+  },
+  {
+    "Column1": 99,
+    "species": 5650,
+    "nrec": 76,
+    "sq_10": "SU68",
+    "weekSum": 13
+  },
+  {
+    "Column1": 100,
+    "species": 5842,
+    "nrec": 59,
+    "sq_10": "SU68",
+    "weekSum": 13
+  },
+  {
+    "Column1": 101,
+    "species": 5770,
+    "nrec": 45,
+    "sq_10": "SU68",
+    "weekSum": 13
+  },
+  {
+    "Column1": 102,
+    "species": 5653,
+    "nrec": 22,
+    "sq_10": "SU68",
+    "weekSum": 13
+  },
+  {
+    "Column1": 103,
+    "species": 5647,
+    "nrec": 12,
+    "sq_10": "SU68",
+    "weekSum": 13
+  },
+  {
+    "Column1": 104,
+    "species": 5635,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 13
+  },
+  {
+    "Column1": 105,
+    "species": 5602,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 13
+  },
+  {
+    "Column1": 106,
+    "species": 5773,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 13
+  },
+  {
+    "Column1": 107,
+    "species": 5671,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 13
+  },
+  {
+    "Column1": 108,
+    "species": 5722,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 13
+  },
+  {
+    "Column1": 109,
+    "species": 5881,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 13
+  },
+  {
+    "Column1": 110,
+    "species": 5638,
+    "nrec": 1327,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 111,
+    "species": 5791,
+    "nrec": 1122,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 112,
+    "species": 5779,
+    "nrec": 718,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 113,
+    "species": 5659,
+    "nrec": 625,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 114,
+    "species": 5794,
+    "nrec": 398,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 115,
+    "species": 5740,
+    "nrec": 276,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 116,
+    "species": 5842,
+    "nrec": 169,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 117,
+    "species": 5650,
+    "nrec": 145,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 118,
+    "species": 5653,
+    "nrec": 82,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 119,
+    "species": 5770,
+    "nrec": 57,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 120,
+    "species": 5647,
+    "nrec": 41,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 121,
+    "species": 5665,
+    "nrec": 13,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 122,
+    "species": 5602,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 123,
+    "species": 5635,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 124,
+    "species": 5722,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 125,
+    "species": 5773,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 126,
+    "species": 5878,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 127,
+    "species": 5881,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 128,
+    "species": 5578,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 129,
+    "species": 5596,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 130,
+    "species": 5671,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 131,
+    "species": 5929,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 132,
+    "species": 6952,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 14
+  },
+  {
+    "Column1": 133,
+    "species": 5638,
+    "nrec": 1710,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 134,
+    "species": 5791,
+    "nrec": 1540,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 135,
+    "species": 5659,
+    "nrec": 1300,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 136,
+    "species": 5779,
+    "nrec": 893,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 137,
+    "species": 5740,
+    "nrec": 574,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 138,
+    "species": 5794,
+    "nrec": 415,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 139,
+    "species": 5842,
+    "nrec": 370,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 140,
+    "species": 5650,
+    "nrec": 269,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 141,
+    "species": 5653,
+    "nrec": 204,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 142,
+    "species": 5647,
+    "nrec": 84,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 143,
+    "species": 5770,
+    "nrec": 67,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 144,
+    "species": 5665,
+    "nrec": 48,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 145,
+    "species": 5602,
+    "nrec": 25,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 146,
+    "species": 5683,
+    "nrec": 9,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 147,
+    "species": 5596,
+    "nrec": 8,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 148,
+    "species": 5722,
+    "nrec": 8,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 149,
+    "species": 5635,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 150,
+    "species": 5773,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 151,
+    "species": 5881,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 152,
+    "species": 5878,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 153,
+    "species": 8323,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 154,
+    "species": 5578,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 155,
+    "species": 5671,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 156,
+    "species": 5707,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 157,
+    "species": 5716,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 158,
+    "species": 5824,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 159,
+    "species": 5929,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 160,
+    "species": 6706,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 161,
+    "species": 6952,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 162,
+    "species": 8389,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 15
+  },
+  {
+    "Column1": 163,
+    "species": 5638,
+    "nrec": 1674,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 164,
+    "species": 5659,
+    "nrec": 1655,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 165,
+    "species": 5791,
+    "nrec": 1514,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 166,
+    "species": 5779,
+    "nrec": 780,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 167,
+    "species": 5740,
+    "nrec": 701,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 168,
+    "species": 5842,
+    "nrec": 509,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 169,
+    "species": 5794,
+    "nrec": 362,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 170,
+    "species": 5653,
+    "nrec": 349,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 171,
+    "species": 5650,
+    "nrec": 348,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 172,
+    "species": 5647,
+    "nrec": 119,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 173,
+    "species": 5665,
+    "nrec": 99,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 174,
+    "species": 5602,
+    "nrec": 71,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 175,
+    "species": 5770,
+    "nrec": 71,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 176,
+    "species": 5596,
+    "nrec": 67,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 177,
+    "species": 5683,
+    "nrec": 38,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 178,
+    "species": 5881,
+    "nrec": 22,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 179,
+    "species": 5722,
+    "nrec": 14,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 180,
+    "species": 5773,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 181,
+    "species": 5716,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 182,
+    "species": 5878,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 183,
+    "species": 6706,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 184,
+    "species": 8323,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 185,
+    "species": 8389,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 186,
+    "species": 5635,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 187,
+    "species": 5707,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 188,
+    "species": 6181,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 189,
+    "species": 6214,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 190,
+    "species": 8386,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 191,
+    "species": 5578,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 192,
+    "species": 5824,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 193,
+    "species": 5929,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 194,
+    "species": 6952,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 195,
+    "species": 7207,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 16
+  },
+  {
+    "Column1": 196,
+    "species": 5659,
+    "nrec": 1956,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 197,
+    "species": 5638,
+    "nrec": 1701,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 198,
+    "species": 5791,
+    "nrec": 1368,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 199,
+    "species": 5740,
+    "nrec": 804,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 200,
+    "species": 5779,
+    "nrec": 598,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 201,
+    "species": 5842,
+    "nrec": 550,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 202,
+    "species": 5653,
+    "nrec": 521,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 203,
+    "species": 5650,
+    "nrec": 498,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 204,
+    "species": 5794,
+    "nrec": 292,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 205,
+    "species": 5647,
+    "nrec": 208,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 206,
+    "species": 5596,
+    "nrec": 158,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 207,
+    "species": 5665,
+    "nrec": 150,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 208,
+    "species": 5602,
+    "nrec": 138,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 209,
+    "species": 5683,
+    "nrec": 84,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 210,
+    "species": 5770,
+    "nrec": 81,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 211,
+    "species": 5881,
+    "nrec": 63,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 212,
+    "species": 5722,
+    "nrec": 50,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 213,
+    "species": 5716,
+    "nrec": 25,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 214,
+    "species": 8323,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 215,
+    "species": 6214,
+    "nrec": 9,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 216,
+    "species": 8389,
+    "nrec": 9,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 217,
+    "species": 6181,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 218,
+    "species": 6706,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 219,
+    "species": 5773,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 220,
+    "species": 7207,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 221,
+    "species": 8386,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 222,
+    "species": 5707,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 223,
+    "species": 8191,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 224,
+    "species": 5593,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 225,
+    "species": 5878,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 226,
+    "species": 6727,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 227,
+    "species": 5635,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 228,
+    "species": 5728,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 229,
+    "species": 5824,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 17
+  },
+  {
+    "Column1": 230,
+    "species": 5659,
+    "nrec": 1880,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 231,
+    "species": 5638,
+    "nrec": 1426,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 232,
+    "species": 5791,
+    "nrec": 979,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 233,
+    "species": 5740,
+    "nrec": 753,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 234,
+    "species": 5653,
+    "nrec": 631,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 235,
+    "species": 5650,
+    "nrec": 573,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 236,
+    "species": 5842,
+    "nrec": 490,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 237,
+    "species": 5779,
+    "nrec": 391,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 238,
+    "species": 5647,
+    "nrec": 319,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 239,
+    "species": 5596,
+    "nrec": 294,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 240,
+    "species": 5665,
+    "nrec": 219,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 241,
+    "species": 5602,
+    "nrec": 198,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 242,
+    "species": 5794,
+    "nrec": 180,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 243,
+    "species": 5722,
+    "nrec": 140,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 244,
+    "species": 5683,
+    "nrec": 134,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 245,
+    "species": 5881,
+    "nrec": 127,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 246,
+    "species": 5770,
+    "nrec": 91,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 247,
+    "species": 5716,
+    "nrec": 61,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 248,
+    "species": 6214,
+    "nrec": 16,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 249,
+    "species": 5707,
+    "nrec": 13,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 250,
+    "species": 6181,
+    "nrec": 12,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 251,
+    "species": 8389,
+    "nrec": 12,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 252,
+    "species": 6706,
+    "nrec": 11,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 253,
+    "species": 8323,
+    "nrec": 11,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 254,
+    "species": 8386,
+    "nrec": 11,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 255,
+    "species": 7207,
+    "nrec": 9,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 256,
+    "species": 8191,
+    "nrec": 9,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 257,
+    "species": 5773,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 258,
+    "species": 5728,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 259,
+    "species": 6727,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 260,
+    "species": 5593,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 261,
+    "species": 5878,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 262,
+    "species": 6196,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 263,
+    "species": 5635,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 264,
+    "species": 5845,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 265,
+    "species": 8410,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 18
+  },
+  {
+    "Column1": 266,
+    "species": 5659,
+    "nrec": 1953,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 267,
+    "species": 5638,
+    "nrec": 1565,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 268,
+    "species": 5791,
+    "nrec": 900,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 269,
+    "species": 5740,
+    "nrec": 817,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 270,
+    "species": 5653,
+    "nrec": 774,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 271,
+    "species": 5650,
+    "nrec": 674,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 272,
+    "species": 5596,
+    "nrec": 494,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 273,
+    "species": 5842,
+    "nrec": 487,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 274,
+    "species": 5647,
+    "nrec": 429,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 275,
+    "species": 5779,
+    "nrec": 354,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 276,
+    "species": 5722,
+    "nrec": 343,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 277,
+    "species": 5665,
+    "nrec": 309,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 278,
+    "species": 5881,
+    "nrec": 288,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 279,
+    "species": 5602,
+    "nrec": 260,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 280,
+    "species": 5683,
+    "nrec": 196,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 281,
+    "species": 5794,
+    "nrec": 145,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 282,
+    "species": 5716,
+    "nrec": 141,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 283,
+    "species": 5770,
+    "nrec": 115,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 284,
+    "species": 5707,
+    "nrec": 54,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 285,
+    "species": 7207,
+    "nrec": 25,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 286,
+    "species": 6214,
+    "nrec": 22,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 287,
+    "species": 6181,
+    "nrec": 20,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 288,
+    "species": 8386,
+    "nrec": 18,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 289,
+    "species": 8389,
+    "nrec": 17,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 290,
+    "species": 5773,
+    "nrec": 16,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 291,
+    "species": 6706,
+    "nrec": 14,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 292,
+    "species": 5728,
+    "nrec": 12,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 293,
+    "species": 8323,
+    "nrec": 12,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 294,
+    "species": 8191,
+    "nrec": 11,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 295,
+    "species": 5878,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 296,
+    "species": 6727,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 297,
+    "species": 5593,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 298,
+    "species": 6196,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 299,
+    "species": 6226,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 300,
+    "species": 7204,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 301,
+    "species": 5845,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 302,
+    "species": 6682,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 303,
+    "species": 8410,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 19
+  },
+  {
+    "Column1": 304,
+    "species": 5659,
+    "nrec": 1777,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 305,
+    "species": 5638,
+    "nrec": 1521,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 306,
+    "species": 5740,
+    "nrec": 829,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 307,
+    "species": 5653,
+    "nrec": 812,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 308,
+    "species": 5722,
+    "nrec": 722,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 309,
+    "species": 5791,
+    "nrec": 716,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 310,
+    "species": 5650,
+    "nrec": 703,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 311,
+    "species": 5596,
+    "nrec": 677,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 312,
+    "species": 5842,
+    "nrec": 554,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 313,
+    "species": 5881,
+    "nrec": 536,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 314,
+    "species": 5647,
+    "nrec": 487,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 315,
+    "species": 5665,
+    "nrec": 375,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 316,
+    "species": 5602,
+    "nrec": 298,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 317,
+    "species": 5779,
+    "nrec": 274,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 318,
+    "species": 5683,
+    "nrec": 266,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 319,
+    "species": 5716,
+    "nrec": 241,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 320,
+    "species": 5707,
+    "nrec": 171,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 321,
+    "species": 5770,
+    "nrec": 158,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 322,
+    "species": 5794,
+    "nrec": 103,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 323,
+    "species": 5728,
+    "nrec": 50,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 324,
+    "species": 7207,
+    "nrec": 45,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 325,
+    "species": 6214,
+    "nrec": 38,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 326,
+    "species": 8389,
+    "nrec": 29,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 327,
+    "species": 5773,
+    "nrec": 28,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 328,
+    "species": 6181,
+    "nrec": 28,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 329,
+    "species": 8386,
+    "nrec": 24,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 330,
+    "species": 8323,
+    "nrec": 23,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 331,
+    "species": 6706,
+    "nrec": 17,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 332,
+    "species": 5878,
+    "nrec": 14,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 333,
+    "species": 8191,
+    "nrec": 12,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 334,
+    "species": 5593,
+    "nrec": 11,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 335,
+    "species": 6226,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 336,
+    "species": 6727,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 337,
+    "species": 5578,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 338,
+    "species": 6196,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 339,
+    "species": 6421,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 340,
+    "species": 7204,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 341,
+    "species": 5581,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 342,
+    "species": 5845,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 343,
+    "species": 5887,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 344,
+    "species": 6682,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 345,
+    "species": 8410,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 20
+  },
+  {
+    "Column1": 346,
+    "species": 5638,
+    "nrec": 1369,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 347,
+    "species": 5659,
+    "nrec": 1364,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 348,
+    "species": 5722,
+    "nrec": 1094,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 349,
+    "species": 5881,
+    "nrec": 750,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 350,
+    "species": 5653,
+    "nrec": 733,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 351,
+    "species": 5740,
+    "nrec": 701,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 352,
+    "species": 5596,
+    "nrec": 693,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 353,
+    "species": 5650,
+    "nrec": 671,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 354,
+    "species": 5842,
+    "nrec": 634,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 355,
+    "species": 5791,
+    "nrec": 596,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 356,
+    "species": 5647,
+    "nrec": 465,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 357,
+    "species": 5665,
+    "nrec": 346,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 358,
+    "species": 5716,
+    "nrec": 300,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 359,
+    "species": 5683,
+    "nrec": 289,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 360,
+    "species": 5602,
+    "nrec": 282,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 361,
+    "species": 5707,
+    "nrec": 266,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 362,
+    "species": 5779,
+    "nrec": 228,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 363,
+    "species": 5770,
+    "nrec": 193,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 364,
+    "species": 5728,
+    "nrec": 124,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 365,
+    "species": 5878,
+    "nrec": 92,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 366,
+    "species": 5794,
+    "nrec": 91,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 367,
+    "species": 5593,
+    "nrec": 67,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 368,
+    "species": 7207,
+    "nrec": 63,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 369,
+    "species": 8323,
+    "nrec": 55,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 370,
+    "species": 5773,
+    "nrec": 54,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 371,
+    "species": 6181,
+    "nrec": 51,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 372,
+    "species": 6214,
+    "nrec": 47,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 373,
+    "species": 8389,
+    "nrec": 45,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 374,
+    "species": 6706,
+    "nrec": 30,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 375,
+    "species": 8386,
+    "nrec": 28,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 376,
+    "species": 6226,
+    "nrec": 16,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 377,
+    "species": 6727,
+    "nrec": 14,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 378,
+    "species": 5887,
+    "nrec": 8,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 379,
+    "species": 6421,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 380,
+    "species": 8191,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 381,
+    "species": 5578,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 382,
+    "species": 5581,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 383,
+    "species": 5875,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 384,
+    "species": 6682,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 385,
+    "species": 7204,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 386,
+    "species": 5746,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 387,
+    "species": 5821,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 388,
+    "species": 5860,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 389,
+    "species": 6952,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 21
+  },
+  {
+    "Column1": 390,
+    "species": 5722,
+    "nrec": 1376,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 391,
+    "species": 5638,
+    "nrec": 1099,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 392,
+    "species": 5659,
+    "nrec": 906,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 393,
+    "species": 5881,
+    "nrec": 856,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 394,
+    "species": 5842,
+    "nrec": 735,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 395,
+    "species": 5650,
+    "nrec": 609,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 396,
+    "species": 5653,
+    "nrec": 530,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 397,
+    "species": 5596,
+    "nrec": 525,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 398,
+    "species": 5740,
+    "nrec": 516,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 399,
+    "species": 5647,
+    "nrec": 451,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 400,
+    "species": 5791,
+    "nrec": 412,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 401,
+    "species": 5707,
+    "nrec": 334,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 402,
+    "species": 5878,
+    "nrec": 332,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 403,
+    "species": 5716,
+    "nrec": 301,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 404,
+    "species": 5665,
+    "nrec": 253,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 405,
+    "species": 5683,
+    "nrec": 248,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 406,
+    "species": 5779,
+    "nrec": 238,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 407,
+    "species": 5770,
+    "nrec": 232,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 408,
+    "species": 5602,
+    "nrec": 218,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 409,
+    "species": 5593,
+    "nrec": 180,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 410,
+    "species": 5728,
+    "nrec": 176,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 411,
+    "species": 5773,
+    "nrec": 101,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 412,
+    "species": 7207,
+    "nrec": 82,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 413,
+    "species": 8323,
+    "nrec": 78,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 414,
+    "species": 5794,
+    "nrec": 67,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 415,
+    "species": 8389,
+    "nrec": 62,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 416,
+    "species": 6181,
+    "nrec": 61,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 417,
+    "species": 6214,
+    "nrec": 50,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 418,
+    "species": 6706,
+    "nrec": 31,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 419,
+    "species": 6226,
+    "nrec": 27,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 420,
+    "species": 8386,
+    "nrec": 26,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 421,
+    "species": 5860,
+    "nrec": 25,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 422,
+    "species": 5887,
+    "nrec": 20,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 423,
+    "species": 6727,
+    "nrec": 14,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 424,
+    "species": 5578,
+    "nrec": 13,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 425,
+    "species": 6421,
+    "nrec": 12,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 426,
+    "species": 8191,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 427,
+    "species": 5581,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 428,
+    "species": 6952,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 429,
+    "species": 7204,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 430,
+    "species": 5875,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 431,
+    "species": 6682,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 432,
+    "species": 1048,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 433,
+    "species": 1507,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 434,
+    "species": 5635,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 435,
+    "species": 5746,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 436,
+    "species": 5821,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 437,
+    "species": 5824,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 438,
+    "species": 5830,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 22
+  },
+  {
+    "Column1": 439,
+    "species": 5722,
+    "nrec": 1320,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 440,
+    "species": 5878,
+    "nrec": 897,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 441,
+    "species": 5881,
+    "nrec": 844,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 442,
+    "species": 5842,
+    "nrec": 817,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 443,
+    "species": 5638,
+    "nrec": 719,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 444,
+    "species": 5659,
+    "nrec": 451,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 445,
+    "species": 5650,
+    "nrec": 449,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 446,
+    "species": 5779,
+    "nrec": 397,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 447,
+    "species": 5593,
+    "nrec": 387,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 448,
+    "species": 5647,
+    "nrec": 356,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 449,
+    "species": 5653,
+    "nrec": 312,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 450,
+    "species": 5707,
+    "nrec": 289,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 451,
+    "species": 5740,
+    "nrec": 280,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 452,
+    "species": 5596,
+    "nrec": 279,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 453,
+    "species": 5770,
+    "nrec": 276,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 454,
+    "species": 5791,
+    "nrec": 252,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 455,
+    "species": 5716,
+    "nrec": 233,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 456,
+    "species": 5860,
+    "nrec": 186,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 457,
+    "species": 5728,
+    "nrec": 163,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 458,
+    "species": 5683,
+    "nrec": 153,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 459,
+    "species": 5665,
+    "nrec": 139,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 460,
+    "species": 5773,
+    "nrec": 130,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 461,
+    "species": 5602,
+    "nrec": 120,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 462,
+    "species": 8323,
+    "nrec": 91,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 463,
+    "species": 7207,
+    "nrec": 85,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 464,
+    "species": 5887,
+    "nrec": 84,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 465,
+    "species": 5794,
+    "nrec": 63,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 466,
+    "species": 6181,
+    "nrec": 63,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 467,
+    "species": 8389,
+    "nrec": 50,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 468,
+    "species": 5578,
+    "nrec": 41,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 469,
+    "species": 6214,
+    "nrec": 36,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 470,
+    "species": 6226,
+    "nrec": 36,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 471,
+    "species": 6706,
+    "nrec": 31,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 472,
+    "species": 8386,
+    "nrec": 20,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 473,
+    "species": 6727,
+    "nrec": 13,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 474,
+    "species": 6421,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 475,
+    "species": 7204,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 476,
+    "species": 5674,
+    "nrec": 9,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 477,
+    "species": 6952,
+    "nrec": 9,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 478,
+    "species": 5875,
+    "nrec": 8,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 479,
+    "species": 5821,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 480,
+    "species": 5581,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 481,
+    "species": 5824,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 482,
+    "species": 1048,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 483,
+    "species": 5635,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 484,
+    "species": 5752,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 485,
+    "species": 6682,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 486,
+    "species": 1507,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 487,
+    "species": 8191,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 488,
+    "species": 5746,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 489,
+    "species": 5830,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 490,
+    "species": 7078,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 23
+  },
+  {
+    "Column1": 491,
+    "species": 5878,
+    "nrec": 1989,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 492,
+    "species": 5722,
+    "nrec": 1122,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 493,
+    "species": 5842,
+    "nrec": 897,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 494,
+    "species": 5881,
+    "nrec": 889,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 495,
+    "species": 5779,
+    "nrec": 771,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 496,
+    "species": 5593,
+    "nrec": 726,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 497,
+    "species": 5860,
+    "nrec": 622,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 498,
+    "species": 5638,
+    "nrec": 558,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 499,
+    "species": 5887,
+    "nrec": 447,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 500,
+    "species": 5650,
+    "nrec": 391,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 501,
+    "species": 5770,
+    "nrec": 362,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 502,
+    "species": 5647,
+    "nrec": 347,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 503,
+    "species": 5707,
+    "nrec": 252,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 504,
+    "species": 5659,
+    "nrec": 207,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 505,
+    "species": 5653,
+    "nrec": 206,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 506,
+    "species": 5716,
+    "nrec": 171,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 507,
+    "species": 5740,
+    "nrec": 151,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 508,
+    "species": 5773,
+    "nrec": 149,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 509,
+    "species": 5791,
+    "nrec": 147,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 510,
+    "species": 5596,
+    "nrec": 137,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 511,
+    "species": 5794,
+    "nrec": 137,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 512,
+    "species": 5578,
+    "nrec": 111,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 513,
+    "species": 5728,
+    "nrec": 93,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 514,
+    "species": 7207,
+    "nrec": 92,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 515,
+    "species": 5683,
+    "nrec": 89,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 516,
+    "species": 8323,
+    "nrec": 82,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 517,
+    "species": 5665,
+    "nrec": 80,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 518,
+    "species": 5602,
+    "nrec": 61,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 519,
+    "species": 6181,
+    "nrec": 52,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 520,
+    "species": 6226,
+    "nrec": 44,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 521,
+    "species": 5674,
+    "nrec": 40,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 522,
+    "species": 8389,
+    "nrec": 35,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 523,
+    "species": 5821,
+    "nrec": 33,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 524,
+    "species": 6214,
+    "nrec": 28,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 525,
+    "species": 7204,
+    "nrec": 25,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 526,
+    "species": 5824,
+    "nrec": 22,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 527,
+    "species": 5752,
+    "nrec": 21,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 528,
+    "species": 6706,
+    "nrec": 21,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 529,
+    "species": 5581,
+    "nrec": 15,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 530,
+    "species": 5875,
+    "nrec": 15,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 531,
+    "species": 6952,
+    "nrec": 13,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 532,
+    "species": 8386,
+    "nrec": 13,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 533,
+    "species": 6421,
+    "nrec": 8,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 534,
+    "species": 1048,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 535,
+    "species": 1507,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 536,
+    "species": 5635,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 537,
+    "species": 5755,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 538,
+    "species": 6682,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 539,
+    "species": 8191,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 540,
+    "species": 5671,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 541,
+    "species": 5725,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 542,
+    "species": 5830,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 543,
+    "species": 5845,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 544,
+    "species": 6196,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 545,
+    "species": 6727,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 546,
+    "species": 6862,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 547,
+    "species": 7078,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 24
+  },
+  {
+    "Column1": 548,
+    "species": 5878,
+    "nrec": 3357,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 549,
+    "species": 5860,
+    "nrec": 1400,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 550,
+    "species": 5887,
+    "nrec": 1361,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 551,
+    "species": 5779,
+    "nrec": 1178,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 552,
+    "species": 5593,
+    "nrec": 1080,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 553,
+    "species": 5842,
+    "nrec": 921,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 554,
+    "species": 5881,
+    "nrec": 908,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 555,
+    "species": 5722,
+    "nrec": 814,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 556,
+    "species": 5770,
+    "nrec": 509,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 557,
+    "species": 5650,
+    "nrec": 490,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 558,
+    "species": 5647,
+    "nrec": 485,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 559,
+    "species": 5638,
+    "nrec": 421,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 560,
+    "species": 5794,
+    "nrec": 344,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 561,
+    "species": 5578,
+    "nrec": 266,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 562,
+    "species": 5653,
+    "nrec": 259,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 563,
+    "species": 5773,
+    "nrec": 200,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 564,
+    "species": 5707,
+    "nrec": 177,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 565,
+    "species": 5821,
+    "nrec": 118,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 566,
+    "species": 5716,
+    "nrec": 113,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 567,
+    "species": 5875,
+    "nrec": 105,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 568,
+    "species": 5791,
+    "nrec": 96,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 569,
+    "species": 5740,
+    "nrec": 86,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 570,
+    "species": 5824,
+    "nrec": 86,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 571,
+    "species": 7207,
+    "nrec": 73,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 572,
+    "species": 8323,
+    "nrec": 72,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 573,
+    "species": 5659,
+    "nrec": 63,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 574,
+    "species": 5581,
+    "nrec": 62,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 575,
+    "species": 5674,
+    "nrec": 61,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 576,
+    "species": 5683,
+    "nrec": 59,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 577,
+    "species": 5596,
+    "nrec": 52,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 578,
+    "species": 5752,
+    "nrec": 50,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 579,
+    "species": 7204,
+    "nrec": 49,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 580,
+    "species": 6226,
+    "nrec": 47,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 581,
+    "species": 5728,
+    "nrec": 45,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 582,
+    "species": 6181,
+    "nrec": 40,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 583,
+    "species": 5665,
+    "nrec": 34,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 584,
+    "species": 6214,
+    "nrec": 23,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 585,
+    "species": 5602,
+    "nrec": 19,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 586,
+    "species": 6706,
+    "nrec": 17,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 587,
+    "species": 6952,
+    "nrec": 16,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 588,
+    "species": 8389,
+    "nrec": 12,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 589,
+    "species": 1507,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 590,
+    "species": 5755,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 591,
+    "species": 5725,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 592,
+    "species": 5671,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 593,
+    "species": 8386,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 594,
+    "species": 1048,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 595,
+    "species": 5635,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 596,
+    "species": 6421,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 597,
+    "species": 6196,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 598,
+    "species": 6682,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 599,
+    "species": 6862,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 600,
+    "species": 5845,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 601,
+    "species": 7078,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 25
+  },
+  {
+    "Column1": 602,
+    "species": 5878,
+    "nrec": 4716,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 603,
+    "species": 5887,
+    "nrec": 2696,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 604,
+    "species": 5860,
+    "nrec": 2301,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 605,
+    "species": 5779,
+    "nrec": 1648,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 606,
+    "species": 5593,
+    "nrec": 1474,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 607,
+    "species": 5647,
+    "nrec": 1045,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 608,
+    "species": 5650,
+    "nrec": 1045,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 609,
+    "species": 5881,
+    "nrec": 935,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 610,
+    "species": 5842,
+    "nrec": 927,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 611,
+    "species": 5770,
+    "nrec": 720,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 612,
+    "species": 5794,
+    "nrec": 701,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 613,
+    "species": 5578,
+    "nrec": 607,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 614,
+    "species": 5722,
+    "nrec": 579,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 615,
+    "species": 5653,
+    "nrec": 572,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 616,
+    "species": 5875,
+    "nrec": 544,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 617,
+    "species": 5638,
+    "nrec": 441,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 618,
+    "species": 5773,
+    "nrec": 253,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 619,
+    "species": 5581,
+    "nrec": 244,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 620,
+    "species": 5824,
+    "nrec": 238,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 621,
+    "species": 5821,
+    "nrec": 211,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 622,
+    "species": 5791,
+    "nrec": 139,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 623,
+    "species": 5740,
+    "nrec": 136,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 624,
+    "species": 5707,
+    "nrec": 124,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 625,
+    "species": 5716,
+    "nrec": 88,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 626,
+    "species": 5683,
+    "nrec": 81,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 627,
+    "species": 5674,
+    "nrec": 76,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 628,
+    "species": 5752,
+    "nrec": 76,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 629,
+    "species": 7204,
+    "nrec": 70,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 630,
+    "species": 8323,
+    "nrec": 64,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 631,
+    "species": 7207,
+    "nrec": 60,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 632,
+    "species": 5725,
+    "nrec": 53,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 633,
+    "species": 6226,
+    "nrec": 44,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 634,
+    "species": 6181,
+    "nrec": 27,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 635,
+    "species": 5596,
+    "nrec": 25,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 636,
+    "species": 5659,
+    "nrec": 25,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 637,
+    "species": 5728,
+    "nrec": 25,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 638,
+    "species": 5665,
+    "nrec": 20,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 639,
+    "species": 6214,
+    "nrec": 19,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 640,
+    "species": 6952,
+    "nrec": 18,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 641,
+    "species": 5755,
+    "nrec": 17,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 642,
+    "species": 1507,
+    "nrec": 16,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 643,
+    "species": 5671,
+    "nrec": 15,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 644,
+    "species": 6706,
+    "nrec": 11,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 645,
+    "species": 5602,
+    "nrec": 9,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 646,
+    "species": 6196,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 647,
+    "species": 5635,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 648,
+    "species": 8389,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 649,
+    "species": 1048,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 650,
+    "species": 6421,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 651,
+    "species": 7078,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 652,
+    "species": 8386,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 653,
+    "species": 6862,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 654,
+    "species": 5845,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 655,
+    "species": 6682,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 656,
+    "species": 8410,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 26
+  },
+  {
+    "Column1": 657,
+    "species": 5878,
+    "nrec": 5371,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 658,
+    "species": 5887,
+    "nrec": 3760,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 659,
+    "species": 5860,
+    "nrec": 2800,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 660,
+    "species": 5779,
+    "nrec": 1826,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 661,
+    "species": 5647,
+    "nrec": 1806,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 662,
+    "species": 5650,
+    "nrec": 1714,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 663,
+    "species": 5593,
+    "nrec": 1495,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 664,
+    "species": 5875,
+    "nrec": 1421,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 665,
+    "species": 5794,
+    "nrec": 1041,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 666,
+    "species": 5653,
+    "nrec": 980,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 667,
+    "species": 5578,
+    "nrec": 971,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 668,
+    "species": 5770,
+    "nrec": 935,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 669,
+    "species": 5842,
+    "nrec": 918,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 670,
+    "species": 5881,
+    "nrec": 845,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 671,
+    "species": 5722,
+    "nrec": 518,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 672,
+    "species": 5638,
+    "nrec": 508,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 673,
+    "species": 5581,
+    "nrec": 475,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 674,
+    "species": 5791,
+    "nrec": 411,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 675,
+    "species": 5824,
+    "nrec": 373,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 676,
+    "species": 5821,
+    "nrec": 276,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 677,
+    "species": 5773,
+    "nrec": 267,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 678,
+    "species": 5740,
+    "nrec": 259,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 679,
+    "species": 5725,
+    "nrec": 165,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 680,
+    "species": 5683,
+    "nrec": 154,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 681,
+    "species": 5716,
+    "nrec": 135,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 682,
+    "species": 5752,
+    "nrec": 89,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 683,
+    "species": 5707,
+    "nrec": 69,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 684,
+    "species": 8323,
+    "nrec": 69,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 685,
+    "species": 7204,
+    "nrec": 59,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 686,
+    "species": 5674,
+    "nrec": 54,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 687,
+    "species": 6226,
+    "nrec": 42,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 688,
+    "species": 7207,
+    "nrec": 37,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 689,
+    "species": 5671,
+    "nrec": 30,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 690,
+    "species": 5755,
+    "nrec": 30,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 691,
+    "species": 1507,
+    "nrec": 28,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 692,
+    "species": 6196,
+    "nrec": 25,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 693,
+    "species": 6214,
+    "nrec": 24,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 694,
+    "species": 5728,
+    "nrec": 19,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 695,
+    "species": 6952,
+    "nrec": 17,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 696,
+    "species": 5659,
+    "nrec": 15,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 697,
+    "species": 5665,
+    "nrec": 14,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 698,
+    "species": 5596,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 699,
+    "species": 6181,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 700,
+    "species": 5587,
+    "nrec": 9,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 701,
+    "species": 5635,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 702,
+    "species": 7078,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 703,
+    "species": 5602,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 704,
+    "species": 6652,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 705,
+    "species": 1048,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 706,
+    "species": 6706,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 707,
+    "species": 5845,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 708,
+    "species": 6421,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 709,
+    "species": 6862,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 710,
+    "species": 8389,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 711,
+    "species": 8410,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 27
+  },
+  {
+    "Column1": 712,
+    "species": 5878,
+    "nrec": 5573,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 713,
+    "species": 5887,
+    "nrec": 4022,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 714,
+    "species": 5647,
+    "nrec": 2937,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 715,
+    "species": 5650,
+    "nrec": 2885,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 716,
+    "species": 5875,
+    "nrec": 2849,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 717,
+    "species": 5860,
+    "nrec": 2803,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 718,
+    "species": 5779,
+    "nrec": 1904,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 719,
+    "species": 5653,
+    "nrec": 1598,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 720,
+    "species": 5794,
+    "nrec": 1456,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 721,
+    "species": 5593,
+    "nrec": 1433,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 722,
+    "species": 5770,
+    "nrec": 1325,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 723,
+    "species": 5578,
+    "nrec": 1315,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 724,
+    "species": 5791,
+    "nrec": 1120,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 725,
+    "species": 5842,
+    "nrec": 1000,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 726,
+    "species": 5722,
+    "nrec": 844,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 727,
+    "species": 5638,
+    "nrec": 801,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 728,
+    "species": 5881,
+    "nrec": 747,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 729,
+    "species": 5581,
+    "nrec": 657,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 730,
+    "species": 5824,
+    "nrec": 523,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 731,
+    "species": 5740,
+    "nrec": 478,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 732,
+    "species": 5725,
+    "nrec": 338,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 733,
+    "species": 5683,
+    "nrec": 299,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 734,
+    "species": 5821,
+    "nrec": 289,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 735,
+    "species": 5773,
+    "nrec": 263,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 736,
+    "species": 5716,
+    "nrec": 254,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 737,
+    "species": 5752,
+    "nrec": 97,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 738,
+    "species": 8323,
+    "nrec": 84,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 739,
+    "species": 5587,
+    "nrec": 51,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 740,
+    "species": 5674,
+    "nrec": 49,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 741,
+    "species": 5671,
+    "nrec": 45,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 742,
+    "species": 6196,
+    "nrec": 44,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 743,
+    "species": 5707,
+    "nrec": 42,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 744,
+    "species": 1507,
+    "nrec": 41,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 745,
+    "species": 6226,
+    "nrec": 41,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 746,
+    "species": 7204,
+    "nrec": 34,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 747,
+    "species": 5755,
+    "nrec": 30,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 748,
+    "species": 6214,
+    "nrec": 30,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 749,
+    "species": 7207,
+    "nrec": 22,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 750,
+    "species": 6952,
+    "nrec": 18,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 751,
+    "species": 5728,
+    "nrec": 13,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 752,
+    "species": 5635,
+    "nrec": 12,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 753,
+    "species": 5665,
+    "nrec": 12,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 754,
+    "species": 7078,
+    "nrec": 8,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 755,
+    "species": 5659,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 756,
+    "species": 5596,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 757,
+    "species": 6652,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 758,
+    "species": 1048,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 759,
+    "species": 8410,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 760,
+    "species": 5602,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 761,
+    "species": 6181,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 762,
+    "species": 7528,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 763,
+    "species": 5617,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 764,
+    "species": 5845,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 28
+  },
+  {
+    "Column1": 765,
+    "species": 5878,
+    "nrec": 5558,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 766,
+    "species": 5875,
+    "nrec": 4204,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 767,
+    "species": 5650,
+    "nrec": 3851,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 768,
+    "species": 5647,
+    "nrec": 3837,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 769,
+    "species": 5887,
+    "nrec": 3606,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 770,
+    "species": 5860,
+    "nrec": 2280,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 771,
+    "species": 5653,
+    "nrec": 2051,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 772,
+    "species": 5791,
+    "nrec": 1947,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 773,
+    "species": 5770,
+    "nrec": 1725,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 774,
+    "species": 5794,
+    "nrec": 1708,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 775,
+    "species": 5779,
+    "nrec": 1621,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 776,
+    "species": 5722,
+    "nrec": 1410,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 777,
+    "species": 5578,
+    "nrec": 1325,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 778,
+    "species": 5842,
+    "nrec": 1160,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 779,
+    "species": 5593,
+    "nrec": 1128,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 780,
+    "species": 5638,
+    "nrec": 1094,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 781,
+    "species": 5740,
+    "nrec": 712,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 782,
+    "species": 5581,
+    "nrec": 684,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 783,
+    "species": 5881,
+    "nrec": 654,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 784,
+    "species": 5824,
+    "nrec": 580,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 785,
+    "species": 5725,
+    "nrec": 558,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 786,
+    "species": 5683,
+    "nrec": 504,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 787,
+    "species": 5716,
+    "nrec": 416,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 788,
+    "species": 5773,
+    "nrec": 301,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 789,
+    "species": 5821,
+    "nrec": 260,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 790,
+    "species": 5587,
+    "nrec": 127,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 791,
+    "species": 8323,
+    "nrec": 123,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 792,
+    "species": 5752,
+    "nrec": 84,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 793,
+    "species": 6196,
+    "nrec": 74,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 794,
+    "species": 5671,
+    "nrec": 62,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 795,
+    "species": 6226,
+    "nrec": 61,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 796,
+    "species": 6214,
+    "nrec": 56,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 797,
+    "species": 1507,
+    "nrec": 50,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 798,
+    "species": 5707,
+    "nrec": 44,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 799,
+    "species": 5674,
+    "nrec": 35,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 800,
+    "species": 5755,
+    "nrec": 30,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 801,
+    "species": 6652,
+    "nrec": 19,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 802,
+    "species": 5635,
+    "nrec": 16,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 803,
+    "species": 5728,
+    "nrec": 16,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 804,
+    "species": 6952,
+    "nrec": 16,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 805,
+    "species": 7207,
+    "nrec": 11,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 806,
+    "species": 5665,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 807,
+    "species": 7204,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 808,
+    "species": 7078,
+    "nrec": 8,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 809,
+    "species": 5596,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 810,
+    "species": 5659,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 811,
+    "species": 7528,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 812,
+    "species": 7201,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 813,
+    "species": 6682,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 814,
+    "species": 8410,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 815,
+    "species": 5617,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 816,
+    "species": 5845,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 29
+  },
+  {
+    "Column1": 817,
+    "species": 5878,
+    "nrec": 5294,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 818,
+    "species": 5875,
+    "nrec": 4849,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 819,
+    "species": 5650,
+    "nrec": 4474,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 820,
+    "species": 5647,
+    "nrec": 4241,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 821,
+    "species": 5887,
+    "nrec": 2554,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 822,
+    "species": 5791,
+    "nrec": 2338,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 823,
+    "species": 5653,
+    "nrec": 2294,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 824,
+    "species": 5722,
+    "nrec": 2083,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 825,
+    "species": 5770,
+    "nrec": 2015,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 826,
+    "species": 5794,
+    "nrec": 1758,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 827,
+    "species": 5860,
+    "nrec": 1589,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 828,
+    "species": 5638,
+    "nrec": 1300,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 829,
+    "species": 5779,
+    "nrec": 1285,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 830,
+    "species": 5842,
+    "nrec": 1274,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 831,
+    "species": 5578,
+    "nrec": 1161,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 832,
+    "species": 5740,
+    "nrec": 896,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 833,
+    "species": 5593,
+    "nrec": 856,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 834,
+    "species": 5725,
+    "nrec": 723,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 835,
+    "species": 5683,
+    "nrec": 672,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 836,
+    "species": 5881,
+    "nrec": 638,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 837,
+    "species": 5716,
+    "nrec": 619,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 838,
+    "species": 5581,
+    "nrec": 617,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 839,
+    "species": 5824,
+    "nrec": 597,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 840,
+    "species": 5773,
+    "nrec": 445,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 841,
+    "species": 5587,
+    "nrec": 252,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 842,
+    "species": 5821,
+    "nrec": 226,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 843,
+    "species": 8323,
+    "nrec": 130,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 844,
+    "species": 6196,
+    "nrec": 77,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 845,
+    "species": 6214,
+    "nrec": 65,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 846,
+    "species": 6226,
+    "nrec": 64,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 847,
+    "species": 5752,
+    "nrec": 61,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 848,
+    "species": 5671,
+    "nrec": 59,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 849,
+    "species": 5707,
+    "nrec": 59,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 850,
+    "species": 1507,
+    "nrec": 44,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 851,
+    "species": 5635,
+    "nrec": 41,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 852,
+    "species": 5728,
+    "nrec": 39,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 853,
+    "species": 5674,
+    "nrec": 28,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 854,
+    "species": 6652,
+    "nrec": 22,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 855,
+    "species": 6952,
+    "nrec": 20,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 856,
+    "species": 5755,
+    "nrec": 16,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 857,
+    "species": 7201,
+    "nrec": 8,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 858,
+    "species": 7078,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 859,
+    "species": 7204,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 860,
+    "species": 7207,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 861,
+    "species": 7528,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 862,
+    "species": 5596,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 863,
+    "species": 6682,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 864,
+    "species": 8410,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 865,
+    "species": 5617,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 30
+  },
+  {
+    "Column1": 866,
+    "species": 5878,
+    "nrec": 4797,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 867,
+    "species": 5875,
+    "nrec": 4501,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 868,
+    "species": 5650,
+    "nrec": 4349,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 869,
+    "species": 5647,
+    "nrec": 4001,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 870,
+    "species": 5722,
+    "nrec": 2445,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 871,
+    "species": 5653,
+    "nrec": 2200,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 872,
+    "species": 5791,
+    "nrec": 2186,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 873,
+    "species": 5770,
+    "nrec": 1931,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 874,
+    "species": 5887,
+    "nrec": 1542,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 875,
+    "species": 5794,
+    "nrec": 1502,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 876,
+    "species": 5842,
+    "nrec": 1352,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 877,
+    "species": 5638,
+    "nrec": 1341,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 878,
+    "species": 5779,
+    "nrec": 1076,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 879,
+    "species": 5740,
+    "nrec": 1018,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 880,
+    "species": 5860,
+    "nrec": 860,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 881,
+    "species": 5725,
+    "nrec": 824,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 882,
+    "species": 5578,
+    "nrec": 795,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 883,
+    "species": 5716,
+    "nrec": 792,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 884,
+    "species": 5683,
+    "nrec": 750,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 885,
+    "species": 5881,
+    "nrec": 717,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 886,
+    "species": 5773,
+    "nrec": 570,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 887,
+    "species": 5824,
+    "nrec": 532,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 888,
+    "species": 5593,
+    "nrec": 531,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 889,
+    "species": 5581,
+    "nrec": 462,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 890,
+    "species": 5587,
+    "nrec": 362,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 891,
+    "species": 5821,
+    "nrec": 157,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 892,
+    "species": 8323,
+    "nrec": 145,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 893,
+    "species": 6214,
+    "nrec": 91,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 894,
+    "species": 5707,
+    "nrec": 75,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 895,
+    "species": 5728,
+    "nrec": 74,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 896,
+    "species": 6196,
+    "nrec": 74,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 897,
+    "species": 6226,
+    "nrec": 67,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 898,
+    "species": 5635,
+    "nrec": 65,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 899,
+    "species": 5671,
+    "nrec": 44,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 900,
+    "species": 6652,
+    "nrec": 36,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 901,
+    "species": 1507,
+    "nrec": 30,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 902,
+    "species": 5752,
+    "nrec": 26,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 903,
+    "species": 7201,
+    "nrec": 14,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 904,
+    "species": 5674,
+    "nrec": 13,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 905,
+    "species": 6952,
+    "nrec": 13,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 906,
+    "species": 5755,
+    "nrec": 9,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 907,
+    "species": 7078,
+    "nrec": 8,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 908,
+    "species": 7528,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 909,
+    "species": 5596,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 910,
+    "species": 5659,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 911,
+    "species": 7207,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 912,
+    "species": 6682,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 913,
+    "species": 7204,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 31
+  },
+  {
+    "Column1": 914,
+    "species": 5878,
+    "nrec": 3930,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 915,
+    "species": 5650,
+    "nrec": 3550,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 916,
+    "species": 5875,
+    "nrec": 3358,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 917,
+    "species": 5647,
+    "nrec": 3121,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 918,
+    "species": 5722,
+    "nrec": 2487,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 919,
+    "species": 5653,
+    "nrec": 1834,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 920,
+    "species": 5791,
+    "nrec": 1550,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 921,
+    "species": 5770,
+    "nrec": 1483,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 922,
+    "species": 5842,
+    "nrec": 1241,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 923,
+    "species": 5638,
+    "nrec": 1167,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 924,
+    "species": 5794,
+    "nrec": 1054,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 925,
+    "species": 5779,
+    "nrec": 983,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 926,
+    "species": 5716,
+    "nrec": 935,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 927,
+    "species": 5740,
+    "nrec": 896,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 928,
+    "species": 5725,
+    "nrec": 815,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 929,
+    "species": 5881,
+    "nrec": 808,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 930,
+    "species": 5683,
+    "nrec": 703,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 931,
+    "species": 5887,
+    "nrec": 608,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 932,
+    "species": 5773,
+    "nrec": 575,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 933,
+    "species": 5578,
+    "nrec": 479,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 934,
+    "species": 5824,
+    "nrec": 430,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 935,
+    "species": 5587,
+    "nrec": 412,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 936,
+    "species": 5860,
+    "nrec": 337,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 937,
+    "species": 5581,
+    "nrec": 280,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 938,
+    "species": 5593,
+    "nrec": 260,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 939,
+    "species": 5728,
+    "nrec": 159,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 940,
+    "species": 8323,
+    "nrec": 101,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 941,
+    "species": 5821,
+    "nrec": 94,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 942,
+    "species": 5635,
+    "nrec": 85,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 943,
+    "species": 6214,
+    "nrec": 84,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 944,
+    "species": 5707,
+    "nrec": 71,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 945,
+    "species": 6226,
+    "nrec": 49,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 946,
+    "species": 6196,
+    "nrec": 41,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 947,
+    "species": 6652,
+    "nrec": 24,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 948,
+    "species": 5671,
+    "nrec": 20,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 949,
+    "species": 1507,
+    "nrec": 16,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 950,
+    "species": 7201,
+    "nrec": 14,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 951,
+    "species": 6952,
+    "nrec": 13,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 952,
+    "species": 5752,
+    "nrec": 11,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 953,
+    "species": 7078,
+    "nrec": 11,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 954,
+    "species": 5659,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 955,
+    "species": 5596,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 956,
+    "species": 5674,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 957,
+    "species": 5755,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 958,
+    "species": 7528,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 959,
+    "species": 5845,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 32
+  },
+  {
+    "Column1": 960,
+    "species": 5878,
+    "nrec": 3220,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 961,
+    "species": 5650,
+    "nrec": 3038,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 962,
+    "species": 5647,
+    "nrec": 2507,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 963,
+    "species": 5722,
+    "nrec": 2210,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 964,
+    "species": 5875,
+    "nrec": 2190,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 965,
+    "species": 5653,
+    "nrec": 1563,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 966,
+    "species": 5842,
+    "nrec": 1266,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 967,
+    "species": 5770,
+    "nrec": 1120,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 968,
+    "species": 5791,
+    "nrec": 1075,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 969,
+    "species": 5779,
+    "nrec": 1070,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 970,
+    "species": 5638,
+    "nrec": 1038,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 971,
+    "species": 5881,
+    "nrec": 942,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 972,
+    "species": 5716,
+    "nrec": 928,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 973,
+    "species": 5794,
+    "nrec": 714,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 974,
+    "species": 5725,
+    "nrec": 706,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 975,
+    "species": 5740,
+    "nrec": 702,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 976,
+    "species": 5683,
+    "nrec": 613,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 977,
+    "species": 5773,
+    "nrec": 550,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 978,
+    "species": 5587,
+    "nrec": 377,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 979,
+    "species": 5824,
+    "nrec": 328,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 980,
+    "species": 5887,
+    "nrec": 237,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 981,
+    "species": 5578,
+    "nrec": 225,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 982,
+    "species": 5728,
+    "nrec": 223,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 983,
+    "species": 5593,
+    "nrec": 123,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 984,
+    "species": 5581,
+    "nrec": 119,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 985,
+    "species": 5860,
+    "nrec": 100,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 986,
+    "species": 5635,
+    "nrec": 95,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 987,
+    "species": 8323,
+    "nrec": 82,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 988,
+    "species": 6214,
+    "nrec": 80,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 989,
+    "species": 5707,
+    "nrec": 53,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 990,
+    "species": 6226,
+    "nrec": 53,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 991,
+    "species": 5821,
+    "nrec": 39,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 992,
+    "species": 6652,
+    "nrec": 22,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 993,
+    "species": 6196,
+    "nrec": 20,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 994,
+    "species": 7201,
+    "nrec": 12,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 995,
+    "species": 5671,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 996,
+    "species": 7078,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 997,
+    "species": 1507,
+    "nrec": 9,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 998,
+    "species": 6952,
+    "nrec": 8,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 999,
+    "species": 5659,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 1000,
+    "species": 7528,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 1001,
+    "species": 5752,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 1002,
+    "species": 5596,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 1003,
+    "species": 5674,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 1004,
+    "species": 5845,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 33
+  },
+  {
+    "Column1": 1005,
+    "species": 5650,
+    "nrec": 2588,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1006,
+    "species": 5878,
+    "nrec": 2536,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1007,
+    "species": 5647,
+    "nrec": 1856,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1008,
+    "species": 5722,
+    "nrec": 1781,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1009,
+    "species": 5842,
+    "nrec": 1386,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1010,
+    "species": 5653,
+    "nrec": 1220,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1011,
+    "species": 5875,
+    "nrec": 1167,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1012,
+    "species": 5881,
+    "nrec": 1004,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1013,
+    "species": 5779,
+    "nrec": 952,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1014,
+    "species": 5770,
+    "nrec": 878,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1015,
+    "species": 5638,
+    "nrec": 804,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1016,
+    "species": 5716,
+    "nrec": 797,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1017,
+    "species": 5791,
+    "nrec": 609,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1018,
+    "species": 5725,
+    "nrec": 519,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1019,
+    "species": 5683,
+    "nrec": 500,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1020,
+    "species": 5794,
+    "nrec": 472,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1021,
+    "species": 5773,
+    "nrec": 451,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1022,
+    "species": 5740,
+    "nrec": 425,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1023,
+    "species": 5587,
+    "nrec": 283,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1024,
+    "species": 5728,
+    "nrec": 252,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1025,
+    "species": 5824,
+    "nrec": 211,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1026,
+    "species": 5635,
+    "nrec": 105,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1027,
+    "species": 5578,
+    "nrec": 84,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1028,
+    "species": 8323,
+    "nrec": 70,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1029,
+    "species": 5887,
+    "nrec": 68,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1030,
+    "species": 6226,
+    "nrec": 59,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1031,
+    "species": 6214,
+    "nrec": 51,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1032,
+    "species": 5581,
+    "nrec": 49,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1033,
+    "species": 5593,
+    "nrec": 43,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1034,
+    "species": 5707,
+    "nrec": 38,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1035,
+    "species": 5860,
+    "nrec": 25,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1036,
+    "species": 6952,
+    "nrec": 14,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1037,
+    "species": 5821,
+    "nrec": 12,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1038,
+    "species": 6652,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1039,
+    "species": 7078,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1040,
+    "species": 5671,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1041,
+    "species": 7201,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1042,
+    "species": 1507,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1043,
+    "species": 6196,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1044,
+    "species": 5659,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1045,
+    "species": 5752,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1046,
+    "species": 7528,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1047,
+    "species": 5596,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1048,
+    "species": 5845,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 34
+  },
+  {
+    "Column1": 1049,
+    "species": 5650,
+    "nrec": 2372,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1050,
+    "species": 5878,
+    "nrec": 1929,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1051,
+    "species": 5647,
+    "nrec": 1585,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1052,
+    "species": 5842,
+    "nrec": 1471,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1053,
+    "species": 5722,
+    "nrec": 1328,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1054,
+    "species": 5653,
+    "nrec": 1009,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1055,
+    "species": 5881,
+    "nrec": 954,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1056,
+    "species": 5770,
+    "nrec": 851,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1057,
+    "species": 5779,
+    "nrec": 799,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1058,
+    "species": 5638,
+    "nrec": 673,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1059,
+    "species": 5716,
+    "nrec": 573,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1060,
+    "species": 5875,
+    "nrec": 565,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1061,
+    "species": 5794,
+    "nrec": 414,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1062,
+    "species": 5683,
+    "nrec": 413,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1063,
+    "species": 5791,
+    "nrec": 412,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1064,
+    "species": 5773,
+    "nrec": 371,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1065,
+    "species": 5725,
+    "nrec": 320,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1066,
+    "species": 5740,
+    "nrec": 280,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1067,
+    "species": 5728,
+    "nrec": 211,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1068,
+    "species": 5587,
+    "nrec": 206,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1069,
+    "species": 5824,
+    "nrec": 110,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1070,
+    "species": 5635,
+    "nrec": 99,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1071,
+    "species": 8323,
+    "nrec": 83,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1072,
+    "species": 6226,
+    "nrec": 67,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1073,
+    "species": 6214,
+    "nrec": 34,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1074,
+    "species": 5578,
+    "nrec": 25,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1075,
+    "species": 5887,
+    "nrec": 23,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1076,
+    "species": 5581,
+    "nrec": 22,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1077,
+    "species": 5707,
+    "nrec": 21,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1078,
+    "species": 6952,
+    "nrec": 13,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1079,
+    "species": 5593,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1080,
+    "species": 5860,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1081,
+    "species": 6652,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1082,
+    "species": 5821,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1083,
+    "species": 7078,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1084,
+    "species": 5671,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1085,
+    "species": 7201,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1086,
+    "species": 7528,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1087,
+    "species": 1507,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1088,
+    "species": 5659,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1089,
+    "species": 6196,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1090,
+    "species": 5752,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 35
+  },
+  {
+    "Column1": 1091,
+    "species": 5650,
+    "nrec": 1958,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1092,
+    "species": 5842,
+    "nrec": 1397,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1093,
+    "species": 5878,
+    "nrec": 1396,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1094,
+    "species": 5647,
+    "nrec": 1185,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1095,
+    "species": 5722,
+    "nrec": 865,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1096,
+    "species": 5770,
+    "nrec": 852,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1097,
+    "species": 5881,
+    "nrec": 772,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1098,
+    "species": 5653,
+    "nrec": 704,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1099,
+    "species": 5779,
+    "nrec": 544,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1100,
+    "species": 5638,
+    "nrec": 484,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1101,
+    "species": 5794,
+    "nrec": 467,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1102,
+    "species": 5683,
+    "nrec": 347,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1103,
+    "species": 5716,
+    "nrec": 345,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1104,
+    "species": 5791,
+    "nrec": 228,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1105,
+    "species": 5773,
+    "nrec": 226,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1106,
+    "species": 5875,
+    "nrec": 212,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1107,
+    "species": 5725,
+    "nrec": 167,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1108,
+    "species": 5740,
+    "nrec": 157,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1109,
+    "species": 5728,
+    "nrec": 142,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1110,
+    "species": 5587,
+    "nrec": 119,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1111,
+    "species": 8323,
+    "nrec": 90,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1112,
+    "species": 5635,
+    "nrec": 71,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1113,
+    "species": 6226,
+    "nrec": 54,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1114,
+    "species": 5824,
+    "nrec": 44,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1115,
+    "species": 6214,
+    "nrec": 17,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1116,
+    "species": 6952,
+    "nrec": 14,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1117,
+    "species": 5887,
+    "nrec": 12,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1118,
+    "species": 5707,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1119,
+    "species": 7078,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1120,
+    "species": 5578,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1121,
+    "species": 5581,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1122,
+    "species": 5593,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1123,
+    "species": 5821,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1124,
+    "species": 5860,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1125,
+    "species": 5671,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1126,
+    "species": 6652,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1127,
+    "species": 7201,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1128,
+    "species": 5659,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1129,
+    "species": 5752,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1130,
+    "species": 6196,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1131,
+    "species": 7528,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 36
+  },
+  {
+    "Column1": 1132,
+    "species": 5650,
+    "nrec": 1428,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1133,
+    "species": 5842,
+    "nrec": 1094,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1134,
+    "species": 5878,
+    "nrec": 960,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1135,
+    "species": 5647,
+    "nrec": 871,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1136,
+    "species": 5770,
+    "nrec": 831,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1137,
+    "species": 5881,
+    "nrec": 523,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1138,
+    "species": 5794,
+    "nrec": 516,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1139,
+    "species": 5722,
+    "nrec": 482,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1140,
+    "species": 5653,
+    "nrec": 446,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1141,
+    "species": 5638,
+    "nrec": 337,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1142,
+    "species": 5779,
+    "nrec": 336,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1143,
+    "species": 5683,
+    "nrec": 300,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1144,
+    "species": 5716,
+    "nrec": 169,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1145,
+    "species": 5791,
+    "nrec": 144,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1146,
+    "species": 5773,
+    "nrec": 117,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1147,
+    "species": 8323,
+    "nrec": 89,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1148,
+    "species": 5725,
+    "nrec": 79,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1149,
+    "species": 5728,
+    "nrec": 75,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1150,
+    "species": 5875,
+    "nrec": 74,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1151,
+    "species": 5740,
+    "nrec": 69,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1152,
+    "species": 5587,
+    "nrec": 65,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1153,
+    "species": 5635,
+    "nrec": 35,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1154,
+    "species": 6226,
+    "nrec": 32,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1155,
+    "species": 5824,
+    "nrec": 13,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1156,
+    "species": 6952,
+    "nrec": 11,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1157,
+    "species": 6214,
+    "nrec": 8,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1158,
+    "species": 7078,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1159,
+    "species": 5578,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1160,
+    "species": 5887,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1161,
+    "species": 5593,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1162,
+    "species": 5860,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1163,
+    "species": 7201,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1164,
+    "species": 5581,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1165,
+    "species": 5617,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1166,
+    "species": 5707,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1167,
+    "species": 5821,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1168,
+    "species": 7528,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 37
+  },
+  {
+    "Column1": 1169,
+    "species": 5650,
+    "nrec": 1052,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1170,
+    "species": 5842,
+    "nrec": 911,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1171,
+    "species": 5770,
+    "nrec": 835,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1172,
+    "species": 5878,
+    "nrec": 647,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1173,
+    "species": 5647,
+    "nrec": 623,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1174,
+    "species": 5794,
+    "nrec": 561,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1175,
+    "species": 5881,
+    "nrec": 335,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1176,
+    "species": 5638,
+    "nrec": 291,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1177,
+    "species": 5683,
+    "nrec": 281,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1178,
+    "species": 5653,
+    "nrec": 243,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1179,
+    "species": 5722,
+    "nrec": 234,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1180,
+    "species": 5779,
+    "nrec": 231,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1181,
+    "species": 5791,
+    "nrec": 112,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1182,
+    "species": 8323,
+    "nrec": 77,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1183,
+    "species": 5716,
+    "nrec": 73,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1184,
+    "species": 5773,
+    "nrec": 73,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1185,
+    "species": 5728,
+    "nrec": 27,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1186,
+    "species": 5875,
+    "nrec": 27,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1187,
+    "species": 5725,
+    "nrec": 23,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1188,
+    "species": 5740,
+    "nrec": 20,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1189,
+    "species": 5635,
+    "nrec": 18,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1190,
+    "species": 5587,
+    "nrec": 17,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1191,
+    "species": 6226,
+    "nrec": 15,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1192,
+    "species": 6952,
+    "nrec": 13,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1193,
+    "species": 7078,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1194,
+    "species": 5593,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1195,
+    "species": 5824,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1196,
+    "species": 5617,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1197,
+    "species": 5581,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1198,
+    "species": 5707,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1199,
+    "species": 5752,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1200,
+    "species": 5821,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1201,
+    "species": 5860,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1202,
+    "species": 5887,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1203,
+    "species": 6214,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1204,
+    "species": 7201,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 38
+  },
+  {
+    "Column1": 1205,
+    "species": 5770,
+    "nrec": 719,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1206,
+    "species": 5650,
+    "nrec": 646,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1207,
+    "species": 5842,
+    "nrec": 632,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1208,
+    "species": 5794,
+    "nrec": 472,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1209,
+    "species": 5647,
+    "nrec": 409,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1210,
+    "species": 5878,
+    "nrec": 360,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1211,
+    "species": 5638,
+    "nrec": 232,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1212,
+    "species": 5683,
+    "nrec": 222,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1213,
+    "species": 5881,
+    "nrec": 179,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1214,
+    "species": 5779,
+    "nrec": 149,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1215,
+    "species": 5653,
+    "nrec": 120,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1216,
+    "species": 5791,
+    "nrec": 103,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1217,
+    "species": 5722,
+    "nrec": 95,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1218,
+    "species": 8323,
+    "nrec": 56,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1219,
+    "species": 5773,
+    "nrec": 53,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1220,
+    "species": 5716,
+    "nrec": 28,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1221,
+    "species": 5875,
+    "nrec": 16,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1222,
+    "species": 6952,
+    "nrec": 12,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1223,
+    "species": 5740,
+    "nrec": 11,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1224,
+    "species": 5635,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1225,
+    "species": 5725,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1226,
+    "species": 5728,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1227,
+    "species": 6226,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1228,
+    "species": 5587,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1229,
+    "species": 5593,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1230,
+    "species": 7078,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1231,
+    "species": 5617,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1232,
+    "species": 5707,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1233,
+    "species": 5824,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1234,
+    "species": 5581,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1235,
+    "species": 5752,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1236,
+    "species": 5821,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1237,
+    "species": 5860,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1238,
+    "species": 5887,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 39
+  },
+  {
+    "Column1": 1239,
+    "species": 5770,
+    "nrec": 583,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1240,
+    "species": 5842,
+    "nrec": 396,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1241,
+    "species": 5650,
+    "nrec": 351,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1242,
+    "species": 5794,
+    "nrec": 340,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1243,
+    "species": 5647,
+    "nrec": 225,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1244,
+    "species": 5638,
+    "nrec": 187,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1245,
+    "species": 5878,
+    "nrec": 170,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1246,
+    "species": 5683,
+    "nrec": 153,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1247,
+    "species": 5779,
+    "nrec": 106,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1248,
+    "species": 5791,
+    "nrec": 85,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1249,
+    "species": 5881,
+    "nrec": 80,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1250,
+    "species": 5653,
+    "nrec": 46,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1251,
+    "species": 5722,
+    "nrec": 38,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1252,
+    "species": 5773,
+    "nrec": 38,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1253,
+    "species": 8323,
+    "nrec": 35,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1254,
+    "species": 5716,
+    "nrec": 18,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1255,
+    "species": 5740,
+    "nrec": 12,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1256,
+    "species": 5635,
+    "nrec": 11,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1257,
+    "species": 6952,
+    "nrec": 9,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1258,
+    "species": 5875,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1259,
+    "species": 5728,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1260,
+    "species": 6226,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1261,
+    "species": 7078,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1262,
+    "species": 5617,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1263,
+    "species": 5707,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1264,
+    "species": 5725,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1265,
+    "species": 5587,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1266,
+    "species": 5593,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1267,
+    "species": 5752,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1268,
+    "species": 5821,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1269,
+    "species": 5860,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1270,
+    "species": 5887,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 40
+  },
+  {
+    "Column1": 1271,
+    "species": 5770,
+    "nrec": 458,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1272,
+    "species": 5794,
+    "nrec": 198,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1273,
+    "species": 5842,
+    "nrec": 152,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1274,
+    "species": 5650,
+    "nrec": 136,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1275,
+    "species": 5647,
+    "nrec": 95,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1276,
+    "species": 5638,
+    "nrec": 81,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1277,
+    "species": 5683,
+    "nrec": 74,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1278,
+    "species": 5779,
+    "nrec": 61,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1279,
+    "species": 5791,
+    "nrec": 55,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1280,
+    "species": 5878,
+    "nrec": 45,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1281,
+    "species": 5773,
+    "nrec": 25,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1282,
+    "species": 8323,
+    "nrec": 21,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1283,
+    "species": 5881,
+    "nrec": 16,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1284,
+    "species": 5653,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1285,
+    "species": 5740,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1286,
+    "species": 5716,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1287,
+    "species": 5722,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1288,
+    "species": 5635,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1289,
+    "species": 6952,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1290,
+    "species": 7078,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1291,
+    "species": 5707,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1292,
+    "species": 5728,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1293,
+    "species": 5860,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1294,
+    "species": 5887,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1295,
+    "species": 6226,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 41
+  },
+  {
+    "Column1": 1296,
+    "species": 5770,
+    "nrec": 376,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1297,
+    "species": 5794,
+    "nrec": 105,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1298,
+    "species": 5842,
+    "nrec": 64,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1299,
+    "species": 5638,
+    "nrec": 56,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1300,
+    "species": 5650,
+    "nrec": 51,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1301,
+    "species": 5779,
+    "nrec": 49,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1302,
+    "species": 5791,
+    "nrec": 47,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1303,
+    "species": 5683,
+    "nrec": 45,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1304,
+    "species": 5647,
+    "nrec": 35,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1305,
+    "species": 8323,
+    "nrec": 26,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1306,
+    "species": 5878,
+    "nrec": 15,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1307,
+    "species": 5773,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1308,
+    "species": 5635,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1309,
+    "species": 5722,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1310,
+    "species": 7078,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1311,
+    "species": 5740,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1312,
+    "species": 5653,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1313,
+    "species": 5716,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1314,
+    "species": 5881,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1315,
+    "species": 6952,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1316,
+    "species": 5887,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1317,
+    "species": 6226,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 42
+  },
+  {
+    "Column1": 1318,
+    "species": 5770,
+    "nrec": 289,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1319,
+    "species": 5794,
+    "nrec": 55,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1320,
+    "species": 5791,
+    "nrec": 36,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1321,
+    "species": 5683,
+    "nrec": 33,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1322,
+    "species": 5779,
+    "nrec": 30,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1323,
+    "species": 5638,
+    "nrec": 28,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1324,
+    "species": 8323,
+    "nrec": 21,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1325,
+    "species": 5842,
+    "nrec": 20,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1326,
+    "species": 5647,
+    "nrec": 14,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1327,
+    "species": 5650,
+    "nrec": 14,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1328,
+    "species": 5878,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1329,
+    "species": 5635,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1330,
+    "species": 5653,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1331,
+    "species": 5716,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1332,
+    "species": 5722,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1333,
+    "species": 5773,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1334,
+    "species": 7078,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1335,
+    "species": 5740,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1336,
+    "species": 5881,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1337,
+    "species": 6226,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1338,
+    "species": 6952,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 43
+  },
+  {
+    "Column1": 1339,
+    "species": 5770,
+    "nrec": 188,
+    "sq_10": "SU68",
+    "weekSum": 44
+  },
+  {
+    "Column1": 1340,
+    "species": 5794,
+    "nrec": 28,
+    "sq_10": "SU68",
+    "weekSum": 44
+  },
+  {
+    "Column1": 1341,
+    "species": 5779,
+    "nrec": 24,
+    "sq_10": "SU68",
+    "weekSum": 44
+  },
+  {
+    "Column1": 1342,
+    "species": 5791,
+    "nrec": 23,
+    "sq_10": "SU68",
+    "weekSum": 44
+  },
+  {
+    "Column1": 1343,
+    "species": 8323,
+    "nrec": 20,
+    "sq_10": "SU68",
+    "weekSum": 44
+  },
+  {
+    "Column1": 1344,
+    "species": 5638,
+    "nrec": 18,
+    "sq_10": "SU68",
+    "weekSum": 44
+  },
+  {
+    "Column1": 1345,
+    "species": 5683,
+    "nrec": 17,
+    "sq_10": "SU68",
+    "weekSum": 44
+  },
+  {
+    "Column1": 1346,
+    "species": 5635,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 44
+  },
+  {
+    "Column1": 1347,
+    "species": 5842,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 44
+  },
+  {
+    "Column1": 1348,
+    "species": 5650,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 44
+  },
+  {
+    "Column1": 1349,
+    "species": 5647,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 44
+  },
+  {
+    "Column1": 1350,
+    "species": 5773,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 44
+  },
+  {
+    "Column1": 1351,
+    "species": 5716,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 44
+  },
+  {
+    "Column1": 1352,
+    "species": 5722,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 44
+  },
+  {
+    "Column1": 1353,
+    "species": 5740,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 44
+  },
+  {
+    "Column1": 1354,
+    "species": 5878,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 44
+  },
+  {
+    "Column1": 1355,
+    "species": 6226,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 44
+  },
+  {
+    "Column1": 1356,
+    "species": 5770,
+    "nrec": 104,
+    "sq_10": "SU68",
+    "weekSum": 45
+  },
+  {
+    "Column1": 1357,
+    "species": 5794,
+    "nrec": 13,
+    "sq_10": "SU68",
+    "weekSum": 45
+  },
+  {
+    "Column1": 1358,
+    "species": 5791,
+    "nrec": 11,
+    "sq_10": "SU68",
+    "weekSum": 45
+  },
+  {
+    "Column1": 1359,
+    "species": 8323,
+    "nrec": 11,
+    "sq_10": "SU68",
+    "weekSum": 45
+  },
+  {
+    "Column1": 1360,
+    "species": 5638,
+    "nrec": 8,
+    "sq_10": "SU68",
+    "weekSum": 45
+  },
+  {
+    "Column1": 1361,
+    "species": 5779,
+    "nrec": 7,
+    "sq_10": "SU68",
+    "weekSum": 45
+  },
+  {
+    "Column1": 1362,
+    "species": 5635,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 45
+  },
+  {
+    "Column1": 1363,
+    "species": 5683,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 45
+  },
+  {
+    "Column1": 1364,
+    "species": 5842,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 45
+  },
+  {
+    "Column1": 1365,
+    "species": 5650,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 45
+  },
+  {
+    "Column1": 1366,
+    "species": 5740,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 45
+  },
+  {
+    "Column1": 1367,
+    "species": 5773,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 45
+  },
+  {
+    "Column1": 1368,
+    "species": 5878,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 45
+  },
+  {
+    "Column1": 1369,
+    "species": 5770,
+    "nrec": 58,
+    "sq_10": "SU68",
+    "weekSum": 46
+  },
+  {
+    "Column1": 1370,
+    "species": 5791,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 46
+  },
+  {
+    "Column1": 1371,
+    "species": 8323,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 46
+  },
+  {
+    "Column1": 1372,
+    "species": 5794,
+    "nrec": 4,
+    "sq_10": "SU68",
+    "weekSum": 46
+  },
+  {
+    "Column1": 1373,
+    "species": 5779,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 46
+  },
+  {
+    "Column1": 1374,
+    "species": 5638,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 46
+  },
+  {
+    "Column1": 1375,
+    "species": 5650,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 46
+  },
+  {
+    "Column1": 1376,
+    "species": 5842,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 46
+  },
+  {
+    "Column1": 1377,
+    "species": 5878,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 46
+  },
+  {
+    "Column1": 1378,
+    "species": 5770,
+    "nrec": 27,
+    "sq_10": "SU68",
+    "weekSum": 47
+  },
+  {
+    "Column1": 1379,
+    "species": 5791,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 47
+  },
+  {
+    "Column1": 1380,
+    "species": 5638,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 47
+  },
+  {
+    "Column1": 1381,
+    "species": 5728,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 47
+  },
+  {
+    "Column1": 1382,
+    "species": 5794,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 47
+  },
+  {
+    "Column1": 1383,
+    "species": 5842,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 47
+  },
+  {
+    "Column1": 1384,
+    "species": 5878,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 47
+  },
+  {
+    "Column1": 1385,
+    "species": 8323,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 47
+  },
+  {
+    "Column1": 1386,
+    "species": 5770,
+    "nrec": 10,
+    "sq_10": "SU68",
+    "weekSum": 48
+  },
+  {
+    "Column1": 1387,
+    "species": 5791,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 48
+  },
+  {
+    "Column1": 1388,
+    "species": 5638,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 48
+  },
+  {
+    "Column1": 1389,
+    "species": 5728,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 48
+  },
+  {
+    "Column1": 1390,
+    "species": 5770,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 49
+  },
+  {
+    "Column1": 1391,
+    "species": 5791,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 49
+  },
+  {
+    "Column1": 1392,
+    "species": 5794,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 49
+  },
+  {
+    "Column1": 1393,
+    "species": 5638,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 49
+  },
+  {
+    "Column1": 1394,
+    "species": 5728,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 49
+  },
+  {
+    "Column1": 1395,
+    "species": 5779,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 49
+  },
+  {
+    "Column1": 1396,
+    "species": 5770,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 50
+  },
+  {
+    "Column1": 1397,
+    "species": 5791,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 50
+  },
+  {
+    "Column1": 1398,
+    "species": 5794,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 50
+  },
+  {
+    "Column1": 1399,
+    "species": 5638,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 50
+  },
+  {
+    "Column1": 1400,
+    "species": 5779,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 50
+  },
+  {
+    "Column1": 1401,
+    "species": 5770,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 51
+  },
+  {
+    "Column1": 1402,
+    "species": 5791,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 51
+  },
+  {
+    "Column1": 1403,
+    "species": 5794,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 51
+  },
+  {
+    "Column1": 1404,
+    "species": 5779,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 51
+  },
+  {
+    "Column1": 1405,
+    "species": 5638,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 51
+  },
+  {
+    "Column1": 1406,
+    "species": 5770,
+    "nrec": 8,
+    "sq_10": "SU68",
+    "weekSum": 52
+  },
+  {
+    "Column1": 1407,
+    "species": 5791,
+    "nrec": 3,
+    "sq_10": "SU68",
+    "weekSum": 52
+  },
+  {
+    "Column1": 1408,
+    "species": 5638,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 52
+  },
+  {
+    "Column1": 1409,
+    "species": 5779,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 52
+  },
+  {
+    "Column1": 1410,
+    "species": 5794,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 52
+  },
+  {
+    "Column1": 1411,
+    "species": 5770,
+    "nrec": 6,
+    "sq_10": "SU68",
+    "weekSum": 53
+  },
+  {
+    "Column1": 1412,
+    "species": 5791,
+    "nrec": 5,
+    "sq_10": "SU68",
+    "weekSum": 53
+  },
+  {
+    "Column1": 1413,
+    "species": 5638,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 53
+  },
+  {
+    "Column1": 1414,
+    "species": 5779,
+    "nrec": 2,
+    "sq_10": "SU68",
+    "weekSum": 53
+  },
+  {
+    "Column1": 1415,
+    "species": 5647,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 53
+  },
+  {
+    "Column1": 1416,
+    "species": 5650,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 53
+  },
+  {
+    "Column1": 1417,
+    "species": 5794,
+    "nrec": 1,
+    "sq_10": "SU68",
+    "weekSum": 53
+  }
+]

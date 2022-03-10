@@ -73,16 +73,6 @@ const getData = async () => {
   await fetchAndSave('species');
   await fetchAndSave('photos');
 
-  let sheetData = await fetchSheet({ drive, file, sheet: 'probabilityByWeek' });
-  let normalized = sheetData.reduce(normalizeWeeklyProbabilities, {});
-  saveToFile(normalized, 'probabilityByWeek');
-  checkIDsExist(normalized, species, true);
-
-  sheetData = await fetchSheet({ drive, file, sheet: 'probabilityByHectad' });
-  normalized = sheetData.reduce(normalizeHectadProbabilities, {});
-  saveToFile(normalized, 'probabilityByHectad');
-  checkIDsExist(normalized, species);
-
   console.log('All done! 🚀');
 };
 

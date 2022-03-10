@@ -37,25 +37,11 @@ function organiseByProbability(allSpecies: Species[]) {
     currentLocation
   );
 
-  const isProbableHOF = (probs: any) => {
-    const isProbable = ({ id }: Species) => probs[id] >= 0;
-    return isProbable;
-  };
-  const byProbabilityHOF = (probs: any) => {
-    const byProbability = (s1: Species, s2: Species) =>
-      probs[s2.id] - probs[s1.id];
-    return byProbability;
-  };
-
-  const speciesHereAndNow = allSpecies
-    .filter(isProbableHOF(probsNowAndHere))
-    .sort(byProbabilityHOF(probsNowAndHere));
-
-  const speciesHere = allSpecies.filter(isProbableHOF(probsHere)).sort(byName);
-
-  const speciesNow = allSpecies
-    .filter(isProbableHOF(probsNow))
-    .sort(byProbabilityHOF(probsNow));
+  const byId = (id: string) => allSpecies.find((sp: Species) => sp.id === id);
+  const byWasFound = (sp: Species | undefined) => !!sp;
+  const speciesHereAndNow = probsNowAndHere.map(byId).filter(byWasFound);
+  const speciesHere = probsHere.map(byId).filter(byWasFound).sort(byName);
+  const speciesNow = probsNow.map(byId).filter(byWasFound);
 
   const notInProbableLists = (sp: Species) =>
     !speciesHereAndNow.includes(sp) &&
@@ -68,17 +54,7 @@ function organiseByProbability(allSpecies: Species[]) {
     .filter(notMothsSpecies)
     .sort(byName);
 
-  // temporary added
-  const isMothSpecies = (sp: Species) => sp.type === 'moth';
-  const mothSpecies = allSpecies.filter(isMothSpecies).sort(byName);
-
-  return [
-    speciesHereAndNow,
-    speciesHere,
-    speciesNow,
-    remainingSpecies,
-    mothSpecies,
-  ];
+  return [speciesHereAndNow, speciesHere, speciesNow, remainingSpecies];
 }
 
 const shouldShowFeedback = () => {
@@ -225,7 +201,6 @@ const SpeciesList: FC<Props> = ({
       speciesHere,
       speciesNow,
       remainingSpecies,
-      mothSpecies,
     ] = organiseByProbability(speciesData);
 
     const hasSpeciesHereAndNow = !!speciesHereAndNow.length;
@@ -245,8 +220,7 @@ const SpeciesList: FC<Props> = ({
       !hasSpeciesHereAndNow &&
       !hasSpeciesHere &&
       !hasSpeciesNow &&
-      !hasAdditional &&
-      !mothSpecies
+      !hasAdditional
     ) {
       return (
         <InfoBackgroundMessage>
@@ -274,13 +248,6 @@ const SpeciesList: FC<Props> = ({
           </IonItemDivider>
         )}
         {speciesTiles(speciesNow)}
-
-        {!!mothSpecies.length && (
-          <IonItemDivider className="species-moths" sticky mode="md">
-            <IonLabel>Moths</IonLabel>
-          </IonItemDivider>
-        )}
-        {speciesTiles(mothSpecies)}
 
         {hasSpeciesHere && (
           <IonItemDivider sticky className="species-now" mode="md">

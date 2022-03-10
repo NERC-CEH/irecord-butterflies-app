@@ -1,106 +1,63 @@
-import probByTimeData from './cache/probabilityByWeek.json';
-import probByLocationData from './cache/probabilityByHectad.json';
-import hectadRegions from './cache/hectadRegions.json';
+import probByWeek from './cache/probabilityByWeek.json';
+import probByHectad from './cache/probabilityByHectad.json';
+import species from './cache/species.json';
+import hectads from './cache/hectads.json';
 
 const cache = {};
 
-function getAverage(probsForWeek) {
-  const regions = ['E', 'W', 'S', 'N'];
-
-  const average = {};
-
-  const addSpeciesProbsOfRegion = region => {
-    const species = Object.entries(probsForWeek[region] || {});
-
-    const addSpeciesProbToAverage = ([speciesId, prob]) => {
-      average[speciesId] = average[speciesId] || 0;
-      const probability = parseFloat(prob) / regions.length;
-      average[speciesId] += parseFloat(probability.toFixed(3));
-    };
-
-    species.forEach(addSpeciesProbToAverage);
-  };
-
-  regions.forEach(addSpeciesProbsOfRegion);
-
-  return average;
+function mapProbIdToSpeciesId(probId) {
+  const byProbId = sp => sp.probabilityId === probId;
+  return species.find(byProbId).id;
 }
 
-function getHectad(probsForWeek, hectad) {
-  const speciesNowAndHere = {};
-  const speciesHere = {};
-
-  const hectadProbs = probByLocationData[hectad];
-  if (!hectadProbs) {
-    console.warn('Hectad is missing from location data ', hectad);
-    return [speciesNowAndHere, speciesHere];
-  }
-
-  const region = hectadRegions[hectad];
-  if (!region) {
-    console.warn('Region is missing from hectad data ', hectad);
-    return [speciesNowAndHere, speciesHere];
-  }
-
-  const species = probsForWeek[region];
-  if (!species) {
-    console.warn('Region is missing from time data ', region);
-    return [speciesNowAndHere, speciesHere];
-  }
-
-  const addSpeciesProbToLocationProb = ([speciesId, prob]) => {
-    const timeProb = species[speciesId];
-
-    const speciesHasNoTimeProbs = !(timeProb >= 0);
-    if (speciesHasNoTimeProbs) {
-      speciesHere[speciesId] = prob;
-      return;
-    }
-
-    const totalProbability = parseFloat(prob) * parseFloat(timeProb);
-
-    if (totalProbability < 0.001) {
-      // threshold for rare species at this time of year in the current hectad
-      speciesHere[speciesId] = prob;
-      return;
-    }
-
-    speciesNowAndHere[speciesId] = parseFloat(totalProbability.toFixed(3));
-  };
-
-  Object.entries(hectadProbs).forEach(addSpeciesProbToLocationProb);
-
-  return [speciesNowAndHere, speciesHere];
-}
-
-export default function getProbablities(weekNo, hectad = '') {
-  const cacheKey = `${weekNo}${hectad}`;
+export default function getProbablities(weekNo, hectadName = '') {
+  const cacheKey = `${weekNo}${hectadName}`;
   if (cache[cacheKey]) {
     return cache[cacheKey];
   }
 
-  console.log(`Generating probabilities data for ${weekNo} - ${hectad}`);
+  let speciesNowAndHere = [];
+  let speciesHere = [];
+  let speciesNow = [];
 
-  let probsForWeek = probByTimeData[weekNo];
-  if (!probsForWeek) {
-    // We have only 52 weeks in the dataset but it can be 53 in a year
-    // Also, 13 is missing
-    probsForWeek = probByTimeData[weekNo - 1];
-  }
-  const probsForHectad = probByLocationData[hectad];
+  const hectad = hectads.indexOf(hectadName) + 1;
 
-  let speciesNowAndHere = {};
-  let speciesNow = {};
-  let speciesHere = {};
+  console.log(
+    `Generating probabilities data for ${weekNo} - ${hectadName}(${hectad})`
+  );
+
+  const probsForHectad = probByHectad[hectad];
+
   if (!probsForHectad) {
-    speciesNow = getAverage(probsForWeek);
+    speciesNow = probByWeek[weekNo].map(mapProbIdToSpeciesId);
   } else {
-    [speciesNowAndHere, speciesHere] = getHectad(probsForWeek, hectad);
+    const probsForHectadWeeks = probsForHectad.split(';');
+    const getUncompressedProbs = week => {
+      const speciesIds = week.match(/.{1,2}/g);
+      if (!speciesIds) return [];
+      const parseInt = id => Number.parseInt(id, 10);
+
+      // if (index == weekNo) {
+      //   console.log(speciesIds.map(parseInt));
+      // }
+      return speciesIds.map(parseInt).map(mapProbIdToSpeciesId);
+    };
+    const probsForHectadWeeksNormalized = probsForHectadWeeks.map(
+      getUncompressedProbs
+    );
+
+    speciesNowAndHere = probsForHectadWeeksNormalized[weekNo] || [];
+    const notInNowAndHereList = sp =>
+      !speciesNowAndHere || !speciesNowAndHere.includes(sp);
+    speciesHere = [...new Set(probsForHectadWeeksNormalized.flat())].filter(
+      notInNowAndHereList
+    );
   }
 
-  const species = [speciesNowAndHere, speciesHere, speciesNow];
+  const probs = [speciesNowAndHere, speciesHere, speciesNow];
+  // console.log(probs);
 
-  cache[cacheKey] = species;
+  cache[cacheKey] = probs;
 
-  return species;
+  return probs;
 }
