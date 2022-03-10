@@ -8,7 +8,7 @@ const WEEKS_PER_YEAR = 53;
 
 const pad = n => (n > 9 ? `${n}` : `0${n}`);
 
-const byCount = ([, count1], [, count2]) => count1 - count2;
+const byCount = ([, count1], [, count2]) => count2 - count1;
 
 const getEmptyObject = () => ({});
 

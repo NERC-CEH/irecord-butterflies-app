@@ -23,13 +23,13 @@ describe('generateHectadProbabilites', () => {
     const out: any = generateHectadProbabilites(rows);
 
     // Then
-    // expect(out.length).toBe(2 + 1);
+    expect(out.length).toBe(2 + 1);
 
     // hectad 1
-    expect(out[1].startsWith(';0201')).toBeTruthy();
+    expect(out[1].startsWith(';0102')).toBeTruthy();
 
     // week 2
-    expect(out[2].startsWith(';0102')).toBeTruthy();
+    expect(out[2].startsWith(';0201')).toBeTruthy();
   });
 });
 
@@ -55,9 +55,9 @@ describe('generateWeeklyProbabilites', () => {
     expect(out.length).toBe(53 + 1);
 
     // week 1
-    expect(out[1]).toMatchObject([2, 1]);
+    expect(out[1]).toMatchObject([1, 2]);
 
     // week 2
-    expect(out[2]).toMatchObject([1, 2]);
+    expect(out[2]).toMatchObject([2, 1]);
   });
 });
