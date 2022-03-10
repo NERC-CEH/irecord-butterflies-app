@@ -48,11 +48,7 @@ function organiseByProbability(allSpecies: Species[]) {
     !speciesHere.includes(sp) &&
     !speciesNow.includes(sp);
 
-  const notMothsSpecies = (sp: Species) => sp.type !== 'moth';
-  const remainingSpecies = allSpecies
-    .filter(notInProbableLists)
-    .filter(notMothsSpecies)
-    .sort(byName);
+  const remainingSpecies = allSpecies.filter(notInProbableLists).sort(byName);
 
   return [speciesHereAndNow, speciesHere, speciesNow, remainingSpecies];
 }
