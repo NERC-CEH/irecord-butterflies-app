@@ -1,5 +1,5 @@
-import probByWeek from './cache/probabilityByWeek.json';
-import probByHectad from './cache/probabilityByHectad.json';
+import probByWeekData from './cache/probabilityByWeek.json';
+import probByHectadData from './cache/probabilityByHectad.json';
 import species from './cache/species.json';
 import hectads from './cache/hectads.json';
 import { Species } from './index';
@@ -13,7 +13,12 @@ function mapProbIdToSpeciesId(probId: number) {
   return (species as any).find(byProbId).id;
 }
 
-export default function getProbablities(weekNo: number, hectadName = '') {
+export default function getProbablities(
+  weekNo: number,
+  hectadName = '',
+  probByWeek = probByWeekData,
+  probByHectad = probByHectadData
+) {
   const cacheKey = `${weekNo}${hectadName}`;
   if (cache[cacheKey]) {
     return cache[cacheKey];
