@@ -37,7 +37,7 @@ const showAlert = (appModel: typeof AppModelProps) => {
 };
 
 // export type
-interface Occurrence {
+interface API_Occurrence {
   source_system_key: string;
 }
 
@@ -63,7 +63,7 @@ export interface Identification {
 
 interface Source {
   identification: Identification;
-  occurrence: Occurrence;
+  occurrence: API_Occurrence;
 }
 interface Hit {
   _source: Source;
@@ -169,7 +169,7 @@ function appendVerificationAndReturnOccurrences(
   if (updatedRemoteSamples.length <= 0) return nonPendingUpdatedSamples;
 
   const findMatchingLocalSamples = (sample: typeof Sample) => {
-    const appendVerification = (occ: typeof Occurrence) => {
+    const appendVerification = (occ: Occurrence) => {
       const updatedSample = updatedRemoteSamples[occ.cid];
 
       if (!updatedSample) return;

@@ -44,7 +44,7 @@
     "@bit/flumens.apps.models.init-stored-samples": "0.1.0",
     "@bit/flumens.apps.models.media": "^0.2.4",
     "@bit/flumens.apps.models.model": "0.1.0",
-    "@bit/flumens.apps.models.occurrence": "^0.4.0",
+    "@bit/flumens.apps.models.occurrence": "^0.4.1",
     "@bit/flumens.apps.models.sample": "^1.0.0",
     "@bit/flumens.apps.models.store": "0.4.0",
     "@bit/flumens.apps.page": "1.1.0",

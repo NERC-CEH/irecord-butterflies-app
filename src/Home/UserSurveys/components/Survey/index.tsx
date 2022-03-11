@@ -200,7 +200,7 @@ const Survey: FC<Props> = ({ sample, userModel, uploadIsPrimary }) => {
     navigate(`/home/surveys`, 'root');
   };
 
-  const getVerificationIconForPointSurvey = (occ: typeof Occurrence) => (
+  const getVerificationIconForPointSurvey = (occ: Occurrence) => (
     <VerificationIcon occ={occ} key={occ.cid} />
   );
 

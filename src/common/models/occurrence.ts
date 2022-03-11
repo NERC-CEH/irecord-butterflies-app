@@ -1,19 +1,26 @@
-import { Occurrence, validateRemoteModel } from '@apps';
+import { validateRemoteModel } from '@apps';
+import Occurrence, {
+  Attrs as OccurrenceAttrs,
+} from '@bit/flumens.apps.models.occurrence';
 import { intercept } from 'mobx';
-import species from 'common/data/species';
+import species, { Species } from 'common/data/species';
 import Media from './image';
 
+type Attrs = OccurrenceAttrs & { taxon: Species; stage: string };
+
 export default class AppOccurrence extends Occurrence {
-  static fromJSON(json) {
+  static fromJSON(json: any) {
     return super.fromJSON(json, Media);
   }
 
+  attrs: Attrs = this.attrs;
+
   validateRemote = validateRemoteModel;
 
-  constructor(...props) {
-    super(...props);
+  constructor(props: Occurrence) {
+    super(props);
 
-    const setOnlyMinimalSpeciesValues = change => {
+    const setOnlyMinimalSpeciesValues = (change: any) => {
       const { warehouseId, id, scientificName, commonName } = change.newValue;
       change.newValue = { warehouseId, id, scientificName, commonName }; // eslint-disable-line
       return change;
@@ -21,8 +28,8 @@ export default class AppOccurrence extends Occurrence {
     intercept(this.attrs, 'taxon', setOnlyMinimalSpeciesValues);
   }
 
-  setSpecies(speciesId) {
-    const byId = ({ id }) => id === speciesId;
+  setSpecies(speciesId: Species['id']) {
+    const byId = ({ id }: Species) => id === speciesId;
     const sp = species.find(byId);
     if (!sp) {
       console.error(`Occ. setSpecies: no such species found ${speciesId}`);
@@ -57,7 +64,7 @@ export default class AppOccurrence extends Occurrence {
   };
 
   getVerificationStatusMessage = () => {
-    const codes = {
+    const codes: { [keyof: string]: string } = {
       V: 'Accepted',
       V1: 'Accepted as correct',
       V2: 'Accepted as considered correct',

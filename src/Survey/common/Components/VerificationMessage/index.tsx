@@ -49,9 +49,9 @@ const getVerificationText = (
   return verifyStatus[status];
 };
 
-interface Props {
-  occurrence: typeof Occurrence;
-}
+type Props = {
+  occurrence: Occurrence;
+};
 
 const icons: { [key: string]: string } = {
   verified: checkmarkCircle,

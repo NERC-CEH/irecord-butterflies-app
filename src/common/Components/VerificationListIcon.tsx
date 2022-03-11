@@ -12,7 +12,7 @@ const VerificationListIcon: FC<Props> = ({ sample }) => {
   let verified = 0;
   let plausible = 0;
 
-  const aggregateStatus = (occ: typeof Occurrence) => {
+  const aggregateStatus = (occ: Occurrence) => {
     if (!occ.isUploaded()) return null;
 
     const status = occ.getVerificationStatus();

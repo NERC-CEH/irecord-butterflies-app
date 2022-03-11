@@ -4,7 +4,7 @@ import { IonIcon } from '@ionic/react';
 import { checkmarkCircle, closeCircle } from 'ionicons/icons';
 
 interface Props {
-  occ: typeof Occurrence;
+  occ: Occurrence;
 }
 
 const VerificationIcon: FC<Props> = ({ occ }) => {

@@ -8,7 +8,7 @@ import './styles.scss';
 
 type Props = {
   subSample: typeof Sample;
-  occurrence: typeof Occurrence;
+  occurrence: Occurrence;
 };
 
 const OccurrenceHome: FC<Props> = ({ subSample, occurrence }) => {

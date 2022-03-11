@@ -12,7 +12,7 @@ import Header from './Header';
 
 type Props = {
   sample: typeof Sample;
-  occurrence: typeof Occurrence;
+  occurrence: Occurrence;
   title?: string;
   BackButton?: React.ElementType;
 };
@@ -78,7 +78,7 @@ const SpeciesSelect: FC<Props> = ({
     goBack();
   }
 
-  const getSpeciesID = (occ: typeof Occurrence) => (occ.attrs.taxon || {}).id;
+  const getSpeciesID = (occ: Occurrence) => (occ.attrs.taxon || {}).id;
   const currentSpecies = sample.occurrences.map(getSpeciesID);
 
   const toggleFilter = (type: string, value: string) => {
