@@ -1,5 +1,6 @@
 import { validateRemoteModel } from '@apps';
 import Occurrence, {
+  Options,
   Attrs as OccurrenceAttrs,
 } from '@bit/flumens.apps.models.occurrence';
 import { intercept } from 'mobx';
@@ -17,7 +18,7 @@ export default class AppOccurrence extends Occurrence {
 
   validateRemote = validateRemoteModel;
 
-  constructor(props: Occurrence) {
+  constructor(props: Options) {
     super(props);
 
     const setOnlyMinimalSpeciesValues = (change: any) => {
