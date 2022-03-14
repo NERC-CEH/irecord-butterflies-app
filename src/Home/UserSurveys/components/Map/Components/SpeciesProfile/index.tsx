@@ -44,6 +44,8 @@ export default function SpeciesProfile({ record, onClose }: Props) {
   const [showGallery, setShowGallery] = useState<number>();
 
   const date = record.metadata.created_on.split(' ')[0];
+  const formattedDate = new Date(date).toLocaleString('en-GB').split(',')[0];
+
   const status = record.identification.verification_status;
   const statusText = statuses[status];
 
@@ -173,7 +175,7 @@ export default function SpeciesProfile({ record, onClose }: Props) {
             <span className="record-attribute">Status:</span> {statusText}
           </div>
           <div>
-            <span className="record-attribute">Date:</span> {date}
+            <span className="record-attribute">Date:</span> {formattedDate}
           </div>
           <div>
             <span className="record-attribute">Location:</span> {gridRef}
