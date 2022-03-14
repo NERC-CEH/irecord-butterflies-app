@@ -391,15 +391,15 @@ ion-label.verification-list-icons {
   }
 
   .id-green {
-    background: var(--ion-color-primary-shade) !important;
+    background: var(--ion-verification-success) !important;
   }
 
   .id-amber {
-    background: var(--ion-color-warning-tint) !important;
+    background: var(--ion-verification-plausible) !important;
   }
 
   .id-red {
-    background: var(--ion-color-danger-shade) !important;
+    background: var(--ion-verification-rejected) !important;
   }
 }
 
@@ -412,15 +412,15 @@ ion-icon[slot='end'].verificationIcon {
 }
 
 .verificationIcon.id-green {
-  color: var(--ion-color-primary-shade) !important;
+  color: var(--ion-verification-success) !important;
 }
 
 .verificationIcon.id-amber {
-  color: var(--ion-color-warning-tint) !important;
+  color: var(--ion-verification-plausible) !important;
 }
 
 .verificationIcon.id-red {
-  color: var(--ion-color-danger-shade) !important;
+  color: var(--ion-verification-rejected) !important;
 }
 
 html.ios.plt-hybrid #status-bar-background {

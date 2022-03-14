@@ -9,21 +9,21 @@
 
   &.verified {
     h2 {
-      color: var(--ion-color-primary-shade) !important;
+      color: var(--ion-verification-success) !important;
       margin-bottom: 20px;
     }
     --background: #e7fdf1;
     ion-icon,
     .info-button,
     ion-label ion-note {
-      color: var(--ion-color-primary-shade) !important;
-      --border-color: var(--ion-color-primary-shade) !important;
+      color: var(--ion-verification-success) !important;
+      --border-color: var(--ion-verification-success) !important;
     }
   }
 
   &.plausible {
     h2 {
-      color: var(--ion-color-warning-tint) !important;
+      color: var(--ion-verification-plausible) !important;
       margin-bottom: 20px;
     }
 
@@ -31,14 +31,14 @@
     ion-icon,
     .info-button,
     ion-label ion-note {
-      color: var(--ion-color-warning-tint) !important;
-      --border-color: var(--ion-color-warning-tint) !important;
+      color: var(--ion-verification-plausible) !important;
+      --border-color: var(--ion-verification-plausible) !important;
     }
   }
 
   &.rejected {
     h2 {
-      color: var(--ion-color-danger-shade) !important;
+      color: var(--ion-verification-rejected) !important;
       margin-bottom: 20px;
     }
 
@@ -47,8 +47,8 @@
     .info-button,
     .h1,
     ion-label ion-note {
-      color: var(--ion-color-danger-shade) !important;
-      --border-color: var(--ion-color-danger-shade);
+      color: var(--ion-verification-rejected) !important;
+      --border-color: var(--ion-verification-rejected);
     }
   }
 }
