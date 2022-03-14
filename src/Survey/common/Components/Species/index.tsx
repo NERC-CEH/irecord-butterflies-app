@@ -21,7 +21,7 @@ function showTimeSurveyTip(
   navigate: (path: string, direction: RouterDirection) => void
 ) {
   alert({
-    header: 'Time survey',
+    header: 'Timed count',
     message: (
       <>
         <p>

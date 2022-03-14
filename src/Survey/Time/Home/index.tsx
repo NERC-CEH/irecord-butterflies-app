@@ -4,10 +4,34 @@ import Occurrence from 'models/occurrence';
 import appModel from 'models/app';
 import userModel from 'models/user';
 import { observer } from 'mobx-react';
-import { Page, Header, showInvalidsMessage } from '@apps';
+import { Page, Header, showInvalidsMessage, alert } from '@apps';
 import { IonButton, NavContext, isPlatform } from '@ionic/react';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import Main from './Main';
+
+function showConfirmationAlert() {
+  const confirmationPrompt = (resolve: (param: boolean) => void) => {
+    alert({
+      header: 'Confirmation',
+      message: 'Are you sure you want to finish this timed count?',
+      buttons: [
+        {
+          text: 'No, continue count',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => resolve(false),
+        },
+        {
+          text: 'Yes, finish count',
+          cssClass: 'primary',
+          handler: () => resolve(true),
+        },
+      ],
+    });
+  };
+
+  return new Promise(confirmationPrompt);
+}
 
 const hapticsImpact = async () => {
   await Haptics.impact({ style: ImpactStyle.Heavy });
@@ -61,6 +85,9 @@ const HomeController: FC<Props> = ({ sample }) => {
       showInvalidsMessage(invalids);
       return;
     }
+
+    const finishSurvey = await showConfirmationAlert();
+    if (!finishSurvey) return;
 
     appModel.attrs['draftId:single-species-count'] = null; // eslint-disable-line
     await appModel.save();
