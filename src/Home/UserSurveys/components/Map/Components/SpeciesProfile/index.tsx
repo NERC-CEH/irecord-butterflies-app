@@ -43,9 +43,7 @@ function fixIonicSlideBug() {
 export default function SpeciesProfile({ record, onClose }: Props) {
   const [showGallery, setShowGallery] = useState<number>();
 
-  const date = new Date(record.metadata.created_on)
-    .toLocaleString('en-GB')
-    .split(',')[0];
+  const date = record.metadata.created_on.split(' ')[0];
   const status = record.identification.verification_status;
   const statusText = statuses[status];
 
