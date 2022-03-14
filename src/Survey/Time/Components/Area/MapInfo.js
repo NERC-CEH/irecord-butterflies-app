@@ -40,9 +40,17 @@ function getAreaCountMarker(sample) {
     return null;
   }
 
+  let color = 'var(--ion-verification-plausible)';
+  const status = sample.occurrences[0].getVerificationStatus();
+  if (status === 'verified') {
+    color = 'var( --ion-verification-success)';
+  } else if (status === 'rejected') {
+    color = 'var(--ion-verification-rejected)';
+  }
+
   return L.circleMarker([latitude, longitude], {
     color: 'white',
-    fillColor: '#ff9700',
+    fillColor: color,
     fillOpacity: 1,
     weight: 4,
   });
