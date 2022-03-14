@@ -21,7 +21,6 @@ const Stopwatch: FC<Props> = ({ sample }) => {
   const [refresh, setRefresh] = useState(0);
   const [stopwatchID, setStopwatchID] = useState<any>(null);
 
-  const isDisabled = sample.isUploaded();
   const finishedSurveyTimestamp = sample.metadata.saved;
 
   const startStopwatch = () => {
@@ -89,7 +88,7 @@ const Stopwatch: FC<Props> = ({ sample }) => {
 
   return (
     <IonItem
-      detail={!isDisabled}
+      detail
       detailIcon={detailIcon}
       onClick={toggleTimer}
       id="stopwatch"
