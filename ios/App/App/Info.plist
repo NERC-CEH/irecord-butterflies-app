@@ -47,7 +47,7 @@
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>Allow geolocation so we can improve your records.</string>
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Allow background geolocation to set your survey transect.</string>
+    <string>Please select 'Change to Always Allow' to enable an accurate location for your sightings and time counts, even when your phone is locked or asleep.</string>
     <key>UIBackgroundModes</key>
     <array>
       <string>location</string>
