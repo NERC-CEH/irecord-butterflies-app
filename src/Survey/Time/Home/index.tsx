@@ -12,7 +12,7 @@ import Main from './Main';
 function showConfirmationAlert() {
   const confirmationPrompt = (resolve: (param: boolean) => void) => {
     alert({
-      header: 'Confirmation',
+      header: 'Finish survey',
       message: 'Are you sure you want to finish this timed count?',
       buttons: [
         {
