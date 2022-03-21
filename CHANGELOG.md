@@ -6,6 +6,7 @@ Added map view of user records.
 Added verification updates.
 Updated FAQ.
 Made app more secure.
+Improved location based species lists.
 Other minor fixes.
 
 ## 2.2.1
