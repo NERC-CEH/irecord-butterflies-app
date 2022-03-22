@@ -7,13 +7,13 @@ import './styles.scss';
 type Props = {
   toggleGPStracking: (state: boolean) => void;
   isGPSTracking: boolean;
-  isDisabled: boolean;
+  isFinished: boolean;
 };
 
 const HeaderComponent: FC<Props> = ({
   isGPSTracking,
   toggleGPStracking,
-  isDisabled,
+  isFinished,
 }) => {
   const [id, rerender] = useState(0);
 
@@ -53,11 +53,12 @@ const HeaderComponent: FC<Props> = ({
         color="success"
         checked={isGPSTracking}
         onToggle={onToggle}
+        disabled={isFinished}
       />
     </>
   );
 
-  return <Header title="Area" rightSlot={!isDisabled && GPSToggle} />;
+  return <Header title="Area" rightSlot={GPSToggle} />;
 };
 
 export default observer(HeaderComponent);

@@ -27,13 +27,14 @@ const AreaController: FC<Props> = ({ sample }) => {
   }
 
   const isDisabled = !!sample.metadata.synced_on;
+  const isFinished = !!sample.metadata.saved;
 
   return (
     <Page id="single-species-count-area">
       <Header
         toggleGPStracking={toggleGPStracking}
         isGPSTracking={isGPSTracking}
-        isDisabled={isDisabled}
+        isFinished={isFinished}
       />
       <Main
         sample={sample}
