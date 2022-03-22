@@ -2,7 +2,7 @@ import React from 'react';
 import { useMap } from 'react-leaflet';
 import { withIonLifeCycle, IonIcon, NavContext } from '@ionic/react';
 import { locateOutline } from 'ionicons/icons';
-import GPS from 'helpers/BackgroundGPS';
+import GPS from 'helpers/GPS';
 import { toJS } from 'mobx';
 import L from 'leaflet';
 import MapControl from '../LeafletControl';
@@ -323,7 +323,7 @@ class MapInfo extends React.Component {
         resolve(location);
       };
 
-      const locatingJobId = GPS.start(onPosition);
+      const locatingJobId = GPS.start({ onPosition });
       this.setState({ locating: locatingJobId });
     };
 

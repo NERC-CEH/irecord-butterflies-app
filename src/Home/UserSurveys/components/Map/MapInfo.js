@@ -2,11 +2,10 @@ import React from 'react';
 import { useMap } from 'react-leaflet';
 import { withIonLifeCycle, IonIcon, NavContext } from '@ionic/react';
 import { locateOutline } from 'ionicons/icons';
-import GPS from 'helpers/BackgroundGPS';
+import GPS from 'helpers/GPS';
 import L from 'leaflet';
 import MapControl from 'common/Components/LeafletControl';
 
-const DEFAULT_POSITION = [55, -3.09];
 const DEFAULT_LOCATED_ZOOM = 18;
 
 class MapInfo extends React.Component {
@@ -52,7 +51,7 @@ class MapInfo extends React.Component {
         resolve(location);
       };
 
-      const locatingJobId = GPS.start(onPosition);
+      const locatingJobId = GPS.start({ onPosition });
       this.setState({ locating: locatingJobId });
     };
 
