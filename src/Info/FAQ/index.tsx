@@ -124,6 +124,42 @@ export default () => (
           </div>
         </Collapse>
 
+        <Collapse title="How to do a single species timed count">
+          <div className="collapse-content-wrapper">
+            <p>
+              Single species timed counts are important for measuring change in
+              butterfly populations, especially for threatened species. To carry
+              out a timed count, hold the green 'Record' button to reveal
+              different recording modes and select the option. Choose the
+              species and then add other details, such as a site name. If you
+              are doing a timed count of eggs or larval webs, make sure that you
+              change the stage from the default of 'Adult'. If your device has a
+              data connection (e.g. 4G) then the weather data should appear
+              automatically after a few moments, otherwise please add or adjust
+              them manually.
+            </p>
+
+            <p>
+              Once these details have been completed, and you are ready to start
+              your count, click the 'Start Count' button. The app will start a
+              timer and start to track the route you are taking, recording the
+              area searched. Because the app tracks your route, you do not need
+              to define the boundaries of the area searched on a map. Walk back
+              and forth in a series of parallel lines, or in a zigzag path, so
+              that you cover the site or area of suitable habitat area as
+              thoroughly and evenly as possible. Each time you spot the target
+              species within 2.5m either side of your path, tap the Count box
+              where a green number is displayed – tap it once for every
+              individual seen. Each encounter can be edited or deleted by
+              tapping on the species name and locating the required record. The
+              timer can be paused if required, but remember to start it again
+              when you continue your timed count as the total time spent
+              searching is vital information. When you have sampled the whole
+              site or habitat area, click 'Finish' to end the count.
+            </p>
+          </div>
+        </Collapse>
+
         <Collapse title="Will my single-species timed count contribute to the UK Butterfly Monitoring Scheme (UKBMS)?">
           <div className="collapse-content-wrapper">
             <p>
