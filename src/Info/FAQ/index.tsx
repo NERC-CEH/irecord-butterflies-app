@@ -51,17 +51,6 @@ export default () => (
           </span>
         </Collapse>
 
-        <Collapse title="Why are moths in a separate section of the species list?">
-          <span>
-            This new section of the list is a temporary solution. We have not
-            yet put any information into the app about the known distributions
-            of day-flying moths, or the times of year that they may be seen.
-            When this information has been added, the moths will appear among
-            the butterfly species in the other sections of the species list,
-            depending on which settings you have selected.
-          </span>
-        </Collapse>
-
         <Collapse title="How to edit your sightings after they are uploaded">
           <div className="collapse-content-wrapper">
             <span>
