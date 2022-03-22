@@ -96,8 +96,8 @@ export default () => (
           {authors}
         </P>
         <P>
-          Finally, thanks to Andrew Cooper and Anthony McCluskey who were
-          responsible for the species photo cut-outs.
+          Finally, thanks to Andrew Cooper, Ryan Davies and Anthony McCluskey
+          who were responsible for the species photo cut-outs.
         </P>
       </Section>
 
