@@ -79,6 +79,7 @@ class MapInfo extends React.Component {
       const polygon = L.polygon(positions, { color: DEFAULT_SHAPE_COLOR });
 
       polygon.addTo(this.drawnItems);
+      polygon.bringToBack(this.drawnItems);
 
       this.zoomToPolygonShape(shape);
       return;
@@ -90,6 +91,8 @@ class MapInfo extends React.Component {
 
     const polyline = L.polyline(positions, { color: DEFAULT_SHAPE_COLOR });
     polyline.addTo(this.drawnItems);
+    polyline.bringToBack(this.drawnItems);
+
     map.setView(positions[positions.length - 1], DEFAULT_LOCATED_ZOOM);
   }
 
