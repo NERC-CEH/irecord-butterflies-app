@@ -280,7 +280,8 @@ const SpeciesList: FC<Props> = ({
     );
   };
 
-  const showFeedback = shouldShowFeedback();
+  const isSurvey = !!onSelect;
+  const showFeedback = !isSurvey && shouldShowFeedback();
 
   return (
     <Main className="species-list">
