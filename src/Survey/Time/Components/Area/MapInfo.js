@@ -315,7 +315,7 @@ class MapInfo extends React.Component {
 
   startGPS = () => {
     const startGPS = (resolve, reject) => {
-      const onPosition = (error, location) => {
+      const callback = (error, location) => {
         this.stopGPS();
 
         if (error) {
@@ -326,7 +326,7 @@ class MapInfo extends React.Component {
         resolve(location);
       };
 
-      const locatingJobId = GPS.start({ onPosition });
+      const locatingJobId = GPS.start({ callback });
       this.setState({ locating: locatingJobId });
     };
 
