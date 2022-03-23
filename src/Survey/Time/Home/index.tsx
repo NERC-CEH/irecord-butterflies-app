@@ -9,11 +9,12 @@ import { IonButton, NavContext, isPlatform } from '@ionic/react';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import Main from './Main';
 
-function showConfirmationAlert() {
+function showFinishConfirmationAlert() {
   const confirmationPrompt = (resolve: (param: boolean) => void) => {
     alert({
       header: 'Finish survey',
       message: 'Are you sure you want to finish this timed count?',
+      backdropDismiss: false,
       buttons: [
         {
           text: 'No, continue count',
@@ -33,6 +34,26 @@ function showConfirmationAlert() {
   return new Promise(confirmationPrompt);
 }
 
+function showLeaveConfirmationAlert() {
+  const confirmationPrompt = (resolve: (param: boolean) => void) => {
+    alert({
+      header: 'Leaving survey',
+      message:
+        'To resume your timed count, select My Records at the bottom of the screen and then tap on the relevant count.',
+      backdropDismiss: false,
+      buttons: [
+        {
+          text: 'OK',
+          cssClass: 'primary',
+          handler: () => resolve(true),
+        },
+      ],
+    });
+  };
+
+  return new Promise(confirmationPrompt);
+}
+
 const hapticsImpact = async () => {
   await Haptics.impact({ style: ImpactStyle.Heavy });
 };
@@ -42,7 +63,7 @@ type Props = {
 };
 
 const HomeController: FC<Props> = ({ sample }) => {
-  const { navigate } = useContext(NavContext);
+  const { navigate, goBack } = useContext(NavContext);
   const isDisabled = sample.isUploaded();
   const isEditing = sample.metadata.saved;
 
@@ -86,7 +107,7 @@ const HomeController: FC<Props> = ({ sample }) => {
       return;
     }
 
-    const finishSurvey = await showConfirmationAlert();
+    const finishSurvey = await showFinishConfirmationAlert();
     if (!finishSurvey) return;
 
     appModel.attrs['draftId:single-species-count'] = null; // eslint-disable-line
@@ -133,9 +154,14 @@ const HomeController: FC<Props> = ({ sample }) => {
     </IonButton>
   );
 
+  const onLeave = async () => {
+    await showLeaveConfirmationAlert();
+    navigate(`/home/surveys`, 'root'); // root instead of back because of some url mess up
+  };
+
   return (
     <Page id="single-species-count-home">
-      <Header title="Survey" rightSlot={finishButton} />
+      <Header title="Survey" onLeave={onLeave} rightSlot={finishButton} />
       <Main sample={sample} increaseCount={increaseCount} />
     </Page>
   );
