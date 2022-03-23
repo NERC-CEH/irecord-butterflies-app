@@ -39,7 +39,7 @@ class MapInfo extends React.Component {
   };
 
   startGPS = () => {
-    const startGPS = (resolve, reject) => {
+    const startGPS = async (resolve, reject) => {
       const callback = (error, location) => {
         this.stopGPS();
 
@@ -51,7 +51,7 @@ class MapInfo extends React.Component {
         resolve(location);
       };
 
-      const locatingJobId = GPS.start({ callback });
+      const locatingJobId = await GPS.start({ callback });
       this.setState({ locating: locatingJobId });
     };
 
