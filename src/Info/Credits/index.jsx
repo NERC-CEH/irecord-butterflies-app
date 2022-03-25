@@ -51,6 +51,9 @@ export default () => (
           <span>
             <b>Anthony McCluskey</b> (Butterfly Conservation)
           </span>
+          <span>
+            <b>Ian Middlebrook</b> (Butterfly Conservation)
+          </span>
         </P>
       </Section>
 
