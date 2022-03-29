@@ -36,7 +36,12 @@
       margin-bottom: 70px;
     }
 
-    form ion-router-link.password-forgot-button {
+    a {
+      color: var(--ion-color-primary);
+      text-decoration: none;
+    }
+
+    form a.password-forgot-button {
       display: block;
       padding: 10px;
       text-align: right;

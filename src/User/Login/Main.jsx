@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
-import { IonIcon, IonButton, IonList, IonRouterLink } from '@ionic/react';
+import { IonIcon, IonButton, IonList } from '@ionic/react';
+import { Link } from 'react-router-dom';
 import {
   keyOutline,
   personOutline,
@@ -56,13 +57,9 @@ class Component extends React.Component {
             </IonButton>
           </InputWithValidation>
 
-          <IonRouterLink
-            routerLink="/user/reset"
-            defaultHref="/user/register"
-            className="password-forgot-button"
-          >
+          <Link to="/user/reset" className="password-forgot-button">
             <T>Forgot password?</T>
-          </IonRouterLink>
+          </Link>
         </IonList>
 
         {/** https://github.com/formium/formik/issues/1418 */}
@@ -73,9 +70,9 @@ class Component extends React.Component {
 
         <div className="signup-button">
           <T>I don't have an account</T>.{' '}
-          <IonRouterLink routerLink="/user/register">
+          <Link to="/user/register">
             <T>Sign Up</T>
-          </IonRouterLink>
+          </Link>
         </div>
       </Form>
     );
