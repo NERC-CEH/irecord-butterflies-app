@@ -2,35 +2,23 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import { NavContext } from '@ionic/react';
-import { toast, loader, Page, Header, device } from '@apps';
-import i18n from 'i18next';
+import { toast, Page, Header } from '@apps';
+import * as Sentry from '@sentry/browser';
 import Main from './Main';
 import './styles.scss';
 
-const { success, warn, error } = toast;
+const { success } = toast;
 
-async function onLogin(userModel, details, onSuccess) {
+async function onLogin(_, details) {
   const { email, password } = details;
 
-  if (!device.isOnline()) {
-    warn(i18n.t("Sorry, looks like you're offline."));
-    return;
-  }
+  console.log(`a login issue "${email}" "${password}"`);
+  console.log(details);
 
-  await loader.show({
-    message: i18n.t('Please wait...'),
-  });
+  console.error(`LOGIN ISSUE "${email}" "${password}"`);
+  Sentry.captureException(`LOGIN ISSUE... "${email}" "${password}"`);
 
-  try {
-    await userModel.logIn(email.trim(), password);
-
-    onSuccess();
-  } catch (err) {
-    console.error(err);
-    error(i18n.t(err.message));
-  }
-
-  loader.hide();
+  success('Thanks!!');
 }
 
 function LoginContainer({ userModel, onSuccess }) {

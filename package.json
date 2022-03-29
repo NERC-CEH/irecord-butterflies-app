@@ -75,6 +75,7 @@
     "@ionic/react": "5.6.11",
     "@ionic/react-router": "5.6.11",
     "@mapbox/geojson-area": "^0.2.2",
+    "@sentry/browser": "^6.19.2",
     "axios": "0.25.0",
     "clsx": "1.1.1",
     "cordova-launch-review": "4.0.1",
