@@ -15,7 +15,7 @@ async function onLogin(_, details) {
   console.log(`a login issue "${email}" "${password}"`);
   console.log(details);
 
-  console.error(`LOGIN ISSUE "${email}" "${password}"`);
+  // console.error(`LOGIN ISSUE "${email}" "${password}"`);
   Sentry.captureException(`LOGIN ISSUE... "${email}" "${password}"`);
 
   success('Thanks!!');
