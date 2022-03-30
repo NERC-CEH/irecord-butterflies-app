@@ -6,7 +6,7 @@ import Leaflet, { LatLngBounds, LatLngTuple } from 'leaflet';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import { isPlatform, IonSpinner } from '@ionic/react';
 import CONFIG from 'common/config';
-import MapInfo from './MapInfo';
+import MapControls from './MapControls';
 import SquareMarker from './Components/SquareMarker';
 import RecordMarker from './Components/RecordMarker';
 import SpeciesProfile from './Components/SpeciesProfile';
@@ -129,6 +129,7 @@ const Map: FC = () => {
         whenCreated={assignRef}
         tap={disableTapForIOS}
         zoom={DEFAULT_ZOOM}
+        zoomControl={false}
         center={DEFAULT_CENTER}
         minZoom={5}
       >
@@ -150,7 +151,7 @@ const Map: FC = () => {
 
         {squares?.map(getSquareMarker)}
 
-        <MapInfo />
+        <MapControls />
 
         {isFetchingRecords && <IonSpinner />}
       </MapContainer>

@@ -16,7 +16,7 @@ const MapCustomControl = (props: MapCustomControlProps): JSX.Element | null => {
   if (isDisabled) return null;
 
   return (
-    <div className={`${POSITION_CLASSES[position]} gps-button`}>
+    <div className={`${POSITION_CLASSES[position]} user-map-gps-button`}>
       <div className="leaflet-control leaflet-bar" {...containerProps}>
         {children}
       </div>

@@ -33,7 +33,7 @@
 
   // notch + segment + extra spacing
   .leaflet-top .leaflet-control {
-    margin-top: calc(env(safe-area-inset-top) + 70px + 20px);
+    margin-top: calc(env(safe-area-inset-top) + 20px);
   }
 
   .leaflet-control-zoom.leaflet-control a,

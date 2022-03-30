@@ -8,7 +8,7 @@ import { MapContainer, TileLayer } from 'react-leaflet';
 import 'leaflet-draw';
 import { observer } from 'mobx-react';
 import { useRouteMatch } from 'react-router';
-import MapInfo from './MapInfo';
+import MapControls from './MapControls';
 import 'leaflet/dist/images/marker-icon-2x.png';
 import 'leaflet/dist/images/marker-shadow.png';
 
@@ -40,8 +40,13 @@ const AreaMain: FC<Props> = ({
         <IonTitle slot="start">{areaPretty}</IonTitle>
       </IonToolbar>
 
-      <MapContainer tap={disableTapForIOS} zoom={6} center={[50, 0.1]}>
-        <MapInfo
+      <MapContainer
+        tap={disableTapForIOS}
+        zoom={6}
+        center={[50, 0.1]}
+        zoomControl={false}
+      >
+        <MapControls
           sample={sample}
           isDisabled={isDisabled}
           setAreaLocation={setAreaLocation}

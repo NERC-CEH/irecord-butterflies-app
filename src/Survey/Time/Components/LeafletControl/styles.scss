@@ -1,5 +1,5 @@
 .geolocate-btn {
-  border-radius: 2px;
+  border-radius: 5px;
   background: white;
   width: 40px;
   height: 40px;
@@ -8,8 +8,8 @@
   border: 0 !important;
 
   ion-icon {
-    width: 21px;
-    height: 21px;
+    width: 25px;
+    height: 25px;
     margin-top: 4px;
     color: black;
   }
@@ -22,6 +22,5 @@
 }
 
 .gps-button {
-  top: 94px !important;
   border: 0px !important;
 }
