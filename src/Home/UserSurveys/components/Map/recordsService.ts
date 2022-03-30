@@ -86,7 +86,7 @@ export async function fetchRecords(
   const getSource = ({ _source }: any): Hit[] => _source;
   // TODO: validate the response is correct
 
-  return records?.hits.hits.map(getSource);
+  return records?.hits?.hits.map(getSource);
 }
 
 const getSquaresQuery = (
