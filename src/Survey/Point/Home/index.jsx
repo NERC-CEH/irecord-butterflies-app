@@ -62,9 +62,8 @@ class Controller extends React.Component {
   render() {
     const { sample } = this.props;
 
-    if (!sample) {
-      return null;
-    }
+    // occurrences are destroyed first before samples
+    if (!sample?.occurrences?.[0]) return null;
 
     const isEditing = sample.metadata.saved;
 
