@@ -2,12 +2,14 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import userModel from 'models/user';
 import Login from './Login';
+import Login2 from './Login2';
 import Register from './Register';
 import Reset from './Reset';
 import Statistics from './Statistics';
 import StatisticsYear from './StatisticsYear';
 
 const LoginWrap = () => <Login userModel={userModel} />;
+const Login2Wrap = () => <Login2 userModel={userModel} />;
 const RegistrationWrap = () => <Register userModel={userModel} />;
 const ResetWrap = () => <Reset userModel={userModel} />;
 const StatisticsWrap = () => <Statistics userModel={userModel} />;
@@ -15,6 +17,7 @@ const StatisticsYearWrap = () => <StatisticsYear userModel={userModel} />;
 
 export default [
   <Route path="/user/login" key="/user/login" exact render={LoginWrap} />,
+  <Route path="/user/login2" key="/user/login2" exact render={Login2Wrap} />,
   <Route
     path="/user/register"
     key="/user/register"

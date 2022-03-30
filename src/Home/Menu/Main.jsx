@@ -76,6 +76,13 @@ const MenuMain = ({
           )}
 
           {!isLoggedIn && (
+            <IonItem routerLink="/user/login2" detail>
+              <IonIcon icon={personOutline} size="small" slot="start" />
+              Login (alternative)
+            </IonItem>
+          )}
+
+          {!isLoggedIn && (
             <IonItem routerLink="/user/register" detail>
               <IonIcon icon={personAddOutline} size="small" slot="start" />
               Register
