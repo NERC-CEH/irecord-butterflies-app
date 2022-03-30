@@ -15,19 +15,22 @@ class MapInfo extends React.Component {
     locating: false,
   };
 
-  ionViewDidEnter = () => {
-    this._leaving = false;
+  // TODO: needs proper memory clean up instead of this
+  _leaving = false;
 
+  ionViewDidEnter = () => {
     const { map } = this.props;
 
     const refreshMap = () => {
       map.invalidateSize();
     };
 
-    map.whenReady(refreshMap);
+    !this._leaving && map.whenReady(refreshMap);
   };
 
   componentWillUnmount() {
+    this._leaving = true;
+
     if (this.state.locating) {
       this.stopGPS();
     }
