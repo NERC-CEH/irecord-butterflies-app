@@ -11,15 +11,16 @@ const { success, error } = toast;
 
 async function onLogin(userModel, details, onSuccess) {
   const { email, password } = details;
+  try {
+    console.log(`a login issue 2 "${email}" "${password}"`);
+    console.log(JSON.stringify(details));
 
-  console.log(`a login issue "${email}" "${password}"`);
-  console.log(JSON.stringify(details));
-
-  Sentry.captureException(
-    `LOGIN ISSUE... "${email}" (${email.trim()}) "${password}"`
-  );
-
-  success('Thanks! We have now recorded the extra debugging information.');
+    Sentry.captureException(
+      `LOGIN ISSUE 2... "${email}" (${email.trim()}) "${password}"`
+    );
+  } catch (_) {
+    //
+  }
 
   await loader.show({
     message: 'Please wait...',
@@ -51,9 +52,9 @@ function LoginContainer({ userModel, onSuccess }) {
   const onLoginWrap = details => onLogin(userModel, details, onSuccessReturn);
 
   return (
-    <Page id="user-login">
+    <Page id="user-login2">
       <Header className="ion-no-border" routerDirection="none" />
-      <Main schema={userModel.loginSchema} onSubmit={onLoginWrap} />
+      <Main onSubmit={onLoginWrap} />
     </Page>
   );
 }
