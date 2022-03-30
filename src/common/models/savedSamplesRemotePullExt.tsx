@@ -133,6 +133,8 @@ async function fetchUpdatedRemoteSamples(
 ) {
   console.log('SavedSamples: pulling remote surveys');
 
+  const samples: { [key: string]: Hit } = {};
+
   const OPTIONS: AxiosRequestConfig = {
     method: 'post',
     url: CONFIG.backend.recordsServiceURL,
@@ -144,20 +146,24 @@ async function fetchUpdatedRemoteSamples(
     data: getRecordsQuery(timestamp),
   };
 
-  const { data } = await axios(OPTIONS);
+  let data;
+  try {
+    const res = await axios(OPTIONS);
+    data = res.data;
+  } catch (error) {
+    console.error(error);
+    return samples;
+  }
 
   // eslint-disable-next-line no-param-reassign
 
-  // normalizeData
-  const normalizedResponse: { [key: string]: Hit } = {};
-
   const normalizeResponse = ({ ...hit }: Hit) => {
-    normalizedResponse[hit._source.occurrence.source_system_key] = { ...hit };
+    samples[hit._source.occurrence.source_system_key] = { ...hit };
   };
 
-  data.hits.hits.forEach(normalizeResponse);
+  data?.hits?.hits.forEach(normalizeResponse);
 
-  return normalizedResponse;
+  return samples;
 }
 
 function appendVerificationAndReturnOccurrences(
