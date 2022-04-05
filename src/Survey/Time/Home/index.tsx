@@ -155,7 +155,10 @@ const HomeController: FC<Props> = ({ sample }) => {
   );
 
   const onLeave = async () => {
-    await showLeaveConfirmationAlert();
+    if (!sample.isUploaded()) {
+      await showLeaveConfirmationAlert();
+    }
+
     navigate(`/home/surveys`, 'root'); // root instead of back because of some url mess up
   };
 
