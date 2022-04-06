@@ -203,9 +203,22 @@ const survey: Survey = {
       },
     },
 
+    cloud: {
+      remote: {
+        id: 1457,
+      },
+    },
+
     sun: {
       pageProps: {
         attrProps: {
+          set: (value: any, sample: any) => {
+            // eslint-disable-next-line no-param-reassign
+            sample.attrs.cloud = 100 - value;
+            // eslint-disable-next-line no-param-reassign
+            sample.attrs.sun = value;
+            sample.save();
+          },
           input: 'slider',
           info: 'Please specify the % of sunshine.',
           inputProps: { max: 100, min: 0 },
@@ -433,6 +446,8 @@ const survey: Survey = {
       attrs: {
         location: {},
         duration: 0,
+        cloud: null,
+        sun: null,
         stage: 'Adult',
       },
     });
