@@ -355,7 +355,16 @@ const survey: Survey = {
           },
         },
 
-        count: { remote: { id: 780 } },
+        count: {
+          remote: {
+            id: 780,
+            values: (value: any, _: any, model: any) => {
+              const hasZeroAbundance = model.attrs.zero_abundance;
+
+              return hasZeroAbundance ? null : value;
+            },
+          },
+        },
 
         stage: stageAttr,
 
@@ -372,6 +381,7 @@ const survey: Survey = {
           attrs: {
             comment: null,
             taxon,
+            count: 1,
           },
         });
       },
