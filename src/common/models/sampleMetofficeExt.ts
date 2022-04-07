@@ -11,7 +11,7 @@ interface API_TYPES {
 }
 
 interface WEATHER_TYPES {
-  sun: number | null;
+  cloud: number | null;
   temperature: string | number | null;
   windDirection: string | null;
   windSpeed: string | null;
@@ -108,7 +108,7 @@ const getCloud = (cloudFromService: string) => {
   }
 
   // invert clouds to sunshine
-  return Math.round(100 - cloud);
+  return Math.round(cloud);
 };
 
 const fetchWeatherData = ({
@@ -128,7 +128,7 @@ const normaliseResponseValues = ({ main, wind, clouds }: API_TYPES) => ({
   temperature: getCelsiusTemperature((main || {}).temp),
   windSpeed: getWindSpeed((wind || {}).speed),
   windDirection: getWindDirection((wind || {}).deg),
-  sun: getCloud((clouds || {}).all),
+  cloud: getCloud((clouds || {}).all),
 });
 
 function setNewWeatherValues(sample: any, newWeatherValues: WEATHER_TYPES) {
@@ -141,10 +141,12 @@ function setNewWeatherValues(sample: any, newWeatherValues: WEATHER_TYPES) {
   if (!sample.attrs.windSpeed && newWeatherValues.windSpeed) {
     sample.attrs.windSpeed = newWeatherValues.windSpeed; // eslint-disable-line
   }
-  if (!sample.attrs.sun && typeof newWeatherValues.sun === 'number') {
-    sample.attrs.sun = newWeatherValues.sun; // eslint-disable-line
+  if (!sample.attrs.cloud && newWeatherValues.cloud) {
+    sample.attrs.cloud = newWeatherValues.cloud; // eslint-disable-line
   }
 
+  // eslint-disable-next-line no-param-reassign
+  sample.attrs.sun = 100 - sample.attrs.cloud;
   sample.save();
 }
 
