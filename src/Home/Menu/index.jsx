@@ -3,18 +3,18 @@ import { Page, alert } from '@apps';
 import { observer } from 'mobx-react';
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
-import { IonFooter, IonItem, IonCheckbox, IonLabel } from '@ionic/react';
+import { IonFooter } from '@ionic/react';
 import flumensLogo from 'common/images/flumens.svg';
 import config from 'common/config';
 import Main from './Main';
 import './styles.scss';
 
 function showLogoutConfirmationDialog(callback) {
-  let deleteData = true;
+  // let deleteData = true;
 
-  const onCheckboxChange = e => {
-    deleteData = e.detail.checked;
-  };
+  // const onCheckboxChange = e => {
+  //   deleteData = e.detail.checked;
+  // };
 
   alert({
     header: 'Logout',
@@ -23,10 +23,14 @@ function showLogoutConfirmationDialog(callback) {
         Are you sure you want to logout?
         <br />
         <br />
+        Your pending and uploaded <b>records will not be deleted </b> from this
+        device.
+        {/* <br />
+        <br />
         <IonItem lines="none" className="log-out-checkbox">
           <IonLabel>Discard local data</IonLabel>
           <IonCheckbox checked onIonChange={onCheckboxChange} />
-        </IonItem>
+        </IonItem> */}
       </>
     ),
     buttons: [
@@ -38,7 +42,7 @@ function showLogoutConfirmationDialog(callback) {
       {
         text: 'Logout',
         cssClass: 'primary',
-        handler: () => callback(deleteData),
+        handler: () => callback(),
       },
     ],
   });
@@ -49,7 +53,7 @@ const MenuController = ({ userModel, appModel, savedSamples }) => {
     const onReset = async reset => {
       if (reset) {
         // appModel.attrs['draftId:area'] = null; // TODO:
-        await savedSamples.resetDefaults();
+        // await savedSamples.resetDefaults();
       }
 
       appModel.save();
