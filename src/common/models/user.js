@@ -52,6 +52,8 @@ class UserModel extends DrupalUserModel {
       try {
         await this.refreshProfile();
       } catch (e) {
+        loader.hide();
+
         error(
           'There was an error refreshing your user login session. You may want to re-login to the app.',
           5000
@@ -130,6 +132,11 @@ class UserModel extends DrupalUserModel {
 
       await this._refreshAccessToken();
     } catch (e) {
+      if (e.message === 'Incorrect password or email') {
+        console.log('Removing invalid old user credentials');
+        delete this.attrs.password;
+        this.logOut();
+      }
       console.error(e);
       throw e;
     }
