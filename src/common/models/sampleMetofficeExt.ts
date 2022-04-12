@@ -132,7 +132,10 @@ const normaliseResponseValues = ({ main, wind, clouds }: API_TYPES) => ({
 });
 
 function setNewWeatherValues(sample: any, newWeatherValues: WEATHER_TYPES) {
-  if (!sample.attrs.temperature && newWeatherValues.temperature) {
+  if (
+    !Number.isFinite(sample.attrs.temperature) &&
+    Number.isFinite(newWeatherValues.temperature)
+  ) {
     sample.attrs.temperature = newWeatherValues.temperature; // eslint-disable-line
   }
   if (!sample.attrs.windDirection && newWeatherValues.windDirection) {
@@ -141,12 +144,13 @@ function setNewWeatherValues(sample: any, newWeatherValues: WEATHER_TYPES) {
   if (!sample.attrs.windSpeed && newWeatherValues.windSpeed) {
     sample.attrs.windSpeed = newWeatherValues.windSpeed; // eslint-disable-line
   }
-  if (!sample.attrs.cloud && newWeatherValues.cloud) {
+  if (
+    !Number.isFinite(sample.attrs.cloud) &&
+    Number.isFinite(newWeatherValues.cloud)
+  ) {
     sample.attrs.cloud = newWeatherValues.cloud; // eslint-disable-line
+    sample.attrs.sun = 100 - sample.attrs.cloud; // eslint-disable-line
   }
-
-  // eslint-disable-next-line no-param-reassign
-  sample.attrs.sun = 100 - sample.attrs.cloud;
   sample.save();
 }
 

@@ -213,6 +213,9 @@ const survey: Survey = {
       pageProps: {
         attrProps: {
           set: (value: any, sample: any) => {
+            // check if value was actually set
+            if (!Number.isFinite(value)) value = 0; // eslint-disable-line
+
             // eslint-disable-next-line no-param-reassign
             sample.attrs.cloud = 100 - value;
             // eslint-disable-next-line no-param-reassign
