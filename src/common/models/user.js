@@ -52,7 +52,12 @@ class UserModel extends DrupalUserModel {
       try {
         await this.refreshProfile();
       } catch (e) {
-        // do nothing
+        error(
+          'There was an error refreshing your user login session. You may want to re-login to the app.',
+          5000
+        );
+        console.error(e);
+        throw e;
       }
 
       loader.hide();
