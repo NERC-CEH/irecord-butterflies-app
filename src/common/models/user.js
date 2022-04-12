@@ -120,15 +120,20 @@ class UserModel extends DrupalUserModel {
    */
   async _migrateAuth() {
     console.log('Migrating user auth.');
+    try {
+      const tokens = await this._exchangePasswordToTokens(
+        this.attrs.email,
+        this.attrs.password
+      );
+      this.attrs.tokens = tokens;
+      delete this.attrs.password;
 
-    const tokens = await this._exchangePasswordToTokens(
-      this.attrs.email,
-      this.attrs.password
-    );
-    this.attrs.tokens = tokens;
-    delete this.attrs.password;
+      await this._refreshAccessToken();
+    } catch (e) {
+      console.error(e);
+      throw e;
+    }
 
-    await this._refreshAccessToken();
     return this.save();
   }
 }
