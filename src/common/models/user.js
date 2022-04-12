@@ -5,10 +5,29 @@ import CONFIG from 'common/config';
 import * as Yup from 'yup';
 import { DrupalUserModel, toast, loader } from '@apps';
 import { observable } from 'mobx';
+import axios from 'axios';
 import { genericStore } from './store';
 import serviceExtension from './userStatsExt';
 
 const { warn, error, success } = toast;
+
+// axios wrapper to pass through server error messages
+const parseServerError = e => {
+  if (e.response && e.response.data && e.response.data.message) {
+    if (e.response.data.message.includes('is already taken')) {
+      throw new Error('This email is already taken.');
+    }
+    if (e.response.data.message === 'The user credentials were incorrect.') {
+      throw new Error('Incorrect password or email');
+    }
+    if (e.response.data.message === 'Unrecognized username or email address.') {
+      throw new Error('Unrecognized email address.');
+    }
+    throw new Error(e.response.data.message);
+  }
+
+  throw e;
+};
 
 class UserModel extends DrupalUserModel {
   registerSchema = Yup.object().shape({
@@ -142,6 +161,32 @@ class UserModel extends DrupalUserModel {
     }
 
     return this.save();
+  }
+
+  async _exchangePasswordToTokens(email, password) {
+    console.log('EXCHANGING CREDS', email, password);
+    const formdata = new FormData();
+    formdata.append('grant_type', 'password');
+    formdata.append('username', email);
+    formdata.append('password', password);
+    formdata.append('client_id', this.config.clientId);
+    this.config.clientPass &&
+      formdata.append('client_secret', this.config.clientPass);
+
+    try {
+      console.log(JSON.stringify(Object.fromEntries(formdata)));
+    } catch (_) {
+      console.error('There was an error stringifying form data');
+    }
+
+    const options = {
+      method: 'post',
+      url: `${this.config.url}/oauth/token`,
+      data: formdata,
+    };
+
+    const { data } = await axios(options).catch(parseServerError);
+    return data;
   }
 }
 
