@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import { DrupalUserModel, toast, loader } from '@apps';
 import { observable } from 'mobx';
 import axios from 'axios';
+import * as Sentry from '@sentry/browser';
 import { genericStore } from './store';
 import serviceExtension from './userStatsExt';
 
@@ -77,6 +78,8 @@ class UserModel extends DrupalUserModel {
           'There was an error refreshing your user login session. You may want to re-login to the app.',
           5000
         );
+        Sentry.captureException(e);
+
         console.error(e);
         throw e;
       }
@@ -156,6 +159,8 @@ class UserModel extends DrupalUserModel {
         delete this.attrs.password;
         this.logOut();
       }
+      Sentry.captureException(e);
+
       console.error(e);
       throw e;
     }
@@ -176,6 +181,8 @@ class UserModel extends DrupalUserModel {
     try {
       console.log(JSON.stringify(Object.fromEntries(formdata)));
     } catch (_) {
+      Sentry.captureException('There was an error stringifying form data');
+
       console.error('There was an error stringifying form data');
     }
 

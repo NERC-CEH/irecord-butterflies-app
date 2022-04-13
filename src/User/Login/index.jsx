@@ -30,6 +30,7 @@ async function onLogin(userModel, details, onSuccess) {
 
     onSuccess();
   } catch (err) {
+    Sentry.captureException(`login err ${err.message}`);
     Sentry.captureException(err);
     error(err.message);
   }
