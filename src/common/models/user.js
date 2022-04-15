@@ -179,7 +179,12 @@ class UserModel extends DrupalUserModel {
       formdata.append('client_secret', this.config.clientPass);
 
     try {
-      console.log(JSON.stringify(Object.fromEntries(formdata)));
+      console.log(
+        JSON.stringify(Object.fromEntries(formdata))
+          .replace('password', 'p')
+          .replace('password', 'p')
+          .replace('username', 'u')
+      );
     } catch (_) {
       Sentry.captureException('There was an error stringifying form data');
 
