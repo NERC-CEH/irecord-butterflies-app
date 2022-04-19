@@ -144,6 +144,12 @@ class UserModel extends DrupalUserModel {
    */
   async _migrateAuth() {
     console.log('Migrating user auth.');
+    if (!this.attrs.email) {
+      // email might not exist
+      delete this.attrs.password;
+      return this.save();
+    }
+
     try {
       const tokens = await this._exchangePasswordToTokens(
         this.attrs.email,
@@ -179,6 +185,7 @@ class UserModel extends DrupalUserModel {
       formdata.append('client_secret', this.config.clientPass);
 
     try {
+      console.log('about to print creds for submission');
       console.log(
         JSON.stringify(Object.fromEntries(formdata))
           .replace('password', 'p')
