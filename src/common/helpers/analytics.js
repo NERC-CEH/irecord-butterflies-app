@@ -22,7 +22,7 @@ export default function init({
     dsn,
     environment,
     release,
-    integrations: [new CaptureConsole({ levels: ['log', 'error'] })],
+    integrations: [new CaptureConsole({ levels: ['error'] })],
   });
 
   Sentry.setUser({ id: userId });
