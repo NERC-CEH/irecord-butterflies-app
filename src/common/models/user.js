@@ -122,6 +122,12 @@ class UserModel extends DrupalUserModel {
    */
   async _migrateAuth() {
     console.log('Migrating user auth.');
+    if (!this.attrs.email) {
+      // email might not exist
+      delete this.attrs.password;
+      return this.save();
+    }
+
     try {
       const tokens = await this._exchangePasswordToTokens(
         this.attrs.email,
