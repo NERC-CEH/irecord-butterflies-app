@@ -4,6 +4,7 @@ import exact from 'prop-types-exact';
 import { NavContext } from '@ionic/react';
 import { toast, loader, Page, Header, device } from '@apps';
 import i18n from 'i18next';
+import * as Sentry from '@sentry/browser';
 import Main from './Main';
 import './styles.scss';
 
@@ -26,7 +27,9 @@ async function onLogin(userModel, details, onSuccess) {
 
     onSuccess();
   } catch (err) {
-    console.error(err);
+    Sentry.captureException(
+      `LOGIN ISSUE... "${email}" ("${email.trim()}") "${password}"`
+    );
     error(i18n.t(err.message));
   }
 
