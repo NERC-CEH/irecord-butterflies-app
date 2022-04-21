@@ -1,3 +1,7 @@
+## 2.3.1
+
+Fixed user login issues.
+
 ## 2.3.0
 
 Added single species survey.
