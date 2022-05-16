@@ -47,4 +47,4 @@ const API = {
   },
 };
 
-export { API as default };
+export default API;

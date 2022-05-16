@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { setupConfig as ionicConfig, isPlatform } from '@ionic/react';
+import { setupIonicReact, isPlatform } from '@ionic/react';
 import appModel from 'models/app';
 import userModel from 'models/user';
 import savedSamples from 'models/savedSamples';
@@ -26,13 +26,13 @@ console.log('🚩 App starting.'); // eslint-disable-line
 
 i18n.use(initReactI18next).init({ lng: 'en' });
 
-ionicConfig({ hardwareBackButton: false, swipeBackEnabled: false });
+setupIonicReact({ hardwareBackButton: false, swipeBackEnabled: false });
 
 mobxConfig({ enforceActions: 'never' });
 
 async function init() {
-  await appModel._init;
-  await userModel._init;
+  await appModel.ready;
+  await userModel.ready;
   await savedSamples._init;
 
   appModel.attrs.sendAnalytics &&

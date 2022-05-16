@@ -1,9 +1,11 @@
 import React, { FC, useContext } from 'react';
 import Sample from 'models/sample';
-import { alert } from '@apps';
+import { useAlert } from '@apps';
 import { IonButtons, IonButton, NavContext } from '@ionic/react';
 
-function showDeleteSurveyAlertMessage() {
+function useDeleteSurveyPrompt() {
+  const alert = useAlert();
+
   const deleteSurveyPromt = (resolve: (param: boolean) => void) => {
     alert({
       header: 'Delete Survey',
@@ -25,7 +27,9 @@ function showDeleteSurveyAlertMessage() {
     });
   };
 
-  return new Promise(deleteSurveyPromt);
+  const deleteSurveyPromtWrap = () => new Promise(deleteSurveyPromt);
+
+  return deleteSurveyPromtWrap;
 }
 
 interface Props {
@@ -34,9 +38,10 @@ interface Props {
 
 const CancelButton: FC<Props> = ({ sample }) => {
   const { navigate } = useContext(NavContext);
+  const shouldDeleteSurvey = useDeleteSurveyPrompt();
 
   const onDeleteSurvey = async () => {
-    const change = await showDeleteSurveyAlertMessage();
+    const change = await shouldDeleteSurvey();
 
     if (change) {
       await sample.destroy();

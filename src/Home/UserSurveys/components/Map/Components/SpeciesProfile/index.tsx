@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import {
   IonCardHeader,
   IonCardContent,
-  IonSlide,
-  IonSlides,
   IonButton,
   IonAvatar,
   IonIcon,
 } from '@ionic/react';
+import { Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import '@ionic/react/css/ionic-swiper.css';
 import clsx from 'clsx';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import CustomAlert from 'Components/CustomAlert';
@@ -32,14 +35,6 @@ const statuses = {
 // Verification status 1: Accepted, Rejected or Unconfirmed
 // Verification status 2: Correct, Considered correct, Unable to verify, Incorrect, Not reviewed, or Plausible
 
-function fixIonicSlideBug() {
-  // https://github.com/ionic-team/ionic/issues/19641
-  // https://github.com/ionic-team/ionic/issues/19638
-  // @ts-ignore
-  const updateSlides = () => this.update();
-  setTimeout(updateSlides, 50);
-}
-
 export default function SpeciesProfile({ record, onClose }: Props) {
   const [showGallery, setShowGallery] = useState<number>();
 
@@ -58,8 +53,6 @@ export default function SpeciesProfile({ record, onClose }: Props) {
   const stage = record.occurrence.life_stage;
 
   const getFullScreenPhotoViewer = () => {
-    if (!Number.isFinite(showGallery)) return null;
-
     const initialSlide = showGallery;
 
     const getImageSource = ({ path }: Media) => {
@@ -70,9 +63,11 @@ export default function SpeciesProfile({ record, onClose }: Props) {
 
     const items = record.occurrence.media?.map(getImageSource);
 
+    const isOpen = Number.isFinite(showGallery);
+
     return (
       <Gallery
-        isOpen
+        isOpen={isOpen}
         items={items}
         initialSlide={initialSlide}
         onClose={setShowGallery}
@@ -95,13 +90,13 @@ export default function SpeciesProfile({ record, onClose }: Props) {
       const imageURL = `${config.backend.mediaUrl}${path}`;
 
       return (
-        <IonSlide
+        <SwiperSlide
           key={imageURL}
           onClick={showPhotoInFullScreenWrap}
           className="species-profile-photo"
         >
           <ImageWithBackground src={imageURL} />
-        </IonSlide>
+        </SwiperSlide>
       );
     };
 
@@ -109,14 +104,14 @@ export default function SpeciesProfile({ record, onClose }: Props) {
 
     const pager = media.length > 1;
     return (
-      <IonSlides
-        pager={pager}
+      <Swiper
+        modules={[Pagination]}
+        pagination={pager}
         className={clsx(pager && 'paginated')}
-        options={slideOpts}
-        onIonSlidesDidLoad={fixIonicSlideBug}
+        {...slideOpts}
       >
         {slideImage}
-      </IonSlides>
+      </Swiper>
     );
   };
 

@@ -4,12 +4,12 @@ import { useRouteMatch } from 'react-router';
 import exact from 'prop-types-exact';
 import { NavContext } from '@ionic/react';
 import Sample from 'models/sample';
-import { alert } from '@apps';
+import { useAlert } from '@apps';
 import appModel from 'models/app';
 import Occurrence from 'models/occurrence';
 import savedSamples from 'models/savedSamples';
 
-async function showDraftAlert() {
+async function showDraftAlert(alert) {
   const alertWrap = resolve => {
     alert({
       header: 'Unfinished record',
@@ -52,13 +52,13 @@ async function getNewSample(survey, draftIdKey, params) {
   return sample;
 }
 
-async function getDraft(draftIdKey) {
+async function getDraft(draftIdKey, alert) {
   const draftID = appModel.attrs[draftIdKey];
   if (draftID) {
     const byId = ({ cid }) => cid === draftID;
     const draftSample = savedSamples.find(byId);
     if (draftSample) {
-      const continueDraftRecord = await showDraftAlert();
+      const continueDraftRecord = await showDraftAlert(alert);
       if (continueDraftRecord) {
         return draftSample;
       }
@@ -73,13 +73,14 @@ async function getDraft(draftIdKey) {
 function StartNewSurvey({ survey, location }) {
   const match = useRouteMatch();
   const { navigate } = useContext(NavContext);
+  const alert = useAlert();
 
   const draftIdKey = `draftId:${survey.name}`;
 
   const pickDraftOrCreateSampleWrap = () => {
     // eslint-disable-next-line
     (async () => {
-      let sample = await getDraft(draftIdKey);
+      let sample = await getDraft(draftIdKey, alert);
       if (!sample) {
         sample = await getNewSample(survey, draftIdKey, location.search);
       }

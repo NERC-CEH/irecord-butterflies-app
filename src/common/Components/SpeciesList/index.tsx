@@ -14,8 +14,7 @@ import {
   IonHeader,
 } from '@ionic/react';
 import { Main, InfoBackgroundMessage, UserFeedbackRequest } from '@apps';
-import appModel from 'models/app';
-import { FilterGroup, Filter, Filters } from 'models/app.d';
+import appModel, { FilterGroup, Filter, Filters } from 'models/app';
 import { arrowBack, informationCircleOutline } from 'ionicons/icons';
 import species, { Species } from 'common/data/species';
 import config from 'common/config';
@@ -206,12 +205,8 @@ const SpeciesList: FC<Props> = ({
 
     const { useProbabilitiesForGuide, useSmartSorting } = appModel.attrs;
 
-    const [
-      speciesHereAndNow,
-      speciesHere,
-      speciesNow,
-      remainingSpecies,
-    ] = organiseByProbability(speciesData);
+    const [speciesHereAndNow, speciesHere, speciesNow, remainingSpecies] =
+      organiseByProbability(speciesData);
 
     const hasSpeciesHereAndNow = !!speciesHereAndNow.length;
     const hasSpeciesHere = !!speciesHere.length;

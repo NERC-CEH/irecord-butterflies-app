@@ -1,40 +1,14 @@
 /* eslint-disable camelcase */
-import React from 'react';
 import axios, { AxiosRequestConfig } from 'axios';
 import AppModelProps from 'models/app';
 import Occurrence from 'models/occurrence';
 import SavedSamplesProps from 'models/savedSamples';
 import UserModelProps from 'models/user';
 import Sample from 'models/sample';
-import { alert, device } from '@apps';
-import UpdatedRecordsDialog from 'common/Components/UpdatedRecordsDialog';
+import { device } from '@apps';
 import CONFIG from 'common/config';
 import pointSurvey from 'Survey/Point/config';
 import singleSpeciesSurvey from 'Survey/Time/config';
-
-let isPopupVisible = true;
-
-const showAlert = (appModel: typeof AppModelProps) => {
-  isPopupVisible = false;
-
-  return alert({
-    header: 'New verified records',
-    message: <UpdatedRecordsDialog appModel={appModel} />,
-    backdropDismiss: false,
-    buttons: [
-      {
-        text: 'OK',
-        cssClass: 'primary',
-        role: 'cancel',
-
-        handler: () => {
-          isPopupVisible = true;
-          appModel.save();
-        },
-      },
-    ],
-  });
-};
 
 // export type
 interface API_Occurrence {
@@ -216,7 +190,9 @@ const setTimestamp = async (appModel: typeof AppModelProps) => {
   const getTimeOneMonthBack = currentTime.setMonth(currentTime.getMonth() - 1);
 
   // eslint-disable-next-line no-param-reassign
-  appModel.attrs.verifiedRecordsTimestamp = new Date(getTimeOneMonthBack);
+  appModel.attrs.verifiedRecordsTimestamp = new Date(
+    getTimeOneMonthBack
+  ).getTime();
   return appModel.save();
 };
 
@@ -230,12 +206,10 @@ async function init(
       await setTimestamp(appModel);
     }
 
-    if (!userModel.hasLogIn() || !device.isOnline()) return;
+    if (!userModel.hasLogIn() || !device.isOnline) return;
 
-    const {
-      verifiedRecordsTimestamp,
-      showVerifiedRecordsNotification,
-    } = appModel.attrs;
+    const verifiedRecordsTimestamp = appModel.attrs
+      .verifiedRecordsTimestamp as number;
 
     const currentTime = new Date();
 
@@ -265,8 +239,6 @@ async function init(
     // eslint-disable-next-line no-param-reassign
     appModel.attrs.verifiedRecordsTimestamp = new Date().getTime();
     appModel.save();
-
-    showVerifiedRecordsNotification && isPopupVisible && showAlert(appModel);
   }
 
   savedSamples._init.then(sync);

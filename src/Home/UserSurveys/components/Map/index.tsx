@@ -47,7 +47,7 @@ const Map: FC = () => {
   const [showRecordInfo, setShowRecordInfo] = useState<Record>();
   const closeRecordInfo = () => setShowRecordInfo(undefined);
 
-  const userIsLoggedIn = userModel.hasLogIn();
+  const userIsLoggedIn = userModel.isLoggedIn();
 
   const disableTapForIOS = !isPlatform('ios'); // TODO: https://github.com/Leaflet/Leaflet/issues/7255
 

@@ -1,5 +1,5 @@
 import React, { FC, useContext, SyntheticEvent } from 'react';
-import { alert, date } from '@apps';
+import { useAlert, date, useToast } from '@apps';
 import Sample from 'models/sample';
 import Occurrence from 'models/occurrence';
 import UserModelProps from 'models/user';
@@ -25,23 +25,28 @@ import OnlineStatus from './components/OnlineStatus';
 import ErrorMessage from './components/ErrorMessage';
 import './styles.scss';
 
-function deleteSurvey(sample: typeof Sample) {
-  alert({
-    header: 'Delete',
-    message: 'Are you sure you want to delete this survey?',
-    buttons: [
-      {
-        text: 'Cancel',
-        role: 'cancel',
-        cssClass: 'primary',
-      },
-      {
-        text: 'Delete',
-        cssClass: 'secondary',
-        handler: () => sample.destroy(),
-      },
-    ],
-  });
+function useSurveyDeletePrompt(sample: typeof Sample) {
+  const alert = useAlert();
+
+  const promptSurveyDelete = () =>
+    alert({
+      header: 'Delete',
+      message: 'Are you sure you want to delete this survey?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'primary',
+        },
+        {
+          text: 'Delete',
+          cssClass: 'secondary',
+          handler: () => sample.destroy(),
+        },
+      ],
+    });
+
+  return promptSurveyDelete;
 }
 
 function getSampleInfo(sample: typeof Sample) {
@@ -180,23 +185,25 @@ interface Props {
 
 const Survey: FC<Props> = ({ sample, userModel, uploadIsPrimary }) => {
   const { navigate } = useContext(NavContext);
+  const toast = useToast();
+  const deleteSurvey = useSurveyDeletePrompt(sample);
 
   const { synchronising } = sample.remote;
 
   const href = !synchronising ? sample.getCurrentEditRoute() : undefined;
 
-  const deleteSurveyWrap = () => deleteSurvey(sample);
+  const deleteSurveyWrap = () => deleteSurvey();
   const onUpload = (e: SyntheticEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
-    const isLoggedIn = !!userModel.attrs.id;
+    const isLoggedIn = userModel.isLoggedIn();
     if (!isLoggedIn) {
       navigate(`/user/login`);
       return;
     }
 
-    sample.upload();
+    sample.upload().catch(toast.error);
     navigate(`/home/surveys`, 'root');
   };
 

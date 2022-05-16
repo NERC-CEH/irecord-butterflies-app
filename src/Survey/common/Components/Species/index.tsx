@@ -1,10 +1,9 @@
 import React, { FC, useContext, useState, useEffect } from 'react';
 import Sample from 'models/sample';
 import Occurrence from 'models/occurrence';
-import appModel from 'models/app';
-import { Filters } from 'models/app.d';
-import { NavContext, RouterDirection } from '@ionic/react';
-import { Page, alert } from '@apps';
+import appModel, { Filters, Filter, FilterGroup } from 'models/app';
+import { NavContext } from '@ionic/react';
+import { Page, useAlert } from '@apps';
 import { observer } from 'mobx-react';
 import Main from 'common/Components/SpeciesList';
 import { Species } from 'common/data/species';
@@ -17,38 +16,43 @@ type Props = {
   BackButton?: React.ElementType;
 };
 
-function showTimeSurveyTip(
-  navigate: (path: string, direction: RouterDirection) => void
-) {
-  alert({
-    header: 'Timed count',
-    message: (
-      <>
-        <p>
-          Use this feature for timed counts of priority species. Select the
-          species and life stage and provide a site name. Weather details should
-          be added automatically or you can add them manually. During the
-          survey, tap the Count each time you see the target species. The app
-          will track the time and route.
-        </p>
-        <p>
-          Such surveys may contribute to UK Butterfly Monitoring Scheme trends.
-        </p>
-      </>
-    ),
-    buttons: [
-      {
-        text: 'More Information',
-        cssClass: 'primary',
-        role: 'cancel',
+function useTimeSurveyTip() {
+  const { navigate } = useContext(NavContext);
+  const alert = useAlert();
 
-        handler: () => {
-          navigate('/info/faq', 'root');
+  const showTip = () =>
+    alert({
+      header: 'Timed count',
+      message: (
+        <>
+          <p>
+            Use this feature for timed counts of priority species. Select the
+            species and life stage and provide a site name. Weather details
+            should be added automatically or you can add them manually. During
+            the survey, tap the Count each time you see the target species. The
+            app will track the time and route.
+          </p>
+          <p>
+            Such surveys may contribute to UK Butterfly Monitoring Scheme
+            trends.
+          </p>
+        </>
+      ),
+      buttons: [
+        {
+          text: 'More Information',
+          cssClass: 'primary',
+          role: 'cancel',
+
+          handler: () => {
+            navigate('/info/faq', 'root');
+          },
         },
-      },
-      { text: 'OK' },
-    ],
-  });
+        { text: 'OK' },
+      ],
+    });
+
+  return showTip;
 }
 
 const SpeciesSelect: FC<Props> = ({
@@ -58,6 +62,7 @@ const SpeciesSelect: FC<Props> = ({
   BackButton,
 }) => {
   const { navigate, goBack } = useContext(NavContext);
+  const showTimeSurveyTip = useTimeSurveyTip();
 
   const [searchPhrase, setSearchPhrase] = useState('');
   const [surveyFilters, setSurveyFilters] = useState<Filters | null>(
@@ -81,7 +86,7 @@ const SpeciesSelect: FC<Props> = ({
   const getSpeciesID = (occ: Occurrence) => (occ.attrs.taxon || {}).id;
   const currentSpecies = sample.occurrences.map(getSpeciesID);
 
-  const toggleFilter = (type: string, value: string) => {
+  const toggleFilter = (type: FilterGroup, value: Filter) => {
     if (type === 'survey') {
       // this only belongs in memory and reset for each survey
       setSurveyFilters(null);
@@ -97,7 +102,7 @@ const SpeciesSelect: FC<Props> = ({
     ) {
       appModel.attrs.showTimeSurveyTip = false; // eslint-disable-line
       appModel.save();
-      showTimeSurveyTip(navigate);
+      showTimeSurveyTip();
     }
   };
   useEffect(showTimeSurveyTipOnce);

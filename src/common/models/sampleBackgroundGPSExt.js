@@ -74,13 +74,8 @@ function isSufficientDistanceMade(coordinates, latitude, longitude) {
 }
 
 export function updateSampleArea(sample, location) {
-  const {
-    latitude,
-    longitude,
-    accuracy,
-    altitude,
-    altitudeAccuracy,
-  } = location;
+  const { latitude, longitude, accuracy, altitude, altitudeAccuracy } =
+    location;
   const shape = getShape(sample);
   const coordinates =
     shape.type === 'Polygon' ? shape.coordinates[0] : shape.coordinates;
@@ -183,4 +178,4 @@ const extension = {
   },
 };
 
-export { extension as default };
+export default extension;

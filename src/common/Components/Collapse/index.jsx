@@ -10,6 +10,7 @@ import './styles.scss';
 class Collapse extends Component {
   state = { open: false };
 
+  // eslint-disable-next-line @getify/proper-arrows/name
   onClick = () => {
     // eslint-disable-next-line
     this.setState(prevState => ({ open: !prevState.open }));

@@ -9,25 +9,25 @@ const indiciaUrl =
 const isTestEnv = process.env.NODE_ENV === 'test';
 
 const config = {
-  environment: process.env.NODE_ENV,
-  version: process.env.APP_VERSION,
-  build: process.env.APP_BUILD,
+  environment: process.env.NODE_ENV as string,
+  version: process.env.APP_VERSION as string,
+  build: process.env.APP_BUILD as string,
   feedbackEmail: 'apps%40ceh.ac.uk',
 
   log: !isTestEnv,
 
-  sentryDNS: !isTestEnv && process.env.APP_SENTRY_KEY,
+  sentryDNS: !isTestEnv && (process.env.APP_SENTRY_KEY as string),
 
   map: {
-    mapboxApiKey: process.env.APP_MAPBOX_MAP_KEY,
+    mapboxApiKey: process.env.APP_MAPBOX_MAP_KEY as string,
     mapboxSatelliteId: 'cehapps/cipqvo0c0000jcknge1z28ejp',
   },
 
   backend: {
     url: backendUrl,
     websiteId: 118,
-    clientId: process.env.APP_BACKEND_CLIENT_ID,
-    clientPass: process.env.APP_BACKEND_CLIENT_PASS,
+    clientId: process.env.APP_BACKEND_CLIENT_ID as string,
+    clientPass: process.env.APP_BACKEND_CLIENT_PASS as string,
 
     recordsServiceURL: `${indiciaUrl}/index.php/services/rest/es-occurrences/_search`,
 
@@ -38,8 +38,10 @@ const config = {
     },
   },
 
-  weatherSiteApiKey: process.env.APP_WEATHER_SITE_API_KEY,
+  weatherSiteApiKey: process.env.APP_WEATHER_SITE_API_KEY as string,
   weatherSiteUrl: 'https://api.openweathermap.org/data/2.5/weather',
+
+  dataPath: '',
 };
 
 (async function getMediaDirectory() {

@@ -32,7 +32,7 @@ declare const appModel: {
     skipInvalidsMessage?: boolean,
     skipRefreshUploadCountStat?: boolean,
     skipActivationCheckForUploadAll?: boolean
-  ) => void;
+  ) => Promise<boolean>;
 
   // should return config
   getSurvey: () => any;
@@ -63,5 +63,7 @@ declare const appModel: {
   hasOccurrencesBeenVerified: () => boolean;
   getCurrentEditRoute: () => string;
 };
+
+export function useValidateCheck(arg: any): any;
 
 export default appModel;

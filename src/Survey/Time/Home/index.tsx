@@ -1,15 +1,17 @@
 import React, { FC, useContext } from 'react';
-import Sample from 'models/sample';
+import Sample, { useValidateCheck } from 'models/sample';
 import Occurrence from 'models/occurrence';
 import appModel from 'models/app';
 import userModel from 'models/user';
 import { observer } from 'mobx-react';
-import { Page, Header, showInvalidsMessage, alert } from '@apps';
+import { Page, Header, useAlert, useToast } from '@apps';
 import { IonButton, NavContext, isPlatform } from '@ionic/react';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import Main from './Main';
 
-function showFinishConfirmationAlert() {
+function useFinishConfirmationAlert() {
+  const alert = useAlert();
+
   const confirmationPrompt = (resolve: (param: boolean) => void) => {
     alert({
       header: 'Finish survey',
@@ -31,10 +33,14 @@ function showFinishConfirmationAlert() {
     });
   };
 
-  return new Promise(confirmationPrompt);
+  const confirmationPromptWrap = () => new Promise(confirmationPrompt);
+
+  return confirmationPromptWrap;
 }
 
-function showLeaveConfirmationAlert() {
+function useShowLeaveConfirmationAlert() {
+  const alert = useAlert();
+
   const confirmationPrompt = (resolve: (param: boolean) => void) => {
     alert({
       header: 'Leaving survey',
@@ -51,7 +57,9 @@ function showLeaveConfirmationAlert() {
     });
   };
 
-  return new Promise(confirmationPrompt);
+  const confirmationPromptWrap = () => new Promise(confirmationPrompt);
+
+  return confirmationPromptWrap;
 }
 
 const hapticsImpact = async () => {
@@ -63,7 +71,12 @@ type Props = {
 };
 
 const HomeController: FC<Props> = ({ sample }) => {
-  const { navigate, goBack } = useContext(NavContext);
+  const { navigate } = useContext(NavContext);
+  const toast = useToast();
+  const showFinishConfirmationAlert = useFinishConfirmationAlert();
+  const showLeaveConfirmationAlert = useShowLeaveConfirmationAlert();
+  const checkSampleStatus = useValidateCheck(sample);
+
   const isDisabled = sample.isUploaded();
   const isEditing = sample.metadata.saved;
 
@@ -101,11 +114,8 @@ const HomeController: FC<Props> = ({ sample }) => {
   };
 
   const _processDraft = async () => {
-    const invalids = sample.validateRemote();
-    if (invalids) {
-      showInvalidsMessage(invalids);
-      return;
-    }
+    const isValid = checkSampleStatus();
+    if (!isValid) return;
 
     const finishSurvey = await showFinishConfirmationAlert();
     if (!finishSurvey) return;
@@ -129,13 +139,13 @@ const HomeController: FC<Props> = ({ sample }) => {
   };
 
   const _processSubmission = () => {
-    const isLoggedIn = !!userModel.attrs.id;
+    const isLoggedIn = userModel.isLoggedIn();
     if (!isLoggedIn) {
       navigate(`/user/login`);
       return;
     }
 
-    sample.upload();
+    sample.upload().catch(toast.error);
     navigate(`/home/surveys`, 'root');
   };
 

@@ -9,12 +9,15 @@ export { default as MenuAttrItem } from '@bit/flumens.apps.menu-attr-item';
 export { default as MenuAttrItemFromModel } from '@bit/flumens.apps.menu-attr-item-from-model';
 export { default as Section } from '@bit/flumens.apps.section';
 export { default as device } from '@bit/flumens.apps.device';
-export { default as alert } from '@bit/flumens.apps.helpers.alert';
-export { default as loader } from '@bit/flumens.apps.helpers.loader';
+export { default as useAlert } from '@bit/flumens.apps.helpers.alert';
+export { default as useLoader } from '@bit/flumens.apps.helpers.loader';
 export { default as InfoMessage } from '@bit/flumens.apps.info-message';
-export { default as toast } from '@bit/flumens.apps.helpers.toast';
+export { default as useToast } from '@bit/flumens.apps.helpers.toast';
 export { default as initAnalytics } from '@bit/flumens.apps.utils.analytics';
-export { default as Model } from '@bit/flumens.apps.models.model';
+export {
+  default as Model,
+  Attrs as ModelAttrs,
+} from '@bit/flumens.apps.models.model';
 export { default as Store } from '@bit/flumens.apps.models.store';
 export { default as initStoredSamples } from '@bit/flumens.apps.models.init-stored-samples';
 export { default as ModalHeader } from '@bit/flumens.apps.modal-header';
@@ -26,14 +29,16 @@ export { default as LongPressFabButton } from '@bit/flumens.apps.long-press-fab-
 export { default as InputWithValidation } from '@bit/flumens.apps.input-with-validation';
 export { default as MenuAttrToggle } from '@bit/flumens.apps.menu-attr-toggle';
 export { default as PhotoPicker } from '@bit/flumens.apps.photo-picker';
-export { default as Toggle } from '@bit/flumens.apps.toggle';
 export { default as date } from '@bit/flumens.apps.date';
 export { default as Sample } from '@bit/flumens.apps.models.sample';
 export { default as Occurrence } from '@bit/flumens.apps.models.occurrence';
 export { default as Media } from '@bit/flumens.apps.models.media';
 export { default as UserFeedbackRequest } from '@bit/flumens.apps.user-feedback-request';
 export { default as MenuNoteItem } from '@bit/flumens.apps.menu-note-item';
-export { default as DrupalUserModel } from '@bit/flumens.apps.models.drupal-user-model';
+export {
+  default as DrupalUserModel,
+  Attrs as DrupalUserModelAttrs,
+} from '@bit/flumens.apps.models.drupal-user-model';
 export { default as InfoButton } from '@bit/flumens.apps.info-button';
 
 export * from '@bit/flumens.apps.utils.location';

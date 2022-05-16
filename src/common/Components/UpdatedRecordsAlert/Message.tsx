@@ -1,16 +1,16 @@
 import React, { FC } from 'react';
-import AppModelProps from 'models/app';
 import { IonItem, IonCheckbox, IonLabel } from '@ionic/react';
+import AppModelProps from 'models/app';
 
 interface Props {
   appModel: typeof AppModelProps;
 }
 
-const UpdatedRecordsDialog: FC<Props> = ({ appModel }) => {
+const Message: FC<Props> = ({ appModel }) => {
   const toggleMessage = () => {
     // eslint-disable-next-line no-param-reassign
-    appModel.attrs.showVerifiedRecordsNotification = !appModel.attrs
-      .showVerifiedRecordsNotification;
+    appModel.attrs.showVerifiedRecordsNotification =
+      !appModel.attrs.showVerifiedRecordsNotification;
   };
 
   return (
@@ -26,4 +26,4 @@ const UpdatedRecordsDialog: FC<Props> = ({ appModel }) => {
   );
 };
 
-export default UpdatedRecordsDialog;
+export default Message;

@@ -1,7 +1,6 @@
 import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react';
-import { IonLabel } from '@ionic/react';
-import { Header, Toggle, alert } from '@apps';
+import { Header, MenuAttrToggle, useAlert } from '@apps';
 import './styles.scss';
 
 type Props = {
@@ -16,6 +15,7 @@ const HeaderComponent: FC<Props> = ({
   isFinished,
 }) => {
   const [id, rerender] = useState(0);
+  const alert = useAlert();
 
   const onToggle = (on: boolean) => {
     if (on === isGPSTracking) {
@@ -46,16 +46,14 @@ const HeaderComponent: FC<Props> = ({
   };
 
   const GPSToggle = (
-    <>
-      <IonLabel>GPS</IonLabel>
-      <Toggle
-        className="survey-gps-toggle"
-        color="success"
-        checked={isGPSTracking}
-        onToggle={onToggle}
-        disabled={isFinished}
-      />
-    </>
+    <MenuAttrToggle
+      label="GPS"
+      className="survey-gps-toggle"
+      color="success"
+      value={isGPSTracking}
+      onChange={onToggle}
+      disabled={isFinished}
+    />
   );
 
   return <Header title="Area" rightSlot={GPSToggle} />;

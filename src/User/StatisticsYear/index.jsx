@@ -6,8 +6,8 @@ import {
   Header,
   Main,
   device,
-  toast,
-  loader,
+  useToast,
+  useLoader,
   InfoBackgroundMessage,
 } from '@apps';
 import { observer } from 'mobx-react';
@@ -19,16 +19,12 @@ import Table from './Components/Table';
 import fetchStats from './services';
 import './styles.scss';
 
-const { warn } = toast;
-
-async function fetchStatsWrap(userModel, year) {
-  if (!device.isOnline()) {
+async function fetchStatsWrap(userModel, year, loader) {
+  if (!device.isOnline) {
     return;
   }
 
-  await loader.show({
-    message: 'Please wait...',
-  });
+  await loader.show('Please wait...');
 
   try {
     const stats = await fetchStats(userModel, year);
@@ -51,6 +47,8 @@ for (let i = 0; i <= yearsSinceStart; i++) {
 }
 
 function StatisticsYear({ userModel }) {
+  const loader = useLoader();
+  const toast = useToast();
   const match = useRouteMatch();
   const [year, setYear] = useState(match.params.year || 'all');
 
@@ -74,15 +72,15 @@ function StatisticsYear({ userModel }) {
   const onRefresh = async event => {
     event.detail.complete();
 
-    if (!device.isOnline()) {
-      warn("Sorry, looks like you're offline.");
+    if (!device.isOnline) {
+      toast.warn("Sorry, looks like you're offline.");
       return;
     }
 
-    fetchStatsWrap(userModel, year);
+    fetchStatsWrap(userModel, year, loader);
   };
 
-  const refreshStats = () => fetchStatsWrap(userModel, year);
+  const refreshStats = () => fetchStatsWrap(userModel, year, loader);
   useEffect(refreshStats, [year]);
 
   const getYearSelector = () => {

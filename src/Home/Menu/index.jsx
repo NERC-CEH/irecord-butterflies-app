@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page, alert } from '@apps';
+import { Page, useAlert } from '@apps';
 import { observer } from 'mobx-react';
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
@@ -9,13 +9,7 @@ import config from 'common/config';
 import Main from './Main';
 import './styles.scss';
 
-function showLogoutConfirmationDialog(callback) {
-  // let deleteData = true;
-
-  // const onCheckboxChange = e => {
-  //   deleteData = e.detail.checked;
-  // };
-
+function showLogoutConfirmationDialog(callback, alert) {
   alert({
     header: 'Logout',
     message: (
@@ -25,12 +19,6 @@ function showLogoutConfirmationDialog(callback) {
         <br />
         Your pending and uploaded <b>records will not be deleted </b> from this
         device.
-        {/* <br />
-        <br />
-        <IonItem lines="none" className="log-out-checkbox">
-          <IonLabel>Discard local data</IonLabel>
-          <IonCheckbox checked onIonChange={onCheckboxChange} />
-        </IonItem> */}
       </>
     ),
     buttons: [
@@ -48,7 +36,9 @@ function showLogoutConfirmationDialog(callback) {
   });
 }
 
-const MenuController = ({ userModel, appModel, savedSamples }) => {
+const MenuController = ({ userModel, appModel }) => {
+  const alert = useAlert();
+
   function logOut() {
     const onReset = async reset => {
       if (reset) {
@@ -60,10 +50,10 @@ const MenuController = ({ userModel, appModel, savedSamples }) => {
       userModel.logOut();
     };
 
-    showLogoutConfirmationDialog(onReset);
+    showLogoutConfirmationDialog(onReset, alert);
   }
 
-  const isLoggedIn = !!userModel.attrs.id;
+  const isLoggedIn = userModel.isLoggedIn();
 
   const checkActivation = () => userModel.checkActivation();
   const resendVerificationEmail = () => userModel.resendVerificationEmail();
@@ -93,7 +83,6 @@ const MenuController = ({ userModel, appModel, savedSamples }) => {
 MenuController.propTypes = exact({
   userModel: PropTypes.object.isRequired,
   appModel: PropTypes.object.isRequired,
-  savedSamples: PropTypes.array.isRequired,
 });
 
 export default observer(MenuController);

@@ -1,3 +1,4 @@
+/* eslint-disable @getify/proper-arrows/name */
 import React from 'react';
 import { useMap } from 'react-leaflet';
 import { withIonLifeCycle, IonIcon, NavContext } from '@ionic/react';
@@ -152,6 +153,7 @@ class MapInfo extends React.Component {
     return drawnItems;
   }
 
+  // eslint-disable-next-line react/no-unused-class-component-methods
   updateRecords = () => {
     const updateMarker = ([marker, smp]) => {
       const { latitude, longitude } = smp.attrs.location || {};
@@ -163,25 +165,6 @@ class MapInfo extends React.Component {
     };
 
     this._recordMarkers.forEach(updateMarker);
-  };
-
-  addRecords = () => {
-    const { sample, map } = this.props;
-
-    const addSurveyMarkerToMap = smp => {
-      const marker = getAreaCountMarker(smp);
-
-      if (!marker) {
-        return;
-      }
-
-      this._recordMarkers.push([marker, smp]);
-
-      this.addRecordsPopup(smp, marker);
-      marker.addTo(map);
-    };
-
-    sample.samples.forEach(addSurveyMarkerToMap);
   };
 
   addRecordsPopup = (sample, marker) => {
@@ -221,6 +204,7 @@ class MapInfo extends React.Component {
     sample.samples.forEach(addSurveyMarkerToMap);
   };
 
+  // eslint-disable-next-line react/no-unused-class-component-methods
   ionViewDidEnter = () => {
     this._leaving = false;
 

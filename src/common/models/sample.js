@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sample, showInvalidsMessage, device, toast, alert } from '@apps';
+import { Sample, getDeepErrorMessage, device, useToast, useAlert } from '@apps';
 import { IonNote } from '@ionic/react';
 import userModel from 'models/user';
 import config from 'common/config';
@@ -12,8 +12,6 @@ import MetOfficeExtension from './sampleMetofficeExt';
 import { modelStore } from './store';
 import Occurrence from './occurrence';
 import Media from './image';
-
-const { warn, error } = toast;
 
 const surveyConfig = {
   point: pointSurvey,
@@ -46,20 +44,20 @@ class AppSample extends Sample {
     this.backgroundGPSExtensionInit();
   }
 
-  hasZeroAbundance = () => {
+  hasZeroAbundance() {
     if (this.parent) {
       return this.parent.samples[0].occurrences[0].attrs.zero_abundance;
     }
 
     return this.samples[0]?.occurrences[0]?.attrs?.zero_abundance;
-  };
+  }
 
-  destroy = () => {
+  destroy() {
     this.cleanUp();
     super.destroy();
-  };
+  }
 
-  cleanUp = () => {
+  cleanUp() {
     this.stopGPS();
     this.stopBackgroundGPS();
 
@@ -68,14 +66,17 @@ class AppSample extends Sample {
       smp.stopBackgroundGPS();
     };
     this.samples.forEach(stopGPS);
-  };
+  }
 
-  isTimerPaused = () => !!this.metadata.timerPausedTime;
+  isTimerPaused() {
+    return !!this.metadata.timerPausedTime;
+  }
 
-  isSurveySingleSpeciesTimedCount = () =>
-    this.metadata.survey === 'single-species-count';
+  isSurveySingleSpeciesTimedCount() {
+    return this.metadata.survey === 'single-species-count';
+  }
 
-  getCurrentEditRoute = () => {
+  getCurrentEditRoute() {
     if (!this.isSurveySingleSpeciesTimedCount())
       return `/survey/${this.metadata.survey}/${this.cid}`;
 
@@ -90,70 +91,27 @@ class AppSample extends Sample {
     }
 
     return `/survey/${this.metadata.survey}/${this.cid}`;
-  };
+  }
 
-  async upload(
-    skipInvalidsMessage,
-    skipRefreshUploadCountStat,
-    skipActivationCheckForUploadAll
-  ) {
-    if (this.remote.synchronising) {
-      return true;
-    }
+  async upload(skipRefreshUploadCountStat) {
+    if (this.remote.synchronising || this.isUploaded()) return true;
 
     const invalids = this.validateRemote();
-    if (invalids) {
-      !skipInvalidsMessage && showInvalidsMessage(invalids);
-      return false;
-    }
+    if (invalids) return false;
 
-    if (!device.isOnline()) {
-      warn('Looks like you are offline!');
-      return false;
-    }
+    if (!device.isOnline) return false;
 
-    if (!skipActivationCheckForUploadAll) {
-      const isActivated = await userModel.checkActivation(true);
-      if (!isActivated) {
-        alert({
-          message: (
-            <>
-              <IonNote color="warning">
-                <b>Looks like your email hasn't been verified yet.</b>
-              </IonNote>
-              <p>Should we resend the verification email?</p>
-            </>
-          ),
-          buttons: [
-            {
-              text: 'Cancel',
-              role: 'cancel',
-              cssClass: 'secondary',
-            },
-            {
-              text: 'Resend',
-              cssClass: 'primary',
-              handler: () => userModel.resendVerificationEmail(),
-            },
-          ],
-        });
-        return false;
-      }
-    }
+    const isActivated = await userModel.checkActivation();
+    if (!isActivated) return false;
 
     this.cleanUp();
 
-    const showError = e => {
-      error(e);
-      throw e;
-    };
     const refreshUploadCountStatWrap = () => {
       if (skipRefreshUploadCountStat) return;
       userModel.refreshUploadCountStat();
     };
-    this.saveRemote().catch(showError).then(refreshUploadCountStatWrap);
 
-    return true;
+    return this.saveRemote().then(refreshUploadCountStatWrap);
   }
 
   setSpecies(species, occurrence) {
@@ -191,7 +149,7 @@ class AppSample extends Sample {
     return '';
   }
 
-  hasOccurrencesBeenVerified = () => {
+  hasOccurrencesBeenVerified() {
     const hasBeenVerified = occ => {
       const isRecordInReview =
         occ.metadata?.verification?.verification_status === 'C' &&
@@ -215,7 +173,7 @@ class AppSample extends Sample {
     }
 
     return this.isUploaded() && !!this.occurrences.some(hasBeenVerified);
-  };
+  }
 
   getSurveySpeciesFilters() {
     const survey = this.getSurvey();
@@ -228,5 +186,29 @@ class AppSample extends Sample {
     return null;
   }
 }
+
+export const useValidateCheck = sample => {
+  const alert = useAlert();
+
+  const validate = () => {
+    const invalids = sample.validateRemote();
+    if (invalids) {
+      alert({
+        header: 'Survey incomplete',
+        message: getDeepErrorMessage(invalids),
+        buttons: [
+          {
+            text: 'Got it',
+            role: 'cancel',
+          },
+        ],
+      });
+      return false;
+    }
+    return true;
+  };
+
+  return validate;
+};
 
 export default AppSample;

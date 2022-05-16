@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { IonIcon } from '@ionic/react';
-import { ModelLocation, alert } from '@apps';
+import { ModelLocation, useAlert } from '@apps';
 import savedSamples from 'models/savedSamples';
 import appModel from 'models/app';
 import { locateOutline } from 'ionicons/icons';
 import config from 'common/config';
 import './styles.scss';
 
-function showLocationGPSTip() {
+function showLocationGPSTip(alert) {
   alert({
     header: 'Geolocate',
     message: (
@@ -23,12 +23,14 @@ function showLocationGPSTip() {
 const getLocation = sample => sample.attrs.location || {};
 
 const ModelLocationWithInfo = props => {
+  const alert = useAlert();
+
   const showLocationGPSTipOnce = () => {
     if (appModel.attrs.showLocationGPSTip) {
       appModel.attrs.showLocationGPSTip = false; // eslint-disable-line
 
       appModel.save();
-      showLocationGPSTip();
+      showLocationGPSTip(alert);
     }
   };
 

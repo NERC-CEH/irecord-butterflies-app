@@ -18,6 +18,7 @@ class Component extends React.Component {
     showPassword: false,
   };
 
+  // eslint-disable-next-line @getify/proper-arrows/name
   togglePassword = () => {
     const invertShowPassword = prevState => ({
       showPassword: !prevState.showPassword,

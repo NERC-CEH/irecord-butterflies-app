@@ -1,23 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
-import { Page, Header, toast } from '@apps';
+import { Page, Header, useToast } from '@apps';
 import { observer } from 'mobx-react';
 import Main from './Main';
 
-const { success, error } = toast;
+const useResetApp = (saveSamples, appModel, userModel) => {
+  const toast = useToast();
 
-const resetApp = async (saveSamples, appModel, userModel) => {
-  console.log('Settings:Menu:Controller: resetting the application!');
+  const reset = async () => {
+    console.log('Settings:Menu:Controller: resetting the application!');
 
-  try {
-    await saveSamples.resetDefaults();
-    await appModel.resetDefaults();
-    await userModel.resetDefaults();
-    success('Done');
-  } catch (e) {
-    error(`${e.message}`);
-  }
+    try {
+      await saveSamples.resetDefaults();
+      await appModel.resetDefaults();
+      await userModel.resetDefaults();
+      toast.success('Done');
+    } catch (e) {
+      toast.error(`${e.message}`);
+    }
+  };
+
+  return reset;
 };
 
 function onToggle(appModel, setting, checked) {
@@ -25,10 +29,11 @@ function onToggle(appModel, setting, checked) {
   appModel.save();
 }
 
-const MenuController = props => {
-  const { savedSamples, appModel, userModel } = props;
+const MenuController = ({ savedSamples, appModel, userModel }) => {
+  const resetApp = useResetApp(savedSamples, appModel, userModel);
 
   const resetApplication = () => resetApp(savedSamples, appModel, userModel);
+
   const {
     sendAnalytics,
     useLocationForGuide,
@@ -43,6 +48,7 @@ const MenuController = props => {
     onToggle(appModel, 'useLocationForGuide', checked);
 
     if (!checked) {
+      // eslint-disable-next-line no-param-reassign
       appModel.attrs.location = null;
       appModel.updateCurrentLocation(false); // stops any current runs
     } else {
@@ -62,9 +68,11 @@ const MenuController = props => {
 
   const adminChangeLocation = e => {
     if (!appModel.attrs.location) {
+      // eslint-disable-next-line no-param-reassign
       appModel.attrs.location = {};
     }
 
+    // eslint-disable-next-line no-param-reassign
     appModel.attrs.location.gridref = e.target.value;
     console.log('setting hectad', appModel.attrs.location.gridref);
     appModel.save();

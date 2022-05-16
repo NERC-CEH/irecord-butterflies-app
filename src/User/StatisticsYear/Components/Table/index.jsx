@@ -21,27 +21,22 @@ const columns = [
 
 // eslint-disable-next-line
 function Table({ data }) {
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable(
-    {
-      columns,
-      data,
-      initialState: {
-        sortBy: [
-          {
-            id: 'record_count',
-            desc: true,
-          },
-        ],
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable(
+      {
+        columns,
+        data,
+        initialState: {
+          sortBy: [
+            {
+              id: 'record_count',
+              desc: true,
+            },
+          ],
+        },
       },
-    },
-    useSortBy
-  );
+      useSortBy
+    );
 
   const getColumn = column => (
     <th {...column.getHeaderProps(column.getSortByToggleProps())}>
@@ -68,12 +63,10 @@ function Table({ data }) {
     return <tr {...row.getRowProps()}>{row.cells.map(getCell)}</tr>;
   };
   return (
-    <>
-      <table {...getTableProps()}>
-        <thead>{headerGroups.map(getHeaderGroup)}</thead>
-        <tbody {...getTableBodyProps()}>{rows.map(getRow)}</tbody>
-      </table>
-    </>
+    <table {...getTableProps()}>
+      <thead>{headerGroups.map(getHeaderGroup)}</thead>
+      <tbody {...getTableBodyProps()}>{rows.map(getRow)}</tbody>
+    </table>
   );
 }
 

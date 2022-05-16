@@ -6,6 +6,7 @@ import { observer } from 'mobx-react';
 import appModel from 'models/app';
 import userModel from 'models/user';
 import ThankYouAlert from 'common/Components/ThankYouAlert';
+import UpdatedRecordsAlert from 'common/Components/UpdatedRecordsAlert';
 import Home from './Home';
 import Settings from './Settings/router';
 import Info from './Info/router';
@@ -13,14 +14,14 @@ import OnBoardingScreens from './Info/OnBoardingScreens';
 import User from './User/router';
 import Survey from './Survey/router';
 
-const HomeRedirect = () => {
-  return <Redirect to="home" />;
-};
+const HomeRedirect = () => <Redirect to="home" />;
 
 const App = () => (
   <IonApp>
     <OnBoardingScreens appModel={appModel}>
       <ThankYouAlert userModel={userModel} />
+      <UpdatedRecordsAlert appModel={appModel} />
+
       <IonReactRouter>
         <IonRouterOutlet id="main">
           <Route exact path="/" component={HomeRedirect} />

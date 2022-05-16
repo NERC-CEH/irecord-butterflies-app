@@ -164,7 +164,7 @@ const extension: any = {
       const sampleWasSetForSubmission = this.metadata.saved;
 
       if (
-        !device.isOnline() ||
+        !device.isOnline ||
         sampleWasSetForSubmission ||
         !newValue ||
         !newValue.longitude

@@ -100,4 +100,4 @@ const Image = {
   },
 };
 
-export { Image as default };
+export default Image;

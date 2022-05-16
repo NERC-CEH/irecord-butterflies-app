@@ -2,36 +2,37 @@ import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import { useRouteMatch } from 'react-router';
-import { Page, Header, showInvalidsMessage, alert } from '@apps';
+import { Page, Header, useAlert, useToast } from '@apps';
 import { observer } from 'mobx-react';
+import appModel from 'models/app';
+import { useUserStatusCheck } from 'models/user';
+import { useValidateCheck } from 'models/sample';
 import { IonButton, NavContext } from '@ionic/react';
 import Main from './Main';
 import buttonWithExplanationImage from './buttonWithExplanationImage.png';
 import './styles.scss';
 
-function showListSurveyHiddenButtonTip() {
+function showListSurveyHiddenButtonTip(alert) {
   alert({
     header: 'List survey tip',
     message: (
-      <>
-        <div>
-          <ol>
-            <li>
-              <p>Tap to increase the count.</p>
-            </li>
-            <li>
-              <p>Tap to see more options.</p>
-            </li>
-          </ol>
-          <img src={buttonWithExplanationImage} />
-        </div>
-      </>
+      <div>
+        <ol>
+          <li>
+            <p>Tap to increase the count.</p>
+          </li>
+          <li>
+            <p>Tap to see more options.</p>
+          </li>
+        </ol>
+        <img src={buttonWithExplanationImage} />
+      </div>
     ),
     buttons: [{ text: 'OK, got it' }],
   });
 }
 
-function showListSurveyTip() {
+function showListSurveyTip(alert) {
   alert({
     header: 'List survey',
     message: (
@@ -65,7 +66,7 @@ function increaseCount(occ) {
   occ.save();
 }
 
-function deleteOccurrence(occ) {
+function deleteOccurrence(occ, alert) {
   const { commonName } = occ.attrs.taxon;
 
   alert({
@@ -88,16 +89,21 @@ function deleteOccurrence(occ) {
   });
 }
 
-function Home({ appModel, userModel, sample }) {
+function Home({ sample }) {
   const match = useRouteMatch();
+  const alert = useAlert();
+  const toast = useToast();
   const { navigate } = useContext(NavContext);
+  const checkSampleStatus = useValidateCheck(sample);
+
+  const checkUserStatus = useUserStatusCheck();
 
   const showListSurveyTipOnce = () => {
     if (appModel.attrs.showListSurveyTip) {
       appModel.attrs.showListSurveyTip = false; // eslint-disable-line
 
       appModel.save();
-      showListSurveyTip();
+      showListSurveyTip(alert);
     }
 
     const firstOccAdded = sample.occurrences.length === 1;
@@ -105,7 +111,7 @@ function Home({ appModel, userModel, sample }) {
       appModel.attrs.showListSurveyHiddenButtonTip = false; // eslint-disable-line
 
       appModel.save();
-      showListSurveyHiddenButtonTip();
+      showListSurveyHiddenButtonTip(alert);
     }
   };
 
@@ -115,23 +121,17 @@ function Home({ appModel, userModel, sample }) {
     return null;
   }
 
-  const _processSubmission = () => {
-    const isLoggedIn = !!userModel.attrs.id;
-    if (!isLoggedIn) {
-      navigate(`/user/login`);
-      return;
-    }
+  const _processSubmission = async () => {
+    const isUserOK = await checkUserStatus();
+    if (!isUserOK) return;
 
-    sample.upload();
+    sample.upload().catch(toast.error);
     navigate(`/home/surveys`, 'root');
   };
 
   const _processDraft = async () => {
-    const invalids = sample.validateRemote();
-    if (invalids) {
-      showInvalidsMessage(invalids);
-      return;
-    }
+    const isValid = checkSampleStatus();
+    if (!isValid) return;
 
     appModel.attrs['draftId:list'] = null; // eslint-disable-line
     await appModel.save();
@@ -172,6 +172,8 @@ function Home({ appModel, userModel, sample }) {
     </IonButton>
   );
 
+  const deleteOccurrenceWrap = occ => deleteOccurrence(occ, alert);
+
   return (
     <Page id="survey-list-edit">
       <Header
@@ -185,7 +187,7 @@ function Home({ appModel, userModel, sample }) {
         onToggleSpeciesSort={toggleSpeciesSort}
         navigateToOccurrence={navigateToOccurrence}
         increaseCount={increaseCount}
-        deleteOccurrence={deleteOccurrence}
+        deleteOccurrence={deleteOccurrenceWrap}
         listSurveyListSortedByTime={appModel.attrs.listSurveyListSortedByTime}
       />
     </Page>
@@ -193,8 +195,6 @@ function Home({ appModel, userModel, sample }) {
 }
 
 Home.propTypes = exact({
-  appModel: PropTypes.object.isRequired,
-  userModel: PropTypes.object.isRequired,
   sample: PropTypes.object.isRequired,
 });
 

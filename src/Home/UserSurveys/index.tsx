@@ -68,7 +68,7 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
   };
 
   const onUploadAll = () => {
-    const isLoggedIn = !!userModel.hasLogIn();
+    const isLoggedIn = userModel.isLoggedIn();
     if (!isLoggedIn) {
       navigate(`/user/login`);
       return null;

@@ -1,8 +1,8 @@
 import React, { FC, useContext } from 'react';
 import { useRouteMatch } from 'react-router';
-import Sample from 'models/sample';
+import Sample, { useValidateCheck } from 'models/sample';
 import { observer } from 'mobx-react';
-import { Page, Header, showInvalidsMessage } from '@apps';
+import { Page, Header } from '@apps';
 import { NavContext, IonButton } from '@ionic/react';
 import CancelButton from 'Survey/Time/Components/CancelButton';
 import Main from './Main';
@@ -15,14 +15,13 @@ type Props = {
 const DetailsController: FC<Props> = ({ sample }) => {
   const { navigate } = useContext(NavContext);
   const { url } = useRouteMatch();
+  const checkSampleStatus = useValidateCheck(sample);
+
   const hasTimerStarted = sample.attrs.startTime;
 
   const onStartTimer = () => {
-    const invalids = sample.validateRemote();
-    if (invalids) {
-      showInvalidsMessage(invalids);
-      return;
-    }
+    const isValid = checkSampleStatus();
+    if (!isValid) return;
 
     // eslint-disable-next-line no-param-reassign
     sample.attrs.startTime = new Date();

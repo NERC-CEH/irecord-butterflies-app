@@ -1,3 +1,4 @@
+/* eslint-disable @getify/proper-arrows/name */
 import React from 'react';
 import { useMap } from 'react-leaflet';
 import { withIonLifeCycle, IonIcon, NavContext } from '@ionic/react';
@@ -18,6 +19,7 @@ class MapInfo extends React.Component {
   // TODO: needs proper memory clean up instead of this
   _leaving = false;
 
+  // eslint-disable-next-line react/no-unused-class-component-methods
   ionViewDidEnter = () => {
     const { map } = this.props;
 

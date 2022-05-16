@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
-import { Page, Header, Main, device, toast, loader } from '@apps';
+import { Page, Header, Main, device, useToast, useLoader } from '@apps';
 import { observer } from 'mobx-react';
 import {
   IonLabel,
@@ -15,16 +15,12 @@ import { chevronDownOutline } from 'ionicons/icons';
 import InfoBackgroundMessage from 'common/Components/InfoBackgroundMessage';
 import './styles.scss';
 
-const { warn } = toast;
-
-async function fetchStatsWrap(userModel) {
-  if (!device.isOnline()) {
+async function fetchStatsWrap(userModel, loader) {
+  if (!device.isOnline) {
     return;
   }
 
-  await loader.show({
-    message: 'Please wait...',
-  });
+  await loader.show('Please wait...');
 
   try {
     await userModel.fetchStats();
@@ -37,18 +33,21 @@ async function fetchStatsWrap(userModel) {
 }
 
 function Statistics({ userModel }) {
+  const toast = useToast();
+  const loader = useLoader();
+
   const onRefresh = async event => {
     event.detail.complete();
 
-    if (!device.isOnline()) {
-      warn("Sorry, looks like you're offline.");
+    if (!device.isOnline) {
+      toast.warn("Sorry, looks like you're offline.");
       return;
     }
 
-    fetchStatsWrap(userModel);
+    fetchStatsWrap(userModel, loader);
   };
 
-  const refreshStats = () => fetchStatsWrap(userModel);
+  const refreshStats = () => fetchStatsWrap(userModel, loader);
   useEffect(refreshStats, []);
 
   const getReport = () => {

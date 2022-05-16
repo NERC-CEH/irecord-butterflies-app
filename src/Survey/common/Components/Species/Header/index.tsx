@@ -12,6 +12,7 @@ import {
   isPlatform,
 } from '@ionic/react';
 import clsx from 'clsx';
+import { Filter, FilterGroup } from 'models/app';
 import { searchOutline, checkmarkOutline } from 'ionicons/icons';
 import { Keyboard } from '@capacitor/keyboard';
 import CurrentFilters from 'Components/CurrentFilters';
@@ -26,7 +27,7 @@ const DeaultBackButton = () => (
 
 type Props = {
   onSearch: (e: any) => void;
-  toggleFilter: (type: string, value: string) => void;
+  toggleFilter: (type: FilterGroup, value: Filter) => void;
   filters: any;
   title?: string;
   BackButton?: React.ElementType;
@@ -73,14 +74,26 @@ const Header: FC<Props> = ({
     }
   }
 
-  const addFilter = ({ type, value }: { type: string; value: string }) => {
+  const addFilter = ({
+    type,
+    value,
+  }: {
+    type: FilterGroup & 'text';
+    value: Filter;
+  }) => {
     setSearchPhrase('');
     searchInput.current.setFocus();
 
     type !== 'text' && toggleFilter(type, value);
   };
 
-  const removeFilter = ({ type, value }: { type: string; value: string }) => {
+  const removeFilter = ({
+    type,
+    value,
+  }: {
+    type: FilterGroup & 'text';
+    value: Filter;
+  }) => {
     if (type === 'text') {
       setSearchPhrase('');
       onSearchProp('');
