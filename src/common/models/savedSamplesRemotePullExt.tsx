@@ -5,7 +5,7 @@ import Occurrence from 'models/occurrence';
 import SavedSamplesProps from 'models/savedSamples';
 import { UserModel } from 'models/user';
 import Sample from 'models/sample';
-import { device } from '@apps';
+import { device } from '@flumens';
 import CONFIG from 'common/config';
 import pointSurvey from 'Survey/Point/config';
 import singleSpeciesSurvey from 'Survey/Time/config';

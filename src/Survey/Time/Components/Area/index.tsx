@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Sample from 'models/sample';
 import { observer } from 'mobx-react';
-import { Page } from '@apps';
+import { Page } from '@flumens';
 import Header from './Header';
 import Main from './Main';
 import './styles.scss';

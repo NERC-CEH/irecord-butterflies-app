@@ -15,7 +15,7 @@ import {
   MenuAttrItem,
   InfoMessage,
   MenuAttrItemFromModel,
-} from '@apps';
+} from '@flumens';
 import { locationOutline } from 'ionicons/icons';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';

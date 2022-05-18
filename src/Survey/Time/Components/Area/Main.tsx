@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { IonToolbar, IonTitle, isPlatform } from '@ionic/react';
 import Sample from 'models/sample';
-import { Main } from '@apps';
+import { Main } from '@flumens';
 import CONFIG from 'common/config';
 import L from 'leaflet';
 import { MapContainer, TileLayer } from 'react-leaflet';

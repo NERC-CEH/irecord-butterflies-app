@@ -11,7 +11,7 @@ import {
   useLoader,
   useAlert,
   DrupalUserModelAttrs,
-} from '@apps';
+} from '@flumens';
 import { NavContext } from '@ionic/react';
 import { observable, set } from 'mobx';
 import { genericStore } from './store';

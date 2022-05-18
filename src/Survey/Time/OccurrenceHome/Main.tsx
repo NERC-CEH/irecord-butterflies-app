@@ -7,7 +7,7 @@ import { locationOutline, warningOutline } from 'ionicons/icons';
 import { Trans as T } from 'react-i18next';
 import PhotoPicker from 'common/Components/PhotoPicker';
 import { useRouteMatch } from 'react-router';
-import { Main, MenuAttrItem, MenuAttrItemFromModel } from '@apps';
+import { Main, MenuAttrItem, MenuAttrItemFromModel } from '@flumens';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
 import VerificationMessage from 'Survey/common/Components/VerificationMessage';
 import clsx from 'clsx';

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
-import { PhotoPicker } from '@apps';
+import { PhotoPicker } from '@flumens';
 import { useTranslation } from 'react-i18next';
 import Image from 'models/image';
 import config from 'common/config';

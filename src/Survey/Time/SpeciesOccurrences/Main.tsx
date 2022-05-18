@@ -14,7 +14,7 @@ import {
 import { warningOutline } from 'ionicons/icons';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
 import { observer } from 'mobx-react';
-import { Main } from '@apps';
+import { Main } from '@flumens';
 import { Trans as T } from 'react-i18next';
 import VerificationIcon from 'common/Components/VerificationIcon';
 import './styles.scss';

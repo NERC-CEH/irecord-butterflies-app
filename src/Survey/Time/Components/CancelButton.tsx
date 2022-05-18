@@ -1,6 +1,6 @@
 import { FC, useContext } from 'react';
 import Sample from 'models/sample';
-import { useAlert } from '@apps';
+import { useAlert } from '@flumens';
 import { IonButtons, IonButton, NavContext } from '@ionic/react';
 
 function useDeleteSurveyPrompt() {

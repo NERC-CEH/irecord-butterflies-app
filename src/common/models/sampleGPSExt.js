@@ -1,6 +1,6 @@
 import GPS from 'helpers/GPS';
 import { observable } from 'mobx';
-import { updateModelLocation } from '@apps';
+import { updateModelLocation } from '@flumens';
 
 const DEFAULT_ACCURACY_LIMIT = 50; // meters
 

@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { date } from '@apps';
+import { date } from '@flumens';
 import { calendarOutline, locationOutline } from 'ionicons/icons';
 import caterpillarIcon from 'common/images/caterpillar.svg';
 

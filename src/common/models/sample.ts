@@ -5,7 +5,7 @@ import {
   getDeepErrorMessage,
   device,
   useAlert,
-} from '@apps';
+} from '@flumens';
 import userModel from 'models/user';
 import config from 'common/config';
 import pointSurvey from 'Survey/Point/config';

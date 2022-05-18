@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Page, useAlert, useLoader, useToast } from '@apps';
+import { Page, useAlert, useLoader, useToast } from '@flumens';
 import { observer } from 'mobx-react';
 import { IonFooter } from '@ionic/react';
 import userModel from 'models/user';

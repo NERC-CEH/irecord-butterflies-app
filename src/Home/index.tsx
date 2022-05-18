@@ -19,7 +19,7 @@ import {
   layersOutline,
   informationCircleOutline,
 } from 'ionicons/icons';
-import { useAlert } from '@apps';
+import { useAlert } from '@flumens';
 import LongPressFabButton from 'common/Components/LongPressFabButton';
 import PendingSurveysBadge from 'common/Components/PendingSurveysBadge';
 import butterflyIcon from 'common/images/butterflyIcon.svg';

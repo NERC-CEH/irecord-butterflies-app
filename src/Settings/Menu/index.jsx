@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
-import { Page, Header, useToast } from '@apps';
+import { Page, Header, useToast } from '@flumens';
 import { observer } from 'mobx-react';
 import Main from './Main';
 

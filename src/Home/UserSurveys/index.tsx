@@ -13,7 +13,7 @@ import {
   IonButton,
 } from '@ionic/react';
 import { observer } from 'mobx-react';
-import { Page, Main } from '@apps';
+import { Page, Main } from '@flumens';
 import userModel from 'models/user';
 import { Trans as T } from 'react-i18next';
 import butterflyIcon from 'common/images/butterflyIcon.svg';

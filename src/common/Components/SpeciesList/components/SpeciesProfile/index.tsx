@@ -14,7 +14,7 @@ import 'swiper/css/pagination';
 import '@ionic/react/css/ionic-swiper.css';
 import clsx from 'clsx';
 import { expandOutline } from 'ionicons/icons';
-import { Main, Gallery } from '@apps';
+import { Main, Gallery } from '@flumens';
 import { Trans as T } from 'react-i18next';
 import ImageWithBackground from 'Components/ImageWithBackground';
 import './styles.scss';

@@ -3,7 +3,7 @@ import Wkt from 'wicket';
 import * as Yup from 'yup';
 import { toJS } from 'mobx';
 import L from 'leaflet';
-import { date as dateHelp } from '@apps';
+import { date as dateHelp } from '@flumens';
 import { Survey } from 'common/surveys';
 import { chatboxOutline, business } from 'ionicons/icons';
 import {

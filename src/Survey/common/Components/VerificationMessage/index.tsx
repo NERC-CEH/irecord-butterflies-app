@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Occurrence from 'models/occurrence';
-import { InfoMessage, InfoButton } from '@apps';
+import { InfoMessage, InfoButton } from '@flumens';
 import clsx from 'clsx';
 import { checkmarkCircle, closeCircle } from 'ionicons/icons';
 import './styles.scss';

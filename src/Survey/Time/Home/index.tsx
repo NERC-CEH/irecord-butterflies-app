@@ -4,7 +4,7 @@ import Occurrence from 'models/occurrence';
 import appModel from 'models/app';
 import userModel from 'models/user';
 import { observer } from 'mobx-react';
-import { Page, Header, useAlert, useToast } from '@apps';
+import { Page, Header, useAlert, useToast } from '@flumens';
 import { IonButton, NavContext, isPlatform } from '@ionic/react';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import Main from './Main';

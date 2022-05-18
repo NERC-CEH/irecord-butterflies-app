@@ -9,7 +9,7 @@ import {
   useToast,
   useLoader,
   InfoBackgroundMessage,
-} from '@apps';
+} from '@flumens';
 import { observer } from 'mobx-react';
 import { IonRefresherContent, IonRefresher, IonBadge } from '@ionic/react';
 import { chevronDownOutline } from 'ionicons/icons';

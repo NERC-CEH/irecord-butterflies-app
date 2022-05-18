@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import { IonButton, IonList } from '@ionic/react';
-import { Main, InputWithValidation } from '@apps';
+import { Main, InputWithValidation } from '@flumens';
 import { personOutline } from 'ionicons/icons';
 import { Trans as T } from 'react-i18next';
 import { Formik, Form } from 'formik';

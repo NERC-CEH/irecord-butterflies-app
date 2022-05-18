@@ -1,4 +1,4 @@
-import { Page, Main, Section } from '@apps';
+import { Page, Main, Section } from '@flumens';
 import './styles.scss';
 
 const { P, H } = Section;

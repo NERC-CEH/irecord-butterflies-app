@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { AppModel } from 'models/app';
-import { Page, Main } from '@apps';
+import { Page, Main } from '@flumens';
 import { observer } from 'mobx-react';
 import {
   IonButton,

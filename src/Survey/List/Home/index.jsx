@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import { useRouteMatch } from 'react-router';
-import { Page, Header, useAlert, useToast } from '@apps';
+import { Page, Header, useAlert, useToast } from '@flumens';
 import { observer } from 'mobx-react';
 import appModel from 'models/app';
 import { useUserStatusCheck } from 'models/user';

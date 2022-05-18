@@ -13,7 +13,7 @@ import {
   IonToolbar,
   IonHeader,
 } from '@ionic/react';
-import { Main, InfoBackgroundMessage, UserFeedbackRequest } from '@apps';
+import { Main, InfoBackgroundMessage, UserFeedbackRequest } from '@flumens';
 import appModel, { FilterGroup, Filter, Filters } from 'models/app';
 import { arrowBack, informationCircleOutline } from 'ionicons/icons';
 import species, { Species } from 'common/data/species';

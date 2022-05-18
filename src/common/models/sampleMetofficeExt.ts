@@ -1,4 +1,4 @@
-import { device } from '@apps';
+import { device } from '@flumens';
 import config from 'common/config';
 import { observe } from 'mobx';
 

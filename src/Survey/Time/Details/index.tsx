@@ -2,7 +2,7 @@ import { FC, useContext } from 'react';
 import { useRouteMatch } from 'react-router';
 import Sample, { useValidateCheck } from 'models/sample';
 import { observer } from 'mobx-react';
-import { Page, Header } from '@apps';
+import { Page, Header } from '@flumens';
 import { NavContext, IonButton } from '@ionic/react';
 import CancelButton from 'Survey/Time/Components/CancelButton';
 import Main from './Main';

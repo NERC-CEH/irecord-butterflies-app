@@ -10,7 +10,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import config from 'common/config';
 import { configure as mobxConfig } from 'mobx';
-import { initAnalytics } from '@apps';
+import { initAnalytics } from '@flumens';
 import App from './App';
 import '@capacitor/core';
 import '@ionic/core/css/core.css';

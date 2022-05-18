@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { useAlert } from '@apps';
+import { useAlert } from '@flumens';
 import { AppModel } from 'models/app';
 import { observer } from 'mobx-react';
 import Message from './Message';

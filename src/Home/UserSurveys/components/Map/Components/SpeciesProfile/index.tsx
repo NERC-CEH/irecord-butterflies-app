@@ -16,7 +16,7 @@ import butterflyIcon from 'common/images/butterflyIcon.svg';
 import CustomAlert from 'Components/CustomAlert';
 import ImageWithBackground from 'Components/ImageWithBackground';
 import { closeCircle, checkmarkCircle } from 'ionicons/icons';
-import { Gallery } from '@apps';
+import { Gallery } from '@flumens';
 import config from 'common/config';
 import species from 'common/data/species';
 import { Record, Media } from '../../esResponse.d';

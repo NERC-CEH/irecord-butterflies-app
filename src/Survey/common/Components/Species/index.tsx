@@ -4,7 +4,7 @@ import Sample from 'models/sample';
 import Occurrence from 'models/occurrence';
 import appModel, { Filters, Filter, FilterGroup } from 'models/app';
 import { NavContext } from '@ionic/react';
-import { Page, useAlert } from '@apps';
+import { Page, useAlert } from '@flumens';
 import { observer } from 'mobx-react';
 import Main from 'common/Components/SpeciesList';
 import { Species } from 'common/data/species';

@@ -11,7 +11,12 @@ import {
   IonItemSliding,
 } from '@ionic/react';
 import { useRouteMatch } from 'react-router';
-import { Main, MenuAttrItem, InfoMessage, MenuAttrItemFromModel } from '@apps';
+import {
+  Main,
+  MenuAttrItem,
+  InfoMessage,
+  MenuAttrItemFromModel,
+} from '@flumens';
 import { observer } from 'mobx-react';
 import { locationOutline, filterOutline } from 'ionicons/icons';
 import PropTypes from 'prop-types';

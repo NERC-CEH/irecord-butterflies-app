@@ -1,5 +1,5 @@
 import { FC, useContext, SyntheticEvent } from 'react';
-import { useAlert, date, useToast } from '@apps';
+import { useAlert, date, useToast } from '@flumens';
 import Sample, { useValidateCheck } from 'models/sample';
 import Occurrence from 'models/occurrence';
 import { useUserStatusCheck } from 'models/user';

@@ -3,7 +3,7 @@ import {
   OccurrenceOptions,
   OccurrenceAttrs,
   validateRemoteModel,
-} from '@apps';
+} from '@flumens';
 import { intercept } from 'mobx';
 import species, { Species } from 'common/data/species';
 import Media from './image';

@@ -1,4 +1,4 @@
-import { InfoMessage, Main } from '@apps';
+import { InfoMessage, Main } from '@flumens';
 import exact from 'prop-types-exact';
 import { observer } from 'mobx-react';
 import PropTypes from 'prop-types';

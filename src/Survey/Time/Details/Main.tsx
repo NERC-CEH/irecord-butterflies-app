@@ -15,7 +15,12 @@ import {
 } from 'ionicons/icons';
 import { Trans as T } from 'react-i18next';
 import { useRouteMatch } from 'react-router';
-import { Main, MenuAttrItem, InfoMessage, MenuAttrItemFromModel } from '@apps';
+import {
+  Main,
+  MenuAttrItem,
+  InfoMessage,
+  MenuAttrItemFromModel,
+} from '@flumens';
 import PhotoPicker from 'common/Components/PhotoPicker';
 import windIcon from 'common/images/wind.svg';
 import butterflyIcon from 'common/images/butterflyIcon.svg';

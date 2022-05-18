@@ -1,4 +1,4 @@
-import { Media } from '@apps';
+import { Media } from '@flumens';
 import { observable } from 'mobx';
 import { isPlatform } from '@ionic/react';
 import config from 'common/config';

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { IonIcon } from '@ionic/react';
-import { ModelLocation, useAlert } from '@apps';
+import { ModelLocation, useAlert } from '@flumens';
 import savedSamples from 'models/savedSamples';
 import appModel from 'models/app';
 import { locateOutline } from 'ionicons/icons';

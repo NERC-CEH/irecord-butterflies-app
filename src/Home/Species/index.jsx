@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Page } from '@apps';
+import { Page } from '@flumens';
 import appModel from 'models/app';
 import Main from 'common/Components/SpeciesList';
 import Header from './Header';

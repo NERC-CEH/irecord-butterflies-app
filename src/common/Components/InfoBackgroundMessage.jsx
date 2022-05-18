@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { observer } from 'mobx-react';
-import { InfoBackgroundMessage } from '@apps';
+import { InfoBackgroundMessage } from '@flumens';
 import appModel from 'models/app';
 
 const Message = ({ name, ...props }) => {

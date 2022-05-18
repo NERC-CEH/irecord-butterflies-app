@@ -2,7 +2,12 @@ import { FC, useContext } from 'react';
 import { observer } from 'mobx-react';
 import { toJS } from 'mobx';
 import Sample from 'models/sample';
-import { Main, MenuAttrItem, InfoBackgroundMessage, InfoMessage } from '@apps';
+import {
+  Main,
+  MenuAttrItem,
+  InfoBackgroundMessage,
+  InfoMessage,
+} from '@flumens';
 import {
   IonImg,
   IonList,

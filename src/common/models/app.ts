@@ -1,4 +1,4 @@
-import { Model, ModelAttrs, locationToGrid } from '@apps';
+import { Model, ModelAttrs, locationToGrid } from '@flumens';
 import { set } from 'mobx';
 import GPS from 'helpers/GPS';
 import { genericStore } from './store';

@@ -8,7 +8,7 @@ import {
 } from '@ionic/react';
 import clsx from 'clsx';
 import { useRouteMatch } from 'react-router';
-import { Attr, Main, MenuAttrItem, MenuAttrItemFromModel } from '@apps';
+import { Attr, Main, MenuAttrItem, MenuAttrItemFromModel } from '@flumens';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import PhotoPicker from 'common/Components/PhotoPicker';

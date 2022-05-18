@@ -6,7 +6,7 @@
       "helpers/*": ["src/common/helpers/*"],
       "models/*": ["src/common/models/*"],
       "Components/*": ["src/common/Components/*"],
-      "@apps": ["src/common/appsBitCollection"]
+      "@flumens": ["src/common/flumens"]
     },
     "experimentalDecorators": true
   },

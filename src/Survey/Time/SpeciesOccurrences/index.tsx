@@ -2,7 +2,7 @@ import { FC, useContext } from 'react';
 import Sample from 'models/sample';
 import Occurrence from 'models/occurrence';
 import { observer } from 'mobx-react';
-import { Page, Header, useAlert } from '@apps';
+import { Page, Header, useAlert } from '@flumens';
 import { useRouteMatch } from 'react-router';
 import { NavContext } from '@ionic/react';
 import Main from './Main';

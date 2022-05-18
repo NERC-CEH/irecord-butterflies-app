@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { observer } from 'mobx-react';
-import { Main, useAlert, InfoMessage, MenuAttrToggle } from '@apps';
+import { Main, useAlert, InfoMessage, MenuAttrToggle } from '@flumens';
 import {
   IonIcon,
   IonList,

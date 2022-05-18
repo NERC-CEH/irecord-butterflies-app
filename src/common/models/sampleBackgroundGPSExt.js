@@ -6,7 +6,7 @@
  **************************************************************************** */
 import { observable } from 'mobx';
 import geojsonArea from '@mapbox/geojson-area';
-import { updateModelLocation } from '@apps';
+import { updateModelLocation } from '@flumens';
 import GPS from 'helpers/BackgroundGPS';
 
 const METERS_SINCE_LAST_LOCATION = 15;

@@ -1,5 +1,5 @@
 import { IonIcon, IonImg } from '@ionic/react';
-import { Header, Page, Main, Collapse } from '@apps';
+import { Header, Page, Main, Collapse } from '@flumens';
 import 'common/images/flumens.svg';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import deleteOccExplanationImage from './deleteOccExplanationImage.png';

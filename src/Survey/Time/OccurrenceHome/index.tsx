@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Sample from 'models/sample';
 import Occurrence from 'models/occurrence';
 import { observer } from 'mobx-react';
-import { Page, Header } from '@apps';
+import { Page, Header } from '@flumens';
 import Main from './Main';
 import './styles.scss';
 
