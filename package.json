@@ -286,7 +286,7 @@
       "<rootDir>/test/setupTests.js"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!@ionic|@bit|@stencil|ionicons)"
+      "node_modules/(?!@ionic|@stencil|ionicons)"
     ]
   }
 }
