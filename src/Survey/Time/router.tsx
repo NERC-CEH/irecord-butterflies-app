@@ -1,4 +1,3 @@
-import React from 'react';
 import { observer } from 'mobx-react';
 import savedSamples from 'models/savedSamples';
 import appModel from 'models/app';

@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import { FC, useContext } from 'react';
 import Sample, { useValidateCheck } from 'models/sample';
 import Occurrence from 'models/occurrence';
 import appModel from 'models/app';

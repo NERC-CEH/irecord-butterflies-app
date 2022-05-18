@@ -1,4 +1,4 @@
-import React, { FC, useState, useContext } from 'react';
+import { FC, useState, useContext } from 'react';
 import Sample from 'models/sample';
 import {
   IonHeader,

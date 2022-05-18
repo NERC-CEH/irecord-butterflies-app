@@ -1,4 +1,4 @@
-import React, { FC, useContext, SyntheticEvent } from 'react';
+import { FC, useContext, SyntheticEvent } from 'react';
 import { useAlert, date, useToast } from '@apps';
 import Sample, { useValidateCheck } from 'models/sample';
 import Occurrence from 'models/occurrence';

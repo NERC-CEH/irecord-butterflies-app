@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Circle } from 'react-leaflet';
 import { Square } from '../../esResponse.d';
 

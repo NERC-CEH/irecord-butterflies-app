@@ -1,4 +1,3 @@
-import React from 'react';
 import { Header, Page, Main, Section } from '@apps';
 import 'common/images/flumens.svg';
 import photos from 'common/data/species/cache/photos.json';

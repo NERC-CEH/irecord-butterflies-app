@@ -1,4 +1,5 @@
-import React, { FC, useContext, useState, useEffect } from 'react';
+import { FC, useContext, useState, useEffect } from 'react';
+import * as React from 'react';
 import Sample from 'models/sample';
 import Occurrence from 'models/occurrence';
 import appModel, { Filters, Filter, FilterGroup } from 'models/app';

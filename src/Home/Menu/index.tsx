@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Page, useAlert, useLoader, useToast } from '@apps';
 import { observer } from 'mobx-react';
 import { IonFooter } from '@ionic/react';

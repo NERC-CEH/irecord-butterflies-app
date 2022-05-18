@@ -1,5 +1,5 @@
 /* eslint-disable @getify/proper-arrows/name */
-import React from 'react';
+import * as React from 'react';
 import { useMap } from 'react-leaflet';
 import { withIonLifeCycle, IonIcon, NavContext } from '@ionic/react';
 import { locateOutline } from 'ionicons/icons';

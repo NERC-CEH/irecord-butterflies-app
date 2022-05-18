@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useRouteMatch } from 'react-router';
 import exact from 'prop-types-exact';

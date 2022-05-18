@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import { Page, Header, Main, device, useToast, useLoader } from '@apps';

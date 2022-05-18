@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import React, { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { observer } from 'mobx-react';
 import Sample from 'models/sample';
 import { IonIcon, IonLabel, IonItem } from '@ionic/react';

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { IonToolbar, IonTitle, isPlatform } from '@ionic/react';
 import Sample from 'models/sample';
 import { Main } from '@apps';

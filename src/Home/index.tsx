@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect } from 'react';
+import { FC, useContext, useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import savedSamples from 'models/savedSamples';
 import appModel from 'models/app';

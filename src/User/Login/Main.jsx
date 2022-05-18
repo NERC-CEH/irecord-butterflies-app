@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import { IonIcon, IonButton, IonList } from '@ionic/react';

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import Occurrence from 'models/occurrence';
 import { InfoMessage, InfoButton } from '@apps';
 import clsx from 'clsx';

@@ -1,5 +1,5 @@
 /* eslint-disable @getify/proper-arrows/name */
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import {
   IonCardHeader,
   IonButton,

@@ -1,4 +1,3 @@
-import React from 'react';
 import { RouteWithModels, AttrPage } from '@apps';
 import savedSamples from 'models/savedSamples';
 import StartNewSurvey from 'Survey/common/Components/StartNewSurvey';

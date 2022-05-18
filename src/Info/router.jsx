@@ -1,4 +1,3 @@
-import React from 'react';
 import { Route } from 'react-router-dom';
 import Credits from './Credits';
 import FAQ from './FAQ';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { InfoMessage, Main } from '@apps';
 import exact from 'prop-types-exact';
 import { observer } from 'mobx-react';

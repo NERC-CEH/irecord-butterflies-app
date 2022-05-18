@@ -1,4 +1,3 @@
-import React from 'react';
 import { observer } from 'mobx-react';
 import clsx from 'clsx';
 import { useRouteMatch } from 'react-router';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Route } from 'react-router-dom';
 import appModel from 'models/app';
 import userModel from 'models/user';

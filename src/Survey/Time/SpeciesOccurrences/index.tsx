@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import { FC, useContext } from 'react';
 import Sample from 'models/sample';
 import Occurrence from 'models/occurrence';
 import { observer } from 'mobx-react';

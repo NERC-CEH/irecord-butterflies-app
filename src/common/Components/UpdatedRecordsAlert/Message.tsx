@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { IonItem, IonCheckbox, IonLabel } from '@ionic/react';
 import { AppModel } from 'models/app';
 

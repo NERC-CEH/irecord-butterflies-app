@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import { FC, useContext } from 'react';
 import Sample from 'models/sample';
 import { useAlert } from '@apps';
 import { IonButtons, IonButton, NavContext } from '@ionic/react';

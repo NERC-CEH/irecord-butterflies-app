@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { IonIcon } from '@ionic/react';
 import { ModelLocation, useAlert } from '@apps';
 import savedSamples from 'models/savedSamples';

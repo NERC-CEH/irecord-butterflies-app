@@ -6,7 +6,7 @@ import { Capacitor } from '@capacitor/core';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 
 export default class AppMedia extends Media {
-  @observable identification = { identifying: false };
+  // @observable identification = { identifying: false };
 
   async destroy(silent) {
     // remove from internal storage

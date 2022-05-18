@@ -1,4 +1,3 @@
-import React from 'react';
 import { IonIcon, IonImg } from '@ionic/react';
 import { Header, Page, Main, Collapse } from '@apps';
 import 'common/images/flumens.svg';

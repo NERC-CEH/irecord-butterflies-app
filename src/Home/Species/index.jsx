@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Page } from '@apps';
 import appModel from 'models/app';
 import Main from 'common/Components/SpeciesList';

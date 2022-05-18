@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import { setupIonicReact, isPlatform } from '@ionic/react';
 import appModel from 'models/app';

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { observer } from 'mobx-react';
 import { UserModel } from 'models/user';
 import { IonBackdrop, IonItem, IonIcon, IonLabel } from '@ionic/react';

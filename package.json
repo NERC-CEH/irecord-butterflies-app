@@ -134,7 +134,12 @@
   },
   "babel": {
     "presets": [
-      "@babel/react",
+      [
+        "@babel/react",
+        {
+          "runtime": "automatic"
+        }
+      ],
       "@babel/typescript",
       [
         "@babel/env",
@@ -188,6 +193,7 @@
     "parser": "@typescript-eslint/parser",
     "extends": [
       "@flumens",
+      "plugin:react/jsx-runtime",
       "plugin:@typescript-eslint/recommended"
     ],
     "settings": {

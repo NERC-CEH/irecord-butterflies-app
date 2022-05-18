@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import { FC, useContext } from 'react';
 import { Page, Header, useToast } from '@apps';
 import { observer } from 'mobx-react';
 import appModel from 'models/app';

@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import { FC, useContext } from 'react';
 import { useRouteMatch } from 'react-router';
 import Sample, { useValidateCheck } from 'models/sample';
 import { observer } from 'mobx-react';

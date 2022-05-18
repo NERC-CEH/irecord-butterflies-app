@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { AppModel } from 'models/app';
 import { Page, Main } from '@apps';
 import { observer } from 'mobx-react';

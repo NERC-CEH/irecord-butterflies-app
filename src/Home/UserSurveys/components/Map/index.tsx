@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import userModel from 'models/user';
 import { observer } from 'mobx-react';
 import { Link } from 'react-router-dom';

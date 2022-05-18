@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTable, useSortBy } from 'react-table';
 import { arrowDown, arrowUp } from 'ionicons/icons';
 import { IonIcon } from '@ionic/react';

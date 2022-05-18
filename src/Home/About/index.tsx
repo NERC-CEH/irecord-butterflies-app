@@ -1,4 +1,3 @@
-import React from 'react';
 import { Page, Main, Section } from '@apps';
 import './styles.scss';
 
