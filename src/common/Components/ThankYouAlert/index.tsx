@@ -1,12 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 import { observer } from 'mobx-react';
-import exact from 'prop-types-exact';
+import { UserModel } from 'models/user';
 import { IonBackdrop, IonItem, IonIcon, IonLabel } from '@ionic/react';
 import { star } from 'ionicons/icons';
 import './styles.scss';
 
-function ThankYouAlert({ userModel }) {
+type Props = {
+  userModel: UserModel;
+};
+const ThankYouAlert: FC<Props> = ({ userModel }) => {
   const milestone = userModel.getAchievedStatsMilestone();
   if (!milestone) return null;
 
@@ -17,7 +19,9 @@ function ThankYouAlert({ userModel }) {
   if (milestone >= 500) stars = Array.from(Array(4));
   if (milestone >= 1000) stars = Array.from(Array(5));
 
-  const getStarIcon = (_, index) => <IonIcon key={index} icon={star} />;
+  const getStarIcon = (_: any, index: number) => (
+    <IonIcon key={index} icon={star} />
+  );
   const starIcons = stars.map(getStarIcon);
 
   const currentYear = new Date().getFullYear();
@@ -49,10 +53,6 @@ function ThankYouAlert({ userModel }) {
       </div>
     </div>
   );
-}
-
-ThankYouAlert.propTypes = exact({
-  userModel: PropTypes.object.isRequired,
-});
+};
 
 export default observer(ThankYouAlert);

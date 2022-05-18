@@ -7,17 +7,15 @@ import Main from './Main';
 import './styles.scss';
 
 type Props = {
-  subSample: typeof Sample;
+  subSample: Sample;
   occurrence: Occurrence;
 };
 
-const OccurrenceHome: FC<Props> = ({ subSample, occurrence }) => {
-  return (
-    <Page id="single-species-count-edit-occurrence">
-      <Header title="Edit Occurrence" />
-      <Main occurrence={occurrence} subSample={subSample} />
-    </Page>
-  );
-};
+const OccurrenceHome: FC<Props> = ({ subSample, occurrence }) => (
+  <Page id="single-species-count-edit-occurrence">
+    <Header title="Edit Occurrence" />
+    <Main occurrence={occurrence} subSample={subSample} />
+  </Page>
+);
 
 export default observer(OccurrenceHome);

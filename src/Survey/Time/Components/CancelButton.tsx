@@ -33,7 +33,7 @@ function useDeleteSurveyPrompt() {
 }
 
 interface Props {
-  sample: typeof Sample;
+  sample: Sample;
 }
 
 const CancelButton: FC<Props> = ({ sample }) => {

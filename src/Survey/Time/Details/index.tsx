@@ -9,7 +9,7 @@ import Main from './Main';
 import './styles.scss';
 
 type Props = {
-  sample: typeof Sample;
+  sample: Sample;
 };
 
 const DetailsController: FC<Props> = ({ sample }) => {

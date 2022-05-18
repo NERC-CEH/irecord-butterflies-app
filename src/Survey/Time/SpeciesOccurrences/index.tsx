@@ -36,7 +36,7 @@ const useDeleteConfirmation = () => {
 };
 
 type Props = {
-  sample: typeof Sample;
+  sample: Sample;
 };
 
 const SpeciesController: FC<Props> = ({ sample }) => {
@@ -44,7 +44,7 @@ const SpeciesController: FC<Props> = ({ sample }) => {
   const { goBack, navigate } = useContext(NavContext);
   const confirmDelete = useDeleteConfirmation();
 
-  const navigateToOccurrence = (smp: typeof Sample) => {
+  const navigateToOccurrence = (smp: Sample) => {
     const urlPath = match.url.split('/speciesOccurrences');
     urlPath.pop(); // go back to edit
     const occ = smp.occurrences[0];
@@ -52,7 +52,7 @@ const SpeciesController: FC<Props> = ({ sample }) => {
     navigate(`${urlPath}/samples/${smp.cid}/occ/${occ.cid}`);
   };
 
-  const deleteSampleWrap = async (smp: typeof Sample) => {
+  const deleteSampleWrap = async (smp: Sample) => {
     const shouldDelete = await confirmDelete();
     if (!shouldDelete) return;
 

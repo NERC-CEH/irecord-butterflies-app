@@ -1,8 +1,8 @@
 import React, { FC, useContext, SyntheticEvent } from 'react';
 import { useAlert, date, useToast } from '@apps';
-import Sample from 'models/sample';
+import Sample, { useValidateCheck } from 'models/sample';
 import Occurrence from 'models/occurrence';
-import UserModelProps from 'models/user';
+import { useUserStatusCheck } from 'models/user';
 import { observer } from 'mobx-react';
 import {
   IonItem,
@@ -25,7 +25,7 @@ import OnlineStatus from './components/OnlineStatus';
 import ErrorMessage from './components/ErrorMessage';
 import './styles.scss';
 
-function useSurveyDeletePrompt(sample: typeof Sample) {
+function useSurveyDeletePrompt(sample: Sample) {
   const alert = useAlert();
 
   const promptSurveyDelete = () =>
@@ -49,7 +49,7 @@ function useSurveyDeletePrompt(sample: typeof Sample) {
   return promptSurveyDelete;
 }
 
-function getSampleInfo(sample: typeof Sample) {
+function getSampleInfo(sample: Sample) {
   const survey = sample.getSurvey();
 
   const prettyDate = date.print(sample.attrs.date);
@@ -178,30 +178,31 @@ function getSampleInfo(sample: typeof Sample) {
 }
 
 interface Props {
-  sample: typeof Sample;
-  userModel: typeof UserModelProps;
+  sample: Sample;
   uploadIsPrimary?: boolean;
 }
 
-const Survey: FC<Props> = ({ sample, userModel, uploadIsPrimary }) => {
+const Survey: FC<Props> = ({ sample, uploadIsPrimary }) => {
   const { navigate } = useContext(NavContext);
   const toast = useToast();
   const deleteSurvey = useSurveyDeletePrompt(sample);
+  const checkSampleStatus = useValidateCheck(sample);
+  const checkUserStatus = useUserStatusCheck();
 
   const { synchronising } = sample.remote;
 
   const href = !synchronising ? sample.getCurrentEditRoute() : undefined;
 
   const deleteSurveyWrap = () => deleteSurvey();
-  const onUpload = (e: SyntheticEvent) => {
+  const onUpload = async (e: SyntheticEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
-    const isLoggedIn = userModel.isLoggedIn();
-    if (!isLoggedIn) {
-      navigate(`/user/login`);
-      return;
-    }
+    const isUserOK = await checkUserStatus();
+    if (!isUserOK) return;
+
+    const isValid = checkSampleStatus();
+    if (!isValid) return;
 
     sample.upload().catch(toast.error);
     navigate(`/home/surveys`, 'root');

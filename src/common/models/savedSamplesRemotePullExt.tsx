@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
 import axios, { AxiosRequestConfig } from 'axios';
-import AppModelProps from 'models/app';
+import { AppModel } from 'models/app';
 import Occurrence from 'models/occurrence';
 import SavedSamplesProps from 'models/savedSamples';
-import UserModelProps from 'models/user';
+import { UserModel } from 'models/user';
 import Sample from 'models/sample';
 import { device } from '@apps';
 import CONFIG from 'common/config';
@@ -102,7 +102,7 @@ const getRecordsQuery = (timestamp: string) =>
   });
 
 async function fetchUpdatedRemoteSamples(
-  userModel: typeof UserModelProps,
+  userModel: UserModel,
   timestamp: string
 ) {
   console.log('SavedSamples: pulling remote surveys');
@@ -148,7 +148,7 @@ function appendVerificationAndReturnOccurrences(
 
   if (updatedRemoteSamples.length <= 0) return nonPendingUpdatedSamples;
 
-  const findMatchingLocalSamples = (sample: typeof Sample) => {
+  const findMatchingLocalSamples = (sample: Sample) => {
     const appendVerification = (occ: Occurrence) => {
       const updatedSample = updatedRemoteSamples[occ.cid];
 
@@ -169,7 +169,7 @@ function appendVerificationAndReturnOccurrences(
 
     const hasSubSample = sample.samples.length;
     if (hasSubSample) {
-      const getSamples = (subSample: typeof Sample) => {
+      const getSamples = (subSample: Sample) => {
         subSample.occurrences.forEach(appendVerification);
       };
       sample.samples.forEach(getSamples);
@@ -184,7 +184,7 @@ function appendVerificationAndReturnOccurrences(
   return nonPendingUpdatedSamples;
 }
 
-const setTimestamp = async (appModel: typeof AppModelProps) => {
+const setTimestamp = async (appModel: AppModel) => {
   // set one month back timestamp
   const currentTime = new Date();
   const getTimeOneMonthBack = currentTime.setMonth(currentTime.getMonth() - 1);
@@ -198,15 +198,15 @@ const setTimestamp = async (appModel: typeof AppModelProps) => {
 
 async function init(
   savedSamples: typeof SavedSamplesProps,
-  userModel: typeof UserModelProps,
-  appModel: typeof AppModelProps
+  userModel: UserModel,
+  appModel: AppModel
 ) {
   async function sync() {
     if (!appModel.attrs.verifiedRecordsTimestamp) {
       await setTimestamp(appModel);
     }
 
-    if (!userModel.hasLogIn() || !device.isOnline) return;
+    if (!userModel.isLoggedIn() || !device.isOnline) return;
 
     const verifiedRecordsTimestamp = appModel.attrs
       .verifiedRecordsTimestamp as number;
@@ -218,15 +218,31 @@ async function init(
 
     if (isUnder15mins) return;
 
-    const formattedTimestamp = new Date(verifiedRecordsTimestamp)
-      .toISOString()
-      .replace('T', ' ')
-      .replace('Z', '');
+    const lastFetchTime = new Date(verifiedRecordsTimestamp);
 
-    // timestamp format '2020-02-21 08:37:55.218'
+    const dateFormat = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/London',
+    });
+
+    const timeFormat = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/London',
+      timeStyle: 'medium',
+    });
+
+    // format to 2020-02-21
+    const date = dateFormat
+      .format(lastFetchTime)
+      .split('/')
+      .reverse()
+      .join('-');
+
+    // format to 08:37:55
+    const time = timeFormat.format(lastFetchTime);
+    const formattedLastFetchTime = `${date} ${time}`;
+
     const updatedRemoteSamples = await fetchUpdatedRemoteSamples(
       userModel,
-      formattedTimestamp
+      formattedLastFetchTime
     );
 
     const updatedLocalSamples = await appendVerificationAndReturnOccurrences(

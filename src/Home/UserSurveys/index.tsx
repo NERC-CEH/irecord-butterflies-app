@@ -23,7 +23,7 @@ import Survey from './components/Survey';
 import Map from './components/Map';
 import './styles.scss';
 
-function byCreateTime(sample1: typeof Sample, sample2: typeof Sample) {
+function byCreateTime(sample1: Sample, sample2: Sample) {
   const date1 = new Date(sample1.metadata.created_on);
   const date2 = new Date(sample2.metadata.created_on);
   return date2.getTime() - date1.getTime();
@@ -41,7 +41,7 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
   const onSegmentClick = (e: any) => setSegment(e.detail.value);
 
   const getSamplesList = (uploaded?: boolean) => {
-    const byUploadStatus = (sample: typeof Sample) =>
+    const byUploadStatus = (sample: Sample) =>
       uploaded ? sample.metadata.synced_on : !sample.metadata.synced_on;
 
     return savedSamples.filter(byUploadStatus).sort(byCreateTime);
@@ -53,12 +53,11 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
     </InfoBackgroundMessage>
   );
 
-  const getSurveys = (surveys: typeof Sample[], uploadIsPrimary?: boolean) => {
-    const getSurvey = (sample: typeof Sample) => (
+  const getSurveys = (surveys: Sample[], uploadIsPrimary?: boolean) => {
+    const getSurvey = (sample: Sample) => (
       <Survey
         key={sample.cid}
         sample={sample}
-        userModel={userModel}
         uploadIsPrimary={uploadIsPrimary}
       />
     );

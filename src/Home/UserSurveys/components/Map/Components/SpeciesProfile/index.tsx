@@ -61,7 +61,7 @@ export default function SpeciesProfile({ record, onClose }: Props) {
       return { src: imageURL };
     };
 
-    const items = record.occurrence.media?.map(getImageSource);
+    const items = record.occurrence.media?.map(getImageSource) || [];
 
     const isOpen = Number.isFinite(showGallery);
 
@@ -103,6 +103,7 @@ export default function SpeciesProfile({ record, onClose }: Props) {
     const slideImage = media?.map(getSlide);
 
     const pager = media.length > 1;
+
     return (
       <Swiper
         modules={[Pagination]}

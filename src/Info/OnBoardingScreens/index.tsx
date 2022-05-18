@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import AppModelType from 'models/app';
+import { AppModel } from 'models/app';
 import { Page, Main } from '@apps';
 import { observer } from 'mobx-react';
 import {
@@ -23,7 +23,7 @@ import button from './images/button.png';
 import './styles.scss';
 
 interface Props {
-  appModel: typeof AppModelType;
+  appModel: AppModel;
 }
 
 const onBoardingScreens: FC<Props> = ({ appModel, children }) => {

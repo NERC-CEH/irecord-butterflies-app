@@ -15,13 +15,13 @@ import {
 } from 'ionicons/icons';
 import { Trans as T } from 'react-i18next';
 import { useRouteMatch } from 'react-router';
-import { Main, MenuAttrItem, MenuNoteItem, MenuAttrItemFromModel } from '@apps';
+import { Main, MenuAttrItem, InfoMessage, MenuAttrItemFromModel } from '@apps';
 import PhotoPicker from 'common/Components/PhotoPicker';
 import windIcon from 'common/images/wind.svg';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 
 type Props = {
-  sample: typeof Sample;
+  sample: Sample;
 };
 
 const MainDetails: FC<Props> = ({ sample }) => {
@@ -128,10 +128,10 @@ const MainDetails: FC<Props> = ({ sample }) => {
         </IonItemDivider>
         <div className="rounded">
           <PhotoPicker model={sample} />
-          <MenuNoteItem color="medium">
+          <InfoMessage color="medium">
             Representative photo of where the 'Single species timed count' was
             made
-          </MenuNoteItem>
+          </InfoMessage>
         </div>
       </IonList>
     </Main>

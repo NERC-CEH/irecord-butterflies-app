@@ -1,5 +1,5 @@
 import React, { FC, useContext } from 'react';
-import userModelProps from 'models/user';
+import { UserModel } from 'models/user';
 import { NavContext } from '@ionic/react';
 import { useToast, useLoader, Page, Header, device } from '@apps';
 import Main from './Main';
@@ -11,7 +11,7 @@ export type Details = {
 };
 
 type Props = {
-  userModel: typeof userModelProps;
+  userModel: UserModel;
 };
 
 const LoginController: FC<Props> = ({ userModel }) => {
@@ -22,7 +22,7 @@ const LoginController: FC<Props> = ({ userModel }) => {
   const onSuccessReturn = () => {
     const { email } = userModel.attrs;
     toast.success(`Successfully logged in as: ${email}`);
-    context.navigate('/home', 'root');
+    context.navigate('/home/surveys', 'root');
   };
 
   async function onLogin(details: Details) {
@@ -40,8 +40,7 @@ const LoginController: FC<Props> = ({ userModel }) => {
 
       onSuccessReturn();
     } catch (err: any) {
-      toast.error(err.message);
-      console.error(err);
+      toast.error(err);
     }
 
     loader.hide();

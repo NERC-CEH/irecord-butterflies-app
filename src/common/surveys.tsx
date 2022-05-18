@@ -21,10 +21,7 @@ export interface Survey {
     occ: {
       attrs: Attrs | any;
 
-      create: (
-        Occurrence: typeof AppOccurrence,
-        taxon: any
-      ) => typeof AppOccurrence;
+      create: (Occurrence: typeof AppOccurrence, taxon: any) => AppOccurrence;
       verify?: any;
     };
 
@@ -34,7 +31,7 @@ export interface Survey {
       taxon: any,
       zeroAbundance?: string | null,
       stage?: string
-    ) => typeof AppSample;
+    ) => AppSample;
   };
 
   verify?: (attrs: any) => any;
@@ -42,9 +39,9 @@ export interface Survey {
   modifySubmission?: (submission: any) => any;
 
   create: (
-    sample: any,
+    Sample: typeof AppSample,
     params?: any,
     surveyName?: any,
     recorder?: string
-  ) => any;
+  ) => AppSample;
 }

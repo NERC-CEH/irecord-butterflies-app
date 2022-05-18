@@ -135,7 +135,7 @@ interface Occurrence {
   source_system_key: string;
   life_stage: string;
   attributes: Attribute[];
-  media: Media[];
+  media?: Media[];
   individual_count: string;
   organism_quantity: string;
 }

@@ -1,3 +1,9 @@
-.ios .survey-gps-toggle {
-  margin-left: 8px;
+.survey-gps-toggle {
+  --border-style: none;
+  --inner-padding-end: 0;
+  --background: none;
+
+  &.ios {
+    margin-left: 8px;
+  }
 }

@@ -67,7 +67,7 @@ const hapticsImpact = async () => {
 };
 
 type Props = {
-  sample: typeof Sample;
+  sample: Sample;
 };
 
 const HomeController: FC<Props> = ({ sample }) => {

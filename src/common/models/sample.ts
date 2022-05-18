@@ -1,17 +1,36 @@
-import React from 'react';
-import { Sample, getDeepErrorMessage, device, useToast, useAlert } from '@apps';
-import { IonNote } from '@ionic/react';
+import {
+  Sample,
+  SampleAttrs,
+  SampleOptions,
+  getDeepErrorMessage,
+  device,
+  useAlert,
+} from '@apps';
 import userModel from 'models/user';
 import config from 'common/config';
 import pointSurvey from 'Survey/Point/config';
 import listSurvey from 'Survey/List/config';
 import timeSurvey from 'Survey/Time/config';
+import { Species } from 'common/data/species';
 import GPSExtension from './sampleGPSExt';
 import BackgroundGPSExtension from './sampleBackgroundGPSExt';
 import MetOfficeExtension from './sampleMetofficeExt';
 import { modelStore } from './store';
 import Occurrence from './occurrence';
 import Media from './image';
+
+type Attrs = SampleAttrs & {
+  date: any;
+  location: any;
+  stage: any;
+  duration: any;
+  startTime: any;
+  comment: any;
+  sun: any;
+  temperature: any;
+  windDirection: any;
+  windSpeed: any;
+};
 
 const surveyConfig = {
   point: pointSurvey,
@@ -20,21 +39,42 @@ const surveyConfig = {
 };
 
 class AppSample extends Sample {
-  static fromJSON(json) {
+  static fromJSON(json: any) {
     return super.fromJSON(json, Occurrence, AppSample, Media);
   }
 
   store = modelStore;
 
-  constructor(...args) {
-    super(...args);
+  attrs: Attrs = this.attrs;
+
+  gpsExtensionInit: any; // from extension
+
+  backgroundGPSExtensionInit: any; // from extension
+
+  stopGPS: any; // from extension
+
+  stopBackgroundGPS: any; // from extension
+
+  setAreaLocation: any; // from extension
+
+  isGPSRunning: any; // from extension
+
+  toggleBackgroundGPS: any; // from extension
+
+  hasLoctionMissingAndIsnotLocating: any; // from extension
+
+  isBackgroundGPSRunning: any; // from extension
+
+  constructor(props: SampleOptions) {
+    super(props);
     this.remote.url = `${config.backend.indicia.url}/index.php/services/rest`;
     // eslint-disable-next-line
     this.remote.headers = async () => ({
       Authorization: `Bearer ${await userModel.getAccessToken()}`,
     });
 
-    this.survey = surveyConfig[this.metadata.survey];
+    this.survey =
+      surveyConfig[this.metadata.survey as keyof typeof surveyConfig];
 
     Object.assign(this, GPSExtension);
     Object.assign(this, BackgroundGPSExtension);
@@ -52,16 +92,16 @@ class AppSample extends Sample {
     return this.samples[0]?.occurrences[0]?.attrs?.zero_abundance;
   }
 
-  destroy() {
+  destroy(silent?: boolean) {
     this.cleanUp();
-    super.destroy();
+    return super.destroy(silent);
   }
 
   cleanUp() {
     this.stopGPS();
     this.stopBackgroundGPS();
 
-    const stopGPS = smp => {
+    const stopGPS = (smp: AppSample) => {
       smp.stopGPS();
       smp.stopBackgroundGPS();
     };
@@ -93,7 +133,7 @@ class AppSample extends Sample {
     return `/survey/${this.metadata.survey}/${this.cid}`;
   }
 
-  async upload(skipRefreshUploadCountStat) {
+  async upload(skipRefreshUploadCountStat?: boolean) {
     if (this.remote.synchronising || this.isUploaded()) return true;
 
     const invalids = this.validateRemote();
@@ -114,7 +154,7 @@ class AppSample extends Sample {
     return this.saveRemote().then(refreshUploadCountStatWrap);
   }
 
-  setSpecies(species, occurrence) {
+  setSpecies(species: Species, occurrence: Occurrence) {
     const survey = this.getSurvey();
 
     if (survey.name === 'point') {
@@ -150,7 +190,7 @@ class AppSample extends Sample {
   }
 
   hasOccurrencesBeenVerified() {
-    const hasBeenVerified = occ => {
+    const hasBeenVerified = (occ: Occurrence) => {
       const isRecordInReview =
         occ.metadata?.verification?.verification_status === 'C' &&
         occ.metadata?.verification?.verification_substatus !== '3';
@@ -162,7 +202,7 @@ class AppSample extends Sample {
     if (hasSubSample) {
       let status;
 
-      const getSamples = subSample => {
+      const getSamples = (subSample: Sample) => {
         status =
           this.isUploaded() && !!subSample.occurrences.some(hasBeenVerified);
         return status;
@@ -187,7 +227,7 @@ class AppSample extends Sample {
   }
 }
 
-export const useValidateCheck = sample => {
+export const useValidateCheck = (sample: Sample) => {
   const alert = useAlert();
 
   const validate = () => {

@@ -14,7 +14,7 @@ import getFormattedDuration from 'common/helpers/getFormattedDuration';
 import './styles.scss';
 
 type Props = {
-  sample: typeof Sample;
+  sample: Sample;
 };
 
 const Stopwatch: FC<Props> = ({ sample }) => {

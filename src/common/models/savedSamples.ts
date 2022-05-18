@@ -11,8 +11,7 @@ const savedSamples = initStoredSamples(modelStore, Sample);
 // eslint-disable-next-line
 savedSamples.uploadAll = async () => {
   console.log('SavedSamples: uploading all.');
-  const getUploadPromise = (s: typeof Sample) =>
-    !s.isUploaded() && s.upload(true);
+  const getUploadPromise = (s: Sample) => !s.isUploaded() && s.upload(true);
   await Promise.all(savedSamples.map(getUploadPromise));
 
   console.log('SavedSamples: all records were uploaded!');

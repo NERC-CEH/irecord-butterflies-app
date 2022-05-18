@@ -49,7 +49,6 @@ const HeaderComponent: FC<Props> = ({
     <MenuAttrToggle
       label="GPS"
       className="survey-gps-toggle"
-      color="success"
       value={isGPSTracking}
       onChange={onToggle}
       disabled={isFinished}

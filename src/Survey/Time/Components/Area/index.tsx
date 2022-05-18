@@ -7,7 +7,7 @@ import Main from './Main';
 import './styles.scss';
 
 type Props = {
-  sample: typeof Sample;
+  sample: Sample;
 };
 
 const AreaController: FC<Props> = ({ sample }) => {

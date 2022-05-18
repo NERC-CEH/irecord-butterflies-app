@@ -1,5 +1,5 @@
 import React, { FC, useContext } from 'react';
-import userModelProps from 'models/user';
+import { UserModel } from 'models/user';
 import { NavContext } from '@ionic/react';
 import { Trans as T } from 'react-i18next';
 import { Page, Header, device, useAlert, useLoader, useToast } from '@apps';
@@ -12,7 +12,7 @@ export type Details = {
 };
 
 type Props = {
-  userModel: typeof userModelProps;
+  userModel: UserModel;
 };
 
 const ResetController: FC<Props> = ({ userModel }) => {
@@ -22,7 +22,7 @@ const ResetController: FC<Props> = ({ userModel }) => {
   const loader = useLoader();
 
   const onSuccess = () => {
-    context.navigate('/home/landing', 'root');
+    context.navigate('/home/menu', 'root');
   };
 
   async function onSubmit(details: Details) {
@@ -51,12 +51,8 @@ const ResetController: FC<Props> = ({ userModel }) => {
           },
         ],
       });
-    } catch (err) {
-      if (err instanceof Error) {
-        toast.error(`${err.message}`);
-      }
-
-      console.error(err, 'e');
+    } catch (err: any) {
+      toast.error(err);
     }
 
     loader.hide();

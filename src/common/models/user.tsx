@@ -1,7 +1,7 @@
 /** ****************************************************************************
  * User model describing the user model on backend. Persistent.
  **************************************************************************** */
-import React from 'react';
+import { useContext } from 'react';
 import CONFIG from 'common/config';
 import * as Yup from 'yup';
 import {
@@ -12,7 +12,7 @@ import {
   useAlert,
   DrupalUserModelAttrs,
 } from '@apps';
-import { IonNote } from '@ionic/react';
+import { NavContext } from '@ionic/react';
 import { observable, set } from 'mobx';
 import { genericStore } from './store';
 import serviceExtension from './userStatsExt';
@@ -44,7 +44,7 @@ const defaults: Attrs = {
   statsYears: {},
 };
 
-class UserModel extends DrupalUserModel {
+export class UserModel extends DrupalUserModel {
   attrs: Attrs = DrupalUserModel.extendAttrs(this.attrs, defaults);
 
   registerSchema = Yup.object().shape({
@@ -57,6 +57,8 @@ class UserModel extends DrupalUserModel {
   uploadCounter = observable({ count: 0 });
 
   refreshUploadCountStat?: any; // from extension
+
+  getAchievedStatsMilestone?: any; // from extension
 
   constructor(options: any) {
     super(options);
@@ -158,7 +160,10 @@ const userModel = new UserModel({
   config: CONFIG.backend,
 });
 
+(window as any).userModel = userModel;
+
 export const useUserStatusCheck = () => {
+  const { navigate } = useContext(NavContext);
   const toast = useToast();
   const loader = useLoader();
   const alert = useAlert();
@@ -170,7 +175,7 @@ export const useUserStatusCheck = () => {
     }
 
     if (!userModel.isLoggedIn()) {
-      toast.warn('Please log in first.');
+      navigate(`/user/login`);
       return false;
     }
 
@@ -180,15 +185,22 @@ export const useUserStatusCheck = () => {
       loader.hide();
 
       if (!isVerified) {
+        const resendVerificationEmail = async () => {
+          await loader.show('Please wait...');
+          try {
+            await userModel.resendVerificationEmail();
+            toast.success(
+              'A new verification email was successfully sent now. If you did not receive the email, then check your Spam or Junk email folders.'
+            );
+          } catch (err: any) {
+            toast.error(err);
+          }
+          loader.hide();
+        };
+
         alert({
-          message: (
-            <>
-              <IonNote color="warning">
-                <b>Looks like your email hasn't been verified yet.</b>
-              </IonNote>
-              <p>Should we resend the verification email?</p>
-            </>
-          ),
+          header: "Looks like your email hasn't been verified yet.",
+          message: 'Should we resend the verification email?',
           buttons: [
             {
               text: 'Cancel',
@@ -198,7 +210,7 @@ export const useUserStatusCheck = () => {
             {
               text: 'Resend',
               cssClass: 'primary',
-              handler: () => userModel.resendVerificationEmail(),
+              handler: resendVerificationEmail,
             },
           ],
         });

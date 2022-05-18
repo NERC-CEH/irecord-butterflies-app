@@ -1,15 +1,15 @@
-import React from 'react';
-import { Page, useAlert } from '@apps';
+import React, { FC } from 'react';
+import { Page, useAlert, useLoader, useToast } from '@apps';
 import { observer } from 'mobx-react';
-import exact from 'prop-types-exact';
-import PropTypes from 'prop-types';
 import { IonFooter } from '@ionic/react';
+import userModel from 'models/user';
+import appModel from 'models/app';
 import flumensLogo from 'common/images/flumens.svg';
 import config from 'common/config';
 import Main from './Main';
 import './styles.scss';
 
-function showLogoutConfirmationDialog(callback, alert) {
+function showLogoutConfirmationDialog(callback: any, alert: any) {
   alert({
     header: 'Logout',
     message: (
@@ -36,11 +36,13 @@ function showLogoutConfirmationDialog(callback, alert) {
   });
 }
 
-const MenuController = ({ userModel, appModel }) => {
+const MenuController: FC = () => {
   const alert = useAlert();
+  const loader = useLoader();
+  const toast = useToast();
 
   function logOut() {
-    const onReset = async reset => {
+    const onReset = async (reset?: boolean) => {
       if (reset) {
         // appModel.attrs['draftId:area'] = null; // TODO:
         // await savedSamples.resetDefaults();
@@ -55,8 +57,31 @@ const MenuController = ({ userModel, appModel }) => {
 
   const isLoggedIn = userModel.isLoggedIn();
 
-  const checkActivation = () => userModel.checkActivation();
-  const resendVerificationEmail = () => userModel.resendVerificationEmail();
+  const checkActivation = async () => {
+    await loader.show('Please wait...');
+    try {
+      await userModel.checkActivation();
+      if (!userModel.attrs.verified) {
+        toast.warn('The user has not been activated or is blocked.');
+      }
+    } catch (err: any) {
+      toast.error(err);
+    }
+    loader.hide();
+  };
+
+  const resendVerificationEmail = async () => {
+    await loader.show('Please wait...');
+    try {
+      await userModel.resendVerificationEmail();
+      toast.success(
+        'A new verification email was successfully sent now. If you did not receive the email, then check your Spam or Junk email folders.'
+      );
+    } catch (err: any) {
+      toast.error(err);
+    }
+    loader.hide();
+  };
 
   return (
     <Page id="menu">
@@ -79,10 +104,5 @@ const MenuController = ({ userModel, appModel }) => {
     </Page>
   );
 };
-
-MenuController.propTypes = exact({
-  userModel: PropTypes.object.isRequired,
-  appModel: PropTypes.object.isRequired,
-});
 
 export default observer(MenuController);

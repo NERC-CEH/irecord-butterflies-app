@@ -10,7 +10,7 @@ import { Species } from 'common/data/species';
 import Header from './Header';
 
 type Props = {
-  sample: typeof Sample;
+  sample: Sample;
   occurrence: Occurrence;
   title?: string;
   BackButton?: React.ElementType;

@@ -16,8 +16,8 @@ const useResetApp = (saveSamples, appModel, userModel) => {
       await appModel.resetDefaults();
       await userModel.resetDefaults();
       toast.success('Done');
-    } catch (e) {
-      toast.error(`${e.message}`);
+    } catch (err) {
+      toast.error(err);
     }
   };
 

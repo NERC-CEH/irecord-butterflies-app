@@ -1,45 +1,53 @@
-/* eslint-disable import/prefer-default-export */
-export { default as AttrPage } from '@bit/flumens.apps.attr-page';
-export { default as Attr } from '@bit/flumens.apps.attr';
-export { default as Header } from '@bit/flumens.apps.header';
-export { default as Main } from '@bit/flumens.apps.main';
-export { default as Page } from '@bit/flumens.apps.page';
-export { default as Collapse } from '@bit/flumens.apps.collapse';
-export { default as MenuAttrItem } from '@bit/flumens.apps.menu-attr-item';
-export { default as MenuAttrItemFromModel } from '@bit/flumens.apps.menu-attr-item-from-model';
-export { default as Section } from '@bit/flumens.apps.section';
-export { default as device } from '@bit/flumens.apps.device';
-export { default as useAlert } from '@bit/flumens.apps.helpers.alert';
-export { default as useLoader } from '@bit/flumens.apps.helpers.loader';
-export { default as InfoMessage } from '@bit/flumens.apps.info-message';
-export { default as useToast } from '@bit/flumens.apps.helpers.toast';
-export { default as initAnalytics } from '@bit/flumens.apps.utils.analytics';
 export {
   default as Model,
   Attrs as ModelAttrs,
-} from '@bit/flumens.apps.models.model';
-export { default as Store } from '@bit/flumens.apps.models.store';
-export { default as initStoredSamples } from '@bit/flumens.apps.models.init-stored-samples';
-export { default as ModalHeader } from '@bit/flumens.apps.modal-header';
-export { default as InfoBackgroundMessage } from '@bit/flumens.apps.info-background-message';
-export { default as RouteWithModels } from '@bit/flumens.apps.route-with-models';
-export { default as ModelLocation } from '@bit/flumens.apps.model-location-map';
-export { default as Gallery } from '@bit/flumens.apps.gallery';
-export { default as LongPressFabButton } from '@bit/flumens.apps.long-press-fab-button';
-export { default as InputWithValidation } from '@bit/flumens.apps.input-with-validation';
-export { default as MenuAttrToggle } from '@bit/flumens.apps.menu-attr-toggle';
-export { default as PhotoPicker } from '@bit/flumens.apps.photo-picker';
-export { default as date } from '@bit/flumens.apps.date';
-export { default as Sample } from '@bit/flumens.apps.models.sample';
-export { default as Occurrence } from '@bit/flumens.apps.models.occurrence';
-export { default as Media } from '@bit/flumens.apps.models.media';
-export { default as UserFeedbackRequest } from '@bit/flumens.apps.user-feedback-request';
-export { default as MenuNoteItem } from '@bit/flumens.apps.menu-note-item';
+} from '@flumens/ionic/dist/models/Model';
+export {
+  default as Sample,
+  Attrs as SampleAttrs,
+  Options as SampleOptions,
+  createImage,
+} from '@flumens/ionic/dist/models/Sample';
+export {
+  default as Media,
+  Attrs as MediaAttrs,
+} from '@flumens/ionic/dist/models/Media';
+export {
+  default as Occurrence,
+  Attrs as OccurrenceAttrs,
+  Options as OccurrenceOptions,
+} from '@flumens/ionic/dist/models/Occurrence';
 export {
   default as DrupalUserModel,
   Attrs as DrupalUserModelAttrs,
-} from '@bit/flumens.apps.models.drupal-user-model';
-export { default as InfoButton } from '@bit/flumens.apps.info-button';
-
-export * from '@bit/flumens.apps.utils.location';
-export * from '@bit/flumens.apps.utils.validation';
+} from '@flumens/ionic/dist/models/DrupalUserModel';
+export { default as Store } from '@flumens/ionic/dist/models/Store';
+export { default as initStoredSamples } from '@flumens/ionic/dist/models/initStoredSamples';
+export { default as Page } from '@flumens/ionic/dist/components/Page';
+export { default as InfoBackgroundMessage } from '@flumens/ionic/dist/components/InfoBackgroundMessage';
+export { default as RouteWithModels } from '@flumens/ionic/dist/components/RouteWithModels';
+export { default as LongPressButton } from '@flumens/ionic/dist/components/LongPressButton';
+export { default as InputWithValidation } from '@flumens/ionic/dist/components/InputWithValidation';
+export { default as Main } from '@flumens/ionic/dist/components/Main';
+export { default as Header } from '@flumens/ionic/dist/components/Header';
+export { default as InfoMessage } from '@flumens/ionic/dist/components/InfoMessage';
+export { default as Collapse } from '@flumens/ionic/dist/components/Collapse';
+export { default as Attr } from '@flumens/ionic/dist/components/Attr';
+export { default as AttrPage } from '@flumens/ionic/dist/components/AttrPage';
+export { default as Gallery } from '@flumens/ionic/dist/components/Gallery';
+export { default as MenuAttrToggle } from '@flumens/ionic/dist/components/MenuAttrToggle';
+export { default as ModalHeader } from '@flumens/ionic/dist/components/ModalHeader';
+export { default as Section } from '@flumens/ionic/dist/components/Section';
+export { default as InfoButton } from '@flumens/ionic/dist/components/InfoButton';
+export { default as PhotoPicker } from '@flumens/ionic/dist/components/PhotoPicker';
+export { default as MenuAttrItem } from '@flumens/ionic/dist/components/MenuAttrItem';
+export { default as MenuAttrItemFromModel } from '@flumens/ionic/dist/components/MenuAttrItemFromModel';
+export { default as ModelLocation } from '@flumens/ionic/dist/components/ModelLocationMap';
+export { default as UserFeedbackRequest } from '@flumens/ionic/dist/components/UserFeedbackRequest';
+export { useToast, useAlert, useLoader } from '@flumens/ionic/dist/hooks';
+export * from '@flumens/ionic/dist/utils/validation';
+export * from '@flumens/ionic/dist/utils/image';
+export * from '@flumens/ionic/dist/utils/location';
+export { default as date } from '@flumens/ionic/dist/utils/date';
+export { default as initAnalytics } from '@flumens/ionic/dist/utils/analytics';
+export { default as device } from '@flumens/ionic/dist/utils/device';

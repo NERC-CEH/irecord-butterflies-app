@@ -19,7 +19,7 @@ import { Trans as T } from 'react-i18next';
 import VerificationIcon from 'common/Components/VerificationIcon';
 import './styles.scss';
 
-function byCreationDate(s1: typeof Sample, s2: typeof Sample) {
+function byCreationDate(s1: Sample, s2: Sample) {
   const date1 = new Date(s1.metadata.updated_on);
   const date2 = new Date(s2.metadata.updated_on);
 
@@ -27,7 +27,7 @@ function byCreationDate(s1: typeof Sample, s2: typeof Sample) {
 }
 
 type Props = {
-  sample: typeof Sample;
+  sample: Sample;
   navigateToOccurrence: any;
   deleteSample: any;
 };
@@ -40,7 +40,7 @@ const MainComponent: FC<Props> = ({
   const isDisabled = sample.isUploaded();
 
   const getSamplesList = () => {
-    const getOccurrence = (smp: typeof Sample) => {
+    const getOccurrence = (smp: Sample) => {
       const occ = smp.occurrences[0];
       const prettyTime = new Date(smp.metadata.created_on)
         .toLocaleTimeString()

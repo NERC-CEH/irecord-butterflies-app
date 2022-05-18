@@ -11,7 +11,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import config from 'common/config';
 import { configure as mobxConfig } from 'mobx';
-import initAnalytics from 'helpers/analytics';
+import { initAnalytics } from '@apps';
 import App from './App';
 import '@capacitor/core';
 import '@ionic/core/css/core.css';
@@ -41,7 +41,7 @@ async function init() {
       environment: config.environment,
       build: config.build,
       release: config.version,
-      userId: userModel.attrs.id,
+      userId: userModel.id,
       tags: {
         'app.appSession': appModel.attrs.appSession,
       },

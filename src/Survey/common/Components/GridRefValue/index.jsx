@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import exact from 'prop-types-exact';
 import { IonSpinner } from '@ionic/react';
 import { observer } from 'mobx-react';
-import { prettyPrintLocation } from '@bit/flumens.apps.utils.location';
+import { prettyPrintLocation } from '@apps';
 import './styles.scss';
 
 function getValue(sample) {

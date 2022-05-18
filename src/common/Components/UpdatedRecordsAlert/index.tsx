@@ -1,12 +1,13 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useAlert } from '@apps';
-import AppModelProps from 'models/app';
+import { AppModel } from 'models/app';
+import { observer } from 'mobx-react';
 import Message from './Message';
 
 let isPopupVisible = false;
 
 interface Props {
-  appModel: typeof AppModelProps;
+  appModel: AppModel;
 }
 
 const UpdatedRecordsDialog: FC<Props> = ({ appModel }) => {
@@ -17,7 +18,7 @@ const UpdatedRecordsDialog: FC<Props> = ({ appModel }) => {
     appModel.attrs;
 
   const showAlert = () => {
-    if (!showVerifiedRecordsNotification || isPopupVisible) return;
+    if (!!showVerifiedRecordsNotification || isPopupVisible) return;
 
     if (!initialised) {
       // skip first time component is loading, only show on timestamp change
@@ -51,4 +52,4 @@ const UpdatedRecordsDialog: FC<Props> = ({ appModel }) => {
   return null;
 };
 
-export default UpdatedRecordsDialog;
+export default observer(UpdatedRecordsDialog);

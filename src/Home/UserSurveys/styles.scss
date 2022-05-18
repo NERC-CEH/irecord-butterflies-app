@@ -4,7 +4,9 @@
       --ion-toolbar-background: transparent;
 
       ion-segment {
-        max-width: 90%;
+        max-width: calc(
+          100% - 20px
+        ); // -20px to match the padding of the list below
         margin: 8px auto;
         z-index: 100000000;
         border-radius: 10px;

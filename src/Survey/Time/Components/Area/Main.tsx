@@ -15,7 +15,7 @@ import 'leaflet/dist/images/marker-shadow.png';
 L.Icon.Default.imagePath = '/images';
 
 type Props = {
-  sample: typeof Sample;
+  sample: Sample;
   shape: number;
   setAreaLocation: (area: any) => void;
   areaPretty: string;

@@ -14,7 +14,7 @@ import clsx from 'clsx';
 import './styles.scss';
 
 type Props = {
-  subSample: typeof Sample;
+  subSample: Sample;
   occurrence: Occurrence;
 };
 

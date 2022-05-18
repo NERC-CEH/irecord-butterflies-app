@@ -1,7 +1,6 @@
 import React, { FC, useContext, useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import savedSamples from 'models/savedSamples';
-import userModel from 'models/user';
 import appModel from 'models/app';
 import { observer } from 'mobx-react';
 import {
@@ -66,7 +65,6 @@ const useLongPressAlert = () => {
   return longPressAlert;
 };
 
-const MenuWrap = () => <Menu userModel={userModel} appModel={appModel} />;
 const HomeComponent: FC = () => {
   const { navigate } = useContext(NavContext);
   const showLongPressAlert = useLongPressAlert();
@@ -94,7 +92,7 @@ const HomeComponent: FC = () => {
         <Route path="/home/species" component={Species} exact />
         <Route path="/home/surveys" component={UserSurveys} exact />
         <Route path="/home/about" component={About} exact />
-        <Route path="/home/menu" render={MenuWrap} exact />
+        <Route path="/home/menu" component={Menu} exact />
       </IonRouterOutlet>
 
       <IonTabBar slot="bottom">

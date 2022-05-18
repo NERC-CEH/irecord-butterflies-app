@@ -1,5 +1,5 @@
 import React, { FC, useContext } from 'react';
-import userModelProps from 'models/user';
+import { UserModel } from 'models/user';
 import { NavContext } from '@ionic/react';
 import { Trans as T } from 'react-i18next';
 import { Page, Header, device, useToast, useAlert, useLoader } from '@apps';
@@ -14,7 +14,7 @@ export type Details = {
 };
 
 type Props = {
-  userModel: typeof userModelProps;
+  userModel: UserModel;
 };
 
 const RegisterContainer: FC<Props> = ({ userModel }) => {
@@ -24,7 +24,7 @@ const RegisterContainer: FC<Props> = ({ userModel }) => {
   const loader = useLoader();
 
   const onSuccess = () => {
-    context.navigate('/home/landing', 'root');
+    context.navigate('/home/surveys', 'root');
   };
 
   async function onRegister(details: Details) {
@@ -65,11 +65,8 @@ const RegisterContainer: FC<Props> = ({ userModel }) => {
           },
         ],
       });
-    } catch (err) {
-      if (err instanceof Error) {
-        toast.error(err.message);
-      }
-      console.error(err, 'e');
+    } catch (err: any) {
+      toast.error(err);
     }
 
     loader.hide();

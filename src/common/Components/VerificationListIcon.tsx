@@ -4,7 +4,7 @@ import Occurrence from 'models/occurrence';
 import { IonLabel } from '@ionic/react';
 
 interface Props {
-  sample: typeof Sample;
+  sample: Sample;
 }
 
 const VerificationListIcon: FC<Props> = ({ sample }) => {
@@ -35,7 +35,7 @@ const VerificationListIcon: FC<Props> = ({ sample }) => {
 
   const hasSubSample = sample.samples.length;
   if (hasSubSample) {
-    const getSamples = (subSample: typeof Sample) => {
+    const getSamples = (subSample: Sample) => {
       subSample.occurrences.forEach(aggregateStatus);
     };
     sample.samples.forEach(getSamples);

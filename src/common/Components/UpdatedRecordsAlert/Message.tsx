@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { IonItem, IonCheckbox, IonLabel } from '@ionic/react';
-import AppModelProps from 'models/app';
+import { AppModel } from 'models/app';
 
 interface Props {
-  appModel: typeof AppModelProps;
+  appModel: AppModel;
 }
 
 const Message: FC<Props> = ({ appModel }) => {

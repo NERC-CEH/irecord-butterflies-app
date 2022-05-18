@@ -24,13 +24,13 @@ import UKBMSlogo from './UKBMSlogo.png';
 import './styles.scss';
 
 type Props = {
-  sample: typeof Sample;
+  sample: Sample;
   increaseCount: any;
 };
 
 const getDefaultTaxonCount = (taxon: any) => ({ count: 0, taxon });
 
-const buildSpeciesCount = (agg: any, smp: typeof Sample) => {
+const buildSpeciesCount = (agg: any, smp: Sample) => {
   const taxon = toJS(smp.occurrences[0].attrs.taxon);
   const id = taxon.warehouseId;
 

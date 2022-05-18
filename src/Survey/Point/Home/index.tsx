@@ -9,7 +9,7 @@ import Main from './Main';
 import './styles.scss';
 
 type Props = {
-  sample: typeof Sample;
+  sample: Sample;
 };
 
 const Home: FC<Props> = ({ sample }) => {
@@ -21,6 +21,9 @@ const Home: FC<Props> = ({ sample }) => {
   const _processSubmission = async () => {
     const isUserOK = await checkUserStatus();
     if (!isUserOK) return;
+
+    const isValid = checkSampleStatus();
+    if (!isValid) return;
 
     sample.upload().catch(toast.error);
     navigate(`/home/surveys`, 'root');
