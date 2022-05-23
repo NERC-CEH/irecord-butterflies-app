@@ -150,7 +150,7 @@ export class AppModel extends Model {
   };
 
   resetDefaults() {
-    set(this.attrs, {});
+    set(this.attrs, JSON.parse(JSON.stringify(defaults)));
     delete this.id;
     return this.save();
   }
