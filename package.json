@@ -94,23 +94,17 @@
     "@types/react-dom": "17.0.9",
     "@types/react-router": "^5.1.18",
     "@types/react-router-dom": "^5.3.3",
-    "@typescript-eslint/eslint-plugin": "^5.23.0",
-    "@typescript-eslint/parser": "^5.23.0",
     "babel-eslint": "10.1.0",
     "babel-jest": "^28.1.0",
     "babel-plugin-module-resolver": "4.1.0",
     "cordova-res": "^0.15.4",
     "dotenv": "^16.0.1",
     "eslint": "^8.15.0",
-    "eslint-import-resolver-babel-module": "5.3.1",
-    "eslint-plugin-import": "^2.26.0",
     "fast-csv": "^4.3.6",
     "husky": "^8.0.1",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
     "jest-transform-stub": "2.0.0",
-    "prettier-eslint": "^15.0.0",
-    "prettier-eslint-cli": "^6.0.1",
     "regenerator-runtime": "^0.13.9",
     "tslib": "^2.4.0",
     "typescript": "^4.6.4",
@@ -187,62 +181,15 @@
     ]
   },
   "eslintConfig": {
-    "env": {
-      "browser": true
-    },
-    "parser": "@typescript-eslint/parser",
     "extends": [
       "@flumens",
-      "plugin:react/jsx-runtime",
-      "plugin:@typescript-eslint/recommended"
+      "plugin:react/jsx-runtime"
     ],
-    "settings": {
-      "import/resolver": {
-        "babel-module": {
-          "extensions": [
-            ".js",
-            ".jsx",
-            ".ts",
-            ".tsx"
-          ]
-        }
-      },
-      "plugins": [
-        "@typescript-eslint"
-      ]
-    },
     "rules": {
       "react/function-component-definition": 0,
+      "react/prop-types": 0,
       "react/jsx-no-bind": 0,
-      "jsx-a11y/accessible-emoji": 0,
-      "@typescript-eslint/no-var-requires": 0,
-      "import/extensions": [
-        "error",
-        "ignorePackages",
-        {
-          "js": "never",
-          "jsx": "never",
-          "ts": "never",
-          "tsx": "never"
-        }
-      ],
-      "@typescript-eslint/no-empty-interface": "off",
-      "no-use-before-define": "off",
-      "@typescript-eslint/no-use-before-define": [
-        "error"
-      ],
-      "react/prop-types": "off",
-      "react/jsx-filename-extension": [
-        2,
-        {
-          "extensions": [
-            ".js",
-            ".jsx",
-            ".ts",
-            ".tsx"
-          ]
-        }
-      ]
+      "@typescript-eslint/no-var-requires": 0
     }
   },
   "prettier": {

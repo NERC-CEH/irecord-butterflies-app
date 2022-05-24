@@ -30,42 +30,6 @@ const fetchAndSave = async sheet => {
   saveToFile(sheetData, sheet);
 };
 
-const normalizeWeeklyProbabilities = (agg, row) => {
-  const { week, region, species, prob } = row;
-  if (region === 'U') {
-    return agg;
-  }
-  agg[week] = agg[week] || {}; // eslint-disable-line
-  agg[week][region] = agg[week][region] || {}; // eslint-disable-line
-  agg[week][region][species] = parseFloat(prob.toFixed(3)); // eslint-disable-line
-  return agg;
-};
-
-const normalizeHectadProbabilities = (agg, row) => {
-  const { hectad, species, prob } = row;
-  agg[hectad] = agg[hectad] || {}; // eslint-disable-line
-  agg[hectad][species] = parseFloat(prob.toFixed(3)); // eslint-disable-line
-  return agg;
-};
-
-function checkIDsExist(normalized, species, time) {
-  console.log('Checking IDs exist');
-  let a = Object.values(normalized);
-  if (time) {
-    a = a.map(Object.values);
-  }
-  const names = [...new Set(a.flat().flatMap(Object.keys))];
-  const checkID = name => {
-    if (name === 'ScarceTortoiseshell') {
-      // not in the app
-      return;
-    }
-    const byId = sp => sp.id === name;
-    if (!species.find(byId)) throw new Error(`missing species ID ${name}`);
-  };
-  names.forEach(checkID);
-}
-
 const getData = async () => {
   const species = await fetchSheet({ drive, file, sheet: 'species' });
   saveToFile(species, 'species');

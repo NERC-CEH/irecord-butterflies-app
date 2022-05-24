@@ -1,5 +1,4 @@
 import { Media } from '@flumens';
-import { observable } from 'mobx';
 import { isPlatform } from '@ionic/react';
 import config from 'common/config';
 import { Capacitor } from '@capacitor/core';
