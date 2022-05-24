@@ -46,7 +46,7 @@ const RegisterContainer: FC<Props> = ({ userModel }) => {
       await userModel.register(email, password, otherDetails);
 
       userModel.attrs.firstName = firstName; // eslint-disable-line
-      userModel.attrs.secondName = secondName; // eslint-disable-line
+      userModel.attrs.lastName = secondName; // eslint-disable-line
       userModel.save();
 
       alert({

@@ -19,7 +19,7 @@ import serviceExtension from './userStatsExt';
 
 export interface Attrs extends DrupalUserModelAttrs {
   firstName?: string;
-  secondName?: string;
+  lastName?: string;
   email?: string;
 
   lastThankYouMilestoneShown: any;
@@ -35,7 +35,7 @@ export interface Attrs extends DrupalUserModelAttrs {
 
 const defaults: Attrs = {
   firstName: '',
-  secondName: '',
+  lastName: '',
   email: '',
 
   lastThankYouMilestoneShown: {},
@@ -107,7 +107,7 @@ export class UserModel extends DrupalUserModel {
   getPrettyName = () => {
     if (!this.hasLogIn()) return '';
 
-    return `${this.attrs.firstName} ${this.attrs.secondName}`;
+    return `${this.attrs.firstName} ${this.attrs.lastName}`;
   };
 
   async getAccessToken(...args: any) {
@@ -159,8 +159,6 @@ const userModel = new UserModel({
   store: genericStore,
   config: CONFIG.backend,
 });
-
-(window as any).userModel = userModel;
 
 export const useUserStatusCheck = () => {
   const { navigate } = useContext(NavContext);
