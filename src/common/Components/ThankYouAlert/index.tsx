@@ -9,6 +9,10 @@ type Props = {
   userModel: UserModel;
 };
 const ThankYouAlert: FC<Props> = ({ userModel }) => {
+  const hasStatsBeenUpdated = userModel.attrs.stats;
+  // Do not show thank you message when user.logout is triggered
+  if (!hasStatsBeenUpdated) return null;
+
   const milestone = userModel.getAchievedStatsMilestone();
   if (!milestone) return null;
 
