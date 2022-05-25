@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Page, useAlert, useLoader, useToast } from '@flumens';
+import { Page, device, useAlert, useLoader, useToast } from '@flumens';
 import { observer } from 'mobx-react';
 import { IonFooter } from '@ionic/react';
 import userModel from 'models/user';
@@ -71,6 +71,11 @@ const MenuController: FC = () => {
   };
 
   const resendVerificationEmail = async () => {
+    if (!device.isOnline) {
+      toast.warn("Sorry, looks like you're offline.");
+      return;
+    }
+
     await loader.show('Please wait...');
     try {
       await userModel.resendVerificationEmail();
