@@ -18,7 +18,7 @@ const UpdatedRecordsDialog: FC<Props> = ({ appModel }) => {
     appModel.attrs;
 
   const showAlert = () => {
-    if (!!showVerifiedRecordsNotification || isPopupVisible) return;
+    if (!showVerifiedRecordsNotification || isPopupVisible) return;
 
     if (!initialised) {
       // skip first time component is loading, only show on timestamp change
