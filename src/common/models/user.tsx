@@ -98,9 +98,9 @@ export class UserModel extends DrupalUserModel {
   }
 
   resetDefaults() {
+    this.uploadCounter.count = 0;
     set(this.attrs, JSON.parse(JSON.stringify(defaults)));
     delete this.id;
-    this.uploadCounter.count = 0;
     return this.save();
   }
 
