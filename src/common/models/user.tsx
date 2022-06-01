@@ -13,7 +13,7 @@ import {
   DrupalUserModelAttrs,
 } from '@flumens';
 import { NavContext } from '@ionic/react';
-import { observable, set } from 'mobx';
+import { observable } from 'mobx';
 import { genericStore } from './store';
 import serviceExtension from './userStatsExt';
 
@@ -143,10 +143,7 @@ export class UserModel extends DrupalUserModel {
   resetDefaults() {
     this.uploadCounter.count = 0;
 
-    super.resetDefaults();
-
-    set(this.attrs, JSON.parse(JSON.stringify(defaults)));
-    return this.save();
+    return super.resetDefaults(defaults);
   }
 }
 

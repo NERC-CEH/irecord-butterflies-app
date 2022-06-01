@@ -1,5 +1,4 @@
 import { Model, ModelAttrs, locationToGrid } from '@flumens';
-import { set } from 'mobx';
 import GPS from 'helpers/GPS';
 import { genericStore } from './store';
 
@@ -150,9 +149,7 @@ export class AppModel extends Model {
   };
 
   resetDefaults() {
-    set(this.attrs, JSON.parse(JSON.stringify(defaults)));
-    delete this.id;
-    return this.save();
+    return super.resetDefaults(defaults);
   }
 }
 
