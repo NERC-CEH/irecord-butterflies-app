@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import { isPlatform } from '@ionic/react';
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import exact from 'prop-types-exact';
 import { Page, Header, useToast } from '@flumens';
 import { observer } from 'mobx-react';
@@ -26,6 +28,8 @@ const useResetApp = (saveSamples, appModel, userModel) => {
 function onToggle(appModel, setting, checked) {
   appModel.attrs[setting] = checked; // eslint-disable-line
   appModel.save();
+
+  isPlatform('hybrid') && Haptics.impact({ style: ImpactStyle.Medium });
 }
 
 const MenuController = ({ savedSamples, appModel, userModel }) => {
