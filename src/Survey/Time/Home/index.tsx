@@ -63,7 +63,7 @@ function useShowLeaveConfirmationAlert() {
 }
 
 const hapticsImpact = async () => {
-  await Haptics.impact({ style: ImpactStyle.Heavy });
+  await Haptics.impact({ style: ImpactStyle.Light });
 };
 
 type Props = {

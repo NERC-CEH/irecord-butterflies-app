@@ -29,7 +29,7 @@ function onToggle(appModel, setting, checked) {
   appModel.attrs[setting] = checked; // eslint-disable-line
   appModel.save();
 
-  isPlatform('hybrid') && Haptics.impact({ style: ImpactStyle.Medium });
+  isPlatform('hybrid') && Haptics.impact({ style: ImpactStyle.Light });
 }
 
 const MenuController = ({ savedSamples, appModel, userModel }) => {
