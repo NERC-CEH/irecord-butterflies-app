@@ -92,6 +92,18 @@ workflows:
             - export_method: app-store
   web:
     steps:
+      - script@1:
+          title: Print system info
+          inputs:
+            - content: |
+                #!/usr/bin/env bash
+
+                echo "Node version:"
+                node --version
+                npm --version
+                xcodebuild -version
+                sw_vers
+                uname -av
       - get-npm-package-version@1: {}
       - npm@1:
           title: Install
