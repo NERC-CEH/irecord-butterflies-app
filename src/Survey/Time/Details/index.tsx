@@ -43,6 +43,7 @@ const DetailsController: FC<Props> = ({ sample }) => {
     </IonButton>
   );
 
+  // eslint-disable-next-line react/no-unstable-nested-components
   const CancelButtonWrap = () => <CancelButton sample={sample} />;
 
   return (

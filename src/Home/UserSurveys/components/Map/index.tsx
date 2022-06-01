@@ -28,9 +28,8 @@ const getSquareSize = (zoomLevel: number) => {
 };
 
 const getTotalSquares = (squares: Square[]) => {
-  const addSquares = (acc: number, square: Square): number => {
-    return acc + square.doc_count;
-  };
+  const addSquares = (acc: number, square: Square): number =>
+    acc + square.doc_count;
 
   // protection division from 0, defaulting to 1
   return squares?.reduce(addSquares, 0) || 1;

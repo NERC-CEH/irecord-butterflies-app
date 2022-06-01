@@ -149,18 +149,16 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
     const speciesList = Object.entries(counts).map(getSpeciesEntry);
 
     return (
-      <>
-        <IonList id="list" lines="full">
-          <div className="rounded">
-            <IonItemDivider className="species-list-header">
-              <IonLabel>Count</IonLabel>
-              <IonLabel>Species</IonLabel>
-            </IonItemDivider>
+      <IonList id="list" lines="full">
+        <div className="rounded">
+          <IonItemDivider className="species-list-header">
+            <IonLabel>Count</IonLabel>
+            <IonLabel>Species</IonLabel>
+          </IonItemDivider>
 
-            {speciesList}
-          </div>
-        </IonList>
-      </>
+          {speciesList}
+        </div>
+      </IonList>
     );
   };
 

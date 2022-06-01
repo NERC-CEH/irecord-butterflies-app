@@ -1,6 +1,5 @@
 import { observer } from 'mobx-react';
 import savedSamples from 'models/savedSamples';
-import appModel from 'models/app';
 import StartNewSurvey from 'Survey/common/Components/StartNewSurvey';
 import { RouteWithModels, AttrPage, ModelLocation } from '@flumens';
 import Species from 'Survey/common/Components/Species';

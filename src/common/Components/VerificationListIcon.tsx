@@ -46,27 +46,25 @@ const VerificationListIcon: FC<Props> = ({ sample }) => {
   if (!rejected && !plausible && !verified) return null;
 
   return (
-    <>
-      <IonLabel slot="end" className="verification-list-icons">
-        {!!rejected && (
-          <IonLabel slot="end" className="verificationIcon id-red">
-            {rejected}
-          </IonLabel>
-        )}
+    <IonLabel slot="end" className="verification-list-icons">
+      {!!rejected && (
+        <IonLabel slot="end" className="verificationIcon id-red">
+          {rejected}
+        </IonLabel>
+      )}
 
-        {!!plausible && (
-          <IonLabel slot="end" className="verificationIcon id-amber">
-            {plausible}
-          </IonLabel>
-        )}
+      {!!plausible && (
+        <IonLabel slot="end" className="verificationIcon id-amber">
+          {plausible}
+        </IonLabel>
+      )}
 
-        {!!verified && (
-          <IonLabel slot="end" className="verificationIcon id-green">
-            {verified}
-          </IonLabel>
-        )}
-      </IonLabel>
-    </>
+      {!!verified && (
+        <IonLabel slot="end" className="verificationIcon id-green">
+          {verified}
+        </IonLabel>
+      )}
+    </IonLabel>
   );
 };
 

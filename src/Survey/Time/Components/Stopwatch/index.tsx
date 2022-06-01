@@ -18,7 +18,7 @@ type Props = {
 };
 
 const Stopwatch: FC<Props> = ({ sample }) => {
-  const [refresh, setRefresh] = useState(0);
+  const [, setRefresh] = useState(0);
   const [stopwatchID, setStopwatchID] = useState<any>(null);
 
   const finishedSurveyTimestamp = sample.metadata.saved;

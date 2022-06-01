@@ -26,7 +26,7 @@ interface Props {
   appModel: AppModel;
 }
 
-const onBoardingScreens: FC<Props> = ({ appModel, children }) => {
+const OnBoardingScreens: FC<Props> = ({ appModel, children }) => {
   const [moreSlidesExist, setMoreSlidesExist] = useState(true);
   const [controlledSwiper, setControlledSwiper] = useState<SwiperCore>();
 
@@ -152,4 +152,4 @@ const onBoardingScreens: FC<Props> = ({ appModel, children }) => {
   );
 };
 
-export default observer(onBoardingScreens);
+export default observer(OnBoardingScreens);

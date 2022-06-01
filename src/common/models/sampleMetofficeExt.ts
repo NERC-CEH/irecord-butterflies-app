@@ -189,4 +189,4 @@ const extension: any = {
   },
 };
 
-export { extension as default };
+export default extension;
