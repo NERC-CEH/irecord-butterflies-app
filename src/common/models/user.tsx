@@ -65,7 +65,7 @@ export class UserModel extends DrupalUserModel {
     Object.assign(this, serviceExtension);
 
     const checkForValidation = () => {
-      if (this.hasLogIn() && !this.attrs.verified) {
+      if (this.isLoggedIn() && !this.attrs.verified) {
         console.log('User: refreshing profile for validation');
         this.refreshProfile();
       }
@@ -96,20 +96,6 @@ export class UserModel extends DrupalUserModel {
 
     return true;
   }
-
-  resetDefaults() {
-    this.uploadCounter.count = 0;
-    set(this.attrs, JSON.parse(JSON.stringify(defaults)));
-    delete this.id;
-    return this.save();
-  }
-
-  // eslint-disable-next-line @getify/proper-arrows/name
-  getPrettyName = () => {
-    if (!this.hasLogIn()) return '';
-
-    return `${this.attrs.firstName} ${this.attrs.lastName}`;
-  };
 
   async getAccessToken(...args: any) {
     if (this.attrs.password) await this._migrateAuth();
@@ -151,6 +137,15 @@ export class UserModel extends DrupalUserModel {
       throw e;
     }
 
+    return this.save();
+  }
+
+  resetDefaults() {
+    this.uploadCounter.count = 0;
+
+    super.resetDefaults();
+
+    set(this.attrs, JSON.parse(JSON.stringify(defaults)));
     return this.save();
   }
 }
