@@ -3,11 +3,25 @@ ion-content.filters {
   position: absolute;
   height: calc(100vh - 56px);
 
-  ion-item.collapse-block {
+  ion-accordion {
+    background: transparent;
     text-transform: uppercase;
     font-weight: bold;
-    --border-color: transparent;
     border-top: 1px #ffffff45 solid;
+
+    ion-label {
+      color: #fff9c8 !important;
+    }
+
+    ion-item[slot='header'] {
+      border: none !important;
+    }
+
+    ion-list[slot='content'] {
+      ion-item {
+        --border-style: none;
+      }
+    }
   }
 
   ion-col {

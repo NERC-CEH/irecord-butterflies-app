@@ -1,43 +1,26 @@
 import { FC, useState } from 'react';
-import * as React from 'react';
 import { observer } from 'mobx-react';
 import {
   IonHeader,
   IonToolbar,
   IonButtons,
-  IonBackButton,
   IonIcon,
   IonButton,
   IonTitle,
 } from '@ionic/react';
-import { Filter, FilterGroup } from 'models/app';
-import { searchOutline } from 'ionicons/icons';
 import FiltersToolbar from 'Components/FiltersToolbar';
+import { searchOutline } from 'ionicons/icons';
+import { Filter, FilterGroup } from 'models/app';
 import filterOptions from 'common/data/species/filters';
-
 import './styles.scss';
-
-const DeaultBackButton = () => (
-  <IonButtons slot="start">
-    <IonBackButton text="Back" data-label="back" defaultHref="/home" />
-  </IonButtons>
-);
 
 type Props = {
   onSearch: (e: any) => void;
   toggleFilter: (type: FilterGroup, value: Filter) => void;
   filters: any;
-  title?: string;
-  BackButton?: React.ElementType;
 };
 
-const Header: FC<Props> = ({
-  onSearch,
-  toggleFilter,
-  filters,
-  BackButton = DeaultBackButton,
-  title = 'Select Species',
-}) => {
+const Header: FC<Props> = ({ onSearch, toggleFilter, filters }) => {
   const [isSearching, setIsSearching] = useState(false);
   const onSearchStart = () => setIsSearching(true);
   const onSearchEnd = () => setIsSearching(false);
@@ -46,9 +29,15 @@ const Header: FC<Props> = ({
     <IonHeader id="species-search-header">
       {!isSearching && (
         <IonToolbar>
-          <BackButton />
+          <IonButtons slot="start">
+            <IonButton style={{ visibility: 'hidden' }}>
+              <IonIcon slot="icon-only" icon={searchOutline} />
+            </IonButton>
+          </IonButtons>
 
-          <IonTitle>{title}</IonTitle>
+          <IonTitle size="large" className="app-name">
+            iRecord <b>Butterflies</b>
+          </IonTitle>
 
           <IonButtons slot="end">
             <IonButton onClick={onSearchStart}>

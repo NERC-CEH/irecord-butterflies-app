@@ -6,7 +6,7 @@ import photos from './cache/photos.json';
 import './photos'; // webpack-loading only
 import './photos-moth'; // webpack-loading only
 
-interface SpeciesInfo {
+export interface SpeciesInfo {
   probabilityId: number;
   id: string;
   type: string;
@@ -17,21 +17,18 @@ interface SpeciesInfo {
   group: string;
   family: string;
   colour: string[];
-  markings: string[];
-  england: string;
-  scotland: string;
-  wales: string;
-  'northern ireland': string;
-  'isle of man': string;
+  markings?: string[];
+  england?: string;
+  scotland?: string;
+  wales?: string;
+  'northern ireland'?: string;
+  'isle of man'?: string;
   size: string[];
   idTips: string;
   habitats: string;
   ukStatus: string;
-  webLink: string;
-  thumbnail: string;
-  map: string;
-  lifechart: string;
-  survey?: string[];
+  webLink?: string;
+  survey?: string;
 }
 
 interface Photo {
@@ -70,7 +67,7 @@ const extendWithResources = (sp: SpeciesInfo): Species => {
     sp.wales && 'wales',
     sp['northern ireland'] && 'northern ireland',
     sp['isle of man'] && 'isle of man',
-  ].filter(hasValue);
+  ].filter(hasValue) as string[];
 
   const spExt = { ...sp, ...speciesResources[sp.id], images, country };
 
@@ -90,9 +87,7 @@ const extendWithResources = (sp: SpeciesInfo): Species => {
   return { ...spExt, thumbnail };
 };
 
-const extendedSpecies: Species[] = (species as SpeciesInfo[]).map(
-  extendWithResources
-);
+const extendedSpecies: Species[] = species.map(extendWithResources);
 
 /* After adding new images run this script to quick-check all are present */
 // (async () => {
