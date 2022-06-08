@@ -10,14 +10,16 @@ const Component = ({ onSubmit, schema }) => {
   const resetForm = props => (
     <Form>
       <IonList lines="full">
-        <InputWithValidation
-          name="email"
-          placeholder="Email"
-          icon={personOutline}
-          type="email"
-          autocomplete="off"
-          {...props}
-        />
+        <div className="rounded">
+          <InputWithValidation
+            name="email"
+            placeholder="Email"
+            icon={personOutline}
+            type="email"
+            autocomplete="off"
+            {...props}
+          />
+        </div>
       </IonList>
 
       {/** https://github.com/formium/formik/issues/1418 */}

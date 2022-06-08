@@ -7,8 +7,9 @@ function SpeciesGuide() {
   return (
     <Page id="about">
       <Main>
+        <h1>About</h1>
+
         <Section>
-          <h1>About</h1>
           <P>
             Butterflies are in trouble. A third of UK species are threatened and
             three-quarters are in decline. Butterfly recording is the foundation
@@ -73,7 +74,9 @@ function SpeciesGuide() {
           </P>
 
           <P>Many thanks for taking part! </P>
+        </Section>
 
+        <Section>
           <P>
             More about the Butterflies for the New Millennium recording scheme{' '}
             <a
@@ -97,7 +100,9 @@ function SpeciesGuide() {
               http://www.brc.ac.uk/{' '}
             </a>
           </P>
+        </Section>
 
+        <Section>
           <H>Help</H>
 
           <P>

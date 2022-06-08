@@ -146,7 +146,7 @@ const SpeciesProfile: FC<Props> = ({ species, onRecord, isSurvey }) => {
       <div className="fullscreen-tappable map" onClick={showMapInFullScreen}>
         <img src={species.map} />
         <div className="fullscreen-btn">
-          <IonIcon src={expandOutline} slot="end" color="secondary" />
+          <IonIcon src={expandOutline} slot="end" color="warning" />
         </div>
       </div>
     );
@@ -209,7 +209,7 @@ const SpeciesProfile: FC<Props> = ({ species, onRecord, isSurvey }) => {
                   onClick={showshowLifechartInFullScreen}
                 >
                   <div className="fullscreen-btn">
-                    <IonIcon src={expandOutline} slot="end" color="secondary" />
+                    <IonIcon src={expandOutline} slot="end" color="warning" />
                   </div>
                   <img src={species.lifechart} />
                 </div>

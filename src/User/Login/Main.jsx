@@ -33,30 +33,32 @@ class Component extends React.Component {
     const loginForm = props => (
       <Form>
         <IonList lines="full">
-          <InputWithValidation
-            name="email"
-            placeholder="Email"
-            icon={personOutline}
-            type="email"
-            autocomplete="off"
-            {...props}
-          />
-          <InputWithValidation
-            name="password"
-            placeholder="Password"
-            icon={keyOutline}
-            type={showPassword ? 'text' : 'password'}
-            autocomplete="off"
-            {...props}
-          >
-            <IonButton slot="end" onClick={this.togglePassword} fill="clear">
-              <IonIcon
-                icon={showPassword ? eyeOutline : eyeOffOutline}
-                faint
-                size="small"
-              />
-            </IonButton>
-          </InputWithValidation>
+          <div className="rounded">
+            <InputWithValidation
+              name="email"
+              placeholder="Email"
+              icon={personOutline}
+              type="email"
+              autocomplete="off"
+              {...props}
+            />
+            <InputWithValidation
+              name="password"
+              placeholder="Password"
+              icon={keyOutline}
+              type={showPassword ? 'text' : 'password'}
+              autocomplete="off"
+              {...props}
+            >
+              <IonButton slot="end" onClick={this.togglePassword} fill="clear">
+                <IonIcon
+                  icon={showPassword ? eyeOutline : eyeOffOutline}
+                  faint
+                  size="small"
+                />
+              </IonButton>
+            </InputWithValidation>
+          </div>
 
           <Link to="/user/reset" className="password-forgot-button">
             <T>Forgot password?</T>

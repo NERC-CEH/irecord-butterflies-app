@@ -65,6 +65,21 @@
   }
 
   .app-name {
+    font-family: 'Museo300';
+    font-size: 25px;
+    font-weight: 400;
+    text-align: center;
+    color: black;
+
+    &.md {
+      padding: 0;
+    }
+
+    b {
+      font-family: 'Museo700';
+      color: var(--ion-color-primary);
+    }
+
     position: absolute;
     top: -16px;
     left: 0;
@@ -124,14 +139,9 @@
     bottom: 0;
 
     ion-button {
-      border-radius: 50%;
       height: 50px;
       width: 50px;
       margin: 10px;
-
-      background: var(--ion-color-primary);
-      --color: var(--ion-color-primary-contrast);
-      --ionicon-stroke-width: 52px;
     }
   }
 }

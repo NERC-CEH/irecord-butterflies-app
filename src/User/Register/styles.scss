@@ -1,7 +1,7 @@
 #user-register {
   ion-toolbar {
     position: fixed;
-    --ion-toolbar-background: transparent;
+    --background: transparent;
 
     ion-back-button {
       color: var(--ion-color-light-contrast);
@@ -12,14 +12,8 @@
     --padding-top: 40px; // header
   }
 
-  ion-list,
-  ion-item {
-    --background: transparent;
-    background: transparent;
-  }
-
   ion-content {
-    ion-icon {
+    ion-button ion-icon {
       color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 1);
     }
 
@@ -39,7 +33,9 @@
     }
 
     ion-button[type='submit'] {
-      margin: 20px;
+      margin: 15px auto;
+      width: calc(100% - 30px);
+      max-width: 400px;
       margin-bottom: 60px;
     }
   }

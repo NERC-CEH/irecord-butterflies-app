@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { IonItem, IonCheckbox, IonLabel } from '@ionic/react';
 import { AppModel } from 'models/app';
+import './styles.scss';
 
 interface Props {
   appModel: AppModel;

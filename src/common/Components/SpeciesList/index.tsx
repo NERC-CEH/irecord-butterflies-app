@@ -299,7 +299,12 @@ const SpeciesList: FC<Props> = ({
         <IonHeader className="species-modal-header">
           <IonToolbar>
             <IonButtons slot="start">
-              <IonButton onClick={hideSpeciesModal}>
+              <IonButton
+                onClick={hideSpeciesModal}
+                fill="solid"
+                color="light"
+                shape="round"
+              >
                 <IonIcon slot="icon-only" icon={arrowBack} />
               </IonButton>
             </IonButtons>

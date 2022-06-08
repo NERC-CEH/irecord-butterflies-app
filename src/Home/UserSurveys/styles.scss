@@ -1,7 +1,7 @@
 #home-user-surveys {
   ion-header {
     ion-toolbar {
-      --ion-toolbar-background: transparent;
+      --background: transparent;
 
       ion-segment {
         max-width: calc(
@@ -63,7 +63,7 @@
     ion-icon {
       border-radius: 7px;
       margin-bottom: -7px;
-      // margin: 3px;
+      background: var(--ion-color-primary);
       --ionicon-stroke-width: 20px;
       font-size: 1em;
     }

@@ -6,6 +6,25 @@
     ion-icon {
       color: black;
       --ionicon-stroke-width: 20px;
+      margin-top: 5px;
+    }
+  }
+
+  .app-name {
+    font-family: 'Museo300';
+    font-size: 25px;
+    font-weight: 400;
+    text-align: center;
+    color: black;
+    align-items: center;
+
+    &.md {
+      padding: 0;
+    }
+
+    b {
+      font-family: 'Museo700';
+      color: var(--ion-color-primary);
     }
   }
 }

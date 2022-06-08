@@ -143,11 +143,22 @@
   }
 }
 
-.gallery-modal.white-background {
-  ion-title {
-    color: var(--ion-color-dark);
+.gallery-modal {
+  &.white-background {
+    ion-title {
+      color: var(--ion-color-dark);
+    }
+    ion-content {
+      --background: white;
+    }
   }
-  ion-content {
-    --background: white;
+
+  &.species-profile-gallery {
+    ion-button {
+      --color: red;
+    }
+  }
+  .title {
+    font-family: 'Museo500';
   }
 }

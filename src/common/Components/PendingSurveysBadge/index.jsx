@@ -18,7 +18,7 @@ function PendingSurveysBadge({ savedSamples }) {
   }
 
   return (
-    <IonBadge color="secondary" className="pending-surveys-badge">
+    <IonBadge color="warning" className="pending-surveys-badge">
       {count}
     </IonBadge>
   );

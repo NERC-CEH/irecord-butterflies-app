@@ -140,7 +140,12 @@ const OnBoardingScreens: FC<Props> = ({ appModel, children }) => {
       <IonFooter className="ion-no-border">
         <IonToolbar>
           <IonButtons slot="end">
-            <IonButton onClick={slideNextOrClose}>
+            <IonButton
+              onClick={slideNextOrClose}
+              color="primary"
+              fill="solid"
+              shape="round"
+            >
               <IonIcon
                 icon={!moreSlidesExist ? checkmarkOutline : arrowForward}
               />

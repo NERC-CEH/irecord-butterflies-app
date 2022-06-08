@@ -1,3 +1,14 @@
+#location-page-header {
+  .auto-suggest-input-attr ion-input {
+    --padding-top: 0;
+  }
+
+  ion-input {
+    --placeholder-color: black !important;
+    color: black !important;
+  }
+}
+
 .geolocation-tip ion-icon {
   border: 1px solid;
   border-radius: 5px;

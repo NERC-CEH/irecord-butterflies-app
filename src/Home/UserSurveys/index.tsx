@@ -80,11 +80,7 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
     const surveys = getSamplesList(true);
 
     if (!surveys.length) {
-      return (
-        <InfoBackgroundMessage name={null}>
-          No uploaded surveys
-        </InfoBackgroundMessage>
-      );
+      return <InfoBackgroundMessage>No uploaded surveys</InfoBackgroundMessage>;
     }
 
     return (
@@ -103,7 +99,7 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
 
     if (!surveys.length) {
       return (
-        <InfoBackgroundMessage name={null}>
+        <InfoBackgroundMessage>
           <div>
             You have no finished records.
             <br />
@@ -137,7 +133,7 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
     }
 
     return (
-      <IonBadge color="secondary" slot="end">
+      <IonBadge color="warning" slot="end">
         {pendingSurveys.length}
       </IonBadge>
     );

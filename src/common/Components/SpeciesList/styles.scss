@@ -140,12 +140,9 @@
   ion-button {
     height: 40px;
     width: 40px;
-    background: var(--ion-color-light) !important;
+    margin-left: -4px;
+    margin-top: 3px;
     border-radius: 50%;
     box-shadow: 0 0 7px #0000003d;
-
-    ion-icon {
-      color: black;
-    }
   }
 }

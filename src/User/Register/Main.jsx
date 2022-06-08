@@ -35,46 +35,48 @@ class Component extends React.Component {
     const registrationForm = props => (
       <Form>
         <IonList lines="full">
-          <InputWithValidation
-            name="firstName"
-            placeholder="First name"
-            icon={personOutline}
-            type="text"
-            autocomplete="off"
-            {...props}
-          />
-          <InputWithValidation
-            name="secondName"
-            placeholder="Last name"
-            icon={personOutline}
-            type="text"
-            autocomplete="off"
-            {...props}
-          />
-          <InputWithValidation
-            name="email"
-            placeholder="Email"
-            icon={mailOutline}
-            type="email"
-            autocomplete="off"
-            {...props}
-          />
-          <InputWithValidation
-            name="password"
-            placeholder="Password"
-            icon={keyOutline}
-            type={showPassword ? 'text' : 'password'}
-            autocomplete="off"
-            {...props}
-          >
-            <IonButton slot="end" onClick={this.togglePassword} fill="clear">
-              <IonIcon
-                icon={showPassword ? eyeOutline : eyeOffOutline}
-                faint
-                size="small"
-              />
-            </IonButton>
-          </InputWithValidation>
+          <div className="rounded">
+            <InputWithValidation
+              name="firstName"
+              placeholder="First name"
+              icon={personOutline}
+              type="text"
+              autocomplete="off"
+              {...props}
+            />
+            <InputWithValidation
+              name="secondName"
+              placeholder="Last name"
+              icon={personOutline}
+              type="text"
+              autocomplete="off"
+              {...props}
+            />
+            <InputWithValidation
+              name="email"
+              placeholder="Email"
+              icon={mailOutline}
+              type="email"
+              autocomplete="off"
+              {...props}
+            />
+            <InputWithValidation
+              name="password"
+              placeholder="Password"
+              icon={keyOutline}
+              type={showPassword ? 'text' : 'password'}
+              autocomplete="off"
+              {...props}
+            >
+              <IonButton slot="end" onClick={this.togglePassword} fill="clear">
+                <IonIcon
+                  icon={showPassword ? eyeOutline : eyeOffOutline}
+                  faint
+                  size="small"
+                />
+              </IonButton>
+            </InputWithValidation>
+          </div>
 
           <div className="terms-info-text">
             <T>
