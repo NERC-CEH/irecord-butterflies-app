@@ -107,7 +107,12 @@ class Component extends React.Component {
         <Formik
           validationSchema={schema}
           onSubmit={onSubmit}
-          initialValues={{}}
+          initialValues={{
+            firstName: '',
+            secondName: '',
+            email: '',
+            password: '',
+          }}
         >
           {registrationForm}
         </Formik>
