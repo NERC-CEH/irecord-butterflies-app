@@ -53,7 +53,7 @@ const Menu: FC<Props> = ({ searchPhrase, values, onSelect, options }) => {
 
     const filterTypeOptions = filterOptions.map(getOption);
 
-    const shouldOpenCollapse = !!searchPhrase;
+    const shouldOpenCollapse = !!searchPhrase || options.length <= 1;
     const otherProps = shouldOpenCollapse && {
       groupProps: { value: type },
       value: type,

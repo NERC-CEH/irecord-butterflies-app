@@ -15,8 +15,6 @@ import { searchOutline } from 'ionicons/icons';
 import FiltersToolbar from 'Components/FiltersToolbar';
 import filterOptions from 'common/data/species/filters';
 
-import './styles.scss';
-
 const DeaultBackButton = () => (
   <IonButtons slot="start">
     <IonBackButton text="Back" data-label="back" defaultHref="/home" />

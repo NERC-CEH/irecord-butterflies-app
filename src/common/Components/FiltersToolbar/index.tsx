@@ -3,8 +3,10 @@ import { IonToolbar, IonSearchbar, isPlatform } from '@ionic/react';
 import clsx from 'clsx';
 import { checkmarkOutline } from 'ionicons/icons';
 import { Keyboard } from '@capacitor/keyboard';
+import { useTranslation } from 'react-i18next';
 import CurrentFilters from './CurrentFilters';
 import FiltersMenu, { FilterOption as FilterOptionType } from './FiltersMenu';
+import './styles.scss';
 
 export type FilterOption = FilterOptionType;
 export type FilterGroup = string;
@@ -44,6 +46,7 @@ const FiltersToolbar: FC<Props> = ({
   const [searchPhrase, setSearchPhrase] = useState('');
   const [tappedSearchEnd, setTappedSearchEnd] = useState(false);
   const searchInput: any = useRef();
+  const { t } = useTranslation();
 
   function onSearch(e: any) {
     const { value } = e.detail;
@@ -94,19 +97,19 @@ const FiltersToolbar: FC<Props> = ({
 
   return (
     <>
-      <IonToolbar className={clsx('searchbar', isOpen && 'searching')}>
+      <IonToolbar className={clsx('species-searchbar', isOpen && 'searching')}>
         <IonSearchbar
           ref={searchInput}
           onIonChange={onSearch}
           slot="end"
           showCancelButton="always"
-          cancelButtonText="Done"
+          cancelButtonText={t('Done')}
           cancelButtonIcon={checkmarkOutline}
           onIonCancel={onSearchEnd}
           type="search"
           enterkeyhint="done"
           onKeyUp={onKeyUp}
-          placeholder="Species name or filter..."
+          placeholder={t('Species name or filter...')}
           value={searchPhrase}
         />
       </IonToolbar>
