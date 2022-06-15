@@ -80,7 +80,7 @@ const HomeController: FC<Props> = ({ sample }) => {
   const isDisabled = sample.isUploaded();
   const isEditing = sample.metadata.saved;
 
-  const increaseCount = (taxon: any) => {
+  const increaseCount = (taxon: any, is5x: boolean) => {
     if (sample.isUploaded()) return;
 
     if (sample.hasZeroAbundance()) {
@@ -98,16 +98,24 @@ const HomeController: FC<Props> = ({ sample }) => {
     const { stage } = sample.attrs;
     const zeroAbundance = null;
 
-    const newSubSample = survey.smp.create(
-      Sample,
-      Occurrence,
-      taxon,
-      zeroAbundance,
-      stage
-    );
+    const addOneCount = () => {
+      const newSubSample = survey.smp.create(
+        Sample,
+        Occurrence,
+        taxon,
+        zeroAbundance,
+        stage
+      );
+      newSubSample.startGPS();
 
-    sample.samples.push(newSubSample);
-    newSubSample.startGPS();
+      sample.samples.push(newSubSample);
+    };
+
+    if (is5x) {
+      [...Array(5)].forEach(addOneCount);
+    } else {
+      addOneCount();
+    }
     sample.save();
 
     isPlatform('hybrid') && hapticsImpact();

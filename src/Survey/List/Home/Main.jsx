@@ -24,6 +24,7 @@ import exact from 'prop-types-exact';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
 import InfoBackgroundMessage from 'common/Components/InfoBackgroundMessage';
 import VerificationIcon from 'common/Components/VerificationIcon';
+import IncrementalButton from 'Survey/common/Components/IncrementalButton';
 import config from 'common/config';
 
 const speciesNameSort = (occ1, occ2) => {
@@ -134,7 +135,9 @@ function HomeMain({
     const getSpeciesEntry = occ => {
       const isSpeciesDisabled = !occ.attrs.count;
 
-      const increaseCountWrap = () => !isDisabled && increaseCount(occ);
+      const increaseCountWrap = () => increaseCount(occ);
+      const increase5xCountWrap = () => increaseCount(occ, true);
+
       const navToOccurrenceWrap = () =>
         !isSpeciesDisabled && navigateToOccurrence(occ);
       const deleteOccurrenceWrap = () => deleteOccurrence(occ);
@@ -146,14 +149,12 @@ function HomeMain({
           >
             <VerificationIcon occ={occ} />
 
-            <IonButton
-              class="area-count-edit-count"
+            <IncrementalButton
               onClick={increaseCountWrap}
-              fill="clear"
-            >
-              {occ.attrs.count}
-              <div className="label-divider" />
-            </IonButton>
+              onLongClick={increase5xCountWrap}
+              value={occ.attrs.count}
+              disabled={isDisabled}
+            />
             <IonLabel onClick={navToOccurrenceWrap}>
               {occ.attrs.taxon.commonName}
             </IonLabel>

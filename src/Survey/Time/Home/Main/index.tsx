@@ -25,6 +25,7 @@ import { mapOutline, warningOutline, clipboardOutline } from 'ionicons/icons';
 import { useRouteMatch } from 'react-router';
 import Stopwatch from 'Survey/Time/Components/Stopwatch';
 import VerificationListIcon from 'common/Components/VerificationListIcon';
+import IncrementalButton from 'Survey/common/Components/IncrementalButton';
 import UKBMSlogo from './UKBMSlogo.png';
 import './styles.scss';
 
@@ -86,11 +87,8 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
     const speciesName = taxon.commonName;
 
     // const isShallow = !species.count;
-    const increaseCountWrap = (e: any) => {
-      e.preventDefault();
-      e.stopPropagation();
-      increaseCount(taxon);
-    };
+    const increaseCountWrap = () => increaseCount(taxon);
+    const increase5xCountWrap = () => increaseCount(taxon, true);
 
     const navigateToSpeciesOccurrences = () =>
       !hasZeroAbundance &&
@@ -113,14 +111,12 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
         }
         onClick={navigateToSpeciesOccurrences}
       >
-        <IonButton
-          className="precise-area-count-edit-count"
+        <IncrementalButton
           onClick={increaseCountWrap}
-          fill="clear"
-        >
-          {species.count}
-          <div className="label-divider" />
-        </IonButton>
+          onLongClick={increase5xCountWrap}
+          value={species.count}
+          disabled={isDisabled}
+        />
         <IonLabel>{speciesName}</IonLabel>
         <IonLabel slot="end" className="location-spinner">
           {location}

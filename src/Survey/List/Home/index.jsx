@@ -61,8 +61,15 @@ function showListSurveyTip(alert) {
     buttons: [{ text: 'OK, got it' }],
   });
 }
-function increaseCount(occ) {
-  occ.attrs.count++; // eslint-disable-line no-param-reassign
+function increaseCount(occ, is5x) {
+  const addOneCount = () => occ.attrs.count++; // eslint-disable-line no-param-reassign
+
+  if (is5x) {
+    [...Array(5)].forEach(addOneCount);
+  } else {
+    addOneCount();
+  }
+
   occ.save();
 }
 
