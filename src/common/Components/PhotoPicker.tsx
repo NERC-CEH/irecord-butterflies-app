@@ -51,7 +51,6 @@ const AppPhotoPicker: FC<Props> = ({ model }) => {
         config.dataPath
       );
     const imageModels = images.map(getImageModel);
-    (window as any).imageModels = imageModels;
     return Promise.all(imageModels);
   }
 
