@@ -1,11 +1,14 @@
-import PropTypes from 'prop-types';
-import exact from 'prop-types-exact';
+import { FC } from 'react';
 import { Page, Header } from '@flumens';
 import { observer } from 'mobx-react';
+import Occurrence from 'models/occurrence';
 import Main from './Main';
 import './styles.scss';
 
-function OccurrenceHome({ occurrence }) {
+type Props = {
+  occurrence: Occurrence;
+};
+const OccurrenceHome: FC<Props> = ({ occurrence }) => {
   if (!occurrence) {
     return null;
   }
@@ -16,10 +19,6 @@ function OccurrenceHome({ occurrence }) {
       <Main occurrence={occurrence} />
     </Page>
   );
-}
-
-OccurrenceHome.propTypes = exact({
-  occurrence: PropTypes.object.isRequired,
-});
+};
 
 export default observer(OccurrenceHome);

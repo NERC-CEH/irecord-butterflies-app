@@ -29,6 +29,7 @@ export interface Attrs extends ModelAttrs {
 
   // draft survey pointers
   'draftId:point': null;
+  'draftId:list': null;
   'draftId:single-species-count': null;
 
   // tips
@@ -63,6 +64,7 @@ const defaults: Attrs = {
 
   // draft survey pointers
   'draftId:point': null,
+  'draftId:list': null,
   'draftId:single-species-count': null,
 
   // tips

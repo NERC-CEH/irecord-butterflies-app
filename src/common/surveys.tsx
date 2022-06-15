@@ -15,6 +15,14 @@ export interface Survey {
 
   attrs: Attrs;
 
+  occ?: {
+    attrs: Attrs;
+
+    create: (Occurrence: typeof AppOccurrence, taxon: any) => AppOccurrence;
+
+    verify?: (attrs: any) => any;
+  };
+
   smp?: {
     attrs: Attrs;
 

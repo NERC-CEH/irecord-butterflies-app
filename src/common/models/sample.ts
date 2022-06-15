@@ -51,6 +51,8 @@ class AppSample extends Sample {
 
   backgroundGPSExtensionInit: any; // from extension
 
+  startGPS: any; // from extension
+
   stopGPS: any; // from extension
 
   stopBackgroundGPS: any; // from extension

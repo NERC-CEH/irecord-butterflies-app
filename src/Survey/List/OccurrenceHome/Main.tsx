@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { observer } from 'mobx-react';
 import {
   IonItemDivider,
@@ -7,17 +8,20 @@ import {
   IonAvatar,
 } from '@ionic/react';
 import clsx from 'clsx';
+import Occurrence from 'models/occurrence';
 import { useRouteMatch } from 'react-router';
 import { Attr, Main, MenuAttrItem, MenuAttrItemFromModel } from '@flumens';
-import PropTypes from 'prop-types';
-import exact from 'prop-types-exact';
 import PhotoPicker from 'common/Components/PhotoPicker';
 import numberIcon from 'common/images/number.svg';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
-import species from 'common/data/species';
+import species, { Species } from 'common/data/species';
 import VerificationMessage from 'Survey/common/Components/VerificationMessage';
 
-function OccurrenceHomeMain({ occurrence }) {
+type Props = {
+  occurrence: Occurrence;
+};
+
+const OccurrenceHomeMain: FC<Props> = ({ occurrence }) => {
   const match = useRouteMatch();
 
   const isDisabled = occurrence.isDisabled();
@@ -35,8 +39,8 @@ function OccurrenceHomeMain({ occurrence }) {
       );
     }
 
-    const byId = ({ id: speciesID }) => speciesID === taxon.id;
-    const fullSpeciesProfile = species.find(byId);
+    const byId = ({ id: speciesID }: Species) => speciesID === taxon.id;
+    const fullSpeciesProfile = species.find(byId) as Species;
 
     const { commonName, scientificName, thumbnail } = fullSpeciesProfile;
 
@@ -101,10 +105,6 @@ function OccurrenceHomeMain({ occurrence }) {
       </IonList>
     </Main>
   );
-}
-
-OccurrenceHomeMain.propTypes = exact({
-  occurrence: PropTypes.object.isRequired,
-});
+};
 
 export default observer(OccurrenceHomeMain);

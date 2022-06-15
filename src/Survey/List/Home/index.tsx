@@ -1,18 +1,17 @@
-import { useContext, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import exact from 'prop-types-exact';
+import { FC, useContext, useEffect } from 'react';
 import { useRouteMatch } from 'react-router';
 import { Page, Header, useAlert, useToast } from '@flumens';
 import { observer } from 'mobx-react';
 import appModel from 'models/app';
+import Occurrence from 'models/occurrence';
+import Sample, { useValidateCheck } from 'models/sample';
 import { useUserStatusCheck } from 'models/user';
-import { useValidateCheck } from 'models/sample';
 import { IonButton, NavContext } from '@ionic/react';
 import Main from './Main';
 import buttonWithExplanationImage from './buttonWithExplanationImage.png';
 import './styles.scss';
 
-function showListSurveyHiddenButtonTip(alert) {
+function showListSurveyHiddenButtonTip(alert: any) {
   alert({
     header: 'List survey tip',
     message: (
@@ -32,7 +31,7 @@ function showListSurveyHiddenButtonTip(alert) {
   });
 }
 
-function showListSurveyTip(alert) {
+function showListSurveyTip(alert: any) {
   alert({
     header: 'List survey',
     message: (
@@ -61,8 +60,8 @@ function showListSurveyTip(alert) {
     buttons: [{ text: 'OK, got it' }],
   });
 }
-function increaseCount(occ, is5x) {
-  const addOneCount = () => occ.attrs.count++; // eslint-disable-line no-param-reassign
+function increaseCount(occ: Occurrence, is5x: boolean) {
+  const addOneCount = () => (occ.attrs.count as number)++; // eslint-disable-line no-param-reassign
 
   if (is5x) {
     [...Array(5)].forEach(addOneCount);
@@ -73,7 +72,7 @@ function increaseCount(occ, is5x) {
   occ.save();
 }
 
-function deleteOccurrence(occ, alert) {
+function deleteOccurrence(occ: Occurrence, alert: any) {
   const { commonName } = occ.attrs.taxon;
 
   alert({
@@ -96,7 +95,11 @@ function deleteOccurrence(occ, alert) {
   });
 }
 
-function Home({ sample }) {
+type Props = {
+  sample: Sample;
+};
+
+const Home: FC<Props> = ({ sample }) => {
   const match = useRouteMatch();
   const alert = useAlert();
   const toast = useToast();
@@ -162,7 +165,7 @@ function Home({ sample }) {
 
   const isDisabled = sample.isUploaded();
 
-  const navigateToOccurrence = occ => {
+  const navigateToOccurrence = (occ: Occurrence) => {
     navigate(`${match.url}/occ/${occ.cid}`);
   };
 
@@ -179,7 +182,8 @@ function Home({ sample }) {
     </IonButton>
   );
 
-  const deleteOccurrenceWrap = occ => deleteOccurrence(occ, alert);
+  const deleteOccurrenceWrap = (occ: Occurrence) =>
+    deleteOccurrence(occ, alert);
 
   return (
     <Page id="survey-list-edit">
@@ -199,10 +203,6 @@ function Home({ sample }) {
       />
     </Page>
   );
-}
-
-Home.propTypes = exact({
-  sample: PropTypes.object.isRequired,
-});
+};
 
 export default observer(Home);

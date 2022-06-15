@@ -1,8 +1,10 @@
+import { FC } from 'react';
 import { RouteWithModels, AttrPage } from '@flumens';
 import savedSamples from 'models/savedSamples';
 import StartNewSurvey from 'Survey/common/Components/StartNewSurvey';
 import ModelLocationWithInfo from 'Survey/common/Components/ModelLocationWithInfo';
 import Species from 'Survey/common/Components/Species';
+import Occurrence from 'models/occurrence';
 import Home from './Home';
 import OccurrenceHome from './OccurrenceHome';
 import survey from './config';
@@ -11,8 +13,8 @@ const { AttrPageFromRoute } = AttrPage;
 
 const baseURL = `/survey/${survey.name}`;
 
-// eslint-disable-next-line
-const OccurrenceHomeWrap = ({ occurrence }) => (
+type OccurrenceHomeWrapProps = { occurrence: Occurrence };
+const OccurrenceHomeWrap: FC<OccurrenceHomeWrapProps> = ({ occurrence }) => (
   <OccurrenceHome occurrence={occurrence} />
 );
 

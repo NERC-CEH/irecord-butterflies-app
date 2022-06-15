@@ -7,9 +7,11 @@ import {
   stageAttr,
   verifyLocationSchema,
 } from 'Survey/common/config';
+import { Survey } from 'common/surveys';
+import Occurrence from 'models/occurrence';
+import Sample from 'models/sample';
 import { isPlatform } from '@ionic/react';
 import { chatboxOutline, expandOutline } from 'ionicons/icons';
-import icon from 'common/images/butterflyIcon.svg';
 import config from 'common/config';
 
 const areaOptions = [
@@ -27,11 +29,9 @@ const areaOptions = [
   },
 ];
 
-const survey = {
+const survey: Survey = {
   id: 101, // same as the point
   name: 'list',
-  label: 'List', // we'll use species name
-  icon,
 
   attrs: {
     date: dateAttr,
@@ -61,7 +61,7 @@ const survey = {
       taxon: {
         remote: {
           id: 'taxa_taxon_list_id',
-          values: taxon => taxon.warehouseId,
+          values: (taxon: any) => taxon.warehouseId,
         },
       },
       count: { id: 16 },
@@ -77,8 +77,8 @@ const survey = {
       },
     },
 
-    create(Occurrence, taxon) {
-      return new Occurrence({
+    create(AppOccurrence: typeof Occurrence, taxon: any) {
+      return new AppOccurrence({
         attrs: {
           count: 1,
           comment: null,
@@ -88,7 +88,7 @@ const survey = {
       });
     },
 
-    verify(attrs) {
+    verify(attrs: any) {
       try {
         const occurrenceScheme = Yup.object().shape({
           taxon: Yup.object().nullable().required('Species is missing.'),
@@ -103,7 +103,7 @@ const survey = {
     },
   },
 
-  create(AppSample) {
+  create(AppSample: typeof Sample) {
     const sample = new AppSample({
       metadata: {
         survey: survey.name,
@@ -123,7 +123,7 @@ const survey = {
     return sample;
   },
 
-  verify(attrs) {
+  verify(attrs: any) {
     try {
       const sampleSchema = Yup.object().shape({
         location: verifyLocationSchema,

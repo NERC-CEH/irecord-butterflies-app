@@ -8,7 +8,11 @@ import { intercept } from 'mobx';
 import species, { Species } from 'common/data/species';
 import Media from './image';
 
-type Attrs = OccurrenceAttrs & { taxon: Species; stage: string };
+type Attrs = OccurrenceAttrs & {
+  taxon: Species;
+  stage?: string;
+  count?: number;
+};
 
 export default class AppOccurrence extends Occurrence {
   static fromJSON(json: any) {

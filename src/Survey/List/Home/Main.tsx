@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import clsx from 'clsx';
 import {
   IonItemDivider,
@@ -17,17 +18,17 @@ import {
   InfoMessage,
   MenuAttrItemFromModel,
 } from '@flumens';
+import Occurrence from 'models/occurrence';
+import Sample from 'models/sample';
 import { observer } from 'mobx-react';
 import { locationOutline, filterOutline } from 'ionicons/icons';
-import PropTypes from 'prop-types';
-import exact from 'prop-types-exact';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
 import InfoBackgroundMessage from 'common/Components/InfoBackgroundMessage';
 import VerificationIcon from 'common/Components/VerificationIcon';
 import IncrementalButton from 'Survey/common/Components/IncrementalButton';
 import config from 'common/config';
 
-const speciesNameSort = (occ1, occ2) => {
+const speciesNameSort = (occ1: Occurrence, occ2: Occurrence) => {
   const taxon1 = occ1.attrs.taxon;
   const taxonName1 = taxon1.commonName;
 
@@ -37,13 +38,23 @@ const speciesNameSort = (occ1, occ2) => {
   return taxonName1.localeCompare(taxonName2);
 };
 
-const speciesOccAddedTimeSort = (occ1, occ2) => {
+const speciesOccAddedTimeSort = (occ1: Occurrence, occ2: Occurrence) => {
   const date1 = new Date(occ1.metadata.created_on);
   const date2 = new Date(occ2.metadata.created_on);
   return date2.getTime() - date1.getTime();
 };
 
-function HomeMain({
+type Props = {
+  sample: Sample;
+  deleteOccurrence: any;
+  navigateToOccurrence: any;
+  listSurveyListSortedByTime: any;
+  increaseCount: any;
+  isDisabled: boolean;
+  onToggleSpeciesSort?: any;
+};
+
+const HomeMain: FC<Props> = ({
   sample,
   isDisabled,
   deleteOccurrence,
@@ -51,7 +62,7 @@ function HomeMain({
   listSurveyListSortedByTime,
   increaseCount,
   onToggleSpeciesSort,
-}) {
+}) => {
   const match = useRouteMatch();
 
   const getLocationButton = () => {
@@ -132,7 +143,7 @@ function HomeMain({
 
     const occurrences = [...sample.occurrences].sort(sort);
 
-    const getSpeciesEntry = occ => {
+    const getSpeciesEntry = (occ: Occurrence) => {
       const isSpeciesDisabled = !occ.attrs.count;
 
       const increaseCountWrap = () => increaseCount(occ);
@@ -152,7 +163,7 @@ function HomeMain({
             <IncrementalButton
               onClick={increaseCountWrap}
               onLongClick={increase5xCountWrap}
-              value={occ.attrs.count}
+              value={occ.attrs.count as number}
               disabled={isDisabled}
             />
             <IonLabel onClick={navToOccurrenceWrap}>
@@ -230,16 +241,6 @@ function HomeMain({
       {getSpeciesList()}
     </Main>
   );
-}
-
-HomeMain.propTypes = exact({
-  sample: PropTypes.object.isRequired,
-  deleteOccurrence: PropTypes.func.isRequired,
-  navigateToOccurrence: PropTypes.func.isRequired,
-  increaseCount: PropTypes.func.isRequired,
-  onToggleSpeciesSort: PropTypes.func.isRequired,
-  isDisabled: PropTypes.bool,
-  listSurveyListSortedByTime: PropTypes.bool,
-});
+};
 
 export default observer(HomeMain);
