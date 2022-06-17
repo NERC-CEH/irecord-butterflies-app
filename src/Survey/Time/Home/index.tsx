@@ -4,9 +4,11 @@ import Occurrence from 'models/occurrence';
 import appModel from 'models/app';
 import userModel from 'models/user';
 import { observer } from 'mobx-react';
-import { Page, Header, useAlert, useToast } from '@flumens';
+import { Page, Header, useAlert, useToast, useOnBackButton } from '@flumens';
 import { IonButton, NavContext, isPlatform } from '@ionic/react';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import { useRouteMatch, useLocation } from 'react-router';
+
 import Main from './Main';
 
 function useFinishConfirmationAlert() {
@@ -71,11 +73,13 @@ type Props = {
 };
 
 const HomeController: FC<Props> = ({ sample }) => {
-  const { navigate } = useContext(NavContext);
+  const { navigate, goBack } = useContext(NavContext);
   const toast = useToast();
   const showFinishConfirmationAlert = useFinishConfirmationAlert();
   const showLeaveConfirmationAlert = useShowLeaveConfirmationAlert();
   const checkSampleStatus = useValidateCheck(sample);
+  const { pathname } = useLocation();
+  const { url } = useRouteMatch();
 
   const isDisabled = sample.isUploaded();
   const isEditing = sample.metadata.saved;
@@ -172,13 +176,21 @@ const HomeController: FC<Props> = ({ sample }) => {
     </IonButton>
   );
 
+  const isDetailsPage = url !== pathname;
+
   const onLeave = async () => {
+    if (isDetailsPage) {
+      goBack();
+      return;
+    }
+
     if (!sample.isUploaded()) {
       await showLeaveConfirmationAlert();
     }
 
-    navigate(`/home/surveys`, 'root'); // root instead of back because of some url mess up
+    navigate(`/home/surveys`, 'root', 'pop'); // root instead of back because of some url mess up
   };
+  useOnBackButton(onLeave);
 
   return (
     <Page id="single-species-count-home">

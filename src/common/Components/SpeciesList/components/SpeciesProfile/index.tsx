@@ -14,7 +14,7 @@ import 'swiper/css/pagination';
 import '@ionic/react/css/ionic-swiper.css';
 import clsx from 'clsx';
 import { expandOutline } from 'ionicons/icons';
-import { Main, Gallery } from '@flumens';
+import { Main, Gallery, useDisableBackButton } from '@flumens';
 import { Trans as T } from 'react-i18next';
 import ImageWithBackground from 'Components/ImageWithBackground';
 import './styles.scss';
@@ -31,6 +31,8 @@ const SpeciesProfile: FC<Props> = ({ species, onRecord, isSurvey }) => {
   const [showGallery, setShowGallery] = useState<number>();
   const [showLifechart, setShowLifechart] = useState(false);
   const [showMap, setShowMap] = useState(false);
+
+  useDisableBackButton();
 
   const getFullScreenPhotoViewer = () => {
     let items = [];

@@ -1,5 +1,4 @@
 import { FC, useState } from 'react';
-import * as React from 'react';
 import { observer } from 'mobx-react';
 import {
   IonHeader,
@@ -15,7 +14,7 @@ import { searchOutline } from 'ionicons/icons';
 import FiltersToolbar from 'Components/FiltersToolbar';
 import filterOptions from 'common/data/species/filters';
 
-const DeaultBackButton = () => (
+const DefaultBackButton = () => (
   <IonButtons slot="start">
     <IonBackButton text="Back" data-label="back" defaultHref="/home" />
   </IonButtons>
@@ -26,25 +25,33 @@ type Props = {
   toggleFilter: (type: FilterGroup, value: Filter) => void;
   filters: any;
   title?: string;
-  BackButton?: React.ElementType;
+  onCancel?: any;
 };
 
 const Header: FC<Props> = ({
   onSearch,
   toggleFilter,
   filters,
-  BackButton = DeaultBackButton,
+  onCancel,
   title = 'Select Species',
 }) => {
   const [isSearching, setIsSearching] = useState(false);
   const onSearchStart = () => setIsSearching(true);
   const onSearchEnd = () => setIsSearching(false);
 
+  const backButton = !onCancel ? (
+    <DefaultBackButton />
+  ) : (
+    <IonButtons slot="start" onClick={onCancel}>
+      <IonButton color="dark">Cancel</IonButton>
+    </IonButtons>
+  );
+
   return (
     <IonHeader id="species-search-header">
       {!isSearching && (
         <IonToolbar>
-          <BackButton />
+          {backButton}
 
           <IonTitle>{title}</IonTitle>
 

@@ -1,10 +1,9 @@
-import { FC, useContext } from 'react';
-import { useRouteMatch } from 'react-router';
+import { FC, useContext, useState } from 'react';
+import { useRouteMatch, useLocation } from 'react-router';
 import Sample, { useValidateCheck } from 'models/sample';
 import { observer } from 'mobx-react';
-import { Page, Header } from '@flumens';
-import { NavContext, IonButton } from '@ionic/react';
-import CancelButton from 'Survey/Time/Components/CancelButton';
+import { Page, Header, useAlert, useOnBackButton } from '@flumens';
+import { NavContext, IonButton, IonButtons } from '@ionic/react';
 import Main from './Main';
 import './styles.scss';
 
@@ -12,10 +11,41 @@ type Props = {
   sample: Sample;
 };
 
+function useDeleteSurveyPrompt(alert: any) {
+  const deleteSurveyPromt = (resolve: (param: boolean) => void) => {
+    alert({
+      header: 'Delete Survey',
+      message:
+        'Warning - This will discard the survey information you have entered so far.',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => resolve(false),
+        },
+        {
+          text: 'Discard',
+          cssClass: 'primary',
+          handler: () => resolve(true),
+        },
+      ],
+    });
+  };
+
+  const deleteSurveyPromtWrap = () => new Promise(deleteSurveyPromt);
+
+  return deleteSurveyPromtWrap;
+}
+
 const DetailsController: FC<Props> = ({ sample }) => {
-  const { navigate } = useContext(NavContext);
+  const alert = useAlert();
+  const { navigate, goBack } = useContext(NavContext);
   const { url } = useRouteMatch();
+  const location = useLocation();
   const checkSampleStatus = useValidateCheck(sample);
+  const [isAlertPresent, setIsAlertPresent] = useState(false);
+  const shouldDeleteSurvey = useDeleteSurveyPrompt(alert);
 
   const hasTimerStarted = sample.attrs.startTime;
 
@@ -43,8 +73,39 @@ const DetailsController: FC<Props> = ({ sample }) => {
     </IonButton>
   );
 
+  // Entering details/:attr page, but match still showing details page match.url.
+  const isDetailsPage = url !== location.pathname;
+
+  const onDeleteSurvey = async () => {
+    if (isAlertPresent || isDetailsPage || hasTimerStarted) {
+      goBack();
+      return;
+    }
+
+    setIsAlertPresent(true);
+
+    const change = await shouldDeleteSurvey();
+    if (change) {
+      await sample.destroy();
+
+      setIsAlertPresent(false);
+      navigate('/home/surveys', 'root', 'pop');
+      return;
+    }
+
+    setIsAlertPresent(false);
+  };
+
+  useOnBackButton(onDeleteSurvey);
+
   // eslint-disable-next-line react/no-unstable-nested-components
-  const CancelButtonWrap = () => <CancelButton sample={sample} />;
+  const CancelButtonWrap = () => (
+    <IonButtons slot="start">
+      <IonButton color="dark" onClick={onDeleteSurvey}>
+        Cancel
+      </IonButton>
+    </IonButtons>
+  );
 
   return (
     <Page id="single-species-count-detail">

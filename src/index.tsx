@@ -25,7 +25,7 @@ console.log('🚩 App starting.'); // eslint-disable-line
 
 i18n.use(initReactI18next).init({ lng: 'en' });
 
-setupIonicReact({ hardwareBackButton: false, swipeBackEnabled: false });
+setupIonicReact({ swipeBackEnabled: false });
 
 mobxConfig({ enforceActions: 'never' });
 

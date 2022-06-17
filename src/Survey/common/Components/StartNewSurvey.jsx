@@ -4,7 +4,7 @@ import { useRouteMatch } from 'react-router';
 import exact from 'prop-types-exact';
 import { NavContext } from '@ionic/react';
 import Sample from 'models/sample';
-import { useAlert } from '@flumens';
+import { useAlert, useDisableBackButton } from '@flumens';
 import appModel from 'models/app';
 import Occurrence from 'models/occurrence';
 import savedSamples from 'models/savedSamples';
@@ -74,6 +74,8 @@ function StartNewSurvey({ survey, location }) {
   const match = useRouteMatch();
   const { navigate } = useContext(NavContext);
   const alert = useAlert();
+
+  useDisableBackButton();
 
   const draftIdKey = `draftId:${survey.name}`;
 
