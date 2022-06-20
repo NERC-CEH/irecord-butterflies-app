@@ -1,23 +1,25 @@
-import PropTypes from 'prop-types';
+import { FC } from 'react';
 import { isPlatform } from '@ionic/react';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
-import exact from 'prop-types-exact';
-import { Page, Header, useToast } from '@flumens';
+import { Page, Header, useToast, PickByType } from '@flumens';
+import appModel, { Attrs as AppModelAttrs } from 'models/app';
+import userModel from 'models/user';
+import savedSamples from 'models/savedSamples';
 import { observer } from 'mobx-react';
 import Main from './Main';
 
-const useResetApp = (saveSamples, appModel, userModel) => {
+const useResetApp = () => {
   const toast = useToast();
 
   const reset = async () => {
     console.log('Settings:Menu:Controller: resetting the application!');
 
     try {
-      await saveSamples.resetDefaults();
+      await savedSamples.resetDefaults();
       await appModel.resetDefaults();
       await userModel.resetDefaults();
       toast.success('Done');
-    } catch (err) {
+    } catch (err: any) {
       toast.error(err);
     }
   };
@@ -25,17 +27,20 @@ const useResetApp = (saveSamples, appModel, userModel) => {
   return reset;
 };
 
-function onToggle(appModel, setting, checked) {
+function onToggle(
+  setting: keyof PickByType<AppModelAttrs, boolean>,
+  checked: boolean
+) {
   appModel.attrs[setting] = checked; // eslint-disable-line
   appModel.save();
 
   isPlatform('hybrid') && Haptics.impact({ style: ImpactStyle.Light });
 }
 
-const MenuController = ({ savedSamples, appModel, userModel }) => {
-  const resetApp = useResetApp(savedSamples, appModel, userModel);
+const MenuController: FC = () => {
+  const resetApp = useResetApp();
 
-  const resetApplication = () => resetApp(savedSamples, appModel, userModel);
+  const resetApplication = () => resetApp();
 
   const {
     sendAnalytics,
@@ -46,9 +51,8 @@ const MenuController = ({ savedSamples, appModel, userModel }) => {
     useMoths,
   } = appModel.attrs;
 
-  const onToggleWrap = (...args) => onToggle(appModel, ...args);
-  const onToggleGuideLocation = checked => {
-    onToggle(appModel, 'useLocationForGuide', checked);
+  const onToggleGuideLocation = (checked: boolean) => {
+    onToggle('useLocationForGuide', checked);
 
     if (!checked) {
       // eslint-disable-next-line no-param-reassign
@@ -61,15 +65,15 @@ const MenuController = ({ savedSamples, appModel, userModel }) => {
     appModel.save();
   };
 
-  const onToggleSmartSorting = checked =>
-    onToggle(appModel, 'useSmartSorting', checked);
+  const onToggleSmartSorting = (checked: boolean) =>
+    onToggle('useSmartSorting', checked);
 
-  const onToggleProbabilitiesForGuide = checked =>
-    onToggle(appModel, 'useProbabilitiesForGuide', checked);
+  const onToggleProbabilitiesForGuide = (checked: boolean) =>
+    onToggle('useProbabilitiesForGuide', checked);
 
   const currentLocation = location && location.gridref;
 
-  const adminChangeLocation = e => {
+  const adminChangeLocation = (e: any) => {
     if (!appModel.attrs.location) {
       // eslint-disable-next-line no-param-reassign
       appModel.attrs.location = {};
@@ -80,11 +84,11 @@ const MenuController = ({ savedSamples, appModel, userModel }) => {
     console.log('setting hectad', appModel.attrs.location.gridref);
     appModel.save();
   };
-  const adminChangeWeek = e => {
+  const adminChangeWeek = (e: any) => {
     const currentWeek = parseInt(e.target.value, 10);
     if (currentWeek > 53) return;
-    window.admin.currentWeek = currentWeek;
-    console.log('setting week', window.admin.currentWeek);
+    (window as any).admin.currentWeek = currentWeek;
+    console.log('setting week', (window as any).admin.currentWeek);
   };
 
   return (
@@ -94,7 +98,7 @@ const MenuController = ({ savedSamples, appModel, userModel }) => {
         resetApp={resetApplication}
         sendAnalytics={sendAnalytics}
         useLocationForGuide={useLocationForGuide}
-        onToggle={onToggleWrap}
+        onToggle={onToggle}
         onToggleGuideLocation={onToggleGuideLocation}
         onToggleProbabilitiesForGuide={onToggleProbabilitiesForGuide}
         useProbabilitiesForGuide={useProbabilitiesForGuide}
@@ -109,11 +113,5 @@ const MenuController = ({ savedSamples, appModel, userModel }) => {
     </Page>
   );
 };
-
-MenuController.propTypes = exact({
-  userModel: PropTypes.object.isRequired,
-  appModel: PropTypes.object.isRequired,
-  savedSamples: PropTypes.array.isRequired,
-});
 
 export default observer(MenuController);
