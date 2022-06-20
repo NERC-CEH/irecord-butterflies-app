@@ -150,6 +150,9 @@ const SpeciesList: FC<Props> = ({
 
     let filteredSpecies: Species[] = [...species];
 
+    const skipNotInGuide = ({ inGuide }: Species) => inGuide;
+    filteredSpecies = filteredSpecies.filter(skipNotInGuide);
+
     if (ignore.length) {
       const skipIgnored = ({ id }: Species) => !ignore.includes(id);
       filteredSpecies = filteredSpecies.filter(skipIgnored);

@@ -11,7 +11,7 @@ import config from 'common/config';
 import pointSurvey from 'Survey/Point/config';
 import listSurvey from 'Survey/List/config';
 import timeSurvey from 'Survey/Time/config';
-import { Species } from 'common/data/species';
+import speciesProfiles, { Species } from 'common/data/species';
 import GPSExtension from './sampleGPSExt';
 import BackgroundGPSExtension from './sampleBackgroundGPSExt';
 import MetOfficeExtension from './sampleMetofficeExt';
@@ -86,12 +86,20 @@ class AppSample extends Sample {
     this.backgroundGPSExtensionInit();
   }
 
-  hasZeroAbundance() {
-    if (this.parent) {
-      return this.parent.samples[0].occurrences[0].attrs.zero_abundance;
+  hasZeroAbundance(id?: string) {
+    const hasZeroAbundance = (smp: Sample) =>
+      smp?.occurrences[0]?.hasZeroAbundance();
+
+    if (this.parent) return hasZeroAbundance(this);
+
+    if (id) {
+      const byTaxonId = (smp: Sample) =>
+        smp.occurrences[0].attrs.taxon.id === id;
+      const smp = this.samples.find(byTaxonId);
+      return hasZeroAbundance(smp);
     }
 
-    return this.samples[0]?.occurrences[0]?.attrs?.zero_abundance;
+    return !this.samples.some(hasZeroAbundance);
   }
 
   destroy(silent?: boolean) {
@@ -173,8 +181,27 @@ class AppSample extends Sample {
         zeroAbundance,
         stage
       );
-
       this.samples.push(newSubSample);
+
+      const addConfusionSpecies = (confusionSpeciesId: string) => {
+        const byId = ({ id }: Species) => id === confusionSpeciesId;
+        const confusionSpecies = speciesProfiles.find(byId);
+        if (!confusionSpecies) {
+          console.error(`Confusion species is missing: ${confusionSpeciesId}`);
+          return;
+        }
+
+        const confSpeciesSample = survey.smp.create(
+          AppSample,
+          Occurrence,
+          confusionSpecies,
+          zeroAbundance,
+          stage
+        );
+
+        this.samples.push(confSpeciesSample);
+      };
+      species.confusionSpecies?.forEach(addConfusionSpecies);
 
       return this.getCurrentEditRoute();
     }

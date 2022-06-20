@@ -13,22 +13,23 @@ export interface SpeciesInfo {
   warehouseId: number;
   commonName: string;
   scientificName: string;
-  status: string;
-  group: string;
-  family: string;
-  colour: string[];
+  inGuide?: boolean;
+  group?: string;
+  family?: string;
+  colour?: string[];
   markings?: string[];
   england?: string;
   scotland?: string;
   wales?: string;
   'northern ireland'?: string;
   'isle of man'?: string;
-  size: string[];
-  idTips: string;
-  habitats: string;
-  ukStatus: string;
+  size?: string[];
+  idTips?: string;
+  habitats?: string;
+  ukStatus?: string;
   webLink?: string;
   survey?: string;
+  confusionSpecies?: string[];
 }
 
 interface Photo {

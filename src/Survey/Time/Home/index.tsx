@@ -87,12 +87,15 @@ const HomeController: FC<Props> = ({ sample }) => {
   const increaseCount = (taxon: any, is5x: boolean) => {
     if (sample.isUploaded()) return;
 
-    if (sample.hasZeroAbundance()) {
+    if (sample.hasZeroAbundance(taxon.id)) {
+      const byTaxonId = (smp: Sample) =>
+        smp.occurrences[0].attrs.taxon.id === taxon.id;
+      const smp = sample.samples.find(byTaxonId);
       // eslint-disable-next-line no-param-reassign
-      sample.samples[0].occurrences[0].attrs.zero_abundance = null;
+      smp.occurrences[0].attrs.zero_abundance = null;
       // eslint-disable-next-line no-param-reassign
-      sample.samples[0].occurrences[0].attrs.stage = sample.attrs.stage;
-      sample.samples[0].startGPS();
+      smp.occurrences[0].attrs.stage = sample.attrs.stage;
+      smp.startGPS();
 
       sample.save();
       return;

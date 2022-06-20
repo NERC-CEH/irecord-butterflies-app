@@ -59,8 +59,11 @@ const SpeciesController: FC<Props> = ({ sample }) => {
     const taxon = { ...smp.occurrences[0].attrs.taxon };
     await smp.destroy();
 
-    const isLastSampleDeleted = sample.samples.length;
-    if (!isLastSampleDeleted) {
+    const byTaxonId = (s: Sample) =>
+      s.occurrences[0].attrs.taxon.id === taxon.id;
+
+    const isLastSampleDeleted = !sample.samples.filter(byTaxonId).length;
+    if (isLastSampleDeleted) {
       const survey = sample.getSurvey();
 
       const { stage } = sample.attrs;

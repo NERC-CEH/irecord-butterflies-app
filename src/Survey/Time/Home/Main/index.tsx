@@ -42,7 +42,7 @@ const buildSpeciesCount = (agg: any, smp: Sample) => {
 
   agg[id] = agg[id] || getDefaultTaxonCount(taxon); // eslint-disable-line
 
-  if (smp.hasZeroAbundance()) {
+  if (smp.hasZeroAbundance(taxon.id)) {
     return agg;
   }
 
@@ -79,7 +79,7 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
   }
 
   const getSpeciesEntry = ([id, species]: any) => {
-    const hasZeroAbundance = sample.hasZeroAbundance();
+    const hasZeroAbundance = sample.hasZeroAbundance(species.taxon.id);
 
     const isSpeciesDisabled = !species.count;
     const { taxon } = species;

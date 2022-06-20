@@ -1,3 +1,8 @@
+## 2.4.0
+
+Added timed count confusion species.
+Added +5 species count shortcut.
+
 ## 2.3.1
 
 Fixed user login issues.

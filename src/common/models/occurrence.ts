@@ -12,6 +12,7 @@ type Attrs = OccurrenceAttrs & {
   taxon: Species;
   stage?: string;
   count?: number;
+  zero_abundance?: 't' | 'f' | null;
 };
 
 export default class AppOccurrence extends Occurrence {
@@ -91,6 +92,10 @@ export default class AppOccurrence extends Occurrence {
     const statusWithSubstatus = `${this.metadata?.verification?.verification_status}${this.metadata?.verification?.verification_substatus}`;
 
     return codes[statusWithSubstatus];
+  }
+
+  hasZeroAbundance() {
+    return this.attrs.zero_abundance === 't';
   }
 
   isDisabled() {

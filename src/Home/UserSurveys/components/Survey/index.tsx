@@ -103,7 +103,9 @@ function getSampleInfo(sample: Sample) {
   if (survey.name === 'single-species-count') {
     const occ = sample?.samples[0]?.occurrences[0];
 
-    const count = sample?.samples?.length;
+    const nonZeroAbundance = (smp: Sample) =>
+      !smp?.occurrences[0]?.hasZeroAbundance();
+    const count = sample?.samples?.filter(nonZeroAbundance).length;
 
     const taxon = occ?.attrs?.taxon || {};
     const label = 'Timed count';
@@ -141,7 +143,7 @@ function getSampleInfo(sample: Sample) {
           </IonLabel>
           <IonLabel class="ion-text-wrap">{prettyDate}</IonLabel>
           <div className="badge-wrapper">
-            {!!count && !sample.hasZeroAbundance() && (
+            {!!count && (
               <IonBadge>
                 Count: <b>{count}</b>
               </IonBadge>
