@@ -209,7 +209,7 @@
         }
       ]
     },
-    "testRegex": "((src/\\.|/*.)(spec))\\.(t|j)s?$",
+    "testRegex": "src.*((\\.|/*.)(spec))\\.(t|j)s?$",
     "moduleNameMapper": {
       "^.+.(css|style|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
       "ionic-native": "jest-transform-stub",
