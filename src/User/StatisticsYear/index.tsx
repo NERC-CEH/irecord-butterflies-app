@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import exact from 'prop-types-exact';
+import { FC, useEffect, useState } from 'react';
 import {
   Page,
   Header,
@@ -15,11 +13,12 @@ import { IonRefresherContent, IonRefresher, IonBadge } from '@ionic/react';
 import { chevronDownOutline } from 'ionicons/icons';
 import { useRouteMatch } from 'react-router';
 import clsx from 'clsx';
+import userModel from 'models/user';
 import Table from './Components/Table';
 import fetchStats from './services';
 import './styles.scss';
 
-async function fetchStatsWrap(userModel, year, loader) {
+async function fetchStatsWrap(year: string, loader: any) {
   if (!device.isOnline) {
     return;
   }
@@ -46,10 +45,10 @@ for (let i = 0; i <= yearsSinceStart; i++) {
   allYears.push(`${currentYear - i}`);
 }
 
-function StatisticsYear({ userModel }) {
+const StatisticsYear: FC = () => {
   const loader = useLoader();
   const toast = useToast();
-  const match = useRouteMatch();
+  const match = useRouteMatch<{ year?: string }>();
   const [year, setYear] = useState(match.params.year || 'all');
 
   const list = userModel.attrs.statsYears[year] || [];
@@ -69,22 +68,24 @@ function StatisticsYear({ userModel }) {
     return <Table data={data} />;
   };
 
-  const onRefresh = async event => {
-    event.detail.complete();
+  const onRefresh = async (e: any) => {
+    e.detail.complete();
 
     if (!device.isOnline) {
       toast.warn("Sorry, looks like you're offline.");
       return;
     }
 
-    fetchStatsWrap(userModel, year, loader);
+    fetchStatsWrap(year, loader);
   };
 
-  const refreshStats = () => fetchStatsWrap(userModel, year, loader);
+  const refreshStats = () => {
+    fetchStatsWrap(year, loader);
+  };
   useEffect(refreshStats, [year]);
 
   const getYearSelector = () => {
-    const getYearItem = y => {
+    const getYearItem = (y: string) => {
       const setCurrentYear = () => setYear(y);
       const yearLabel = y === 'all' ? 'All Years' : y;
       return (
@@ -125,10 +126,6 @@ function StatisticsYear({ userModel }) {
       </Main>
     </Page>
   );
-}
-
-StatisticsYear.propTypes = exact({
-  userModel: PropTypes.object.isRequired,
-});
+};
 
 export default observer(StatisticsYear);

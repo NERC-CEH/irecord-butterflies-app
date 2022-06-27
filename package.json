@@ -92,6 +92,7 @@
     "@types/react-dom": "17.0.9",
     "@types/react-router": "^5.1.18",
     "@types/react-router-dom": "^5.3.3",
+    "@types/react-table": "^7.7.12",
     "babel-eslint": "10.1.0",
     "babel-jest": "^28.1.0",
     "babel-plugin-module-resolver": "4.1.0",
