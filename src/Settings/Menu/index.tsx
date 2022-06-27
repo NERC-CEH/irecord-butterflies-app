@@ -1,7 +1,7 @@
-import { FC } from 'react';
-import { isPlatform } from '@ionic/react';
+import { FC, useContext } from 'react';
+import { isPlatform, NavContext } from '@ionic/react';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
-import { Page, Header, useToast, PickByType } from '@flumens';
+import { Page, Header, useToast, PickByType, useLoader } from '@flumens';
 import appModel, { Attrs as AppModelAttrs } from 'models/app';
 import userModel from 'models/user';
 import savedSamples from 'models/savedSamples';
@@ -27,6 +27,30 @@ const useResetApp = () => {
   return reset;
 };
 
+const useDeleteUser = () => {
+  const toast = useToast();
+  const loader = useLoader();
+  const { goBack } = useContext(NavContext);
+
+  const deleteUser = async () => {
+    console.log('Settings:Menu:Controller: deleting the user!');
+
+    await loader.show('Please wait...');
+
+    try {
+      await userModel.delete();
+      goBack();
+      toast.success('Done');
+    } catch (err: any) {
+      toast.error(err);
+    }
+
+    loader.hide();
+  };
+
+  return deleteUser;
+};
+
 function onToggle(
   setting: keyof PickByType<AppModelAttrs, boolean>,
   checked: boolean
@@ -39,6 +63,7 @@ function onToggle(
 
 const MenuController: FC = () => {
   const resetApp = useResetApp();
+  const deleteUser = useDeleteUser();
 
   const resetApplication = () => resetApp();
 
@@ -96,6 +121,8 @@ const MenuController: FC = () => {
       <Header title="Settings" />
       <Main
         resetApp={resetApplication}
+        isLoggedIn={userModel.isLoggedIn()}
+        deleteUser={deleteUser}
         sendAnalytics={sendAnalytics}
         useLocationForGuide={useLocationForGuide}
         onToggle={onToggle}

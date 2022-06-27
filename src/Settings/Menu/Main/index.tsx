@@ -10,7 +10,9 @@ import {
   IonInput,
 } from '@ionic/react';
 import {
-  arrowUndoSharp,
+  warningOutline,
+  arrowUndoOutline,
+  personRemoveOutline,
   shareSocialOutline,
   locationOutline,
   filterOutline,
@@ -28,24 +30,64 @@ function resetDialog(resetApp: any, alert: any) {
     message: (
       <>
         Are you sure you want to reset the application to its initial state?
-        <p>
-          <b>This will wipe all the locally stored app data!</b>
-        </p>
+        <InfoMessage
+          color="danger"
+          icon={warningOutline}
+          className="destructive-warning"
+        >
+          This will wipe all the locally stored app data!
+        </InfoMessage>
       </>
     ),
     buttons: [
       { text: 'Cancel', role: 'cancel', cssClass: 'secondary' },
       {
         text: 'Reset',
-        cssClass: 'secondary',
+        role: 'destructive',
         handler: resetApp,
       },
     ],
   });
 }
 
+function useUserDeleteDialog(deleteUser: any) {
+  const alert = useAlert();
+
+  const showUserDeleteDialog = () => {
+    alert({
+      header: 'Account delete',
+      skipTranslation: true,
+      message: (
+        <>
+          Are you sure you want to delete your account?
+          <InfoMessage
+            color="danger"
+            icon={warningOutline}
+            className="destructive-warning"
+          >
+            This will permanently remove your access to the iRecord website and
+            any submitted records!
+          </InfoMessage>
+        </>
+      ),
+      buttons: [
+        { text: 'Cancel', role: 'cancel', cssClass: 'secondary' },
+        {
+          text: 'Delete',
+          role: 'destructive',
+          handler: deleteUser,
+        },
+      ],
+    });
+  };
+
+  return showUserDeleteDialog;
+}
+
 type Props = {
   resetApp: any;
+  deleteUser: any;
+  isLoggedIn: boolean;
   onToggle: any;
   onToggleGuideLocation: any;
   onToggleProbabilitiesForGuide: any;
@@ -62,6 +104,8 @@ type Props = {
 
 const MenuMain: FC<Props> = ({
   resetApp,
+  isLoggedIn,
+  deleteUser,
   sendAnalytics,
   onToggle,
   useLocationForGuide,
@@ -76,6 +120,7 @@ const MenuMain: FC<Props> = ({
   adminChangeWeek,
 }) => {
   const alert = useAlert();
+  const showUserDeleteDialog = useUserDeleteDialog(deleteUser);
 
   const getAdminControls = () => {
     const demoOnly = !isPlatform('hybrid');
@@ -101,7 +146,7 @@ const MenuMain: FC<Props> = ({
     );
   };
 
-  const showAlertDialog = () => resetDialog(resetApp, alert);
+  const showResetDialog = () => resetDialog(resetApp, alert);
 
   const onSendAnalyticsToggle = (checked: boolean) =>
     onToggle('sendAnalytics', checked);
@@ -119,18 +164,6 @@ const MenuMain: FC<Props> = ({
   return (
     <Main>
       <IonList lines="full">
-        <div className="rounded">
-          <MenuAttrToggle
-            icon={shareSocialOutline}
-            label="Share App Analytics"
-            value={sendAnalytics}
-            onChange={onSendAnalyticsToggle}
-          />
-          <InfoMessage color="medium">
-            Share app crash data so we can make the app more reliable.
-          </InfoMessage>
-        </div>
-
         <div className="rounded">
           <MenuAttrToggle
             icon={mothIcon}
@@ -184,16 +217,40 @@ const MenuMain: FC<Props> = ({
           </InfoMessage>
         </div>
 
+        <div className="rounded">
+          <MenuAttrToggle
+            icon={shareSocialOutline}
+            label="Share with app developers"
+            value={sendAnalytics}
+            onChange={onSendAnalyticsToggle}
+          />
+          <InfoMessage color="medium">
+            Share app crash data so we can make the app more reliable.
+          </InfoMessage>
+        </div>
+
         {getAdminControls()}
 
-        <div className="rounded">
-          <IonItem id="app-reset-btn" onClick={showAlertDialog}>
-            <IonIcon icon={arrowUndoSharp} size="small" slot="start" />
-            Reset App
+        <div className="rounded destructive-item">
+          <IonItem onClick={showResetDialog}>
+            <IonIcon icon={arrowUndoOutline} size="small" slot="start" />
+            <IonLabel>Reset app</IonLabel>
           </IonItem>
           <InfoMessage color="medium">
             You can reset the app data to its default settings.
           </InfoMessage>
+
+          {isLoggedIn && (
+            <>
+              <IonItem onClick={showUserDeleteDialog}>
+                <IonIcon icon={personRemoveOutline} size="small" slot="start" />
+                <IonLabel>Delete account</IonLabel>
+              </IonItem>
+              <InfoMessage color="medium">
+                You can delete your user account from the system.
+              </InfoMessage>
+            </>
+          )}
         </div>
       </IonList>
     </Main>
