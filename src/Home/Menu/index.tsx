@@ -29,7 +29,7 @@ function showLogoutConfirmationDialog(callback: any, alert: any) {
       },
       {
         text: 'Logout',
-        cssClass: 'primary',
+        role: 'destructive',
         handler: () => callback(),
       },
     ],
