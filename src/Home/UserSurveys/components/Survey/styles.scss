@@ -70,7 +70,7 @@
   ion-avatar {
     width: 50px;
     height: 50px;
-    background: #e7e7e738;
+    background: var(--avatar-background);
     margin: 5px 10px;
 
     ion-icon {

@@ -8,9 +8,24 @@ import {
   TableOptions,
 } from 'react-table';
 import { arrowDown, arrowUp } from 'ionicons/icons';
-import { IonIcon } from '@ionic/react';
+import { IonIcon, IonAvatar } from '@ionic/react';
+import butterflyIcon from 'common/images/butterflyIcon.svg';
 
 const columns = [
+  {
+    accessor: 'thumbnail',
+    disableSortBy: true,
+    className: 'avatar',
+    Cell: ({ value }: Cell<any>) => (
+      <IonAvatar>
+        {value ? (
+          <img src={value} />
+        ) : (
+          <IonIcon className="default-thumbnail" icon={butterflyIcon} />
+        )}
+      </IonAvatar>
+    ),
+  },
   {
     Header: 'Species',
     accessor: 'name',
@@ -18,7 +33,6 @@ const columns = [
   {
     Header: 'Records',
     accessor: 'record_count',
-    isSorted: true,
   },
   {
     Header: 'Count',

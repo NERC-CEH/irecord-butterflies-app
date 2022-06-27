@@ -14,6 +14,7 @@ import { chevronDownOutline } from 'ionicons/icons';
 import { useRouteMatch } from 'react-router';
 import clsx from 'clsx';
 import userModel from 'models/user';
+import species, { Species } from 'common/data/species';
 import Table from './Components/Table';
 import fetchStats from './services';
 import './styles.scss';
@@ -52,7 +53,14 @@ const StatisticsYear: FC = () => {
   const [year, setYear] = useState(match.params.year || 'all');
 
   const list = userModel.attrs.statsYears[year] || [];
-  const data = list;
+  const getEntryWithSpeciesImage = (entry: any) => {
+    const bySpeciesName = (sp: Species) =>
+      sp.scientificName === entry.accepted_name;
+    const { thumbnail } = species.find(bySpeciesName) || {};
+
+    return { ...entry, thumbnail };
+  };
+  const data = list.map(getEntryWithSpeciesImage);
   // const data = React.useMemo(() => list, []);
 
   const getReport = () => {
