@@ -1,0 +1,219 @@
+#img-array {
+  .warning-icon {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    background: #fff1f1d9;
+    color: var(--ion-color-danger);
+    border-radius: 100%;
+    font-size: 1.1em;
+    padding: 0px;
+  }
+
+  .success-icon {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    background: #f1fff4d9;
+    color: var(--ion-color-success);
+    border-radius: 100%;
+    font-size: 1.1em;
+    padding: 0px;
+  }
+
+  ion-spinner {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    background: #ffffff94;
+    border-radius: 50%;
+    height: 1.1em;
+    width: 1.1em;
+  }
+}
+
+.gallery-ai-message {
+  font-weight: 400;
+  font-size: 0.8em;
+
+  b {
+    color: var(--ion-color-danger);
+    font-size: 0.9em;
+  }
+}
+
+.gallery-ai-message.success b {
+  color: #0ae57e;
+}
+
+.gallery-ai-message .light {
+  color: var(--ion-color-light);
+}
+
+.gallery-ai-message.success .light {
+  color: var(--ion-color-light);
+}
+
+.gallery-modal ion-content .swiper .footer {
+  background: #1313137c !important;
+  height: 200px !important;
+
+  .re-identify-button {
+    --padding-start: 0;
+    --padding-end: 0;
+    background: var(--ion-color-primary);
+    border-radius: 10px;
+    font-size: 18px;
+    color: #fff;
+    padding: 0px 15px;
+
+    ion-icon {
+      margin-right: 15px;
+    }
+  }
+
+  #footer-container {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+
+    h3 {
+      font-size: 0.9em;
+      font-weight: 600;
+      color: #fff;
+      text-align: left;
+    }
+
+    .species-array {
+      width: 100%;
+      overflow: auto;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      align-self: stretch;
+
+      .species-tile {
+        padding: 10px 8px 0px 0;
+        display: flex;
+        position: relative;
+        max-width: 90%;
+        border-radius: 10px;
+        overflow: hidden;
+        min-width: 30%;
+        max-width: 30%;
+
+        .score {
+          width: 2em;
+          height: 2em;
+          background: #fff;
+          color: var(--ion-color-primary);
+          position: absolute;
+          z-index: 99;
+          border-radius: 50%;
+
+          border: 2px solid var(--ion-color-primary);
+          top: 1px;
+          right: 1px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          ion-label {
+            font-size: 0.6em;
+            font-weight: 600;
+          }
+        }
+
+        .container {
+          position: relative;
+          background: white;
+          display: flex;
+          flex-direction: column;
+          border-radius: 10px;
+          width: 100%;
+
+          ion-icon {
+            // TODO: remove once real pics are available
+            width: 100%;
+            height: 100%;
+            --ionicon-stroke-width: 5px;
+            z-index: 1;
+
+            svg path {
+              fill: white !important;
+            }
+          }
+
+          ion-label {
+            flex: 1;
+            text-align: center;
+            font-family: 'Museo700';
+            z-index: 10;
+            color: #121414;
+            font-size: 0.7em;
+            // margin-bottom: 5px;
+          }
+
+          overflow: hidden;
+
+          .thumbnail {
+            z-index: 10;
+          }
+          img.thumbnail-background {
+            position: absolute;
+            height: 100%;
+          }
+          div.thumbnail-background {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 40%;
+
+            img {
+              position: absolute;
+              filter: blur(30px);
+              transform: scale(2.5);
+              height: 100%;
+              width: 100%;
+            }
+          }
+
+          .info-box {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background: #fffffff0;
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+            box-shadow: 0 0 15px 5px #e6e6e6;
+            z-index: 100;
+
+            ion-icon {
+              width: 30%;
+              height: 50%;
+              --ionicon-stroke-width: 20;
+              position: absolute;
+              bottom: 4%;
+              left: 16%;
+            }
+          }
+        }
+      }
+
+      .img-placeholder {
+        background: #262626e3;
+        border-radius: 11px;
+        overflow: hidden;
+        min-width: 28%;
+        max-width: 28%;
+        position: relative;
+        display: flex;
+        align-self: stretch;
+        margin: 10px 5px 0px 5px;
+      }
+    }
+  }
+}

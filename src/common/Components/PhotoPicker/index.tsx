@@ -7,6 +7,9 @@ import Media from 'models/image';
 import Sample from 'models/sample';
 import Occurrence from 'models/occurrence';
 import config from 'common/config';
+import Gallery from './Components/Galery';
+import Image from './Components/Image';
+import './styles.scss';
 
 export function usePromptImageSource() {
   const { t } = useTranslation();
@@ -58,6 +61,8 @@ const AppPhotoPicker: FC<Props> = ({ model }) => {
     <PhotoPicker
       getImage={getImage}
       model={model}
+      Image={Image}
+      Gallery={Gallery}
       isDisabled={model.isDisabled()}
     />
   );
