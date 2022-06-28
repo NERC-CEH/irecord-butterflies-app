@@ -58,9 +58,15 @@ const Home: FC<Props> = ({ sample }) => {
   const isEditing = sample.metadata.saved;
 
   const isDisabled = sample.isUploaded();
+  const isValid = !sample.validateRemote();
 
   const finishButton = isDisabled ? null : (
-    <IonButton onClick={onFinish} color="primary" fill="solid" shape="round">
+    <IonButton
+      onClick={onFinish}
+      color={isValid ? 'primary' : 'medium'}
+      fill="solid"
+      shape="round"
+    >
       {isEditing ? 'Upload' : 'Finish'}
     </IonButton>
   );

@@ -173,8 +173,15 @@ const HomeController: FC<Props> = ({ sample }) => {
     await _processSubmission();
   };
 
+  const isValid = !sample.validateRemote();
+
   const finishButton = isDisabled ? null : (
-    <IonButton onClick={onFinish} color="primary" fill="solid" shape="round">
+    <IonButton
+      onClick={onFinish}
+      color={isValid ? 'primary' : 'medium'}
+      fill="solid"
+      shape="round"
+    >
       {isEditing ? 'Upload' : 'Finish'}
     </IonButton>
   );

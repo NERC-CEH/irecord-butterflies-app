@@ -60,10 +60,12 @@ const DetailsController: FC<Props> = ({ sample }) => {
     navigate(path, 'forward', 'replace');
   };
 
+  const isValid = !sample.validateRemote();
+
   const startTimerButton = !hasTimerStarted && (
     <IonButton
       onClick={onStartTimer}
-      color="primary"
+      color={isValid ? 'primary' : 'medium'}
       fill="solid"
       shape="round"
       className="start-count-button"
