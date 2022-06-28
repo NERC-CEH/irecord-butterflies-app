@@ -81,21 +81,24 @@ export default class AppMedia extends Media {
   }
 
   doesTaxonMatchParent() {
-    const species = this.attrs?.species?.[0];
+    const species = this.getTopSpecies();
     if (!species) return false;
 
     const speciesId = species.warehouse_id;
     const parentTaxon = this.parent.attrs?.taxon;
 
-    return (
-      speciesId === parentTaxon?.warehouseId ||
-      speciesId === parentTaxon?.preferredId
-    );
+    return speciesId === parentTaxon?.warehouseId;
   }
 
   // eslint-disable-next-line class-methods-use-this
   validateRemote() {
     return null;
+  }
+
+  getTopSpecies() {
+    if (!this.attrs.species) return null;
+
+    return this.attrs.species[0];
   }
 
   async identify() {
@@ -113,8 +116,6 @@ export default class AppMedia extends Media {
       const suggestions = await identifyImage(url);
 
       this.attrs.species = suggestions;
-
-      this.parent.save();
 
       this.parent.save();
     } catch (error) {

@@ -3,6 +3,9 @@ import axios, { AxiosResponse } from 'axios';
 import config from 'common/config';
 import species, { Species } from 'common/data/species';
 
+const BUTTERFLY_GROUP_ID = 8;
+const MOTH_GROUP_ID = 4;
+
 type Result = {
   classifier_id: string;
   classifier_name: string;
@@ -69,9 +72,8 @@ export default async function identify(url: string): Promise<Result[]> {
 
       if (!speciesIdMatches) return false;
 
-      // sp.group-8(moth) sp.group-4(butterfly)
-      const hasMothOrButterflyGroup = sp.group === 8 || sp.group === 4;
-
+      const hasMothOrButterflyGroup =
+        sp.group === BUTTERFLY_GROUP_ID || sp.group === MOTH_GROUP_ID;
       if (!hasMothOrButterflyGroup && !sp.taxa_taxon_list_id && !sp.taxon)
         return false;
 

@@ -25,11 +25,11 @@ const TitleMessage: FC<Props> = ({ image }) => {
   }
 
   const {
-    // eslint-disable-next-line
     default_common_name,
     taxon,
     probability: prob,
-  } = image.attrs.species[0];
+  } = image.getTopSpecies();
+
   // eslint-disable-next-line
   const taxonName = default_common_name || taxon;
   const probability = ((prob || 0) * 100).toFixed(0);
