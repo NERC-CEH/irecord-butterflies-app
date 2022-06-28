@@ -1,4 +1,12 @@
 #stopwatch {
+  &.paused {
+    --detail-icon-color: var(--ion-color-secondary);
+
+    ion-label[slot='end'] {
+      color: var(--ion-color-secondary);
+    }
+  }
+
   ion-label.ios span {
     display: inline-block;
     width: 50px;

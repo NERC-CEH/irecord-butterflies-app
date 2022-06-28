@@ -13,6 +13,23 @@ import {
 import getFormattedDuration from 'common/helpers/getFormattedDuration';
 import './styles.scss';
 
+const getTimeSpent = (sample: Sample) => {
+  const startTime = new Date(sample.attrs.startTime).getTime();
+  const pauseTime = new Date(sample.metadata.pausedTime).getTime();
+  const timestamp = sample.metadata.timerPausedTime
+    ? new Date(sample.metadata.timerPausedTime).getTime()
+    : Date.now();
+
+  const finishedSurveyTimestamp = sample.metadata.saved;
+  const referenceTime = finishedSurveyTimestamp || timestamp;
+
+  return referenceTime - startTime - pauseTime;
+};
+
+const getFormattedTime = (duration: number) => (
+  <span>{getFormattedDuration(duration)}</span>
+);
+
 type Props = {
   sample: Sample;
 };
@@ -49,19 +66,7 @@ const Stopwatch: FC<Props> = ({ sample }) => {
     sample.save();
   };
 
-  const formatTime = () => {
-    const startTime = new Date(sample.attrs.startTime).getTime();
-    const pauseTime = new Date(sample.metadata.pausedTime).getTime();
-    const timestamp = sample.metadata.timerPausedTime
-      ? new Date(sample.metadata.timerPausedTime).getTime()
-      : Date.now();
-
-    const referenceTime = finishedSurveyTimestamp || timestamp;
-
-    const duration = referenceTime - startTime - pauseTime;
-
-    return <span>{getFormattedDuration(duration)}</span>;
-  };
+  const timeSpent = getTimeSpent(sample);
 
   const initComponentRefresh = () => {
     setStopwatchID(startStopwatch());
@@ -80,6 +85,7 @@ const Stopwatch: FC<Props> = ({ sample }) => {
   if (!isTimerPaused) {
     detailIcon = pauseOutline;
   }
+
   if (sample.metadata.saved) {
     detailIcon = flagOutline;
   } else if (isTimerPaused) {
@@ -91,13 +97,14 @@ const Stopwatch: FC<Props> = ({ sample }) => {
       detail
       detailIcon={detailIcon}
       onClick={toggleTimer}
+      className={isTimerPaused ? 'paused' : ''}
       id="stopwatch"
     >
       <IonIcon icon={timeOutline} slot="start" />
       <IonLabel>
         <T>Duration</T>
       </IonLabel>
-      <IonLabel slot="end">{formatTime()}</IonLabel>
+      <IonLabel slot="end">{getFormattedTime(timeSpent)}</IonLabel>
     </IonItem>
   );
 };
