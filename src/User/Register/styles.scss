@@ -32,10 +32,14 @@
       color: var(--ion-color-dark);
     }
 
+    ion-icon.faint {
+      opacity: 0.6;
+    }
+
     ion-button[type='submit'] {
       margin: 15px auto;
       width: calc(100% - 30px);
-      max-width: 400px;
+      max-width: 200px;
       margin-bottom: 60px;
     }
   }
