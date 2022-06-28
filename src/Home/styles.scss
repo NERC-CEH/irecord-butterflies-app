@@ -77,6 +77,10 @@ ion-tab-bar {
     }
   }
 
+  ion-fab-button.md {
+    height: 80px;
+  }
+
   ion-fab-button:not(.fab-button-label) {
     --box-shadow: 0px 0px 8px rgb(70 76 72 / 40%),
       0px 0px 2px rgb(44 49 46 / 16%);
