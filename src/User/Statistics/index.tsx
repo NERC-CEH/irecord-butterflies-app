@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import exact from 'prop-types-exact';
+import { FC, useEffect } from 'react';
 import { Page, Header, Main, device, useToast, useLoader } from '@flumens';
 import { observer } from 'mobx-react';
 import {
@@ -11,43 +9,53 @@ import {
   IonRefresherContent,
   IonRefresher,
 } from '@ionic/react';
+import userModel from 'models/user';
 import { chevronDownOutline } from 'ionicons/icons';
 import InfoBackgroundMessage from 'common/Components/InfoBackgroundMessage';
 import './styles.scss';
 
-async function fetchStatsWrap(userModel, loader) {
-  if (!device.isOnline) {
-    return;
-  }
-
-  await loader.show('Please wait...');
-
-  try {
-    await userModel.fetchStats();
-  } catch (err) {
-    console.error(err);
-    // do nothing
-  }
-
-  loader.hide();
-}
-
-function Statistics({ userModel }) {
+function useFetchStats() {
   const toast = useToast();
   const loader = useLoader();
 
-  const onRefresh = async event => {
-    event.detail.complete();
+  async function fetchStats() {
+    if (!device.isOnline) {
+      return;
+    }
+
+    await loader.show('Please wait...');
+
+    try {
+      await userModel.fetchStats();
+    } catch (err: any) {
+      toast.error(err);
+      // do nothing
+    }
+
+    loader.hide();
+  }
+
+  return fetchStats;
+}
+
+const Statistics: FC = () => {
+  const toast = useToast();
+  const fetchStats = useFetchStats();
+
+  const onRefresh = async (e: any) => {
+    e.detail.complete();
 
     if (!device.isOnline) {
       toast.warn("Sorry, looks like you're offline.");
       return;
     }
 
-    fetchStatsWrap(userModel, loader);
+    fetchStats();
   };
 
-  const refreshStats = () => fetchStatsWrap(userModel, loader);
+  const refreshStats = () => {
+    fetchStats();
+  };
   useEffect(refreshStats, []);
 
   const getReport = () => {
@@ -77,7 +85,7 @@ function Statistics({ userModel }) {
 
     return (
       <>
-        <InfoBackgroundMessage className="info-background-message-plain">
+        <InfoBackgroundMessage>
           Swipe down to refresh statistics.
         </InfoBackgroundMessage>
 
@@ -173,10 +181,6 @@ function Statistics({ userModel }) {
       </Main>
     </Page>
   );
-}
-
-Statistics.propTypes = exact({
-  userModel: PropTypes.object.isRequired,
-});
+};
 
 export default observer(Statistics);

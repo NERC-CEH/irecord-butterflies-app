@@ -60,6 +60,8 @@ export class UserModel extends DrupalUserModel {
 
   getAchievedStatsMilestone?: any; // from extension
 
+  fetchStats?: any; // from extension
+
   constructor(options: any) {
     super(options);
     Object.assign(this, serviceExtension);

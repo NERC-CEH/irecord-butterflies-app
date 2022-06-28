@@ -16,26 +16,33 @@ import clsx from 'clsx';
 import userModel from 'models/user';
 import species, { Species } from 'common/data/species';
 import Table from './Components/Table';
-import fetchStats from './services';
+import fetchStatsService from './services';
 import './styles.scss';
 
-async function fetchStatsWrap(year: string, loader: any) {
-  if (!device.isOnline) {
-    return;
+function useFetchStats(year: string) {
+  const loader = useLoader();
+  const toast = useToast();
+
+  async function fetchStats() {
+    if (!device.isOnline) {
+      return;
+    }
+
+    await loader.show('Please wait...');
+
+    try {
+      const stats = await fetchStatsService(userModel, year);
+      userModel.attrs.statsYears[year] = stats; // eslint-disable-line
+      userModel.save();
+    } catch (err: any) {
+      toast.error(err);
+      // do nothing
+    }
+
+    loader.hide();
   }
 
-  await loader.show('Please wait...');
-
-  try {
-    const stats = await fetchStats(userModel, year);
-    userModel.attrs.statsYears[year] = stats; // eslint-disable-line
-    userModel.save();
-  } catch (err) {
-    console.error(err);
-    // do nothing
-  }
-
-  loader.hide();
+  return fetchStats;
 }
 
 const surveyStartyear = 2014;
@@ -47,10 +54,10 @@ for (let i = 0; i <= yearsSinceStart; i++) {
 }
 
 const StatisticsYear: FC = () => {
-  const loader = useLoader();
   const toast = useToast();
   const match = useRouteMatch<{ year?: string }>();
   const [year, setYear] = useState(match.params.year || 'all');
+  const fetchStats = useFetchStats(year);
 
   const list = userModel.attrs.statsYears[year] || [];
   const getEntryWithSpeciesImage = (entry: any) => {
@@ -84,11 +91,11 @@ const StatisticsYear: FC = () => {
       return;
     }
 
-    fetchStatsWrap(year, loader);
+    fetchStats();
   };
 
   const refreshStats = () => {
-    fetchStatsWrap(year, loader);
+    fetchStats();
   };
   useEffect(refreshStats, [year]);
 
