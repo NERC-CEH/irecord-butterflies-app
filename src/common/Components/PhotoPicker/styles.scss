@@ -106,23 +106,34 @@
           width: 2em;
           height: 2em;
           background: #fff;
-          color: var(--ion-color-primary);
           position: absolute;
           z-index: 99;
           border-radius: 50%;
-
-          border: 2px solid var(--ion-color-primary);
           top: 1px;
           right: 1px;
-
           display: flex;
           justify-content: center;
           align-items: center;
+        }
 
-          ion-label {
-            font-size: 0.6em;
-            font-weight: 600;
-          }
+        .success {
+          color: var(--ion-color-primary);
+          border: 2px solid var(--ion-color-primary);
+        }
+
+        .warning {
+          color: var(--ion-color-warning);
+          border: 2px solid var(--ion-color-warning);
+        }
+
+        .danger {
+          color: var(--ion-color-danger);
+          border: 2px solid var(--ion-color-danger);
+        }
+
+        ion-label {
+          font-size: 0.6em;
+          font-weight: 600;
         }
 
         .container {

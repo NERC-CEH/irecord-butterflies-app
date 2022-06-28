@@ -3,6 +3,9 @@ import Media from 'models/image';
 import { isPlatform, IonLabel, IonButton } from '@ionic/react';
 import '../styles.scss';
 
+const POSITIVE_THRESHOLD = 0.7;
+const POSSIBLE_THRESHOLD = 0.2;
+
 type Props = {
   image: Media;
   identifyImage: () => void;
@@ -16,11 +19,19 @@ const SpeciesTile = ({ sp, index }: any) => {
     probability,
   } = sp;
 
+  let color;
+  if (probability > POSITIVE_THRESHOLD) {
+    color = 'success';
+  } else if (probability > POSSIBLE_THRESHOLD) {
+    color = 'warning';
+  } else {
+    color = 'danger';
+  }
   const roundedProbability = (probability * 100).toFixed();
 
   return (
     <div key={index} className="species-tile">
-      <div className="score">
+      <div className={`score ${color}`}>
         <IonLabel>{roundedProbability}%</IonLabel>
       </div>
       <div className="container">
