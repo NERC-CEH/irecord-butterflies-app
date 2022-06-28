@@ -18,12 +18,12 @@ const useDeleteConfirmation = () => {
       buttons: [
         {
           text: 'Cancel',
-          cssClass: 'primary',
+          role: 'cancel',
           handler: () => resolve(false),
         },
         {
           text: 'Delete',
-          cssClass: 'secondary',
+          role: 'destructive',
           handler: () => resolve(true),
         },
       ],

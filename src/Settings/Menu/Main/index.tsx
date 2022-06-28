@@ -72,7 +72,10 @@ function useUserDeleteDialog(deleteUser: any) {
         </>
       ),
       buttons: [
-        { text: 'Cancel', role: 'cancel', cssClass: 'secondary' },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
         {
           text: 'Delete',
           role: 'destructive',
