@@ -65,8 +65,9 @@ function useUserDeleteDialog(deleteUser: any) {
             icon={warningOutline}
             className="destructive-warning"
           >
-            This will permanently remove your access to the iRecord website and
-            any submitted records!
+            This will remove your account on the iRecord website. You will lose
+            access to any records that you have previously submitted using the
+            app or website.
           </InfoMessage>
         </>
       ),
