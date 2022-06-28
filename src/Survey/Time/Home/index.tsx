@@ -191,6 +191,14 @@ const HomeController: FC<Props> = ({ sample }) => {
       await showLeaveConfirmationAlert();
     }
 
+    const canPauseTimer =
+      !sample.metadata.saved && !sample.metadata.timerPausedTime;
+    if (canPauseTimer) {
+      // eslint-disable-next-line no-param-reassign
+      sample.metadata.timerPausedTime = new Date();
+      sample.save();
+    }
+
     navigate(`/home/surveys`, 'root', 'pop'); // root instead of back because of some url mess up
   };
   useOnBackButton(onLeave);
