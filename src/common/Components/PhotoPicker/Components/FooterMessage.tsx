@@ -13,7 +13,7 @@ type Props = {
 
 const SpeciesTile = ({ sp, index }: any) => {
   const {
-    commonName,
+    common_name: commonName,
     thumbnail: thumbnailSrc,
     thumbnailBackground,
     probability,
