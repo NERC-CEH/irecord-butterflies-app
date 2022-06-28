@@ -1,4 +1,4 @@
-import { FC, useContext } from 'react';
+import { FC } from 'react';
 import { observer } from 'mobx-react';
 import { toJS } from 'mobx';
 import Sample from 'models/sample';
@@ -15,7 +15,6 @@ import {
   IonIcon,
   IonButton,
   IonLabel,
-  NavContext,
   IonSpinner,
   IonItem,
 } from '@ionic/react';
@@ -65,7 +64,6 @@ const buildSpeciesCount = (agg: any, smp: Sample) => {
 };
 
 const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
-  const { navigate } = useContext(NavContext);
   const { url } = useRouteMatch();
   const { area } = sample.attrs.location || {};
   const isDisabled = sample.isUploaded();
@@ -81,7 +79,6 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
   const getSpeciesEntry = ([id, species]: any) => {
     const hasZeroAbundance = sample.hasZeroAbundance(species.taxon.id);
 
-    const isSpeciesDisabled = !species.count;
     const { taxon } = species;
 
     const speciesName = taxon.commonName;
@@ -90,10 +87,6 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
     const increaseCountWrap = () => increaseCount(taxon);
     const increase5xCountWrap = () => increaseCount(taxon, true);
 
-    const navigateToSpeciesOccurrences = () =>
-      !hasZeroAbundance &&
-      navigate(`${url}/speciesOccurrences/${taxon.warehouseId}`);
-
     let location;
     if (species.hasLocationMissing) {
       location = <IonIcon icon={warningOutline} color="danger" />;
@@ -101,16 +94,12 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
       location = <IonSpinner />;
     }
 
+    const routerLink = !hasZeroAbundance
+      ? `${url}/speciesOccurrences/${taxon.warehouseId}`
+      : undefined;
+
     return (
-      <IonItem
-        key={id}
-        detail={
-          !isSpeciesDisabled &&
-          !hasZeroAbundance &&
-          !sample.hasOccurrencesBeenVerified()
-        }
-        onClick={navigateToSpeciesOccurrences}
-      >
+      <IonItem key={id} routerLink={routerLink}>
         <IncrementalButton
           onClick={increaseCountWrap}
           onLongClick={increase5xCountWrap}
