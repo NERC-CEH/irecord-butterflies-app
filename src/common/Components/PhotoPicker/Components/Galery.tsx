@@ -1,6 +1,5 @@
 import { FC } from 'react';
-import { Gallery } from '@flumens';
-import { useUserStatusCheck } from 'models/user';
+import { Gallery, device, useToast } from '@flumens';
 import Media from 'models/image';
 import { observer } from 'mobx-react';
 import TitleMessage from './TitleMessage';
@@ -11,22 +10,46 @@ type Props = {
   items: Media[];
   showGallery: number;
   onClose: () => boolean;
+  useSpeciesImageClassifier: boolean;
+  isLoggedIn: boolean;
 };
 
-const GalleryComponent: FC<Props> = ({ items, showGallery, onClose }) => {
-  const checkUserStatus = useUserStatusCheck();
+const GalleryComponent: FC<Props> = ({
+  items,
+  showGallery,
+  onClose,
+  useSpeciesImageClassifier,
+  isLoggedIn,
+}) => {
+  const toast = useToast();
 
   const getItem = (image: Media) => {
     const identifyImage = async () => {
-      const isUserOK = await checkUserStatus();
-      if (!isUserOK) return;
+      if (!device.isOnline) {
+        toast.warn('Looks like you are offline!');
+        return;
+      }
+
+      if (!isLoggedIn) {
+        toast.warn('Please login!');
+        return;
+      }
+
       onClose();
+      if (!isLoggedIn && !device.isOnline && !useSpeciesImageClassifier) return;
+
       await image.identify();
     };
 
     return {
       src: image.getURL(),
-      footer: <FooterMessage image={image} identifyImage={identifyImage} />,
+      footer: (
+        <FooterMessage
+          useSpeciesImageClassifier={useSpeciesImageClassifier}
+          image={image}
+          identifyImage={identifyImage}
+        />
+      ),
       title: <TitleMessage image={image} />,
     };
   };

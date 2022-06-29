@@ -1,10 +1,12 @@
 import { FC } from 'react';
-import { PhotoPicker, captureImage } from '@flumens';
+import { PhotoPicker, captureImage, device } from '@flumens';
 import { useTranslation } from 'react-i18next';
 import { useIonActionSheet, isPlatform } from '@ionic/react';
 import { Capacitor } from '@capacitor/core';
 import Media from 'models/image';
 import Sample from 'models/sample';
+import appModel from 'models/app';
+import userModel from 'models/user';
 import Occurrence from 'models/occurrence';
 import config from 'common/config';
 import Gallery from './Components/Galery';
@@ -38,6 +40,9 @@ type Props = {
 const AppPhotoPicker: FC<Props> = ({ model }) => {
   const promptImageSource = usePromptImageSource();
 
+  const isLoggedIn = userModel.isLoggedIn();
+  const { useSpeciesImageClassifier } = appModel.attrs;
+
   async function getImage() {
     const shouldUseCamera = await promptImageSource();
     const cancelled = shouldUseCamera === null;
@@ -48,21 +53,36 @@ const AppPhotoPicker: FC<Props> = ({ model }) => {
     );
     if (!images.length) return null;
 
-    const getImageModel = (image: any) =>
-      Media.getImageModel(
+    const getImageModel = async (image: any) => {
+      const imageModel: any = await Media.getImageModel(
         isPlatform('hybrid') ? Capacitor.convertFileSrc(image) : image,
         config.dataPath
       );
+
+      if (device.isOnline && isLoggedIn && useSpeciesImageClassifier) {
+        imageModel.identify();
+      }
+
+      return imageModel;
+    };
     const imageModels = images.map(getImageModel);
     return Promise.all(imageModels);
   }
+
+  const GalleryWithProps = (props: any) => (
+    <Gallery
+      useSpeciesImageClassifier={useSpeciesImageClassifier}
+      isLoggedIn={isLoggedIn}
+      {...props}
+    />
+  );
 
   return (
     <PhotoPicker
       getImage={getImage}
       model={model}
       Image={Image}
-      Gallery={Gallery}
+      Gallery={GalleryWithProps}
       isDisabled={model.isDisabled()}
     />
   );

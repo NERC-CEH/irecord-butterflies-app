@@ -9,6 +9,7 @@ const POSSIBLE_THRESHOLD = 0.2;
 type Props = {
   image: Media;
   identifyImage: () => void;
+  useSpeciesImageClassifier: boolean;
 };
 
 const SpeciesTile = ({ sp, index }: any) => {
@@ -50,11 +51,15 @@ const SpeciesTile = ({ sp, index }: any) => {
   );
 };
 
-const FooterMessage: FC<Props> = ({ image, identifyImage }) => {
+const FooterMessage: FC<Props> = ({
+  useSpeciesImageClassifier,
+  image,
+  identifyImage,
+}) => {
   const identifierWasNotUsed = !image.attrs.species;
   const speciesList = image.attrs.species;
 
-  if (identifierWasNotUsed) {
+  if (useSpeciesImageClassifier && identifierWasNotUsed) {
     return (
       <IonButton
         className="re-identify-button"

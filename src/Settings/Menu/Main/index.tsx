@@ -16,6 +16,7 @@ import {
   shareSocialOutline,
   locationOutline,
   filterOutline,
+  cameraOutline,
 } from 'ionicons/icons';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import mothIcon from 'common/images/mothIcon.svg';
@@ -97,6 +98,7 @@ type Props = {
   onToggleProbabilitiesForGuide: any;
   onToggleSmartSorting: any;
   useMoths: boolean;
+  useSpeciesImageClassifier: boolean;
   useSmartSorting?: boolean;
   useProbabilitiesForGuide?: boolean;
   useLocationForGuide?: boolean;
@@ -122,6 +124,7 @@ const MenuMain: FC<Props> = ({
   useMoths,
   adminChangeLocation,
   adminChangeWeek,
+  useSpeciesImageClassifier,
 }) => {
   const alert = useAlert();
   const showUserDeleteDialog = useUserDeleteDialog(deleteUser);
@@ -157,6 +160,10 @@ const MenuMain: FC<Props> = ({
 
   const onUseMoths = (checked: boolean) => onToggle('useMoths', checked);
 
+  const onUseImageClassifier = (checked: boolean) => {
+    return onToggle('useSpeciesImageClassifier', checked);
+  };
+
   const currentLocationMessage = currentLocation ? (
     <>
       Current location is <b>{currentLocation}</b>.
@@ -169,6 +176,13 @@ const MenuMain: FC<Props> = ({
     <Main>
       <IonList lines="full">
         <div className="rounded">
+          <MenuAttrToggle
+            icon={cameraOutline}
+            label="Enable image classifier"
+            value={useSpeciesImageClassifier}
+            onChange={onUseImageClassifier}
+          />
+
           <MenuAttrToggle
             icon={mothIcon}
             label="Enable moth species"

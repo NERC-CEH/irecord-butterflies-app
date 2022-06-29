@@ -45,6 +45,7 @@ export interface Attrs extends ModelAttrs {
 
   showVerifiedRecordsNotification: boolean;
   verifiedRecordsTimestamp: null | number;
+  useSpeciesImageClassifier: boolean;
 
   filters: Filters;
 }
@@ -61,6 +62,7 @@ const defaults: Attrs = {
 
   feedbackGiven: false,
   showedWelcome: false,
+  useSpeciesImageClassifier: true,
 
   // draft survey pointers
   'draftId:point': null,

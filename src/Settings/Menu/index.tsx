@@ -74,6 +74,7 @@ const MenuController: FC = () => {
     location,
     useSmartSorting,
     useMoths,
+    useSpeciesImageClassifier,
   } = appModel.attrs;
 
   const onToggleGuideLocation = (checked: boolean) => {
@@ -133,6 +134,7 @@ const MenuController: FC = () => {
         useSmartSorting={useSmartSorting}
         useMoths={useMoths}
         currentLocation={currentLocation}
+        useSpeciesImageClassifier={useSpeciesImageClassifier}
         // admin controls
         adminChangeLocation={adminChangeLocation}
         adminChangeWeek={adminChangeWeek}
