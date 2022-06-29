@@ -84,6 +84,10 @@
   --ion-verification-success: #33794f;
   --ion-verification-plausible: #f18a29;
   --ion-verification-rejected: #d33939;
+
+  // for reading using JS from
+  // https://stackoverflow.com/questions/47112393/getting-the-iphone-x-safe-area-using-javascript
+  --sat: env(safe-area-inset-top);
 }
 
 // status bar

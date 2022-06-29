@@ -1,71 +1,69 @@
 #home-user-surveys {
-  ion-header {
-    ion-toolbar {
-      --background: transparent;
+  ion-header ion-toolbar {
+    --background: transparent;
 
-      ion-segment {
-        max-width: calc(
-          100% - 20px
-        ); // -20px to match the padding of the list below
-        margin: 8px auto;
-        z-index: 100000000;
+    ion-segment {
+      max-width: calc(
+        100% - 20px
+      ); // -20px to match the padding of the list below
+      margin: 8px auto;
+      z-index: 100000000;
+      border-radius: 10px;
+      background: #fff;
+
+      &[value='map'] {
         border-radius: 10px;
-        background: #fff;
-
-        &[value='map'] {
-          border-radius: 10px;
-          background: rgba(255, 255, 255, 0.9);
-        }
-
-        ion-badge {
-          display: inline;
-          vertical-align: top;
-          margin: 3px;
-          margin-left: 3px;
-        }
-
-        ion-label {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          align-items: center;
-          margin-left: 1px;
-        }
-
-        ion-segment-button {
-          padding-left: 10px;
-          padding-right: 10px;
-        }
+        background: rgba(255, 255, 255, 0.9);
       }
 
-      position: fixed;
-      color: var(--ion-color-main);
+      ion-badge {
+        display: inline;
+        vertical-align: top;
+        margin: 3px;
+        margin-left: 3px;
+      }
+
+      ion-label {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-left: 1px;
+      }
+
+      ion-segment-button {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
     }
+
+    position: fixed;
+    color: var(--ion-color-main);
   }
 
   ion-content {
-    //segment height + extra spacing
-    --padding-top: calc(env(safe-area-inset-top) + 70px + 20px);
+    --overflow: hidden;
+
+    ion-list {
+      height: 100%;
+    }
 
     .upload-all-button {
       margin: 0 auto 20px;
       max-width: 60%;
     }
-  }
 
-  ion-list {
-    padding: 10px;
-  }
+    .info-background-message {
+      margin-top: 20vh;
+      margin-bottom: 10vh;
 
-  .info-background-message {
-    margin-bottom: 10vh;
-
-    ion-icon {
-      border-radius: 7px;
-      margin-bottom: -7px;
-      background: var(--ion-color-primary);
-      --ionicon-stroke-width: 20px;
-      font-size: 1em;
+      ion-icon {
+        border-radius: 7px;
+        margin-bottom: -7px;
+        background: var(--ion-color-primary);
+        --ionicon-stroke-width: 20px;
+        font-size: 1em;
+      }
     }
   }
 }

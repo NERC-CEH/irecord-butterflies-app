@@ -181,9 +181,10 @@ function getSampleInfo(sample: Sample) {
 interface Props {
   sample: Sample;
   uploadIsPrimary?: boolean;
+  style?: any;
 }
 
-const Survey: FC<Props> = ({ sample, uploadIsPrimary }) => {
+const Survey: FC<Props> = ({ sample, uploadIsPrimary, ...props }) => {
   const { navigate } = useContext(NavContext);
   const toast = useToast();
   const deleteSurvey = useSurveyDeletePrompt(sample);
@@ -221,7 +222,7 @@ const Survey: FC<Props> = ({ sample, uploadIsPrimary }) => {
     );
 
   return (
-    <IonItemSliding class="survey-list-item">
+    <IonItemSliding class="survey-list-item" {...props}>
       <ErrorMessage sample={sample} />
 
       <IonItem

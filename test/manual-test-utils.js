@@ -154,6 +154,10 @@ testing.records = {
     sample.occurrences[0].attrs.comment = sampleTestID;
     if (image) sample.occurrences[0].media.push(image);
 
+    // // saved;
+    // sample.metadata.synced_on = Date.now();
+    // sample.metadata.saved = true;
+
     await sample.save();
 
     savedRecords.push(sample);

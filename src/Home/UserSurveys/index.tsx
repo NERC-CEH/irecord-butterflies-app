@@ -18,10 +18,18 @@ import userModel from 'models/user';
 import { Trans as T } from 'react-i18next';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import InfoBackgroundMessage from 'common/Components/InfoBackgroundMessage';
+import VirtualList from 'common/Components/VirtualList';
 import SavedSamples from 'models/savedSamples';
 import Survey from './components/Survey';
 import Map from './components/Map';
 import './styles.scss';
+
+// https://stackoverflow.com/questions/47112393/getting-the-iphone-x-safe-area-using-javascript
+const rawSafeAreaTop =
+  getComputedStyle(document.documentElement).getPropertyValue('--sat') || '0px';
+const SAFE_AREA_TOP = parseInt(rawSafeAreaTop.replace('px', ''), 10);
+const LIST_PADDING = 90 + SAFE_AREA_TOP;
+const LIST_ITEM_HEIGHT = 75 + 10; // 10px for padding
 
 function byCreateTime(sample1: Sample, sample2: Sample) {
   const date1 = new Date(sample1.metadata.created_on);
@@ -54,16 +62,24 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
   );
 
   const getSurveys = (surveys: Sample[], uploadIsPrimary?: boolean) => {
-    const getSurvey = (sample: Sample) => (
+    // eslint-disable-next-line react/no-unstable-nested-components
+    const Item: FC<{ index: number }> = ({ index, ...itemProps }) => (
       <Survey
-        key={sample.cid}
-        sample={sample}
+        key={surveys[index].cid}
+        sample={surveys[index]}
         uploadIsPrimary={uploadIsPrimary}
+        {...itemProps}
       />
     );
-    const surveysList = surveys.map(getSurvey);
 
-    return surveysList;
+    return (
+      <VirtualList
+        itemCount={surveys.length}
+        itemSize={LIST_ITEM_HEIGHT}
+        Item={Item}
+        topPadding={LIST_PADDING}
+      />
+    );
   };
 
   const onUploadAll = () => {
@@ -91,7 +107,8 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
     );
   };
 
-  const hasManyPending = () => getSamplesList().length > 5;
+  const isFinished = (sample: Sample) => sample.metadata.saved;
+  const hasManyPending = () => getSamplesList().filter(isFinished).length > 5;
   const navigateToPrimarySurvey = () => navigate(`/survey/point`);
 
   const getPendingSurveys = () => {
@@ -117,8 +134,21 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
 
     const withSecondaryUploadButtons = !hasManyPending();
 
+    const showUploadAll = hasManyPending();
+    const uploadAllButton = showUploadAll && (
+      <IonButton
+        expand="block"
+        size="small"
+        className="upload-all-button"
+        onClick={onUploadAll}
+      >
+        Upload All
+      </IonButton>
+    );
+
     return (
       <>
+        {uploadAllButton}
         {getSurveys(surveys, withSecondaryUploadButtons)}
         {getDeleteTip()}
       </>
@@ -157,8 +187,6 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
   const showingUploaded = segment === 'uploaded';
   const showingMap = segment === 'map';
 
-  const showUploadAll = hasManyPending();
-
   return (
     <Page id="home-user-surveys">
       <IonHeader className="ion-no-border">
@@ -188,17 +216,6 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
       </IonHeader>
 
       <Main>
-        {showingPending && showUploadAll && (
-          <IonButton
-            expand="block"
-            size="small"
-            className="upload-all-button"
-            onClick={onUploadAll}
-          >
-            Upload All
-          </IonButton>
-        )}
-
         {showingPending && <IonList>{getPendingSurveys()}</IonList>}
 
         {showingUploaded && <IonList>{getUploadedSurveys()}</IonList>}

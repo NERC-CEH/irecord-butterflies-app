@@ -2,7 +2,6 @@
   border-radius: 10px;
   background: white;
   --border-style: none;
-  margin: 6px auto;
   max-width: 600px; // ipad
 
   ion-item {
@@ -10,10 +9,17 @@
     --border-style: none;
     --border-radius: 10px;
 
+    --min-height: 75px; // must match LIST_ITEM_HEIGHT
+    max-height: 75px; // must match LIST_ITEM_HEIGHT
+
     .location-name,
     .species-name {
       display: block !important; // for ellipses
       font-weight: 500;
+    }
+
+    ion-avatar + ion-label {
+      margin-top: 4px;
     }
 
     ion-label {
