@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { observer } from 'mobx-react';
 import clsx from 'clsx';
 import { useRouteMatch } from 'react-router';
@@ -17,17 +18,21 @@ import {
   MenuAttrItemFromModel,
 } from '@flumens';
 import { locationOutline } from 'ionicons/icons';
-import PropTypes from 'prop-types';
-import exact from 'prop-types-exact';
+import Sample from 'models/sample';
 import numberIcon from 'common/images/number.svg';
 import PhotoPicker from 'common/Components/PhotoPicker';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
 import VerificationMessage from 'Survey/common/Components/VerificationMessage';
-import species from 'common/data/species';
+import species, { Species } from 'common/data/species';
 import config from 'common/config';
 
-function MainComponent({ sample, isDisabled }) {
+type Props = {
+  sample: Sample;
+  isDisabled: boolean;
+};
+
+const MainComponent: FC<Props> = ({ sample, isDisabled }) => {
   const match = useRouteMatch();
 
   const getSpeciesButton = () => {
@@ -45,8 +50,8 @@ function MainComponent({ sample, isDisabled }) {
       );
     }
 
-    const byId = ({ id: speciesID }) => speciesID === taxon.id;
-    const fullSpeciesProfile = species.find(byId);
+    const byId = ({ id: speciesID }: Species) => speciesID === taxon.id;
+    const fullSpeciesProfile: any = species.find(byId);
 
     const { commonName, scientificName, thumbnail } = fullSpeciesProfile;
 
@@ -177,11 +182,6 @@ function MainComponent({ sample, isDisabled }) {
       </IonList>
     </Main>
   );
-}
-
-MainComponent.propTypes = exact({
-  sample: PropTypes.object.isRequired,
-  isDisabled: PropTypes.bool,
-});
+};
 
 export default observer(MainComponent);

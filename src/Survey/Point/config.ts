@@ -7,12 +7,14 @@ import {
   stageAttr,
   verifyLocationSchema,
 } from 'Survey/common/config';
+import { Survey } from 'common/surveys';
+
 import { isPlatform } from '@ionic/react';
 import { chatboxOutline } from 'ionicons/icons';
 import icon from 'common/images/butterflyIcon.svg';
 import config from 'common/config';
 
-const survey = {
+const survey: Survey = {
   id: 101,
   name: 'point',
   label: '', // we'll use species name
@@ -30,7 +32,7 @@ const survey = {
       taxon: {
         remote: {
           id: 'taxa_taxon_list_id',
-          values: taxon => taxon.warehouseId,
+          values: (taxon: any) => taxon.warehouseId,
         },
       },
       count: { remote: { id: 16 } },
@@ -86,10 +88,10 @@ const survey = {
       },
     });
 
-    const occ = survey.occ.create(AppOccurrence);
+    const occ = survey?.occ?.create(AppOccurrence);
 
     if (options.species) {
-      occ.setSpecies(options.species);
+      occ?.setSpecies(options.species);
     }
 
     sample.occurrences.push(occ);

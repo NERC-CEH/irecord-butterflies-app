@@ -12,13 +12,15 @@ interface Attrs {}
 export interface Survey {
   id: number;
   name: string;
+  label?: string;
+  icon?: string;
 
   attrs: Attrs;
 
   occ?: {
     attrs: Attrs;
 
-    create: (Occurrence: typeof AppOccurrence, taxon: any) => AppOccurrence;
+    create: (Occurrence: typeof AppOccurrence, taxon?: any) => AppOccurrence;
 
     verify?: (attrs: any) => any;
   };
