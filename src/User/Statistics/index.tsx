@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { Page, Header, Main, device, useToast, useLoader } from '@flumens';
+import { Page, Header, Main, useToast, useLoader } from '@flumens';
 import { observer } from 'mobx-react';
 import {
   IonLabel,
@@ -9,7 +9,7 @@ import {
   IonRefresherContent,
   IonRefresher,
 } from '@ionic/react';
-import userModel from 'models/user';
+import userModel, { useUserStatusCheck } from 'models/user';
 import { chevronDownOutline } from 'ionicons/icons';
 import InfoBackgroundMessage from 'common/Components/InfoBackgroundMessage';
 import './styles.scss';
@@ -17,11 +17,11 @@ import './styles.scss';
 function useFetchStats() {
   const toast = useToast();
   const loader = useLoader();
+  const checkUserStatus = useUserStatusCheck();
 
   async function fetchStats() {
-    if (!device.isOnline) {
-      return;
-    }
+    const isUserOK = await checkUserStatus();
+    if (!isUserOK) return;
 
     await loader.show('Please wait...');
 
@@ -39,16 +39,10 @@ function useFetchStats() {
 }
 
 const Statistics: FC = () => {
-  const toast = useToast();
   const fetchStats = useFetchStats();
 
   const onRefresh = async (e: any) => {
     e.detail.complete();
-
-    if (!device.isOnline) {
-      toast.warn("Sorry, looks like you're offline.");
-      return;
-    }
 
     fetchStats();
   };
