@@ -36,12 +36,15 @@ const SpeciesTile = ({ sp, index }: any) => {
         <IonLabel>{roundedProbability}%</IonLabel>
       </div>
       <div className="container">
-        <img className="thumbnail" src={thumbnailSrc} />
+        <img className="species-thumbnail" src={thumbnailSrc} />
         {thumbnailBackground && (
-          <img className="thumbnail-background" src={thumbnailBackground} />
+          <img
+            className="species-thumbnail-background"
+            src={thumbnailBackground}
+          />
         )}
         {!thumbnailBackground && (
-          <div className="thumbnail-background">
+          <div className="species-thumbnail-background">
             <img src={thumbnailSrc} />
           </div>
         )}
@@ -75,7 +78,7 @@ const FooterMessage: FC<Props> = ({
   if (identifierFoundNoSpecies) return null;
 
   const getIdentifiedSpeciesList = () => {
-    const placeholderCount = isPlatform('tablet') ? 3 : 2;
+    const placeholderCount = isPlatform('tablet') ? 4 : 3;
 
     const getImageItem = (sp: any, index: number) => {
       if (!sp) return <div key={index} className="img-placeholder" />;
@@ -85,9 +88,9 @@ const FooterMessage: FC<Props> = ({
 
     const imagesWithPlaceholders = [...speciesList];
     // +1 for the actual image
-    if (imagesWithPlaceholders.length < placeholderCount + 1) {
+    if (imagesWithPlaceholders.length < placeholderCount) {
       imagesWithPlaceholders.push(
-        ...Array(placeholderCount + 1 - speciesList.length)
+        ...Array(placeholderCount - speciesList.length)
       );
     }
 
@@ -97,8 +100,7 @@ const FooterMessage: FC<Props> = ({
   if (!speciesList.length) return null;
 
   return (
-    <div id="footer-container">
-      <h3>Possibility:</h3>
+    <div className="species-array-wrapper">
       <div className="species-array">{getIdentifiedSpeciesList()}</div>
     </div>
   );

@@ -60,43 +60,37 @@ export default async function identify(url: string): Promise<Result[]> {
     timeout: 80000,
   };
 
-  try {
-    const response: AxiosResponse<Result[]> = await axios(options);
+  const response: AxiosResponse<Result[]> = await axios(options);
 
-    const withValidData = (sp: Result) => {
-      const speciesData = species;
+  const withValidData = (sp: Result) => {
+    const speciesData = species;
 
-      const byId = ({ warehouseId }: Species) =>
-        warehouseId === parseInt(sp.taxa_taxon_list_id, 10);
-      const speciesIdMatches = speciesData.some(byId);
+    const byId = ({ warehouseId }: Species) =>
+      warehouseId === parseInt(sp.taxa_taxon_list_id, 10);
+    const speciesIdMatches = speciesData.some(byId);
 
-      if (!speciesIdMatches) return false;
+    if (!speciesIdMatches) return false;
 
-      const hasMothOrButterflyGroup =
-        sp.group === BUTTERFLY_GROUP_ID || sp.group === MOTH_GROUP_ID;
-      if (!hasMothOrButterflyGroup && !sp.taxa_taxon_list_id && !sp.taxon)
-        return false;
+    const hasMothOrButterflyGroup =
+      sp.group === BUTTERFLY_GROUP_ID || sp.group === MOTH_GROUP_ID;
+    if (!hasMothOrButterflyGroup && !sp.taxa_taxon_list_id && !sp.taxon)
+      return false;
 
-      return true;
-    };
+    return true;
+  };
 
-    const normalizeBaseValues = (sp: Result) => ({
-      ...sp,
-      warehouse_id: parseInt(sp.taxa_taxon_list_id, 10),
-      scientific_name: sp.taxon,
-      found_in_name: 'scientific_name',
-    });
+  const normalizeBaseValues = (sp: Result) => ({
+    ...sp,
+    warehouse_id: parseInt(sp.taxa_taxon_list_id, 10),
+    scientific_name: sp.taxon,
+    found_in_name: 'scientific_name',
+  });
 
-    const attachExtraInfo = (sp: Result) => ({ ...sp, ...getExtraInfo(sp) });
-    const suggestions = response.data
-      .filter(withValidData)
-      .map(normalizeBaseValues)
-      .map(attachExtraInfo);
+  const attachExtraInfo = (sp: Result) => ({ ...sp, ...getExtraInfo(sp) });
+  const suggestions = response.data
+    .filter(withValidData)
+    .map(normalizeBaseValues)
+    .map(attachExtraInfo);
 
-    return suggestions;
-  } catch (e: any) {
-    console.error(e);
-  }
-
-  return [];
+  return suggestions;
 }

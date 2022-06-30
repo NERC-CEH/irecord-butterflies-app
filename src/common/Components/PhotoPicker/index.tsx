@@ -37,6 +37,14 @@ type Props = {
   model: Sample | Occurrence;
 };
 
+const GalleryWithProps = (props: any) => (
+  <Gallery
+    useSpeciesImageClassifier={props.useSpeciesImageClassifier}
+    isLoggedIn={userModel.isLoggedIn()}
+    {...props}
+  />
+);
+
 const AppPhotoPicker: FC<Props> = ({ model }) => {
   const promptImageSource = usePromptImageSource();
 
@@ -68,14 +76,6 @@ const AppPhotoPicker: FC<Props> = ({ model }) => {
     const imageModels = images.map(getImageModel);
     return Promise.all(imageModels);
   }
-
-  const GalleryWithProps = (props: any) => (
-    <Gallery
-      useSpeciesImageClassifier={useSpeciesImageClassifier}
-      isLoggedIn={isLoggedIn}
-      {...props}
-    />
-  );
 
   return (
     <PhotoPicker

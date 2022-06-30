@@ -1,3 +1,15 @@
+.gallery-modal ion-content .swiper .footer {
+  .re-identify-button {
+    --padding-start: 0;
+    --padding-end: 0;
+    background: var(--ion-color-primary);
+    border-radius: 5px;
+    font-size: 1em;
+    color: #fff;
+    padding: 0px 15px;
+  }
+}
+
 #img-array {
   .warning-icon {
     position: absolute;
@@ -54,53 +66,51 @@
   color: var(--ion-color-light);
 }
 
-.gallery-modal ion-content .swiper .footer {
+.gallery-modal ion-content .swiper .footer-container {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
   background: #1313137c !important;
-  height: 200px !important;
+  height: 25% !important;
 
-  .re-identify-button {
-    --padding-start: 0;
-    --padding-end: 0;
-    background: var(--ion-color-primary);
-    border-radius: 10px;
-    font-size: 18px;
+  h3 {
+    font-size: 0.9em;
+    font-weight: 600;
     color: #fff;
-    padding: 0px 15px;
-
-    ion-icon {
-      margin-right: 15px;
-    }
+    text-align: left;
+    margin: 5px 0 0 5px;
   }
 
-  #footer-container {
+  .species-array-wrapper {
     margin: 0;
     width: 100%;
     height: 100%;
-
-    h3 {
-      font-size: 0.9em;
-      font-weight: 600;
-      color: #fff;
-      text-align: left;
-    }
+    overflow: auto;
+    display: flex;
 
     .species-array {
       width: 100%;
       overflow: auto;
       display: flex;
       flex: 1;
-      align-items: center;
-      align-self: stretch;
+      height: 70%;
 
       .species-tile {
         padding: 10px 8px 0px 0;
         display: flex;
+        justify-content: center;
         position: relative;
         max-width: 90%;
         border-radius: 10px;
         overflow: hidden;
-        min-width: 30%;
-        max-width: 30%;
+        min-width: fit-content;
+        &:first-of-type {
+          margin-left: 10px;
+        }
+
+        &:last-of-type {
+          margin-right: 10px;
+        }
 
         .score {
           width: 2em;
@@ -143,6 +153,7 @@
           flex-direction: column;
           border-radius: 10px;
           width: 100%;
+          align-items: center;
 
           ion-icon {
             // TODO: remove once real pics are available
@@ -157,25 +168,36 @@
           }
 
           ion-label {
+            padding: 0 2px;
             flex: 1;
             text-align: center;
             font-family: 'Museo700';
             z-index: 10;
             color: #121414;
-            font-size: 0.7em;
-            margin-bottom: 5px;
+            font-size: 0.5em;
+            margin-top: -10px;
+            max-width: 95%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
           }
 
           overflow: hidden;
 
-          .thumbnail {
+          .species-thumbnail {
             z-index: 10;
+            padding: -20px 0 0 0;
+            margin-top: -5px;
+            margin: -8% -3% -10%;
+            width: 106%;
           }
-          img.thumbnail-background {
+          img.species-thumbnail-background {
             position: absolute;
             height: 100%;
           }
-          div.thumbnail-background {
+          div.species-thumbnail-background {
             position: absolute;
             top: 0;
             width: 100%;
@@ -218,8 +240,7 @@
         background: #262626e3;
         border-radius: 11px;
         overflow: hidden;
-        min-width: 28%;
-        max-width: 28%;
+        width: 100%;
         position: relative;
         display: flex;
         align-self: stretch;
@@ -227,4 +248,14 @@
       }
     }
   }
+}
+
+.gallery-tablet-styles {
+  position: fixed;
+  padding: 20px 60px;
+  text-align: center;
+  background: #131313;
+  top: 0;
+  left: 0;
+  width: 100%;
 }

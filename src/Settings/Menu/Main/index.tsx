@@ -160,9 +160,8 @@ const MenuMain: FC<Props> = ({
 
   const onUseMoths = (checked: boolean) => onToggle('useMoths', checked);
 
-  const onUseImageClassifier = (checked: boolean) => {
-    return onToggle('useSpeciesImageClassifier', checked);
-  };
+  const onUseImageClassifier = (checked: boolean) =>
+    onToggle('useSpeciesImageClassifier', checked);
 
   const currentLocationMessage = currentLocation ? (
     <>

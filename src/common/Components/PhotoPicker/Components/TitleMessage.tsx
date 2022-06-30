@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { FC } from 'react';
 import Media from 'models/image';
 import { IonLabel } from '@ionic/react';
@@ -30,7 +31,6 @@ const TitleMessage: FC<Props> = ({ image }) => {
     probability: prob,
   } = image.getTopSpecies();
 
-  // eslint-disable-next-line
   const taxonName = default_common_name || taxon;
   const probability = ((prob || 0) * 100).toFixed(0);
 

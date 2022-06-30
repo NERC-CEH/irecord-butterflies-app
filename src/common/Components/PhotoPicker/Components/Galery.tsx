@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import { Gallery, device, useToast } from '@flumens';
 import Media from 'models/image';
+import { isPlatform } from '@ionic/react';
+import clsx from 'clsx';
 import { observer } from 'mobx-react';
 import TitleMessage from './TitleMessage';
 import FooterMessage from './FooterMessage';
@@ -12,6 +14,21 @@ type Props = {
   onClose: () => boolean;
   useSpeciesImageClassifier: boolean;
   isLoggedIn: boolean;
+};
+
+const Footer = ({ children }: any) => {
+  const speciesHasNotBeenIdentifiedOrNotFound =
+    children?.props?.image?.attrs?.species?.length;
+
+  if (!speciesHasNotBeenIdentifiedOrNotFound)
+    return <div className="footer">{children}</div>;
+
+  return (
+    <div className="footer-container">
+      <h3>Possible:</h3>
+      {children}
+    </div>
+  );
 };
 
 const GalleryComponent: FC<Props> = ({
@@ -38,7 +55,7 @@ const GalleryComponent: FC<Props> = ({
       onClose();
       if (!isLoggedIn && !device.isOnline && !useSpeciesImageClassifier) return;
 
-      await image.identify();
+      image.identify().catch(toast.error);
     };
 
     return {
@@ -50,7 +67,11 @@ const GalleryComponent: FC<Props> = ({
           identifyImage={identifyImage}
         />
       ),
-      title: <TitleMessage image={image} />,
+      title: (
+        <div className={clsx(isPlatform('tablet') && 'gallery-tablet-styles')}>
+          <TitleMessage image={image} />
+        </div>
+      ),
     };
   };
 
@@ -60,6 +81,7 @@ const GalleryComponent: FC<Props> = ({
       items={items.map(getItem)}
       initialSlide={showGallery}
       onClose={onClose}
+      Footer={Footer}
     />
   );
 };
