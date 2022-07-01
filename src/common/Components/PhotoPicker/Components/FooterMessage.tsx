@@ -30,8 +30,10 @@ const SpeciesTile = ({ sp, index }: any) => {
   }
   const roundedProbability = (probability * 100).toFixed();
 
+  const isTablet = isPlatform('tablet') ? 'tablet' : '';
+
   return (
-    <div key={index} className="species-tile">
+    <div key={index} className={`species-tile ${isTablet}`}>
       <div className={`score ${color}`}>
         <IonLabel>{roundedProbability}%</IonLabel>
       </div>
@@ -59,19 +61,21 @@ const FooterMessage: FC<Props> = ({
   image,
   identifyImage,
 }) => {
-  const identifierWasNotUsed = !image.attrs.species;
-  const speciesList = image.attrs.species;
+  const identifierWasNotUsed = !image.attrs?.species;
+  const speciesList = image.attrs?.species;
 
   if (useSpeciesImageClassifier && identifierWasNotUsed) {
     return (
-      <IonButton
-        className="re-identify-button"
-        fill="clear"
-        size="small"
-        onClick={identifyImage}
-      >
-        ID help
-      </IonButton>
+      <div className="footer">
+        <IonButton
+          className="re-identify-button"
+          fill="clear"
+          size="small"
+          onClick={identifyImage}
+        >
+          ID help
+        </IonButton>
+      </div>
     );
   }
   const identifierFoundNoSpecies = !image.attrs?.species?.length;

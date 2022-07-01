@@ -21,8 +21,7 @@ const Footer = ({ children }: any) => {
   const speciesHasNotBeenIdentifiedOrNotFound =
     children?.props?.image?.attrs?.species?.length;
 
-  if (!speciesHasNotBeenIdentifiedOrNotFound)
-    return <div className="footer">{children}</div>;
+  if (!speciesHasNotBeenIdentifiedOrNotFound) return children;
 
   return (
     <div className="footer-container">
