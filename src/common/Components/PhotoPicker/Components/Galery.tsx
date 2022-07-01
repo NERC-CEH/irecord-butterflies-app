@@ -13,6 +13,7 @@ type Props = {
   showGallery: number;
   onClose: () => boolean;
   useSpeciesImageClassifier: boolean;
+  disableFooterAndTitle: boolean;
   isLoggedIn: boolean;
 };
 
@@ -37,6 +38,7 @@ const GalleryComponent: FC<Props> = ({
   onClose,
   useSpeciesImageClassifier,
   isLoggedIn,
+  disableFooterAndTitle,
 }) => {
   const toast = useToast();
 
@@ -60,14 +62,14 @@ const GalleryComponent: FC<Props> = ({
 
     return {
       src: image.getURL(),
-      footer: (
+      footer: !disableFooterAndTitle && (
         <FooterMessage
           useSpeciesImageClassifier={useSpeciesImageClassifier}
           image={image}
           identifyImage={identifyImage}
         />
       ),
-      title: (
+      title: !disableFooterAndTitle && (
         <div className={clsx(isPlatform('tablet') && 'gallery-tablet-styles')}>
           <TitleMessage image={image} />
         </div>

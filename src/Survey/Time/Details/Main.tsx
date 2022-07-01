@@ -132,7 +132,7 @@ const MainDetails: FC<Props> = ({ sample }) => {
           </IonLabel>
         </IonItemDivider>
         <div className="rounded">
-          <PhotoPicker model={sample} />
+          <PhotoPicker model={sample} disableClassifier />
           <InfoMessage color="medium">
             Representative photo of where the 'Single species timed count' was
             made

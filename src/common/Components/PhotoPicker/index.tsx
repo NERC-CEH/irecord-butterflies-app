@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 import { PhotoPicker, captureImage, device } from '@flumens';
 import { useTranslation } from 'react-i18next';
 import { useIonActionSheet, isPlatform } from '@ionic/react';
@@ -35,17 +35,10 @@ export function usePromptImageSource() {
 
 type Props = {
   model: Sample | Occurrence;
+  disableClassifier?: boolean;
 };
 
-const GalleryWithProps = (props: any) => (
-  <Gallery
-    useSpeciesImageClassifier={props.useSpeciesImageClassifier}
-    isLoggedIn={userModel.isLoggedIn()}
-    {...props}
-  />
-);
-
-const AppPhotoPicker: FC<Props> = ({ model }) => {
+const AppPhotoPicker: FC<Props> = ({ model, disableClassifier = false }) => {
   const promptImageSource = usePromptImageSource();
 
   const isLoggedIn = userModel.isLoggedIn();
@@ -67,7 +60,12 @@ const AppPhotoPicker: FC<Props> = ({ model }) => {
         config.dataPath
       );
 
-      if (device.isOnline && isLoggedIn && useSpeciesImageClassifier) {
+      if (
+        !disableClassifier &&
+        device.isOnline &&
+        isLoggedIn &&
+        useSpeciesImageClassifier
+      ) {
         imageModel.identify();
       }
 
@@ -77,12 +75,22 @@ const AppPhotoPicker: FC<Props> = ({ model }) => {
     return Promise.all(imageModels);
   }
 
+  const getGalleryWithExtraProps: (props: any) => JSX.Element = props => (
+    <Gallery
+      useSpeciesImageClassifier={useSpeciesImageClassifier}
+      isLoggedIn={isLoggedIn}
+      disableFooterAndTitle={disableClassifier}
+      {...props}
+    />
+  );
+  const GalleryMemoized = useCallback(getGalleryWithExtraProps, []);
+
   return (
     <PhotoPicker
       getImage={getImage}
       model={model}
       Image={Image}
-      Gallery={GalleryWithProps}
+      Gallery={GalleryMemoized}
       isDisabled={model.isDisabled()}
     />
   );
