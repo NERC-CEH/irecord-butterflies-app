@@ -103,7 +103,8 @@
         max-width: 90%;
         border-radius: 10px;
         overflow: hidden;
-        min-width: fit-content;
+        min-width: 31%;
+
         &:first-of-type {
           margin-left: 10px;
         }
@@ -175,7 +176,7 @@
             z-index: 10;
             color: #121414;
             font-size: 0.5em;
-            margin-top: -10px;
+            font-weight: 500;
             max-width: 95%;
             display: flex;
             flex-wrap: wrap;
@@ -190,12 +191,14 @@
             z-index: 10;
             padding: -20px 0 0 0;
             margin-top: -5px;
-            margin: -8% -3% -10%;
-            width: 106%;
+            margin: -5px -3% -10%;
+            height: 90%;
           }
           img.species-thumbnail-background {
             position: absolute;
             height: 100%;
+            width: 100%;
+            top: 0;
           }
           div.species-thumbnail-background {
             position: absolute;
@@ -234,6 +237,9 @@
             }
           }
         }
+      }
+      .species-tile.tablet {
+        min-width: 20%;
       }
 
       .img-placeholder {
