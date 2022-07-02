@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { FC } from 'react';
 import { PhotoPicker, captureImage, device } from '@flumens';
 import { useTranslation } from 'react-i18next';
 import { useIonActionSheet, isPlatform } from '@ionic/react';
@@ -9,9 +9,8 @@ import appModel from 'models/app';
 import userModel from 'models/user';
 import Occurrence from 'models/occurrence';
 import config from 'common/config';
-import Gallery from './Components/Galery';
-import Image from './Components/Image';
-import './styles.scss';
+import GalleryWithClassification from './Components/GalleryWithClassification';
+import ImageWithClassification from './Components/ImageWithClassification';
 
 export function usePromptImageSource() {
   const { t } = useTranslation();
@@ -44,6 +43,8 @@ const AppPhotoPicker: FC<Props> = ({ model, disableClassifier = false }) => {
   const isLoggedIn = userModel.isLoggedIn();
   const { useSpeciesImageClassifier } = appModel.attrs;
 
+  const useClassifier = !disableClassifier && useSpeciesImageClassifier;
+
   async function getImage() {
     const shouldUseCamera = await promptImageSource();
     const cancelled = shouldUseCamera === null;
@@ -60,13 +61,8 @@ const AppPhotoPicker: FC<Props> = ({ model, disableClassifier = false }) => {
         config.dataPath
       );
 
-      if (
-        !disableClassifier &&
-        device.isOnline &&
-        isLoggedIn &&
-        useSpeciesImageClassifier
-      ) {
-        imageModel.identify();
+      if (useClassifier && device.isOnline && isLoggedIn) {
+        imageModel.identify().catch(console.error); // don't toast this to user
       }
 
       return imageModel;
@@ -75,22 +71,12 @@ const AppPhotoPicker: FC<Props> = ({ model, disableClassifier = false }) => {
     return Promise.all(imageModels);
   }
 
-  const getGalleryWithExtraProps: (props: any) => JSX.Element = props => (
-    <Gallery
-      useSpeciesImageClassifier={useSpeciesImageClassifier}
-      isLoggedIn={isLoggedIn}
-      disableFooterAndTitle={disableClassifier}
-      {...props}
-    />
-  );
-  const GalleryMemoized = useCallback(getGalleryWithExtraProps, []);
-
   return (
     <PhotoPicker
       getImage={getImage}
       model={model}
-      Image={Image}
-      Gallery={GalleryMemoized}
+      Image={useClassifier ? ImageWithClassification : undefined}
+      Gallery={useClassifier ? GalleryWithClassification : undefined}
       isDisabled={model.isDisabled()}
     />
   );

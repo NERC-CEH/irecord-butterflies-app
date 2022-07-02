@@ -177,10 +177,13 @@ const MenuMain: FC<Props> = ({
         <div className="rounded">
           <MenuAttrToggle
             icon={cameraOutline}
-            label="Enable image classifier"
+            label="Suggest species"
             value={useSpeciesImageClassifier}
             onChange={onUseImageClassifier}
           />
+          <InfoMessage color="medium">
+            Use image recognition to identify species from your photos.
+          </InfoMessage>
 
           <MenuAttrToggle
             icon={mothIcon}

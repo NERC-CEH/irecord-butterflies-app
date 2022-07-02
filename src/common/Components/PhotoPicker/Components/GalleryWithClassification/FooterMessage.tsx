@@ -1,15 +1,13 @@
 import { FC } from 'react';
 import Media from 'models/image';
 import { isPlatform, IonLabel, IonButton } from '@ionic/react';
-import '../styles.scss';
 
 const POSITIVE_THRESHOLD = 0.7;
 const POSSIBLE_THRESHOLD = 0.2;
 
 type Props = {
   image: Media;
-  identifyImage: () => void;
-  useSpeciesImageClassifier: boolean;
+  identifyImage?: any;
 };
 
 const SpeciesTile = ({ sp, index }: any) => {
@@ -56,15 +54,11 @@ const SpeciesTile = ({ sp, index }: any) => {
   );
 };
 
-const FooterMessage: FC<Props> = ({
-  useSpeciesImageClassifier,
-  image,
-  identifyImage,
-}) => {
+const FooterMessage: FC<Props> = ({ image, identifyImage }) => {
   const identifierWasNotUsed = !image.attrs?.species;
   const speciesList = image.attrs?.species;
 
-  if (useSpeciesImageClassifier && identifierWasNotUsed) {
+  if (identifierWasNotUsed) {
     return (
       <div className="footer">
         <IonButton
@@ -73,11 +67,12 @@ const FooterMessage: FC<Props> = ({
           size="small"
           onClick={identifyImage}
         >
-          ID help
+          Get species suggestions
         </IonButton>
       </div>
     );
   }
+
   const identifierFoundNoSpecies = !image.attrs?.species?.length;
   if (identifierFoundNoSpecies) return null;
 

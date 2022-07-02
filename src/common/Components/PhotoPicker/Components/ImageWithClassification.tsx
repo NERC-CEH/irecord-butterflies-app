@@ -8,7 +8,6 @@ import {
   close,
 } from 'ionicons/icons';
 import Media from 'models/image';
-import '../styles.scss';
 
 type Props = {
   media: Media;
@@ -18,9 +17,11 @@ type Props = {
 };
 
 const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
-  const showWarning = !!media.attrs?.species && !media.doesTaxonMatchParent();
+  const hasBeenIdentified = !!media.attrs?.species?.length;
 
-  const showSuccess = !!media.attrs?.species && media.doesTaxonMatchParent();
+  const showWarning = !media.doesTaxonMatchParent();
+
+  const showSuccess = media.doesTaxonMatchParent();
 
   const showLoading = media.identification.identifying;
 
@@ -36,10 +37,12 @@ const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
       <img src={media.attrs.thumbnail} onClick={onClickWrap} />
 
       {showLoading && <IonSpinner slot="end" className="identifying" />}
-      {!showLoading && showWarning && (
+
+      {!showLoading && hasBeenIdentified && showWarning && (
         <IonIcon className="warning-icon" icon={alertCircleOutline} />
       )}
-      {!showLoading && showSuccess && (
+
+      {!showLoading && hasBeenIdentified && showSuccess && (
         <IonIcon className="success-icon" icon={checkmarkCircleOutline} />
       )}
     </div>

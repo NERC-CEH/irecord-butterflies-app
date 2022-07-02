@@ -119,7 +119,8 @@ export default class AppMedia extends Media {
 
       this.parent.save();
     } catch (error) {
-      console.error(error);
+      this.identification.identifying = false;
+      throw error;
     }
 
     this.identification.identifying = false;

@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { FC } from 'react';
 import Media from 'models/image';
-import { IonLabel } from '@ionic/react';
+import { IonLabel, IonNote } from '@ionic/react';
 
 type Props = {
   image: Media;
@@ -20,7 +20,11 @@ const TitleMessage: FC<Props> = ({ image }) => {
   if (identifierFoundNoSpecies) {
     return (
       <IonLabel className="gallery-ai-message">
-        <b>Warning</b> - we could not identify this species.
+        Sorry, we could not identify this species.
+        <IonNote className="better-image-tip">
+          Make sure that your species is in the centre of the image and is in
+          focus.
+        </IonNote>
       </IonLabel>
     );
   }
@@ -37,16 +41,17 @@ const TitleMessage: FC<Props> = ({ image }) => {
   if (!doesTaxonMatchParent) {
     return (
       <IonLabel className="gallery-ai-message">
-        <b>Warning</b> - we think it is <b className="light">{probability}%</b>{' '}
-        likely a <b className="light">{taxonName}</b> species.
+        <b>Please check</b> - we think it is{' '}
+        <b className="light">{probability}%</b> likely the{' '}
+        <b className="light">{taxonName}</b> species.
       </IonLabel>
     );
   }
 
   return (
     <IonLabel className="gallery-ai-message success">
-      <b>Success</b> - we think it is <b className="light">{probability}%</b>{' '}
-      likely a <b className="light">{taxonName}</b> species.
+      <b>Great!</b> We also think it is <b className="light">{probability}%</b>{' '}
+      likely the <b className="light">{taxonName}</b> species.
     </IonLabel>
   );
 };

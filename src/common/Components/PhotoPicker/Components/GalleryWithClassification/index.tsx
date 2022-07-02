@@ -1,20 +1,18 @@
 import { FC } from 'react';
-import { Gallery, device, useToast } from '@flumens';
+import { Gallery, useToast } from '@flumens';
 import Media from 'models/image';
+import { useUserStatusCheck } from 'models/user';
 import { isPlatform } from '@ionic/react';
 import clsx from 'clsx';
 import { observer } from 'mobx-react';
 import TitleMessage from './TitleMessage';
 import FooterMessage from './FooterMessage';
-import '../styles.scss';
+import './styles.scss';
 
 type Props = {
   items: Media[];
   showGallery: number;
   onClose: () => boolean;
-  useSpeciesImageClassifier: boolean;
-  disableFooterAndTitle: boolean;
-  isLoggedIn: boolean;
 };
 
 const Footer = ({ children }: any) => {
@@ -25,50 +23,32 @@ const Footer = ({ children }: any) => {
 
   return (
     <div className="footer-container">
-      <h3>Possible:</h3>
+      <h3>Suggestions:</h3>
       {children}
     </div>
   );
 };
 
-const GalleryComponent: FC<Props> = ({
-  items,
-  showGallery,
-  onClose,
-  useSpeciesImageClassifier,
-  isLoggedIn,
-  disableFooterAndTitle,
-}) => {
+const GalleryComponent: FC<Props> = ({ items, showGallery, onClose }) => {
   const toast = useToast();
+  const checkUserStatus = useUserStatusCheck();
 
   const getItem = (image: Media) => {
     const identifyImage = async () => {
-      if (!device.isOnline) {
-        toast.warn('Looks like you are offline!');
-        return;
-      }
-
-      if (!isLoggedIn) {
-        toast.warn('Please login!');
-        return;
-      }
-
       onClose();
-      if (!isLoggedIn && !device.isOnline && !useSpeciesImageClassifier) return;
+
+      const isUserOK = await checkUserStatus();
+      if (!isUserOK) {
+        return;
+      }
 
       image.identify().catch(toast.error);
     };
 
     return {
       src: image.getURL(),
-      footer: !disableFooterAndTitle && (
-        <FooterMessage
-          useSpeciesImageClassifier={useSpeciesImageClassifier}
-          image={image}
-          identifyImage={identifyImage}
-        />
-      ),
-      title: !disableFooterAndTitle && (
+      footer: <FooterMessage image={image} identifyImage={identifyImage} />,
+      title: (
         <div className={clsx(isPlatform('tablet') && 'gallery-tablet-styles')}>
           <TitleMessage image={image} />
         </div>
