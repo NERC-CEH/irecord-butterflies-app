@@ -1,9 +1,15 @@
-import { FC, useEffect, useState, useRef } from 'react';
+import { FC, useEffect, useState, useRef, forwardRef } from 'react';
 import { FixedSizeList as List } from 'react-window';
 import { useIonViewDidEnter } from '@ionic/react';
 
 // eslint-disable-next-line react/no-unstable-nested-components
-const VirtualList: FC<any> = ({ itemSize, Item, topPadding = 0, ...props }) => {
+const VirtualList: FC<any> = ({
+  itemSize,
+  Item,
+  topPadding = 0,
+  bottomPadding = 0,
+  ...props
+}) => {
   const contentRef = useRef<any>();
   const [listHeight, setListHeight] = useState<number>(1); // some positive number
 
@@ -23,12 +29,26 @@ const VirtualList: FC<any> = ({ itemSize, Item, topPadding = 0, ...props }) => {
     />
   );
 
+  // Add bottom padding
+  // eslint-disable-next-line @getify/proper-arrows/name
+  const innerElementType = forwardRef(({ style, ...rest }: any, ref) => (
+    <div
+      ref={ref}
+      style={{
+        ...style,
+        height: `${parseFloat(style.height) + topPadding + bottomPadding}px`,
+      }}
+      {...rest}
+    />
+  ));
+
   return (
     <div style={{ height: '100%' }} ref={contentRef}>
       <List
         height={listHeight}
         itemSize={itemSize}
         overscanCount={Math.floor(listHeight / itemSize)}
+        innerElementType={bottomPadding ? innerElementType : undefined}
         width="100%"
         {...props}
       >

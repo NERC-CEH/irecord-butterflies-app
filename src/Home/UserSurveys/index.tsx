@@ -110,6 +110,7 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
         itemSize={LIST_ITEM_HEIGHT}
         Item={Item}
         topPadding={LIST_PADDING}
+        bottomPadding={LIST_ITEM_HEIGHT / 2}
       />
     );
   };
