@@ -61,27 +61,6 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
     </InfoBackgroundMessage>
   );
 
-  const getSurveys = (surveys: Sample[], uploadIsPrimary?: boolean) => {
-    // eslint-disable-next-line react/no-unstable-nested-components
-    const Item: FC<{ index: number }> = ({ index, ...itemProps }) => (
-      <Survey
-        key={surveys[index].cid}
-        sample={surveys[index]}
-        uploadIsPrimary={uploadIsPrimary}
-        {...itemProps}
-      />
-    );
-
-    return (
-      <VirtualList
-        itemCount={surveys.length}
-        itemSize={LIST_ITEM_HEIGHT}
-        Item={Item}
-        topPadding={LIST_PADDING}
-      />
-    );
-  };
-
   const onUploadAll = () => {
     const isLoggedIn = userModel.isLoggedIn();
     if (!isLoggedIn) {
@@ -90,6 +69,49 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
     }
 
     return savedSamples.uploadAll();
+  };
+
+  const getSurveys = (surveys: Sample[], showUploadAll?: boolean) => {
+    // eslint-disable-next-line react/no-unstable-nested-components
+    const Item: FC<{ index: number }> = ({ index, ...itemProps }) => {
+      if (showUploadAll && index === 0) {
+        const uploadAllButton = (
+          <IonButton
+            expand="block"
+            size="small"
+            className="upload-all-button"
+            onClick={onUploadAll}
+            {...itemProps}
+          >
+            Upload All
+          </IonButton>
+        );
+
+        return uploadAllButton;
+      }
+
+      const sample = surveys[showUploadAll ? index - 1 : index];
+
+      return (
+        <Survey
+          key={sample.cid}
+          sample={sample}
+          uploadIsPrimary={!showUploadAll}
+          {...itemProps}
+        />
+      );
+    };
+
+    const itemCount = showUploadAll ? surveys.length + 1 : surveys.length;
+
+    return (
+      <VirtualList
+        itemCount={itemCount}
+        itemSize={LIST_ITEM_HEIGHT}
+        Item={Item}
+        topPadding={LIST_PADDING}
+      />
+    );
   };
 
   const getUploadedSurveys = () => {
@@ -132,24 +154,9 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
       );
     }
 
-    const withSecondaryUploadButtons = !hasManyPending();
-
-    const showUploadAll = hasManyPending();
-    const uploadAllButton = showUploadAll && (
-      <IonButton
-        expand="block"
-        size="small"
-        className="upload-all-button"
-        onClick={onUploadAll}
-      >
-        Upload All
-      </IonButton>
-    );
-
     return (
       <>
-        {uploadAllButton}
-        {getSurveys(surveys, withSecondaryUploadButtons)}
+        {getSurveys(surveys, hasManyPending())}
         {getDeleteTip()}
       </>
     );
