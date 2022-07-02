@@ -2,6 +2,11 @@
 
 Added timed count confusion species.
 Added +5 species count shortcut.
+Added photo species suggestions.
+Enabled Android back button.
+Updated About page.
+Added ability to select multiple photos from the gallery.
+Added user account delete option.
 
 ## 2.3.1
 
