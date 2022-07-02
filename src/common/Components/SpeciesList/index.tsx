@@ -66,14 +66,12 @@ function organiseByProbability(allSpecies: Species[]) {
   return [speciesHereAndNow, speciesHere, speciesNow, remainingSpecies];
 }
 
-const shouldShowFeedback = () => {
-  const { feedbackGiven, appSession } = appModel.attrs;
-  if (feedbackGiven) {
-    return false;
-  }
-
-  return appSession > 10;
-};
+const shouldShowFeedback = () => false; // TODO: enable this back
+// const { feedbackGiven, appSession } = appModel.attrs;
+// if (feedbackGiven) {
+//   return false;
+// }
+// return appSession > 10;
 
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
 function escapeRegexCharacters(str: string) {
