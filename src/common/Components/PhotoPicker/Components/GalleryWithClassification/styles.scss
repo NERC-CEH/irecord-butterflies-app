@@ -45,6 +45,13 @@
 }
 
 .gallery-ai-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  width: 100%;
+  padding: 75px 10px 10px;
+  background: #131313ed;
   font-weight: 400;
   font-size: 0.8em;
 
@@ -70,7 +77,7 @@
   width: 100%;
   position: fixed;
   bottom: 0;
-  background: #1313137c !important;
+  background: #131313ed !important;
   height: 25% !important;
 
   h3 {
