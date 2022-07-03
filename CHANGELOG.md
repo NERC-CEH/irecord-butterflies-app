@@ -6,6 +6,7 @@ Added photo species suggestions.
 Enabled Android back button.
 Updated About page.
 Added ability to select multiple photos from the gallery.
+Improved app performance for long survey lists.
 Added user account delete option.
 
 ## 2.3.1
