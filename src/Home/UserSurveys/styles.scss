@@ -48,6 +48,10 @@
       height: 100%;
     }
 
+    ion-list.ios div div {
+      top: var(--ion-safe-area-top, 0);
+    }
+
     .upload-all-button {
       margin: 10px auto;
       height: 35px !important;
