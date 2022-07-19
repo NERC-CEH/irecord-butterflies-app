@@ -10,12 +10,18 @@ const POSITION_CLASSES = {
 } as const;
 
 const MapCustomControl = (props: MapCustomControlProps): JSX.Element | null => {
-  const { position = 'topleft', containerProps, children, isDisabled } = props;
+  const {
+    position = 'topleft',
+    containerProps,
+    children,
+    isDisabled,
+    className,
+  } = props;
 
   if (isDisabled) return null;
 
   return (
-    <div className={`${POSITION_CLASSES[position]} user-map-gps-button`}>
+    <div className={`${POSITION_CLASSES[position]} gps-button ${className}`}>
       <div className="leaflet-control leaflet-bar" {...containerProps}>
         {children}
       </div>
@@ -31,6 +37,7 @@ export type MapCustomControlProps = {
   >;
   children: ReactNode;
   isDisabled?: boolean;
+  className?: string;
 };
 
 MapCustomControl.defaultProps = {

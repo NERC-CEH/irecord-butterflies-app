@@ -5,7 +5,7 @@ import { withIonLifeCycle, IonIcon, NavContext } from '@ionic/react';
 import { locateOutline } from 'ionicons/icons';
 import GPS from 'helpers/GPS';
 import L from 'leaflet';
-import MapControl from './Components/LeafletControl';
+import MapControl from 'common/Components/MapControl';
 
 const DEFAULT_LOCATED_ZOOM = 18;
 
@@ -79,7 +79,7 @@ class MapInfo extends React.Component {
 
   render() {
     return (
-      <MapControl position="topleft">
+      <MapControl position="topleft" className="user-map-gps-button">
         <button
           className={`geolocate-btn ${this.state.locating ? 'spin' : ''}`}
           onClick={this.onGeolocate}

@@ -6,7 +6,7 @@ import { locateOutline } from 'ionicons/icons';
 import GPS from 'helpers/GPS';
 import { toJS } from 'mobx';
 import L from 'leaflet';
-import MapControl from '../LeafletControl';
+import MapControl from 'common/Components/MapControl';
 
 function translateDrawInterface() {
   L.drawLocal.draw.toolbar.actions.text = 'Cancel';
