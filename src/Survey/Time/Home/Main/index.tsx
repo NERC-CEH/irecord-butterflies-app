@@ -22,7 +22,7 @@ import config from 'common/config';
 import { Trans as T } from 'react-i18next';
 import { mapOutline, warningOutline, clipboardOutline } from 'ionicons/icons';
 import { useRouteMatch } from 'react-router';
-import Stopwatch from 'Survey/Time/Components/Stopwatch';
+import Stopwatch from 'Survey/common/Components/Stopwatch';
 import VerificationListIcon from 'common/Components/VerificationListIcon';
 import IncrementalButton from 'Survey/common/Components/IncrementalButton';
 import UKBMSlogo from './UKBMSlogo.png';
