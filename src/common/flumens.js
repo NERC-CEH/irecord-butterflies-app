@@ -43,6 +43,7 @@ export { default as MenuAttrItem } from '@flumens/ionic/dist/components/MenuAttr
 export { default as MenuAttrItemFromModel } from '@flumens/ionic/dist/components/MenuAttrItemFromModel';
 export { default as ModelLocation } from '@flumens/ionic/dist/components/ModelLocationMap';
 export { default as UserFeedbackRequest } from '@flumens/ionic/dist/components/UserFeedbackRequest';
+export { default as CounterInput } from '@flumens/ionic/dist/components/CounterInput';
 export { useToast, useAlert, useLoader } from '@flumens/ionic/dist/hooks';
 export * from '@flumens/ionic/dist/utils/validation';
 export * from '@flumens/ionic/dist/utils/image';

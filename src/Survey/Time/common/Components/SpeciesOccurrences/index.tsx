@@ -4,7 +4,7 @@ import Occurrence from 'models/occurrence';
 import { observer } from 'mobx-react';
 import { Page, Header, useAlert } from '@flumens';
 import { useRouteMatch } from 'react-router';
-import { NavContext } from '@ionic/react';
+import { NavContext, useIonViewWillEnter } from '@ionic/react';
 import Main from './Main';
 import './styles.scss';
 
@@ -39,10 +39,19 @@ type Props = {
   sample: Sample;
 };
 
+function byCreationDate(s1: Sample, s2: Sample) {
+  const date1 = new Date(s1.metadata.updated_on);
+  const date2 = new Date(s2.metadata.updated_on);
+
+  return date2.getTime() - date1.getTime();
+}
+
 const SpeciesController: FC<Props> = ({ sample }) => {
   const match = useRouteMatch();
   const { goBack, navigate } = useContext(NavContext);
   const confirmDelete = useDeleteConfirmation();
+
+  const { taxa }: any = match.params;
 
   const navigateToOccurrence = (smp: Sample) => {
     const urlPath = match.url.split('/speciesOccurrences');
@@ -63,6 +72,12 @@ const SpeciesController: FC<Props> = ({ sample }) => {
       s.occurrences[0].attrs.taxon.id === taxon.id;
 
     const isLastSampleDeleted = !sample.samples.filter(byTaxonId).length;
+
+    if (isLastSampleDeleted && sample.isSurveyMultiSpeciesTimedCount()) {
+      goBack();
+      return;
+    }
+
     if (isLastSampleDeleted) {
       const survey = sample.getSurvey();
 
@@ -82,11 +97,29 @@ const SpeciesController: FC<Props> = ({ sample }) => {
     }
   };
 
+  const getSamples = () => {
+    const matchesTaxa = ({ occurrences }: any) => {
+      const [occ] = occurrences; // always one
+      return occ.attrs.taxon.warehouseId === parseInt(taxa, 10);
+    };
+
+    const samples = sample.samples.filter(matchesTaxa).sort(byCreationDate);
+
+    return samples;
+  };
+
+  const navigateBackIfNoRemainingSamples = () => {
+    const samples = getSamples();
+    if (!samples.length) goBack();
+  };
+  useIonViewWillEnter(navigateBackIfNoRemainingSamples);
+
   return (
-    <Page id="single-species-count-taxon-group">
+    <Page id="species-count-taxon-group">
       <Header title="Occurrences" />
       <Main
         sample={sample}
+        samples={getSamples()}
         deleteSample={deleteSampleWrap}
         navigateToOccurrence={navigateToOccurrence}
       />

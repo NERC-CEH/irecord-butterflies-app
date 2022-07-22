@@ -9,6 +9,9 @@ import {
   InfoMessage,
 } from '@flumens';
 import {
+  IonItemSliding,
+  IonItemOptions,
+  IonItemOption,
   IonImg,
   IonList,
   IonItemDivider,
@@ -22,15 +25,16 @@ import config from 'common/config';
 import { Trans as T } from 'react-i18next';
 import { mapOutline, warningOutline, clipboardOutline } from 'ionicons/icons';
 import { useRouteMatch } from 'react-router';
-import Stopwatch from 'Survey/common/Components/Stopwatch';
+import Stopwatch from 'Survey/Time/common/Components/Stopwatch';
 import VerificationListIcon from 'common/Components/VerificationListIcon';
 import IncrementalButton from 'Survey/common/Components/IncrementalButton';
-import UKBMSlogo from './UKBMSlogo.png';
+import UKBMSlogo from 'common/images/UKBMSlogo.png';
 import './styles.scss';
 
 type Props = {
   sample: Sample;
   increaseCount: any;
+  deleteSpecies: (taxom: Sample) => void;
 };
 
 const getDefaultTaxonCount = (taxon: any) => ({ count: 0, taxon });
@@ -63,7 +67,7 @@ const buildSpeciesCount = (agg: any, smp: Sample) => {
   return agg;
 };
 
-const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
+const HomeMain: FC<Props> = ({ sample, increaseCount, deleteSpecies }) => {
   const { url } = useRouteMatch();
   const { area } = sample.attrs.location || {};
   const isDisabled = sample.isUploaded();
@@ -83,7 +87,6 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
 
     const speciesName = taxon.commonName;
 
-    // const isShallow = !species.count;
     const increaseCountWrap = () => increaseCount(taxon);
     const increase5xCountWrap = () => increaseCount(taxon, true);
 
@@ -98,21 +101,33 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
       ? `${url}/speciesOccurrences/${taxon.warehouseId}`
       : undefined;
 
-    return (
-      <IonItem key={id} routerLink={routerLink}>
-        <IncrementalButton
-          onClick={increaseCountWrap}
-          onLongClick={increase5xCountWrap}
-          value={species.count}
-          disabled={isDisabled}
-        />
-        <IonLabel>{speciesName}</IonLabel>
-        <IonLabel slot="end" className="location-spinner">
-          {location}
-        </IonLabel>
+    const deleteSpeciesWrap = () => deleteSpecies(taxon);
 
-        <VerificationListIcon sample={sample} key={sample.cid} />
-      </IonItem>
+    return (
+      <IonItemSliding key={id}>
+        <IonItem detail key={id} routerLink={routerLink}>
+          <IncrementalButton
+            onClick={increaseCountWrap}
+            onLongClick={increase5xCountWrap}
+            value={species.count}
+            disabled={isDisabled}
+          />
+          <IonLabel>{speciesName}</IonLabel>
+          <IonLabel slot="end" className="location-spinner">
+            {location}
+          </IonLabel>
+
+          <VerificationListIcon sample={sample} key={sample.cid} />
+        </IonItem>
+
+        {!isDisabled && (
+          <IonItemOptions side="end">
+            <IonItemOption color="danger" onClick={deleteSpeciesWrap}>
+              Delete
+            </IonItemOption>
+          </IonItemOptions>
+        )}
+      </IonItemSliding>
     );
   };
 
@@ -139,11 +154,26 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
           <IonItemDivider className="species-list-header">
             <IonLabel>Count</IonLabel>
             <IonLabel>Species</IonLabel>
+            <IonLabel slot="end">{speciesList.length}</IonLabel>
           </IonItemDivider>
 
           {speciesList}
         </div>
       </IonList>
+    );
+  };
+
+  const getSpeciesAddButton = () => {
+    if (isDisabled) return null;
+
+    return (
+      <IonButton
+        color="primary"
+        id="add"
+        routerLink={`/survey/multi-species-count/${sample.cid}/species`}
+      >
+        <IonLabel>Add species</IonLabel>
+      </IonButton>
     );
   };
 
@@ -185,6 +215,8 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
           />
         </div>
       </IonList>
+
+      {getSpeciesAddButton()}
 
       {getSpeciesList()}
     </Main>

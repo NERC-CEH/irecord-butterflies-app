@@ -108,15 +108,21 @@ const DetailsController: FC<Props> = ({ sample }) => {
     </IonButtons>
   );
 
+  const onChangeCounter = (value: number) => {
+    // eslint-disable-next-line no-param-reassign
+    sample.attrs.recorders = value;
+    sample.save();
+  };
+
   return (
-    <Page id="single-species-count-detail">
+    <Page id="species-count-detail">
       <Header
         BackButton={!hasTimerStarted ? CancelButtonWrap : undefined}
         title="Survey Details"
         rightSlot={startTimerButton}
       />
 
-      <Main sample={sample} />
+      <Main sample={sample} onChangeCounter={onChangeCounter} />
     </Page>
   );
 };

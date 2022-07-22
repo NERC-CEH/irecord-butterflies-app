@@ -31,6 +31,7 @@ export interface Attrs extends ModelAttrs {
   'draftId:point': null;
   'draftId:list': null;
   'draftId:single-species-count': null;
+  'draftId:multi-species-count': null;
 
   // tips
   showLocationGPSTip: boolean;
@@ -68,6 +69,7 @@ const defaults: Attrs = {
   'draftId:point': null,
   'draftId:list': null,
   'draftId:single-species-count': null,
+  'draftId:multi-species-count': null,
 
   // tips
   showLocationGPSTip: true,

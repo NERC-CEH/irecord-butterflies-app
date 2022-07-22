@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import timeSurvey from 'Survey/Time/config';
+import timeSurvey from 'Survey/Time/Single/config';
 import AppOccurrence from 'models/occurrence';
 import AppSample from 'models/sample';
 

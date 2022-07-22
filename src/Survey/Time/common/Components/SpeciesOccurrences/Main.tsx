@@ -15,9 +15,10 @@ import { useRouteMatch } from 'react-router';
 import { warningOutline } from 'ionicons/icons';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
 import { observer } from 'mobx-react';
-import { Main } from '@flumens';
+import { Main, MenuAttrItem, InfoBackgroundMessage } from '@flumens';
 import { Trans as T } from 'react-i18next';
 import VerificationIcon from 'common/Components/VerificationIcon';
+import butterflyIcon from 'common/images/butterflyIcon.svg';
 import './styles.scss';
 
 function byCreationDate(s1: Sample, s2: Sample) {
@@ -29,6 +30,7 @@ function byCreationDate(s1: Sample, s2: Sample) {
 
 type Props = {
   sample: Sample;
+  samples: any;
   navigateToOccurrence: any;
   deleteSample: any;
 };
@@ -37,6 +39,7 @@ const MainComponent: FC<Props> = ({
   sample,
   navigateToOccurrence,
   deleteSample,
+  samples,
 }) => {
   const isDisabled = sample.isUploaded();
   const match = useRouteMatch<{ taxa: string }>();
@@ -100,9 +103,32 @@ const MainComponent: FC<Props> = ({
 
   const count = occurrencesList.length > 1 ? occurrencesList.length : null;
 
+  if (!samples[0]) {
+    return (
+      <Main id="area-count-occurrence-edit">
+        <IonList id="list" lines="full">
+          <InfoBackgroundMessage>No species added</InfoBackgroundMessage>
+        </IonList>
+      </Main>
+    );
+  }
+  const species = samples[0].occurrences[0].attrs.taxon.commonName;
+
   return (
     <Main id="area-count-occurrence-edit">
       <IonList lines="full">
+        {sample.isSurveyMultiSpeciesTimedCount() && (
+          <div className="rounded">
+            <MenuAttrItem
+              routerLink={`${match.url}/taxon`}
+              disabled={isDisabled}
+              icon={butterflyIcon}
+              label="Species"
+              value={species}
+            />
+          </div>
+        )}
+
         <div className="rounded">
           <IonItemDivider className="species-list-header">
             <IonLabel>

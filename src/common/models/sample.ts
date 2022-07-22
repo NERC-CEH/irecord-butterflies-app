@@ -10,7 +10,8 @@ import userModel from 'models/user';
 import config from 'common/config';
 import pointSurvey from 'Survey/Point/config';
 import listSurvey from 'Survey/List/config';
-import timeSurvey from 'Survey/Time/config';
+import timeSurvey from 'Survey/Time/Single/config';
+import multiSurvey from 'Survey/Time/Multi/config';
 import speciesProfiles, { Species } from 'common/data/species';
 import GPSExtension from './sampleGPSExt';
 import BackgroundGPSExtension from './sampleBackgroundGPSExt';
@@ -30,12 +31,14 @@ type Attrs = SampleAttrs & {
   temperature: any;
   windDirection: any;
   windSpeed: any;
+  recorders?: number;
 };
 
 const surveyConfig = {
   point: pointSurvey,
   list: listSurvey,
   'single-species-count': timeSurvey,
+  'multi-species-count': multiSurvey,
 };
 
 class AppSample extends Sample {
@@ -126,7 +129,17 @@ class AppSample extends Sample {
     return this.metadata.survey === 'single-species-count';
   }
 
+  isSurveyMultiSpeciesTimedCount() {
+    return this.metadata.survey === 'multi-species-count';
+  }
+
   getCurrentEditRoute() {
+    const hasTimerStarted = this.attrs.startTime;
+
+    if (!hasTimerStarted && this.isSurveyMultiSpeciesTimedCount()) {
+      return `/survey/${this.metadata.survey}/${this.cid}/details`;
+    }
+
     if (!this.isSurveySingleSpeciesTimedCount())
       return `/survey/${this.metadata.survey}/${this.cid}`;
 
@@ -135,7 +148,6 @@ class AppSample extends Sample {
       return `/survey/${this.metadata.survey}/${this.cid}/species`;
     }
 
-    const hasTimerStarted = this.attrs.startTime;
     if (!hasTimerStarted) {
       return `/survey/${this.metadata.survey}/${this.cid}/details`;
     }
@@ -202,6 +214,20 @@ class AppSample extends Sample {
         this.samples.push(confSpeciesSample);
       };
       species.confusionSpecies?.forEach(addConfusionSpecies);
+
+      return this.getCurrentEditRoute();
+    }
+
+    if (survey.name === 'multi-species-count') {
+      const { stage } = this.attrs;
+      const newSubSample = survey.smp.create(
+        AppSample,
+        Occurrence,
+        species,
+        null,
+        stage
+      );
+      this.samples.push(newSubSample);
 
       return this.getCurrentEditRoute();
     }

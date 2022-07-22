@@ -10,6 +10,7 @@ import { useRouteMatch } from 'react-router';
 import { Main, MenuAttrItem, MenuAttrItemFromModel } from '@flumens';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
 import VerificationMessage from 'Survey/common/Components/VerificationMessage';
+import butterflyIcon from 'common/images/butterflyIcon.svg';
 import clsx from 'clsx';
 import './styles.scss';
 
@@ -44,6 +45,16 @@ const OccurrenceMain: FC<Props> = ({ subSample, occurrence }) => {
           <T>Details</T>
         </IonItemDivider>
         <div className="rounded">
+          {subSample.isSurveyMultiSpeciesTimedCount() && (
+            <MenuAttrItem
+              routerLink={`${url}/taxon`}
+              disabled={isDisabled}
+              icon={butterflyIcon}
+              label="Species"
+              value={occurrence.attrs.taxon.commonName}
+            />
+          )}
+
           <MenuAttrItem
             routerLink={`${sampleBaseUrl}/location`}
             disabled={isDisabled}
@@ -52,6 +63,14 @@ const OccurrenceMain: FC<Props> = ({ subSample, occurrence }) => {
             value={location}
             skipTranslation
           />
+
+          {subSample.isSurveyMultiSpeciesTimedCount() && (
+            <MenuAttrItemFromModel
+              model={occurrence}
+              attr="stage"
+              skipValueTranslation
+            />
+          )}
 
           <MenuAttrItemFromModel
             model={occurrence}

@@ -8,7 +8,7 @@ import Sample from 'models/sample';
 import { device } from '@flumens';
 import CONFIG from 'common/config';
 import pointSurvey from 'Survey/Point/config';
-import singleSpeciesSurvey from 'Survey/Time/config';
+import singleSpeciesSurvey from 'Survey/Time/Single/config';
 
 // export type
 interface API_Occurrence {

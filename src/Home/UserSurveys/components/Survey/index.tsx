@@ -99,7 +99,7 @@ function getSampleInfo(sample: Sample) {
     );
   }
 
-  if (survey.name === 'single-species-count') {
+  if (sample.isSurveySingleSpeciesTimedCount()) {
     const occ = sample?.samples[0]?.occurrences[0];
 
     const nonZeroAbundance = (smp: Sample) =>
@@ -107,7 +107,7 @@ function getSampleInfo(sample: Sample) {
     const count = sample?.samples?.filter(nonZeroAbundance).length;
 
     const taxon = occ?.attrs?.taxon || {};
-    const label = 'Timed count';
+    const label = 'Single timed count';
 
     const byId = ({ id: speciesID }: Species) => speciesID === taxon.id;
     const fullSpeciesProfile: any = species.find(byId) || {};
@@ -149,6 +149,34 @@ function getSampleInfo(sample: Sample) {
             )}
             {showSurveyDuration}
           </div>
+        </IonLabel>
+      </>
+    );
+  }
+
+  if (sample.isSurveyMultiSpeciesTimedCount()) {
+    const speciesCount = sample.samples.length;
+
+    const durationTime = (
+      <span>{getFormattedDuration(sample.attrs.duration)}</span>
+    );
+
+    const showSurveyDuration = sample.metadata.saved ? (
+      <IonBadge>
+        Time: <b>{durationTime}</b>
+      </IonBadge>
+    ) : null;
+
+    return (
+      <>
+        <div className="count">
+          <div className="number">{speciesCount}</div>
+          <div className="label">Count</div>
+        </div>
+        <IonLabel position="stacked" mode="ios" color="dark">
+          <IonLabel className="species-name">Multi timed count</IonLabel>
+          <IonLabel class="ion-text-wrap">{prettyDate}</IonLabel>
+          <div className="badge-wrapper">{showSurveyDuration}</div>
         </IonLabel>
       </>
     );

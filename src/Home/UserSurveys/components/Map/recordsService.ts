@@ -3,7 +3,7 @@ import { LatLng } from 'leaflet';
 import userModel from 'models/user';
 import CONFIG from 'common/config';
 import pointSurvey from 'Survey/Point/config';
-import singleSpeciesSurvey from 'Survey/Time/config';
+import singleSpeciesSurvey from 'Survey/Time/Single/config';
 import { Hit, Bucket, Record, Square } from './esResponse.d';
 
 const getRecordsQuery = (northWest: LatLng, southEast: LatLng) =>
@@ -192,9 +192,8 @@ export async function fetchSquares(
     size: squareSize,
   });
 
-  const squares = records?.aggregations?.by_srid?.buckets[0]?.by_square?.buckets.map(
-    addSize
-  );
+  const squares =
+    records?.aggregations?.by_srid?.buckets[0]?.by_square?.buckets.map(addSize);
 
   return squares || [];
 }

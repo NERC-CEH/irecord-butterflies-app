@@ -40,6 +40,7 @@ type Props = {
   occurrence: Occurrence;
   title?: string;
   showCancelButton?: any;
+  onSelect?: (species: Species) => void;
 };
 
 function useTimeSurveyTip() {
@@ -85,6 +86,7 @@ const SpeciesSelect: FC<Props> = ({
   occurrence,
   title,
   showCancelButton,
+  onSelect,
 }) => {
   const { navigate, goBack } = useContext(NavContext);
   const showTimeSurveyTip = useTimeSurveyTip();
@@ -124,7 +126,7 @@ const SpeciesSelect: FC<Props> = ({
 
   const filters = { ...surveyFilters, ...appModel.attrs.filters };
 
-  function onSelect(species: Species) {
+  function onSelectDefault(species: Species) {
     const navNextPath = sample.setSpecies(species, occurrence);
     sample.save();
 
@@ -137,7 +139,10 @@ const SpeciesSelect: FC<Props> = ({
   }
 
   const getSpeciesID = (occ: Occurrence) => (occ.attrs.taxon || {}).id;
-  const currentSpecies = sample.occurrences.map(getSpeciesID);
+  const getSampleSpeciesID = (smp: Sample) => smp.occurrences[0].attrs.taxon.id;
+  const currentSpecies = sample.isSurveyMultiSpeciesTimedCount()
+    ? sample.samples.map(getSampleSpeciesID)
+    : sample.occurrences.map(getSpeciesID);
 
   const toggleFilter = (type: FilterGroup, value: Filter) => {
     if (type === 'survey') {
@@ -170,7 +175,7 @@ const SpeciesSelect: FC<Props> = ({
         title={title}
       />
       <Main
-        onSelect={onSelect}
+        onSelect={onSelect || onSelectDefault}
         searchPhrase={searchPhrase}
         filters={filters}
         ignore={currentSpecies}

@@ -12,7 +12,7 @@ type Props = {
 };
 
 const OccurrenceHome: FC<Props> = ({ subSample, occurrence }) => (
-  <Page id="single-species-count-edit-occurrence">
+  <Page id="timed-species-count-edit-occurrence">
     <Header title="Edit Occurrence" />
     <Main occurrence={occurrence} subSample={subSample} />
   </Page>
