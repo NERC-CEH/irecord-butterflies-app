@@ -1,4 +1,5 @@
-import { merge } from 'lodash';
+import merge from 'lodash/merge';
+
 import survey from '../Single/config';
 
 const speciesSurvey = merge({}, survey, {
