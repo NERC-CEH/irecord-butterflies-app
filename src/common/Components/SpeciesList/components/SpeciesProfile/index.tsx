@@ -12,11 +12,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import '@ionic/react/css/ionic-swiper.css';
-import clsx from 'clsx';
 import { expandOutline } from 'ionicons/icons';
-import { Main, Gallery, useDisableBackButton } from '@flumens';
+import { Main, useOnBackButton } from '@flumens';
 import { Trans as T } from 'react-i18next';
 import ImageWithBackground from 'Components/ImageWithBackground';
+import FullScreenPhotoViewer from '../FullScreenPhotoViewer';
 import './styles.scss';
 
 type Image = { file: string; title: string; author: string };
@@ -32,72 +32,7 @@ const SpeciesProfile: FC<Props> = ({ species, onRecord, isSurvey }) => {
   const [showLifechart, setShowLifechart] = useState(false);
   const [showMap, setShowMap] = useState(false);
 
-  useDisableBackButton();
-
-  const getFullScreenPhotoViewer = () => {
-    let items = [];
-    let initialSlide = 0;
-    let className = 'white-background';
-    let pageTitle = '';
-
-    const swiperProps: any = {};
-
-    const onGalleryClose = () => {
-      setShowGallery(undefined);
-      setShowLifechart(false);
-      setShowMap(false);
-    };
-
-    if (Number.isInteger(showGallery)) {
-      const getImageSource = ({ file, title, author }: Image) => {
-        const imageURL = `/images/${file}.jpg`;
-        return { src: imageURL, title, footer: `© ${author}` };
-      };
-
-      items = species.images.map(getImageSource);
-      initialSlide = showGallery || 0;
-      className = '';
-    }
-
-    if (showLifechart) {
-      pageTitle = 'Lifechart';
-      swiperProps.zoom = false;
-
-      const lifechart = (
-        <SwiperSlide key={species.lifechart}>
-          <div style={{ width: '95vh' }}>
-            <img
-              src={species.lifechart}
-              style={{ transform: 'rotate(90deg)' }}
-            />
-          </div>
-        </SwiperSlide>
-      );
-      items.push({ item: lifechart });
-    }
-
-    if (showMap) {
-      pageTitle = 'Distribution';
-      items.push({ src: species.map });
-    }
-
-    const isOpen =
-      !!items.length &&
-      (Number.isInteger(showGallery) || showLifechart || showMap);
-
-    return (
-      <Gallery
-        isOpen={isOpen}
-        items={items}
-        initialSlide={initialSlide}
-        onClose={onGalleryClose}
-        className={clsx('species-profile-gallery', className)}
-        title={pageTitle}
-        mode="md"
-        swiperProps={swiperProps}
-      />
-    );
-  };
+  useOnBackButton(onRecord);
 
   const showPhotoInFullScreen = (index: number) => setShowGallery(index);
 
@@ -158,9 +93,21 @@ const SpeciesProfile: FC<Props> = ({ species, onRecord, isSurvey }) => {
     return null;
   }
 
+  const onGalleryClose = () => {
+    setShowGallery(undefined);
+    setShowLifechart(false);
+    setShowMap(false);
+  };
+
   return (
     <>
-      {getFullScreenPhotoViewer()}
+      <FullScreenPhotoViewer
+        species={species}
+        onClose={onGalleryClose}
+        showGallery={showGallery}
+        showLifechart={showLifechart}
+        showMap={showMap}
+      />
 
       <Main id="species-profile" className="ion-padding">
         {getSlides()}

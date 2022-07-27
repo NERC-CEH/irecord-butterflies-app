@@ -55,4 +55,5 @@ export { default as device } from '@flumens/ionic/dist/utils/device';
 export {
   useDisableBackButton,
   useOnBackButton,
+  useOnHideModal,
 } from '@flumens/ionic/dist/hooks/navigation';
