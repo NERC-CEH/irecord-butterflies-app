@@ -118,14 +118,14 @@ const HomeComponent: FC = () => {
             label="Record"
           >
             <IonFabList side="top">
-              <IonFabButton
+              {/* <IonFabButton
                 className="fab-button-label"
                 routerLink="/survey/multi-species-count"
               >
                 <IonLabel>
                   <T>Multi species timed count</T>
                 </IonLabel>
-              </IonFabButton>
+              </IonFabButton> */}
 
               <IonFabButton
                 className="fab-button-label"
