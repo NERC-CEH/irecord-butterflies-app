@@ -13,6 +13,7 @@ import {
   NavContext,
   IonFabList,
   IonFabButton,
+  useIonRouter,
 } from '@ionic/react';
 import {
   bookOutline,
@@ -25,6 +26,7 @@ import PendingSurveysBadge from 'common/Components/PendingSurveysBadge';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import menuOutline from 'common/images/menuIcon.svg';
 import { Trans as T } from 'react-i18next';
+import { App as AppPlugin } from '@capacitor/app';
 import Menu from './Menu';
 import Species from './Species';
 import About from './About';
@@ -67,6 +69,7 @@ const useLongPressAlert = () => {
 
 const HomeComponent: FC = () => {
   const { navigate } = useContext(NavContext);
+  const ionRouter = useIonRouter();
   const showLongPressAlert = useLongPressAlert();
 
   const showLongPressAlertOnInit = () => {
@@ -84,6 +87,20 @@ const HomeComponent: FC = () => {
   const navigateToPrimarySurvey = () => {
     navigate(`/survey/point`);
   };
+
+  const exitApp = () => {
+    const onExitApp = () => !ionRouter.canGoBack() && AppPlugin.exitApp();
+
+    // eslint-disable-next-line @getify/proper-arrows/name
+    document.addEventListener('ionBackButton', (ev: any) =>
+      ev.detail.register(-1, onExitApp)
+    );
+
+    const removeEventListener = () =>
+      document.addEventListener('ionBackButton', onExitApp);
+    return removeEventListener;
+  };
+  useEffect(exitApp, []);
 
   return (
     <IonTabs>
