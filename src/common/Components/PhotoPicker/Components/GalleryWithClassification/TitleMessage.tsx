@@ -42,7 +42,7 @@ const TitleMessage: FC<Props> = ({ image }) => {
     return (
       <IonLabel className="gallery-ai-message">
         <b>Please check</b> - we think it is{' '}
-        <b className="light">{probability}%</b> likely the{' '}
+        <b className="light">{probability}%</b> likely to be{' '}
         <b className="light">{taxonName}</b> species.
       </IonLabel>
     );
@@ -51,7 +51,7 @@ const TitleMessage: FC<Props> = ({ image }) => {
   return (
     <IonLabel className="gallery-ai-message success">
       <b>Great!</b> We also think it is <b className="light">{probability}%</b>{' '}
-      likely the <b className="light">{taxonName}</b> species.
+      likely to be <b className="light">{taxonName}</b> species.
     </IonLabel>
   );
 };
