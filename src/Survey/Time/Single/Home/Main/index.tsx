@@ -67,6 +67,7 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
   const { url } = useRouteMatch();
   const { area } = sample.attrs.location || {};
   const isDisabled = sample.isUploaded();
+  const isTimerPaused = sample.isTimerPaused();
 
   let areaPretty: JSX.Element | string = (
     <IonIcon icon={warningOutline} color="danger" />
@@ -99,7 +100,7 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
       : undefined;
 
     return (
-      <IonItem key={id} routerLink={routerLink}>
+      <IonItem key={id} routerLink={routerLink} disabled={isTimerPaused}>
         <IncrementalButton
           onClick={increaseCountWrap}
           onLongClick={increase5xCountWrap}
@@ -177,6 +178,11 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
           />
 
           <Stopwatch sample={sample} />
+          {isTimerPaused && (
+            <InfoMessage color="secondary">
+              To continue surveying tap the play icon
+            </InfoMessage>
+          )}
 
           <MenuAttrItem
             routerLink={`${url}/details`}

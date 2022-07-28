@@ -71,6 +71,7 @@ const HomeMain: FC<Props> = ({ sample, increaseCount, deleteSpecies }) => {
   const { url } = useRouteMatch();
   const { area } = sample.attrs.location || {};
   const isDisabled = sample.isUploaded();
+  const isTimerPaused = sample.isTimerPaused();
 
   let areaPretty: JSX.Element | string = (
     <IonIcon icon={warningOutline} color="danger" />
@@ -104,8 +105,13 @@ const HomeMain: FC<Props> = ({ sample, increaseCount, deleteSpecies }) => {
     const deleteSpeciesWrap = () => deleteSpecies(taxon);
 
     return (
-      <IonItemSliding key={id}>
-        <IonItem detail key={id} routerLink={routerLink}>
+      <IonItemSliding key={id} disabled={isTimerPaused}>
+        <IonItem
+          detail
+          key={id}
+          routerLink={routerLink}
+          disabled={isTimerPaused}
+        >
           <IncrementalButton
             onClick={increaseCountWrap}
             onLongClick={increase5xCountWrap}
@@ -171,6 +177,7 @@ const HomeMain: FC<Props> = ({ sample, increaseCount, deleteSpecies }) => {
         color="primary"
         id="add"
         routerLink={`/survey/multi-species-count/${sample.cid}/species`}
+        disabled={isTimerPaused}
       >
         <IonLabel>Add species</IonLabel>
       </IonButton>
@@ -207,6 +214,11 @@ const HomeMain: FC<Props> = ({ sample, increaseCount, deleteSpecies }) => {
           />
 
           <Stopwatch sample={sample} />
+          {isTimerPaused && (
+            <InfoMessage color="secondary">
+              To continue surveying tap the play icon
+            </InfoMessage>
+          )}
 
           <MenuAttrItem
             routerLink={`${url}/details`}
