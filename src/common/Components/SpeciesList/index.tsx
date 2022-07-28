@@ -28,9 +28,10 @@ const byName = (sp1: Species, sp2: Species) =>
 
 const existing = (sp: any): sp is Species => !!sp;
 
-function organiseByProbability(allSpecies: Species[]) {
-  const location = appModel.attrs.location || {};
-  const currentLocation = location.gridref;
+function organiseByProbability(allSpecies: Species[], sampleGridRef?: string) {
+  const location = sampleGridRef || appModel.attrs?.location?.gridref || {};
+
+  const currentLocation = location;
   const currentWeek = getCurrentWeekNumber();
 
   const [probsNowAndHere, probsHere, probsNow] = getProbabilities(
@@ -83,6 +84,7 @@ type Props = {
   onSelect?: (sp: Species) => void;
   ignore?: any[];
   searchPhrase?: string;
+  sampleGridRef?: string;
 };
 
 const SpeciesList: FC<Props> = ({
@@ -90,6 +92,7 @@ const SpeciesList: FC<Props> = ({
   onSelect,
   ignore = [],
   searchPhrase = '',
+  sampleGridRef,
 }) => {
   const [speciesProfile, setSpeciesProfile] = useState<Species | null>(null);
 
@@ -207,7 +210,7 @@ const SpeciesList: FC<Props> = ({
     const { useProbabilitiesForGuide, useSmartSorting } = appModel.attrs;
 
     const [speciesHereAndNow, speciesHere, speciesNow, remainingSpecies] =
-      organiseByProbability(speciesData);
+      organiseByProbability(speciesData, sampleGridRef);
 
     const hasSpeciesHereAndNow = !!speciesHereAndNow.length;
     const hasSpeciesHere = !!speciesHere.length;

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Sample from 'models/sample';
 import { observer } from 'mobx-react';
-import { Page } from '@flumens';
+import { Page, locationToGrid } from '@flumens';
 import Header from './Header';
 import Main from './Main';
 import './styles.scss';
@@ -18,6 +18,7 @@ const AreaController: FC<Props> = ({ sample }) => {
   const location = sample.attrs.location || {};
   const isGPSTracking = sample.isBackgroundGPSRunning();
   const { area } = location;
+  location.gridref = locationToGrid(location); // eslint-disable-line
 
   let areaPretty;
   if (area) {

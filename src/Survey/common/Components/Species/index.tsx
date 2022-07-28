@@ -91,6 +91,8 @@ const SpeciesSelect: FC<Props> = ({
   const { navigate, goBack } = useContext(NavContext);
   const showTimeSurveyTip = useTimeSurveyTip();
 
+  const sampleGridRef = sample.attrs.location?.gridref?.slice(0, 4);
+
   const alert = useAlert();
   const [isAlertPresent, setIsAlertPresent] = useState(false);
 
@@ -179,6 +181,7 @@ const SpeciesSelect: FC<Props> = ({
         searchPhrase={searchPhrase}
         filters={filters}
         ignore={currentSpecies}
+        sampleGridRef={sampleGridRef}
       />
     </Page>
   );
