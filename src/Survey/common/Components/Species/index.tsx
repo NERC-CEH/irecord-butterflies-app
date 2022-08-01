@@ -113,7 +113,7 @@ const SpeciesSelect: FC<Props> = ({
     if (change) {
       await sample.destroy();
       setIsAlertPresent(false);
-      navigate('/home/surveys', 'root', 'pop');
+      navigate('/home/surveys', 'root', 'push');
       return;
     }
 
@@ -134,7 +134,7 @@ const SpeciesSelect: FC<Props> = ({
     sample.save();
 
     if (navNextPath) {
-      navigate(navNextPath, 'forward', 'pop');
+      navigate(navNextPath, 'forward', 'push');
       return;
     }
 
