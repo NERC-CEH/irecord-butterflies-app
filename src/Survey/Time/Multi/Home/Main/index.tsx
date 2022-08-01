@@ -12,7 +12,6 @@ import {
   IonItemSliding,
   IonItemOptions,
   IonItemOption,
-  // IonImg,
   IonList,
   IonItemDivider,
   IonIcon,
@@ -28,7 +27,6 @@ import { useRouteMatch } from 'react-router';
 import Stopwatch from 'Survey/Time/common/Components/Stopwatch';
 import VerificationListIcon from 'common/Components/VerificationListIcon';
 import IncrementalButton from 'Survey/common/Components/IncrementalButton';
-// import UKBMSlogo from 'common/images/UKBMSlogo.png';
 import './styles.scss';
 
 type Props = {
@@ -199,7 +197,6 @@ const HomeMain: FC<Props> = ({ sample, increaseCount, deleteSpecies }) => {
         </InfoMessage>
       )}
 
-      {/* <IonImg src={UKBMSlogo} /> */}
       <IonList lines="full">
         <IonItemDivider>
           <T>Details</T>
