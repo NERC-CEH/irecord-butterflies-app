@@ -43,6 +43,7 @@ export interface Attrs extends ModelAttrs {
   showStatsWIPTip: boolean;
   showListSurveyHiddenButtonTip: boolean;
   showTimeSurveyTip: boolean;
+  showMothSpeciesTip: boolean;
 
   showVerifiedRecordsNotification: boolean;
   verifiedRecordsTimestamp: null | number;
@@ -81,6 +82,7 @@ const defaults: Attrs = {
   showStatsWIPTip: true,
   showListSurveyHiddenButtonTip: true,
   showTimeSurveyTip: true,
+  showMothSpeciesTip: true,
 
   showVerifiedRecordsNotification: true,
   verifiedRecordsTimestamp: null,

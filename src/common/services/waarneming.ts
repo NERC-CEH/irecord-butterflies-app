@@ -37,6 +37,7 @@ function getExtraInfo(sp: Result) {
     found_in_name: 'common_name',
     thumbnail: taxon.thumbnail,
     thumbnailBackground: taxon.thumbnailBackground,
+    type: taxon.type,
   };
 }
 

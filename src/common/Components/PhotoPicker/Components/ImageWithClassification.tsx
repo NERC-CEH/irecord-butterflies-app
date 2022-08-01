@@ -1,7 +1,9 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import { FC } from 'react';
-import { IonIcon, IonButton, IonSpinner } from '@ionic/react';
+import { FC, useEffect, useContext, useState } from 'react';
+import { IonIcon, IonButton, IonSpinner, NavContext } from '@ionic/react';
+import { useAlert } from '@flumens';
 import { observer } from 'mobx-react';
+import appModel from 'common/models/app';
 import {
   alertCircleOutline,
   checkmarkCircleOutline,
@@ -17,7 +19,13 @@ type Props = {
   onClick: any;
 };
 
+let isPopupVisible = false;
+
 const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
+  const alert = useAlert();
+  const { navigate } = useContext(NavContext);
+  const [initialised, setInitialised] = useState<boolean>(false);
+
   const hasBeenIdentified = !!media.attrs?.species;
 
   const hasSpeciesSelected = !!media?.parent?.attrs?.taxon;
@@ -25,6 +33,57 @@ const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
   const hasMatchParent = media.doesTaxonMatchParent();
 
   const showLoading = media.identification.identifying;
+
+  const topSpeciesIsMoth = media?.getTopSpecies()?.type !== 'moth';
+
+  const showAlert = () => {
+    if (!initialised) {
+      setInitialised(true);
+      return;
+    }
+
+    isPopupVisible = true;
+
+    const { useMoths, showMothSpeciesTip } = appModel.attrs;
+
+    if (
+      !hasBeenIdentified ||
+      topSpeciesIsMoth ||
+      useMoths ||
+      !showMothSpeciesTip
+    )
+      return;
+
+    appModel.attrs.showMothSpeciesTip = false;
+    appModel.save();
+
+    alert({
+      header: 'Moth species detected',
+      message:
+        'You can record selected moth species with this app by visiting the app settings in the Menu and switching on Enable moth species',
+      backdropDismiss: false,
+      buttons: [
+        {
+          text: 'OK',
+          cssClass: 'primary',
+          role: 'cancel',
+        },
+        {
+          text: 'Enable Moth species',
+          cssClass: 'primary',
+
+          handler: () => {
+            navigate('/settings/menu', 'root');
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            isPopupVisible = false;
+            appModel.save();
+          },
+        },
+      ],
+    });
+  };
+
+  useEffect(showAlert);
 
   const onClickWrap = () => !showLoading && onClick();
 
