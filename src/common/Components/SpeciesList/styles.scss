@@ -26,19 +26,12 @@
       border-radius: 10px;
       box-shadow: 0 0 10px #d9d9da;
 
-      ion-icon {
-        // TODO: remove once real pics are available
-        width: 100%;
-        height: 100%;
-        --ionicon-stroke-width: 5px;
-        z-index: 1;
-
-        svg path {
-          fill: white !important;
-        }
+      .badge {
+        top: 2px !important;
+        left: 2px !important;
       }
 
-      ion-label {
+      .common-name {
         flex: 1;
         display: flex;
         justify-content: center;

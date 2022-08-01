@@ -8,6 +8,7 @@ import {
   close,
 } from 'ionicons/icons';
 import Media from 'models/image';
+import Badge from 'common/Components/Badge';
 
 type Props = {
   media: Media;
@@ -17,11 +18,11 @@ type Props = {
 };
 
 const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
-  const hasBeenIdentified = !!media.attrs?.species?.length;
+  const hasBeenIdentified = !!media.attrs?.species;
 
-  const showWarning = !media.doesTaxonMatchParent();
+  const hasSpeciesSelected = !!media?.parent?.attrs?.taxon;
 
-  const showSuccess = media.doesTaxonMatchParent();
+  const hasMatchParent = media.doesTaxonMatchParent();
 
   const showLoading = media.identification.identifying;
 
@@ -38,11 +39,15 @@ const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
 
       {showLoading && <IonSpinner slot="end" className="identifying" />}
 
-      {!showLoading && hasBeenIdentified && showWarning && (
+      {!showLoading && hasBeenIdentified && !hasSpeciesSelected && (
+        <Badge className="badge" media={media} />
+      )}
+
+      {!showLoading && hasBeenIdentified && !hasMatchParent && (
         <IonIcon className="warning-icon" icon={alertCircleOutline} />
       )}
 
-      {!showLoading && hasBeenIdentified && showSuccess && (
+      {!showLoading && hasBeenIdentified && hasMatchParent && (
         <IonIcon className="success-icon" icon={checkmarkCircleOutline} />
       )}
     </div>

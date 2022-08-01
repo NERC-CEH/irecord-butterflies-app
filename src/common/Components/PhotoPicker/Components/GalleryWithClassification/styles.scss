@@ -11,31 +11,43 @@
 }
 
 #img-array {
+  .badge {
+    left: 2px !important;
+    bottom: 2px !important;
+    padding: 2px !important;
+
+    ion-icon {
+      font-size: 0.8em !important;
+    }
+
+    ion-label {
+      font-size: 0.7em !important;
+    }
+  }
+
   .warning-icon {
     position: absolute;
-    right: 2px;
+    left: 2px;
     bottom: 2px;
-    background: #fff1f1d9;
-    color: var(--ion-color-warning);
+    background: var(--ion-classifier-notLikely-background);
+    color: var(--ion-classifier-notLikely);
     border-radius: 100%;
-    font-size: 1.1em;
-    padding: 0px;
+    font-size: 0.9em;
   }
 
   .success-icon {
     position: absolute;
-    right: 2px;
+    left: 2px;
     bottom: 2px;
-    background: #f1fff4d9;
-    color: var(--ion-color-success);
+    background: var(--ion-classifier-success-background);
+    color: var(--ion-classifier-success);
     border-radius: 100%;
-    font-size: 1.1em;
-    padding: 0px;
+    font-size: 0.9em;
   }
 
   ion-spinner {
     position: absolute;
-    right: 2px;
+    left: 2px;
     bottom: 2px;
     background: #ffffff94;
     border-radius: 50%;

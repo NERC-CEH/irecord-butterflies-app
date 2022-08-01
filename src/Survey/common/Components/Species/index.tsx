@@ -92,6 +92,7 @@ const SpeciesSelect: FC<Props> = ({
   const showTimeSurveyTip = useTimeSurveyTip();
 
   const sampleGridRef = sample.attrs.location?.gridref?.slice(0, 4);
+  const { media } = sample.occurrences[0];
 
   const alert = useAlert();
   const [isAlertPresent, setIsAlertPresent] = useState(false);
@@ -182,6 +183,7 @@ const SpeciesSelect: FC<Props> = ({
         filters={filters}
         ignore={currentSpecies}
         sampleGridRef={sampleGridRef}
+        media={media}
       />
     </Page>
   );

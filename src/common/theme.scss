@@ -85,6 +85,13 @@
   --ion-verification-plausible: #f18a29;
   --ion-verification-rejected: #d33939;
 
+  --ion-classifier-success: #33794f;
+  --ion-classifier-success-background: #dbffe0;
+  --ion-classifier-possible: #603004;
+  --ion-classifier-possible-background: #ffe391;
+  --ion-classifier-notLikely: #610018;
+  --ion-classifier-notLikely-background: #ffc2d1;
+
   // for reading using JS from
   // https://stackoverflow.com/questions/47112393/getting-the-iphone-x-safe-area-using-javascript
   --sat: env(safe-area-inset-top);
