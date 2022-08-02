@@ -90,7 +90,9 @@ const DetailsController: FC<Props> = ({ sample }) => {
       await sample.destroy();
 
       setIsAlertPresent(false);
-      navigate('/home/surveys', 'root', 'push');
+      navigate('/home/surveys', 'root', 'push', undefined, {
+        unmount: true,
+      });
       return;
     }
 
