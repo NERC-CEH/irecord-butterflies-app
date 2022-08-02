@@ -101,6 +101,37 @@ export default class AppMedia extends Media {
     return this.attrs.species[0];
   }
 
+  getAllUniqueIdentifiedSpecies() {
+    if (!this.attrs.species) return null;
+
+    const byHightestProbablity = (a: any, b: any) =>
+      b.probability - a.probability;
+
+    const getAllIdentifiedSpecies = () => this.attrs.species;
+
+    // program to remove duplicate value from an array
+
+    const uniqueIds = new Set();
+
+    const removeDuplicates = (element: any) => {
+      const isDuplicate = uniqueIds.has(element?.common_name);
+
+      uniqueIds.add(element?.common_name);
+
+      if (!isDuplicate) {
+        return true;
+      }
+
+      return false;
+    };
+
+    return this.attrs.species
+      .map(getAllIdentifiedSpecies)
+      .flat()
+      .sort(byHightestProbablity)
+      .filter(removeDuplicates);
+  }
+
   async identify() {
     this.identification.identifying = true;
 

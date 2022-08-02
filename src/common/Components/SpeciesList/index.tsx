@@ -20,7 +20,6 @@ import species, { Species } from 'common/data/species';
 import config from 'common/config';
 import getCurrentWeekNumber from 'helpers/weeks';
 import getProbabilities from 'common/data/species/probabilities';
-import Image from 'models/image';
 import Badge from 'common/Components/Badge';
 import SpeciesProfile from './components/SpeciesProfile';
 import './styles.scss';
@@ -87,7 +86,7 @@ type Props = {
   ignore?: any[];
   searchPhrase?: string;
   sampleGridRef?: string;
-  media: any;
+  media?: any;
 };
 
 const SpeciesList: FC<Props> = ({
@@ -110,12 +109,36 @@ const SpeciesList: FC<Props> = ({
   const getSpeciesTile = (sp: Species, i: number) => {
     const { commonName, thumbnail: thumbnailSrc, thumbnailBackground } = sp;
 
-    let speciesMedia;
-    const byCommonName = (image: Image) =>
-      image.getTopSpecies()?.common_name === commonName;
+    const byCommonName = (image: any) => image?.common_name === commonName;
 
-    if (media) {
-      speciesMedia = media.find(byCommonName);
+    let me;
+    const uniqueIds = new Set();
+
+    if (media?.length) {
+      const getAllIdentifiedSpecies = (m: any) => m?.attrs?.species;
+
+      const byHightestProbablity = (a: any, b: any) =>
+        b.probability - a.probability;
+
+      const removeDuplicates = (element: any) => {
+        // console.log(element);
+        const isDuplicate = uniqueIds.has(element?.common_name);
+
+        uniqueIds.add(element?.common_name);
+
+        if (!isDuplicate) {
+          return true;
+        }
+
+        return false;
+      };
+
+      me = media
+        .map(getAllIdentifiedSpecies)
+        .flat()
+        .sort(byHightestProbablity)
+        .filter(removeDuplicates)
+        .filter(byCommonName);
     }
 
     const isSurvey = !!onSelect;
@@ -138,7 +161,7 @@ const SpeciesList: FC<Props> = ({
         onClick={onClick}
       >
         <div className="container">
-          {speciesMedia && <Badge className="badge" media={speciesMedia} />}
+          {me && <Badge className="badge" species={me} />}
           {isSurvey && (
             <div className="info-box" onClick={viewSpecies}>
               <IonIcon icon={informationCircleOutline} />

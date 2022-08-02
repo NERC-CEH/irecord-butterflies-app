@@ -280,6 +280,12 @@ class AppSample extends Sample {
 
     return null;
   }
+
+  getAllMedia(occurrence: Occurrence) {
+    if (occurrence) return occurrence.media;
+
+    return this.occurrences[0].media;
+  }
 }
 
 export const useValidateCheck = (sample: Sample) => {
