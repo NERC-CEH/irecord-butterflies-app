@@ -124,14 +124,14 @@ export default class AppOccurrence extends Occurrence {
       return false;
     };
 
-    const removeWithLowProbability = (sp: any) =>
-      sp.probability > POSSIBLE_THRESHOLD;
+    const withLowProbability = (sp: any) =>
+      sp?.probability > POSSIBLE_THRESHOLD;
 
     return this.media
       .map(getAllIdentifiedSpecies)
       .flat()
       .sort(byHightestProbability)
       .filter(removeDuplicates)
-      .filter(removeWithLowProbability);
+      .filter(withLowProbability);
   }
 }
