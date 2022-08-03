@@ -32,6 +32,8 @@ const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
 
   const hasMatchParent = media.doesTaxonMatchParent();
 
+  const species = media.getTopSpecies();
+
   const showLoading = media.identification.identifying;
 
   const topSpeciesIsMoth = media?.getTopSpecies()?.type !== 'moth';
@@ -99,7 +101,7 @@ const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
       {showLoading && <IonSpinner slot="end" className="identifying" />}
 
       {!showLoading && hasBeenIdentified && !hasSpeciesSelected && (
-        <Badge className="badge" media={media} />
+        <Badge className="badge" species={species} />
       )}
 
       {!showLoading && hasBeenIdentified && !hasMatchParent && (

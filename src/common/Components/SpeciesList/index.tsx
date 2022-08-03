@@ -20,7 +20,6 @@ import species, { Species } from 'common/data/species';
 import config from 'common/config';
 import getCurrentWeekNumber from 'helpers/weeks';
 import getProbabilities from 'common/data/species/probabilities';
-import Image from 'models/image';
 import Badge from 'common/Components/Badge';
 import SpeciesProfile from './components/SpeciesProfile';
 import './styles.scss';
@@ -87,7 +86,7 @@ type Props = {
   ignore?: any[];
   searchPhrase?: string;
   sampleGridRef?: string;
-  media: any;
+  identifiedSpeciesList?: any;
 };
 
 const SpeciesList: FC<Props> = ({
@@ -96,7 +95,7 @@ const SpeciesList: FC<Props> = ({
   ignore = [],
   searchPhrase = '',
   sampleGridRef,
-  media,
+  identifiedSpeciesList,
 }) => {
   const [speciesProfile, setSpeciesProfile] = useState<Species | null>(null);
 
@@ -110,13 +109,8 @@ const SpeciesList: FC<Props> = ({
   const getSpeciesTile = (sp: Species, i: number) => {
     const { commonName, thumbnail: thumbnailSrc, thumbnailBackground } = sp;
 
-    let speciesMedia;
-    const byCommonName = (image: Image) =>
-      image.getTopSpecies()?.common_name === commonName;
-
-    if (media) {
-      speciesMedia = media.find(byCommonName);
-    }
+    const byCommonName = (s: any) => s?.common_name === commonName;
+    const [matchedSpecies] = identifiedSpeciesList?.filter(byCommonName) || [];
 
     const isSurvey = !!onSelect;
     const viewSpecies = (e: any) => {
@@ -138,7 +132,9 @@ const SpeciesList: FC<Props> = ({
         onClick={onClick}
       >
         <div className="container">
-          {speciesMedia && <Badge className="badge" media={speciesMedia} />}
+          {matchedSpecies && (
+            <Badge className="badge" species={matchedSpecies} />
+          )}
           {isSurvey && (
             <div className="info-box" onClick={viewSpecies}>
               <IonIcon icon={informationCircleOutline} />

@@ -6,7 +6,7 @@ import species, { Species } from 'common/data/species';
 const BUTTERFLY_GROUP_ID = 8;
 const MOTH_GROUP_ID = 4;
 
-type Result = {
+export type Result = {
   classifier_id: string;
   classifier_name: string;
   probability: number;

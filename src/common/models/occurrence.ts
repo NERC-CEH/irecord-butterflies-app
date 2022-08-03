@@ -6,7 +6,10 @@ import {
 } from '@flumens';
 import { intercept } from 'mobx';
 import species, { Species } from 'common/data/species';
+// import { Result } from 'common/serv';
 import Media from './image';
+
+const POSSIBLE_THRESHOLD = 0.2;
 
 type Attrs = OccurrenceAttrs & {
   taxon: Species;
@@ -100,5 +103,35 @@ export default class AppOccurrence extends Occurrence {
 
   isDisabled() {
     return this.isUploaded();
+  }
+
+  getAllUniqueIdentifiedSpecies() {
+    if (!this.media.length) return null;
+
+    const byHightestProbability = (sp1: any, sp2: any) =>
+      sp2.probability - sp1.probability;
+
+    const getAllIdentifiedSpecies = (image: Media) => image.attrs.species;
+
+    const uniqueSpecies = new Set();
+    const removeDuplicates = (sp: any) => {
+      const isDuplicate = uniqueSpecies.has(sp?.common_name);
+
+      uniqueSpecies.add(sp?.common_name);
+
+      if (!isDuplicate) return true;
+
+      return false;
+    };
+
+    const removeWithLowProbability = (sp: any) =>
+      sp.probability > POSSIBLE_THRESHOLD;
+
+    return this.media
+      .map(getAllIdentifiedSpecies)
+      .flat()
+      .sort(byHightestProbability)
+      .filter(removeDuplicates)
+      .filter(removeWithLowProbability);
   }
 }

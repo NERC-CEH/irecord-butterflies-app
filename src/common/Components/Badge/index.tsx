@@ -1,22 +1,21 @@
 import { FC } from 'react';
-import Media from 'models/image';
+// import Media from 'models/image';
 import { IonLabel, IonIcon, IonBadge } from '@ionic/react';
 import { camera } from 'ionicons/icons';
 import './styles.scss';
 
 interface Props {
-  media: Media;
   className?: string;
+  species?: any;
 }
 
 const POSITIVE_THRESHOLD = 0.7;
 const POSSIBLE_THRESHOLD = 0.2;
 
-const ClassifierScore: FC<Props> = ({ media, className }) => {
-  const hasBeenIdentified = media?.attrs?.species?.length;
-  if (!hasBeenIdentified) return null;
+const ClassifierScore: FC<Props> = ({ className, species }) => {
+  if (!species) return null;
 
-  const { probability } = media.getTopSpecies();
+  const { probability } = species;
 
   const roundedProbability = (probability * 100).toFixed();
 

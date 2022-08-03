@@ -92,7 +92,19 @@ const SpeciesSelect: FC<Props> = ({
   const showTimeSurveyTip = useTimeSurveyTip();
 
   const sampleGridRef = sample.attrs.location?.gridref?.slice(0, 4);
-  const { media } = sample?.occurrences[0] || {};
+
+  const getIdentifiedSpeciesList = () => {
+    if (!occurrence && sample.metadata.survey === 'point')
+      return sample.occurrences[0]?.getAllUniqueIdentifiedSpecies() || [];
+
+    if (!occurrence && sample.metadata.survey === 'list') return [];
+
+    if (!occurrence) return [];
+
+    return occurrence.getAllUniqueIdentifiedSpecies();
+  };
+
+  const identifiedSpeciesList = getIdentifiedSpeciesList();
 
   const alert = useAlert();
   const [isAlertPresent, setIsAlertPresent] = useState(false);
@@ -187,7 +199,7 @@ const SpeciesSelect: FC<Props> = ({
         filters={filters}
         ignore={currentSpecies}
         sampleGridRef={sampleGridRef}
-        media={media}
+        identifiedSpeciesList={identifiedSpeciesList}
       />
     </Page>
   );
