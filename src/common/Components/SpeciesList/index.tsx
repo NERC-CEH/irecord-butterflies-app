@@ -1,6 +1,7 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect, useContext } from 'react';
 import { observer } from 'mobx-react';
 import {
+  NavContext,
   IonGrid,
   IonItemDivider,
   IonCol,
@@ -13,7 +14,12 @@ import {
   IonToolbar,
   IonHeader,
 } from '@ionic/react';
-import { Main, InfoBackgroundMessage, UserFeedbackRequest } from '@flumens';
+import {
+  Main,
+  InfoBackgroundMessage,
+  UserFeedbackRequest,
+  useAlert,
+} from '@flumens';
 import appModel, { FilterGroup, Filter, Filters } from 'models/app';
 import { arrowBack, informationCircleOutline } from 'ionicons/icons';
 import species, { Species } from 'common/data/species';
@@ -97,7 +103,12 @@ const SpeciesList: FC<Props> = ({
   sampleGridRef,
   identifiedSpeciesList,
 }) => {
+  const alert = useAlert();
+  const { navigate } = useContext(NavContext);
   const [speciesProfile, setSpeciesProfile] = useState<Species | null>(null);
+
+  const byMoth = (sp: any) => sp.type === 'moth';
+  const mothSpecies = identifiedSpeciesList?.filter(byMoth);
 
   const onFeedbackDone = () => {
     appModel.attrs.feedbackGiven = true;
@@ -155,6 +166,11 @@ const SpeciesList: FC<Props> = ({
     );
   };
 
+  const skipIdentifiedMothSpecies = (commonName: string) => {
+    const matchingCommonNames = (sp: any) => sp.common_name === commonName;
+    return mothSpecies?.some(matchingCommonNames);
+  };
+
   const getSpeciesData = () => {
     const { useMoths } = appModel.attrs;
 
@@ -169,7 +185,9 @@ const SpeciesList: FC<Props> = ({
     }
 
     if (!useMoths) {
-      const isNotMoth = ({ type }: Species) => type !== 'moth';
+      const isNotMoth = ({ type, commonName }: Species) =>
+        type !== 'moth' || skipIdentifiedMothSpecies(commonName);
+
       filteredSpecies = filteredSpecies.filter(isNotMoth);
     }
 
@@ -290,6 +308,41 @@ const SpeciesList: FC<Props> = ({
 
   const isSurvey = !!onSelect;
   const showFeedback = !isSurvey && shouldShowFeedback();
+
+  const showAlert = () => {
+    const { useMoths, showMothSpeciesTip } = appModel.attrs;
+
+    if (!mothSpecies?.length || useMoths || !showMothSpeciesTip) return;
+
+    appModel.attrs.showMothSpeciesTip = false;
+    appModel.save();
+
+    alert({
+      header: 'Moth species detected',
+      message:
+        'You can record selected moth species with this app by visiting the app settings in the Menu and switching on Enable moth species',
+      backdropDismiss: false,
+      buttons: [
+        {
+          text: 'OK',
+          cssClass: 'primary',
+          role: 'cancel',
+        },
+        {
+          text: 'Enable Moth species',
+          cssClass: 'primary',
+
+          handler: () => {
+            navigate('/settings/menu', 'root');
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            appModel.save();
+          },
+        },
+      ],
+    });
+  };
+
+  useEffect(showAlert, []);
 
   return (
     <Main className="species-list">
