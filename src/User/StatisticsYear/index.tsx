@@ -61,8 +61,13 @@ const StatisticsYear: FC = () => {
 
   const list = userModel.attrs.statsYears[year] || [];
   const getEntryWithSpeciesImage = (entry: any) => {
+    const scientificNameWithoutSubSpecies = entry.accepted_name
+      .split(' ')
+      .slice(0, 2)
+      .join(' ');
+
     const bySpeciesName = (sp: Species) =>
-      sp.scientificName === entry.accepted_name;
+      sp.scientificName === scientificNameWithoutSubSpecies;
     const { thumbnail } = species.find(bySpeciesName) || {};
 
     return { ...entry, thumbnail };

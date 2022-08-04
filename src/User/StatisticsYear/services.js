@@ -19,8 +19,18 @@ export default async function fetchStats(userModel, year) {
 
   const normalizeName = sp => ({
     ...sp,
-    name: sp.vernacular_name || sp.accepted_name,
+    name:
+      sp?.taxon_rank === 'Subspecies'
+        ? sp.accepted_name
+        : sp.vernacular_name || sp.accepted_name,
   });
+
   const alphabetically = (sp1, sp2) => sp1.name.localeCompare(sp2.name);
-  return res.data.map(normalizeName).sort(alphabetically);
+
+  const onlyButterflyInsects = sp => sp.group === 'insect - butterfly';
+
+  return res.data
+    .filter(onlyButterflyInsects)
+    .map(normalizeName)
+    .sort(alphabetically);
 }

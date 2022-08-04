@@ -10,6 +10,7 @@ import {
 import { arrowDown, arrowUp } from 'ionicons/icons';
 import { IonIcon, IonAvatar } from '@ionic/react';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
+import './styles.scss';
 
 const columns = [
   {
@@ -79,9 +80,19 @@ const Table: FC<Props> = ({ data }) => {
 
   const getRow = (row: Row) => {
     prepareRow(row);
-    const getCell = (cell: Cell) => (
-      <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-    );
+
+    const getCell = (cell: any) => {
+      const isSubsSpecies =
+        cell.column.Header === 'Species' &&
+        cell.row.original?.taxon_rank === 'Subspecies';
+      const style = isSubsSpecies ? 'italic' : '';
+
+      return (
+        <td {...cell.getCellProps({ className: style })}>
+          {cell.render('Cell')}
+        </td>
+      );
+    };
     return <tr {...row.getRowProps()}>{row.cells.map(getCell)}</tr>;
   };
 
