@@ -180,7 +180,7 @@ const HomeMain: FC<Props> = ({ sample, increaseCount }) => {
           <Stopwatch sample={sample} />
           {isTimerPaused && (
             <InfoMessage color="secondary">
-              To continue surveying tap the play icon
+              To continue surveying, please restart the timer.
             </InfoMessage>
           )}
 
