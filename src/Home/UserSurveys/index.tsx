@@ -12,6 +12,7 @@ import {
   NavContext,
   IonButton,
 } from '@ionic/react';
+import { useParams } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { Page, Main } from '@flumens';
 import userModel from 'models/user';
@@ -44,7 +45,9 @@ type Props = {
 const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
   const { navigate } = useContext(NavContext);
 
-  const [segment, setSegment] = useState('pending');
+  const param: any = useParams();
+  const initSegment = param?.id || 'pending';
+  const [segment, setSegment] = useState(initSegment);
 
   const onSegmentClick = (e: any) => setSegment(e.detail.value);
 

@@ -107,7 +107,7 @@ const HomeComponent: FC = () => {
       <IonRouterOutlet>
         <Redirect exact path="/home" to="/home/species" />
         <Route path="/home/species" component={Species} exact />
-        <Route path="/home/surveys" component={UserSurveys} exact />
+        <Route path="/home/surveys/:id?" component={UserSurveys} exact />
         <Route path="/home/about" component={About} exact />
         <Route path="/home/menu" component={Menu} exact />
       </IonRouterOutlet>

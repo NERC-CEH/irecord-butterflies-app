@@ -1,7 +1,8 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState, useContext } from 'react';
 import { useAlert } from '@flumens';
 import { AppModel } from 'models/app';
 import { observer } from 'mobx-react';
+import { NavContext } from '@ionic/react';
 import Message from './Message';
 
 let isPopupVisible = false;
@@ -12,6 +13,7 @@ interface Props {
 
 const UpdatedRecordsDialog: FC<Props> = ({ appModel }) => {
   const alert = useAlert();
+  const { navigate } = useContext(NavContext);
   const [initialised, setInitialised] = useState<boolean>(false);
 
   const { verifiedRecordsTimestamp, showVerifiedRecordsNotification } =
@@ -41,6 +43,17 @@ const UpdatedRecordsDialog: FC<Props> = ({ appModel }) => {
           handler: () => {
             isPopupVisible = false;
             appModel.save();
+          },
+        },
+        {
+          text: 'See records',
+          cssClass: 'primary',
+          role: 'cancel',
+
+          handler: () => {
+            isPopupVisible = false;
+            appModel.save();
+            navigate('/home/surveys/uploaded', 'none', 'replace');
           },
         },
       ],
