@@ -329,11 +329,11 @@ const SpeciesList: FC<Props> = ({
           role: 'cancel',
         },
         {
-          text: 'Enable Moth species',
+          text: 'Enable moth species',
           cssClass: 'primary',
 
           handler: () => {
-            navigate('/settings/menu', 'root');
+            navigate('/settings/menu');
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             appModel.save();
           },
