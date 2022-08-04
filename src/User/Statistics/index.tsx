@@ -116,7 +116,7 @@ const Statistics: FC = () => {
               detail
             >
               <IonLabel>
-                <small>Species recorded (total)</small>
+                <small>Butterfly species recorded (total)</small>
               </IonLabel>
               <IonLabel class="ion-text-right">
                 <small>
@@ -132,7 +132,7 @@ const Statistics: FC = () => {
               detail
             >
               <IonLabel>
-                <small>Species recorded ({yearName})</small>
+                <small>Butterfly species recorded ({yearName})</small>
               </IonLabel>
               <IonLabel class="ion-text-right">
                 <small>
