@@ -58,9 +58,9 @@ const WhatsNewDialog: FC<Props> = ({ appModel }) => {
                   <T>Added photo species suggestions.</T>
                 </summary>
                 <p>
-                  Image recognition technology will help you to identify the
-                  species. See <ProbabilityBadge probability={1} /> badge next
-                  to your record photos and in species lists.
+                  Image recognition technology will help you to identify
+                  butterflies. See <ProbabilityBadge probability={1} /> badge
+                  next to your record photos and in species lists.
                 </p>
               </li>
               <li>
