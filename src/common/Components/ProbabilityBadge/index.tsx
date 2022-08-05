@@ -7,13 +7,11 @@ import './styles.scss';
 
 interface Props {
   className?: string;
-  species?: any;
+  probability?: number;
 }
 
-const ProbabilityBadge: FC<Props> = ({ className, species }) => {
-  if (!species) return null;
-
-  const { probability } = species;
+const ProbabilityBadge: FC<Props> = ({ className, probability }) => {
+  if (!probability) return null;
 
   const roundedProbability = (probability * 100).toFixed();
 

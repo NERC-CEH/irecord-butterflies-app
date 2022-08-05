@@ -167,6 +167,8 @@ const SpeciesList: FC<Props> = ({
     const [identifiedSpecies] =
       identifiedSpeciesList?.filter(byScientificName) || [];
 
+    const { probability } = identifiedSpecies || {};
+
     const isSurvey = !!onSelect;
     const viewSpecies = (e: any) => {
       e.preventDefault();
@@ -188,7 +190,7 @@ const SpeciesList: FC<Props> = ({
       >
         <div className="container">
           {identifiedSpecies && (
-            <ProbabilityBadge className="badge" species={identifiedSpecies} />
+            <ProbabilityBadge className="badge" probability={probability} />
           )}
           {isSurvey && (
             <div className="info-box" onClick={viewSpecies}>

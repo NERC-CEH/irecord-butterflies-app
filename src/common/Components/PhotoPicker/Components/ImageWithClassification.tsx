@@ -27,6 +27,8 @@ const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
 
   const onClickWrap = () => !showLoading && onClick();
 
+  const { probability } = species || {};
+
   return (
     <div className="img">
       {!isDisabled && (
@@ -41,7 +43,7 @@ const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
       {!showLoading &&
         hasBeenIdentified &&
         !selectedSpeciesNotMatchingParent && (
-          <ProbabilityBadge className="badge" species={species} />
+          <ProbabilityBadge className="badge" probability={probability} />
         )}
 
       {!showLoading &&
