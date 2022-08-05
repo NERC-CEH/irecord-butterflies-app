@@ -1,16 +1,14 @@
 import { FC } from 'react';
-// import Media from 'models/image';
 import { IonLabel, IonIcon, IonBadge } from '@ionic/react';
 import { camera } from 'ionicons/icons';
 import CONFIG from 'common/config';
 import './styles.scss';
 
 interface Props {
-  className?: string;
   probability?: number;
 }
 
-const ProbabilityBadge: FC<Props> = ({ className, probability }) => {
+const ProbabilityBadge: FC<Props> = ({ probability }) => {
   if (!probability) return null;
 
   const roundedProbability = (probability * 100).toFixed();
@@ -25,7 +23,7 @@ const ProbabilityBadge: FC<Props> = ({ className, probability }) => {
   }
 
   return (
-    <IonBadge className={`badge-${color} ${className}`}>
+    <IonBadge className={`badge badge-${color}`}>
       <IonIcon icon={camera} className="icon" />
       <IonLabel className="text">{roundedProbability}%</IonLabel>
     </IonBadge>

@@ -46,7 +46,7 @@ const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
       {!showLoading &&
         hasBeenIdentified &&
         !selectedSpeciesNotMatchingParent && (
-          <ProbabilityBadge className="badge" probability={probability} />
+          <ProbabilityBadge probability={probability} />
         )}
 
       {!showLoading &&

@@ -192,9 +192,7 @@ const SpeciesList: FC<Props> = ({
         onClick={onClick}
       >
         <div className="container">
-          {identifiedSpecies && (
-            <ProbabilityBadge className="badge" probability={probability} />
-          )}
+          {identifiedSpecies && <ProbabilityBadge probability={probability} />}
           {isSurvey && (
             <div className="info-box" onClick={viewSpecies}>
               <IonIcon icon={informationCircleOutline} />
