@@ -45,6 +45,7 @@ export interface Attrs extends ModelAttrs {
   showTimeSurveyTip: boolean;
   showMothSpeciesTip: boolean;
 
+  showWhatsNewInVersion240: boolean;
   showVerifiedRecordsNotification: boolean;
   verifiedRecordsTimestamp: null | number;
   useSpeciesImageClassifier: boolean;
@@ -86,6 +87,7 @@ const defaults: Attrs = {
 
   showVerifiedRecordsNotification: true,
   verifiedRecordsTimestamp: null,
+  showWhatsNewInVersion240: true,
 
   filters: {},
 };

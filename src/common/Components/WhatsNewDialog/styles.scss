@@ -1,0 +1,88 @@
+#whats-new-dialog {
+  ion-backdrop {
+    opacity: 0.6;
+    z-index: 100;
+  }
+
+  .wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    max-width: 400px;
+    z-index: 1000;
+    background: white;
+    border-radius: 20px;
+
+    .header {
+      width: 100%;
+      height: 25vh;
+      background-position: center;
+      background-size: cover;
+      border-radius: 10px 10px 0 0;
+      position: relative;
+
+      .butterfly-badge {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background: var(--ion-color-primary);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        left: 15px;
+        bottom: -15px;
+        border: 5px solid white;
+
+        ion-icon {
+          font-size: 2.3em;
+          color: white;
+        }
+      }
+    }
+
+    .message {
+      width: 100%;
+      overflow: scroll;
+      max-height: 55vh;
+      padding: 0 20px 20px;
+
+      ul {
+        padding-left: 14px;
+
+        .expandable-list {
+          --padding-start: 0;
+
+          ion-label {
+            text-align: left;
+          }
+        }
+        li {
+          margin-bottom: 20px;
+          font-weight: 300;
+        }
+      }
+
+      h3 {
+        font-size: 0.9em;
+        font-weight: 500;
+        margin-bottom: 0;
+      }
+      p {
+        margin-top: 0;
+      }
+    }
+
+    .button {
+      display: flex;
+      width: 90%;
+      height: 50px;
+      align-items: center;
+      justify-content: right;
+      color: var(--ion-color-primary);
+      font-weight: 500;
+    }
+  }
+}

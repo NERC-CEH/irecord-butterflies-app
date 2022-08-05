@@ -6,6 +6,7 @@ import { observer } from 'mobx-react';
 import appModel from 'models/app';
 import userModel from 'models/user';
 import ThankYouAlert from 'common/Components/ThankYouAlert';
+import WhatsNewDialog from 'common/Components/WhatsNewDialog';
 import UpdatedRecordsAlert from 'common/Components/UpdatedRecordsAlert';
 import Home from './Home';
 import Settings from './Settings/router';
@@ -19,6 +20,7 @@ const HomeRedirect = () => <Redirect to="home" />;
 const App: FC = () => (
   <IonApp>
     <OnBoardingScreens appModel={appModel}>
+      <WhatsNewDialog appModel={appModel} />
       <ThankYouAlert userModel={userModel} />
       <UpdatedRecordsAlert appModel={appModel} />
 
