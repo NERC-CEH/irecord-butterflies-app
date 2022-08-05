@@ -3,7 +3,7 @@ import merge from 'lodash/merge';
 import survey from '../Single/config';
 
 const speciesSurvey = merge({}, survey, {
-  id: -1,
+  id: 702,
   name: 'multi-species-count',
 
   smp: {
