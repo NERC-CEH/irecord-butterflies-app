@@ -144,7 +144,8 @@ const SpeciesList: FC<Props> = ({
   const { navigate } = useContext(NavContext);
   const [speciesProfile, setSpeciesProfile] = useState<Species | null>(null);
 
-  const byMoth = (sp: any) => sp.type === 'moth';
+  const byMoth = (sp: any) =>
+    sp.type === 'moth' && sp.probability > config.POSITIVE_THRESHOLD;
   const mothSpecies = identifiedSpeciesList?.filter(byMoth);
 
   const onFeedbackDone = () => {
