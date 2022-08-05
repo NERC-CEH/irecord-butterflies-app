@@ -194,12 +194,13 @@ const HomeController: FC<Props> = ({ sample }) => {
       return;
     }
 
-    if (!sample.isUploaded()) {
+    const canPauseTimer =
+      !sample.metadata.saved && !sample.metadata.timerPausedTime;
+
+    if (canPauseTimer) {
       await showLeaveConfirmationAlert();
     }
 
-    const canPauseTimer =
-      !sample.metadata.saved && !sample.metadata.timerPausedTime;
     if (canPauseTimer) {
       // eslint-disable-next-line no-param-reassign
       sample.metadata.timerPausedTime = new Date();
