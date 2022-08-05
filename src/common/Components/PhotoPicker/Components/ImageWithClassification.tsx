@@ -22,6 +22,9 @@ const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
 
   const showLoading = media.identification.identifying;
 
+  const selectedSpeciesNotMatchingParent =
+    media?.parent?.attrs?.taxon && !hasMatchParent;
+
   const onClickWrap = () => !showLoading && onClick();
 
   return (
@@ -35,13 +38,17 @@ const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
 
       {showLoading && <IonSpinner slot="end" className="identifying" />}
 
-      {!showLoading && hasBeenIdentified && hasMatchParent && (
-        <ProbabilityBadge className="badge" species={species} />
-      )}
+      {!showLoading &&
+        hasBeenIdentified &&
+        !selectedSpeciesNotMatchingParent && (
+          <ProbabilityBadge className="badge" species={species} />
+        )}
 
-      {!showLoading && hasBeenIdentified && !hasMatchParent && (
-        <IonIcon className="warning-icon" icon={alertCircleOutline} />
-      )}
+      {!showLoading &&
+        hasBeenIdentified &&
+        selectedSpeciesNotMatchingParent && (
+          <IonIcon className="warning-icon" icon={alertCircleOutline} />
+        )}
     </div>
   );
 };
