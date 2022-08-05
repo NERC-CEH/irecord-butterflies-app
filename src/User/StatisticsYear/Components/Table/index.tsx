@@ -85,7 +85,7 @@ const Table: FC<Props> = ({ data }) => {
       const isSubsSpecies =
         cell.column.Header === 'Species' &&
         cell.row.original?.taxon_rank === 'Subspecies';
-      const italicFontStyle = isSubsSpecies ? 'italic' : '';
+      const italicFontStyle = isSubsSpecies ? 'subspecies' : '';
 
       return (
         <td {...cell.getCellProps({ className: italicFontStyle })}>
