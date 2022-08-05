@@ -44,24 +44,21 @@ const useShowMothInformationDialog = (mothSpecies: any) => {
 
     alert({
       header: 'Moth species detected',
-      message:
-        'You can record selected moth species with this app by visiting the app settings in the Menu and switching on Enable moth species',
+      message: (
+        <>
+          You can record selected moth species with this app by visiting the app
+          settings in the Menu and switching on <b>Enable moth species</b>.
+        </>
+      ),
       backdropDismiss: false,
       buttons: [
         {
-          text: 'OK',
-          cssClass: 'primary',
-          role: 'cancel',
+          text: 'App Settings',
+          handler: () => navigate('/settings/menu'),
         },
         {
-          text: 'Enable moth species',
-          cssClass: 'primary',
-
-          handler: () => {
-            navigate('/settings/menu');
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            appModel.save();
-          },
+          text: 'OK',
+          role: 'cancel',
         },
       ],
     });
