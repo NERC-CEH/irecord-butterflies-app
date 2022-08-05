@@ -80,7 +80,7 @@ const WhatsNewDialog: FC<Props> = ({ appModel }) => {
         </div>
 
         <div className="button" onClick={closeDialog}>
-          Ok
+          OK
         </div>
       </div>
     </div>
