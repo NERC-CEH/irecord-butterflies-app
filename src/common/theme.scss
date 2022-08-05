@@ -33,13 +33,15 @@
   --ion-color-success-tint: #1ac431;
   --ion-color-success-dark: #002705;
 
-  --ion-color-warning: #d1741e;
+  --ion-color-warning: #913800;
   --ion-color-warning-rgb: 209, 116, 30;
   --ion-color-warning-contrast: #ffffff;
   --ion-color-warning-contrast-rgb: 255, 255, 255;
-  --ion-color-warning-shade: #a76629;
-  --ion-color-warning-tint: #f18a29;
-  --ion-color-warning-dark: #180b00;
+  --ion-color-warning-shade: #772e00;
+  --ion-color-warning-tint: #ad4200;
+  --ion-color-warning-light: #ff7926;
+  --ion-color-warning-dark: #301200;
+  --ion-color-warning-background: #fffbf8;
 
   --ion-color-danger: #f04141;
   --ion-color-danger-rgb: 240, 65, 65;
@@ -97,6 +99,10 @@
   --sat: env(safe-area-inset-top);
 }
 
+ion-item {
+  font-size: 1em;
+}
+
 // status bar
 html.ios.plt-hybrid #status-bar-background {
   background: transparent;
@@ -152,6 +158,7 @@ ion-header ion-toolbar {
   ion-button,
   ion-back-button {
     color: var(--ion-color-dark) !important;
+    font-size: 1.1em;
   }
 
   ion-input,
@@ -165,9 +172,40 @@ ion-header ion-toolbar {
   }
 }
 
+ion-button {
+  font-size: 1em;
+}
+
 // decrease the menu icon boldness
 .menu-attr-item ion-icon {
-  --ionicon-stroke-width: 20px;
+  --ionicon-stroke-width: 24px;
+}
+
+.menu-attr-item.required.empty {
+  --detail-icon-opacity: 0.8;
+  --background: var(--ion-color-warning-background);
+
+  ion-label[slot='end'] {
+    opacity: 0.9 !important;
+  }
+}
+
+.menu-attr-item ion-label[slot='end'] {
+  opacity: 0.8 !important;
+}
+
+.counter-input-attr-item ion-button,
+.counter-input-attr-item input {
+  opacity: 0.8 !important;
+}
+
+ion-item-divider {
+  font-size: 1em;
+  color: var(--ion-text-color);
+}
+
+img-array .empty {
+  font-size: 1em;
 }
 
 // info messages
@@ -198,6 +236,14 @@ a {
 // ?
 ion-content.disable-top-padding {
   --padding-top: 0 !important;
+}
+
+ion-alert .alert-title {
+  font-size: #{'max(18px, 1.2em)'} !important;
+}
+ion-alert .alert-message,
+ion-alert .alert-button {
+  font-size: #{'max(17px, 1em)'} !important;
 }
 
 // VERIFICATION START

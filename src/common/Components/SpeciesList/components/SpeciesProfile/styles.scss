@@ -74,7 +74,7 @@
     background: white;
 
     p {
-      font-size: 1em;
+      font-size: #{'max(18px, 1em)'};
     }
 
     img {
@@ -93,6 +93,7 @@
       text-transform: uppercase;
       margin: 30px auto 15px;
       max-height: 22px;
+      font-size: #{'max(16px, 1em)'};
     }
   }
 
@@ -102,9 +103,8 @@
   }
 
   .species-status {
-    font-size: 0.8em;
-    line-height: 0.8em;
-    padding: 0 10px;
+    font-size: 1em;
+    margin-top: 0;
     height: 20px;
     text-transform: capitalize;
   }

@@ -57,6 +57,10 @@
   }
 }
 
+.gallery-modal ion-content .swiper .title {
+  font-size: 1em !important;
+}
+
 .gallery-ai-message {
   position: absolute;
   top: 0;
@@ -69,11 +73,9 @@
   padding-bottom: 10px;
   background: #131313ed;
   font-weight: 400;
-  font-size: 0.8em;
 
   b {
-    color: var(--ion-color-warning);
-    font-size: 0.9em;
+    color: var(--ion-color-warning-light);
   }
 }
 
@@ -97,7 +99,7 @@
   height: 25% !important;
 
   h3 {
-    font-size: 0.9em;
+    font-size: 1em;
     font-weight: 600;
     color: #fff;
     text-align: left;
@@ -137,8 +139,8 @@
         }
 
         .score {
-          width: 2em;
-          height: 2em;
+          width: 2.5em;
+          height: 2.5em;
           background: #fff;
           position: absolute;
           z-index: 99;
@@ -166,7 +168,7 @@
         }
 
         ion-label {
-          font-size: 0.6em;
+          font-size: 0.8em;
           font-weight: 600;
         }
 
@@ -291,6 +293,5 @@
 .better-image-tip {
   display: block;
   color: white;
-  font-size: 0.9em;
   margin-top: 10px;
 }

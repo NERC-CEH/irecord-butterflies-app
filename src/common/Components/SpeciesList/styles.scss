@@ -103,7 +103,6 @@
     width: 104%;
     z-index: 1000;
 
-    margin: 10px -2%;
     &:first-child {
       margin-top: 0;
     }
@@ -111,6 +110,7 @@
     ion-label {
       width: 100%;
       text-align: center;
+      margin: 0.5em 0;
     }
 
     background: var(--ion-color-primary) !important;
