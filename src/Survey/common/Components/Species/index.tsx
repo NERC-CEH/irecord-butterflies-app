@@ -95,7 +95,7 @@ const SpeciesSelect: FC<Props> = ({
 
   const getIdentifiedSpeciesList = () => {
     if (!occurrence && sample.metadata.survey === 'point')
-      return sample.occurrences[0]?.getAllUniqueIdentifiedSpecies() || [];
+      return sample.occurrences[0]?.getAllUniqueIdentifiedSpecies();
 
     if (!occurrence && sample.metadata.survey === 'list') return [];
 

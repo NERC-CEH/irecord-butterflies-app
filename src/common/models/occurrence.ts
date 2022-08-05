@@ -106,7 +106,7 @@ export default class AppOccurrence extends Occurrence {
   }
 
   getAllUniqueIdentifiedSpecies() {
-    if (!this.media.length) return null;
+    if (!this.media.length) return [];
 
     const byHightestProbability = (sp1: any, sp2: any) =>
       sp2.probability - sp1.probability;
@@ -115,9 +115,9 @@ export default class AppOccurrence extends Occurrence {
 
     const uniqueSpecies = new Set();
     const removeDuplicates = (sp: any) => {
-      const isDuplicate = uniqueSpecies.has(sp?.common_name);
+      const isDuplicate = uniqueSpecies.has(sp?.scientific_name);
 
-      uniqueSpecies.add(sp?.common_name);
+      uniqueSpecies.add(sp?.scientific_name);
 
       if (!isDuplicate) return true;
 

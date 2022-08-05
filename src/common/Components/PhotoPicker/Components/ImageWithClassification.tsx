@@ -2,13 +2,9 @@
 import { FC } from 'react';
 import { IonIcon, IonButton, IonSpinner } from '@ionic/react';
 import { observer } from 'mobx-react';
-import {
-  alertCircleOutline,
-  checkmarkCircleOutline,
-  close,
-} from 'ionicons/icons';
+import { alertCircleOutline, close } from 'ionicons/icons';
+import ProbabilityBadge from 'common/Components/ProbabilityBadge';
 import Media from 'models/image';
-import Badge from 'common/Components/Badge';
 
 type Props = {
   media: Media;
@@ -19,8 +15,6 @@ type Props = {
 
 const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
   const hasBeenIdentified = !!media.attrs?.species;
-
-  const hasSpeciesSelected = !!media?.parent?.attrs?.taxon;
 
   const hasMatchParent = media.doesTaxonMatchParent();
 
@@ -41,16 +35,12 @@ const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
 
       {showLoading && <IonSpinner slot="end" className="identifying" />}
 
-      {!showLoading && hasBeenIdentified && !hasSpeciesSelected && (
-        <Badge className="badge" species={species} />
+      {!showLoading && hasBeenIdentified && hasMatchParent && (
+        <ProbabilityBadge className="badge" species={species} />
       )}
 
       {!showLoading && hasBeenIdentified && !hasMatchParent && (
         <IonIcon className="warning-icon" icon={alertCircleOutline} />
-      )}
-
-      {!showLoading && hasBeenIdentified && hasMatchParent && (
-        <IonIcon className="success-icon" icon={checkmarkCircleOutline} />
       )}
     </div>
   );

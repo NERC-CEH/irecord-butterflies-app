@@ -26,9 +26,46 @@ import species, { Species } from 'common/data/species';
 import config from 'common/config';
 import getCurrentWeekNumber from 'helpers/weeks';
 import getProbabilities from 'common/data/species/probabilities';
-import Badge from 'common/Components/Badge';
+import ProbabilityBadge from 'common/Components/ProbabilityBadge';
 import SpeciesProfile from './components/SpeciesProfile';
 import './styles.scss';
+
+const showMothInformationDialog = (
+  alert: any,
+  navigate: any,
+  mothSpecies: any
+) => {
+  const { useMoths, showMothSpeciesTip } = appModel.attrs;
+
+  if (!mothSpecies?.length || useMoths || !showMothSpeciesTip) return;
+
+  appModel.attrs.showMothSpeciesTip = false;
+  appModel.save();
+
+  alert({
+    header: 'Moth species detected',
+    message:
+      'You can record selected moth species with this app by visiting the app settings in the Menu and switching on Enable moth species',
+    backdropDismiss: false,
+    buttons: [
+      {
+        text: 'OK',
+        cssClass: 'primary',
+        role: 'cancel',
+      },
+      {
+        text: 'Enable moth species',
+        cssClass: 'primary',
+
+        handler: () => {
+          navigate('/settings/menu');
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          appModel.save();
+        },
+      },
+    ],
+  });
+};
 
 const byName = (sp1: Species, sp2: Species) =>
   sp1.commonName.localeCompare(sp2.commonName);
@@ -118,10 +155,16 @@ const SpeciesList: FC<Props> = ({
   const hideSpeciesModal = () => setSpeciesProfile(null);
 
   const getSpeciesTile = (sp: Species, i: number) => {
-    const { commonName, thumbnail: thumbnailSrc, thumbnailBackground } = sp;
+    const {
+      commonName,
+      thumbnail: thumbnailSrc,
+      thumbnailBackground,
+      scientificName,
+    } = sp;
 
-    const byCommonName = (s: any) => s?.common_name === commonName;
-    const [matchedSpecies] = identifiedSpeciesList?.filter(byCommonName) || [];
+    const byScientificName = (s: any) => s?.scientific_name === scientificName;
+    const [identifiedSpecies] =
+      identifiedSpeciesList?.filter(byScientificName) || [];
 
     const isSurvey = !!onSelect;
     const viewSpecies = (e: any) => {
@@ -143,8 +186,8 @@ const SpeciesList: FC<Props> = ({
         onClick={onClick}
       >
         <div className="container">
-          {matchedSpecies && (
-            <Badge className="badge" species={matchedSpecies} />
+          {identifiedSpecies && (
+            <ProbabilityBadge className="badge" species={identifiedSpecies} />
           )}
           {isSurvey && (
             <div className="info-box" onClick={viewSpecies}>
@@ -166,9 +209,10 @@ const SpeciesList: FC<Props> = ({
     );
   };
 
-  const skipIdentifiedMothSpecies = (commonName: string) => {
-    const matchingCommonNames = (sp: any) => sp.common_name === commonName;
-    return mothSpecies?.some(matchingCommonNames);
+  const skipIdentifiedMothSpecies = (scientificName: string) => {
+    const matchingScientificNames = (sp: any) =>
+      sp.scientific_name === scientificName;
+    return mothSpecies?.some(matchingScientificNames);
   };
 
   const getSpeciesData = () => {
@@ -185,8 +229,8 @@ const SpeciesList: FC<Props> = ({
     }
 
     if (!useMoths) {
-      const isNotMoth = ({ type, commonName }: Species) =>
-        type !== 'moth' || skipIdentifiedMothSpecies(commonName);
+      const isNotMoth = ({ type, scientificName }: Species) =>
+        type !== 'moth' || skipIdentifiedMothSpecies(scientificName);
 
       filteredSpecies = filteredSpecies.filter(isNotMoth);
     }
@@ -309,40 +353,9 @@ const SpeciesList: FC<Props> = ({
   const isSurvey = !!onSelect;
   const showFeedback = !isSurvey && shouldShowFeedback();
 
-  const showAlert = () => {
-    const { useMoths, showMothSpeciesTip } = appModel.attrs;
-
-    if (!mothSpecies?.length || useMoths || !showMothSpeciesTip) return;
-
-    appModel.attrs.showMothSpeciesTip = false;
-    appModel.save();
-
-    alert({
-      header: 'Moth species detected',
-      message:
-        'You can record selected moth species with this app by visiting the app settings in the Menu and switching on Enable moth species',
-      backdropDismiss: false,
-      buttons: [
-        {
-          text: 'OK',
-          cssClass: 'primary',
-          role: 'cancel',
-        },
-        {
-          text: 'Enable moth species',
-          cssClass: 'primary',
-
-          handler: () => {
-            navigate('/settings/menu');
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            appModel.save();
-          },
-        },
-      ],
-    });
-  };
-
-  useEffect(showAlert, []);
+  const hasMothSpeciesBeenDetected = () =>
+    showMothInformationDialog(alert, navigate, mothSpecies);
+  useEffect(hasMothSpeciesBeenDetected, []);
 
   return (
     <Main className="species-list">

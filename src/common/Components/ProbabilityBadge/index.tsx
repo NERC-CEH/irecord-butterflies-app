@@ -2,6 +2,7 @@ import { FC } from 'react';
 // import Media from 'models/image';
 import { IonLabel, IonIcon, IonBadge } from '@ionic/react';
 import { camera } from 'ionicons/icons';
+import CONFIG from 'common/config';
 import './styles.scss';
 
 interface Props {
@@ -9,10 +10,7 @@ interface Props {
   species?: any;
 }
 
-const POSITIVE_THRESHOLD = 0.7;
-const POSSIBLE_THRESHOLD = 0.2;
-
-const ClassifierScore: FC<Props> = ({ className, species }) => {
+const ProbabilityBadge: FC<Props> = ({ className, species }) => {
   if (!species) return null;
 
   const { probability } = species;
@@ -20,9 +18,9 @@ const ClassifierScore: FC<Props> = ({ className, species }) => {
   const roundedProbability = (probability * 100).toFixed();
 
   let color;
-  if (probability > POSITIVE_THRESHOLD) {
+  if (probability > CONFIG.POSITIVE_THRESHOLD) {
     color = 'success';
-  } else if (probability > POSSIBLE_THRESHOLD) {
+  } else if (probability > CONFIG.POSSIBLE_THRESHOLD) {
     color = 'possible';
   } else {
     color = 'notLikely';
@@ -36,4 +34,4 @@ const ClassifierScore: FC<Props> = ({ className, species }) => {
   );
 };
 
-export default ClassifierScore;
+export default ProbabilityBadge;

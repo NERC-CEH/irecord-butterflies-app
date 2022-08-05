@@ -1,9 +1,7 @@
 import { FC } from 'react';
 import Media from 'models/image';
 import { isPlatform, IonLabel, IonButton } from '@ionic/react';
-
-const POSITIVE_THRESHOLD = 0.7;
-const POSSIBLE_THRESHOLD = 0.2;
+import CONFIG from 'common/config';
 
 type Props = {
   image: Media;
@@ -19,9 +17,9 @@ const SpeciesTile = ({ sp, index }: any) => {
   } = sp;
 
   let color;
-  if (probability > POSITIVE_THRESHOLD) {
+  if (probability > CONFIG.POSITIVE_THRESHOLD) {
     color = 'success';
-  } else if (probability > POSSIBLE_THRESHOLD) {
+  } else if (probability > CONFIG.POSSIBLE_THRESHOLD) {
     color = 'warning';
   } else {
     color = 'danger';
