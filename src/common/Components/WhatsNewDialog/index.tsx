@@ -2,10 +2,11 @@ import { FC, useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { Trans as T } from 'react-i18next';
 import { AppModel } from 'common/models/app';
-import { IonBackdrop, IonIcon } from '@ionic/react';
-import butterflyIcon from 'common/images/butterflyIcon.svg';
+import { IonBackdrop, IonIcon, isPlatform } from '@ionic/react';
+import { star } from 'ionicons/icons';
 import ExpandableList from 'Components/ExpandableList';
 import whatsNewBackgroundImage from 'common/images/whatsNewBackgroundImage.jpg';
+import ProbabilityBadge from 'Components/ProbabilityBadge';
 import './styles.scss';
 
 type Props = {
@@ -40,40 +41,66 @@ const WhatsNewDialog: FC<Props> = ({ appModel }) => {
           className="header"
           style={{ backgroundImage: `url(${whatsNewBackgroundImage})` }}
         >
-          <div className="butterfly-badge ">
-            <IonIcon icon={butterflyIcon} />
+          <div className="whats-new-badge ">
+            <IonIcon icon={star} />
           </div>
         </div>
 
         <div className="message">
           <h1>
             <T>What's New</T>
+            <span>v2.4.0</span>
           </h1>
           <ul>
             <ExpandableList>
               <li>
-                <T>Added timed count confusion species.</T>
+                <summary>
+                  <T>Added photo species suggestions.</T>
+                </summary>
+                <p>
+                  Image recognition technology will help you to identify the
+                  species. See <ProbabilityBadge probability={1} /> badge next
+                  to your record photos and in species lists.
+                </p>
               </li>
               <li>
-                <T>Added +5 species count shortcut.</T>
+                <summary>
+                  <T>
+                    Added ability to select multiple photos from the gallery.
+                  </T>
+                </summary>
+              </li>
+              {isPlatform('android') && (
+                <li>
+                  <summary>
+                    <T>Enabled Android back button.</T>
+                  </summary>
+                </li>
+              )}
+              <li>
+                <summary>
+                  <T>Added +5 species count shortcut.</T>
+                </summary>
+                <p>
+                  Long-tap a species counter button to increase its abundance
+                  quicker.
+                </p>
               </li>
               <li>
-                <T>Added photo species suggestions.</T>
+                <summary>
+                  <T>Added user account delete option.</T>
+                </summary>
               </li>
               <li>
-                <T>Enabled Android back button.</T>
+                <summary>
+                  <T>Added timed count confusion species.</T>
+                </summary>
               </li>
+
               <li>
-                <T>Updated About page.</T>
-              </li>
-              <li>
-                <T>Added ability to select multiple photos from the gallery.</T>
-              </li>
-              <li>
-                <T>Improved app performance for long survey lists.</T>
-              </li>
-              <li>
-                <T>Added user account delete option.</T>
+                <summary>
+                  <T>Improved app performance for long survey lists.</T>
+                </summary>
               </li>
             </ExpandableList>
           </ul>

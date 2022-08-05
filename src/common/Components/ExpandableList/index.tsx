@@ -3,7 +3,7 @@ import { IonItem, IonLabel } from '@ionic/react';
 import { Trans as T } from 'react-i18next';
 import './styles.scss';
 
-const MAX_ITEMS = 5;
+const MAX_ITEMS = 4;
 
 const ExpandableList: FC<any> = ({ children: itemsProp }: any) => {
   const [showMore, setShowMore] = useState(false);
