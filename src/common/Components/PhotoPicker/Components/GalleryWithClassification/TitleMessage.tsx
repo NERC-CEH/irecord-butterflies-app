@@ -11,7 +11,7 @@ const TitleMessage: FC<Props> = ({ image }) => {
   const identifierWasNotUsed = !image.attrs.species;
   if (identifierWasNotUsed) return null;
 
-  const doesTaxonMatchParent = image.doesTaxonMatchParent();
+  const doesTaxonMatchParent = image.getIdentifiedTaxonThatMatchParent();
   const identifierFoundNoSpecies = !image.attrs?.species?.length;
 
   const showLoading = image.identification.identifying;

@@ -16,14 +16,17 @@ type Props = {
 const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
   const hasBeenIdentified = !!media.attrs?.species;
 
-  const hasMatchParent = media.doesTaxonMatchParent();
+  const hasMatchParent = media.getIdentifiedTaxonThatMatchParent();
 
-  const species = media.getTopSpecies();
+  const isSpeciesSelected = media?.parent?.attrs?.taxon;
+
+  const species = isSpeciesSelected
+    ? media.getIdentifiedTaxonThatMatchParent()
+    : media.getTopSpecies();
 
   const showLoading = media.identification.identifying;
 
-  const selectedSpeciesNotMatchingParent =
-    media?.parent?.attrs?.taxon && !hasMatchParent;
+  const selectedSpeciesNotMatchingParent = isSpeciesSelected && !hasMatchParent;
 
   const onClickWrap = () => !showLoading && onClick();
 

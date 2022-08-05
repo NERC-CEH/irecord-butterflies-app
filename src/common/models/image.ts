@@ -80,14 +80,14 @@ export default class AppMedia extends Media {
     return Capacitor.convertFileSrc(`${config.dataPath}/${name}`);
   }
 
-  doesTaxonMatchParent() {
-    const species = this.getTopSpecies();
-    if (!species) return false;
+  getIdentifiedTaxonThatMatchParent() {
+    if (!this.attrs.species) return null;
 
-    const speciesId = species.warehouse_id;
-    const parentTaxon = this.parent.attrs?.taxon;
+    const occurrenceWarehouseId = this.parent.attrs?.taxon?.warehouseId;
 
-    return speciesId === parentTaxon?.warehouseId;
+    const byWarehouseId = (sp: any) =>
+      sp.warehouse_id === occurrenceWarehouseId;
+    return this.attrs.species.find(byWarehouseId);
   }
 
   // eslint-disable-next-line class-methods-use-this
