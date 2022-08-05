@@ -37,7 +37,7 @@ const UpdatedRecordsDialog: FC<Props> = ({ appModel }) => {
       buttons: [
         {
           text: 'OK',
-          cssClass: 'primary',
+          cssClass: 'secondary',
           role: 'cancel',
 
           handler: () => {
@@ -48,7 +48,7 @@ const UpdatedRecordsDialog: FC<Props> = ({ appModel }) => {
         {
           text: 'See records',
           cssClass: 'primary',
-          role: 'cancel',
+          role: 'ok',
 
           handler: () => {
             isPopupVisible = false;

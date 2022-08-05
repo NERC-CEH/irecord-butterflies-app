@@ -30,41 +30,44 @@ import ProbabilityBadge from 'common/Components/ProbabilityBadge';
 import SpeciesProfile from './components/SpeciesProfile';
 import './styles.scss';
 
-const showMothInformationDialog = (
-  alert: any,
-  navigate: any,
-  mothSpecies: any
-) => {
-  const { useMoths, showMothSpeciesTip } = appModel.attrs;
+const useShowMothInformationDialog = (mothSpecies: any) => {
+  const alert = useAlert();
+  const { navigate } = useContext(NavContext);
 
-  if (!mothSpecies?.length || useMoths || !showMothSpeciesTip) return;
+  const showMothInformationDialog = () => {
+    const { useMoths, showMothSpeciesTip } = appModel.attrs;
 
-  appModel.attrs.showMothSpeciesTip = false;
-  appModel.save();
+    if (!mothSpecies?.length || useMoths || !showMothSpeciesTip) return;
 
-  alert({
-    header: 'Moth species detected',
-    message:
-      'You can record selected moth species with this app by visiting the app settings in the Menu and switching on Enable moth species',
-    backdropDismiss: false,
-    buttons: [
-      {
-        text: 'OK',
-        cssClass: 'primary',
-        role: 'cancel',
-      },
-      {
-        text: 'Enable moth species',
-        cssClass: 'primary',
+    appModel.attrs.showMothSpeciesTip = false;
+    appModel.save();
 
-        handler: () => {
-          navigate('/settings/menu');
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          appModel.save();
+    alert({
+      header: 'Moth species detected',
+      message:
+        'You can record selected moth species with this app by visiting the app settings in the Menu and switching on Enable moth species',
+      backdropDismiss: false,
+      buttons: [
+        {
+          text: 'OK',
+          cssClass: 'primary',
+          role: 'cancel',
         },
-      },
-    ],
-  });
+        {
+          text: 'Enable moth species',
+          cssClass: 'primary',
+
+          handler: () => {
+            navigate('/settings/menu');
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            appModel.save();
+          },
+        },
+      ],
+    });
+  };
+
+  useEffect(showMothInformationDialog, []);
 };
 
 const byName = (sp1: Species, sp2: Species) =>
@@ -140,13 +143,13 @@ const SpeciesList: FC<Props> = ({
   sampleGridRef,
   identifiedSpeciesList,
 }) => {
-  const alert = useAlert();
-  const { navigate } = useContext(NavContext);
   const [speciesProfile, setSpeciesProfile] = useState<Species | null>(null);
 
   const byMoth = (sp: any) =>
     sp.type === 'moth' && sp.probability > config.POSITIVE_THRESHOLD;
   const mothSpecies = identifiedSpeciesList?.filter(byMoth);
+
+  useShowMothInformationDialog(mothSpecies);
 
   const onFeedbackDone = () => {
     appModel.attrs.feedbackGiven = true;
@@ -355,10 +358,6 @@ const SpeciesList: FC<Props> = ({
 
   const isSurvey = !!onSelect;
   const showFeedback = !isSurvey && shouldShowFeedback();
-
-  const hasMothSpeciesBeenDetected = () =>
-    showMothInformationDialog(alert, navigate, mothSpecies);
-  useEffect(hasMothSpeciesBeenDetected, []);
 
   return (
     <Main className="species-list">
