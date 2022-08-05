@@ -1,5 +1,5 @@
 import { FC, useContext } from 'react';
-import { UserModel } from 'models/user';
+import userModel from 'models/user';
 import { NavContext } from '@ionic/react';
 import { Trans as T } from 'react-i18next';
 import { Page, Header, device, useAlert, useLoader, useToast } from '@flumens';
@@ -11,11 +11,7 @@ export type Details = {
   email: string;
 };
 
-type Props = {
-  userModel: UserModel;
-};
-
-const ResetController: FC<Props> = ({ userModel }) => {
+const ResetController: FC = () => {
   const context = useContext(NavContext);
   const alert = useAlert();
   const toast = useToast();

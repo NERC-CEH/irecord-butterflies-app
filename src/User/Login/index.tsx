@@ -1,5 +1,5 @@
 import { FC, useContext } from 'react';
-import { UserModel } from 'models/user';
+import userModel from 'models/user';
 import { NavContext } from '@ionic/react';
 import { useToast, useLoader, Page, Header, device } from '@flumens';
 import Main from './Main';
@@ -10,11 +10,7 @@ export type Details = {
   email: string;
 };
 
-type Props = {
-  userModel: UserModel;
-};
-
-const LoginController: FC<Props> = ({ userModel }) => {
+const LoginController: FC = () => {
   const context = useContext(NavContext);
   const toast = useToast();
   const loader = useLoader();
