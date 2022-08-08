@@ -72,7 +72,7 @@ function useTimeSurveyTip() {
           cssClass: 'primary',
 
           handler: () => {
-            navigate('/info/faq', 'root');
+            navigate('/info/faq', 'root', 'replace');
           },
         },
       ],
