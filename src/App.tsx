@@ -22,9 +22,9 @@ const App: FC = () => (
     <OnBoardingScreens appModel={appModel}>
       <WhatsNewDialog appModel={appModel} />
       <ThankYouAlert userModel={userModel} />
-      <UpdatedRecordsAlert appModel={appModel} />
 
       <IonReactRouter>
+        <UpdatedRecordsAlert appModel={appModel} />
         <IonRouterOutlet id="main">
           <Route exact path="/" component={HomeRedirect} />
           <Route path="/home" component={Home} />
