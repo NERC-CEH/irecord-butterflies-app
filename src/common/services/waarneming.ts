@@ -3,8 +3,8 @@ import axios, { AxiosResponse } from 'axios';
 import config from 'common/config';
 import species, { Species } from 'common/data/species';
 
-const BUTTERFLY_GROUP_ID = 8;
-const MOTH_GROUP_ID = 4;
+const BUTTERFLY_GROUP_ID = 4;
+const MOTH_GROUP_ID = 8;
 
 export type Result = {
   classifier_id: string;
