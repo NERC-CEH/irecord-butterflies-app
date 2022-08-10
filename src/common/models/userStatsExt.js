@@ -4,10 +4,12 @@ import surveyConfig from 'Survey/Point/config';
 
 let requestCancelToken;
 
-async function fetchStats(userModel) {
+async function fetchStats(userModel, onlyButterflies) {
   console.log('Statistics: fetching user-stats');
 
-  const url = `${config.backend.url}/api/v2/advanced_reports/user-stats?survey_id=${surveyConfig.id}`;
+  const filterButterflies = onlyButterflies ? '&taxon_group_id=104' : '';
+
+  const url = `${config.backend.url}/api/v2/advanced_reports/user-stats?survey_id=${surveyConfig.id}${filterButterflies}`;
 
   if (requestCancelToken) {
     requestCancelToken.cancel();
@@ -40,8 +42,8 @@ async function fetchStats(userModel) {
 }
 
 const extension = {
-  async fetchStats() {
-    const stats = await fetchStats(this);
+  async fetchStats(onlyButterflyData) {
+    const stats = await fetchStats(this, onlyButterflyData);
     if (!stats) return;
 
     this.attrs.stats = stats; // eslint-disable-line
@@ -51,9 +53,11 @@ const extension = {
 
   async refreshUploadCountStat() {
     try {
-      await this.fetchStats();
+      const stats = await fetchStats(this);
+      if (!stats) return;
+
       // we store this temporarily because to use the stats thank you message only after upload action instead of stats page refresh
-      this.uploadCounter.count = this.attrs?.stats?.myProjectRecordsThisYear;
+      this.uploadCounter.count = stats?.myProjectRecordsThisYear;
     } catch (e) {
       // skip showing stats error to the user - less important than upload errors
       console.error(e);

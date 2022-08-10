@@ -26,7 +26,8 @@ function useFetchStats() {
     await loader.show('Please wait...');
 
     try {
-      await userModel.fetchStats();
+      const fetchButterflyData = true;
+      await userModel.fetchStats(fetchButterflyData);
     } catch (err: any) {
       toast.error(err);
       // do nothing
@@ -115,7 +116,7 @@ const Statistics: FC = () => {
               routerLink="/user/statistics/details"
               detail
             >
-              <IonLabel>
+              <IonLabel className="ion-text-wrap">
                 <small>Butterfly species recorded (total)</small>
               </IonLabel>
               <IonLabel class="ion-text-right">
@@ -131,7 +132,7 @@ const Statistics: FC = () => {
               routerLink={`/user/statistics/details/${yearName}`}
               detail
             >
-              <IonLabel>
+              <IonLabel className="ion-text-wrap">
                 <small>Butterfly species recorded ({yearName})</small>
               </IonLabel>
               <IonLabel class="ion-text-right">
