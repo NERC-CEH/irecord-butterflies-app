@@ -41,9 +41,29 @@ async function fetchStats(userModel, onlyButterflies) {
   return res.data;
 }
 
+async function fetchStatsWithButterflyFilter(userModel) {
+  const statsPromise = fetchStats(userModel);
+  const butterflyStatsPromise = fetchStats(userModel, true);
+
+  // parallelize the requests
+  const [stats, butterflyStats] = await Promise.all([
+    statsPromise,
+    butterflyStatsPromise,
+  ]);
+
+  return {
+    // species counts shoul be butterfly-only
+    ...butterflyStats,
+
+    // keep top level record stats for all the species
+    myProjectRecords: stats.myProjectRecords,
+    myProjectRecordsThisYear: stats.myProjectRecordsThisYear,
+  };
+}
+
 const extension = {
-  async fetchStats(onlyButterflyData) {
-    const stats = await fetchStats(this, onlyButterflyData);
+  async fetchStats() {
+    const stats = await fetchStatsWithButterflyFilter(this);
     if (!stats) return;
 
     this.attrs.stats = stats; // eslint-disable-line

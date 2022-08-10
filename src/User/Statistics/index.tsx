@@ -26,8 +26,7 @@ function useFetchStats() {
     await loader.show('Please wait...');
 
     try {
-      const fetchButterflyData = true;
-      await userModel.fetchStats(fetchButterflyData);
+      await userModel.fetchStats();
     } catch (err: any) {
       toast.error(err);
       // do nothing
