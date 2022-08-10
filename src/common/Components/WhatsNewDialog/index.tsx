@@ -14,7 +14,7 @@ type Props = {
 };
 
 const WhatsNewDialog: FC<Props> = ({ appModel }) => {
-  const { showWhatsNewInVersion240, appSession } = appModel.attrs;
+  const { showWhatsNew, showWhatsNewInVersion240, appSession } = appModel.attrs;
 
   const skipShowingDialogOnFreshInstall = () => {
     const isFreshInstall = appSession <= 1;
@@ -25,10 +25,17 @@ const WhatsNewDialog: FC<Props> = ({ appModel }) => {
   };
   useEffect(skipShowingDialogOnFreshInstall, [appSession]);
 
+  if (!showWhatsNew) return null;
+
   if (!showWhatsNewInVersion240) return null;
 
   const closeDialog = () => {
     appModel.attrs.showWhatsNewInVersion240 = false; // eslint-disable-line
+    appModel.save();
+  };
+
+  const hideFutureDialogs = () => {
+    appModel.attrs.showWhatsNew = false; // eslint-disable-line
     appModel.save();
   };
 
@@ -106,8 +113,13 @@ const WhatsNewDialog: FC<Props> = ({ appModel }) => {
           </ul>
         </div>
 
-        <div className="button" onClick={closeDialog}>
-          OK
+        <div className="whats-new-dialog-buttons">
+          <div className="button" onClick={hideFutureDialogs}>
+            Don't show again
+          </div>
+          <div className="button" onClick={closeDialog}>
+            OK
+          </div>
         </div>
       </div>
     </div>

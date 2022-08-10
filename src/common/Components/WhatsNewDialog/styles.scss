@@ -58,7 +58,7 @@
         box-shadow: 0px -4em 21px -29px #ffffff8a inset,
           0px -2em 25px -25px #ffffff inset;
         position: fixed;
-        bottom: 45px;
+        bottom: 51px; // buttons height
         left: 0;
         width: 100%;
         height: 5em;
@@ -109,19 +109,44 @@
       }
     }
 
-    .button {
+    .whats-new-dialog-buttons {
       display: flex;
-      width: 90%;
-      height: 50px;
-      align-items: center;
-      justify-content: right;
-      color: var(--ion-color-primary);
-      font-weight: 500;
+      margin-top: 1px; // to avoid the the message::after blur
+      border-top: 0.5px solid var(--ion-item-border-color);
+
+      .button {
+        display: flex;
+        width: 50%;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--ion-color-primary);
+        font-size: 0.9em;
+        padding: 0 10px;
+
+        &:not(:last-of-type) {
+          border-right: 0.5px solid var(--ion-item-border-color);
+        }
+
+        &:last-of-type {
+          font-weight: 500;
+        }
+      }
     }
   }
 
   // part of 2.4.0 update
   .badge {
     margin-bottom: -5px;
+  }
+}
+
+.md .whats-new-dialog-buttons {
+  border-top: none !important;
+
+  .button {
+    text-transform: uppercase;
+    border-right: none !important;
   }
 }
