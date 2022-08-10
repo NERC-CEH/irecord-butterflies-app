@@ -5,8 +5,8 @@ import { AppModel } from 'common/models/app';
 import { IonBackdrop, IonIcon, isPlatform } from '@ionic/react';
 import { star } from 'ionicons/icons';
 import ExpandableList from 'Components/ExpandableList';
-import whatsNewBackgroundImage from 'common/images/whatsNewBackgroundImage.jpg';
 import ProbabilityBadge from 'Components/ProbabilityBadge';
+import whatsNewBackgroundImage from './whatsNewBackgroundImage.jpg';
 import './styles.scss';
 
 type Props = {
