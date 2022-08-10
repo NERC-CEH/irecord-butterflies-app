@@ -29,13 +29,9 @@ const TitleMessage: FC<Props> = ({ image }) => {
     );
   }
 
-  const {
-    default_common_name,
-    taxon,
-    probability: prob,
-  } = image.getTopSpecies();
+  const { common_name, taxon, probability: prob } = image.getTopSpecies();
 
-  const taxonName = default_common_name || taxon;
+  const taxonName = common_name || taxon;
   const probability = ((prob || 0) * 100).toFixed(0);
 
   if (!doesTaxonMatchParent) {
