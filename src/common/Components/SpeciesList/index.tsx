@@ -160,12 +160,13 @@ const SpeciesList: FC<Props> = ({
       commonName,
       thumbnail: thumbnailSrc,
       thumbnailBackground,
-      scientificName,
+      taxonMeaningId,
     } = sp;
 
-    const byScientificName = (s: any) => s?.scientific_name === scientificName;
+    const byTaxonMeaningId = (s: any) =>
+      parseInt(s?.taxon_meaning_id, 10) === taxonMeaningId;
     const [identifiedSpecies] =
-      identifiedSpeciesList?.filter(byScientificName) || [];
+      identifiedSpeciesList?.filter(byTaxonMeaningId) || [];
 
     const { probability } = identifiedSpecies || {};
 
@@ -210,10 +211,11 @@ const SpeciesList: FC<Props> = ({
     );
   };
 
-  const skipIdentifiedMothSpecies = (scientificName: string) => {
-    const matchingScientificNames = (sp: any) =>
-      sp.scientific_name === scientificName;
-    return mothSpecies?.some(matchingScientificNames);
+  const skipIdentifiedMothSpecies = (taxonMeaningId: number) => {
+    const taxonMeaningIdMatch = (sp: any) =>
+      parseInt(sp.taxon_meaning_id, 10) === taxonMeaningId;
+
+    return mothSpecies?.some(taxonMeaningIdMatch);
   };
 
   const getSpeciesData = () => {
@@ -230,8 +232,8 @@ const SpeciesList: FC<Props> = ({
     }
 
     if (!useMoths) {
-      const isNotMoth = ({ type, scientificName }: Species) =>
-        type !== 'moth' || skipIdentifiedMothSpecies(scientificName);
+      const isNotMoth = ({ type, taxonMeaningId }: Species) =>
+        type !== 'moth' || skipIdentifiedMothSpecies(taxonMeaningId);
 
       filteredSpecies = filteredSpecies.filter(isNotMoth);
     }

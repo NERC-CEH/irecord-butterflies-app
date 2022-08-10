@@ -27,9 +27,10 @@ export type Result = {
 
 function getExtraInfo(sp: Result) {
   const speciesData = species;
-  const byId = ({ warehouseId }: Species) =>
-    warehouseId === parseInt(sp.taxa_taxon_list_id, 10);
-  const taxon = speciesData.find(byId);
+  const byTaxonMeaningId = ({ taxonMeaningId }: Species) =>
+    taxonMeaningId === parseInt(sp.taxon_meaning_id, 10);
+  const taxon = speciesData.find(byTaxonMeaningId);
+
   if (!taxon) return {} as any;
 
   return {
@@ -66,9 +67,12 @@ export default async function identify(url: string): Promise<Result[]> {
   const withValidData = (sp: Result) => {
     const speciesData = species;
 
-    const byId = ({ warehouseId }: Species) =>
-      warehouseId === parseInt(sp.taxa_taxon_list_id, 10);
-    const speciesIdMatches = speciesData.some(byId);
+    // TODO: Some species has good probability score, but classifier results does not have taxon_meaning_id key? eg. ("Adonis Blue", "Cryptic wood white", "Char Hill blue").
+    if (!sp.taxon_meaning_id) return null;
+
+    const byTaxonMeaningId = ({ taxonMeaningId }: Species) =>
+      taxonMeaningId === parseInt(sp.taxon_meaning_id, 10);
+    const speciesIdMatches = speciesData.some(byTaxonMeaningId);
 
     if (!speciesIdMatches) return false;
 

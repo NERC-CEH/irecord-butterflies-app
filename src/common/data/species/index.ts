@@ -30,6 +30,7 @@ export interface SpeciesInfo {
   webLink?: string;
   survey?: string;
   confusionSpecies?: string[];
+  taxonMeaningId: number;
 }
 
 interface Photo {

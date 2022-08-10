@@ -66,9 +66,11 @@ const StatisticsYear: FC = () => {
       .slice(0, 2)
       .join(' ');
 
-    const bySpeciesName = (sp: Species) =>
+    // eg. Dingy skipper subSpecies (Erynis tages tages) taxon_meaning_id will be different.
+    const byTaxonIdOrSubSpeciesName = (sp: Species) =>
+      sp.taxonMeaningId === parseInt(entry.taxon_meaning_id, 10) ||
       sp.scientificName === scientificNameWithoutSubSpecies;
-    const { thumbnail } = species.find(bySpeciesName) || {};
+    const { thumbnail } = species.find(byTaxonIdOrSubSpeciesName) || {};
 
     return { ...entry, thumbnail };
   };

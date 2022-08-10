@@ -2269,7 +2269,8 @@
     "warehouseId": 544542,
     "commonName": "Unidentified PBF/Small PBF",
     "scientificName": "Boloria euphrosyne/selene",
-    "survey": "single-species-count"
+    "survey": "single-species-count",
+    "taxonMeaningId": -1
   },
   {
     "probabilityId": 96,
@@ -2278,6 +2279,7 @@
     "warehouseId": 544546,
     "commonName": "Unidentified HBF/DGF",
     "scientificName": "Argynnis adippe/aglaja",
-    "survey": "single-species-count"
+    "survey": "single-species-count",
+    "taxonMeaningId": -1
   }
 ]
