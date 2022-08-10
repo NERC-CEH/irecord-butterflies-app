@@ -40,7 +40,10 @@ export interface Attrs extends ModelAttrs {
   showLongPressTip: boolean;
   showListSurveyTip: boolean;
   showSpeciesDeleteTip: boolean;
-  showStatsWIPTip: boolean;
+  /**
+   * @deprecated
+   */
+  showStatsWIPTip?: boolean;
   showListSurveyHiddenButtonTip: boolean;
   showTimeSurveyTip: boolean;
   showMothSpeciesTip: boolean;
@@ -82,7 +85,6 @@ const defaults: Attrs = {
   showLongPressTip: true,
   showListSurveyTip: true,
   showSpeciesDeleteTip: true,
-  showStatsWIPTip: true,
   showListSurveyHiddenButtonTip: true,
   showTimeSurveyTip: true,
   showMothSpeciesTip: true,

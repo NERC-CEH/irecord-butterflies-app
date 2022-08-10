@@ -78,88 +78,82 @@ const Statistics: FC = () => {
     const yearName = new Date().getFullYear();
 
     return (
-      <>
+      <IonList lines="none">
+        <div className="rounded">
+          <IonItemDivider mode="md">My totals</IonItemDivider>
+
+          <IonItem lines="full" className="list-header-labels">
+            <IonLabel>
+              <small>Records (total)</small>
+            </IonLabel>
+            <IonLabel class="ion-text-right">
+              <small>
+                <b>{myProjectRecords}</b>
+              </small>
+            </IonLabel>
+          </IonItem>
+
+          <IonItem lines="full" className="list-header-labels">
+            <IonLabel>
+              <small>Records ({yearName})</small>
+            </IonLabel>
+            <IonLabel class="ion-text-right">
+              <small>
+                <b>{myProjectRecordsThisYear}</b>
+              </small>
+            </IonLabel>
+          </IonItem>
+
+          <IonItem
+            lines="full"
+            className="list-header-labels"
+            routerLink="/user/statistics/details"
+            detail
+          >
+            <IonLabel className="ion-text-wrap">
+              <small>Butterfly species recorded (total)</small>
+            </IonLabel>
+            <IonLabel class="ion-text-right">
+              <small>
+                <b>{myProjectSpecies}</b>/64
+              </small>
+            </IonLabel>
+          </IonItem>
+
+          <IonItem
+            lines="full"
+            className="list-header-labels"
+            routerLink={`/user/statistics/details/${yearName}`}
+            detail
+          >
+            <IonLabel className="ion-text-wrap">
+              <small>Butterfly species recorded ({yearName})</small>
+            </IonLabel>
+            <IonLabel class="ion-text-right">
+              <small>
+                <b>{myProjectSpeciesThisYear}</b>/64
+              </small>
+            </IonLabel>
+          </IonItem>
+
+          <IonItemDivider mode="md">App totals</IonItemDivider>
+
+          <IonItem lines="full" className="list-header-labels">
+            <IonLabel>
+              <small>Records (total)</small>
+            </IonLabel>
+            <IonLabel class="ion-text-right">
+              <small>
+                <b>{projectRecordsCount}</b>
+              </small>
+            </IonLabel>
+          </IonItem>
+        </div>
+
         <InfoBackgroundMessage>
           Swipe down to refresh statistics.
         </InfoBackgroundMessage>
-
-        <IonList lines="none">
-          <div className="rounded">
-            <IonItemDivider mode="md">My totals</IonItemDivider>
-
-            <IonItem lines="full" className="list-header-labels">
-              <IonLabel>
-                <small>Records (total)</small>
-              </IonLabel>
-              <IonLabel class="ion-text-right">
-                <small>
-                  <b>{myProjectRecords}</b>
-                </small>
-              </IonLabel>
-            </IonItem>
-
-            <IonItem lines="full" className="list-header-labels">
-              <IonLabel>
-                <small>Records ({yearName})</small>
-              </IonLabel>
-              <IonLabel class="ion-text-right">
-                <small>
-                  <b>{myProjectRecordsThisYear}</b>
-                </small>
-              </IonLabel>
-            </IonItem>
-
-            <IonItem
-              lines="full"
-              className="list-header-labels"
-              routerLink="/user/statistics/details"
-              detail
-            >
-              <IonLabel className="ion-text-wrap">
-                <small>Butterfly species recorded (total)</small>
-              </IonLabel>
-              <IonLabel class="ion-text-right">
-                <small>
-                  <b>{myProjectSpecies}</b>/64
-                </small>
-              </IonLabel>
-            </IonItem>
-
-            <IonItem
-              lines="full"
-              className="list-header-labels"
-              routerLink={`/user/statistics/details/${yearName}`}
-              detail
-            >
-              <IonLabel className="ion-text-wrap">
-                <small>Butterfly species recorded ({yearName})</small>
-              </IonLabel>
-              <IonLabel class="ion-text-right">
-                <small>
-                  <b>{myProjectSpeciesThisYear}</b>/64
-                </small>
-              </IonLabel>
-            </IonItem>
-
-            <IonItemDivider mode="md">App totals</IonItemDivider>
-
-            <IonItem lines="full" className="list-header-labels">
-              <IonLabel>
-                <small>Records (total)</small>
-              </IonLabel>
-              <IonLabel class="ion-text-right">
-                <small>
-                  <b>{projectRecordsCount}</b>
-                </small>
-              </IonLabel>
-            </IonItem>
-          </div>
-
-          <InfoBackgroundMessage name="showStatsWIPTip">
-            <i>We will be adding more functionality to this page soon.</i>
-          </InfoBackgroundMessage>
-        </IonList>
-      </>
+      </IonList>
     );
   };
 
