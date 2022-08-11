@@ -1,5 +1,7 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable camelcase */
 import axios, { AxiosRequestConfig } from 'axios';
+import { observable, set } from 'mobx';
 import { AppModel } from 'models/app';
 import Occurrence from 'models/occurrence';
 import SavedSamplesProps from 'models/savedSamples';
@@ -43,11 +45,30 @@ interface Hit {
   _source: Source;
 }
 
-const DEFAULT_15_MINUTES = 15 * 60 * 1000;
+const SQL_TO_ES_LAG = 15 * 60 * 1000; // 15mins
+const SYNC_WAIT = SQL_TO_ES_LAG;
 
-const getRecordsQuery = (timestamp: string) =>
-  JSON.stringify({
-    size: 1000,
+const getRecordsQuery = (timestamp: any) => {
+  const lastFetchTime = new Date(timestamp - SQL_TO_ES_LAG);
+
+  const dateFormat = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/London',
+  });
+
+  const timeFormat = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/London',
+    timeStyle: 'medium',
+  });
+
+  // format to 2020-02-21
+  const date = dateFormat.format(lastFetchTime).split('/').reverse().join('-');
+
+  // format to 08:37:55
+  const time = timeFormat.format(lastFetchTime);
+  const formattedTimestamp = `${date} ${time}`;
+
+  return JSON.stringify({
+    size: 1000, // fetch only 1k of the last created. Note, not updated_on, since we mostly care for any last user uploaded records.
     query: {
       bool: {
         must: [
@@ -92,20 +113,25 @@ const getRecordsQuery = (timestamp: string) =>
           {
             range: {
               'metadata.updated_on': {
-                gte: timestamp,
+                gte: formattedTimestamp,
               },
             },
           },
         ],
       },
     },
+    sort: [
+      {
+        'metadata.created_on': {
+          order: 'desc',
+        },
+      },
+    ],
   });
+};
 
-async function fetchUpdatedRemoteSamples(
-  userModel: UserModel,
-  timestamp: string
-) {
-  console.log('SavedSamples: pulling remote surveys');
+async function fetchUpdatedRemoteSamples(userModel: UserModel, timestamp: any) {
+  console.log('SavedSamples: pulling remote verified surveys');
 
   const samples: { [key: string]: Hit } = {};
 
@@ -140,7 +166,7 @@ async function fetchUpdatedRemoteSamples(
   return samples;
 }
 
-function appendVerificationAndReturnOccurrences(
+function updateLocalSamples(
   savedSamples: typeof SavedSamplesProps,
   updatedRemoteSamples: any
 ) {
@@ -151,17 +177,19 @@ function appendVerificationAndReturnOccurrences(
   const findMatchingLocalSamples = (sample: Sample) => {
     const appendVerification = (occ: Occurrence) => {
       const updatedSample = updatedRemoteSamples[occ.cid];
-
       if (!updatedSample) return;
 
-      // eslint-disable-next-line no-param-reassign
-      occ.metadata.verification = {
-        ...updatedSample._source.identification,
-      };
+      const newVerification = updatedSample._source.identification;
+
+      const hasNotChanged =
+        newVerification.verified_on === occ.metadata.verification?.verified_on;
+      if (hasNotChanged) return; // there is a window when the same update can be returned. We don't want to change the record in that case.
+
+      occ.metadata.verification = { ...newVerification };
 
       const isNonPending =
-        updatedSample._source.identification.verification_status === 'C' &&
-        updatedSample._source.identification.verification_substatus === '0';
+        newVerification.verification_status === 'C' &&
+        newVerification.verification_substatus === '0';
       if (isNonPending) return;
 
       nonPendingUpdatedSamples.push(updatedSample);
@@ -184,82 +212,74 @@ function appendVerificationAndReturnOccurrences(
   return nonPendingUpdatedSamples;
 }
 
-const setTimestamp = async (appModel: AppModel) => {
-  // set one month back timestamp
-  const currentTime = new Date();
-  const getTimeOneMonthBack = currentTime.setMonth(currentTime.getMonth() - 1);
+function getEarliestTimestamp(savedSamples: typeof SavedSamplesProps) {
+  const byTime = (s1: Sample, s2: Sample) =>
+    new Date(s1.metadata.created_on).getTime() -
+    new Date(s2.metadata.created_on).getTime();
+  const firstSample = [...savedSamples].sort(byTime)[0];
 
-  // eslint-disable-next-line no-param-reassign
-  appModel.attrs.verifiedRecordsTimestamp = new Date(
-    getTimeOneMonthBack
-  ).getTime();
-  return appModel.save();
-};
+  if (!firstSample) return new Date().getTime(); // should never happen
+
+  const currentTime = new Date(firstSample.metadata.created_on);
+  return currentTime.setHours(0, 0, 0, 0); // midnight
+}
 
 async function init(
   savedSamples: typeof SavedSamplesProps,
   userModel: UserModel,
   appModel: AppModel
 ) {
+  // in-memory observable to use in reports and other views
+  savedSamples.verified = observable({ count: 0, timestamp: null });
+
+  const originalResetDefaults = savedSamples.resetDefaults;
+  // eslint-disable-next-line @getify/proper-arrows/name
+  savedSamples.resetDefaults = () => {
+    set(savedSamples.verified, { count: 0, timestamp: null });
+    return originalResetDefaults();
+  };
+
   async function sync() {
-    if (!appModel.attrs.verifiedRecordsTimestamp) {
-      await setTimestamp(appModel);
-    }
+    if (!savedSamples.length || !userModel.isLoggedIn() || !device.isOnline)
+      return;
 
-    if (!userModel.isLoggedIn() || !device.isOnline) return;
+    const lastSyncTime =
+      appModel.attrs.verifiedRecordsTimestamp ||
+      getEarliestTimestamp(savedSamples);
 
-    const verifiedRecordsTimestamp = appModel.attrs
-      .verifiedRecordsTimestamp as number;
-
-    const currentTime = new Date();
-
-    const isUnder15mins =
-      currentTime.getTime() - verifiedRecordsTimestamp < DEFAULT_15_MINUTES;
-
-    if (isUnder15mins) return;
-
-    const lastFetchTime = new Date(verifiedRecordsTimestamp);
-
-    const dateFormat = new Intl.DateTimeFormat('en-GB', {
-      timeZone: 'Europe/London',
-    });
-
-    const timeFormat = new Intl.DateTimeFormat('en-GB', {
-      timeZone: 'Europe/London',
-      timeStyle: 'medium',
-    });
-
-    // format to 2020-02-21
-    const date = dateFormat
-      .format(lastFetchTime)
-      .split('/')
-      .reverse()
-      .join('-');
-
-    // format to 08:37:55
-    const time = timeFormat.format(lastFetchTime);
-    const formattedLastFetchTime = `${date} ${time}`;
+    const shouldSyncWait = new Date().getTime() - lastSyncTime < SQL_TO_ES_LAG;
+    if (shouldSyncWait) return;
 
     const updatedRemoteSamples = await fetchUpdatedRemoteSamples(
       userModel,
-      formattedLastFetchTime
+      lastSyncTime
     );
 
-    const updatedLocalSamples = await appendVerificationAndReturnOccurrences(
+    appModel.attrs.verifiedRecordsTimestamp = new Date().getTime();
+    appModel.save();
+
+    if (!Object.keys(updatedRemoteSamples).length) return;
+
+    console.log(
+      'SavedSamples: pulled remote verified surveys. New ones found.'
+    );
+
+    const updatedLocalSamples = await updateLocalSamples(
       savedSamples,
       updatedRemoteSamples
     );
 
     if (!updatedLocalSamples?.length) return;
+    console.log(
+      'SavedSamples: pulled remote verified surveys and found local matches'
+    );
 
-    // eslint-disable-next-line no-param-reassign
-    appModel.attrs.verifiedRecordsTimestamp = new Date().getTime();
-    appModel.save();
+    savedSamples.verified.count = updatedLocalSamples?.length;
+    savedSamples.verified.timestamp = appModel.attrs.verifiedRecordsTimestamp;
   }
 
   savedSamples._init.then(sync);
-  const period = DEFAULT_15_MINUTES;
-  setInterval(sync, period);
+  setInterval(sync, SYNC_WAIT);
 }
 
 export default init;

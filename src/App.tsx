@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { observer } from 'mobx-react';
+import savedSamples from 'models/savedSamples';
 import appModel from 'models/app';
 import userModel from 'models/user';
 import ThankYouAlert from 'common/Components/ThankYouAlert';
@@ -24,7 +25,7 @@ const App: FC = () => (
       <ThankYouAlert userModel={userModel} />
 
       <IonReactRouter>
-        <UpdatedRecordsAlert appModel={appModel} />
+        <UpdatedRecordsAlert appModel={appModel} savedSamples={savedSamples} />
         <IonRouterOutlet id="main">
           <Route exact path="/" component={HomeRedirect} />
           <Route path="/home" component={Home} />
