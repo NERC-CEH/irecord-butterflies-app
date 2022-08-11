@@ -71,10 +71,9 @@ function getSampleInfo(sample: Sample) {
 
     const { thumbnail } = fullSpeciesProfile;
 
-    const image = occ.media[0];
     let avatar = <IonIcon icon={butterflyIcon} color="warning" />;
-
-    if (image) {
+    if (occ.media.length) {
+      const image = occ.media[0];
       avatar = <img src={image.getURL()} />;
     } else if (thumbnail) {
       avatar = <img src={thumbnail} />;
