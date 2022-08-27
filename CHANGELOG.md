@@ -1,3 +1,7 @@
+## 2.5.0
+
+Bug fixes.
+
 ## 2.4.0
 
 Added timed count confusion species.
