@@ -28,8 +28,6 @@ const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
 
   const selectedSpeciesNotMatchingParent = isSpeciesSelected && !hasMatchParent;
 
-  const onClickWrap = () => !showLoading && onClick();
-
   const { probability } = species || {};
 
   return (
@@ -39,7 +37,7 @@ const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
           <IonIcon icon={close} />
         </IonButton>
       )}
-      <img src={media.attrs.thumbnail} onClick={onClickWrap} />
+      <img src={media.attrs.thumbnail} onClick={onClick} />
 
       {showLoading && <IonSpinner slot="end" className="identifying" />}
 

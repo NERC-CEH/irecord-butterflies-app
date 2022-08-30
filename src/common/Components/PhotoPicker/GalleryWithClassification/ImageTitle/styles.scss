@@ -1,0 +1,33 @@
+.gallery-ai-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  width: 100%;
+  padding-top: calc(var(--ion-safe-area-top, 0) + 10px);
+  padding-right: 10px;
+  padding-left: 70px;
+  padding-bottom: 10px;
+  background: #131313ed;
+  font-weight: 400;
+  font-size: 0.8em;
+
+  b {
+    color: var(--ion-color-warning);
+    font-size: 0.9em;
+  }
+
+  .light {
+    color: var(--ion-color-light);
+  }
+
+  &.success {
+    b {
+      color: #0ae57e;
+    }
+
+    .light {
+      color: var(--ion-color-light);
+    }
+  }
+}

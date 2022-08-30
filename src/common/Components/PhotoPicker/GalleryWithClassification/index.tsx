@@ -2,34 +2,28 @@ import { FC } from 'react';
 import { Gallery, useToast } from '@flumens';
 import Media from 'models/image';
 import { useUserStatusCheck } from 'models/user';
-import { isPlatform } from '@ionic/react';
-import clsx from 'clsx';
 import { observer } from 'mobx-react';
-import TitleMessage from './TitleMessage';
-import FooterMessage from './FooterMessage';
+import ImageTitle from './ImageTitle';
+import ImageFooter from './ImageFooter';
 import './styles.scss';
 
 type Props = {
   items: Media[];
   showGallery: number;
   onClose: () => boolean;
+  onCrop: any;
 };
 
-const Footer = ({ children }: any) => {
-  const speciesHasNotBeenIdentifiedOrNotFound =
-    children?.props?.image?.attrs?.species?.length;
+const Footer = ({ children }: any) => (
+  <div className="footer-container">{children}</div>
+);
 
-  if (!speciesHasNotBeenIdentifiedOrNotFound) return children;
-
-  return (
-    <div className="footer-container">
-      <h3>Suggestions:</h3>
-      {children}
-    </div>
-  );
-};
-
-const GalleryComponent: FC<Props> = ({ items, showGallery, onClose }) => {
+const GalleryComponent: FC<Props> = ({
+  items,
+  showGallery,
+  onClose,
+  onCrop,
+}) => {
   const toast = useToast();
   const checkUserStatus = useUserStatusCheck();
 
@@ -38,21 +32,21 @@ const GalleryComponent: FC<Props> = ({ items, showGallery, onClose }) => {
       onClose();
 
       const isUserOK = await checkUserStatus();
-      if (!isUserOK) {
-        return;
-      }
+      if (!isUserOK) return;
 
       image.identify().catch(toast.error);
     };
 
     return {
       src: image.getURL(),
-      footer: <FooterMessage image={image} identifyImage={identifyImage} />,
-      title: (
-        <div className={clsx(isPlatform('tablet') && 'gallery-tablet-styles')}>
-          <TitleMessage image={image} />
-        </div>
+      footer: (
+        <ImageFooter
+          image={image}
+          identifyImage={identifyImage}
+          onCrop={onCrop}
+        />
       ),
+      title: <ImageTitle image={image} />,
     };
   };
 

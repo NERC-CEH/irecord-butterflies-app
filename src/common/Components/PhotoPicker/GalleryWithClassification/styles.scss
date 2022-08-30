@@ -1,0 +1,63 @@
+#img-array {
+  .badge {
+    position: absolute;
+    left: 2px !important;
+    bottom: 2px !important;
+    padding: 2px !important;
+
+    ion-icon {
+      font-size: 0.8em !important;
+    }
+
+    ion-label {
+      font-size: 0.7em !important;
+    }
+  }
+
+  .warning-icon {
+    position: absolute;
+    left: 2px;
+    bottom: 2px;
+    background: var(--ion-classifier-notLikely-background);
+    color: var(--ion-classifier-notLikely);
+    border-radius: 100%;
+    font-size: 0.9em;
+  }
+
+  .success-icon {
+    position: absolute;
+    left: 2px;
+    bottom: 2px;
+    background: var(--ion-classifier-success-background);
+    color: var(--ion-classifier-success);
+    border-radius: 100%;
+    font-size: 0.9em;
+  }
+
+  ion-spinner {
+    position: absolute;
+    left: 2px;
+    bottom: 2px;
+    background: #ffffff94;
+    border-radius: 50%;
+    height: 1.1em;
+    width: 1.1em;
+  }
+}
+
+.gallery-tablet-styles {
+  position: fixed;
+  padding: 20px 60px;
+  text-align: center;
+  background: #131313;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.better-image-tip {
+  display: block;
+  color: white;
+  font-size: 0.9em;
+  margin-top: 10px;
+}

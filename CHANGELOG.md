@@ -1,5 +1,6 @@
 ## 2.5.0
 
+Added image cropping functionality.
 Bug fixes.
 
 ## 2.4.0

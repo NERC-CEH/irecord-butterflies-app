@@ -1,7 +1,9 @@
 import { FC } from 'react';
 import Media from 'models/image';
-import { isPlatform, IonLabel, IonButton } from '@ionic/react';
+import { isPlatform, IonLabel, IonButton, IonSpinner } from '@ionic/react';
 import CONFIG from 'common/config';
+import { observer } from 'mobx-react';
+import './styles.scss';
 
 type Props = {
   image: Media;
@@ -56,18 +58,23 @@ const FooterMessage: FC<Props> = ({ image, identifyImage }) => {
   const identifierWasNotUsed = !image.attrs?.species;
   const speciesList = image.attrs?.species;
 
+  if (image.identification.identifying) {
+    return (
+      <>
+        <h3>Suggestions:</h3>
+
+        <span className="id-loading">
+          Identifying... <IonSpinner />
+        </span>
+      </>
+    );
+  }
+
   if (identifierWasNotUsed) {
     return (
-      <div className="footer">
-        <IonButton
-          className="re-identify-button"
-          fill="clear"
-          size="small"
-          onClick={identifyImage}
-        >
-          Get species suggestions
-        </IonButton>
-      </div>
+      <IonButton className="re-identify-button" onClick={identifyImage}>
+        Get species suggestions
+      </IonButton>
     );
   }
 
@@ -97,10 +104,14 @@ const FooterMessage: FC<Props> = ({ image, identifyImage }) => {
   if (!speciesList.length) return null;
 
   return (
-    <div className="species-array-wrapper">
-      <div className="species-array">{getIdentifiedSpeciesList()}</div>
-    </div>
+    <>
+      <h3>Suggestions:</h3>
+
+      <div className="species-array-wrapper">
+        <div className="species-array">{getIdentifiedSpeciesList()}</div>
+      </div>
+    </>
   );
 };
 
-export default FooterMessage;
+export default observer(FooterMessage);

@@ -1,107 +1,29 @@
-.gallery-modal ion-content .swiper .footer {
-  .re-identify-button {
-    --padding-start: 0;
-    --padding-end: 0;
-    background: var(--ion-color-primary);
-    border-radius: 5px;
-    font-size: 1em;
-    color: #fff;
-    padding: 0px 15px;
-  }
-}
-
-#img-array {
-  .badge {
-    position: absolute;
-    left: 2px !important;
-    bottom: 2px !important;
-    padding: 2px !important;
-
-    ion-icon {
-      font-size: 0.8em !important;
-    }
-
-    ion-label {
-      font-size: 0.7em !important;
-    }
-  }
-
-  .warning-icon {
-    position: absolute;
-    left: 2px;
-    bottom: 2px;
-    background: var(--ion-classifier-notLikely-background);
-    color: var(--ion-classifier-notLikely);
-    border-radius: 100%;
-    font-size: 0.9em;
-  }
-
-  .success-icon {
-    position: absolute;
-    left: 2px;
-    bottom: 2px;
-    background: var(--ion-classifier-success-background);
-    color: var(--ion-classifier-success);
-    border-radius: 100%;
-    font-size: 0.9em;
-  }
-
-  ion-spinner {
-    position: absolute;
-    left: 2px;
-    bottom: 2px;
-    background: #ffffff94;
-    border-radius: 50%;
-    height: 1.1em;
-    width: 1.1em;
-  }
-}
-
-.gallery-ai-message {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
-  width: 100%;
-  padding-top: calc(var(--ion-safe-area-top, 0) + 10px);
-  padding-right: 10px;
-  padding-left: 70px;
-  padding-bottom: 10px;
-  background: #131313ed;
-  font-weight: 400;
-  font-size: 0.8em;
-
-  b {
-    color: var(--ion-color-warning);
-    font-size: 0.9em;
-  }
-}
-
-.gallery-ai-message.success b {
-  color: #0ae57e;
-}
-
-.gallery-ai-message .light {
-  color: var(--ion-color-light);
-}
-
-.gallery-ai-message.success .light {
-  color: var(--ion-color-light);
-}
-
 .gallery-modal ion-content .swiper .footer-container {
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  background: #131313ed !important;
-  height: 25% !important;
-
   h3 {
     font-size: 0.9em;
     font-weight: 600;
     color: #fff;
     text-align: left;
     margin: 5px 0 0 5px;
+  }
+
+  .id-loading {
+    display: flex;
+    align-self: center;
+    color: white;
+    margin: 30px auto;
+    font-size: 0.8em;
+
+    ion-spinner {
+      margin-left: 10px;
+      height: 1.2em;
+      color: white;
+    }
+  }
+
+  .re-identify-button {
+    width: fit-content;
+    margin: 0 auto;
   }
 
   .species-array-wrapper {
@@ -276,21 +198,4 @@
       }
     }
   }
-}
-
-.gallery-tablet-styles {
-  position: fixed;
-  padding: 20px 60px;
-  text-align: center;
-  background: #131313;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.better-image-tip {
-  display: block;
-  color: white;
-  font-size: 0.9em;
-  margin-top: 10px;
 }

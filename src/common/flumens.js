@@ -39,6 +39,7 @@ export { default as ModalHeader } from '@flumens/ionic/dist/components/ModalHead
 export { default as Section } from '@flumens/ionic/dist/components/Section';
 export { default as InfoButton } from '@flumens/ionic/dist/components/InfoButton';
 export { default as PhotoPicker } from '@flumens/ionic/dist/components/PhotoPicker';
+export { default as ImageCropper } from '@flumens/ionic/dist/components/ImageCropper';
 export { default as MenuAttrItem } from '@flumens/ionic/dist/components/MenuAttrItem';
 export { default as MenuAttrItemFromModel } from '@flumens/ionic/dist/components/MenuAttrItemFromModel';
 export { default as ModelLocation } from '@flumens/ionic/dist/components/ModelLocationMap';
