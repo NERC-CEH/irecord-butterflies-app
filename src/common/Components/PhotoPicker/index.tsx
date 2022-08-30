@@ -6,6 +6,7 @@ import {
   device,
   useToast,
   saveFile,
+  deleteFile,
 } from '@flumens';
 import { isPlatform } from '@ionic/react';
 import { Capacitor } from '@capacitor/core';
@@ -17,6 +18,7 @@ import Occurrence from 'models/occurrence';
 import config from 'common/config';
 import GalleryWithClassification from './GalleryWithClassification';
 import ImageWithClassification from './ImageWithClassification';
+import getPhotoFromCustomCamera from './customCamera';
 
 type URL = string;
 
@@ -46,13 +48,15 @@ const AppPhotoPicker: FC<Props> = ({
   async function onAddNew(shouldUseCamera: boolean) {
     try {
       const photoURLs = await captureImage(
-        shouldUseCamera ? { camera: true } : { multiple: true }
+        shouldUseCamera
+          ? { getPhoto: getPhotoFromCustomCamera }
+          : { multiple: true }
       );
       if (!photoURLs.length) return;
 
-      const getImageModel = async (image: any) =>
+      const getImageModel = async (imageURL: URL) =>
         Media.getImageModel(
-          isPlatform('hybrid') ? Capacitor.convertFileSrc(image) : image,
+          isPlatform('hybrid') ? Capacitor.convertFileSrc(imageURL) : imageURL,
           config.dataPath
         );
       const imageModels: Media[] = await Promise.all<any>(
@@ -78,8 +82,14 @@ const AppPhotoPicker: FC<Props> = ({
     const image = editImage as Media;
 
     // overwrite existing file
-    const fileName: string = image?.getURL().split('/').pop() as string;
-    let savedURL = await saveFile(imageDataURL, fileName);
+    const oldFileName: string = image?.getURL().split('/').pop() as string;
+    const extension = oldFileName.split('.').pop() as string;
+    const newFileName = `${Date.now()}.${extension}`;
+
+    await deleteFile(oldFileName);
+
+    let savedURL = await saveFile(imageDataURL, newFileName);
+
     savedURL = isPlatform('hybrid')
       ? Capacitor.convertFileSrc(savedURL)
       : savedURL;
@@ -102,6 +112,8 @@ const AppPhotoPicker: FC<Props> = ({
     setEditImage(media);
   };
 
+  const allowToEdit = allowToCrop && !model.isDisabled();
+
   return (
     <>
       <PhotoPicker
@@ -113,7 +125,7 @@ const AppPhotoPicker: FC<Props> = ({
         isDisabled={model.isDisabled()}
       />
 
-      {allowToCrop && (
+      {allowToEdit && (
         <ImageCropper
           image={editImage?.getURL()}
           onDone={onDoneEdit}
