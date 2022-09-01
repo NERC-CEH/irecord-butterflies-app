@@ -62,8 +62,6 @@ const AppPhotoPicker: FC<Props> = ({
       const imageModels: Media[] = await Promise.all<any>(
         photoURLs.map(getImageModel)
       );
-      model.media.push(...imageModels);
-      model.save();
 
       const canEdit = imageModels.length === 1;
       if (canEdit) {
@@ -71,6 +69,9 @@ const AppPhotoPicker: FC<Props> = ({
         // don't identify until editing is over
         return;
       }
+
+      model.media.push(...imageModels);
+      model.save();
 
       imageModels.map(identify);
     } catch (e: any) {
@@ -97,7 +98,12 @@ const AppPhotoPicker: FC<Props> = ({
     // copy over new image values to existing model to preserve its observability
     const newImageModel = await Media.getImageModel(savedURL, config.dataPath);
     Object.assign(image?.attrs, { ...newImageModel.attrs, species: null });
-    image.parent.save();
+
+    if (!image.parent) {
+      // came straight from camera rather than editing existing
+      model.media.push(image);
+      model.save();
+    }
 
     setEditImage(undefined);
 

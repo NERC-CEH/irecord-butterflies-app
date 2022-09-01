@@ -72,6 +72,7 @@ export default async function getPhotoFromPreview(): Promise<GalleryPhoto | null
         storeToFile: true,
         toBack: true,
         disableAudio: true,
+        enableZoom: true,
         rotateWhenOrientationChanged: false,
       };
       await CameraPreview.start(cameraPreviewOptions);
