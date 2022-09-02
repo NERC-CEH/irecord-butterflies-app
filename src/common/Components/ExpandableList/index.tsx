@@ -7,8 +7,13 @@ const MAX_ITEMS = 4;
 
 const ExpandableList: FC<any> = ({ children: itemsProp }: any) => {
   const [showMore, setShowMore] = useState(false);
-  const items = itemsProp.slice(0, MAX_ITEMS);
-  const restItems = itemsProp.slice(MAX_ITEMS, itemsProp.length);
+  const items = Array.isArray(itemsProp)
+    ? itemsProp.slice(0, MAX_ITEMS)
+    : itemsProp;
+
+  const restItems = Array.isArray(itemsProp)
+    ? itemsProp.slice(MAX_ITEMS, itemsProp.length)
+    : [];
 
   const hidingMoreThanTwo = restItems.length >= 2;
 
