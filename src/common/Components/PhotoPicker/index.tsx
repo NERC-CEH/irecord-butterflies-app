@@ -102,8 +102,9 @@ const AppPhotoPicker: FC<Props> = ({
     if (!image.parent) {
       // came straight from camera rather than editing existing
       model.media.push(image);
-      model.save();
     }
+
+    model.save();
 
     setEditImage(undefined);
 
