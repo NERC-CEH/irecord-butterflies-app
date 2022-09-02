@@ -49,7 +49,7 @@ export interface Attrs extends ModelAttrs {
   showMothSpeciesTip: boolean;
 
   showWhatsNew: boolean;
-  showWhatsNewInVersion240: boolean;
+  showWhatsNewInVersion250: boolean;
 
   showVerifiedRecordsNotification: boolean;
   verifiedRecordsTimestamp: null | number;
@@ -93,7 +93,7 @@ const defaults: Attrs = {
   verifiedRecordsTimestamp: null,
 
   showWhatsNew: true,
-  showWhatsNewInVersion240: true,
+  showWhatsNewInVersion250: true,
 
   filters: {},
 };
