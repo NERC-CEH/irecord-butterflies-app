@@ -49,7 +49,7 @@ const WhatsNewDialog: FC<Props> = ({ appModel }) => {
         >
           <div className="video-container">
             {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-            <video width="100%" loop autoPlay>
+            <video width="100%" loop autoPlay muted playsInline>
               <source src={croppingVideo} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
