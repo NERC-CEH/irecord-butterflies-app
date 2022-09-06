@@ -26,7 +26,7 @@ const ImageFooter: FC<Props> = ({ onCrop, image, identifyImage }) => {
       color="light"
     >
       <IonIcon icon={cropOutline} />
-      Crop
+      Crop/Zoom
     </IonButton>
   );
 
