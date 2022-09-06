@@ -39,6 +39,8 @@
   }
 
   ion-footer {
+    background: var(--ion-page-background) !important;
+
     div {
       text-align: center;
     }
