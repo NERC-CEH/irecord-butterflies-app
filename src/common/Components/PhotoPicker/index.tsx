@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import {
   PhotoPicker,
   ImageCropper,
@@ -26,6 +26,31 @@ type Props = {
   model: Sample | Occurrence;
   disableClassifier?: boolean;
   allowToCrop?: boolean;
+};
+
+const useOnBackButton = (onCancelEdit: () => void, editImage?: Media) => {
+  const hideModal = () => {
+    const disableHardwareBackButton = (event: any) => {
+      // eslint-disable-next-line
+      event.detail.register(100, (processNextHandler: any) => {
+        if (!editImage) {
+          processNextHandler();
+          return null;
+        }
+
+        onCancelEdit();
+      });
+    };
+
+    // eslint-disable-next-line
+    document.addEventListener('ionBackButton', disableHardwareBackButton);
+    // eslint-disable-next-line
+    const removeEventListener = () =>
+      document.removeEventListener('ionBackButton', disableHardwareBackButton);
+    return removeEventListener;
+  };
+
+  useEffect(hideModal, [editImage]);
 };
 
 const AppPhotoPicker: FC<Props> = ({
@@ -120,6 +145,8 @@ const AppPhotoPicker: FC<Props> = ({
   };
 
   const allowToEdit = allowToCrop && !model.isDisabled();
+
+  useOnBackButton(onCancelEdit, editImage);
 
   return (
     <>
