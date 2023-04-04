@@ -19,7 +19,6 @@ const config = {
 
   map: {
     mapboxApiKey: process.env.APP_MAPBOX_MAP_KEY as string,
-    mapboxSatelliteId: 'cehapps/cipqvo0c0000jcknge1z28ejp',
   },
 
   backend: {
