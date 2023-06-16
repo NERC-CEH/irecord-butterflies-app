@@ -3,7 +3,7 @@ import Sample from 'models/sample';
 import Occurrence from 'models/occurrence';
 import appModel, { Filters, Filter, FilterGroup } from 'models/app';
 import { NavContext } from '@ionic/react';
-import { Page, useAlert, useOnBackButton } from '@flumens';
+import { locationToGrid, Page, useAlert, useOnBackButton } from '@flumens';
 import { observer } from 'mobx-react';
 import Main from 'common/Components/SpeciesList';
 import { Species } from 'common/data/species';
@@ -91,7 +91,10 @@ const SpeciesSelect: FC<Props> = ({
   const { navigate, goBack } = useContext(NavContext);
   const showTimeSurveyTip = useTimeSurveyTip();
 
-  const sampleGridRef = sample.attrs.location?.gridref?.slice(0, 4);
+  const location = JSON.parse(JSON.stringify(sample.attrs.location));
+  location.accuracy = 1000000; // make it hectad
+  location.gridref = locationToGrid(location); // eslint-disable-line
+  const hectad = location.gridref;
 
   const getIdentifiedSpeciesList = () => {
     if (!occurrence && sample.metadata.survey === 'point')
@@ -198,7 +201,7 @@ const SpeciesSelect: FC<Props> = ({
         searchPhrase={searchPhrase}
         filters={filters}
         ignore={currentSpecies}
-        sampleGridRef={sampleGridRef}
+        hectad={hectad}
         identifiedSpeciesList={identifiedSpeciesList}
       />
     </Page>

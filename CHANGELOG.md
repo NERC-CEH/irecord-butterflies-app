@@ -1,3 +1,11 @@
+## 2.5.2
+
+Fixed survey species probability calculations.
+
+## 2.5.1
+
+Added vector maps.
+
 ## 2.5.0
 
 Added image cropping functionality.
