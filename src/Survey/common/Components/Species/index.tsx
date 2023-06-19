@@ -6,6 +6,7 @@ import { NavContext } from '@ionic/react';
 import { locationToGrid, Page, useAlert, useOnBackButton } from '@flumens';
 import { observer } from 'mobx-react';
 import Main from 'common/Components/SpeciesList';
+import getCurrentWeekNumber from 'helpers/weeks';
 import { Species } from 'common/data/species';
 import Header from './Header';
 
@@ -95,6 +96,8 @@ const SpeciesSelect: FC<Props> = ({
   location.accuracy = 1000000; // make it hectad
   location.gridref = locationToGrid(location); // eslint-disable-line
   const hectad = location.gridref;
+
+  const week = getCurrentWeekNumber(sample.attrs.date);
 
   const getIdentifiedSpeciesList = () => {
     if (!occurrence && sample.metadata.survey === 'point')
@@ -201,6 +204,7 @@ const SpeciesSelect: FC<Props> = ({
         searchPhrase={searchPhrase}
         filters={filters}
         ignore={currentSpecies}
+        week={week}
         hectad={hectad}
         identifiedSpeciesList={identifiedSpeciesList}
       />
