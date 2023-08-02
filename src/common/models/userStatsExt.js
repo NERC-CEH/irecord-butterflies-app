@@ -56,8 +56,8 @@ async function fetchStatsWithButterflyFilter(userModel) {
     ...butterflyStats,
 
     // keep top level record stats for all the species
-    myProjectRecords: stats.myProjectRecords,
-    myProjectRecordsThisYear: stats.myProjectRecordsThisYear,
+    myProjectRecords: stats?.myProjectRecords,
+    myProjectRecordsThisYear: stats?.myProjectRecordsThisYear,
   };
 }
 
