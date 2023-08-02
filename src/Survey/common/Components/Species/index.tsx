@@ -92,7 +92,7 @@ const SpeciesSelect: FC<Props> = ({
   const { navigate, goBack } = useContext(NavContext);
   const showTimeSurveyTip = useTimeSurveyTip();
 
-  const location = JSON.parse(JSON.stringify(sample.attrs.location));
+  const location = JSON.parse(JSON.stringify(sample.attrs.location || {}));
   location.accuracy = 1000000; // make it hectad
   location.gridref = locationToGrid(location); // eslint-disable-line
   const hectad = location.gridref;
