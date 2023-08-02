@@ -7,7 +7,7 @@ import Occurrence from 'models/occurrence';
 import SavedSamplesProps from 'models/savedSamples';
 import { UserModel } from 'models/user';
 import Sample from 'models/sample';
-import { device } from '@flumens';
+import { device, isAxiosNetworkError } from '@flumens';
 import CONFIG from 'common/config';
 import pointSurvey from 'Survey/Point/config';
 import singleSpeciesSurvey from 'Survey/Time/Single/config';
@@ -48,7 +48,7 @@ interface Hit {
 const SQL_TO_ES_LAG = 15 * 60 * 1000; // 15mins
 const SYNC_WAIT = SQL_TO_ES_LAG;
 
-const getRecordsQuery = (timestamp: any) => {
+const getRecordsQuery = (timestamp: number) => {
   const lastFetchTime = new Date(timestamp - SQL_TO_ES_LAG);
 
   const dateFormat = new Intl.DateTimeFormat('en-GB', {
@@ -130,7 +130,10 @@ const getRecordsQuery = (timestamp: any) => {
   });
 };
 
-async function fetchUpdatedRemoteSamples(userModel: UserModel, timestamp: any) {
+async function fetchUpdatedRemoteSamples(
+  userModel: UserModel,
+  timestamp: number
+) {
   console.log('SavedSamples: pulling remote verified surveys');
 
   const samples: { [key: string]: Hit } = {};
@@ -150,7 +153,9 @@ async function fetchUpdatedRemoteSamples(userModel: UserModel, timestamp: any) {
   try {
     const res = await axios(OPTIONS);
     data = res.data;
-  } catch (error) {
+  } catch (error: any) {
+    if (isAxiosNetworkError(error)) return samples;
+
     console.error(error);
     return samples;
   }
@@ -221,7 +226,9 @@ function getEarliestTimestamp(savedSamples: typeof SavedSamplesProps) {
   if (!firstSample) return new Date().getTime(); // should never happen
 
   const currentTime = new Date(firstSample.metadata.created_on);
-  return currentTime.setHours(0, 0, 0, 0); // midnight
+  currentTime.setHours(0, 0, 0, 0); // midnight
+
+  return currentTime.getTime();
 }
 
 async function init(
@@ -240,12 +247,28 @@ async function init(
   };
 
   async function sync() {
-    if (!savedSamples.length || !userModel.isLoggedIn() || !device.isOnline)
+    if (
+      !savedSamples.length ||
+      !userModel.isLoggedIn() ||
+      !userModel.attrs.verified ||
+      !device.isOnline
+    )
       return;
 
-    const lastSyncTime =
+    let lastSyncTime =
       appModel.attrs.verifiedRecordsTimestamp ||
       getEarliestTimestamp(savedSamples);
+
+    if (!Number.isFinite(lastSyncTime)) {
+      console.error(
+        'SavedSamples lastSyncTime is not finite',
+        lastSyncTime,
+        appModel.attrs.verifiedRecordsTimestamp,
+        getEarliestTimestamp(savedSamples)
+      );
+
+      lastSyncTime = new Date().getTime();
+    }
 
     const shouldSyncWait = new Date().getTime() - lastSyncTime < SQL_TO_ES_LAG;
     if (shouldSyncWait) return;

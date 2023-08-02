@@ -46,6 +46,7 @@ export { default as ModelLocation } from '@flumens/ionic/dist/components/ModelLo
 export { default as UserFeedbackRequest } from '@flumens/ionic/dist/components/UserFeedbackRequest';
 export { default as CounterInput } from '@flumens/ionic/dist/components/CounterInput';
 export { useToast, useAlert, useLoader } from '@flumens/ionic/dist/hooks';
+export * from '@flumens/ionic/dist/utils/errors';
 export * from '@flumens/ionic/dist/utils/validation';
 export * from '@flumens/ionic/dist/utils/image';
 export * from '@flumens/ionic/dist/utils/location';
