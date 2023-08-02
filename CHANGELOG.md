@@ -1,3 +1,7 @@
+## 2.5.3
+
+Small bug fixes.
+
 ## 2.5.2
 
 Fixed survey species probability calculations.
