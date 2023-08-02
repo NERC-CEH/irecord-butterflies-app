@@ -108,8 +108,11 @@ export default class AppOccurrence extends Occurrence {
   getAllUniqueIdentifiedSpecies() {
     if (!this.media.length) return [];
 
-    const byHightestProbability = (sp1: any, sp2: any) =>
-      sp2.probability - sp1.probability;
+    const byHightestProbability = (sp1: any, sp2: any) => {
+      const p1 = sp1?.probability || 0;
+      const p2 = sp2?.probability || 0;
+      return p2 - p1;
+    };
 
     const getAllIdentifiedSpecies = (image: Media) => image.attrs.species;
 
