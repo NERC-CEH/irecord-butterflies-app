@@ -19,9 +19,9 @@ const byLastName = (n1, n2) => {
 };
 const getAuthorFromPhoto = photo => photo.author || '';
 const allAuthors = photos.map(getAuthorFromPhoto);
-const uniqueAuthors = [...new Set([...allAuthors, ...extraPhotoAuthors])].sort(
-  byLastName
-);
+const uniqueAuthors = Array.from(
+  new Set([...allAuthors, ...extraPhotoAuthors])
+).sort(byLastName);
 const getAuthorComponent = author => <span key={author}>{author}</span>;
 const authors = uniqueAuthors.map(getAuthorComponent);
 

@@ -34,7 +34,7 @@ const getOptions = (type: keyof Pick<Species, FilterGroup>) => {
     .filter(hasValue)
     .sort();
 
-  const uniqueOptions = [...new Set(options)];
+  const uniqueOptions = Array.from(new Set(options));
   return uniqueOptions;
 };
 

@@ -47,16 +47,15 @@ export default function getProbablities(
 
       return speciesIds.map(parseInt).map(mapProbIdToSpeciesId);
     };
-    const probsForHectadWeeksNormalized = probsForHectadWeeks.map(
-      getUncompressedProbs
-    );
+    const probsForHectadWeeksNormalized =
+      probsForHectadWeeks.map(getUncompressedProbs);
 
     speciesNowAndHere = probsForHectadWeeksNormalized[weekNo] || [];
     const notInNowAndHereList = (sp: string) =>
       !speciesNowAndHere || !speciesNowAndHere.includes(sp);
-    speciesHere = [...new Set(probsForHectadWeeksNormalized.flat())].filter(
-      notInNowAndHereList
-    );
+    speciesHere = Array.from(
+      new Set(probsForHectadWeeksNormalized.flat())
+    ).filter(notInNowAndHereList);
   }
 
   const probs = [speciesNowAndHere, speciesHere, speciesNow];
