@@ -1,3 +1,7 @@
+## 2.5.4
+
+Updated libraries (Capacitor).
+
 ## 2.5.3
 
 Small bug fixes.
