@@ -1,6 +1,6 @@
 {
   "name": "irecord-butterflies",
-  "version": "2.5.4",
+  "version": "2.6.0",
   "title": "iRecord Butterflies",
   "scripts": {
     "start": "webpack serve --progress --port 8000",

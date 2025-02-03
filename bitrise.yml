@@ -55,11 +55,11 @@ workflows:
           run_if: enveq "BUILD_ONLY" ""
           inputs:
             - command: run deploy
-      - google-play-deploy@3:
-          run_if: enveq "BUILD_ONLY" ""
-          inputs:
-            - package_name: $BITRISE_PROJECT_NAME
-            - service_account_json_key_path: $BITRISEIO_GOOGLE_SERVICE_KEY_URL
+      # - google-play-deploy@3:
+      #     run_if: enveq "BUILD_ONLY" ""
+      #     inputs:
+      #       - package_name: $BITRISE_PROJECT_NAME
+      #       - service_account_json_key_path: $BITRISEIO_GOOGLE_SERVICE_KEY_URL
       - deploy-to-itunesconnect-application-loader@1:
           run_if: enveq "BUILD_ONLY" ""
           inputs:
@@ -72,6 +72,12 @@ workflows:
             - content: |
                 DIRECTORY="$BITRISE_PROJECT_NAME/$NPM_PACKAGE_VERSION"
                 npx @flumens/onedrive-upload --directory $DIRECTORY --file $BITRISE_DEPLOY_DIR/app-debug.aab
+      - script@1:
+          title: Upload Builds to OneDrive
+          inputs:
+            - content: |
+                DIRECTORY="$BITRISE_PROJECT_NAME/$NPM_PACKAGE_VERSION"
+                npx @flumens/onedrive-upload --directory $DIRECTORY --file $BITRISE_DEPLOY_DIR/app-release.aab
       - script@1:
           title: Upload Builds to OneDrive
           inputs:
