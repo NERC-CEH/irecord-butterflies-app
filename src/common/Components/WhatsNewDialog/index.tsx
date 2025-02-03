@@ -1,25 +1,20 @@
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 import { observer } from 'mobx-react';
-import { Trans as T } from 'react-i18next';
-import { AppModel } from 'common/models/app';
-import { IonBackdrop, IonIcon } from '@ionic/react';
 import { star } from 'ionicons/icons';
+import { Trans as T } from 'react-i18next';
+import { IonBackdrop, IonIcon } from '@ionic/react';
+import appModel from 'common/models/app';
 import ExpandableList from 'Components/ExpandableList';
 import croppingVideo from './cropping.mp4';
 import './styles.scss';
 
-type Props = {
-  appModel: AppModel;
-};
-
-const WhatsNewDialog: FC<Props> = ({ appModel }) => {
+const WhatsNewDialog = () => {
   const { showWhatsNew, showWhatsNewInVersion250, appSession } = appModel.attrs;
 
   const skipShowingDialogOnFreshInstall = () => {
     const isFreshInstall = appSession <= 1;
     if (isFreshInstall) {
       appModel.attrs.showWhatsNewInVersion250 = false; // eslint-disable-line
-      appModel.save();
     }
   };
   useEffect(skipShowingDialogOnFreshInstall, [appSession]);
@@ -30,12 +25,10 @@ const WhatsNewDialog: FC<Props> = ({ appModel }) => {
 
   const closeDialog = () => {
     appModel.attrs.showWhatsNewInVersion250 = false; // eslint-disable-line
-    appModel.save();
   };
 
   const hideFutureDialogs = () => {
     appModel.attrs.showWhatsNew = false; // eslint-disable-line
-    appModel.save();
   };
 
   return (
@@ -54,7 +47,7 @@ const WhatsNewDialog: FC<Props> = ({ appModel }) => {
               Your browser does not support the video tag.
             </video>
           </div>
-          <div className="whats-new-badge ">
+          <div className="whats-new-badge">
             <IonIcon icon={star} />
           </div>
         </div>

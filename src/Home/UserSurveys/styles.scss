@@ -2,14 +2,17 @@
   ion-header ion-toolbar {
     --background: transparent;
 
+    position: fixed;
+    color: var(--ion-color-main);
+
     ion-segment {
+      z-index: 100000000;
+      margin: 8px auto;
+      border-radius: 10px;
+      background: #fff;
       max-width: calc(
         100% - 20px
       ); // -20px to match the padding of the list below
-      margin: 8px auto;
-      z-index: 100000000;
-      border-radius: 10px;
-      background: #fff;
 
       &[value='map'] {
         border-radius: 10px;
@@ -32,13 +35,10 @@
       }
 
       ion-segment-button {
-        padding-left: 10px;
         padding-right: 10px;
+        padding-left: 10px;
       }
     }
-
-    position: fixed;
-    color: var(--ion-color-main);
   }
 
   ion-content {
@@ -53,10 +53,10 @@
     }
 
     .upload-all-button {
-      margin: 10px auto;
-      height: 35px !important;
       display: block;
+      margin: 10px auto;
       padding: 0 20%;
+      height: 35px !important;
     }
 
     .info-background-message {
@@ -64,8 +64,8 @@
       margin-bottom: 10vh;
 
       ion-icon {
-        border-radius: 7px;
         margin-bottom: -7px;
+        border-radius: 7px;
         background: var(--ion-color-primary);
         --ionicon-stroke-width: 20px;
         font-size: 1em;

@@ -1,8 +1,7 @@
-import { FC } from 'react';
-import { IonButton, IonIcon } from '@ionic/react';
-import { cropOutline } from 'ionicons/icons';
-import Media from 'models/image';
 import { observer } from 'mobx-react';
+import { cropOutline } from 'ionicons/icons';
+import { IonButton, IonIcon } from '@ionic/react';
+import Media from 'models/image';
 import SpeciesSuggestions from './SpeciesSuggestions';
 import './styles.scss';
 
@@ -12,7 +11,7 @@ interface Props {
   identifyImage?: any;
 }
 
-const ImageFooter: FC<Props> = ({ onCrop, image, identifyImage }) => {
+const ImageFooter = ({ onCrop, image, identifyImage }: Props) => {
   const onCropWrap = () => onCrop(image);
 
   const allowToEdit =

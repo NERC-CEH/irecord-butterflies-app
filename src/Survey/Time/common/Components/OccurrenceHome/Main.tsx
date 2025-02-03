@@ -1,17 +1,15 @@
-import { FC } from 'react';
-import Sample from 'models/sample';
-import Occurrence from 'models/occurrence';
 import { observer } from 'mobx-react';
-import { IonList, IonIcon, IonItemDivider } from '@ionic/react';
 import { locationOutline, warningOutline } from 'ionicons/icons';
 import { Trans as T } from 'react-i18next';
-import PhotoPicker from 'common/Components/PhotoPicker';
 import { useRouteMatch } from 'react-router';
 import { Main, MenuAttrItem, MenuAttrItemFromModel } from '@flumens';
+import { IonList, IonIcon } from '@ionic/react';
+import PhotoPicker from 'common/Components/PhotoPicker';
+import butterflyIcon from 'common/images/butterflyIcon.svg';
+import Occurrence from 'models/occurrence';
+import Sample from 'models/sample';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
 import VerificationMessage from 'Survey/common/Components/VerificationMessage';
-import butterflyIcon from 'common/images/butterflyIcon.svg';
-import clsx from 'clsx';
 import './styles.scss';
 
 type Props = {
@@ -19,7 +17,7 @@ type Props = {
   occurrence: Occurrence;
 };
 
-const OccurrenceMain: FC<Props> = ({ subSample, occurrence }) => {
+const OccurrenceMain = ({ subSample, occurrence }: Props) => {
   const { url } = useRouteMatch();
   const isDisabled = subSample.isUploaded();
 
@@ -34,17 +32,14 @@ const OccurrenceMain: FC<Props> = ({ subSample, occurrence }) => {
   }
 
   return (
-    <Main
-      id="area-count-occurrence-edit"
-      className={clsx(isDisabled && 'disable-top-padding')}
-    >
+    <Main id="area-count-occurrence-edit">
       {isDisabled && <VerificationMessage occurrence={occurrence} />}
 
       <IonList lines="full">
-        <IonItemDivider>
+        <h3 className="list-title">
           <T>Details</T>
-        </IonItemDivider>
-        <div className="rounded">
+        </h3>
+        <div className="rounded-list">
           {subSample.isSurveyMultiSpeciesTimedCount() && (
             <MenuAttrItem
               routerLink={`${url}/taxon`}
@@ -79,10 +74,10 @@ const OccurrenceMain: FC<Props> = ({ subSample, occurrence }) => {
           />
         </div>
 
-        <IonItemDivider>
+        <h3 className="list-title">
           <T>Species Photo</T>
-        </IonItemDivider>
-        <div className="rounded">
+        </h3>
+        <div className="rounded-list">
           <PhotoPicker model={occurrence} />
         </div>
       </IonList>

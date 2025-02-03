@@ -1,14 +1,10 @@
-import { FC } from 'react';
 import { observer } from 'mobx-react';
-import { UserModel } from 'models/user';
-import { IonBackdrop, IonItem, IonIcon, IonLabel } from '@ionic/react';
 import { star } from 'ionicons/icons';
+import { IonBackdrop, IonItem, IonIcon, IonLabel } from '@ionic/react';
+import userModel from 'models/user';
 import './styles.scss';
 
-type Props = {
-  userModel: UserModel;
-};
-const ThankYouAlert: FC<Props> = ({ userModel }) => {
+const ThankYouAlert = () => {
   const milestone = userModel.getAchievedStatsMilestone();
   if (!milestone) return null;
 
@@ -28,7 +24,6 @@ const ThankYouAlert: FC<Props> = ({ userModel }) => {
 
   const closeAlert = () => {
     userModel.attrs.lastThankYouMilestoneShown[currentYear] = milestone; // eslint-disable-line
-    userModel.save();
   };
 
   return (

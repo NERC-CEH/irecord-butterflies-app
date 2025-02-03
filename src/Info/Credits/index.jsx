@@ -1,6 +1,6 @@
 import { Header, Page, Main, Section } from '@flumens';
-import 'common/images/flumens.svg';
 import photos from 'common/data/species/cache/photos.json';
+import 'common/images/flumens.svg';
 import './styles.scss';
 
 const { P, H } = Section;

@@ -1,7 +1,7 @@
-import thumbnailBackground from './thumbnail_background.png';
 import thumbnail from './Small Pearl-bordered Fritillary (upperside)__(512px).png';
-import map from './Small Pearl-bordered Fritillary_map.png';
 import lifechart from './Small Pearl-bordered Fritillary_lifecycle.jpg';
+import map from './Small Pearl-bordered Fritillary_map.png';
+import thumbnailBackground from './thumbnail_background.png';
 
 export default {
   thumbnail,

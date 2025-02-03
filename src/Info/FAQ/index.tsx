@@ -1,18 +1,18 @@
-import { IonIcon, IonImg, IonItemDivider, IonList } from '@ionic/react';
-import { Header, Page, Main, Collapse } from '@flumens';
-import 'common/images/flumens.svg';
-import butterflyIcon from 'common/images/butterflyIcon.svg';
 import { settingsOutline, arrowUndoOutline } from 'ionicons/icons';
+import { Header, Page, Main, Collapse } from '@flumens';
+import { IonIcon, IonImg, IonList } from '@ionic/react';
+import butterflyIcon from 'common/images/butterflyIcon.svg';
+import 'common/images/flumens.svg';
 import deleteOccExplanationImage from './deleteOccExplanationImage.png';
 import './styles.scss';
 
 export default () => (
   <Page id="faq">
     <Header title="FAQ" />
-    <Main>
+    <Main className="[--padding-bottom:30px]">
       <IonList lines="none">
-        <IonItemDivider>Surveys</IonItemDivider>
-        <div className="rounded">
+        <h3 className="list-title">Surveys</h3>
+        <div className="rounded-list">
           <Collapse title="Where are all my previous records?">
             <span>
               Records that you have submitted from previous versions of the
@@ -187,8 +187,8 @@ export default () => (
           </Collapse>
         </div>
 
-        <IonItemDivider>User</IonItemDivider>
-        <div className="rounded">
+        <h3 className="list-title">User</h3>
+        <div className="rounded-list">
           <Collapse title="Sign in/out or register">
             <p>
               To login, open the main menu page click Login or Register buttons
@@ -205,8 +205,8 @@ export default () => (
           </Collapse>
         </div>
 
-        <IonItemDivider>Other</IonItemDivider>
-        <div className="rounded">
+        <h3 className="list-title">Other</h3>
+        <div className="rounded-list">
           <Collapse title="Reset the application">
             <p>
               Go to the application settings page{' '}

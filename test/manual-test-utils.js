@@ -1,13 +1,13 @@
 /* eslint-disable no-param-reassign, default-param-last, @getify/proper-arrows/name, @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
-
+import track from 'json-loader!./track.geojson';
 import GPS from 'mock-geolocation';
-import savedRecords from 'models/savedSamples';
-import Sample from 'models/sample';
+import { Plugins, FilesystemDirectory } from '@capacitor/core';
+import savedRecords from 'models/collections/samples';
 import Image from 'models/image';
 import Occurrence from 'models/occurrence';
-import { Plugins, FilesystemDirectory } from '@capacitor/core';
-import track from 'json-loader!./track.geojson'; // eslint-disable-line
+import Sample from 'models/sample';
+// eslint-disable-line
 import defaultSurvey from 'Survey/Point/config';
 
 window.FilesystemDirectory = FilesystemDirectory;

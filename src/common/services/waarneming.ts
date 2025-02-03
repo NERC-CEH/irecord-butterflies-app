@@ -1,7 +1,7 @@
-import userModel from 'models/user';
 import axios, { AxiosResponse } from 'axios';
 import config from 'common/config';
 import species, { Species } from 'common/data/species';
+import userModel from 'models/user';
 
 const BUTTERFLY_GROUP_ID = 4;
 const MOTH_GROUP_ID = 8;

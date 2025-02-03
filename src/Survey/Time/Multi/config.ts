@@ -1,24 +1,28 @@
 import merge from 'lodash/merge';
-
+import { Survey } from 'Survey/common/config';
 import survey from '../Single/config';
 
-const speciesSurvey = merge({}, survey, {
+const speciesSurvey: any = merge({}, survey, {
   id: 702,
   name: 'multi-species-count',
 
   smp: {
-    create(AppSample: any, AppOccurrence: any, taxon: any, _: any, stage: any) {
-      const sample = new AppSample({
+    async create({ Sample, Occurrence, taxon, stage }) {
+      const sample = new Sample({
         metadata: {
-          survey_id: speciesSurvey.id,
-          survey: speciesSurvey.name,
+          survey: survey.name,
         },
         attrs: {
+          surveyId: survey.id,
+          enteredSrefSystem: 4326,
           location: {},
         },
       });
 
-      const occurrence = survey?.smp?.occ.create(AppOccurrence, taxon);
+      const occurrence = await survey.smp!.occ!.create!({
+        Occurrence: Occurrence!,
+        taxon,
+      })!;
 
       sample.occurrences.push(occurrence);
 
@@ -28,16 +32,18 @@ const speciesSurvey = merge({}, survey, {
     },
   },
 
-  create(AppSample: any) {
-    const sample = new AppSample({
+  async create({ Sample }) {
+    const sample = new Sample({
       metadata: {
         survey: speciesSurvey.name,
-        survey_id: speciesSurvey.id,
         pausedTime: 0,
         timerPausedTime: null,
         startStopwatchTime: null,
       },
       attrs: {
+        surveyId: survey.id,
+        date: new Date().toISOString(),
+        enteredSrefSystem: 4326,
         location: {},
         duration: 0,
         cloud: null,
@@ -52,6 +58,6 @@ const speciesSurvey = merge({}, survey, {
 
     return sample;
   },
-});
+} as Partial<Survey>);
 
 export default speciesSurvey;

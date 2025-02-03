@@ -1,14 +1,15 @@
-import { FC } from 'react';
 import { observer } from 'mobx-react';
-import { InfoBackgroundMessage } from '@flumens';
+import clsx from 'clsx';
+import { InfoBackgroundMessage as InfoBackgroundMessageOrig } from '@flumens';
 import appModel, { Attrs } from 'models/app';
 
 interface Props {
   name?: keyof Attrs;
   children: any;
+  className?: any;
 }
 
-const Message: FC<Props> = ({ name, children, ...props }) => {
+const InfoBackgroundMessage = ({ name, children, ...props }: Props) => {
   if (name && !appModel.attrs[name]) {
     return null;
   }
@@ -21,10 +22,14 @@ const Message: FC<Props> = ({ name, children, ...props }) => {
   const onHide = name ? hideMessage : undefined;
 
   return (
-    <InfoBackgroundMessage onHide={onHide} {...props}>
+    <InfoBackgroundMessageOrig
+      onHide={onHide}
+      {...props}
+      className={clsx(props.className, 'font-light')}
+    >
       {children}
-    </InfoBackgroundMessage>
+    </InfoBackgroundMessageOrig>
   );
 };
 
-export default observer(Message);
+export default observer(InfoBackgroundMessage);

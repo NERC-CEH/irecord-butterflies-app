@@ -1,19 +1,14 @@
-import { FC, useEffect, useContext } from 'react';
-import { useAlert } from '@flumens';
-import { AppModel } from 'models/app';
-import SavedSamplesProps from 'models/savedSamples';
+import { useEffect, useContext } from 'react';
 import { observer } from 'mobx-react';
+import { useAlert } from '@flumens';
 import { NavContext, IonItem, IonCheckbox, IonLabel } from '@ionic/react';
+import appModel from 'models/app';
+import savedSamples from 'models/collections/samples';
 import './styles.scss';
 
 let isPopupVisible = false;
 
-interface Props {
-  savedSamples: typeof SavedSamplesProps;
-  appModel: AppModel;
-}
-
-const UpdatedRecordsDialog: FC<Props> = ({ appModel, savedSamples }) => {
+const UpdatedRecordsDialog = () => {
   const alert = useAlert();
   const { navigate } = useContext(NavContext);
 
@@ -63,7 +58,6 @@ const UpdatedRecordsDialog: FC<Props> = ({ appModel, savedSamples }) => {
 
           handler: () => {
             isPopupVisible = false;
-            appModel.save();
           },
         },
         {
@@ -73,7 +67,6 @@ const UpdatedRecordsDialog: FC<Props> = ({ appModel, savedSamples }) => {
 
           handler: () => {
             isPopupVisible = false;
-            appModel.save();
             navigate('/home/surveys/uploaded', 'none', 'replace');
           },
         },

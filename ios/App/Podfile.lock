@@ -1,33 +1,41 @@
 PODS:
-  - Capacitor (5.3.0):
+  - Capacitor (6.2.0):
     - CapacitorCordova
-  - CapacitorApp (5.0.6):
+  - CapacitorApp (6.0.2):
     - Capacitor
-  - CapacitorCamera (5.0.7):
+  - CapacitorCamera (6.1.2):
     - Capacitor
   - CapacitorCommunityBackgroundGeolocation (0.0.1):
     - Capacitor
-  - CapacitorCommunityCameraPreview (2.0.0):
+  - CapacitorCommunityCameraPreview (6.0.1):
     - Capacitor
-  - CapacitorCordova (5.3.0)
-  - CapacitorDevice (5.0.6):
+  - CapacitorCommunitySqlite (6.0.2):
     - Capacitor
-  - CapacitorFilesystem (5.1.3):
+    - SQLCipher
+    - ZIPFoundation
+  - CapacitorCordova (6.2.0)
+  - CapacitorDevice (6.0.2):
     - Capacitor
-  - CapacitorGeolocation (5.0.6):
+  - CapacitorFilesystem (6.0.3):
     - Capacitor
-  - CapacitorHaptics (5.0.6):
+  - CapacitorGeolocation (6.1.0):
     - Capacitor
-  - CapacitorKeyboard (5.0.6):
+  - CapacitorHaptics (6.0.2):
     - Capacitor
-  - CapacitorNetwork (5.0.6):
+  - CapacitorKeyboard (6.0.3):
     - Capacitor
-  - CapacitorSplashScreen (5.0.6):
+  - CapacitorNetwork (6.0.3):
     - Capacitor
-  - CapacitorStatusBar (5.0.6):
+  - CapacitorSplashScreen (6.0.3):
     - Capacitor
-  - CordovaPlugins (5.3.0):
-    - CapacitorCordova
+  - CapacitorStatusBar (6.0.2):
+    - Capacitor
+  - SQLCipher (4.6.1):
+    - SQLCipher/standard (= 4.6.1)
+  - SQLCipher/common (4.6.1)
+  - SQLCipher/standard (4.6.1):
+    - SQLCipher/common
+  - ZIPFoundation (0.9.19)
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
@@ -35,6 +43,7 @@ DEPENDENCIES:
   - "CapacitorCamera (from `../../node_modules/@capacitor/camera`)"
   - "CapacitorCommunityBackgroundGeolocation (from `../../node_modules/@capacitor-community/background-geolocation`)"
   - "CapacitorCommunityCameraPreview (from `../../node_modules/@capacitor-community/camera-preview`)"
+  - "CapacitorCommunitySqlite (from `../../node_modules/@capacitor-community/sqlite`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorDevice (from `../../node_modules/@capacitor/device`)"
   - "CapacitorFilesystem (from `../../node_modules/@capacitor/filesystem`)"
@@ -44,7 +53,11 @@ DEPENDENCIES:
   - "CapacitorNetwork (from `../../node_modules/@capacitor/network`)"
   - "CapacitorSplashScreen (from `../../node_modules/@capacitor/splash-screen`)"
   - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
-  - CordovaPlugins (from `../capacitor-cordova-ios-plugins`)
+
+SPEC REPOS:
+  trunk:
+    - SQLCipher
+    - ZIPFoundation
 
 EXTERNAL SOURCES:
   Capacitor:
@@ -57,6 +70,8 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor-community/background-geolocation"
   CapacitorCommunityCameraPreview:
     :path: "../../node_modules/@capacitor-community/camera-preview"
+  CapacitorCommunitySqlite:
+    :path: "../../node_modules/@capacitor-community/sqlite"
   CapacitorCordova:
     :path: "../../node_modules/@capacitor/ios"
   CapacitorDevice:
@@ -75,26 +90,26 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/splash-screen"
   CapacitorStatusBar:
     :path: "../../node_modules/@capacitor/status-bar"
-  CordovaPlugins:
-    :path: "../capacitor-cordova-ios-plugins"
 
 SPEC CHECKSUMS:
-  Capacitor: 1ac9165943bc4f2137642d218c5ba05df811de69
-  CapacitorApp: 024e1b1bea5f883d79f6330d309bc441c88ad04a
-  CapacitorCamera: 084b0b228bba7d00587910337b1c89e93b1d32ab
+  Capacitor: 1f3c7b9802d958cd8c4eb63895fff85dff2e1eea
+  CapacitorApp: 2a8c3a0b0814322e5e6e15fe595f02c3808f0f8b
+  CapacitorCamera: 9052bd3f464f135ba983feccd8ac1266272f0549
   CapacitorCommunityBackgroundGeolocation: 6f26f4290377dbd1d6dec21e62cb66f008f61ec7
-  CapacitorCommunityCameraPreview: 47070b2c66a79a424afe7c73bd951dfabfbc0f76
-  CapacitorCordova: b9374d68e63ce29e96ab5db994cf14fbefd722c9
-  CapacitorDevice: 2c968f98a1ec4d22357418c1521e7ddc46c675e6
-  CapacitorFilesystem: 9b4641db3d6d62b6cc1bf0a6a09681ebaea696b7
-  CapacitorGeolocation: 7be5f77abc205c0efe319fff8587a7183e7b0240
-  CapacitorHaptics: 1fffc1217c7e64a472d7845be50fb0c2f7d4204c
-  CapacitorKeyboard: b978154b024a5f65e044908e37d15b7de58b9d12
-  CapacitorNetwork: d80b3e79bef6ec37640ee2806c19771f07ff2d0c
-  CapacitorSplashScreen: 5fa2ab5e46cf5cc530cf16a51c80c7a986579ccd
-  CapacitorStatusBar: 565c0a1ebd79bb40d797606a8992b4a105885309
-  CordovaPlugins: 0c47f9059feb399110afa77ddf78085634a8d057
+  CapacitorCommunityCameraPreview: 3b37673576ad824c282429a0bd093b45d0215921
+  CapacitorCommunitySqlite: 47dab3a2d9a9581a0fe7642cf9cffd34c5d5b358
+  CapacitorCordova: b33e7f4aa4ed105dd43283acdd940964374a87d9
+  CapacitorDevice: 1a215717f0b5061503b21a03508b0ec458a57d78
+  CapacitorFilesystem: fa3099b3c3aa43a1b51362d0c999301ab1a9a752
+  CapacitorGeolocation: d994ee64ee41909e2089e575c9d3a976007c2812
+  CapacitorHaptics: b53409aaca1203f79c6d0eb3ed5de40556339518
+  CapacitorKeyboard: 460c6f9ec5e52c84f2742d5ce2e67bbc7ab0ebb0
+  CapacitorNetwork: da96b5fff8d05b67f4658503aabb22f65bda2c0f
+  CapacitorSplashScreen: 68893659d77b5f82d753b3a70475082845e3039c
+  CapacitorStatusBar: 3b9ac7d0684770522c532d1158a1434512ab1477
+  SQLCipher: 77fbe633cd84db04b07876dd50766b4924b57d61
+  ZIPFoundation: b8c29ea7ae353b309bc810586181fd073cb3312c
 
-PODFILE CHECKSUM: fce93c42de5cb6161e93f60a028894cdd76845ce
+PODFILE CHECKSUM: 1abe8ec1d74b1b43c05a82e3ee75d79c0e9b26a4
 
 COCOAPODS: 1.10.1

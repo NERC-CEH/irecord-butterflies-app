@@ -1,8 +1,7 @@
-import { FC } from 'react';
-import Media from 'models/image';
+import { observer } from 'mobx-react';
 import { isPlatform, IonLabel, IonButton, IonSpinner } from '@ionic/react';
 import CONFIG from 'common/config';
-import { observer } from 'mobx-react';
+import Media from 'models/image';
 import './styles.scss';
 
 type Props = {
@@ -54,7 +53,7 @@ const SpeciesTile = ({ sp, index }: any) => {
   );
 };
 
-const FooterMessage: FC<Props> = ({ image, identifyImage }) => {
+const FooterMessage = ({ image, identifyImage }: Props) => {
   const identifierWasNotUsed = !image.attrs?.species;
   const speciesList = image.attrs?.species;
 

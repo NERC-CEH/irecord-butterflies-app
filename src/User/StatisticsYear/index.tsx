@@ -1,4 +1,8 @@
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { observer } from 'mobx-react';
+import clsx from 'clsx';
+import { chevronDownOutline } from 'ionicons/icons';
+import { useRouteMatch } from 'react-router';
 import {
   Page,
   Header,
@@ -7,15 +11,12 @@ import {
   useToast,
   useLoader,
   InfoBackgroundMessage,
+  Badge,
 } from '@flumens';
-import { observer } from 'mobx-react';
-import { IonRefresherContent, IonRefresher, IonBadge } from '@ionic/react';
-import { chevronDownOutline } from 'ionicons/icons';
-import { useRouteMatch } from 'react-router';
-import clsx from 'clsx';
-import userModel from 'models/user';
+import { IonRefresherContent, IonRefresher } from '@ionic/react';
 import species, { Species } from 'common/data/species';
-import Table from './Components/Table';
+import userModel from 'models/user';
+import Table from './Table';
 import fetchStatsService from './services';
 import './styles.scss';
 
@@ -53,7 +54,7 @@ for (let i = 0; i <= yearsSinceStart; i++) {
   allYears.push(`${currentYear - i}`);
 }
 
-const StatisticsYear: FC = () => {
+const StatisticsYear = () => {
   const toast = useToast();
   const match = useRouteMatch<{ year?: string }>();
   const [year, setYear] = useState(match.params.year || 'all');
@@ -111,13 +112,17 @@ const StatisticsYear: FC = () => {
       const setCurrentYear = () => setYear(y);
       const yearLabel = y === 'all' ? 'All Years' : y;
       return (
-        <IonBadge
+        <Badge
           key={y}
-          className={clsx({ selected: year === y })}
-          onClick={setCurrentYear}
+          className={clsx(
+            'm-1 bg-white p-3 font-semibold',
+            year === y && 'bg-primary-50'
+          )}
+          color={year === y ? 'primary' : undefined}
+          onPress={setCurrentYear}
         >
           {yearLabel}
-        </IonBadge>
+        </Badge>
       );
     };
     const years = allYears.map(getYearItem);

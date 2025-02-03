@@ -1,12 +1,11 @@
 /* eslint-disable @getify/proper-arrows/name */
-import { FC } from 'react';
-import { SwiperSlide } from 'swiper/react';
+import clsx from 'clsx';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import '@ionic/react/css/ionic-swiper.css';
-import clsx from 'clsx';
-import { Species } from 'common/data/species';
+import { SwiperSlide } from 'swiper/react';
 import { Gallery, useOnHideModal } from '@flumens';
+import '@ionic/react/css/ionic-swiper.css';
+import { Species } from 'common/data/species';
 import '../styles.scss';
 
 type Image = { file: string; title: string; author: string };
@@ -19,13 +18,13 @@ type Props = {
   showMap: boolean;
 };
 
-const FullScreenPhotoViewer: FC<Props> = ({
+const FullScreenPhotoViewer = ({
   species,
   onClose,
   showGallery,
   showLifechart,
   showMap,
-}) => {
+}: Props) => {
   let items: any = [];
   let initialSlide = 0;
   let className = 'white-background';

@@ -1,14 +1,5 @@
-import { FC } from 'react';
 import { observer } from 'mobx-react';
-import { Main, useAlert, InfoMessage, MenuAttrToggle } from '@flumens';
-import {
-  IonIcon,
-  IonList,
-  IonItem,
-  IonLabel,
-  isPlatform,
-  IonInput,
-} from '@ionic/react';
+import clsx from 'clsx';
 import {
   warningOutline,
   arrowUndoOutline,
@@ -18,10 +9,18 @@ import {
   filterOutline,
   cameraOutline,
 } from 'ionicons/icons';
+import { Main, useAlert, InfoMessage, Toggle } from '@flumens';
+import {
+  IonIcon,
+  IonList,
+  IonItem,
+  IonLabel,
+  isPlatform,
+  IonInput,
+} from '@ionic/react';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import mothIcon from 'common/images/mothIcon.svg';
 import getCurrentWeekNumber from 'helpers/weeks';
-import clsx from 'clsx';
 import './styles.scss';
 
 function resetDialog(resetApp: any, alert: any) {
@@ -33,7 +32,7 @@ function resetDialog(resetApp: any, alert: any) {
         Are you sure you want to reset the application to its initial state?
         <InfoMessage
           color="danger"
-          icon={warningOutline}
+          prefix={<IonIcon src={warningOutline} className="size-6" />}
           className="destructive-warning"
         >
           This will wipe all the locally stored app data!
@@ -63,7 +62,7 @@ function useUserDeleteDialog(deleteUser: any) {
           Are you sure you want to delete your account?
           <InfoMessage
             color="danger"
-            icon={warningOutline}
+            prefix={<IonIcon src={warningOutline} className="size-6" />}
             className="destructive-warning"
           >
             This will remove your account on the iRecord website. You will lose
@@ -108,7 +107,7 @@ type Props = {
   adminChangeLocation?: any;
 };
 
-const MenuMain: FC<Props> = ({
+const MenuMain = ({
   resetApp,
   isLoggedIn,
   deleteUser,
@@ -125,7 +124,7 @@ const MenuMain: FC<Props> = ({
   adminChangeLocation,
   adminChangeWeek,
   useSpeciesImageClassifier,
-}) => {
+}: Props) => {
   const alert = useAlert();
   const showUserDeleteDialog = useUserDeleteDialog(deleteUser);
 
@@ -134,8 +133,8 @@ const MenuMain: FC<Props> = ({
     if (!demoOnly) return null;
 
     return (
-      <div className="rounded">
-        <InfoMessage color="medium">
+      <div className="rounded-list">
+        <InfoMessage inline>
           You can manually override the probability filter variables.
         </InfoMessage>
         <IonItem>
@@ -172,105 +171,111 @@ const MenuMain: FC<Props> = ({
   );
 
   return (
-    <Main>
+    <Main className="[--padding-bottom:30px]">
       <IonList lines="full">
-        <div className="rounded">
-          <MenuAttrToggle
-            icon={cameraOutline}
-            label="Suggest species"
-            value={useSpeciesImageClassifier}
-            onChange={onUseImageClassifier}
-          />
-          <InfoMessage color="medium">
-            Use image recognition to identify species from your photos.
-          </InfoMessage>
+        <div className="flex flex-col gap-3">
+          <div className="rounded-list">
+            <Toggle
+              prefix={<IonIcon src={cameraOutline} className="size-6" />}
+              label="Suggest species"
+              defaultSelected={useSpeciesImageClassifier}
+              onChange={onUseImageClassifier}
+            />
+            <InfoMessage inline>
+              Use image recognition to identify species from your photos.
+            </InfoMessage>
 
-          <MenuAttrToggle
-            icon={mothIcon}
-            label="Enable moth species"
-            value={useMoths}
-            onChange={onUseMoths}
-          />
+            <Toggle
+              prefix={<IonIcon src={mothIcon} className="size-6" />}
+              label="Enable moth species"
+              defaultSelected={useMoths}
+              onChange={onUseMoths}
+            />
 
-          <MenuAttrToggle
-            icon={butterflyIcon}
-            label="Smart species lists"
-            value={useProbabilitiesForGuide}
-            onChange={onToggleProbabilitiesForGuide}
-          />
+            <Toggle
+              prefix={<IonIcon src={butterflyIcon} className="size-6" />}
+              label="Smart species lists"
+              defaultSelected={useProbabilitiesForGuide}
+              onChange={onToggleProbabilitiesForGuide}
+            />
 
-          <InfoMessage color="medium">
-            Use our species lists based on your current time and location.
-          </InfoMessage>
+            <InfoMessage inline>
+              Use our species lists based on your current time and location.
+            </InfoMessage>
 
-          <MenuAttrToggle
-            icon={locationOutline}
-            label="Use current location"
-            value={useLocationForGuide}
-            onChange={onToggleGuideLocation}
-            disabled={!useProbabilitiesForGuide}
-            className={clsx(!useProbabilitiesForGuide && 'item-disabled')}
-          />
-          <InfoMessage
-            color="medium"
-            className={clsx(!useProbabilitiesForGuide && 'disabled')}
-          >
-            Filter the species list based on your current location.{' '}
-            {currentLocationMessage}
-          </InfoMessage>
+            <Toggle
+              prefix={<IonIcon src={locationOutline} className="size-6" />}
+              label="Use current location"
+              defaultSelected={useLocationForGuide}
+              onChange={onToggleGuideLocation}
+              isDisabled={!useProbabilitiesForGuide}
+              className={clsx(!useProbabilitiesForGuide && 'item-disabled')}
+            />
+            <InfoMessage
+              inline
+              className={clsx(!useProbabilitiesForGuide && 'disabled')}
+            >
+              Filter the species list based on your current location.{' '}
+              {currentLocationMessage}
+            </InfoMessage>
 
-          <MenuAttrToggle
-            icon={filterOutline}
-            label="Use smart sorting"
-            value={useSmartSorting}
-            onChange={onToggleSmartSorting}
-            disabled={!useProbabilitiesForGuide}
-            className={clsx(!useProbabilitiesForGuide && 'item-disabled')}
-          />
+            <Toggle
+              prefix={<IonIcon src={filterOutline} className="size-6" />}
+              label="Use smart sorting"
+              defaultSelected={useSmartSorting}
+              onChange={onToggleSmartSorting}
+              isDisabled={!useProbabilitiesForGuide}
+              className={clsx(!useProbabilitiesForGuide && 'item-disabled')}
+            />
 
-          <InfoMessage
-            color="medium"
-            className={clsx(!useProbabilitiesForGuide && 'disabled')}
-          >
-            Sort the species using probability information. Disabling it will
-            default to alphabetical sorting.
-          </InfoMessage>
-        </div>
+            <InfoMessage
+              inline
+              className={clsx(!useProbabilitiesForGuide && 'disabled')}
+            >
+              Sort the species using probability information. Disabling it will
+              default to alphabetical sorting.
+            </InfoMessage>
+          </div>
 
-        <div className="rounded">
-          <MenuAttrToggle
-            icon={shareSocialOutline}
-            label="Share with app developers"
-            value={sendAnalytics}
-            onChange={onSendAnalyticsToggle}
-          />
-          <InfoMessage color="medium">
-            Share app crash data so we can make the app more reliable.
-          </InfoMessage>
-        </div>
+          <div className="rounded-list">
+            <Toggle
+              prefix={<IonIcon src={shareSocialOutline} className="size-6" />}
+              label="Share with app developers"
+              defaultSelected={sendAnalytics}
+              onChange={onSendAnalyticsToggle}
+            />
+            <InfoMessage inline>
+              Share app crash data so we can make the app more reliable.
+            </InfoMessage>
+          </div>
 
-        {getAdminControls()}
+          {getAdminControls()}
 
-        <div className="rounded destructive-item">
-          <IonItem onClick={showResetDialog}>
-            <IonIcon icon={arrowUndoOutline} size="small" slot="start" />
-            <IonLabel>Reset app</IonLabel>
-          </IonItem>
-          <InfoMessage color="medium">
-            You can reset the app data to its default settings.
-          </InfoMessage>
+          <div className="destructive-item rounded-list">
+            <IonItem onClick={showResetDialog}>
+              <IonIcon src={arrowUndoOutline} size="small" slot="start" />
+              <IonLabel>Reset app</IonLabel>
+            </IonItem>
+            <InfoMessage inline>
+              You can reset the app data to its default settings.
+            </InfoMessage>
 
-          {isLoggedIn && (
-            <>
-              <IonItem onClick={showUserDeleteDialog}>
-                <IonIcon icon={personRemoveOutline} size="small" slot="start" />
-                <IonLabel>Delete account</IonLabel>
-              </IonItem>
-              <InfoMessage color="medium">
-                You can delete your user account from the system.
-              </InfoMessage>
-            </>
-          )}
+            {isLoggedIn && (
+              <>
+                <IonItem onClick={showUserDeleteDialog}>
+                  <IonIcon
+                    src={personRemoveOutline}
+                    size="small"
+                    slot="start"
+                  />
+                  <IonLabel>Delete account</IonLabel>
+                </IonItem>
+                <InfoMessage inline>
+                  You can delete your user account from the system.
+                </InfoMessage>
+              </>
+            )}
+          </div>
         </div>
       </IonList>
     </Main>

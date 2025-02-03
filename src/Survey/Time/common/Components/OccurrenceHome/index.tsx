@@ -1,8 +1,7 @@
-import { FC } from 'react';
-import Sample from 'models/sample';
-import Occurrence from 'models/occurrence';
 import { observer } from 'mobx-react';
 import { Page, Header } from '@flumens';
+import Occurrence from 'models/occurrence';
+import Sample from 'models/sample';
 import Main from './Main';
 import './styles.scss';
 
@@ -11,7 +10,7 @@ type Props = {
   occurrence: Occurrence;
 };
 
-const OccurrenceHome: FC<Props> = ({ subSample, occurrence }) => (
+const OccurrenceHome = ({ subSample, occurrence }: Props) => (
   <Page id="timed-species-count-edit-occurrence">
     <Header title="Edit Occurrence" />
     <Main occurrence={occurrence} subSample={subSample} />

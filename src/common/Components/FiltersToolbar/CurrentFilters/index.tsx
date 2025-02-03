@@ -1,8 +1,8 @@
-import { FC } from 'react';
 import { observer } from 'mobx-react';
-import { IonToolbar, IonIcon, IonChip, IonLabel } from '@ionic/react';
-import { closeOutline } from 'ionicons/icons';
 import clsx from 'clsx';
+import { closeOutline } from 'ionicons/icons';
+import { IonToolbar, IonIcon } from '@ionic/react';
+import { Badge } from 'common/flumens';
 import {
   Filter as FilterValue,
   Filters,
@@ -23,7 +23,7 @@ type Props = {
   searchPhrase?: string;
 };
 
-const CurrentFilters: FC<Props> = ({ searchPhrase, values, onRemove }) => {
+const CurrentFilters = ({ searchPhrase, values, onRemove }: Props) => {
   const getFilter = ([type, value]: [FilterGroup, FilterValue]) => {
     const removeFilterWrap = () => onRemove(type, value);
 
@@ -31,15 +31,15 @@ const CurrentFilters: FC<Props> = ({ searchPhrase, values, onRemove }) => {
     const label = isTextType ? `"${value}"` : value;
 
     return (
-      <IonChip
+      <Badge
         key={value}
         className={clsx(isTextType && 'text')}
-        outline
-        onClick={removeFilterWrap}
+        fill="outline"
+        onPress={removeFilterWrap}
+        suffix={<IonIcon icon={closeOutline} />}
       >
-        <IonLabel>{label}</IonLabel>
-        <IonIcon icon={closeOutline} />
-      </IonChip>
+        {label}
+      </Badge>
     );
   };
 
@@ -59,7 +59,7 @@ const CurrentFilters: FC<Props> = ({ searchPhrase, values, onRemove }) => {
 
   return (
     <IonToolbar className="filterbar">
-      <div>{currentFilters}</div>
+      <div className="flex gap-1">{currentFilters}</div>
     </IonToolbar>
   );
 };

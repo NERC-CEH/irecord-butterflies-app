@@ -1,34 +1,51 @@
+import { IObservableArray, intercept } from 'mobx';
 import {
-  Occurrence,
+  Occurrence as OccurrenceOriginal,
   OccurrenceOptions,
   OccurrenceAttrs,
   validateRemoteModel,
+  Sample,
+  OccurrenceMetadata,
 } from '@flumens';
-import { intercept } from 'mobx';
 import species, { Species } from 'common/data/species';
 // import { Result } from 'common/serv';
 import Media from './image';
 
 const POSSIBLE_THRESHOLD = 0.2;
 
-type Attrs = OccurrenceAttrs & {
-  taxon: Species;
-  stage?: string;
-  count?: number;
-  zero_abundance?: 't' | 'f' | null;
+type Metadata = OccurrenceMetadata & {
+  verification?: {
+    verification_status: any;
+    verification_substatus: any;
+    verified_on: any;
+    verifier?: { name: string };
+  };
 };
 
-export default class AppOccurrence extends Occurrence {
+export type Taxon = Species;
+
+type Attrs = OccurrenceAttrs & {
+  taxon: Species | null;
+  stage?: string;
+  count?: number;
+  zeroAbundance?: 't' | 'f' | null;
+};
+
+const defaultAttrs: Attrs = { taxon: null };
+
+export default class Occurrence extends OccurrenceOriginal<Attrs, Metadata> {
   static fromJSON(json: any) {
     return super.fromJSON(json, Media);
   }
 
-  attrs: Attrs = this.attrs;
+  declare media: IObservableArray<Media>;
+
+  declare parent?: Sample;
 
   validateRemote = validateRemoteModel;
 
-  constructor(props: OccurrenceOptions) {
-    super(props);
+  constructor(options: OccurrenceOptions) {
+    super({ ...options, attrs: { ...defaultAttrs, ...options.attrs } });
 
     const setOnlyMinimalSpeciesValues = (change: any) => {
       const { warehouseId, id, scientificName, commonName } = change.newValue;
@@ -98,7 +115,11 @@ export default class AppOccurrence extends Occurrence {
   }
 
   hasZeroAbundance() {
-    return this.attrs.zero_abundance === 't';
+    return (
+      this.attrs.zeroAbundance === 't' ||
+      // backwards compatible
+      (this.attrs as any).zero_abundance === 't'
+    );
   }
 
   isDisabled() {

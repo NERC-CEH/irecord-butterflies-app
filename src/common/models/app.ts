@@ -1,6 +1,6 @@
 import { Model, ModelAttrs, locationToGrid } from '@flumens';
+import { mainStore } from 'models/store';
 import GPS from 'helpers/GPS';
-import { genericStore } from './store';
 
 export type FilterGroup =
   | 'colour'
@@ -40,6 +40,7 @@ export interface Attrs extends ModelAttrs {
   showLongPressTip: boolean;
   showListSurveyTip: boolean;
   showSpeciesDeleteTip: boolean;
+  showSurveyOptionsTip: boolean;
   /**
    * @deprecated
    */
@@ -88,6 +89,7 @@ const defaults: Attrs = {
   showListSurveyHiddenButtonTip: true,
   showTimeSurveyTip: true,
   showMothSpeciesTip: true,
+  showSurveyOptionsTip: true,
 
   showVerifiedRecordsNotification: true,
   verifiedRecordsTimestamp: null,
@@ -98,10 +100,12 @@ const defaults: Attrs = {
   filters: {},
 };
 
-export class AppModel extends Model {
-  attrs: Attrs = Model.extendAttrs(this.attrs, defaults);
-
+export class AppModel extends Model<Attrs> {
   _gettingLocation?: string;
+
+  constructor(options: any) {
+    super({ ...options, attrs: { ...defaults, ...options.attrs } });
+  }
 
   // eslint-disable-next-line @getify/proper-arrows/name
   toggleFilter = (type: FilterGroup, value: Filter) => {
@@ -169,5 +173,5 @@ export class AppModel extends Model {
   }
 }
 
-const appModel = new AppModel({ cid: 'app', store: genericStore });
+const appModel = new AppModel({ cid: 'app', store: mainStore });
 export default appModel;

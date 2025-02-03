@@ -1,5 +1,8 @@
-import { FC } from 'react';
-import Sample from 'models/sample';
+import { observer } from 'mobx-react';
+import { warningOutline } from 'ionicons/icons';
+import { Trans as T } from 'react-i18next';
+import { useRouteMatch } from 'react-router';
+import { Main, MenuAttrItem, InfoBackgroundMessage, Badge } from '@flumens';
 import {
   IonList,
   IonItem,
@@ -7,23 +10,17 @@ import {
   IonItemOption,
   IonItemOptions,
   IonItemSliding,
-  IonItemDivider,
-  IonBadge,
   IonIcon,
 } from '@ionic/react';
-import { useRouteMatch } from 'react-router';
-import { warningOutline } from 'ionicons/icons';
-import GridRefValue from 'Survey/common/Components/GridRefValue';
-import { observer } from 'mobx-react';
-import { Main, MenuAttrItem, InfoBackgroundMessage } from '@flumens';
-import { Trans as T } from 'react-i18next';
 import VerificationIcon from 'common/Components/VerificationIcon';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
+import Sample from 'models/sample';
+import GridRefValue from 'Survey/common/Components/GridRefValue';
 import './styles.scss';
 
 function byCreationDate(s1: Sample, s2: Sample) {
-  const date1 = new Date(s1.metadata.updated_on);
-  const date2 = new Date(s2.metadata.updated_on);
+  const date1 = new Date(s1.updatedAt);
+  const date2 = new Date(s2.updatedAt);
 
   return date2.getTime() - date1.getTime();
 }
@@ -35,12 +32,12 @@ type Props = {
   deleteSample: any;
 };
 
-const MainComponent: FC<Props> = ({
+const MainComponent = ({
   sample,
   navigateToOccurrence,
   deleteSample,
   samples,
-}) => {
+}: Props) => {
   const isDisabled = sample.isUploaded();
   const match = useRouteMatch<{ taxa: string }>();
 
@@ -54,7 +51,7 @@ const MainComponent: FC<Props> = ({
 
   const getOccurrence = (smp: Sample) => {
     const occ = smp.occurrences[0];
-    const prettyTime = new Date(smp.metadata.created_on)
+    const prettyTime = new Date(smp.createdAt)
       .toLocaleTimeString()
       .replace(/(:\d{2}| [AP]M)$/, '');
 
@@ -79,9 +76,7 @@ const MainComponent: FC<Props> = ({
         >
           <IonLabel className="time">{prettyTime}</IonLabel>
           <IonLabel className="stage">
-            <IonBadge color="medium">
-              <T>{stage}</T>
-            </IonBadge>
+            <Badge>{stage}</Badge>
           </IonLabel>
           <IonLabel className="location" slot="end">
             {location}
@@ -118,7 +113,7 @@ const MainComponent: FC<Props> = ({
     <Main id="area-count-occurrence-edit">
       <IonList lines="full">
         {sample.isSurveyMultiSpeciesTimedCount() && (
-          <div className="rounded">
+          <div className="rounded-list">
             <MenuAttrItem
               routerLink={`${match.url}/taxon`}
               disabled={isDisabled}
@@ -129,16 +124,18 @@ const MainComponent: FC<Props> = ({
           </div>
         )}
 
-        <div className="rounded">
-          <IonItemDivider className="species-list-header">
-            <IonLabel>
+        <div className="rounded-list">
+          <div className="list-divider gap-4">
+            <div>
               <T>Time</T>
-            </IonLabel>
-            <IonLabel>
-              <T>Stage</T>
-            </IonLabel>
-            <IonLabel>{count}</IonLabel>
-          </IonItemDivider>
+            </div>
+            <div className="flex w-full justify-between">
+              <div>
+                <T>Stage</T>
+              </div>
+              <div>{count}</div>
+            </div>
+          </div>
 
           {occurrencesList}
         </div>

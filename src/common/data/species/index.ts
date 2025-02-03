@@ -1,10 +1,13 @@
-import mothThumbnail from 'common/images/mothThumbnailSmall.svg';
 import butterflyThumbnail from 'common/images/butterflyIcon.svg';
+import mothThumbnail from 'common/images/mothThumbnailSmall.svg';
+import photos from './cache/photos.json';
 import species from './cache/species.json';
 import * as resources from './other';
-import photos from './cache/photos.json';
-import './photos'; // webpack-loading only
-import './photos-moth'; // webpack-loading only
+import './photos';
+// webpack-loading only
+import './photos-moth';
+
+// webpack-loading only
 
 export interface SpeciesInfo {
   probabilityId: number;

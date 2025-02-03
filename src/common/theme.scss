@@ -1,77 +1,80 @@
+@import '@ionic/core/css/ionic.bundle.css';
 @import '@flumens/ionic/dist/themes/rounded.css';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    // tailwind is loaded later than ionic so resets some of the ionic's base styles
+    @apply mt-5 text-2xl;
+  }
+}
+
 :root {
-  --ion-color-primary: #3aa264;
-  --ion-color-primary-rgb: 58, 162, 100;
-  --ion-color-primary-contrast: #fff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #33794f;
-  --ion-color-primary-tint: #59c985;
-  --ion-color-primary-dark: #001609;
+  --ion-color-primary: var(--color-primary);
+  --ion-color-primary-rgb: var(--color-primary-rgb);
+  --ion-color-primary-contrast: var(--color-primary-50);
+  --ion-color-primary-contrast-rgb: var(--color-primary-50-rgb);
+  --ion-color-primary-shade: var(--color-primary-800);
+  --ion-color-primary-tint: var(--color-primary-500);
+  --ion-color-primary-dark: var(--color-primary-950);
 
-  --ion-color-secondary: #008eec;
-  --ion-color-secondary-rgb: 0, 142, 236;
-  --ion-color-secondary-contrast: #ffffff;
-  --ion-color-secondary-contrast-rgb: 255, 255, 255;
-  --ion-color-secondary-shade: #007dd0;
-  --ion-color-secondary-tint: #1a99ee;
-  --ion-color-secondary-dark: #001a2c;
+  --ion-color-secondary: var(--color-secondary);
+  --ion-color-secondary-rgb: var(--color-secondary-rgb);
+  --ion-color-secondary-contrast: var(--color-secondary-50);
+  --ion-color-secondary-contrast-rgb: var(--color-secondary-50-rgb);
+  --ion-color-secondary-shade: var(--color-secondary-700);
+  --ion-color-secondary-tint: var(--color-secondary-500);
+  --ion-color-secondary-dark: var(--color-secondary-950);
 
-  --ion-color-tertiary: #7044ff;
-  --ion-color-tertiary-rgb: 112, 68, 255;
-  --ion-color-tertiary-contrast: #ffffff;
-  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
-  --ion-color-tertiary-shade: #633ce0;
-  --ion-color-tertiary-tint: #7e57ff;
-  --ion-color-tertiary-dark: #07001d;
+  --ion-color-tertiary: var(--color-tertiary);
+  --ion-color-tertiary-rgb: var(--color-tertiary-rgb);
+  --ion-color-tertiary-contrast: var(--color-tertiary-50);
+  --ion-color-tertiary-contrast-rgb: var(--color-tertiary-50-rgb);
+  --ion-color-tertiary-shade: var(--color-tertiary-700);
+  --ion-color-tertiary-tint: var(--color-tertiary-500);
+  --ion-color-tertiary-dark: var(--color-tertiary-950);
 
-  --ion-color-success: #00bd1a;
-  --ion-color-success-rgb: 0, 189, 26;
-  --ion-color-success-contrast: #ffffff;
-  --ion-color-success-contrast-rgb: 255, 255, 255;
-  --ion-color-success-shade: #00a617;
-  --ion-color-success-tint: #1ac431;
-  --ion-color-success-dark: #002705;
+  --ion-color-success: var(--color-success);
+  --ion-color-success-rgb: var(--color-success-rgb);
+  --ion-color-success-contrast: var(--color-success-50);
+  --ion-color-success-contrast-rgb: var(--color-success-50-rgb);
+  --ion-color-success-shade: var(--color-success-700);
+  --ion-color-success-tint: var(--color-success-500);
+  --ion-color-success-dark: var(--color-success-950);
 
-  --ion-color-warning: #d1741e;
-  --ion-color-warning-rgb: 209, 116, 30;
-  --ion-color-warning-contrast: #ffffff;
-  --ion-color-warning-contrast-rgb: 255, 255, 255;
-  --ion-color-warning-shade: #a76629;
-  --ion-color-warning-tint: #f18a29;
-  --ion-color-warning-dark: #180b00;
+  --ion-color-warning: var(--color-warning);
+  --ion-color-warning-rgb: var(--color-warning-rgb);
+  --ion-color-warning-contrast: var(--color-warning-50);
+  --ion-color-warning-contrast-rgb: var(--color-warning-50-rgb);
+  --ion-color-warning-shade: var(--color-warning-700);
+  --ion-color-warning-tint: var(--color-warning-500);
+  --ion-color-warning-dark: var(--color-warning-900);
 
-  --ion-color-danger: #f04141;
-  --ion-color-danger-rgb: 240, 65, 65;
-  --ion-color-danger-contrast: #ffffff;
-  --ion-color-danger-contrast-rgb: 255, 255, 255;
-  --ion-color-danger-shade: #d33939;
-  --ion-color-danger-tint: #f25454;
-  --ion-color-danger-dark: #2c0000;
+  --ion-color-danger: var(--color-danger);
+  --ion-color-danger-rgb: var(--color-danger-rgb);
+  --ion-color-danger-contrast: var(--color-danger-50);
+  --ion-color-danger-contrast-rgb: var(--color-danger-50-rgb);
+  --ion-color-danger-shade: var(--color-danger-700);
+  --ion-color-danger-tint: var(--color-danger-500);
+  --ion-color-danger-dark: var(--color-danger-950);
 
-  --ion-color-dark: #1f2722;
-  --ion-color-dark-rgb: 31, 39, 34;
-  --ion-color-dark-contrast: #ffffff;
-  --ion-color-dark-contrast-rgb: 255, 255, 255;
-  --ion-color-dark-shade: #121413;
-  --ion-color-dark-tint: #153522;
-  --ion-color-dark-dark: #1f2722;
+  --ion-color-dark: var(--color-slate-900);
+  --ion-color-dark-contrast: var(--color-slate-50);
+  --ion-color-dark-shade: var(--color-slate-950);
+  --ion-color-dark-tint: var(--color-slate-800);
 
-  --ion-color-medium: #646e68;
-  --ion-color-medium-rgb: 100, 110, 104;
-  --ion-color-medium-contrast: #ffffff;
-  --ion-color-medium-contrast-rgb: 255, 255, 255;
-  --ion-color-medium-shade: #505854;
-  --ion-color-medium-tint: #96a09a;
-  --ion-color-medium-dark: #646e68;
+  --ion-color-medium: var(--color-slate-400);
+  --ion-color-medium-contrast: var(--color-slate-50);
+  --ion-color-medium-shade: var(--color-slate-500);
+  --ion-color-medium-tint: var(--color-slate-300);
 
-  --ion-color-light: #fcfcfc;
-  --ion-color-light-rgb: 244, 244, 244;
-  --ion-color-light-contrast: var(--ion-color-dark);
-  --ion-color-light-contrast-rgb: 0, 0, 0;
-  --ion-color-light-shade: #d7d8da;
-  --ion-color-light-tint: #f5f6f9;
-  --ion-color-light-dark: #fcfcfc;
+  --ion-color-light: var(--color-white);
+  --ion-color-light-contrast: var(--color-slate-950);
+  --ion-color-light-shade: var(--color-slate-200);
+  --ion-color-light-tint: var(--color-white);
 
   --ion-text-color: var(--ion-color-dark);
 
@@ -86,11 +89,14 @@
   --ion-verification-rejected: #d33939;
 
   --ion-classifier-success: #33794f;
-  --ion-classifier-success-background: #dbffe0;
-  --ion-classifier-possible: #603004;
-  --ion-classifier-possible-background: #ffe391;
-  --ion-classifier-notLikely: #610018;
-  --ion-classifier-notLikely-background: #ffc2d1;
+  --classifier-success: var(--ion-color-primary-dark);
+  --classifier-success-background: #faffd6;
+  --classifier-plausible: var(--ion-color-warning-dark);
+  --classifier-plausible-background: #fff1be;
+  --classifier-unlikely: var(--ion-color-danger-dark);
+  --classifier-unlikely-background: #f3cfd8;
+
+  --form-value-color: rgba(var(--color-secondary-800-rgb), 0.9);
 
   // for reading using JS from
   // https://stackoverflow.com/questions/47112393/getting-the-iphone-x-safe-area-using-javascript
@@ -99,28 +105,39 @@
 
 // status bar
 html.ios.plt-hybrid #status-bar-background {
-  background: transparent;
-  width: 100vw;
-  height: env(safe-area-inset-top);
   position: fixed;
   top: 0;
   z-index: 1000;
+  background: transparent;
+  width: 100vw;
+  height: env(safe-area-inset-top);
 }
 
 // FONTS START
 @font-face {
-  font-family: 'Museo300';
+  font-weight: 100;
+  src: url('./fonts/Museo100-Regular.ttf');
+  font-family: 'Museo';
+}
+@font-face {
+  font-weight: 300;
   src: url('./fonts/Museo300-Regular.ttf');
+  font-family: 'Museo';
 }
-
 @font-face {
-  font-family: 'Museo500';
+  font-weight: 500;
   src: url('./fonts/Museo500-Regular.ttf');
+  font-family: 'Museo';
 }
-
 @font-face {
-  font-family: 'Museo700';
+  font-weight: 700;
   src: url('./fonts/Museo700-Regular.ttf');
+  font-family: 'Museo';
+}
+@font-face {
+  font-weight: 900;
+  src: url('./fonts/Museo900-Regular.ttf');
+  font-family: 'Museo';
 }
 
 .apps-section .apps-section-h,
@@ -132,14 +149,38 @@ h3 {
 
 ion-title,
 h1 {
-  font-family: 'Museo500';
+  color: var(--ion-color-primary);
+  font-weight: 500;
+  font-family: 'Museo';
 }
 
 .apps-section .apps-section-h,
-ion-item-divider,
+h2,
+h3,
+h4,
+h5,
+ion-button,
+button,
+span,
+ion-back-button,
+ion-item-option,
+ion-note,
+ion-label,
+ion-chip,
+ion-item {
+  font-family: 'Museo';
+}
+
+b {
+  font-weight: 700;
+  font-family: 'Museo';
+}
+
+.apps-section .apps-section-h,
 h2,
 h3 {
-  font-family: 'Museo300';
+  color: var(--ion-color-primary);
+  font-family: 'Museo';
 }
 
 // FONTS END
@@ -171,18 +212,8 @@ ion-header ion-toolbar {
 }
 
 // info messages
-.attr-page .info-message,
-.info-message.blue {
-  --background: rgba(var(--ion-color-secondary-rgb), 0.1);
-  background: white; // above is transparent
-
-  ion-note {
-    color: var(--ion-color-secondary-dark);
-    font-size: 1em;
-  }
-  ion-icon {
-    color: var(--ion-color-secondary-dark) !important;
-  }
+.attr-page .info-message {
+  @apply border-sky-300/40 bg-sky-50 text-sky-950;
 }
 
 // header title to use the available space more efficiently
@@ -195,30 +226,25 @@ a {
   color: var(--ion-color-warning);
 }
 
-// ?
-ion-content.disable-top-padding {
-  --padding-top: 0 !important;
-}
-
 // VERIFICATION START
 ion-label.verification-list-icons {
-  max-width: max-content !important;
-  border-radius: 5px;
   display: flex !important;
   flex-direction: row !important;
-  margin-left: 0 !important;
   opacity: 1 !important;
+  margin-left: 0 !important;
   margin: 0;
+  border-radius: 5px;
+  max-width: max-content !important;
 
   ion-label[slot='end'].verificationIcon {
+    opacity: 1 !important;
+    margin: 0;
+    margin-left: 0 !important;
     width: 25px !important;
     max-width: 25px !important;
     color: white !important;
-    margin: 0;
-    text-align: center !important;
-    margin-left: 0 !important;
-    opacity: 1 !important;
     font-weight: 500 !important;
+    text-align: center !important;
   }
 
   .id-green {
@@ -237,22 +263,168 @@ ion-label.verification-list-icons {
 ion-icon[slot='end'].verificationIcon {
   border-radius: 5px !important;
   --ionicon-stroke-width: 2em;
-  font-size: 1.6em;
   margin: 0;
   margin-left: 5px;
+  font-size: 1.6em;
 }
 
-.verificationIcon {
-  &.id-green {
-    color: var(--ion-verification-success) !important;
-  }
-
-  &.id-amber {
-    color: var(--ion-verification-plausible) !important;
-  }
-
-  &.id-red {
-    color: var(--ion-verification-rejected) !important;
+// ACCESSIBILITY IMPROVEMENTS START
+ion-button:not(.button-has-icon-only),
+ion-item {
+  font-size: 1em;
+  &.md {
+    font-size: 0.9em;
   }
 }
+// clearer image picker empty message
+.photo-picker {
+  &.ios .empty {
+    font-size: 0.9em !important;
+  }
+  &.md .empty {
+    font-size: 1em !important;
+  }
+}
+
+// brighter and bigger divider
+ion-item-divider {
+  padding: 0 5px 7px 5px;
+  color: var(--ion-text-color);
+  font-size: 0.9em;
+}
+
+// clearer menu items
+.menu-attr-item,
+.attr-wrapper {
+  ion-label[slot='end'] {
+    opacity: 1 !important;
+    color: #000000b3;
+  }
+}
+
+// menu date picker match other input value colors
+.date-input-attr ion-label[slot='end'] {
+  color: var(--form-value-color);
+  font-size: 1rem;
+}
+
+// larger collapse headers
+.collapse-block ion-label.ion-text-wrap {
+  font-size: 1rem;
+}
+
+// clearer alert messages
+ion-alert div.alert-message.sc-ion-alert-md {
+  color: black;
+  font-size: 1.1em;
+}
+
+// increase link and menu label visibility
+.field-label:first-of-type,
+ion-item[detail='true'][href],
+ion-item > ion-icon + ion-label,
+ion-item.item > ion-icon + ion-label.sc-ion-label-md-h {
+  font-weight: 500;
+  font-size: 1rem;
+}
+// ACCESSIBILITY IMPROVEMENTS END
+
+// subtle borders around rounded items
+.search-result:nth-child(odd),
+.survey-list-item,
+.slider-input-attr,
+.input-list-attr .input-list-attr-item,
+.radio-input-attr ion-item,
+#suggestions .empty,
+.taxa-filter-edit-dialog-form ion-item,
+.rounded-list:not(:empty) {
+  border: 1px solid rgba(var(--color-primary-800-rgb), 0.2);
+  border-radius: var(--theme-border-radius);
+}
+
+// list item picture
+.list-avatar {
+  @apply flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-md bg-neutral-100;
+}
+
+// top of the list title
+.list-title {
+  @apply mx-1 mb-3 mt-4 flex items-center text-base font-semibold text-primary-900;
+}
+
+// top of the list item
+.list-divider {
+  @apply flex items-center justify-between bg-primary-700/10 p-1 px-2 font-normal text-primary-900;
+}
+
+// Make Android icons dark, same as iOS
+ion-icon[slot='start'].md {
+  color: var(--ion-text-color, #000);
+}
+
+// unify icon strokes and widths
+ion-icon.size-5,
+ion-icon.size-6,
+.menu-attr-item ion-icon[slot='start'],
+ion-item > ion-icon[slot='start'],
+.single-photo-picker ion-icon[slot='start'] {
+  --ionicon-stroke-width: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+// Makes iOS menu items same height as Android
+ion-item .sc-ion-label-ios-h.sc-ion-label-ios-s.ios {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+// Make menu item value colours same as form values, e.g. Settings page
+ion-item .sc-ion-label-md-h.sc-ion-label-md-s.md[slot='end'],
+ion-item .sc-ion-label-ios-h.sc-ion-label-ios-s.ios[slot='end'] {
+  color: var(--form-value-color);
+}
+
+// Unify menu lines with Tailwind package components
+.date-input-attr ion-accordion:last-of-type ion-item[slot='header'],
+.list-ios-lines-full ion-item.item-lines-default,
+.list-md-lines-full ion-item.item-lines-default {
+  --border-width: 0 0 0.5px 0 !important;
+  --border-color: #e5e5e5 !important;
+}
+
+// Fix menu date button label alignment for Android
+ion-accordion ion-icon[slot='start'].md {
+  margin-right: 37px;
+}
+
+// Fix input list input width
+.input-list-attr-item input.plain-input {
+  width: 100%;
+}
+
+// TODO:
+// .verificationIcon {
+//   &.id-green {
+//     color: var(--ion-verification-success) !important;
+//   }
+
+//   &.id-amber {
+//     color: var(--ion-verification-plausible) !important;
+//   }
+
+//   &.id-red {
+//     color: var(--ion-verification-rejected) !important;
+//   }
+// }
 // VERIFICATION END
+
+#location-page-header {
+  --ion-color-primary-contrast: var(--form-value-color);
+}
+
+// Fix tailwind hidden buttons
+ion-buttons[hidden],
+ion-button[hidden] {
+  display: block;
+}

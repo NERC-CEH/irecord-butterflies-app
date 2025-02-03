@@ -1,31 +1,31 @@
-import { FC } from 'react';
-import { observer } from 'mobx-react';
+import { useContext } from 'react';
 import { toJS } from 'mobx';
-import Sample from 'models/sample';
+import { observer } from 'mobx-react';
+import { mapOutline, warningOutline, clipboardOutline } from 'ionicons/icons';
+import { Trans as T } from 'react-i18next';
+import { useRouteMatch } from 'react-router';
 import {
   Main,
   MenuAttrItem,
   InfoBackgroundMessage,
   InfoMessage,
+  Button,
 } from '@flumens';
 import {
   IonItemSliding,
   IonItemOptions,
   IonItemOption,
   IonList,
-  IonItemDivider,
   IonIcon,
-  IonButton,
   IonLabel,
   IonSpinner,
   IonItem,
+  NavContext,
 } from '@ionic/react';
-import config from 'common/config';
-import { Trans as T } from 'react-i18next';
-import { mapOutline, warningOutline, clipboardOutline } from 'ionicons/icons';
-import { useRouteMatch } from 'react-router';
-import Stopwatch from 'Survey/Time/common/Components/Stopwatch';
 import VerificationListIcon from 'common/Components/VerificationListIcon';
+import Sample from 'models/sample';
+import Stopwatch from 'Survey/Time/common/Components/Stopwatch';
+import DisabledRecordMessage from 'Survey/common/Components/DisabledRecordMessage';
 import IncrementalButton from 'Survey/common/Components/IncrementalButton';
 import './styles.scss';
 
@@ -54,19 +54,19 @@ const buildSpeciesCount = (agg: any, smp: Sample) => {
     agg[id].hasLocationMissing || smp.hasLoctionMissingAndIsnotLocating(); // eslint-disable-line
 
   const wasCreatedBeforeCurrent =
-    new Date(agg[id].updatedOn).getTime() -
-    new Date(smp.metadata.updated_on).getTime();
+    new Date(agg[id].updatedOn).getTime() - new Date(smp.updatedAt).getTime();
 
   // eslint-disable-next-line
   agg[id].updatedOn = !wasCreatedBeforeCurrent
     ? agg[id].updatedOn
-    : smp.metadata.updated_on;
+    : smp.updatedAt;
 
   return agg;
 };
 
-const HomeMain: FC<Props> = ({ sample, increaseCount, deleteSpecies }) => {
+const HomeMain = ({ sample, increaseCount, deleteSpecies }: Props) => {
   const { url } = useRouteMatch();
+  const { navigate } = useContext(NavContext);
   const { area } = sample.attrs.location || {};
   const isDisabled = sample.isUploaded();
   const isTimerPaused = sample.isTimerPaused();
@@ -154,12 +154,18 @@ const HomeMain: FC<Props> = ({ sample, increaseCount, deleteSpecies }) => {
 
     return (
       <IonList id="list" lines="full">
-        <div className="rounded">
-          <IonItemDivider className="species-list-header">
-            <IonLabel>Count</IonLabel>
-            <IonLabel>Species</IonLabel>
-            <IonLabel slot="end">{speciesList.length}</IonLabel>
-          </IonItemDivider>
+        <div className="rounded-list">
+          <div className="list-divider gap-4">
+            <div>
+              <T>Count</T>
+            </div>
+            <div className="flex w-full justify-between">
+              <div>
+                <T>Species</T>
+              </div>
+              <div>{speciesList.length}</div>
+            </div>
+          </div>
 
           {speciesList}
         </div>
@@ -171,37 +177,27 @@ const HomeMain: FC<Props> = ({ sample, increaseCount, deleteSpecies }) => {
     if (isDisabled) return null;
 
     return (
-      <IonButton
-        color="primary"
+      <Button
         id="add"
-        routerLink={`/survey/multi-species-count/${sample.cid}/species`}
-        disabled={isTimerPaused}
+        onPress={() =>
+          navigate(`/survey/multi-species-count/${sample.cid}/species`)
+        }
+        isDisabled={isTimerPaused}
       >
-        <IonLabel>Add species</IonLabel>
-      </IonButton>
+        Add species
+      </Button>
     );
   };
 
   return (
     <Main>
-      {isDisabled && (
-        <InfoMessage>
-          This record has been uploaded and can only be edited on our website.
-          <IonButton
-            expand="block"
-            className="uploaded-message-website-link"
-            href={`${config.backend.url}`}
-          >
-            iRecord website
-          </IonButton>
-        </InfoMessage>
-      )}
+      {isDisabled && <DisabledRecordMessage sample={sample} />}
 
       <IonList lines="full">
-        <IonItemDivider>
+        <h3 className="list-title">
           <T>Details</T>
-        </IonItemDivider>
-        <div className="rounded">
+        </h3>
+        <div className="rounded-list">
           <MenuAttrItem
             routerLink={`${url}/area`}
             icon={mapOutline}

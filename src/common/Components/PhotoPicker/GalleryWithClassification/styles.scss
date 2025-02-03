@@ -1,8 +1,8 @@
 #img-array {
   .badge {
     position: absolute;
-    left: 2px !important;
     bottom: 2px !important;
+    left: 2px !important;
     padding: 2px !important;
 
     ion-icon {
@@ -16,48 +16,48 @@
 
   .warning-icon {
     position: absolute;
-    left: 2px;
     bottom: 2px;
-    background: var(--ion-classifier-notLikely-background);
-    color: var(--ion-classifier-notLikely);
+    left: 2px;
     border-radius: 100%;
+    background: var(--ion-classifier-unlikely-background);
+    color: var(--ion-classifier-unlikely);
     font-size: 0.9em;
   }
 
   .success-icon {
     position: absolute;
-    left: 2px;
     bottom: 2px;
+    left: 2px;
+    border-radius: 100%;
     background: var(--ion-classifier-success-background);
     color: var(--ion-classifier-success);
-    border-radius: 100%;
     font-size: 0.9em;
   }
 
   ion-spinner {
     position: absolute;
-    left: 2px;
     bottom: 2px;
-    background: #ffffff94;
+    left: 2px;
     border-radius: 50%;
-    height: 1.1em;
+    background: #ffffff94;
     width: 1.1em;
+    height: 1.1em;
   }
 }
 
 .gallery-tablet-styles {
   position: fixed;
-  padding: 20px 60px;
-  text-align: center;
-  background: #131313;
   top: 0;
   left: 0;
+  background: #131313;
+  padding: 20px 60px;
   width: 100%;
+  text-align: center;
 }
 
 .better-image-tip {
   display: block;
+  margin-top: 10px;
   color: white;
   font-size: 0.9em;
-  margin-top: 10px;
 }

@@ -1,15 +1,7 @@
-import { FC } from 'react';
 import { observer } from 'mobx-react';
 import clsx from 'clsx';
+import { locationOutline } from 'ionicons/icons';
 import { useRouteMatch } from 'react-router';
-import {
-  IonItemDivider,
-  IonList,
-  IonItem,
-  IonLabel,
-  IonButton,
-  IonAvatar,
-} from '@ionic/react';
 import {
   Attr,
   Main,
@@ -17,22 +9,23 @@ import {
   InfoMessage,
   MenuAttrItemFromModel,
 } from '@flumens';
-import { locationOutline } from 'ionicons/icons';
-import Sample from 'models/sample';
-import numberIcon from 'common/images/number.svg';
+import { IonList, IonItem, IonAvatar, IonIcon } from '@ionic/react';
 import PhotoPicker from 'common/Components/PhotoPicker';
-import butterflyIcon from 'common/images/butterflyIcon.svg';
-import GridRefValue from 'Survey/common/Components/GridRefValue';
-import VerificationMessage from 'Survey/common/Components/VerificationMessage';
 import species, { Species } from 'common/data/species';
-import config from 'common/config';
+import butterflyIcon from 'common/images/butterflyIcon.svg';
+import numberIcon from 'common/images/number.svg';
+import Sample from 'models/sample';
+import DisabledRecordMessage from 'Survey/common/Components/DisabledRecordMessage';
+import GridRefValue from 'Survey/common/Components/GridRefValue';
+import MenuDateAttr from 'Survey/common/Components/MenuDateAttr';
+import VerificationMessage from 'Survey/common/Components/VerificationMessage';
 
 type Props = {
   sample: Sample;
   isDisabled: boolean;
 };
 
-const MainComponent: FC<Props> = ({ sample, isDisabled }) => {
+const MainComponent = ({ sample, isDisabled }: Props) => {
   const match = useRouteMatch();
 
   const getSpeciesButton = () => {
@@ -61,17 +54,19 @@ const MainComponent: FC<Props> = ({ sample, isDisabled }) => {
         routerLink={!isDisabled ? `${match.url}/species` : undefined}
         detail={!isDisabled}
       >
-        <IonAvatar>
-          <img src={thumbnail} />
-        </IonAvatar>
-        <IonLabel position="stacked" mode="ios" slot="end">
-          <IonLabel>
-            <b>{commonName}</b>
-          </IonLabel>
-          <IonLabel>
-            <i>{scientificName}</i>
-          </IonLabel>
-        </IonLabel>
+        <div className="flex w-full justify-between">
+          <IonAvatar>
+            <img src={thumbnail} />
+          </IonAvatar>
+          <div className="m-0 flex flex-col items-end justify-center text-[var(--form-value-color)]">
+            <div>
+              <b>{commonName}</b>
+            </div>
+            <div>
+              <i>{scientificName}</i>
+            </div>
+          </div>
+        </div>
       </IonItem>
     );
   };
@@ -83,14 +78,10 @@ const MainComponent: FC<Props> = ({ sample, isDisabled }) => {
     const empty = !hasLocation || !hasName;
 
     const value = (
-      <IonLabel position="stacked" mode="ios">
-        <IonLabel color={clsx(empty && hasLocation && 'dark')}>
-          <GridRefValue sample={sample} requiredMessage="No location" />
-        </IonLabel>
-        <IonLabel color={clsx(empty && hasName && 'dark')}>
-          {location.name || 'No site name'}
-        </IonLabel>
-      </IonLabel>
+      <div className="m-0 flex flex-col items-end justify-center">
+        <GridRefValue sample={sample} requiredMessage="No location" />
+        <span>{location.name || 'No site name'}</span>
+      </div>
     );
 
     const isOutsideUK = hasLocation && !location.gridref;
@@ -126,37 +117,25 @@ const MainComponent: FC<Props> = ({ sample, isDisabled }) => {
   const [occ] = sample.occurrences;
 
   return (
-    <Main className={clsx(isDisabled && 'disable-top-padding')}>
+    <Main>
       {isDisabled && <VerificationMessage occurrence={occ} />}
+      {isDisabled && <DisabledRecordMessage sample={sample} />}
 
       <IonList lines="full">
-        {isDisabled && (
-          <InfoMessage>
-            This record has been uploaded and can only be edited on our website.
-            <IonButton
-              expand="block"
-              className="uploaded-message-website-link"
-              href={`${config.backend.url}/record-details?occurrence_id=${occ.id}`}
-            >
-              iRecord website
-            </IonButton>
-          </InfoMessage>
-        )}
-
-        <IonItemDivider>Details</IonItemDivider>
-        <div className="rounded">
+        <h3 className="list-title">Details</h3>
+        <div className="rounded-list">
           {getSpeciesButton()}
-          <MenuAttrItemFromModel model={sample} attr="date" />
+          <MenuDateAttr record={sample.attrs} isDisabled={isDisabled} />
           {getLocationButton()}
         </div>
 
-        <IonItemDivider>Other</IonItemDivider>
-        <div className="rounded">
+        <h3 className="list-title">Other</h3>
+        <div className="rounded-list">
           <Attr
             model={occ}
             input="counter"
             inputProps={{
-              icon: numberIcon,
+              prefix: <IonIcon src={numberIcon} className="size-6" />,
               label: 'Number',
               isDisabled,
               min: 1,
@@ -175,8 +154,8 @@ const MainComponent: FC<Props> = ({ sample, isDisabled }) => {
           />
         </div>
 
-        <IonItemDivider>Species Photo</IonItemDivider>
-        <div className="rounded">
+        <h3 className="list-title">Species Photo</h3>
+        <div className="rounded-list">
           <PhotoPicker model={occ} />
         </div>
       </IonList>

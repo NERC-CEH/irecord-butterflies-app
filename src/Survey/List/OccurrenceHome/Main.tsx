@@ -1,27 +1,19 @@
-import { FC } from 'react';
 import { observer } from 'mobx-react';
-import {
-  IonItemDivider,
-  IonList,
-  IonItem,
-  IonLabel,
-  IonAvatar,
-} from '@ionic/react';
-import clsx from 'clsx';
-import Occurrence from 'models/occurrence';
 import { useRouteMatch } from 'react-router';
 import { Attr, Main, MenuAttrItem, MenuAttrItemFromModel } from '@flumens';
+import { IonList, IonItem, IonLabel, IonAvatar } from '@ionic/react';
 import PhotoPicker from 'common/Components/PhotoPicker';
-import numberIcon from 'common/images/number.svg';
-import butterflyIcon from 'common/images/butterflyIcon.svg';
 import species, { Species } from 'common/data/species';
+import butterflyIcon from 'common/images/butterflyIcon.svg';
+import numberIcon from 'common/images/number.svg';
+import Occurrence from 'models/occurrence';
 import VerificationMessage from 'Survey/common/Components/VerificationMessage';
 
 type Props = {
   occurrence: Occurrence;
 };
 
-const OccurrenceHomeMain: FC<Props> = ({ occurrence }) => {
+const OccurrenceHomeMain = ({ occurrence }: Props) => {
   const match = useRouteMatch();
 
   const isDisabled = occurrence.isDisabled();
@@ -66,12 +58,12 @@ const OccurrenceHomeMain: FC<Props> = ({ occurrence }) => {
   };
 
   return (
-    <Main className={clsx(isDisabled && 'disable-top-padding')}>
+    <Main>
       {isDisabled && <VerificationMessage occurrence={occurrence} />}
 
       <IonList lines="full">
-        <IonItemDivider>Details</IonItemDivider>
-        <div className="rounded">
+        <h3 className="list-title">Details</h3>
+        <div className="rounded-list">
           {getSpeciesButton()}
 
           <Attr
@@ -98,8 +90,8 @@ const OccurrenceHomeMain: FC<Props> = ({ occurrence }) => {
           />
         </div>
 
-        <IonItemDivider>Species Photo</IonItemDivider>
-        <div className="rounded">
+        <h3 className="list-title">Species Photo</h3>
+        <div className="rounded-list">
           <PhotoPicker model={occurrence} />
         </div>
       </IonList>

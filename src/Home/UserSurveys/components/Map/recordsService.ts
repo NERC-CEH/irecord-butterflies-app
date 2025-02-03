@@ -1,58 +1,100 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { LatLng } from 'leaflet';
-import userModel from 'models/user';
+import { HandledError, isAxiosNetworkError, ElasticOccurrence } from '@flumens';
 import CONFIG from 'common/config';
-import pointSurvey from 'Survey/Point/config';
-import singleSpeciesSurvey from 'Survey/Time/Single/config';
-import { Hit, Bucket, Record, Square } from './esResponse.d';
+import { matchAppSurveys } from 'common/services/ES';
+import userModel from 'models/user';
 
-const getRecordsQuery = (northWest: LatLng, southEast: LatLng) =>
-  JSON.stringify({
+export interface Square {
+  key: string;
+  doc_count: number;
+  size: number; // in meters
+}
+
+type LatLng = { lat: number; lng: number };
+
+export const getESTimestamp = (dateString: string) => {
+  const dateFormat = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/London',
+  });
+
+  const timeFormat = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/London',
+    timeStyle: 'medium',
+  });
+
+  // format to 2020-02-21
+  const date = dateFormat
+    .format(new Date(dateString))
+    .split('/')
+    .reverse()
+    .join('-');
+
+  // format to 08:37:55
+  const time = timeFormat.format(new Date(dateString));
+
+  return `${date} ${time}`;
+};
+
+const notTraining = {
+  match: {
+    'metadata.trial': 'false',
+  },
+};
+
+type RecordQueryOptions = {
+  northWest: LatLng;
+  southEast: LatLng;
+  startDate?: string;
+  speciesGroup?: string;
+};
+
+const getRecordsQuery = ({
+  northWest,
+  southEast,
+  startDate,
+  speciesGroup,
+}: RecordQueryOptions) => {
+  const must: any = [matchAppSurveys, notTraining];
+
+  if (startDate) {
+    must.push({
+      range: {
+        'metadata.created_on': { gte: getESTimestamp(startDate) },
+      },
+    });
+  }
+
+  if (speciesGroup) {
+    must.push({
+      match: {
+        'taxon.input_group_id': speciesGroup,
+      },
+    });
+  }
+
+  return JSON.stringify({
     size: 1000,
     query: {
       bool: {
-        must: [
-          {
-            bool: {
-              should: [
-                {
-                  match: {
-                    'metadata.survey.id': pointSurvey.id,
-                  },
-                },
-                {
-                  match: {
-                    'metadata.survey.id': singleSpeciesSurvey.id,
-                  },
-                },
-              ],
-            },
-          },
-        ],
+        must,
         filter: {
           geo_bounding_box: {
             'location.point': {
-              top_left: {
-                lat: northWest.lat,
-                lon: northWest.lng,
-              },
-              bottom_right: {
-                lat: southEast.lat,
-                lon: southEast.lng,
-              },
+              top_left: { lat: northWest.lat, lon: northWest.lng },
+              bottom_right: { lat: southEast.lat, lon: southEast.lng },
             },
           },
         },
       },
     },
   });
+};
 
 let requestCancelToken: any;
 
 export async function fetchRecords(
-  northWest: LatLng,
-  southEast: LatLng
-): Promise<Record[] | null> {
+  options: RecordQueryOptions
+): Promise<ElasticOccurrence[] | null> {
   if (requestCancelToken) {
     requestCancelToken.cancel();
   }
@@ -61,72 +103,74 @@ export async function fetchRecords(
 
   const OPTIONS: AxiosRequestConfig = {
     method: 'post',
-    url: CONFIG.backend.recordsServiceURL,
+    url: CONFIG.backend.occurrenceServiceURL,
     headers: {
       authorization: `Bearer ${await userModel.getAccessToken()}`,
       'Content-Type': 'application/json',
     },
     timeout: 80000,
     cancelToken: requestCancelToken.token,
-    data: getRecordsQuery(northWest, southEast),
+    data: getRecordsQuery(options),
   };
 
   let records = [];
 
   try {
-    const { data } = await axios(OPTIONS);
+    const res = await axios(OPTIONS);
+    const getSource = (hit: any): ElasticOccurrence => hit._source;
+    const data = res.data.hits.hits.map(getSource);
+    // TODO: validate the response is correct
 
     records = data;
-  } catch (e) {
-    if (axios.isCancel(e)) {
-      return null;
-    }
+  } catch (error: any) {
+    if (axios.isCancel(error)) return null;
+
+    if (isAxiosNetworkError(error))
+      throw new HandledError(
+        'Request aborted because of a network issue (timeout or similar).'
+      );
+
+    throw error;
   }
 
-  const getSource = ({ _source }: any): Hit[] => _source;
-  // TODO: validate the response is correct
-
-  return records?.hits?.hits.map(getSource);
+  return records;
 }
 
-const getSquaresQuery = (
-  northWest: LatLng,
-  southEast: LatLng,
-  squareSize: number
-) =>
-  JSON.stringify({
+type SquareQueryOptions = {
+  northWest: LatLng;
+  southEast: LatLng;
+  squareSize: number;
+  startDate?: string;
+};
+
+const getSquaresQuery = ({
+  northWest,
+  southEast,
+  squareSize,
+  startDate,
+}: SquareQueryOptions) => {
+  const must: any = [matchAppSurveys, notTraining];
+
+  if (startDate) {
+    must.push({
+      range: {
+        'metadata.created_on': { gte: getESTimestamp(startDate) },
+      },
+    });
+  }
+
+  const squareSizeInKm = squareSize / 1000;
+
+  return JSON.stringify({
     size: 0,
     query: {
       bool: {
-        must: [
-          {
-            bool: {
-              should: [
-                {
-                  match: {
-                    'metadata.survey.id': pointSurvey.id,
-                  },
-                },
-                {
-                  match: {
-                    'metadata.survey.id': singleSpeciesSurvey.id,
-                  },
-                },
-              ],
-            },
-          },
-        ],
+        must,
         filter: {
           geo_bounding_box: {
             'location.point': {
-              top_left: {
-                lat: northWest.lat,
-                lon: northWest.lng,
-              },
-              bottom_right: {
-                lat: southEast.lat,
-                lon: southEast.lng,
-              },
+              top_left: { lat: northWest.lat, lon: northWest.lng },
+              bottom_right: { lat: southEast.lat, lon: southEast.lng },
             },
           },
         },
@@ -134,26 +178,23 @@ const getSquaresQuery = (
     },
     aggs: {
       by_srid: {
-        terms: {
-          field: 'location.grid_square.srid',
-          size: 1000,
-        },
+        terms: { field: 'location.grid_square.srid', size: 1000 },
         aggs: {
           by_square: {
             terms: {
-              field: `location.grid_square.${squareSize}km.centre`,
+              field: `location.grid_square.${squareSizeInKm}km.centre`,
               size: 100000,
             },
           },
         },
       },
     },
+    sort: [{ 'event.date_start': 'desc' }],
   });
+};
 
 export async function fetchSquares(
-  northWest: LatLng,
-  southEast: LatLng,
-  squareSize: number // in meters
+  options: SquareQueryOptions
 ): Promise<Square[] | null> {
   if (requestCancelToken) {
     requestCancelToken.cancel();
@@ -161,18 +202,16 @@ export async function fetchSquares(
 
   requestCancelToken = axios.CancelToken.source();
 
-  const squareSizeInKm = squareSize / 1000;
-
   const OPTIONS: AxiosRequestConfig = {
     method: 'post',
-    url: CONFIG.backend.recordsServiceURL,
+    url: CONFIG.backend.occurrenceServiceURL,
     headers: {
       authorization: `Bearer ${await userModel.getAccessToken()}`,
       'Content-Type': 'application/json',
     },
     timeout: 80000,
     cancelToken: requestCancelToken.token,
-    data: getSquaresQuery(northWest, southEast, squareSizeInKm),
+    data: getSquaresQuery(options),
   };
 
   let records = [];
@@ -181,15 +220,20 @@ export async function fetchSquares(
     const { data } = await axios(OPTIONS);
 
     records = data;
-  } catch (e) {
-    if (axios.isCancel(e)) {
-      return null;
-    }
+  } catch (error: any) {
+    if (axios.isCancel(error)) return null;
+
+    if (isAxiosNetworkError(error))
+      throw new HandledError(
+        'Request aborted because of a network issue (timeout or similar).'
+      );
+
+    throw error;
   }
 
-  const addSize = (square: Bucket): Square => ({
+  const addSize = (square: Square): Square => ({
     ...square,
-    size: squareSize,
+    size: options.squareSize,
   });
 
   const squares =

@@ -1,14 +1,14 @@
-import { FC, useContext } from 'react';
-import Sample, { useValidateCheck } from 'models/sample';
-import Occurrence from 'models/occurrence';
-import appModel from 'models/app';
-import userModel from 'models/user';
+import { useContext } from 'react';
 import { observer } from 'mobx-react';
-import { Page, Header, useAlert, useToast, useOnBackButton } from '@flumens';
-import { IonButton, NavContext, isPlatform } from '@ionic/react';
-import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { useRouteMatch, useLocation } from 'react-router';
-
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import { Page, Header, useAlert, useToast, useOnBackButton } from '@flumens';
+import { NavContext, isPlatform } from '@ionic/react';
+import appModel from 'models/app';
+import Occurrence from 'models/occurrence';
+import Sample, { useValidateCheck } from 'models/sample';
+import userModel from 'models/user';
+import SurveyHeaderButton from 'Survey/common/Components/SurveyHeaderButton';
 import Main from './Main';
 
 function useFinishConfirmationAlert() {
@@ -72,7 +72,7 @@ type Props = {
   sample: Sample;
 };
 
-const HomeController: FC<Props> = ({ sample }) => {
+const HomeController = ({ sample }: Props) => {
   const { navigate, goBack } = useContext(NavContext);
   const toast = useToast();
   const showFinishConfirmationAlert = useFinishConfirmationAlert();
@@ -81,18 +81,15 @@ const HomeController: FC<Props> = ({ sample }) => {
   const { pathname } = useLocation();
   const { url } = useRouteMatch();
 
-  const isDisabled = sample.isUploaded();
-  const isEditing = sample.metadata.saved;
-
-  const increaseCount = (taxon: any, is5x: boolean) => {
+  const increaseCount = async (taxon: any, is5x: boolean) => {
     if (sample.isUploaded()) return;
 
     if (sample.hasZeroAbundance(taxon.id)) {
       const byTaxonId = (smp: Sample) =>
         smp.occurrences[0].attrs.taxon.id === taxon.id;
-      const smp = sample.samples.find(byTaxonId);
+      const smp = sample.samples.find(byTaxonId)!;
       // eslint-disable-next-line no-param-reassign
-      smp.occurrences[0].attrs.zero_abundance = null;
+      smp.occurrences[0].attrs.zeroAbundance = undefined;
       // eslint-disable-next-line no-param-reassign
       smp.occurrences[0].attrs.stage = sample.attrs.stage;
       smp.startGPS();
@@ -105,23 +102,23 @@ const HomeController: FC<Props> = ({ sample }) => {
     const { stage } = sample.attrs;
     const zeroAbundance = null;
 
-    const addOneCount = () => {
-      const newSubSample = survey.smp.create(
+    const addOneCount = async () => {
+      const newSubSample = await survey.smp!.create!({
         Sample,
         Occurrence,
         taxon,
         zeroAbundance,
-        stage
-      );
+        stage,
+      });
       newSubSample.startGPS();
 
       sample.samples.push(newSubSample);
     };
 
     if (is5x) {
-      [...Array(5)].forEach(addOneCount);
+      await Promise.all([...Array(5)].map(addOneCount));
     } else {
-      addOneCount();
+      await addOneCount();
     }
     sample.save();
 
@@ -173,19 +170,6 @@ const HomeController: FC<Props> = ({ sample }) => {
     await _processSubmission();
   };
 
-  const isValid = !sample.validateRemote();
-
-  const finishButton = isDisabled ? null : (
-    <IonButton
-      onClick={onFinish}
-      color={isValid ? 'primary' : 'medium'}
-      fill="solid"
-      shape="round"
-    >
-      {isEditing ? 'Upload' : 'Finish'}
-    </IonButton>
-  );
-
   const isDetailsPage = url !== pathname;
 
   const onLeave = async () => {
@@ -213,7 +197,11 @@ const HomeController: FC<Props> = ({ sample }) => {
 
   return (
     <Page id="single-species-count-home">
-      <Header title="Survey" onLeave={onLeave} rightSlot={finishButton} />
+      <Header
+        title="Survey"
+        onLeave={onLeave}
+        rightSlot={<SurveyHeaderButton onClick={onFinish} sample={sample} />}
+      />
       <Main sample={sample} increaseCount={increaseCount} />
     </Page>
   );

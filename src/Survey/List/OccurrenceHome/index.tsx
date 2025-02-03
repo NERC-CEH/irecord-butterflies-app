@@ -1,6 +1,5 @@
-import { FC } from 'react';
-import { Page, Header } from '@flumens';
 import { observer } from 'mobx-react';
+import { Page, Header } from '@flumens';
 import Occurrence from 'models/occurrence';
 import Main from './Main';
 import './styles.scss';
@@ -8,7 +7,7 @@ import './styles.scss';
 type Props = {
   occurrence: Occurrence;
 };
-const OccurrenceHome: FC<Props> = ({ occurrence }) => {
+const OccurrenceHome = ({ occurrence }: Props) => {
   if (!occurrence) {
     return null;
   }

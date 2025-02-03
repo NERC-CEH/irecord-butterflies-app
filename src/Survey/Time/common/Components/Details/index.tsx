@@ -1,11 +1,11 @@
-import { FC, useContext, useState } from 'react';
-import { useRouteMatch, useLocation } from 'react-router';
-import Sample, { useValidateCheck } from 'models/sample';
+import { useContext, useState } from 'react';
 import { observer } from 'mobx-react';
+import { useRouteMatch, useLocation } from 'react-router';
 import { Page, Header, useAlert, useOnBackButton } from '@flumens';
 import { NavContext, IonButton, IonButtons } from '@ionic/react';
+import Sample, { useValidateCheck } from 'models/sample';
+import HeaderButton from 'Survey/common/Components/HeaderButton';
 import Main from './Main';
-import './styles.scss';
 
 type Props = {
   sample: Sample;
@@ -37,7 +37,7 @@ function useDeleteSurveyPrompt(alert: any) {
   return deleteSurveyPromtWrap;
 }
 
-const DetailsController: FC<Props> = ({ sample }) => {
+const DetailsController = ({ sample }: Props) => {
   const alert = useAlert();
   const { navigate, goBack } = useContext(NavContext);
   const { url } = useRouteMatch();
@@ -63,15 +63,13 @@ const DetailsController: FC<Props> = ({ sample }) => {
   const isValid = !sample.validateRemote();
 
   const startTimerButton = !hasTimerStarted && (
-    <IonButton
+    <HeaderButton
       onClick={onStartTimer}
       color={isValid ? 'primary' : 'medium'}
-      fill="solid"
-      shape="round"
-      className="start-count-button"
+      className="px-2"
     >
       Start Count
-    </IonButton>
+    </HeaderButton>
   );
 
   // Entering details/:attr page, but match still showing details page match.url.
@@ -102,7 +100,7 @@ const DetailsController: FC<Props> = ({ sample }) => {
   useOnBackButton(onDeleteSurvey);
 
   // eslint-disable-next-line react/no-unstable-nested-components
-  const CancelButtonWrap = () => (
+  const cancelButtonWrap = () => (
     <IonButtons slot="start">
       <IonButton color="dark" onClick={onDeleteSurvey}>
         Cancel
@@ -119,7 +117,7 @@ const DetailsController: FC<Props> = ({ sample }) => {
   return (
     <Page id="species-count-detail">
       <Header
-        BackButton={!hasTimerStarted ? CancelButtonWrap : undefined}
+        BackButton={!hasTimerStarted ? cancelButtonWrap : undefined}
         title="Survey Details"
         rightSlot={startTimerButton}
       />

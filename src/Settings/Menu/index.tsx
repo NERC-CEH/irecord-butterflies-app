@@ -1,11 +1,11 @@
-import { FC, useContext } from 'react';
-import { isPlatform, NavContext } from '@ionic/react';
+import { useContext } from 'react';
+import { observer } from 'mobx-react';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { Page, Header, useToast, PickByType, useLoader } from '@flumens';
+import { isPlatform, NavContext } from '@ionic/react';
 import appModel, { Attrs as AppModelAttrs } from 'models/app';
+import savedSamples from 'models/collections/samples';
 import userModel from 'models/user';
-import savedSamples from 'models/savedSamples';
-import { observer } from 'mobx-react';
 import Main from './Main';
 
 const useResetApp = () => {
@@ -15,7 +15,7 @@ const useResetApp = () => {
     console.log('Settings:Menu:Controller: resetting the application!');
 
     try {
-      await savedSamples.resetDefaults();
+      await savedSamples.reset();
       await appModel.resetDefaults();
       await userModel.resetDefaults();
       toast.success('Done');
@@ -61,7 +61,7 @@ function onToggle(
   isPlatform('hybrid') && Haptics.impact({ style: ImpactStyle.Light });
 }
 
-const MenuController: FC = () => {
+const MenuController = () => {
   const resetApp = useResetApp();
   const deleteUser = useDeleteUser();
 

@@ -1,10 +1,9 @@
-import { FC } from 'react';
+import { observer } from 'mobx-react';
 import { Gallery, useToast } from '@flumens';
 import Media from 'models/image';
 import { useUserStatusCheck } from 'models/user';
-import { observer } from 'mobx-react';
-import ImageTitle from './ImageTitle';
 import ImageFooter from './ImageFooter';
+import ImageTitle from './ImageTitle';
 import './styles.scss';
 
 type Props = {
@@ -18,12 +17,7 @@ const Footer = ({ children }: any) => (
   <div className="footer-container">{children}</div>
 );
 
-const GalleryComponent: FC<Props> = ({
-  items,
-  showGallery,
-  onClose,
-  onCrop,
-}) => {
+const GalleryComponent = ({ items, showGallery, onClose, onCrop }: Props) => {
   const toast = useToast();
   const checkUserStatus = useUserStatusCheck();
 

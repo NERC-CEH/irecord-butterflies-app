@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Page } from '@flumens';
-import appModel from 'models/app';
 import Main from 'common/Components/SpeciesList';
+import appModel from 'models/app';
 import Header from './Header';
 
 function SpeciesGuideController() {

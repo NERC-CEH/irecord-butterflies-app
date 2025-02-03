@@ -1,13 +1,12 @@
-import { FC } from 'react';
-import Sample from 'models/sample';
-import Occurrence from 'models/occurrence';
 import { IonLabel } from '@ionic/react';
+import Occurrence from 'models/occurrence';
+import Sample from 'models/sample';
 
 interface Props {
   sample: Sample;
 }
 
-const VerificationListIcon: FC<Props> = ({ sample }) => {
+const VerificationListIcon = ({ sample }: Props) => {
   let rejected = 0;
   let verified = 0;
   let plausible = 0;

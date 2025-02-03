@@ -32,9 +32,9 @@
     <key>CFBundleVersion</key>
     <string>1</string>
     <key>ITSAppUsesNonExemptEncryption</key>
-    <false/>
+    <false />
     <key>LSRequiresIPhoneOS</key>
-    <true/>
+    <true />
     <key>NSCameraUsageDescription</key>
     <string>Allow camera access to attach photos to your records.</string>
     <key>NSLocationAlwaysUsageDescription</key>
@@ -42,7 +42,8 @@
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>Allow geolocation so we can improve your records.</string>
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Please select 'Change to Always Allow' to enable an accurate location for your sightings and time counts, even when your phone is locked or asleep.</string>
+    <string>Please select 'Change to Always Allow' to enable an accurate location for your sightings
+      and time counts, even when your phone is locked or asleep.</string>
     <key>UIBackgroundModes</key>
     <array>
       <string>location</string>
@@ -73,6 +74,6 @@
       <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
     <key>UIViewControllerBasedStatusBarAppearance</key>
-    <true/>
+    <true />
   </dict>
 </plist>

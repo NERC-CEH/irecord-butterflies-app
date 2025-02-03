@@ -1,6 +1,5 @@
-import { FC } from 'react';
-import { IonLabel, IonIcon, IonBadge } from '@ionic/react';
 import { camera } from 'ionicons/icons';
+import { IonLabel, IonIcon, IonBadge } from '@ionic/react';
 import CONFIG from 'common/config';
 import './styles.scss';
 
@@ -8,7 +7,7 @@ interface Props {
   probability?: number;
 }
 
-const ProbabilityBadge: FC<Props> = ({ probability }) => {
+const ProbabilityBadge = ({ probability }: Props) => {
   if (!probability) return null;
 
   const roundedProbability = (probability * 100).toFixed();
@@ -17,9 +16,9 @@ const ProbabilityBadge: FC<Props> = ({ probability }) => {
   if (probability > CONFIG.POSITIVE_THRESHOLD) {
     color = 'success';
   } else if (probability > CONFIG.POSSIBLE_THRESHOLD) {
-    color = 'possible';
+    color = 'plausible';
   } else {
-    color = 'notLikely';
+    color = 'unlikely';
   }
 
   return (

@@ -1,49 +1,23 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import Wkt from 'wicket';
-import * as Yup from 'yup';
 import { toJS } from 'mobx';
-import L from 'leaflet';
-import { date as dateHelp } from '@flumens';
-import { Survey } from 'common/surveys';
 import { chatboxOutline, business } from 'ionicons/icons';
+import wkt from 'wellknown';
+import { z, object } from 'zod';
+import { SphericalMercator } from '@mapbox/sphericalmercator';
+import { dateFormat } from 'common/flumens';
+import caterpillarIcon from 'common/images/caterpillar.svg';
 import {
   stageAttr,
   deviceAttr,
   appVersionAttr,
   stageOptions,
+  Survey,
 } from 'Survey/common/config';
-import caterpillarIcon from 'common/images/caterpillar.svg';
+
+const merc = new SphericalMercator();
 
 const MINUTE = 60000; // in milliseconds
-
-const locationSchema = Yup.object().shape({
-  latitude: Yup.number().required(),
-  longitude: Yup.number().required(),
-  area: Yup.number()
-    .min(1, 'Please add survey area information.')
-    .max(20000000, 'Please select a smaller area.')
-    .required(),
-  shape: Yup.object().required(),
-  source: Yup.string().required('Please add survey area information.'),
-});
-
-const validateLocation = (val: any) => {
-  if (!val) {
-    return false;
-  }
-
-  locationSchema.validateSync(val);
-  return true;
-};
-
-const areaCountSchema = Yup.object().shape({
-  location: Yup.mixed().test(
-    'area',
-    'Please add survey area information.',
-    validateLocation
-  ),
-});
 
 const temperatureValues = [
   { value: 10, id: 16530 },
@@ -102,14 +76,11 @@ const windSpeedValues = [
 ];
 
 function transformToMeters(coordinates: any) {
-  const transform = ([lng, lat]: [number, number]) => {
-    const { x, y } = L.Projection.SphericalMercator.project({ lat, lng });
-    return [x, y];
-  };
+  const transform = ([lat, lng]: any) => merc.forward([lat, lng]);
   return coordinates.map(transform);
 }
 
-function getGeomString(shape: any) {
+export function getGeomString(shape: any) {
   const geoJSON = toJS(shape);
   if (geoJSON.type === 'Polygon') {
     geoJSON.coordinates[0] = transformToMeters(geoJSON.coordinates[0]);
@@ -117,8 +88,7 @@ function getGeomString(shape: any) {
     geoJSON.coordinates = transformToMeters(geoJSON.coordinates);
   }
 
-  const wkt = new Wkt.Wkt(geoJSON);
-  return wkt.write();
+  return wkt.stringify(geoJSON);
 }
 
 export const dateAttr = {
@@ -128,7 +98,7 @@ export const dateAttr = {
       inputProps: { max: () => new Date() },
     },
   },
-  remote: { values: (date: number) => dateHelp.print(date, false) },
+  remote: { values: (date: string) => dateFormat.format(new Date(date)) },
 };
 
 const dateTimeFormat = new Intl.DateTimeFormat('en-GB', {
@@ -331,30 +301,26 @@ const survey: Survey = {
       },
     },
 
-    create(AppSample, AppOccurrence, taxon, zeroAbundance, stage) {
-      const sample = new AppSample({
+    async create({ Sample, Occurrence, taxon, zeroAbundance, stage }) {
+      const sample = new Sample({
         metadata: {
-          survey_id: survey.id,
           survey: survey.name,
         },
         attrs: {
+          surveyId: survey.id,
+          enteredSrefSystem: 4326,
           location: {},
         },
       });
 
-      if (!sample.metadata.survey_id) {
-        // TODO: remove this once it is known why this isn't set
-        console.error(
-          `Creating subsample had no survey_id so we are setting it to ${survey.id}`
-        );
-        sample.metadata.survey_id = survey.id; // eslint-disable-line
-      }
-
-      const occurrence = survey?.smp?.occ.create(AppOccurrence, taxon);
+      const occurrence = await survey?.smp!.occ!.create!({
+        Occurrence: Occurrence!,
+        taxon,
+      });
 
       sample.occurrences.push(occurrence);
 
-      sample.occurrences[0].attrs.zero_abundance = zeroAbundance;
+      sample.occurrences[0].attrs.zeroAbundance = zeroAbundance;
       sample.occurrences[0].attrs.stage = stage;
 
       return sample;
@@ -376,7 +342,10 @@ const survey: Survey = {
           remote: {
             id: 780,
             values: (value: any, _: any, model: any) => {
-              const hasZeroAbundance = model.attrs.zero_abundance;
+              const hasZeroAbundance =
+                model.attrs.zeroAbundance ||
+                // backwards compatible
+                model.attrs.zero_abundance;
 
               return hasZeroAbundance ? null : value;
             },
@@ -393,7 +362,7 @@ const survey: Survey = {
         },
       },
 
-      create(Occurrence: any, taxon: any) {
+      create({ Occurrence, taxon }) {
         return new Occurrence({
           attrs: {
             comment: null,
@@ -406,48 +375,48 @@ const survey: Survey = {
   },
 
   verify(attrs) {
-    try {
-      // surveys details page dont set area attr
-      if (attrs.startTime) {
-        areaCountSchema.validateSync(attrs, { abortEarly: false });
-      }
-
-      Yup.object()
-        .shape({
-          site: Yup.string().required(
-            'Please ensure you fill in the site name field'
-          ),
-          sun: Yup.number()
-            .nullable()
-            .required('Please ensure you fill in the sun field'),
-          windDirection: Yup.string()
-            .nullable()
-            .required('Please ensure you fill in the wind direction field'),
-          windSpeed: Yup.string()
-            .nullable()
-            .required('Please ensure you fill in the wind speed field'),
-          temperature: Yup.string()
-            .nullable()
-            .required('Please ensure you fill in the temperature field'),
-        })
-
-        .validateSync(attrs, { abortEarly: false });
-    } catch (attrError) {
-      return attrError;
+    // surveys details page dont set area attr
+    if (attrs.startTime) {
+      return object({
+        location: z.any().refine(
+          d =>
+            object({
+              latitude: z.number().nullable(),
+              longitude: z.number().nullable(),
+              area: z.number().min(1),
+              shape: z.object({}),
+              source: z.string(),
+            }).safeParse(d).success,
+          { message: 'Please add survey area information' }
+        ),
+      }).safeParse(attrs).error;
     }
-    return null;
+
+    return object({
+      site: z.string({ required_error: 'Required site name' }).nullable(),
+      sun: z.number({ required_error: 'Required sun' }).nullable(),
+      windDirection: z
+        .string({ required_error: 'Required wind direction' })
+        .nullable(),
+      windSpeed: z.string({ required_error: 'Required wind speed' }).nullable(),
+      temperature: z
+        .number({ required_error: 'Required temperature' })
+        .nullable(),
+    }).safeParse(attrs).error;
   },
 
-  create(AppSample: any) {
-    const sample = new AppSample({
+  async create({ Sample }) {
+    const sample = new Sample({
       metadata: {
         survey: survey.name,
-        survey_id: survey.id,
         pausedTime: 0,
         timerPausedTime: null,
         startStopwatchTime: null,
       },
       attrs: {
+        surveyId: survey.id,
+        date: new Date().toISOString(),
+        enteredSrefSystem: 4326,
         location: {},
         duration: 0,
         cloud: null,

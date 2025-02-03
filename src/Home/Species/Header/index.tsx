@@ -1,5 +1,6 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { observer } from 'mobx-react';
+import { searchOutline } from 'ionicons/icons';
 import {
   IonHeader,
   IonToolbar,
@@ -8,10 +9,9 @@ import {
   IonButton,
   IonTitle,
 } from '@ionic/react';
-import FiltersToolbar from 'Components/FiltersToolbar';
-import { searchOutline } from 'ionicons/icons';
-import { Filter, FilterGroup } from 'models/app';
 import filterOptions from 'common/data/species/filters';
+import { Filter, FilterGroup } from 'models/app';
+import FiltersToolbar from 'Components/FiltersToolbar';
 import './styles.scss';
 
 type Props = {
@@ -20,7 +20,7 @@ type Props = {
   filters: any;
 };
 
-const Header: FC<Props> = ({ onSearch, toggleFilter, filters }) => {
+const Header = ({ onSearch, toggleFilter, filters }: Props) => {
   const [isSearching, setIsSearching] = useState(false);
   const onSearchStart = () => setIsSearching(true);
   const onSearchEnd = () => setIsSearching(false);

@@ -1,10 +1,11 @@
-import { FC, useContext } from 'react';
-import { Page, Header, useToast } from '@flumens';
+import { useContext } from 'react';
 import { observer } from 'mobx-react';
+import { Page, Header, useToast } from '@flumens';
+import { NavContext } from '@ionic/react';
 import appModel from 'models/app';
-import { useUserStatusCheck } from 'models/user';
 import Sample, { useValidateCheck } from 'models/sample';
-import { IonButton, NavContext } from '@ionic/react';
+import { useUserStatusCheck } from 'models/user';
+import SurveyHeaderButton from 'Survey/common/Components/SurveyHeaderButton';
 import Main from './Main';
 import './styles.scss';
 
@@ -12,7 +13,7 @@ type Props = {
   sample: Sample;
 };
 
-const Home: FC<Props> = ({ sample }) => {
+const Home = ({ sample }: Props) => {
   const toast = useToast();
   const { navigate } = useContext(NavContext);
   const checkSampleStatus = useValidateCheck(sample);
@@ -55,27 +56,13 @@ const Home: FC<Props> = ({ sample }) => {
   // occurrences are destroyed first before samples
   if (!sample?.occurrences?.[0]) return null;
 
-  const isEditing = sample.metadata.saved;
-
   const isDisabled = sample.isUploaded();
-  const isValid = !sample.validateRemote();
-
-  const finishButton = isDisabled ? null : (
-    <IonButton
-      onClick={onFinish}
-      color={isValid ? 'primary' : 'medium'}
-      fill="solid"
-      shape="round"
-    >
-      {isEditing ? 'Upload' : 'Finish'}
-    </IonButton>
-  );
 
   return (
     <Page id="survey-point-edit">
       <Header
         title="New Sighting"
-        rightSlot={finishButton}
+        rightSlot={<SurveyHeaderButton onClick={onFinish} sample={sample} />}
         defaultHref="/home/surveys"
       />
       <Main sample={sample} isDisabled={isDisabled} />

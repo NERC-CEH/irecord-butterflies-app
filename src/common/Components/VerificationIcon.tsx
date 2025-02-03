@@ -1,13 +1,12 @@
-import { FC } from 'react';
-import Occurrence from 'models/occurrence';
-import { IonIcon } from '@ionic/react';
 import { checkmarkCircle, closeCircle } from 'ionicons/icons';
+import { IonIcon } from '@ionic/react';
+import Occurrence from 'models/occurrence';
 
 interface Props {
   occ: Occurrence;
 }
 
-const VerificationIcon: FC<Props> = ({ occ }) => {
+const VerificationIcon = ({ occ }: Props) => {
   if (!occ.isUploaded()) return null;
 
   const status = occ.getVerificationStatus();

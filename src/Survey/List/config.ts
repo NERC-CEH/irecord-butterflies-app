@@ -1,18 +1,15 @@
-import * as Yup from 'yup';
+import { chatboxOutline, expandOutline } from 'ionicons/icons';
+import { z, object } from 'zod';
+import { isPlatform } from '@ionic/react';
+import config from 'common/config';
 import {
   dateAttr,
   locationAttrs,
   deviceAttr,
   appVersionAttr,
   stageAttr,
-  verifyLocationSchema,
+  Survey,
 } from 'Survey/common/config';
-import { Survey } from 'common/surveys';
-import Occurrence from 'models/occurrence';
-import Sample from 'models/sample';
-import { isPlatform } from '@ionic/react';
-import { chatboxOutline, expandOutline } from 'ionicons/icons';
-import config from 'common/config';
 
 const areaOptions = [
   {
@@ -64,7 +61,7 @@ const survey: Survey = {
           values: (taxon: any) => taxon.warehouseId,
         },
       },
-      count: { id: 16 },
+      count: { remote: { id: 16 } },
       stage: stageAttr,
       comment: {
         menuProps: { icon: chatboxOutline },
@@ -77,8 +74,8 @@ const survey: Survey = {
       },
     },
 
-    create(AppOccurrence: typeof Occurrence, taxon: any) {
-      return new AppOccurrence({
+    create({ Occurrence, taxon }) {
+      return new Occurrence({
         attrs: {
           count: 1,
           comment: null,
@@ -88,31 +85,22 @@ const survey: Survey = {
       });
     },
 
-    verify(attrs: any) {
-      try {
-        const occurrenceScheme = Yup.object().shape({
-          taxon: Yup.object().nullable().required('Species is missing.'),
-        });
-
-        occurrenceScheme.validateSync(attrs, { abortEarly: false });
-      } catch (attrError) {
-        return attrError;
-      }
-
-      return null;
-    },
+    verify: (attrs: any) =>
+      object({
+        taxon: object({}, { required_error: 'Species is missing.' }).nullable(),
+      }).safeParse(attrs).error,
   },
 
-  create(AppSample: typeof Sample) {
-    const sample = new AppSample({
+  async create({ Sample }) {
+    const sample = new Sample({
       metadata: {
         survey: survey.name,
-        survey_id: survey.id,
       },
-
       attrs: {
+        surveyId: survey.id,
+        date: new Date().toISOString(),
+        enteredSrefSystem: 4326,
         location: null,
-        area: null,
         device: isPlatform('android') ? 'android' : 'ios',
         appVersion: config.version,
       },
@@ -123,22 +111,18 @@ const survey: Survey = {
     return sample;
   },
 
-  verify(attrs: any) {
-    try {
-      const sampleSchema = Yup.object().shape({
-        location: verifyLocationSchema,
-        area: Yup.string()
-          .nullable()
-          .required('Please enter surveyed area size.'),
-      });
-
-      sampleSchema.validateSync(attrs, { abortEarly: false });
-    } catch (attrError) {
-      return attrError;
-    }
-
-    return null;
-  },
+  verify: (attrs: any) =>
+    object({
+      location: object(
+        { latitude: z.number(), longitude: z.number(), name: z.string() },
+        { invalid_type_error: 'Please select location.' }
+      ),
+      area: z
+        .string({
+          required_error: 'Please enter surveyed area size.',
+        })
+        .nullable(),
+    }).safeParse(attrs).error,
 };
 
 export default survey;

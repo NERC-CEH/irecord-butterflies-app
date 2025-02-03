@@ -1,8 +1,8 @@
 #single-species-count-home {
   ion-img {
+    margin: 0 auto;
     padding: 10px 25px;
     max-width: 400px;
-    margin: 0 auto;
   }
 
   ion-header ion-button {
@@ -11,9 +11,9 @@
   }
 
   ion-label[slot='end'] {
-    text-align: right;
     opacity: 0.5;
     max-width: 45%;
+    text-align: right;
   }
 
   ion-content {
@@ -37,15 +37,15 @@
     }
 
     #countdown span {
-      width: 50px;
       display: inline-block;
-      text-align: left;
       opacity: 0.5;
+      width: 50px;
+      text-align: left;
 
       &.paused {
         opacity: 1;
-        width: inherit;
         padding: 0 10px;
+        width: inherit;
         color: var(--ion-color-tertiary);
       }
 
@@ -56,10 +56,10 @@
     }
 
     #add {
-      width: 40%;
+      transform: translate(-50%, 0);
       margin: 30px 0 10px;
       margin-left: 50%;
-      transform: translate(-50%, 0);
+      width: 40%;
     }
 
     #species-list-sort {
@@ -71,14 +71,14 @@
     }
 
     #list {
-      font-weight: bold;
       margin-top: 20px;
+      font-weight: bold;
 
       .species-list-header {
         background: #e6e6e6 !important;
-        color: #777777;
 
         padding-left: 7px;
+        color: #777777;
         &.ios {
           padding-top: 5px;
           padding-bottom: 5px;
@@ -86,9 +86,9 @@
 
         ion-label {
           width: 100%;
-          text-align: center;
           font-weight: normal;
           font-size: 0.9em;
+          text-align: center;
 
           &:nth-of-type(2) {
             padding-left: 16px;
@@ -120,10 +120,10 @@
         font-size: 1.3em;
 
         div.label-divider {
-          height: 75%;
-          border-right: 1px solid rgba(0, 0, 0, 0.13);
           position: absolute;
           right: -11px;
+          border-right: 1px solid rgba(0, 0, 0, 0.13);
+          height: 75%;
         }
       }
     }
@@ -132,9 +132,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      max-width: 30px;
 
       max-height: 23px;
-      max-width: 30px;
 
       ion-spinner {
         margin-top: -4px;

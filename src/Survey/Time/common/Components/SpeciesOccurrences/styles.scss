@@ -1,8 +1,8 @@
 #species-count-taxon-group {
   ion-label[slot='end'] {
-    text-align: right;
     opacity: 0.5;
     max-width: 38%;
+    text-align: right;
   }
 
   ion-content {
@@ -18,17 +18,17 @@
     }
 
     ion-label.time {
-      max-width: 66px;
       margin: 0;
+      max-width: 66px;
     }
 
     ion-label.stage {
       display: flex;
 
       ion-badge {
+        max-width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 100%;
       }
     }
     ion-label.location {
@@ -40,9 +40,9 @@
 
     .species-list-header {
       background: #e6e6e6 !important;
-      color: #777777;
 
       padding-left: 7px;
+      color: #777777;
       --inner-padding-end: 0;
       &.ios {
         padding-top: 5px;
@@ -51,9 +51,9 @@
 
       ion-label {
         width: 100%;
-        text-align: center;
         font-weight: normal;
         font-size: 0.9em;
+        text-align: center;
 
         &:nth-of-type(2) {
           padding-left: 10px;

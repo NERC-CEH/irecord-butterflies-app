@@ -1,7 +1,6 @@
-import { FC } from 'react';
-import { IonContent, IonList, IonCol, IonRow, IonGrid } from '@ionic/react';
-import { Collapse } from '@flumens';
 import { observer } from 'mobx-react';
+import { Collapse } from '@flumens';
+import { IonContent, IonList, IonCol, IonRow, IonGrid } from '@ionic/react';
 import { Filters } from '..';
 import './styles.scss';
 
@@ -18,7 +17,7 @@ export type Props = {
   searchPhrase?: string;
 };
 
-const Menu: FC<Props> = ({ searchPhrase, values, onSelect, options }) => {
+const Menu = ({ searchPhrase, values, onSelect, options }: Props) => {
   const getFilterOptions = ({
     type,
     values: optionValues,

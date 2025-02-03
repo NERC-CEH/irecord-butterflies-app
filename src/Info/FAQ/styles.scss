@@ -17,10 +17,17 @@
   }
 
   .long-tap-tip-message-icon {
-    background: var(--ion-color-primary);
-    border-radius: 3px;
-    padding: 3px;
     margin-bottom: -4px;
+    border-radius: 3px;
+    background: var(--ion-color-primary);
+    padding: 3px;
     color: white;
+  }
+
+  .collapse-block ion-item p,
+  .collapse-block ion-item div,
+  .collapse-block ion-item span {
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }

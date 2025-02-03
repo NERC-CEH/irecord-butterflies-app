@@ -1,7 +1,16 @@
-import { FC } from 'react';
+import { useContext } from 'react';
+import { observer } from 'mobx-react';
 import clsx from 'clsx';
+import { locationOutline, filterOutline } from 'ionicons/icons';
+import { useRouteMatch } from 'react-router';
 import {
-  IonItemDivider,
+  Main,
+  MenuAttrItem,
+  InfoMessage,
+  MenuAttrItemFromModel,
+  Button,
+} from '@flumens';
+import {
   IonList,
   IonLabel,
   IonButton,
@@ -10,23 +19,16 @@ import {
   IonItemOptions,
   IonItem,
   IonItemSliding,
+  NavContext,
 } from '@ionic/react';
-import { useRouteMatch } from 'react-router';
-import {
-  Main,
-  MenuAttrItem,
-  InfoMessage,
-  MenuAttrItemFromModel,
-} from '@flumens';
-import Occurrence from 'models/occurrence';
-import Sample from 'models/sample';
-import { observer } from 'mobx-react';
-import { locationOutline, filterOutline } from 'ionicons/icons';
-import GridRefValue from 'Survey/common/Components/GridRefValue';
 import InfoBackgroundMessage from 'common/Components/InfoBackgroundMessage';
 import VerificationIcon from 'common/Components/VerificationIcon';
+import Occurrence from 'models/occurrence';
+import Sample from 'models/sample';
+import DisabledRecordMessage from 'Survey/common/Components/DisabledRecordMessage';
+import GridRefValue from 'Survey/common/Components/GridRefValue';
 import IncrementalButton from 'Survey/common/Components/IncrementalButton';
-import config from 'common/config';
+import MenuDateAttr from 'Survey/common/Components/MenuDateAttr';
 
 const speciesNameSort = (occ1: Occurrence, occ2: Occurrence) => {
   const taxon1 = occ1.attrs.taxon;
@@ -39,8 +41,8 @@ const speciesNameSort = (occ1: Occurrence, occ2: Occurrence) => {
 };
 
 const speciesOccAddedTimeSort = (occ1: Occurrence, occ2: Occurrence) => {
-  const date1 = new Date(occ1.metadata.created_on);
-  const date2 = new Date(occ2.metadata.created_on);
+  const date1 = new Date(occ1.createdAt);
+  const date2 = new Date(occ2.createdAt);
   return date2.getTime() - date1.getTime();
 };
 
@@ -54,7 +56,7 @@ type Props = {
   onToggleSpeciesSort?: any;
 };
 
-const HomeMain: FC<Props> = ({
+const HomeMain = ({
   sample,
   isDisabled,
   deleteOccurrence,
@@ -62,8 +64,9 @@ const HomeMain: FC<Props> = ({
   listSurveyListSortedByTime,
   increaseCount,
   onToggleSpeciesSort,
-}) => {
+}: Props) => {
   const match = useRouteMatch();
+  const { navigate } = useContext(NavContext);
 
   const getLocationButton = () => {
     const location = sample.attrs.location || {};
@@ -72,14 +75,10 @@ const HomeMain: FC<Props> = ({
     const empty = !hasLocation || !hasName;
 
     const value = (
-      <IonLabel position="stacked" mode="ios">
-        <IonLabel color={clsx(empty && hasLocation && 'dark')}>
-          <GridRefValue sample={sample} requiredMessage="No location" />
-        </IonLabel>
-        <IonLabel color={clsx(empty && hasName && 'dark')}>
-          {location.name || 'No site name'}
-        </IonLabel>
-      </IonLabel>
+      <div className="m-0 flex flex-col items-end justify-center">
+        <GridRefValue sample={sample} requiredMessage="No location" />
+        <span>{location.name || 'No site name'}</span>
+      </div>
     );
 
     const isOutsideUK = hasLocation && !location.gridref;
@@ -118,13 +117,13 @@ const HomeMain: FC<Props> = ({
     }
 
     return (
-      <IonButton
+      <Button
         color="primary"
         id="add"
-        routerLink={`/survey/list/${sample.cid}/species`}
+        onPress={() => navigate(`/survey/list/${sample.cid}/species`)}
       >
-        <IonLabel>Add species</IonLabel>
-      </IonButton>
+        Add species
+      </Button>
     );
   };
 
@@ -192,12 +191,14 @@ const HomeMain: FC<Props> = ({
         </div>
 
         <IonList id="list" lines="full">
-          <div className="rounded">
-            <IonItemDivider className="species-list-header">
-              <IonLabel>Count</IonLabel>
-              <IonLabel>Species</IonLabel>
-              <IonLabel>{speciesList.length}</IonLabel>
-            </IonItemDivider>
+          <div className="rounded-list">
+            <div className="list-divider gap-4">
+              <div>Count</div>
+              <div className="flex w-full justify-between">
+                <div>Species</div>
+                <div>{speciesList.length}</div>
+              </div>
+            </div>
 
             {speciesList}
           </div>
@@ -215,22 +216,11 @@ const HomeMain: FC<Props> = ({
   return (
     <Main>
       <IonList lines="full">
-        {isDisabled && (
-          <InfoMessage>
-            This record has been uploaded and can only be edited on our website.
-            <IonButton
-              expand="block"
-              className="uploaded-message-website-link"
-              href={`${config.backend.url}/sample-details?sample_id=${sample.id}`}
-            >
-              iRecord website
-            </IonButton>
-          </InfoMessage>
-        )}
+        {isDisabled && <DisabledRecordMessage sample={sample} />}
 
-        <IonItemDivider>Details</IonItemDivider>
-        <div className="rounded">
-          <MenuAttrItemFromModel model={sample} attr="date" />
+        <h3 className="list-title">Details</h3>
+        <div className="rounded-list">
+          <MenuDateAttr record={sample.attrs} isDisabled={isDisabled} />
           {getLocationButton()}
           <MenuAttrItemFromModel model={sample} attr="area" />
         </div>

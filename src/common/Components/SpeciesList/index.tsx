@@ -1,12 +1,10 @@
-import { FC, useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { observer } from 'mobx-react';
+import { arrowBack, informationCircleOutline } from 'ionicons/icons';
+import { Main, InfoBackgroundMessage, useAlert } from '@flumens';
 import {
   NavContext,
-  IonGrid,
-  IonItemDivider,
-  IonCol,
   IonModal,
-  IonRow,
   IonLabel,
   IonIcon,
   IonButton,
@@ -14,19 +12,12 @@ import {
   IonToolbar,
   IonHeader,
 } from '@ionic/react';
-import {
-  Main,
-  InfoBackgroundMessage,
-  UserFeedbackRequest,
-  useAlert,
-} from '@flumens';
-import appModel, { FilterGroup, Filter, Filters } from 'models/app';
-import { arrowBack, informationCircleOutline } from 'ionicons/icons';
-import species, { Species } from 'common/data/species';
-import config from 'common/config';
-import getCurrentWeekNumber from 'helpers/weeks';
-import getProbabilities from 'common/data/species/probabilities';
 import ProbabilityBadge from 'common/Components/ProbabilityBadge';
+import config from 'common/config';
+import species, { Species } from 'common/data/species';
+import getProbabilities from 'common/data/species/probabilities';
+import appModel, { FilterGroup, Filter, Filters } from 'models/app';
+import getCurrentWeekNumber from 'helpers/weeks';
 import SpeciesProfile from './components/SpeciesProfile';
 import './styles.scss';
 
@@ -114,7 +105,7 @@ function organiseByProbability(
   return [speciesHereAndNow, speciesHere, speciesNow, remainingSpecies];
 }
 
-const shouldShowFeedback = () => false; // TODO: enable this back
+// const shouldShowFeedback = () => false; // TODO: enable this back
 // const { feedbackGiven, appSession } = appModel.attrs;
 // if (feedbackGiven) {
 //   return false;
@@ -136,7 +127,7 @@ type Props = {
   identifiedSpeciesList?: any;
 };
 
-const SpeciesList: FC<Props> = ({
+const SpeciesList = ({
   filters = {},
   onSelect,
   ignore = [],
@@ -144,7 +135,8 @@ const SpeciesList: FC<Props> = ({
   week,
   hectad,
   identifiedSpeciesList,
-}) => {
+}: Props) => {
+  const { navigate } = useContext(NavContext);
   const [speciesProfile, setSpeciesProfile] = useState<Species | null>(null);
 
   const byMoth = (sp: any) =>
@@ -153,12 +145,17 @@ const SpeciesList: FC<Props> = ({
 
   useShowMothInformationDialog(mothSpecies);
 
-  const onFeedbackDone = () => {
-    appModel.attrs.feedbackGiven = true;
-    appModel.save();
-  };
+  // const onFeedbackDone = () => {
+  //   appModel.attrs.feedbackGiven = true;
+  //   appModel.save();
+  // };
 
   const hideSpeciesModal = () => setSpeciesProfile(null);
+
+  const onSpeciesRecord = (sp: any) => {
+    hideSpeciesModal();
+    navigate(`/survey/point?species=${sp.id}`);
+  };
 
   const getSpeciesTile = (sp: Species, i: number) => {
     const {
@@ -187,14 +184,8 @@ const SpeciesList: FC<Props> = ({
     const onClick = isSurvey ? selectSpecies : viewSpecies;
 
     return (
-      <IonCol
-        key={i}
-        className="species-tile"
-        size="6"
-        sizeMd="4"
-        onClick={onClick}
-      >
-        <div className="container">
+      <div key={i} className="species-tile z-0" onClick={onClick}>
+        <div className="wrapper">
           {identifiedSpecies && <ProbabilityBadge probability={probability} />}
           {isSurvey && (
             <div className="info-box" onClick={viewSpecies}>
@@ -212,7 +203,7 @@ const SpeciesList: FC<Props> = ({
           )}
           <IonLabel className="common-name">{commonName}</IonLabel>
         </div>
-      </IonCol>
+      </div>
     );
   };
 
@@ -322,49 +313,47 @@ const SpeciesList: FC<Props> = ({
     }
 
     return (
-      <>
+      <div className="relative col-span-2 mx-auto grid w-full grid-cols-2">
         {hasSpeciesHereAndNow && (
-          <IonItemDivider sticky mode="md">
-            <IonLabel>Flying now in your area</IonLabel>
-          </IonItemDivider>
+          <div className="sticky top-0 z-10 col-span-2 bg-primary p-2 text-center text-white">
+            Flying now in your area
+          </div>
         )}
         {speciesTiles(speciesHereAndNow)}
 
         {hasSpeciesNow && (
-          <IonItemDivider sticky className="species-now" mode="md">
-            <IonLabel>Flying at this time of year</IonLabel>
-          </IonItemDivider>
+          <div className="sticky top-0 z-10 col-span-2 bg-[#51735f] p-2 text-center text-white">
+            Flying at this time of year
+          </div>
         )}
         {speciesTiles(speciesNow)}
 
         {hasSpeciesHere && (
-          <IonItemDivider sticky className="species-now" mode="md">
-            <IonLabel>In your area at other times of year</IonLabel>
-          </IonItemDivider>
+          <div className="sticky top-0 z-10 col-span-2 bg-[#51735f] p-2 text-center text-white">
+            In your area at other times of year
+          </div>
         )}
         {speciesTiles(speciesHere)}
 
         {hasAdditional && (
-          <IonItemDivider sticky className="species-additional" mode="md">
-            {hasSpeciesNow ? (
-              <IonLabel>Flying at other times of year</IonLabel>
-            ) : (
-              <IonLabel>Species not recorded from your area</IonLabel>
-            )}
-          </IonItemDivider>
+          <div className="sticky top-0 z-10 col-span-2 bg-neutral-600 p-2 text-center text-white">
+            {hasSpeciesNow
+              ? 'Flying at other times of year'
+              : 'Species not recorded from your area'}
+          </div>
         )}
         {speciesTiles(remainingSpecies)}
-      </>
+      </div>
     );
   };
 
-  const isSurvey = !!onSelect;
-  const showFeedback = !isSurvey && shouldShowFeedback();
+  // const isSurvey = !!onSelect;
+  // const showFeedback = !isSurvey && shouldShowFeedback();
 
   return (
     <Main className="species-list">
-      <IonGrid>
-        {showFeedback && (
+      {/* <div className="relative mt-20 block h-full w-full overflow-scroll"> */}
+      {/* {showFeedback && (
           <IonRow className="user-feedback-row">
             <IonCol size="12">
               <UserFeedbackRequest
@@ -373,10 +362,9 @@ const SpeciesList: FC<Props> = ({
               />
             </IonCol>
           </IonRow>
-        )}
+        )} */}
 
-        <IonRow>{getSpecies()}</IonRow>
-      </IonGrid>
+      {getSpecies()}
 
       <IonModal isOpen={!!speciesProfile} backdropDismiss={false} mode="md">
         <IonHeader className="species-modal-header">
@@ -396,7 +384,8 @@ const SpeciesList: FC<Props> = ({
 
         <SpeciesProfile
           species={speciesProfile}
-          onRecord={hideSpeciesModal}
+          onNavBack={hideSpeciesModal}
+          onRecord={onSpeciesRecord}
           isSurvey={!!onSelect}
         />
       </IonModal>

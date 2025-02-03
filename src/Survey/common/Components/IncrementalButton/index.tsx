@@ -1,9 +1,7 @@
-import { FC } from 'react';
-import { isPlatform } from '@ionic/react';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
-import { LongPressButton } from '@flumens';
+import { Button } from '@flumens';
+import { isPlatform } from '@ionic/react';
 import AnimatedNumber from './AnimatedNumber';
-import './styles.scss';
 
 interface Props {
   onClick: any;
@@ -12,12 +10,12 @@ interface Props {
   disabled?: boolean;
 }
 
-const IncrementalButton: FC<Props> = ({
+const IncrementalButton = ({
   onClick: onClickProp,
   onLongClick: onLongClickProp,
   value,
   disabled,
-}) => {
+}: Props) => {
   const onClick = () => {
     if (disabled) return;
 
@@ -40,16 +38,16 @@ const IncrementalButton: FC<Props> = ({
   };
 
   return (
-    <LongPressButton
-      className="incremental-button"
-      onClick={onClick}
+    <Button
+      className="relative m-0 h-full w-[62px] shrink-0 rounded-none p-0 text-[1.3em] text-[var(--color-tertiary-800)]"
+      onPress={onClick}
       fill="clear"
-      onLongClick={onLongClick}
-      longClickDuration={700}
+      onLongPress={onLongClick}
+      preventDefault
     >
       <AnimatedNumber value={value} />
-      <div className="label-divider" />
-    </LongPressButton>
+      <div className="absolute right-0 top-2 h-3/4 border-r border-solid border-r-[rgba(0,0,0,0.13)]" />
+    </Button>
   );
 };
 

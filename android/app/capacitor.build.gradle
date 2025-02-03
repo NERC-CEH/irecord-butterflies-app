@@ -11,6 +11,7 @@ apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
     implementation project(':capacitor-community-background-geolocation')
     implementation project(':capacitor-community-camera-preview')
+    implementation project(':capacitor-community-sqlite')
     implementation project(':capacitor-app')
     implementation project(':capacitor-camera')
     implementation project(':capacitor-device')
@@ -21,7 +22,7 @@ dependencies {
     implementation project(':capacitor-network')
     implementation project(':capacitor-splash-screen')
     implementation project(':capacitor-status-bar')
-    implementation "com.google.android.play:core:1.8.0"
+
 }
 
 

@@ -1,7 +1,12 @@
-import { FC, useState } from 'react';
-import { AppModel } from 'models/app';
-import { Page, Main } from '@flumens';
+import { ReactNode, useState } from 'react';
 import { observer } from 'mobx-react';
+import { arrowForward, checkmarkOutline } from 'ionicons/icons';
+import SwiperCore from 'swiper';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Page, Main } from '@flumens';
 import {
   IonButton,
   IonToolbar,
@@ -9,24 +14,19 @@ import {
   IonIcon,
   IonFooter,
 } from '@ionic/react';
-import SwiperCore, { Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import '@ionic/react/css/ionic-swiper.css';
-import { arrowForward, checkmarkOutline } from 'ionicons/icons';
-import peacock from './images/peacock.jpg';
+import appModel from 'models/app';
 import brimstone from './images/brimstone.jpg';
+import button from './images/button.png';
 import fritillary from './images/fritillary.jpg';
 import list from './images/list.png';
-import button from './images/button.png';
+import peacock from './images/peacock.jpg';
 import './styles.scss';
 
 interface Props {
-  appModel: AppModel;
+  children: ReactNode;
 }
 
-const OnBoardingScreens: FC<Props> = ({ appModel, children }) => {
+const OnBoardingScreens = ({ children }: Props) => {
   const [moreSlidesExist, setMoreSlidesExist] = useState(true);
   const [controlledSwiper, setControlledSwiper] = useState<SwiperCore>();
 
@@ -39,7 +39,6 @@ const OnBoardingScreens: FC<Props> = ({ appModel, children }) => {
   function exit() {
     // eslint-disable-next-line no-param-reassign
     appModel.attrs.showedWelcome = true;
-    appModel.save();
   }
 
   const handleSlideChangeStart = async () => {

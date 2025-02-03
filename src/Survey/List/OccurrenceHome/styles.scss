@@ -16,11 +16,11 @@
       --padding-start: 0;
 
       ion-avatar {
-        height: 80px;
         width: 90px;
+        height: 80px;
         --border-radius: 0;
-        border-right: 1px var(--ion-item-border-color) solid;
         margin: 5px 0;
+        border-right: 1px var(--ion-item-border-color) solid;
 
         img {
           object-fit: contain;
@@ -48,12 +48,12 @@
         margin-right: -20px;
 
         span {
-          width: 20px;
-          opacity: 0.5;
           display: inline-block;
-          text-align: center;
           vertical-align: middle;
           vertical-align: -webkit-baseline-middle;
+          opacity: 0.5;
+          width: 20px;
+          text-align: center;
         }
       }
 

@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import { NavContext } from '@ionic/react';
-import Sample from 'models/sample';
-import Occurrence from 'models/occurrence';
-import SpeciesComponent from 'Survey/common/Components/Species';
 import { useRouteMatch } from 'react-router';
+import { NavContext } from '@ionic/react';
 import { Species as SpeciesType } from 'common/data/species';
+import Occurrence from 'models/occurrence';
+import Sample from 'models/sample';
+import SpeciesComponent from 'Survey/common/Components/Species';
 import survey from './config';
 
 const Species = (props: any) => {

@@ -1,17 +1,16 @@
-import { FC, useEffect } from 'react';
-import { Page, Header, Main, useToast, useLoader } from '@flumens';
+import { useEffect } from 'react';
 import { observer } from 'mobx-react';
+import { chevronDownOutline } from 'ionicons/icons';
+import { Page, Header, Main, useToast, useLoader } from '@flumens';
 import {
   IonLabel,
-  IonItemDivider,
   IonList,
   IonItem,
   IonRefresherContent,
   IonRefresher,
 } from '@ionic/react';
-import userModel, { useUserStatusCheck } from 'models/user';
-import { chevronDownOutline } from 'ionicons/icons';
 import InfoBackgroundMessage from 'common/Components/InfoBackgroundMessage';
+import userModel, { useUserStatusCheck } from 'models/user';
 import './styles.scss';
 
 function useFetchStats() {
@@ -38,7 +37,7 @@ function useFetchStats() {
   return fetchStats;
 }
 
-const Statistics: FC = () => {
+const Statistics = () => {
   const fetchStats = useFetchStats();
 
   const onRefresh = async (e: any) => {
@@ -79,9 +78,8 @@ const Statistics: FC = () => {
 
     return (
       <IonList lines="none">
-        <div className="rounded">
-          <IonItemDivider mode="md">My totals</IonItemDivider>
-
+        <div className="rounded-list">
+          <div className="list-divider">My totals</div>
           <IonItem lines="full" className="list-header-labels">
             <IonLabel>
               <small>Records (total)</small>
@@ -136,8 +134,7 @@ const Statistics: FC = () => {
             </IonLabel>
           </IonItem>
 
-          <IonItemDivider mode="md">App totals</IonItemDivider>
-
+          <div className="list-divider">App totals</div>
           <IonItem lines="full" className="list-header-labels">
             <IonLabel>
               <small>Records (total)</small>

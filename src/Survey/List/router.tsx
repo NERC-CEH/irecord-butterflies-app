@@ -1,10 +1,9 @@
-import { FC } from 'react';
 import { RouteWithModels, AttrPage } from '@flumens';
-import savedSamples from 'models/savedSamples';
-import StartNewSurvey from 'Survey/common/Components/StartNewSurvey';
-import ModelLocationWithInfo from 'Survey/common/Components/ModelLocationWithInfo';
-import Species from 'Survey/common/Components/Species';
+import savedSamples from 'models/collections/samples';
 import Occurrence from 'models/occurrence';
+import ModelLocation from 'Survey/common/Components/ModelLocation';
+import Species from 'Survey/common/Components/Species';
+import StartNewSurvey from 'Survey/common/Components/StartNewSurvey';
 import Home from './Home';
 import OccurrenceHome from './OccurrenceHome';
 import survey from './config';
@@ -14,7 +13,7 @@ const { AttrPageFromRoute } = AttrPage;
 const baseURL = `/survey/${survey.name}`;
 
 type OccurrenceHomeWrapProps = { occurrence: Occurrence };
-const OccurrenceHomeWrap: FC<OccurrenceHomeWrapProps> = ({ occurrence }) => (
+const OccurrenceHomeWrap = ({ occurrence }: OccurrenceHomeWrapProps) => (
   <OccurrenceHome occurrence={occurrence} />
 );
 
@@ -25,7 +24,7 @@ const routes = [
   [`${baseURL}/:smpId/occ/:occId`, OccurrenceHomeWrap],
   [`${baseURL}/:smpId/occ/:occId/:attr`, AttrPageFromRoute],
   [`${baseURL}/:smpId/occ/:occId/species`, Species],
-  [`${baseURL}/:smpId/location`, ModelLocationWithInfo],
+  [`${baseURL}/:smpId/location`, ModelLocation],
   [`${baseURL}/:smpId/species`, Species],
 ];
 

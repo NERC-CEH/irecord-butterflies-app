@@ -1,13 +1,4 @@
-import { FC } from 'react';
 import { observer } from 'mobx-react';
-import Sample from 'models/sample';
-import {
-  IonList,
-  IonItemDivider,
-  IonLabel,
-  IonItem,
-  IonIcon,
-} from '@ionic/react';
 import {
   clipboardOutline,
   thermometerOutline,
@@ -21,18 +12,20 @@ import {
   MenuAttrItem,
   InfoMessage,
   MenuAttrItemFromModel,
-  CounterInput,
+  NumberInput,
 } from '@flumens';
+import { IonList, IonLabel, IonItem, IonIcon } from '@ionic/react';
 import PhotoPicker from 'common/Components/PhotoPicker';
-import windIcon from 'common/images/wind.svg';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
+import windIcon from 'common/images/wind.svg';
+import Sample from 'models/sample';
 
 type Props = {
   sample: Sample;
   onChangeCounter: (value: number) => void;
 };
 
-const MainDetails: FC<Props> = ({ sample, onChangeCounter }) => {
+const MainDetails = ({ sample, onChangeCounter }: Props) => {
   const { url } = useRouteMatch();
 
   const isDisabled = sample.isUploaded();
@@ -44,12 +37,10 @@ const MainDetails: FC<Props> = ({ sample, onChangeCounter }) => {
   return (
     <Main>
       <IonList lines="full">
-        <IonItemDivider>
-          <IonLabel>
-            <T>Details</T>
-          </IonLabel>
-        </IonItemDivider>
-        <div className="rounded">
+        <h3 className="list-title">
+          <T>Details</T>
+        </h3>
+        <div className="rounded-list">
           {!sample.isSurveyMultiSpeciesTimedCount() && (
             <IonItem detail={false} disabled className="menu-attr-item">
               <IonIcon slot="start" icon={butterflyIcon} />
@@ -80,15 +71,15 @@ const MainDetails: FC<Props> = ({ sample, onChangeCounter }) => {
 
           {sample.isSurveyMultiSpeciesTimedCount() && (
             <>
-              <CounterInput
+              <NumberInput
                 label="Recorders"
                 onChange={onChangeCounter}
                 value={recorders}
-                icon={personOutline}
+                prefix={<IonIcon src={personOutline} className="size-6" />}
                 min={1}
                 isDisabled={isDisabled}
               />
-              <InfoMessage color="medium">
+              <InfoMessage inline>
                 Enter the number of recorders of anyone who helped with this
                 record - including your own.
               </InfoMessage>
@@ -96,10 +87,10 @@ const MainDetails: FC<Props> = ({ sample, onChangeCounter }) => {
           )}
         </div>
 
-        <IonItemDivider>
-          <IonLabel>Weather details</IonLabel>
-        </IonItemDivider>
-        <div className="rounded">
+        <h3 className="list-title">
+          <T>Weather details</T>
+        </h3>
+        <div className="rounded-list">
           <MenuAttrItem
             routerLink={`${url}/temperature`}
             disabled={isDisabled}
@@ -139,14 +130,12 @@ const MainDetails: FC<Props> = ({ sample, onChangeCounter }) => {
           />
         </div>
 
-        <IonItemDivider>
-          <IonLabel>
-            <T>Photo</T>
-          </IonLabel>
-        </IonItemDivider>
-        <div className="rounded">
+        <h3 className="list-title">
+          <T>Photo</T>
+        </h3>
+        <div className="rounded-list">
           <PhotoPicker model={sample} disableClassifier />
-          <InfoMessage color="medium">
+          <InfoMessage inline>
             Representative photo of where the survey was made
           </InfoMessage>
         </div>

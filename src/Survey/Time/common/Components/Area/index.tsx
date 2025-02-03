@@ -1,7 +1,9 @@
-import { FC } from 'react';
-import Sample from 'models/sample';
+import { useRef } from 'react';
 import { observer } from 'mobx-react';
-import { Page, locationToGrid } from '@flumens';
+import { resizeOutline } from 'ionicons/icons';
+import { Trans as T } from 'react-i18next';
+import { IonIcon, IonPage } from '@ionic/react';
+import Sample from 'models/sample';
 import Header from './Header';
 import Main from './Main';
 import './styles.scss';
@@ -10,42 +12,62 @@ type Props = {
   sample: Sample;
 };
 
-const AreaController: FC<Props> = ({ sample }) => {
-  const toggleGPStracking = (on: boolean) => sample.toggleBackgroundGPS(on);
+const AreaController = ({ sample }: Props) => {
+  const toggleGPStracking = (on: boolean) => {
+    sample.toggleBackgroundGPS(on);
+  };
 
-  const setAreaLocation = (shape: number) => sample.setAreaLocation(shape);
+  const setLocation = (shape: any) => {
+    sample.setAreaLocation(shape);
+  };
 
-  const location = sample.attrs.location || {};
-  const isGPSTracking = sample.isBackgroundGPSRunning();
+  const location = (sample.attrs.location as any) || {};
+  const isGPSTracking = sample.isGPSRunning();
   const { area } = location;
-  location.gridref = locationToGrid(location); // eslint-disable-line
 
-  let areaPretty;
+  let infoText;
   if (area) {
-    areaPretty = `${'Selected area'}: ${area.toLocaleString()} m²`;
+    infoText = (
+      <div className="text-with-icon-wrapper">
+        <IonIcon icon={resizeOutline} />
+        <T>Selected area</T>: {area.toLocaleString()} m²
+      </div>
+    );
   } else {
-    areaPretty = 'Please draw your area on the map';
+    infoText = (
+      <>
+        <T>Please draw your area on the map</T>
+        {isGPSTracking && (
+          <div>
+            <T>Disable the GPS tracking to enable the drawing tools.</T>
+          </div>
+        )}
+      </>
+    );
   }
 
-  const isDisabled = !!sample.metadata.synced_on;
-  const isFinished = !!sample.metadata.saved;
+  const isDisabled = sample.isDisabled();
+
+  const isAreaShape = location.shape?.type === 'Polygon';
+
+  const page = useRef(null);
 
   return (
-    <Page id="species-count-area">
+    <IonPage id="area" ref={page}>
       <Header
         toggleGPStracking={toggleGPStracking}
         isGPSTracking={isGPSTracking}
-        isFinished={isFinished}
+        isDisabled={isDisabled}
+        infoText={infoText}
+        isAreaShape={isAreaShape}
       />
       <Main
         sample={sample}
-        areaPretty={areaPretty}
         isGPSTracking={isGPSTracking}
-        shape={location.shape}
-        setAreaLocation={setAreaLocation}
+        setLocation={setLocation}
         isDisabled={isDisabled}
       />
-    </Page>
+    </IonPage>
   );
 };
 

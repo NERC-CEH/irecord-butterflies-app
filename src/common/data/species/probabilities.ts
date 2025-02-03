@@ -1,7 +1,7 @@
-import probByWeekData from './cache/probabilityByWeek.json';
-import probByHectadData from './cache/probabilityByHectad.json';
-import species from './cache/species.json';
 import hectads from './cache/hectads.json';
+import probByHectadData from './cache/probabilityByHectad.json';
+import probByWeekData from './cache/probabilityByWeek.json';
+import species from './cache/species.json';
 import { Species } from './index';
 
 type Probabilites = string[];

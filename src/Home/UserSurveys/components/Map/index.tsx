@@ -1,38 +1,30 @@
-import { FC, useState, useEffect } from 'react';
-import userModel from 'models/user';
+import { useState, useEffect, useCallback } from 'react';
 import { observer } from 'mobx-react';
+import { Trans as T } from 'react-i18next';
+import { MapRef, LngLatBounds } from 'react-map-gl';
 import { Link } from 'react-router-dom';
-import L, { LatLngBounds, LatLngTuple } from 'leaflet';
-import { isPlatform, IonSpinner } from '@ionic/react';
-import 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
-import '@flumens/ionic/dist/components/ModelLocationMap/Map/map/leaflet-mapbox-gl';
-import hasWebGL from 'common/helpers/webGLSupport';
-import { MapContainer } from 'react-leaflet';
-import CONFIG from 'common/config';
-import MapControls from './MapControls';
-import SquareMarker from './Components/SquareMarker';
-import RecordMarker from './Components/RecordMarker';
-import SpeciesProfile from './Components/SpeciesProfile';
-import { fetchRecords, fetchSquares } from './recordsService';
-import { Square, Record } from './esResponse.d';
+import {
+  useToast,
+  device,
+  MapContainer,
+  ElasticOccurrence,
+  mapMetresToZoom,
+} from '@flumens';
+import { IonSpinner } from '@ionic/react';
+import GeolocateButton from 'common/Components/GeolocateButton';
+import config from 'common/config';
+import userModel from 'models/user';
+import MapFilters, { dateRanges, monthAgo } from './Filters';
+import RecordProfiles from './RecordProfiles';
+import { fetchRecords, fetchSquares, Square } from './recordsService';
 import './styles.scss';
-
-const DEFAULT_ZOOM = 5;
-const DEFAULT_CENTER: LatLngTuple = [53.7326306, -2.6546124]; // UK center
-
-const MapBoxAttribution =
-  '<a href="http://mapbox.com/about/maps" class="mapbox-wordmark" target="_blank">Mapbox</a><input type="checkbox" id="toggle-info"> <label for="toggle-info"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE4LjEuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNDIyLjY4NiA0MjIuNjg2IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0MjIuNjg2IDQyMi42ODY7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxnPg0KCQk8cGF0aCBzdHlsZT0iZmlsbDojMDEwMDAyOyIgZD0iTTIxMS4zNDMsNDIyLjY4NkM5NC44MDQsNDIyLjY4NiwwLDMyNy44ODIsMCwyMTEuMzQzQzAsOTQuODEyLDk0LjgxMiwwLDIxMS4zNDMsMA0KCQkJczIxMS4zNDMsOTQuODEyLDIxMS4zNDMsMjExLjM0M0M0MjIuNjg2LDMyNy44ODIsMzI3Ljg4Miw0MjIuNjg2LDIxMS4zNDMsNDIyLjY4NnogTTIxMS4zNDMsMTYuMjU3DQoJCQljLTEwNy41NzQsMC0xOTUuMDg2LDg3LjUyLTE5NS4wODYsMTk1LjA4NnM4Ny41MiwxOTUuMDg2LDE5NS4wODYsMTk1LjA4NnMxOTUuMDg2LTg3LjUyLDE5NS4wODYtMTk1LjA4Ng0KCQkJUzMxOC45MDgsMTYuMjU3LDIxMS4zNDMsMTYuMjU3eiIvPg0KCTwvZz4NCgk8Zz4NCgkJPGc+DQoJCQk8cGF0aCBzdHlsZT0iZmlsbDojMDEwMDAyOyIgZD0iTTIzMS45LDEwNC42NDdjMC4zNjYsMTEuMzIzLTcuOTM0LDIwLjM3LTIxLjEzNCwyMC4zN2MtMTEuNjg5LDAtMTkuOTk2LTkuMDU1LTE5Ljk5Ni0yMC4zNw0KCQkJCWMwLTExLjY4OSw4LjY4MS0yMC43NDQsMjAuNzQ0LTIwLjc0NEMyMjMuOTc1LDgzLjkwMywyMzEuOSw5Mi45NTgsMjMxLjksMTA0LjY0N3ogTTE5NC45MzEsMzM4LjUzMVYxNTUuOTU1aDMzLjE4OXYxODIuNTc2DQoJCQkJQzIyOC4xMiwzMzguNTMxLDE5NC45MzEsMzM4LjUzMSwxOTQuOTMxLDMzOC41MzF6Ii8+DQoJCTwvZz4NCgk8L2c+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==" /></label> <div>Leaflet © <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong></div>';
-
-const URL =
-  'https://api.mapbox.com/styles/v1/cehapps/cipqvo0c0000jcknge1z28ejp/tiles/256/{z}/{x}/{y}?access_token={accessToken}';
 
 /**
  * Returns square size in meters.
  */
 const getSquareSize = (zoomLevel: number) => {
-  if (zoomLevel < 10) return 10000;
-  if (zoomLevel < 12) return 2000;
+  if (zoomLevel < 8) return 10000;
+  if (zoomLevel < 10) return 2000;
 
   return 1000;
 };
@@ -45,36 +37,50 @@ const getTotalSquares = (squares: Square[]) => {
   return squares?.reduce(addSquares, 0) || 1;
 };
 
-const Map: FC = () => {
-  const [map, setMap]: any = useState(null);
+const Map = () => {
+  const [mapRef, setMapRef] = useState<{ current?: MapRef }>({});
+  const measuredRef = useCallback(
+    (node: any) => node && setMapRef({ current: node }),
+    []
+  );
+
   const [isFetchingRecords, setFetchingRecords] = useState<any>(null);
+  const toast = useToast();
 
   const [totalSquares, setTotalSquares] = useState<number>(1);
   const [squares, setSquares] = useState<Square[]>([]);
-  const [records, setRecords] = useState<Record[]>([]);
+  const [records, setRecords] = useState<ElasticOccurrence[]>([]);
 
-  const [showRecordInfo, setShowRecordInfo] = useState<Record>();
-  const closeRecordInfo = () => setShowRecordInfo(undefined);
+  const [startDate, setStartDate] = useState(monthAgo);
+  const onStartDateSelect = (value: any) => setStartDate(value);
 
   const userIsLoggedIn = userModel.isLoggedIn();
 
-  const disableTapForIOS = !isPlatform('ios'); // TODO: https://github.com/Leaflet/Leaflet/issues/7255
-
   const updateRecords = async () => {
-    if (!map || !userIsLoggedIn) return;
+    if (
+      !mapRef.current ||
+      !userIsLoggedIn ||
+      !userModel.attrs.verified ||
+      !device.isOnline
+    )
+      return;
 
-    const bounds: LatLngBounds = map.getBounds().pad(0.5); // padding +50%
+    const bounds: LngLatBounds = mapRef.current.getBounds()!; // TODO: .pad(0.5); // padding +50%
 
-    const zoomLevel = map.getZoom();
+    const zoomLevel = mapRef.current.getZoom();
     const northWest = bounds.getNorthWest();
     const southEast = bounds.getSouthEast();
 
     if (northWest.lat === southEast.lat) return; // first time the bounds can be flat
 
-    const shouldFetchRecords = zoomLevel >= 14;
+    const shouldFetchRecords = zoomLevel >= 13;
     if (shouldFetchRecords) {
       setFetchingRecords(true);
-      const fetchedRecords = await fetchRecords(northWest, southEast);
+      const fetchedRecords = await fetchRecords({
+        northWest,
+        southEast,
+        startDate,
+      }).catch(toast.error);
       // Previous request was cancelled
       if (!fetchedRecords) return;
       setRecords(fetchedRecords);
@@ -86,7 +92,13 @@ const Map: FC = () => {
     const squareSize = getSquareSize(zoomLevel);
 
     setFetchingRecords(true);
-    const fetchedSquares = await fetchSquares(northWest, southEast, squareSize);
+    const fetchedSquares = await fetchSquares({
+      northWest,
+      southEast,
+      squareSize,
+      startDate,
+    }).catch(toast.error);
+
     // Previous request was cancelled
     if (!fetchedSquares) return;
     setRecords([]);
@@ -96,93 +108,162 @@ const Map: FC = () => {
     setFetchingRecords(false);
   };
 
-  const attachMoveListener = (): any => {
-    if (!map) return;
+  const updateMapCentre = () => updateRecords();
 
-    map.on('moveend', updateRecords);
+  useEffect(() => {
+    updateRecords();
+  }, [startDate]);
 
-    // eslint-disable-next-line
-    return () => map.off('moveend');
-  };
-  useEffect(attachMoveListener, [map]);
+  const [showRecordsInfo, setShowRecordsInfo] = useState<ElasticOccurrence[]>(
+    []
+  );
+  const closeRecordInfo = () => setShowRecordsInfo([]);
 
   const updateRecordsFirstTime = () => {
     updateRecords();
   };
-  useEffect(updateRecordsFirstTime, [map]);
+  useEffect(updateRecordsFirstTime, [mapRef]);
 
-  const getRecordMarker = (record: Record) => (
-    <RecordMarker key={record.id} record={record} onClick={setShowRecordInfo} />
-  );
-  const getSquareMarker = (square: Square) => {
-    const opacity = Number((square.doc_count / totalSquares).toFixed(2));
+  const getRecordMarker = (record: ElasticOccurrence) => {
+    const [latitude, longitude] = record.location.point
+      .split(',')
+      .map(parseFloat);
 
-    // max 80%, min 20%
-    const normalizedOpacity = Math.min(Math.max(opacity, 0.2), 0.8);
+    let fillColor = '#fcb500';
+    const status = record.identification.verification_status;
+    if (status === 'V') {
+      fillColor = '#00bd1a';
+    } else if (status === 'R') {
+      fillColor = '#f04141';
+    }
 
     return (
-      <SquareMarker
+      <MapContainer.Marker.Circle
+        key={record.id}
+        id={record.id}
+        longitude={longitude}
+        latitude={latitude}
+        paint={{
+          'circle-radius': 10,
+          'circle-stroke-color': 'white',
+          'circle-color': fillColor,
+          'circle-opacity': 1,
+        }}
+        onClick={() => setShowRecordsInfo([record])}
+      />
+    );
+  };
+  const recordMarkers = records.map(getRecordMarker);
+
+  const getSquareMarker = (square: Square) => {
+    const opacity = Number((square.doc_count ** 1.8 / totalSquares).toFixed(2)); // pow of 1.8 to increase the difference between different square opacities
+
+    const normalizedOpacity = Math.min(Math.max(opacity, 0.4), 0.7); // max 70%, min 40%
+
+    const [longitude, latitude] = square.key.split(' ').map(parseFloat);
+
+    const radius = square.size! / 2;
+    const padding = 1.1; // extra padding between squares
+    const metersToPixels =
+      radius / padding / 0.075 / Math.cos((latitude * Math.PI) / 180);
+
+    const zoomIn = () => {
+      mapRef.current?.flyTo({
+        center: [longitude, latitude],
+        zoom: mapMetresToZoom(square.size / 2) || mapRef.current.getZoom(),
+        duration: 500,
+      });
+    };
+
+    return (
+      <MapContainer.Marker.Circle
         key={square.key}
-        square={square}
-        fillOpacity={normalizedOpacity}
+        id={square.key}
+        longitude={longitude}
+        latitude={latitude}
+        onClick={zoomIn}
+        paint={{
+          'circle-stroke-color': '#003265',
+          'circle-stroke-width': 1,
+          'circle-color': '#007dfa',
+          'circle-opacity': normalizedOpacity,
+          'circle-radius': [
+            'interpolate',
+            ['exponential', 2],
+            ['zoom'],
+            0,
+            0,
+            20,
+            metersToPixels,
+          ],
+        }}
       />
     );
   };
 
-  const setTileLayer = (mapRef: L.Map) => {
-    setMap(mapRef);
+  const squareMarkers = squares.map(getSquareMarker);
 
-    const suppportsWebGL = hasWebGL();
-    if (suppportsWebGL) {
-      (L as any)
-        .mapboxGL({
-          accessToken: CONFIG.map.mapboxApiKey,
-          style: 'mapbox://styles/mapbox/satellite-streets-v11',
-          // eslint-disable-next-line
-          // @ts-ignore
-          attribution: MapBoxAttribution,
-        })
-        .addTo(mapRef);
-    } else {
-      L.tileLayer(URL, {
-        attribution: MapBoxAttribution,
-        accessToken: CONFIG.map.mapboxApiKey,
-      }).addTo(mapRef);
-    }
-  };
+  let initialViewState;
+
+  const transformRequest = (url: string) =>
+    url.startsWith('https://api.os.uk') ? { url: `${url}&srs=3857` } : { url };
 
   return (
-    <>
-      <MapContainer
-        id="map-user"
-        whenCreated={setTileLayer}
-        tap={disableTapForIOS}
-        zoom={DEFAULT_ZOOM}
-        zoomControl={false}
-        center={DEFAULT_CENTER}
-        minZoom={5}
-      >
-        {!userIsLoggedIn && (
-          <div className="login-message">
-            You need to login to your{' '}
-            <Link to="/user/login">iRecord account</Link> to be able to view the
-            records.
+    <MapContainer
+      id="user-records"
+      ref={measuredRef}
+      accessToken={config.map.mapboxApiKey}
+      maxZoom={17}
+      customAttribution='&copy; <a href="http://www.ordnancesurvey.co.uk/">Ordnance Survey</a>'
+      mapStyle={`https://api.os.uk/maps/vector/v1/vts/resources/styles?key=${config.map.osApiKey}`}
+      maxBounds={
+        [
+          [-8.834, 49.562], // Southwest
+          [1.9, 60.934], // Northeast
+        ] as any
+      }
+      maxPitch={0}
+      initialViewState={initialViewState}
+      onMoveEnd={updateMapCentre}
+      transformRequest={transformRequest}
+    >
+      <MapContainer.Control>
+        <MapFilters>
+          <div className="filters-column">
+            <div className="filters-row">
+              <MapFilters.Select
+                options={dateRanges}
+                onChange={onStartDateSelect}
+                value={startDate}
+              />
+            </div>
           </div>
-        )}
+        </MapFilters>
+      </MapContainer.Control>
 
-        {records.map(getRecordMarker)}
-
-        {squares?.map(getSquareMarker)}
-
-        <MapControls />
-
-        {isFetchingRecords && <IonSpinner />}
-      </MapContainer>
-
-      {showRecordInfo && (
-        <SpeciesProfile record={showRecordInfo} onClose={closeRecordInfo} />
+      {!userIsLoggedIn && (
+        <div className="login-message">
+          <T>
+            You need to <Link to="/user/login">login</Link> to your account to
+            be able to view the records.
+          </T>
+        </div>
       )}
-    </>
+
+      <GeolocateButton />
+
+      {squareMarkers}
+
+      {recordMarkers}
+
+      <MapContainer.Control>
+        {isFetchingRecords ? <IonSpinner /> : <div />}
+      </MapContainer.Control>
+
+      {!!showRecordsInfo?.length && (
+        <RecordProfiles records={showRecordsInfo} onClose={closeRecordInfo} />
+      )}
+    </MapContainer>
   );
 };
 

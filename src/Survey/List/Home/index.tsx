@@ -1,12 +1,13 @@
-import { FC, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import { observer } from 'mobx-react';
 import { useRouteMatch } from 'react-router';
 import { Page, Header, useAlert, useToast } from '@flumens';
-import { observer } from 'mobx-react';
+import { NavContext } from '@ionic/react';
 import appModel from 'models/app';
 import Occurrence from 'models/occurrence';
 import Sample, { useValidateCheck } from 'models/sample';
 import { useUserStatusCheck } from 'models/user';
-import { IonButton, NavContext } from '@ionic/react';
+import SurveyHeaderButton from 'Survey/common/Components/SurveyHeaderButton';
 import Main from './Main';
 import buttonWithExplanationImage from './buttonWithExplanationImage.png';
 import './styles.scss';
@@ -98,7 +99,7 @@ type Props = {
   sample: Sample;
 };
 
-const Home: FC<Props> = ({ sample }) => {
+const Home = ({ sample }: Props) => {
   const match = useRouteMatch();
   const alert = useAlert();
   const toast = useToast();
@@ -160,8 +161,6 @@ const Home: FC<Props> = ({ sample }) => {
     await _processSubmission();
   };
 
-  const isEditing = sample.metadata.saved;
-
   const isDisabled = sample.isUploaded();
 
   const navigateToOccurrence = (occ: Occurrence) => {
@@ -175,19 +174,6 @@ const Home: FC<Props> = ({ sample }) => {
     appModel.save();
   };
 
-  const isValid = !sample.validateRemote();
-
-  const finishButton = isDisabled ? null : (
-    <IonButton
-      onClick={onFinish}
-      color={isValid ? 'primary' : 'medium'}
-      fill="solid"
-      shape="round"
-    >
-      {isEditing ? 'Upload' : 'Finish'}
-    </IonButton>
-  );
-
   const deleteOccurrenceWrap = (occ: Occurrence) =>
     deleteOccurrence(occ, alert);
 
@@ -195,7 +181,7 @@ const Home: FC<Props> = ({ sample }) => {
     <Page id="survey-list-edit">
       <Header
         title="New List"
-        rightSlot={finishButton}
+        rightSlot={<SurveyHeaderButton onClick={onFinish} sample={sample} />}
         defaultHref="/home/surveys"
       />
       <Main

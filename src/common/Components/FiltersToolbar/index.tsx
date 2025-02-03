@@ -1,9 +1,9 @@
-import { FC, useRef, useState, useEffect } from 'react';
-import { IonToolbar, IonSearchbar, isPlatform } from '@ionic/react';
+import { useRef, useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { checkmarkOutline } from 'ionicons/icons';
-import { Keyboard } from '@capacitor/keyboard';
 import { useTranslation } from 'react-i18next';
+import { Keyboard } from '@capacitor/keyboard';
+import { IonToolbar, IonSearchbar, isPlatform } from '@ionic/react';
 import CurrentFilters from './CurrentFilters';
 import FiltersMenu, { FilterOption as FilterOptionType } from './FiltersMenu';
 import './styles.scss';
@@ -35,14 +35,14 @@ interface Props {
   isOpen?: boolean;
 }
 
-const FiltersToolbar: FC<Props> = ({
+const FiltersToolbar = ({
   values,
   toggleFilter,
   onSearch: onSearchProp,
   onSearchEnd: onSearchEndProp,
   isOpen,
   options,
-}) => {
+}: Props) => {
   const [searchPhrase, setSearchPhrase] = useState('');
   const [tappedSearchEnd, setTappedSearchEnd] = useState(false);
   const searchInput: any = useRef();

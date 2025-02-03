@@ -1,8 +1,14 @@
-import { FC, useContext, useEffect } from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import savedSamples from 'models/savedSamples';
-import appModel from 'models/app';
+import { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react';
+import {
+  bookOutline,
+  layersOutline,
+  informationCircleOutline,
+} from 'ionicons/icons';
+import { Trans as T } from 'react-i18next';
+import { Route, Redirect } from 'react-router-dom';
+import { App as AppPlugin } from '@capacitor/app';
+import { useAlert } from '@flumens';
 import {
   IonTabs,
   IonTabButton,
@@ -11,25 +17,17 @@ import {
   IonTabBar,
   IonRouterOutlet,
   NavContext,
-  IonFabList,
-  IonFabButton,
   useIonRouter,
 } from '@ionic/react';
-import {
-  bookOutline,
-  layersOutline,
-  informationCircleOutline,
-} from 'ionicons/icons';
-import { useAlert } from '@flumens';
-import LongPressFabButton from 'common/Components/LongPressFabButton';
-import PendingSurveysBadge from 'common/Components/PendingSurveysBadge';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import menuOutline from 'common/images/menuIcon.svg';
-import { Trans as T } from 'react-i18next';
-import { App as AppPlugin } from '@capacitor/app';
-import Menu from './Menu';
-import Species from './Species';
+import appModel from 'models/app';
+import savedSamples from 'models/collections/samples';
 import About from './About';
+import Menu from './Menu';
+import PendingSurveysBadge from './PendingSurveysBadge';
+import Species from './Species';
+import SurveyButton from './SurveyButton';
 import Surveys from './UserSurveys';
 import './styles.scss';
 
@@ -67,7 +65,7 @@ const useLongPressAlert = () => {
   return longPressAlert;
 };
 
-const HomeComponent: FC = () => {
+const HomeComponent = () => {
   const { navigate } = useContext(NavContext);
   const ionRouter = useIonRouter();
   const showLongPressAlert = useLongPressAlert();
@@ -84,9 +82,9 @@ const HomeComponent: FC = () => {
 
   useEffect(showLongPressAlertOnInit, []);
 
-  const navigateToPrimarySurvey = () => {
-    navigate(`/survey/point`);
-  };
+  const navigateToPrimarySurvey = () => navigate(`/survey/point`);
+  const navigateToListSurvey = () => navigate(`/survey/list`);
+  const navigateToTimedSurvey = () => navigate(`/survey/single-species-count`);
 
   const exitApp = () => {
     const onExitApp = () => !ionRouter.canGoBack() && AppPlugin.exitApp();
@@ -125,47 +123,15 @@ const HomeComponent: FC = () => {
           <IonLabel>
             <T>My Records</T>
           </IonLabel>
-          <PendingSurveysBadge savedSamples={savedSamples} />
+          <PendingSurveysBadge />
         </IonTabButton>
 
         <IonTabButton>
-          <LongPressFabButton
-            onClick={navigateToPrimarySurvey}
-            icon={butterflyIcon}
-            label="Record"
-          >
-            <IonFabList side="top">
-              {/* <IonFabButton
-                className="fab-button-label"
-                routerLink="/survey/multi-species-count"
-              >
-                <IonLabel>
-                  <T>Multi species timed count</T>
-                </IonLabel>
-              </IonFabButton> */}
-
-              <IonFabButton
-                className="fab-button-label"
-                routerLink="/survey/single-species-count"
-              >
-                <IonLabel>
-                  <T>Single species timed count</T>
-                </IonLabel>
-              </IonFabButton>
-
-              <IonFabButton
-                className="fab-button-label"
-                routerLink="/survey/list"
-              >
-                <IonLabel>
-                  <T>Species list</T>
-                </IonLabel>
-              </IonFabButton>
-              <div className="long-press-surveys-label">
-                <T>Click on other recording options from list below</T>
-              </div>
-            </IonFabList>
-          </LongPressFabButton>
+          <SurveyButton
+            onPrimarySurvey={navigateToPrimarySurvey}
+            onListSurvey={navigateToListSurvey}
+            onTimedSurvey={navigateToTimedSurvey}
+          />
         </IonTabButton>
 
         <IonTabButton tab="/home/about" href="/home/about">

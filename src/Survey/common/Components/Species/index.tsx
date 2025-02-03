@@ -1,13 +1,13 @@
-import { FC, useContext, useState, useEffect } from 'react';
-import Sample from 'models/sample';
-import Occurrence from 'models/occurrence';
-import appModel, { Filters, Filter, FilterGroup } from 'models/app';
-import { NavContext } from '@ionic/react';
-import { locationToGrid, Page, useAlert, useOnBackButton } from '@flumens';
+import { useContext, useState, useEffect } from 'react';
 import { observer } from 'mobx-react';
+import { locationToGrid, Page, useAlert, useOnBackButton } from '@flumens';
+import { NavContext } from '@ionic/react';
 import Main from 'common/Components/SpeciesList';
-import getCurrentWeekNumber from 'helpers/weeks';
 import { Species } from 'common/data/species';
+import appModel, { Filters, Filter, FilterGroup } from 'models/app';
+import Occurrence from 'models/occurrence';
+import Sample from 'models/sample';
+import getCurrentWeekNumber from 'helpers/weeks';
 import Header from './Header';
 
 function useDeleteSurveyPrompt(alert: any) {
@@ -82,13 +82,13 @@ function useTimeSurveyTip() {
   return showTip;
 }
 
-const SpeciesSelect: FC<Props> = ({
+const SpeciesSelect = ({
   sample,
   occurrence,
   title,
   showCancelButton,
   onSelect,
-}) => {
+}: Props) => {
   const { navigate, goBack } = useContext(NavContext);
   const showTimeSurveyTip = useTimeSurveyTip();
 
@@ -149,8 +149,8 @@ const SpeciesSelect: FC<Props> = ({
 
   const filters = { ...surveyFilters, ...appModel.attrs.filters };
 
-  function onSelectDefault(species: Species) {
-    const navNextPath = sample.setSpecies(species, occurrence);
+  async function onSelectDefault(species: Species) {
+    const navNextPath = await sample.setSpecies(species, occurrence);
     sample.save();
 
     if (navNextPath) {

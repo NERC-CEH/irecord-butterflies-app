@@ -8,6 +8,10 @@
 		"classpath": "com.ahm.capacitor.camera.preview.CameraPreview"
 	},
 	{
+		"pkg": "@capacitor-community/sqlite",
+		"classpath": "com.getcapacitor.community.database.sqlite.CapacitorSQLitePlugin"
+	},
+	{
 		"pkg": "@capacitor/app",
 		"classpath": "com.capacitorjs.plugins.app.AppPlugin"
 	},

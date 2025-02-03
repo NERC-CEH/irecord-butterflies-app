@@ -12,7 +12,7 @@ const byCount = ([, count1], [, count2]) => count2 - count1;
 
 const getEmptyObject = () => ({});
 
-function generateHectadProbabilites(rows) {
+function generateHectadProbabilities(rows) {
   const out = [];
 
   for (const [species, hectad, week, count] of rows) {
@@ -38,7 +38,7 @@ function generateHectadProbabilites(rows) {
   return out;
 }
 
-function generateWeeklyProbabilites(rows) {
+function generateWeeklyProbabilities(rows) {
   // +1 to keep the index starting at position 1. 0 index will always be empty
   const out = [...Array(WEEKS_PER_YEAR + 1)].map(getEmptyObject);
 
@@ -69,10 +69,10 @@ if (require.main === module) {
   };
 
   const process = () => {
-    let out = generateHectadProbabilites(rows);
+    let out = generateHectadProbabilities(rows);
     fs.writeFileSync('./cache/probabilityByHectad.json', JSON.stringify(out));
 
-    out = generateWeeklyProbabilites(rows);
+    out = generateWeeklyProbabilities(rows);
     fs.writeFileSync('./cache/probabilityByWeek.json', JSON.stringify(out));
 
     console.log(`🎉 Processed ${rows.length} rows.`);
@@ -85,5 +85,5 @@ if (require.main === module) {
     .on('end', process);
 }
 
-exports.generateWeeklyProbabilites = generateWeeklyProbabilites;
-exports.generateHectadProbabilites = generateHectadProbabilites;
+exports.generateWeeklyProbabilities = generateWeeklyProbabilities;
+exports.generateHectadProbabilities = generateHectadProbabilities;

@@ -1,28 +1,26 @@
-import { FC, useContext, SyntheticEvent } from 'react';
-import { useAlert, date, useToast } from '@flumens';
-import Sample, { useValidateCheck } from 'models/sample';
-import Occurrence from 'models/occurrence';
-import { useUserStatusCheck } from 'models/user';
+import { useContext } from 'react';
 import { observer } from 'mobx-react';
+import clsx from 'clsx';
+import { timeOutline } from 'ionicons/icons';
+import { Badge, getRelativeDate, useAlert, useToast } from '@flumens';
 import {
   IonItem,
-  IonLabel,
   IonItemSliding,
   IonItemOptions,
   IonItemOption,
-  IonBadge,
   IonIcon,
   IonAvatar,
   NavContext,
 } from '@ionic/react';
-import clsx from 'clsx';
+import VerificationIcon from 'common/Components/VerificationIcon';
+import VerificationListIcon from 'common/Components/VerificationListIcon';
 import species, { Species } from 'common/data/species';
 import getFormattedDuration from 'common/helpers/getFormattedDuration';
-import VerificationListIcon from 'common/Components/VerificationListIcon';
-import VerificationIcon from 'common/Components/VerificationIcon';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
+import Occurrence from 'models/occurrence';
+import Sample, { useValidateCheck } from 'models/sample';
+import { useUserStatusCheck } from 'models/user';
 import OnlineStatus from './components/OnlineStatus';
-import ErrorMessage from './components/ErrorMessage';
 import './styles.scss';
 
 function useSurveyDeletePrompt(sample: Sample) {
@@ -51,7 +49,7 @@ function useSurveyDeletePrompt(sample: Sample) {
 function getSampleInfo(sample: Sample) {
   const survey = sample.getSurvey();
 
-  const prettyDate = date.print(sample.attrs.date);
+  const prettyDate = getRelativeDate(sample.attrs.date);
   const isOutsideUK = sample.attrs.location && !sample.attrs.location.gridref;
 
   if (survey.name === 'point') {
@@ -81,19 +79,21 @@ function getSampleInfo(sample: Sample) {
 
     return (
       <>
-        <IonAvatar>{avatar}</IonAvatar>
+        <IonAvatar className="shrink-0">{avatar}</IonAvatar>
 
-        <IonLabel position="stacked" mode="ios" color="dark">
-          <IonLabel className="species-name" color={clsx(!label && 'warning')}>
+        <div className="flex w-full flex-col">
+          <div className={clsx('species-name', !label && 'text-warning')}>
             {label || 'Species missing'}
-          </IonLabel>
-          <IonLabel class="ion-text-wrap">{prettyDate}</IonLabel>
+          </div>
+
+          <div className="text-sm">{prettyDate}</div>
+
           {isOutsideUK && (
-            <IonBadge className="location-warning" color="warning">
+            <Badge color="warning" size="small">
               Check location
-            </IonBadge>
+            </Badge>
           )}
-        </IonLabel>
+        </div>
       </>
     );
   }
@@ -127,28 +127,36 @@ function getSampleInfo(sample: Sample) {
     );
 
     const showSurveyDuration = sample.metadata.saved ? (
-      <IonBadge>
-        Time: <b>{durationTime}</b>
-      </IonBadge>
+      <Badge className="ml-1" prefix={<IonIcon src={timeOutline} />}>
+        {durationTime}
+      </Badge>
     ) : null;
 
     return (
       <>
-        <IonAvatar>{avatar}</IonAvatar>
-        <IonLabel position="stacked" mode="ios" color="dark">
-          <IonLabel className="species-name">
+        <IonAvatar className="shrink-0">{avatar}</IonAvatar>
+
+        <div className="flex w-full flex-col">
+          <div className={clsx('species-name', !label && 'text-warning')}>
             {label || 'Species missing'}
-          </IonLabel>
-          <IonLabel class="ion-text-wrap">{prettyDate}</IonLabel>
-          <div className="badge-wrapper">
-            {!!count && (
-              <IonBadge>
-                Count: <b>{count}</b>
-              </IonBadge>
-            )}
-            {showSurveyDuration}
           </div>
-        </IonLabel>
+          <div>
+            <div className="text-sm">
+              {prettyDate}
+
+              {!!count && (
+                <Badge
+                  skipTranslation
+                  className="ml-1"
+                  prefix={<IonIcon src={butterflyIcon} />}
+                >
+                  {count}
+                </Badge>
+              )}
+              {showSurveyDuration}
+            </div>
+          </div>
+        </div>
       </>
     );
   }
@@ -161,9 +169,9 @@ function getSampleInfo(sample: Sample) {
     );
 
     const showSurveyDuration = sample.metadata.saved ? (
-      <IonBadge>
-        Time: <b>{durationTime}</b>
-      </IonBadge>
+      <Badge className="ml-1" prefix={<IonIcon src={timeOutline} />}>
+        {durationTime}
+      </Badge>
     ) : null;
 
     return (
@@ -172,11 +180,11 @@ function getSampleInfo(sample: Sample) {
           <div className="number">{speciesCount}</div>
           <div className="label">Count</div>
         </div>
-        <IonLabel position="stacked" mode="ios" color="dark">
-          <IonLabel className="species-name">Multi timed count</IonLabel>
-          <IonLabel class="ion-text-wrap">{prettyDate}</IonLabel>
+        <div className="flex flex-col">
+          <div className="species-name">Multi timed count</div>
+          <div className="text-sm">{prettyDate}</div>
           <div className="badge-wrapper">{showSurveyDuration}</div>
-        </IonLabel>
+        </div>
       </>
     );
   }
@@ -187,20 +195,20 @@ function getSampleInfo(sample: Sample) {
 
   return (
     <>
-      <div className="count">
+      <div className="count shrink-0">
         <div className="number">{speciesCount}</div>
         <div className="label">Species</div>
       </div>
 
-      <IonLabel position="stacked" mode="ios" color="dark">
-        <IonLabel className="location-name">{locationName}</IonLabel>
-        <IonLabel class="ion-text-wrap">{prettyDate}</IonLabel>
+      <div className="flex w-full flex-col">
+        <div className="location-name">{locationName}</div>
+        <div className="text-sm">{prettyDate}</div>
         {isOutsideUK && (
-          <IonBadge className="location-warning" color="warning">
+          <Badge color="warning" size="small">
             Check location
-          </IonBadge>
+          </Badge>
         )}
-      </IonLabel>
+      </div>
     </>
   );
 }
@@ -211,7 +219,7 @@ interface Props {
   style?: any;
 }
 
-const Survey: FC<Props> = ({ sample, uploadIsPrimary, ...props }) => {
+const Survey = ({ sample, uploadIsPrimary, ...props }: Props) => {
   const { navigate } = useContext(NavContext);
   const toast = useToast();
   const deleteSurvey = useSurveyDeletePrompt(sample);
@@ -223,10 +231,7 @@ const Survey: FC<Props> = ({ sample, uploadIsPrimary, ...props }) => {
   const href = !synchronising ? sample.getCurrentEditRoute() : undefined;
 
   const deleteSurveyWrap = () => deleteSurvey();
-  const onUpload = async (e: SyntheticEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-
+  const onUpload = async () => {
     const isUserOK = await checkUserStatus();
     if (!isUserOK) return;
 
@@ -248,15 +253,19 @@ const Survey: FC<Props> = ({ sample, uploadIsPrimary, ...props }) => {
       <VerificationListIcon sample={sample} key={sample.cid} />
     );
 
+  const openItem = () => {
+    if (sample.remote.synchronising) return; // fixes button onPressUp and other accidental navigation
+    navigate(href!);
+  };
+
   return (
     <IonItemSliding class="survey-list-item" {...props}>
-      <ErrorMessage sample={sample} />
-
       <IonItem
-        routerLink={href}
+        onClick={openItem}
         detail={!synchronising && !sample.hasOccurrencesBeenVerified()}
       >
         {getSampleInfo(sample)}
+
         <OnlineStatus
           sample={sample}
           onUpload={onUpload}

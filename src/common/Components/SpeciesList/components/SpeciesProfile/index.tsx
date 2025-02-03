@@ -1,38 +1,37 @@
 /* eslint-disable @getify/proper-arrows/name */
-import { FC, useState } from 'react';
-import {
-  IonCardHeader,
-  IonButton,
-  IonCardContent,
-  IonIcon,
-  IonChip,
-} from '@ionic/react';
-import { Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { useState } from 'react';
+import { expandOutline } from 'ionicons/icons';
+import { Trans as T } from 'react-i18next';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import '@ionic/react/css/ionic-swiper.css';
-import { expandOutline } from 'ionicons/icons';
-import { Main, useOnBackButton } from '@flumens';
-import { Trans as T } from 'react-i18next';
-import ImageWithBackground from 'Components/ImageWithBackground';
+import { Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import {
+  Badge,
+  Button,
+  ImageWithBackground,
+  Main,
+  useOnBackButton,
+} from '@flumens';
+import { IonCardHeader, IonCardContent, IonIcon } from '@ionic/react';
 import FullScreenPhotoViewer from '../FullScreenPhotoViewer';
 import './styles.scss';
 
 type Image = { file: string; title: string; author: string };
 
 type Props = {
+  onNavBack: any;
   onRecord: any;
   species?: any;
   isSurvey?: boolean;
 };
 
-const SpeciesProfile: FC<Props> = ({ species, onRecord, isSurvey }) => {
+const SpeciesProfile = ({ species, onRecord, onNavBack, isSurvey }: Props) => {
   const [showGallery, setShowGallery] = useState<number>();
   const [showLifechart, setShowLifechart] = useState(false);
   const [showMap, setShowMap] = useState(false);
 
-  useOnBackButton(onRecord);
+  useOnBackButton(onNavBack);
 
   const showPhotoInFullScreen = (index: number) => setShowGallery(index);
 
@@ -113,21 +112,24 @@ const SpeciesProfile: FC<Props> = ({ species, onRecord, isSurvey }) => {
         {getSlides()}
 
         <IonCardHeader>
-          <div className="title">
-            <h1>{species.commonName}</h1>
-            <h3>
-              <i>{species.scientificName}</i>
-            </h3>
+          <div className="flex items-center justify-between gap-2">
+            <div className="title">
+              <h1>{species.commonName}</h1>
+              <h3 className="font-light">
+                <i>{species.scientificName}</i>
+              </h3>
+            </div>
+            {!isSurvey && (
+              <Button
+                shape="round"
+                onPress={onRecord}
+                color="primary"
+                className="py-2"
+              >
+                Record
+              </Button>
+            )}
           </div>
-          {!isSurvey && (
-            <IonButton
-              shape="round"
-              onClick={onRecord}
-              routerLink={`/survey/point?species=${species.id}`}
-            >
-              Record
-            </IonButton>
-          )}
         </IonCardHeader>
 
         <IonCardContent>
@@ -141,9 +143,9 @@ const SpeciesProfile: FC<Props> = ({ species, onRecord, isSurvey }) => {
           <p>{species.habitats}</p>
           <h3>
             UK Status:{' '}
-            <IonChip className="species-status" outline>
+            <Badge className="text-xs capitalize" fill="outline">
               {species.status}
-            </IonChip>
+            </Badge>
           </h3>
           <p>{species.ukStatus}</p>
 

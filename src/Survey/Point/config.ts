@@ -1,18 +1,16 @@
-import * as Yup from 'yup';
+import { chatboxOutline } from 'ionicons/icons';
+import { z, object } from 'zod';
+import { isPlatform } from '@ionic/react';
+import config from 'common/config';
+import icon from 'common/images/butterflyIcon.svg';
 import {
   dateAttr,
   locationAttrs,
   deviceAttr,
   appVersionAttr,
   stageAttr,
-  verifyLocationSchema,
+  Survey,
 } from 'Survey/common/config';
-import { Survey } from 'common/surveys';
-
-import { isPlatform } from '@ionic/react';
-import { chatboxOutline } from 'ionicons/icons';
-import icon from 'common/images/butterflyIcon.svg';
-import config from 'common/config';
 
 const survey: Survey = {
   id: 101,
@@ -48,7 +46,7 @@ const survey: Survey = {
       },
     },
 
-    create(Occurrence) {
+    create({ Occurrence }) {
       return new Occurrence({
         attrs: {
           count: 1,
@@ -59,39 +57,31 @@ const survey: Survey = {
       });
     },
 
-    verify(attrs) {
-      try {
-        const occurrenceScheme = Yup.object().shape({
-          taxon: Yup.object().nullable().required('Species is missing.'),
-        });
-
-        occurrenceScheme.validateSync(attrs, { abortEarly: false });
-      } catch (attrError) {
-        return attrError;
-      }
-
-      return null;
-    },
+    verify: (attrs: any) =>
+      object({
+        taxon: object({}, { invalid_type_error: 'Species is missing.' }),
+      }).safeParse(attrs).error,
   },
 
-  create(AppSample, AppOccurrence, options) {
-    const sample = new AppSample({
+  async create({ Sample, Occurrence, taxon }) {
+    const sample = new Sample({
       metadata: {
         survey: survey.name,
-        survey_id: survey.id,
       },
-
       attrs: {
+        surveyId: survey.id,
+        date: new Date().toISOString(),
+        enteredSrefSystem: 4326,
         location: null,
         device: isPlatform('android') ? 'android' : 'ios',
         appVersion: config.version,
       },
     });
 
-    const occ = survey?.occ?.create(AppOccurrence);
+    const occ = await survey.occ!.create!({ Occurrence: Occurrence! });
 
-    if (options.species) {
-      occ?.setSpecies(options.species);
+    if (taxon) {
+      occ?.setSpecies(taxon.id);
     }
 
     sample.occurrences.push(occ);
@@ -101,19 +91,13 @@ const survey: Survey = {
     return sample;
   },
 
-  verify(attrs) {
-    try {
-      const sampleSchema = Yup.object().shape({
-        location: verifyLocationSchema,
-      });
-
-      sampleSchema.validateSync(attrs, { abortEarly: false });
-    } catch (attrError) {
-      return attrError;
-    }
-
-    return null;
-  },
+  verify: (attrs: any) =>
+    object({
+      location: object(
+        { latitude: z.number(), longitude: z.number(), name: z.string() },
+        { invalid_type_error: 'Please select location.' }
+      ),
+    }).safeParse(attrs).error,
 };
 
 export default survey;

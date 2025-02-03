@@ -9,7 +9,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
@@ -18,8 +18,8 @@
       "common/*": ["./src/common/*"],
       "@flumens": ["./src/common/flumens"],
       "models/*": ["./src/common/models/*"],
-      "helpers/*": ["src/common/helpers/*"],
-      "Components/*": ["src/common/Components/*"],
+      "helpers/*": ["./src/common/helpers/*"],
+      "Components/*": ["./src/common/Components/*"],
       "Survey/*": ["./src/Survey/*"]
     }
   },

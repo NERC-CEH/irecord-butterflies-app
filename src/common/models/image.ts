@@ -1,16 +1,21 @@
-import { Media, MediaAttrs } from '@flumens';
-import { isPlatform } from '@ionic/react';
 import { observable } from 'mobx';
-import config from 'common/config';
-import userModel from 'models/user';
 import { Capacitor } from '@capacitor/core';
 import { Filesystem, Directory } from '@capacitor/filesystem';
+import {
+  Media as MediaOriginal,
+  MediaAttrs,
+  Sample,
+  Occurrence,
+} from '@flumens';
+import { isPlatform } from '@ionic/react';
+import config from 'common/config';
 import identifyImage from 'common/services/waarneming';
+import userModel from 'models/user';
 
 type Attrs = MediaAttrs & { species: any };
 
-export default class AppMedia extends Media {
-  attrs: Attrs = this.attrs;
+export default class Media extends MediaOriginal<Attrs> {
+  declare parent?: Sample | Occurrence;
 
   identification = observable({ identifying: false });
 
@@ -31,17 +36,14 @@ export default class AppMedia extends Media {
   async destroy(silent?: boolean) {
     // remove from internal storage
     if (!isPlatform('hybrid')) {
-      if (!this.parent) {
-        return null;
-      }
+      if (!this.parent) return;
 
       this.parent.media.remove(this);
 
-      if (silent) {
-        return null;
-      }
+      if (silent) return;
 
-      return this.parent.save();
+      this.parent.save();
+      return;
     }
 
     const URL = this.attrs.data;
@@ -52,22 +54,16 @@ export default class AppMedia extends Media {
         directory: Directory.Data,
       });
 
-      if (!this.parent) {
-        return null;
-      }
+      if (!this.parent) return;
 
       this.parent.media.remove(this);
 
-      if (silent) {
-        return null;
-      }
+      if (silent) return;
 
-      return this.parent.save();
+      this.parent.save();
     } catch (err) {
       console.error(err);
     }
-
-    return null;
   }
 
   getURL() {
@@ -83,8 +79,8 @@ export default class AppMedia extends Media {
   getIdentifiedTaxonThatMatchParent() {
     if (!this.attrs.species) return null;
 
-    const occurrenceWarehouseId = this.parent.attrs?.taxon?.warehouseId;
-
+    const occurrenceWarehouseId = (this.parent as Occurrence).attrs?.taxon
+      ?.warehouseId;
     const byWarehouseId = (sp: any) =>
       sp.warehouse_id === occurrenceWarehouseId;
     return this.attrs.species.find(byWarehouseId);
@@ -117,6 +113,7 @@ export default class AppMedia extends Media {
 
       this.attrs.species = suggestions;
 
+      if (!this.parent) return;
       this.parent.save();
     } catch (error) {
       this.identification.identifying = false;
@@ -124,6 +121,5 @@ export default class AppMedia extends Media {
     }
 
     this.identification.identifying = false;
-    return null;
   }
 }

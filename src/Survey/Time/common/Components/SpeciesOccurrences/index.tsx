@@ -1,10 +1,10 @@
-import { FC, useContext } from 'react';
-import Sample from 'models/sample';
-import Occurrence from 'models/occurrence';
+import { useContext } from 'react';
 import { observer } from 'mobx-react';
-import { Page, Header, useAlert } from '@flumens';
 import { useRouteMatch } from 'react-router';
+import { Page, Header, useAlert } from '@flumens';
 import { NavContext, useIonViewWillEnter } from '@ionic/react';
+import Occurrence from 'models/occurrence';
+import Sample from 'models/sample';
 import Main from './Main';
 import './styles.scss';
 
@@ -40,13 +40,13 @@ type Props = {
 };
 
 function byCreationDate(s1: Sample, s2: Sample) {
-  const date1 = new Date(s1.metadata.updated_on);
-  const date2 = new Date(s2.metadata.updated_on);
+  const date1 = new Date(s1.updatedAt);
+  const date2 = new Date(s2.updatedAt);
 
   return date2.getTime() - date1.getTime();
 }
 
-const SpeciesController: FC<Props> = ({ sample }) => {
+const SpeciesController = ({ sample }: Props) => {
   const match = useRouteMatch();
   const { goBack, navigate } = useContext(NavContext);
   const confirmDelete = useDeleteConfirmation();
@@ -82,14 +82,14 @@ const SpeciesController: FC<Props> = ({ sample }) => {
       const survey = sample.getSurvey();
 
       const { stage } = sample.attrs;
-      const zeroAbundace = 't';
-      const newSubSample = survey.smp.create(
+      const zeroAbundance = 't';
+      const newSubSample = await survey.smp!.create!({
         Sample,
         Occurrence,
         taxon,
-        zeroAbundace,
-        stage
-      );
+        zeroAbundance,
+        stage,
+      });
       sample.samples.push(newSubSample);
       sample.save();
 

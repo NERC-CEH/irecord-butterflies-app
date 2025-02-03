@@ -7,7 +7,6 @@
  * Generate this list:
  */
 // cd src/common/data/species/photos && ls */*
-
 import './AntlerMoth/Antler Moth (Iain Leach).jpg?originalName';
 import './BeautifulYellowUnderwing/Beautiful Yellow Underwing (Keith Tailby).jpg?originalName';
 import './BeautifulYellowUnderwing/Beautiful Yellow Underwing larva (Bob Eade).jpg?originalName';
@@ -50,8 +49,8 @@ import './ScarletTiger/Scarlet Tiger (Bob Eade).jpg?originalName';
 import './ScarletTiger/Scarlet Tiger (Patrick Clement).jpg?originalName';
 import './ScarletTiger/Scarlet Tiger larva (Patrick Clement).jpg?originalName';
 import './ShadedBroadbar/Shaded Broad-bar (Mark Parsons).jpg?originalName';
-import './SilverY/Silver Y (Iain Leach).jpg?originalName';
 import './SilverY/Silver Y (Iain Leach)2.jpg?originalName';
+import './SilverY/Silver Y (Iain Leach).jpg?originalName';
 import './SilvergroundCarpet/Silver-ground Carpet (Keith Tailby).jpg?originalName';
 import './SixspotBurnet/Six-spot Burnet cocoon (Bob Eade).jpg?originalName';
 import './SixspotBurnet/Six-spot Burnet underwing (Bob Eade).jpg?originalName';
@@ -63,5 +62,5 @@ import './SpeckledYellow/Speckled Yellow (Iain Leach).jpg?originalName';
 import './VapourerMoth/Vapourer female and eggs (Patrick Clement).jpg?originalName';
 import './VapourerMoth/Vapourer larva (Iain Leach).jpg?originalName';
 import './VapourerMoth/Vapourer male (Iain Leach).jpg?originalName';
-import './YellowShell/Yellow Shell (Peter Maton).jpg?originalName';
 import './YellowShell/Yellow Shell (Peter Maton)2.jpg?originalName';
+import './YellowShell/Yellow Shell (Peter Maton).jpg?originalName';

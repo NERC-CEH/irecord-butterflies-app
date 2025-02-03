@@ -1,28 +1,26 @@
-import { FC, useState, useContext } from 'react';
-import Sample from 'models/sample';
+import { useState, useContext } from 'react';
+import { observer } from 'mobx-react';
+import { Trans as T } from 'react-i18next';
+import { useParams } from 'react-router-dom';
+import { Page, Main, VirtualList, Badge } from '@flumens';
 import {
   IonHeader,
   IonToolbar,
   IonSegment,
   IonSegmentButton,
   IonLabel,
-  IonBadge,
   IonIcon,
   IonList,
   NavContext,
   IonButton,
 } from '@ionic/react';
-import { useParams } from 'react-router-dom';
-import { observer } from 'mobx-react';
-import { Page, Main } from '@flumens';
-import userModel from 'models/user';
-import { Trans as T } from 'react-i18next';
-import butterflyIcon from 'common/images/butterflyIcon.svg';
 import InfoBackgroundMessage from 'common/Components/InfoBackgroundMessage';
-import VirtualList from 'common/Components/VirtualList';
-import SavedSamples from 'models/savedSamples';
-import Survey from './components/Survey';
+import butterflyIcon from 'common/images/butterflyIcon.svg';
+import SavedSamples from 'models/collections/samples';
+import Sample from 'models/sample';
+import userModel from 'models/user';
 import Map from './components/Map';
+import Survey from './components/Survey';
 import './styles.scss';
 
 // https://stackoverflow.com/questions/47112393/getting-the-iphone-x-safe-area-using-javascript
@@ -33,8 +31,8 @@ const LIST_PADDING = 90 + SAFE_AREA_TOP;
 const LIST_ITEM_HEIGHT = 75 + 10; // 10px for padding
 
 function byCreateTime(sample1: Sample, sample2: Sample) {
-  const date1 = new Date(sample1.metadata.created_on);
-  const date2 = new Date(sample2.metadata.created_on);
+  const date1 = new Date(sample1.createdAt);
+  const date2 = new Date(sample2.createdAt);
   return date2.getTime() - date1.getTime();
 }
 
@@ -42,7 +40,7 @@ type Props = {
   savedSamples: typeof SavedSamples;
 };
 
-const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
+const UserSurveyComponent = ({ savedSamples }: Props) => {
   const { navigate } = useContext(NavContext);
 
   const param: any = useParams();
@@ -53,7 +51,7 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
 
   const getSamplesList = (uploaded?: boolean) => {
     const byUploadStatus = (sample: Sample) =>
-      uploaded ? sample.metadata.synced_on : !sample.metadata.synced_on;
+      uploaded ? sample.syncedAt : !sample.syncedAt;
 
     return savedSamples.filter(byUploadStatus).sort(byCreateTime);
   };
@@ -76,7 +74,7 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
 
   const getSurveys = (surveys: Sample[], showUploadAll?: boolean) => {
     // eslint-disable-next-line react/no-unstable-nested-components
-    const Item: FC<{ index: number }> = ({ index, ...itemProps }) => {
+    const Item = ({ index, ...itemProps }: { index: number }) => {
       if (showUploadAll && index === 0) {
         const uploadAllButton = (
           <IonButton
@@ -110,7 +108,7 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
     return (
       <VirtualList
         itemCount={itemCount}
-        itemSize={LIST_ITEM_HEIGHT}
+        itemSize={() => LIST_ITEM_HEIGHT}
         Item={Item}
         topPadding={LIST_PADDING}
         bottomPadding={LIST_ITEM_HEIGHT / 2}
@@ -122,7 +120,11 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
     const surveys = getSamplesList(true);
 
     if (!surveys.length) {
-      return <InfoBackgroundMessage>No uploaded surveys</InfoBackgroundMessage>;
+      return (
+        <InfoBackgroundMessage className="mt-20">
+          No uploaded surveys
+        </InfoBackgroundMessage>
+      );
     }
 
     return (
@@ -142,14 +144,15 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
 
     if (!surveys.length) {
       return (
-        <InfoBackgroundMessage>
+        <InfoBackgroundMessage className="mt-20">
           <div>
             You have no finished records.
             <br />
             <br />
-            Press
+            Press{' '}
             <IonIcon
               icon={butterflyIcon}
+              className="-mb-3 rounded-md bg-primary p-2 text-white"
               onClick={navigateToPrimarySurvey}
             />{' '}
             to add.
@@ -174,9 +177,9 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
     }
 
     return (
-      <IonBadge color="warning" slot="end">
+      <Badge color="warning" skipTranslation size="small">
         {pendingSurveys.length}
-      </IonBadge>
+      </Badge>
     );
   };
 
@@ -188,9 +191,9 @@ const UserSurveyComponent: FC<Props> = ({ savedSamples }) => {
     }
 
     return (
-      <IonBadge color="light" slot="end">
+      <Badge skipTranslation size="small">
         {uploadedSurveys.length}
-      </IonBadge>
+      </Badge>
     );
   };
 

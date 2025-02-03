@@ -1,5 +1,5 @@
-import config from 'common/config';
 import axios from 'axios';
+import config from 'common/config';
 import surveyConfig from 'Survey/Point/config';
 
 export default async function fetchStats(userModel, year) {

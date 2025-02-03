@@ -1,8 +1,8 @@
-import { FC } from 'react';
-import Occurrence from 'models/occurrence';
-import { InfoMessage, InfoButton } from '@flumens';
 import clsx from 'clsx';
 import { checkmarkCircle, closeCircle } from 'ionicons/icons';
+import { InfoMessage, InfoButton } from '@flumens';
+import { IonIcon } from '@ionic/react';
+import Occurrence from 'models/occurrence';
 import './styles.scss';
 
 const getVerificationText = (
@@ -59,7 +59,7 @@ const icons: { [key: string]: string } = {
   rejected: closeCircle,
 };
 
-const VerificationMessage: FC<Props> = ({ occurrence }) => {
+const VerificationMessage = ({ occurrence }: Props) => {
   const status = occurrence.getVerificationStatus();
   const message = occurrence.getVerificationStatusMessage();
   const taxonName = occurrence.attrs.taxon.commonName;
@@ -81,7 +81,10 @@ const VerificationMessage: FC<Props> = ({ occurrence }) => {
   const hasVerifyDetails = verifierName && verifyDate;
 
   return (
-    <InfoMessage className={clsx('verification-message', status)} icon={icon}>
+    <InfoMessage
+      className={clsx('verification-message', status)}
+      prefix={<IonIcon src={icon} className="size-6" />}
+    >
       {verificationText}
       {hasVerifyDetails && (
         <InfoButton label="Details" header="Details">

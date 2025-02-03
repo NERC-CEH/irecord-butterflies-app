@@ -8,28 +8,28 @@ $light-primary: #e1f0e7;
 
   .message {
     position: absolute;
-    background: #fff;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 75%;
-    max-width: 400px;
     z-index: 1000;
     border-radius: 20px;
+    background: #fff;
     padding: 0;
+    width: 75%;
+    max-width: 400px;
 
     p {
-      text-align: left;
-      padding: 20px;
       margin: 0;
+      padding: 20px;
+      text-align: left;
     }
 
     .stars-icon-wrapper {
-      text-align: center;
-      margin: 20px 15px;
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 20px 15px;
+      text-align: center;
 
       ion-icon {
         color: #f2c94f;
@@ -38,18 +38,18 @@ $light-primary: #e1f0e7;
     }
 
     .title {
+      margin: 0;
       color: var(--ion-color-dark-tint);
       font-weight: bold;
-      text-align: center;
       font-size: 27px;
-      margin: 0;
+      text-align: center;
     }
 
     .message-total-records {
-      color: var(--ion-color-dark-tint);
-      text-align: center;
-      font-size: 1.1em;
       margin: 0;
+      color: var(--ion-color-dark-tint);
+      font-size: 1.1em;
+      text-align: center;
     }
 
     .message-content-with-background {
@@ -58,12 +58,12 @@ $light-primary: #e1f0e7;
   }
 
   ion-item {
-    text-align: center;
-    font-size: 1.4em;
-    max-width: 80%;
     margin: 30px auto;
     border-radius: 10px;
+    max-width: 80%;
     color: var(--ion-color-primary-contrast);
+    font-size: 1.4em;
+    text-align: center;
     --background: var(--ion-color-primary) !important;
   }
 }

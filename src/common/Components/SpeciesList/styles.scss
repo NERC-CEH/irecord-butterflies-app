@@ -5,7 +5,8 @@
     #feedback-request {
       border-radius: 10px;
       ion-card-title {
-        font-family: 'Museo500';
+        font-weight: 500;
+        font-family: 'Museo';
       }
     }
   }
@@ -17,14 +18,16 @@
   .species-tile {
     padding: 0;
 
-    .container {
-      position: relative;
-      background: white;
+    .wrapper {
       display: flex;
+      position: relative;
       flex-direction: column;
       margin: 8px;
-      border-radius: 10px;
       box-shadow: 0 0 10px #d9d9da;
+      border-radius: 10px;
+      background: white;
+
+      overflow: hidden;
 
       .badge {
         position: absolute;
@@ -33,26 +36,25 @@
       }
 
       .common-name {
-        flex: 1;
         display: flex;
-        justify-content: center;
+        flex: 1;
         flex-direction: column;
+        justify-content: center;
+        z-index: 10;
         padding: 0.5em;
         min-height: 3.6em;
+        font-weight: 700;
         line-height: 1.3em;
+        font-family: 'Museo';
         text-align: center;
-        font-family: 'Museo700';
-        z-index: 10;
       }
 
-      overflow: hidden;
-
       .thumbnail {
+        z-index: 10;
         margin: -8% -3% -16%;
         width: 106%;
-        min-height: 120px; // fixes loading image jitter
         max-width: none;
-        z-index: 10;
+        min-height: 120px; // fixes loading image jitter
       }
       img.thumbnail-background {
         position: absolute;
@@ -66,24 +68,24 @@
 
         img {
           position: absolute;
-          filter: blur(30px);
           transform: scale(2.5);
-          height: 100%;
+          filter: blur(30px);
           width: 100%;
+          height: 100%;
         }
       }
 
       .info-box {
         position: absolute;
-        right: 0;
         top: 0;
-        height: 100%;
-        width: 100%;
-        background: #fffffff0;
-        border-radius: 50%;
+        right: 0;
         transform: translate(50%, -50%);
-        box-shadow: 0 0 15px 5px #e6e6e6;
         z-index: 100;
+        box-shadow: 0 0 15px 5px #e6e6e6;
+        border-radius: 50%;
+        background: #fffffff0;
+        width: 100%;
+        height: 100%;
 
         ion-icon {
           width: 30%;
@@ -98,30 +100,17 @@
   }
 
   ion-item-divider.item-divider-sticky {
-    padding: 0;
-    color: white;
-    width: 104%;
     z-index: 1000;
 
     margin: 10px -2%;
-    &:first-child {
-      margin-top: 0;
-    }
-
-    ion-label {
-      width: 100%;
-      text-align: center;
-    }
 
     background: var(--ion-color-primary) !important;
-    &.species-now {
-      background: #51735f !important;
-    }
-    &.species-moths {
-      background: #556786 !important;
-    }
-    &.species-additional {
-      background: #696969 !important;
+    padding: 0;
+    --inner-padding-end: 0;
+    width: 104%;
+    color: white;
+    &:first-child {
+      margin-top: 0;
     }
   }
 }
@@ -132,11 +121,11 @@
   --border-style: none;
 
   ion-button {
-    height: 40px;
-    width: 40px;
-    margin-left: -4px;
     margin-top: 3px;
-    border-radius: 50%;
+    margin-left: -4px;
     box-shadow: 0 0 7px #0000003d;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
   }
 }

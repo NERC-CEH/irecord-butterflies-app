@@ -1,4 +1,5 @@
 import { observable } from 'mobx';
+
 // https://stackoverflow.com/questions/6117814/get-week-of-year-in-javascript-like-in-php
 (window as any).admin = observable({ currentWeek: null });
 

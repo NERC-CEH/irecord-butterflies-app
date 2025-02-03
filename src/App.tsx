@@ -1,41 +1,55 @@
-import { FC } from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
 import { observer } from 'mobx-react';
-import savedSamples from 'models/savedSamples';
-import appModel from 'models/app';
-import userModel from 'models/user';
+import { Route, Redirect } from 'react-router-dom';
+import {
+  TailwindBlockContext,
+  TailwindContext,
+  TailwindContextValue,
+  defaultContext,
+} from '@flumens';
+import { IonApp, IonRouterOutlet, isPlatform } from '@ionic/react';
+import { IonReactRouter } from '@ionic/react-router';
 import ThankYouAlert from 'common/Components/ThankYouAlert';
-import WhatsNewDialog from 'common/Components/WhatsNewDialog';
 import UpdatedRecordsAlert from 'common/Components/UpdatedRecordsAlert';
+import WhatsNewDialog from 'common/Components/WhatsNewDialog';
+import 'common/theme.scss';
 import Home from './Home';
-import Settings from './Settings/router';
+import OnboardingScreens from './Info/OnBoardingScreens';
 import Info from './Info/router';
-import OnBoardingScreens from './Info/OnBoardingScreens';
-import User from './User/router';
+import Settings from './Settings/router';
 import Survey from './Survey/router';
+import User from './User/router';
+
+const platform = isPlatform('ios') ? 'ios' : 'android';
+const tailwindContext: TailwindContextValue = { platform };
+const tailwindBlockContext = {
+  ...defaultContext,
+  ...tailwindContext,
+  basePath: '',
+};
 
 const HomeRedirect = () => <Redirect to="home" />;
 
-const App: FC = () => (
+const App = () => (
   <IonApp>
-    <OnBoardingScreens appModel={appModel}>
-      <WhatsNewDialog appModel={appModel} />
-      <ThankYouAlert userModel={userModel} />
-
-      <IonReactRouter>
-        <UpdatedRecordsAlert appModel={appModel} savedSamples={savedSamples} />
-        <IonRouterOutlet id="main">
-          <Route exact path="/" component={HomeRedirect} />
-          <Route path="/home" component={Home} />
-          {User}
-          {Info}
-          {Settings}
-          {Survey}
-        </IonRouterOutlet>
-      </IonReactRouter>
-    </OnBoardingScreens>
+    <OnboardingScreens>
+      <WhatsNewDialog />
+      <ThankYouAlert />
+      <TailwindContext.Provider value={tailwindContext}>
+        <TailwindBlockContext.Provider value={tailwindBlockContext}>
+          <IonReactRouter>
+            <UpdatedRecordsAlert />
+            <IonRouterOutlet id="main">
+              <Route exact path="/" component={HomeRedirect} />
+              <Route path="/home" component={Home} />
+              {User}
+              {Info}
+              {Survey}
+              {Settings}
+            </IonRouterOutlet>
+          </IonReactRouter>
+        </TailwindBlockContext.Provider>
+      </TailwindContext.Provider>
+    </OnboardingScreens>
   </IonApp>
 );
 

@@ -1,5 +1,6 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { observer } from 'mobx-react';
+import { searchOutline } from 'ionicons/icons';
 import {
   IonHeader,
   IonToolbar,
@@ -9,10 +10,9 @@ import {
   IonButton,
   IonTitle,
 } from '@ionic/react';
-import { Filter, FilterGroup } from 'models/app';
-import { searchOutline } from 'ionicons/icons';
-import FiltersToolbar from 'Components/FiltersToolbar';
 import filterOptions from 'common/data/species/filters';
+import { Filter, FilterGroup } from 'models/app';
+import FiltersToolbar from 'Components/FiltersToolbar';
 
 const DefaultBackButton = () => (
   <IonButtons slot="start">
@@ -28,13 +28,13 @@ type Props = {
   onCancel?: any;
 };
 
-const Header: FC<Props> = ({
+const Header = ({
   onSearch,
   toggleFilter,
   filters,
   onCancel,
   title = 'Select Species',
-}) => {
+}: Props) => {
   const [isSearching, setIsSearching] = useState(false);
   const onSearchStart = () => setIsSearching(true);
   const onSearchEnd = () => setIsSearching(false);

@@ -1,16 +1,15 @@
 /* eslint-disable camelcase */
-import { FC } from 'react';
-import Media from 'models/image';
-import { IonLabel, IonNote, isPlatform } from '@ionic/react';
 import { observer } from 'mobx-react';
 import clsx from 'clsx';
+import { IonLabel, IonNote, isPlatform } from '@ionic/react';
+import Media from 'models/image';
 import './styles.scss';
 
 type Props = {
   image: Media;
 };
 
-const ImageTitle: FC<Props> = ({ image }) => {
+const ImageTitle = ({ image }: Props) => {
   if (image.identification.identifying) return null; // for re-rendering, this line must be first because this is the only observable in the media model
 
   const identifierWasNotUsed = !image.attrs.species;

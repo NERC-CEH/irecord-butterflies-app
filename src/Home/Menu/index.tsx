@@ -1,11 +1,7 @@
-import { FC } from 'react';
-import { Page, device, useAlert, useLoader, useToast } from '@flumens';
 import { observer } from 'mobx-react';
-import { IonFooter } from '@ionic/react';
-import userModel from 'models/user';
+import { Page, device, useAlert, useLoader, useToast } from '@flumens';
 import appModel from 'models/app';
-import flumensLogo from 'common/images/flumens.svg';
-import config from 'common/config';
+import userModel from 'models/user';
 import Main from './Main';
 import './styles.scss';
 
@@ -36,7 +32,7 @@ function showLogoutConfirmationDialog(callback: any, alert: any) {
   });
 }
 
-const MenuController: FC = () => {
+const MenuController = () => {
   const alert = useAlert();
   const loader = useLoader();
   const toast = useToast();
@@ -97,15 +93,6 @@ const MenuController: FC = () => {
         refreshAccount={checkActivation}
         resendVerificationEmail={resendVerificationEmail}
       />
-      <IonFooter className="ion-no-border">
-        <div>
-          <a href="https://flumens.io">
-            <img src={flumensLogo} alt="logo" />
-          </a>
-
-          <p className="app-version">{`App version: v${config.version} (${config.build})`}</p>
-        </div>
-      </IonFooter>
     </Page>
   );
 };
