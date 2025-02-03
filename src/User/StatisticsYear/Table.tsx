@@ -96,10 +96,12 @@ const Table = ({ data }: Props) => {
   };
 
   return (
-    <table {...getTableProps()}>
-      <thead>{headerGroups.map(getHeaderGroup)}</thead>
-      <tbody {...getTableBodyProps()}>{rows.map(getRow)}</tbody>
-    </table>
+    <div className="my-5 w-full max-w-full overflow-scroll px-2">
+      <table {...getTableProps()}>
+        <thead>{headerGroups.map(getHeaderGroup)}</thead>
+        <tbody {...getTableBodyProps()}>{rows.map(getRow)}</tbody>
+      </table>
+    </div>
   );
 };
 
