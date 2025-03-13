@@ -8,7 +8,6 @@ import {
 import { Trans as T } from 'react-i18next';
 import { Route, Redirect } from 'react-router-dom';
 import { App as AppPlugin } from '@capacitor/app';
-import { useAlert } from '@flumens';
 import {
   IonTabs,
   IonTabButton,
@@ -19,9 +18,7 @@ import {
   NavContext,
   useIonRouter,
 } from '@ionic/react';
-import butterflyIcon from 'common/images/butterflyIcon.svg';
 import menuOutline from 'common/images/menuIcon.svg';
-import appModel from 'models/app';
 import savedSamples from 'models/collections/samples';
 import About from './About';
 import Menu from './Menu';
@@ -33,54 +30,9 @@ import './styles.scss';
 
 const UserSurveys = () => <Surveys savedSamples={savedSamples} />;
 
-const useLongPressAlert = () => {
-  const alert = useAlert();
-
-  const longPressAlert = () =>
-    alert({
-      header: 'Tip: Adding Observations',
-      message: (
-        <>
-          Tap on the{' '}
-          <IonIcon icon={butterflyIcon} className="long-tap-tip-message-icon" />{' '}
-          button to record a single species or sighting. <br />
-          <br />
-          Long-press{' '}
-          <IonIcon
-            icon={butterflyIcon}
-            className="long-tap-tip-message-icon"
-          />{' '}
-          button to start a multi-species survey list.
-        </>
-      ),
-      buttons: [
-        {
-          text: 'OK, got it',
-          role: 'cancel',
-          cssClass: 'primary',
-        },
-      ],
-    });
-
-  return longPressAlert;
-};
-
 const HomeComponent = () => {
   const { navigate } = useContext(NavContext);
   const ionRouter = useIonRouter();
-  const showLongPressAlert = useLongPressAlert();
-
-  const showLongPressAlertOnInit = () => {
-    if (!appModel.attrs.showLongPressTip) {
-      return;
-    }
-
-    showLongPressAlert();
-    appModel.attrs.showLongPressTip = false;
-    appModel.save();
-  };
-
-  useEffect(showLongPressAlertOnInit, []);
 
   const navigateToPrimarySurvey = () => navigate(`/survey/point`);
   const navigateToListSurvey = () => navigate(`/survey/list`);

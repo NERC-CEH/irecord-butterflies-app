@@ -37,7 +37,6 @@ export interface Attrs extends ModelAttrs {
   showLocationGPSTip: boolean;
   showSurveysDeleteTip: boolean;
   showSurveyUploadTip: boolean;
-  showLongPressTip: boolean;
   showListSurveyTip: boolean;
   showSpeciesDeleteTip: boolean;
   showSurveyOptionsTip: boolean;
@@ -83,7 +82,6 @@ const defaults: Attrs = {
   showLocationGPSTip: true,
   showSurveysDeleteTip: true,
   showSurveyUploadTip: true,
-  showLongPressTip: true,
   showListSurveyTip: true,
   showSpeciesDeleteTip: true,
   showListSurveyHiddenButtonTip: true,
