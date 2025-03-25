@@ -44,7 +44,7 @@ function calculateLineLenght(lineString) {
 }
 
 function getShape(sample) {
-  const oldLocation = sample.attrs.location || {};
+  const oldLocation = sample.data.location || {};
 
   if (!oldLocation.shape) {
     return { type: 'LineString', coordinates: [] };
@@ -147,7 +147,7 @@ const extension = {
 
   setAreaLocation(shape, accuracy, altitude, altitudeAccuracy) {
     if (!shape) {
-      this.attrs.location = null;
+      this.data.location = null;
       return this.save();
     }
 
@@ -163,7 +163,7 @@ const extension = {
 
     area = Math.floor(area);
 
-    this.attrs.location = {
+    this.data.location = {
       latitude,
       longitude,
       area,

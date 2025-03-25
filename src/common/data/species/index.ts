@@ -109,4 +109,11 @@ const extendedSpecies: Species[] = species.map(extendWithResources);
 //   }
 // })();
 
+export const byIdsAndName =
+  (taxon: any) =>
+  ({ id: speciesID, scientificName, warehouseId }: Species) =>
+    speciesID === taxon.id ||
+    warehouseId === taxon.warehouse_id ||
+    scientificName === taxon.scientificName;
+
 export default extendedSpecies;

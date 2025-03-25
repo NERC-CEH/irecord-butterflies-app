@@ -19,7 +19,6 @@ import {
   useIonRouter,
 } from '@ionic/react';
 import menuOutline from 'common/images/menuIcon.svg';
-import savedSamples from 'models/collections/samples';
 import About from './About';
 import Menu from './Menu';
 import PendingSurveysBadge from './PendingSurveysBadge';
@@ -27,8 +26,6 @@ import Species from './Species';
 import SurveyButton from './SurveyButton';
 import Surveys from './UserSurveys';
 import './styles.scss';
-
-const UserSurveys = () => <Surveys savedSamples={savedSamples} />;
 
 const HomeComponent = () => {
   const { navigate } = useContext(NavContext);
@@ -57,7 +54,7 @@ const HomeComponent = () => {
       <IonRouterOutlet>
         <Redirect exact path="/home" to="/home/species" />
         <Route path="/home/species" component={Species} exact />
-        <Route path="/home/surveys/:id?" component={UserSurveys} exact />
+        <Route path="/home/surveys/:id?" component={Surveys} exact />
         <Route path="/home/about" component={About} exact />
         <Route path="/home/menu" component={Menu} exact />
       </IonRouterOutlet>

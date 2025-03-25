@@ -1,6 +1,12 @@
 import { useContext, useState, useEffect } from 'react';
 import { observer } from 'mobx-react';
-import { locationToGrid, Page, useAlert, useOnBackButton } from '@flumens';
+import {
+  locationToGrid,
+  Page,
+  useAlert,
+  useOnBackButton,
+  useSample,
+} from '@flumens';
 import { NavContext } from '@ionic/react';
 import Main from 'common/Components/SpeciesList';
 import { Species } from 'common/data/species';
@@ -37,8 +43,6 @@ function useDeleteSurveyPrompt(alert: any) {
 }
 
 type Props = {
-  sample: Sample;
-  occurrence: Occurrence;
   title?: string;
   showCancelButton?: any;
   onSelect?: (species: Species) => void;
@@ -82,28 +86,24 @@ function useTimeSurveyTip() {
   return showTip;
 }
 
-const SpeciesSelect = ({
-  sample,
-  occurrence,
-  title,
-  showCancelButton,
-  onSelect,
-}: Props) => {
+const SpeciesSelect = ({ title, showCancelButton, onSelect }: Props) => {
   const { navigate, goBack } = useContext(NavContext);
   const showTimeSurveyTip = useTimeSurveyTip();
 
-  const location = JSON.parse(JSON.stringify(sample.attrs.location || {}));
+  const { sample, occurrence } = useSample<Sample, Occurrence>();
+
+  const location = JSON.parse(JSON.stringify(sample?.data.location || {}));
   location.accuracy = 1000000; // make it hectad
   location.gridref = locationToGrid(location); // eslint-disable-line
   const hectad = location.gridref;
 
-  const week = getCurrentWeekNumber(sample.attrs.date);
+  const week = getCurrentWeekNumber(sample?.data.date);
 
   const getIdentifiedSpeciesList = () => {
-    if (!occurrence && sample.metadata.survey === 'point')
-      return sample.occurrences[0]?.getAllUniqueIdentifiedSpecies();
+    if (!occurrence && sample!.getSurvey().name === 'point')
+      return sample?.occurrences[0]?.getAllUniqueIdentifiedSpecies();
 
-    if (!occurrence && sample.metadata.survey === 'list') return [];
+    if (!occurrence && sample?.getSurvey().name === 'list') return [];
 
     if (!occurrence) return [];
 
@@ -117,7 +117,7 @@ const SpeciesSelect = ({
 
   const shouldDeleteSurvey = useDeleteSurveyPrompt(alert);
   const isSurveySingleSpeciesTimedCount =
-    sample.isSurveySingleSpeciesTimedCount();
+    sample?.isSurveySingleSpeciesTimedCount();
 
   const onDeleteSurvey = async () => {
     if (!isSurveySingleSpeciesTimedCount || isAlertPresent) {
@@ -129,7 +129,7 @@ const SpeciesSelect = ({
 
     const change = await shouldDeleteSurvey();
     if (change) {
-      await sample.destroy();
+      await sample!.destroy();
       setIsAlertPresent(false);
       navigate('/home/surveys', 'root', 'push', undefined, {
         unmount: true,
@@ -144,14 +144,14 @@ const SpeciesSelect = ({
 
   const [searchPhrase, setSearchPhrase] = useState('');
   const [surveyFilters, setSurveyFilters] = useState<Filters | null>(
-    sample.getSurveySpeciesFilters()
+    sample!.getSurveySpeciesFilters()
   );
 
-  const filters = { ...surveyFilters, ...appModel.attrs.filters };
+  const filters = { ...surveyFilters, ...appModel.data.filters };
 
   async function onSelectDefault(species: Species) {
-    const navNextPath = await sample.setSpecies(species, occurrence);
-    sample.save();
+    const navNextPath = await sample!.setSpecies(species, occurrence!);
+    sample!.save();
 
     if (navNextPath) {
       navigate(navNextPath, 'forward', 'push', undefined, {
@@ -163,11 +163,11 @@ const SpeciesSelect = ({
     goBack();
   }
 
-  const getSpeciesID = (occ: Occurrence) => (occ.attrs.taxon || {}).id;
-  const getSampleSpeciesID = (smp: Sample) => smp.occurrences[0].attrs.taxon.id;
-  const currentSpecies = sample.isSurveyMultiSpeciesTimedCount()
-    ? sample.samples.map(getSampleSpeciesID)
-    : sample.occurrences.map(getSpeciesID);
+  const getSpeciesID = (occ: Occurrence) => (occ.data.taxon || {}).id;
+  const getSampleSpeciesID = (smp: Sample) => smp.occurrences[0].data.taxon.id;
+  const currentSpecies = sample?.isSurveyMultiSpeciesTimedCount()
+    ? sample!.samples.map(getSampleSpeciesID)
+    : sample?.occurrences.map(getSpeciesID);
 
   const toggleFilter = (type: FilterGroup, value: Filter) => {
     if (type === 'survey') {
@@ -180,15 +180,17 @@ const SpeciesSelect = ({
 
   const showTimeSurveyTipOnce = () => {
     if (
-      sample.isSurveySingleSpeciesTimedCount() &&
-      appModel.attrs.showTimeSurveyTip
+      sample!.isSurveySingleSpeciesTimedCount() &&
+      appModel.data.showTimeSurveyTip
     ) {
-      appModel.attrs.showTimeSurveyTip = false; // eslint-disable-line
+      appModel.data.showTimeSurveyTip = false; // eslint-disable-line
       appModel.save();
       showTimeSurveyTip();
     }
   };
   useEffect(showTimeSurveyTipOnce);
+
+  if (!sample) return null;
 
   return (
     <Page id="species-attr">

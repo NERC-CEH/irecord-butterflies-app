@@ -46,7 +46,7 @@ export default class Media extends MediaOriginal<Attrs> {
       return;
     }
 
-    const URL = this.attrs.data;
+    const URL = this.data.data;
 
     try {
       await Filesystem.deleteFile({
@@ -67,7 +67,7 @@ export default class Media extends MediaOriginal<Attrs> {
   }
 
   getURL() {
-    const { data: name } = this.attrs;
+    const { data: name } = this.data;
 
     if (!isPlatform('hybrid') || process.env.NODE_ENV === 'test') {
       return name;
@@ -77,13 +77,13 @@ export default class Media extends MediaOriginal<Attrs> {
   }
 
   getIdentifiedTaxonThatMatchParent() {
-    if (!this.attrs.species) return null;
+    if (!this.data.species) return null;
 
-    const occurrenceWarehouseId = (this.parent as Occurrence).attrs?.taxon
+    const occurrenceWarehouseId = (this.parent as Occurrence).data?.taxon
       ?.warehouseId;
     const byWarehouseId = (sp: any) =>
       sp.warehouse_id === occurrenceWarehouseId;
-    return this.attrs.species.find(byWarehouseId);
+    return this.data.species.find(byWarehouseId);
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -92,9 +92,9 @@ export default class Media extends MediaOriginal<Attrs> {
   }
 
   getTopSpecies() {
-    if (!this.attrs.species) return null;
+    if (!this.data.species) return null;
 
-    return this.attrs.species[0];
+    return this.data.species[0];
   }
 
   async identify() {
@@ -111,7 +111,7 @@ export default class Media extends MediaOriginal<Attrs> {
 
       const suggestions = await identifyImage(url);
 
-      this.attrs.species = suggestions;
+      this.data.species = suggestions;
 
       if (!this.parent) return;
       this.parent.save();

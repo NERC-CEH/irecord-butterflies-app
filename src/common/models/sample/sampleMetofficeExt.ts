@@ -133,23 +133,23 @@ const normaliseResponseValues = ({ main, wind, clouds }: API_TYPES) => ({
 
 function setNewWeatherValues(sample: any, newWeatherValues: WEATHER_TYPES) {
   if (
-    !Number.isFinite(sample.attrs.temperature) &&
+    !Number.isFinite(sample.data.temperature) &&
     Number.isFinite(newWeatherValues.temperature)
   ) {
-    sample.attrs.temperature = newWeatherValues.temperature; // eslint-disable-line
+    sample.data.temperature = newWeatherValues.temperature; // eslint-disable-line
   }
-  if (!sample.attrs.windDirection && newWeatherValues.windDirection) {
-    sample.attrs.windDirection = newWeatherValues.windDirection; // eslint-disable-line
+  if (!sample.data.windDirection && newWeatherValues.windDirection) {
+    sample.data.windDirection = newWeatherValues.windDirection; // eslint-disable-line
   }
-  if (!sample.attrs.windSpeed && newWeatherValues.windSpeed) {
-    sample.attrs.windSpeed = newWeatherValues.windSpeed; // eslint-disable-line
+  if (!sample.data.windSpeed && newWeatherValues.windSpeed) {
+    sample.data.windSpeed = newWeatherValues.windSpeed; // eslint-disable-line
   }
   if (
-    !Number.isFinite(sample.attrs.cloud) &&
+    !Number.isFinite(sample.data.cloud) &&
     Number.isFinite(newWeatherValues.cloud)
   ) {
-    sample.attrs.cloud = newWeatherValues.cloud; // eslint-disable-line
-    sample.attrs.sun = 100 - sample.attrs.cloud; // eslint-disable-line
+    sample.data.cloud = newWeatherValues.cloud; // eslint-disable-line
+    sample.data.sun = 100 - sample.data.cloud; // eslint-disable-line
   }
   sample.save();
 }
@@ -185,7 +185,7 @@ const extension: any = {
       }
     };
 
-    stopLocationObserver = observe(this.attrs, 'location', observeLocation);
+    stopLocationObserver = observe(this.data, 'location', observeLocation);
   },
 };
 

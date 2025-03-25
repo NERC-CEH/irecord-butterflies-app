@@ -55,7 +55,7 @@ function onToggle(
   setting: keyof PickByType<AppModelAttrs, boolean>,
   checked: boolean
 ) {
-  appModel.attrs[setting] = checked; // eslint-disable-line
+  appModel.data[setting] = checked; // eslint-disable-line
   appModel.save();
 
   isPlatform('hybrid') && Haptics.impact({ style: ImpactStyle.Light });
@@ -75,14 +75,14 @@ const MenuController = () => {
     useSmartSorting,
     useMoths,
     useSpeciesImageClassifier,
-  } = appModel.attrs;
+  } = appModel.data;
 
   const onToggleGuideLocation = (checked: boolean) => {
     onToggle('useLocationForGuide', checked);
 
     if (!checked) {
       // eslint-disable-next-line no-param-reassign
-      appModel.attrs.location = null;
+      appModel.data.location = null;
       appModel.updateCurrentLocation(false); // stops any current runs
     } else {
       appModel.updateCurrentLocation();
@@ -100,14 +100,14 @@ const MenuController = () => {
   const currentLocation = location && location.gridref;
 
   const adminChangeLocation = (e: any) => {
-    if (!appModel.attrs.location) {
+    if (!appModel.data.location) {
       // eslint-disable-next-line no-param-reassign
-      appModel.attrs.location = {};
+      appModel.data.location = {};
     }
 
     // eslint-disable-next-line no-param-reassign
-    appModel.attrs.location.gridref = e.target.value;
-    console.log('setting hectad', appModel.attrs.location.gridref);
+    appModel.data.location.gridref = e.target.value;
+    console.log('setting hectad', appModel.data.location.gridref);
     appModel.save();
   };
   const adminChangeWeek = (e: any) => {

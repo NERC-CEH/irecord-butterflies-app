@@ -14,11 +14,11 @@ type Props = {
 };
 
 const Image = ({ media, isDisabled, onDelete, onClick }: Props) => {
-  const hasBeenIdentified = !!media.attrs?.species;
+  const hasBeenIdentified = !!media.data?.species;
 
   const hasMatchParent = media.getIdentifiedTaxonThatMatchParent();
 
-  const isSpeciesSelected = (media?.parent as Occurrence)?.attrs?.taxon;
+  const isSpeciesSelected = (media?.parent as Occurrence)?.data?.taxon;
 
   const species = isSpeciesSelected
     ? media.getIdentifiedTaxonThatMatchParent()

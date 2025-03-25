@@ -1,9 +1,9 @@
 import { observer } from 'mobx-react';
 import { useRouteMatch } from 'react-router';
 import { Attr, Main, MenuAttrItem, MenuAttrItemFromModel } from '@flumens';
-import { IonList, IonItem, IonLabel, IonAvatar } from '@ionic/react';
+import { IonList, IonItem, IonAvatar } from '@ionic/react';
 import PhotoPicker from 'common/Components/PhotoPicker';
-import species, { Species } from 'common/data/species';
+import species, { Species, byIdsAndName } from 'common/data/species';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import numberIcon from 'common/images/number.svg';
 import Occurrence from 'models/occurrence';
@@ -16,10 +16,10 @@ type Props = {
 const OccurrenceHomeMain = ({ occurrence }: Props) => {
   const match = useRouteMatch();
 
-  const isDisabled = occurrence.isDisabled();
+  const { isDisabled } = occurrence;
 
   const getSpeciesButton = () => {
-    const { taxon } = occurrence.attrs;
+    const { taxon } = occurrence.data;
     if (!taxon) {
       return (
         <MenuAttrItem
@@ -31,8 +31,7 @@ const OccurrenceHomeMain = ({ occurrence }: Props) => {
       );
     }
 
-    const byId = ({ id: speciesID }: Species) => speciesID === taxon.id;
-    const fullSpeciesProfile = species.find(byId) as Species;
+    const fullSpeciesProfile = species.find(byIdsAndName(taxon)) as Species;
 
     const { commonName, scientificName, thumbnail } = fullSpeciesProfile;
 
@@ -42,26 +41,32 @@ const OccurrenceHomeMain = ({ occurrence }: Props) => {
         routerLink={!isDisabled ? `${match.url}/species` : undefined}
         detail={!isDisabled}
       >
-        <IonAvatar>
+        <IonAvatar className="shrink-0">
           <img src={thumbnail} />
         </IonAvatar>
-        <IonLabel position="stacked" mode="ios" slot="end">
-          <IonLabel>
+        <div className="flex w-full flex-col items-end justify-center gap-1">
+          <div>
             <b>{commonName}</b>
-          </IonLabel>
-          <IonLabel>
+          </div>
+          <div>
             <i>{scientificName}</i>
-          </IonLabel>
-        </IonLabel>
+          </div>
+        </div>
       </IonItem>
     );
   };
 
+  const hasPhotos = !!occurrence.media.length;
+
   return (
     <Main>
-      {isDisabled && <VerificationMessage occurrence={occurrence} />}
-
       <IonList lines="full">
+        {isDisabled && (
+          <div className="rounded-list mb-2">
+            <VerificationMessage occurrence={occurrence} />
+          </div>
+        )}
+
         <h3 className="list-title">Details</h3>
         <div className="rounded-list">
           {getSpeciesButton()}
@@ -90,10 +95,15 @@ const OccurrenceHomeMain = ({ occurrence }: Props) => {
           />
         </div>
 
-        <h3 className="list-title">Species Photo</h3>
-        <div className="rounded-list">
-          <PhotoPicker model={occurrence} />
-        </div>
+        {hasPhotos ||
+          (!isDisabled && (
+            <>
+              <h3 className="list-title">Species Photo</h3>
+              <div className="rounded-list">
+                <PhotoPicker model={occurrence} />
+              </div>
+            </>
+          ))}
       </IonList>
     </Main>
   );

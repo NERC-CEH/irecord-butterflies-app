@@ -29,8 +29,8 @@ const MenuMain = ({
   refreshAccount,
   resendVerificationEmail,
 }: Props) => {
-  const isNotVerified = userModel.attrs.verified === false; // verified is undefined in old versions
-  const userEmail = userModel.attrs.email;
+  const isNotVerified = userModel.data.verified === false; // verified is undefined in old versions
+  const userEmail = userModel.data.email;
 
   return (
     <Main className="app-menu">
@@ -46,7 +46,7 @@ const MenuMain = ({
               <IonIcon icon={exitOutline} size="small" slot="start" />
               Logout
               {': '}
-              {userModel.attrs.firstName} {userModel.attrs.secondName}
+              {userModel.data.firstName} {userModel.data.secondName}
             </IonItem>
           )}
 

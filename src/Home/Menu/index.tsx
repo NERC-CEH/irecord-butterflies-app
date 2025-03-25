@@ -40,7 +40,7 @@ const MenuController = () => {
   function logOut() {
     const onReset = async (reset?: boolean) => {
       if (reset) {
-        // appModel.attrs['draftId:area'] = null; // TODO:
+        // appModel.data['draftId:area'] = null; // TODO:
         // await savedSamples.resetDefaults();
       }
 
@@ -57,7 +57,7 @@ const MenuController = () => {
     await loader.show('Please wait...');
     try {
       await userModel.checkActivation();
-      if (!userModel.attrs.verified) {
+      if (!userModel.data.verified) {
         toast.warn('The user has not been activated or is blocked.');
       }
     } catch (err: any) {

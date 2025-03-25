@@ -27,7 +27,7 @@ const areaOptions = [
 ];
 
 const survey: Survey = {
-  id: 101, // same as the point
+  id: 792,
   name: 'list',
 
   attrs: {
@@ -76,7 +76,7 @@ const survey: Survey = {
 
     create({ Occurrence, taxon }) {
       return new Occurrence({
-        attrs: {
+        data: {
           count: 1,
           comment: null,
           stage: 'Adult',
@@ -93,10 +93,7 @@ const survey: Survey = {
 
   async create({ Sample }) {
     const sample = new Sample({
-      metadata: {
-        survey: survey.name,
-      },
-      attrs: {
+      data: {
         surveyId: survey.id,
         date: new Date().toISOString(),
         enteredSrefSystem: 4326,

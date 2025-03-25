@@ -102,12 +102,12 @@ export class AppModel extends Model<Attrs> {
   _gettingLocation?: string;
 
   constructor(options: any) {
-    super({ ...options, attrs: { ...defaults, ...options.attrs } });
+    super({ ...options, data: { ...defaults, ...options.data } });
   }
 
   // eslint-disable-next-line @getify/proper-arrows/name
   toggleFilter = (type: FilterGroup, value: Filter) => {
-    const { filters } = this.attrs;
+    const { filters } = this.data;
     if (!filters[type]) {
       filters[type] = [];
     }
@@ -133,7 +133,7 @@ export class AppModel extends Model<Attrs> {
       return;
     }
 
-    if (!this.attrs.useLocationForGuide) {
+    if (!this.data.useLocationForGuide) {
       return;
     }
 
@@ -145,7 +145,7 @@ export class AppModel extends Model<Attrs> {
         return;
       }
 
-      if (!this.attrs.useLocationForGuide) {
+      if (!this.data.useLocationForGuide) {
         console.log(
           'AppModel: setting new location skipped - disabled setting.'
         );
@@ -157,7 +157,7 @@ export class AppModel extends Model<Attrs> {
       // eslint-disable-next-line
       newLocation.accuracy = 1000000; // make it hectad
       newLocation.gridref = locationToGrid(newLocation); // eslint-disable-line
-      this.attrs.location = newLocation;
+      this.data.location = newLocation;
       this.save();
 
       GPS.stop(this._gettingLocation);
@@ -167,7 +167,7 @@ export class AppModel extends Model<Attrs> {
   };
 
   resetDefaults() {
-    return super.resetDefaults(defaults);
+    return super.reset(defaults);
   }
 }
 

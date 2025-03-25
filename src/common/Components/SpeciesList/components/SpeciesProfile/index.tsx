@@ -88,15 +88,15 @@ const SpeciesProfile = ({ species, onRecord, onNavBack, isSurvey }: Props) => {
     );
   };
 
-  if (!species) {
-    return null;
-  }
+  if (!species) return null;
 
   const onGalleryClose = () => {
     setShowGallery(undefined);
     setShowLifechart(false);
     setShowMap(false);
   };
+
+  const onRecordWrap = () => onRecord(species);
 
   return (
     <>
@@ -122,7 +122,7 @@ const SpeciesProfile = ({ species, onRecord, onNavBack, isSurvey }: Props) => {
             {!isSurvey && (
               <Button
                 shape="round"
-                onPress={onRecord}
+                onPress={onRecordWrap}
                 color="primary"
                 className="py-2"
               >

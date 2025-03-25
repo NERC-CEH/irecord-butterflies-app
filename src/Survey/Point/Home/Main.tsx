@@ -11,7 +11,7 @@ import {
 } from '@flumens';
 import { IonList, IonItem, IonAvatar, IonIcon } from '@ionic/react';
 import PhotoPicker from 'common/Components/PhotoPicker';
-import species, { Species } from 'common/data/species';
+import species, { byIdsAndName } from 'common/data/species';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import numberIcon from 'common/images/number.svg';
 import Sample from 'models/sample';
@@ -31,7 +31,7 @@ const MainComponent = ({ sample, isDisabled }: Props) => {
   const getSpeciesButton = () => {
     const [occ] = sample.occurrences;
 
-    const { taxon } = occ.attrs;
+    const { taxon } = occ.data;
     if (!taxon) {
       return (
         <MenuAttrItem
@@ -43,8 +43,7 @@ const MainComponent = ({ sample, isDisabled }: Props) => {
       );
     }
 
-    const byId = ({ id: speciesID }: Species) => speciesID === taxon.id;
-    const fullSpeciesProfile: any = species.find(byId);
+    const fullSpeciesProfile: any = species.find(byIdsAndName(taxon));
 
     const { commonName, scientificName, thumbnail } = fullSpeciesProfile;
 
@@ -72,7 +71,7 @@ const MainComponent = ({ sample, isDisabled }: Props) => {
   };
 
   const getLocationButton = () => {
-    const location = sample.attrs.location || {};
+    const location = sample.data.location || {};
     const hasLocation = location.latitude;
     const hasName = location.name;
     const empty = !hasLocation || !hasName;
@@ -116,16 +115,27 @@ const MainComponent = ({ sample, isDisabled }: Props) => {
 
   const [occ] = sample.occurrences;
 
+  const hasPhotos = !!occ.media.length;
+
   return (
     <Main>
-      {isDisabled && <VerificationMessage occurrence={occ} />}
-      {isDisabled && <DisabledRecordMessage sample={sample} />}
-
       <IonList lines="full">
+        {isDisabled && (
+          <div className="rounded-list mb-2">
+            <VerificationMessage occurrence={occ} />
+          </div>
+        )}
+
+        {isDisabled && (
+          <div className="rounded-list mb-2">
+            <DisabledRecordMessage sample={sample} />
+          </div>
+        )}
+
         <h3 className="list-title">Details</h3>
         <div className="rounded-list">
           {getSpeciesButton()}
-          <MenuDateAttr record={sample.attrs} isDisabled={isDisabled} />
+          <MenuDateAttr record={sample.data} isDisabled={isDisabled} />
           {getLocationButton()}
         </div>
 
@@ -154,10 +164,15 @@ const MainComponent = ({ sample, isDisabled }: Props) => {
           />
         </div>
 
-        <h3 className="list-title">Species Photo</h3>
-        <div className="rounded-list">
-          <PhotoPicker model={occ} />
-        </div>
+        {hasPhotos ||
+          (!isDisabled && (
+            <>
+              <h3 className="list-title">Species Photo</h3>
+              <div className="rounded-list">
+                <PhotoPicker model={occ} />
+              </div>
+            </>
+          ))}
       </IonList>
     </Main>
   );

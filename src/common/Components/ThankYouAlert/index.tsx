@@ -5,6 +5,8 @@ import userModel from 'models/user';
 import './styles.scss';
 
 const ThankYouAlert = () => {
+  if (!userModel.isLoggedIn()) return null;
+
   const milestone = userModel.getAchievedStatsMilestone();
   if (!milestone) return null;
 
@@ -23,7 +25,7 @@ const ThankYouAlert = () => {
   const currentYear = new Date().getFullYear();
 
   const closeAlert = () => {
-    userModel.attrs.lastThankYouMilestoneShown[currentYear] = milestone; // eslint-disable-line
+    userModel.data.lastThankYouMilestoneShown[currentYear] = milestone; // eslint-disable-line
   };
 
   return (

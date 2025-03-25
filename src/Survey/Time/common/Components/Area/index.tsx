@@ -3,26 +3,25 @@ import { observer } from 'mobx-react';
 import { resizeOutline } from 'ionicons/icons';
 import { Trans as T } from 'react-i18next';
 import { IonIcon, IonPage } from '@ionic/react';
+import { useSample } from 'common/flumens';
 import Sample from 'models/sample';
 import Header from './Header';
 import Main from './Main';
 import './styles.scss';
 
-type Props = {
-  sample: Sample;
-};
+const AreaController = () => {
+  const { sample } = useSample<Sample>();
 
-const AreaController = ({ sample }: Props) => {
   const toggleGPStracking = (on: boolean) => {
-    sample.toggleBackgroundGPS(on);
+    sample!.toggleBackgroundGPS(on);
   };
 
   const setLocation = (shape: any) => {
-    sample.setAreaLocation(shape);
+    sample!.setAreaLocation(shape);
   };
 
-  const location = (sample.attrs.location as any) || {};
-  const isGPSTracking = sample.isGPSRunning();
+  const location = (sample!.data.location as any) || {};
+  const isGPSTracking = sample!.isGPSRunning();
   const { area } = location;
 
   let infoText;
@@ -46,11 +45,13 @@ const AreaController = ({ sample }: Props) => {
     );
   }
 
-  const isDisabled = sample.isDisabled();
-
   const isAreaShape = location.shape?.type === 'Polygon';
 
   const page = useRef(null);
+
+  if (!sample) return null;
+
+  const { isDisabled } = sample;
 
   return (
     <IonPage id="area" ref={page}>

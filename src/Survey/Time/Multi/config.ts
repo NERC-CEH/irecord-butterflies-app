@@ -9,10 +9,7 @@ const speciesSurvey: any = merge({}, survey, {
   smp: {
     async create({ Sample, Occurrence, taxon, stage }) {
       const sample = new Sample({
-        metadata: {
-          survey: survey.name,
-        },
-        attrs: {
+        data: {
           surveyId: survey.id,
           enteredSrefSystem: 4326,
           location: {},
@@ -26,7 +23,7 @@ const speciesSurvey: any = merge({}, survey, {
 
       sample.occurrences.push(occurrence);
 
-      sample.occurrences[0].attrs.stage = stage;
+      sample.occurrences[0].data.stage = stage;
 
       return sample;
     },
@@ -35,12 +32,11 @@ const speciesSurvey: any = merge({}, survey, {
   async create({ Sample }) {
     const sample = new Sample({
       metadata: {
-        survey: speciesSurvey.name,
         pausedTime: 0,
         timerPausedTime: null,
         startStopwatchTime: null,
       },
-      attrs: {
+      data: {
         surveyId: survey.id,
         date: new Date().toISOString(),
         enteredSrefSystem: 4326,

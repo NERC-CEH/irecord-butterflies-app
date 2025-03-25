@@ -1,52 +1,43 @@
 .verification-message {
-  --border-width: 0 !important;
-  margin: 0 !important;
-  border-radius: 0 !important;
-
-  ion-label {
-    padding: 10px 0;
-  }
-
-  &.verified {
-    --background: #e7fdf1;
-    h2 {
-      margin-bottom: 20px;
-      color: var(--ion-verification-success) !important;
-    }
+  &.success {
+    h2,
+    div,
     ion-icon,
     .info-button,
     ion-label ion-note {
-      color: var(--ion-verification-success) !important;
-      --border-color: var(--ion-verification-success) !important;
+      color: var(--verification-success-dark) !important;
+      --border-color: var(--verification-success-dark) !important;
     }
   }
 
-  &.plausible {
-    --background: #fff9ef;
-    h2 {
-      margin-bottom: 20px;
-      color: var(--ion-verification-plausible) !important;
-    }
+  &.warning {
+    h2,
+    div,
     ion-icon,
     .info-button,
     ion-label ion-note {
-      color: var(--ion-verification-plausible) !important;
-      --border-color: var(--ion-verification-plausible) !important;
+      color: var(--verification-plausible-dark) !important;
+      --border-color: var(--verification-plausible-dark) !important;
     }
   }
 
-  &.rejected {
-    --background: #faf0ef;
-    h2 {
-      margin-bottom: 20px;
-      color: var(--ion-verification-rejected) !important;
-    }
+  &.danger {
+    h2,
+    div,
     ion-icon,
     .info-button,
-    .h1,
     ion-label ion-note {
-      color: var(--ion-verification-rejected) !important;
-      --border-color: var(--ion-verification-rejected);
+      color: var(--verification-rejected-dark) !important;
+      --border-color: var(--verification-rejected-dark);
+    }
+  }
+
+  .info-button {
+    &.md {
+      font-size: 0.7em;
+    }
+    &.ios {
+      font-size: 0.8em;
     }
   }
 }

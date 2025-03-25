@@ -52,7 +52,7 @@ const Statistics = () => {
   useEffect(refreshStats, []);
 
   const getReport = () => {
-    if (!userModel.attrs.stats) {
+    if (!userModel.data.stats) {
       return (
         <InfoBackgroundMessage>
           Sorry, no report data is available at the moment. Pull down to
@@ -72,7 +72,7 @@ const Statistics = () => {
       // myProjectSpeciesRatio,
       // myProjectActivityRatio,
       // myProjectRarityMetric,
-    } = userModel.attrs.stats;
+    } = userModel.data.stats;
 
     const yearName = new Date().getFullYear();
 

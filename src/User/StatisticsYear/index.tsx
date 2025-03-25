@@ -33,7 +33,8 @@ function useFetchStats(year: string) {
 
     try {
       const stats = await fetchStatsService(userModel, year);
-      userModel.attrs.statsYears[year] = stats; // eslint-disable-line
+      if (!userModel.data.statsYears) userModel.data.statsYears = {};
+      userModel.data.statsYears[year] = stats; // eslint-disable-line
       userModel.save();
     } catch (err: any) {
       toast.error(err);
@@ -60,7 +61,7 @@ const StatisticsYear = () => {
   const [year, setYear] = useState(match.params.year || 'all');
   const fetchStats = useFetchStats(year);
 
-  const list = userModel.attrs.statsYears[year] || [];
+  const list = userModel.data.statsYears?.[year] || [];
   const getEntryWithSpeciesImage = (entry: any) => {
     const scientificNameWithoutSubSpecies = entry.accepted_name
       .split(' ')

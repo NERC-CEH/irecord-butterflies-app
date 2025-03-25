@@ -54,8 +54,8 @@ const SpeciesTile = ({ sp, index }: any) => {
 };
 
 const FooterMessage = ({ image, identifyImage }: Props) => {
-  const identifierWasNotUsed = !image.attrs?.species;
-  const speciesList = image.attrs?.species;
+  const identifierWasNotUsed = !image.data?.species;
+  const speciesList = image.data?.species;
 
   if (image.identification.identifying) {
     return (
@@ -69,7 +69,7 @@ const FooterMessage = ({ image, identifyImage }: Props) => {
     );
   }
 
-  if (identifierWasNotUsed) {
+  if (identifierWasNotUsed && !image.isDisabled) {
     return (
       <IonButton className="re-identify-button" onClick={identifyImage}>
         Get species suggestions
@@ -77,7 +77,7 @@ const FooterMessage = ({ image, identifyImage }: Props) => {
     );
   }
 
-  const identifierFoundNoSpecies = !image.attrs?.species?.length;
+  const identifierFoundNoSpecies = !image.data?.species?.length;
   if (identifierFoundNoSpecies) return null;
 
   const getIdentifiedSpeciesList = () => {

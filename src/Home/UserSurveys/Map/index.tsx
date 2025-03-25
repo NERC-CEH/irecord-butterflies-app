@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { observer } from 'mobx-react';
 import { Trans as T } from 'react-i18next';
-import { MapRef, LngLatBounds } from 'react-map-gl';
+import { MapRef, LngLatBounds } from 'react-map-gl/mapbox';
 import { Link } from 'react-router-dom';
 import {
   useToast,
@@ -60,7 +60,7 @@ const Map = () => {
     if (
       !mapRef.current ||
       !userIsLoggedIn ||
-      !userModel.attrs.verified ||
+      !userModel.data.verified ||
       !device.isOnline
     )
       return;

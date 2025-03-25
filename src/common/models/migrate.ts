@@ -1,9 +1,21 @@
 import SQLiteDatabase from '@flumens/models/dist/Stores/SQLiteDatabase';
-import { isPlatform } from '@ionic/core';
+import { isPlatform, toastController } from '@ionic/core';
 import { db, mainStore, samplesStore } from 'common/models/store';
 
 export default async () => {
   console.log('SQLite migrate: START');
+
+  async function showError(error: any) {
+    (
+      await toastController.create({
+        message: error.message,
+        position: 'top',
+        duration: 100000000,
+        color: 'danger',
+      })
+    ).present();
+  }
+
   try {
     await SQLiteDatabase.migrateCordova(isPlatform('ios'));
 
@@ -16,15 +28,14 @@ export default async () => {
     const hasGeneric = tables.find((t: any) => t.name === 'generic');
     if (hasGeneric) {
       await db.query({
-        sql: `INSERT INTO main (id, cid, data, created_at, updated_at, synced_at)
+        sql: `INSERT OR IGNORE INTO main (id, cid, data, created_at, updated_at, synced_at)
         SELECT json(value) ->> "$.id",
               key,
               COALESCE(json(value)->>"$.attrs", "{}"),
               COALESCE(json(value) ->> "$.metadata.createdOn", CAST((julianday('now') - 2440587.5)*86400000 AS INTEGER)),
               COALESCE(json(value) ->> "$.metadata.updatedOn", CAST((julianday('now') - 2440587.5)*86400000 AS INTEGER)),
               json(value) ->> "$.metadata.syncedOn"
-        FROM generic;
-    `,
+        FROM generic;`,
       });
 
       console.log('SQLite migrate: main migrated');
@@ -35,7 +46,7 @@ export default async () => {
     const hasModels = tables.find((t: any) => t.name === 'models');
     if (hasModels) {
       await db.query({
-        sql: `INSERT INTO samples (id, cid, data, created_at, updated_at, synced_at)
+        sql: `INSERT OR IGNORE INTO samples (id, cid, data, created_at, updated_at, synced_at)
         SELECT
               json(value) ->> "$.id",
               key,
@@ -43,7 +54,8 @@ export default async () => {
               COALESCE(json(value) ->> "$.metadata.createdOn", CAST((julianday('now') - 2440587.5)*86400000 AS INTEGER)),
               COALESCE(json(value) ->> "$.metadata.updatedOn", CAST((julianday('now') - 2440587.5)*86400000 AS INTEGER)),
               json(value) ->> "$.metadata.syncedOn"
-        FROM models
+              FROM models
+        WHERE json_extract(value, '$.metadata.syncedOn') IS NULL
         ORDER BY id DESC
         LIMIT 1000;`,
       });
@@ -51,6 +63,7 @@ export default async () => {
     }
   } catch (error) {
     console.error(error);
+    showError(error);
     console.log('SQLite migrate: error');
     throw error;
   }

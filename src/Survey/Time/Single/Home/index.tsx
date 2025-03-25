@@ -2,7 +2,15 @@ import { useContext } from 'react';
 import { observer } from 'mobx-react';
 import { useRouteMatch, useLocation } from 'react-router';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
-import { Page, Header, useAlert, useToast, useOnBackButton } from '@flumens';
+import {
+  Page,
+  Header,
+  useAlert,
+  useToast,
+  useOnBackButton,
+  useSample,
+  useRemoteSample,
+} from '@flumens';
 import { NavContext, isPlatform } from '@ionic/react';
 import appModel from 'models/app';
 import Occurrence from 'models/occurrence';
@@ -68,38 +76,38 @@ const hapticsImpact = async () => {
   await Haptics.impact({ style: ImpactStyle.Light });
 };
 
-type Props = {
-  sample: Sample;
-};
-
-const HomeController = ({ sample }: Props) => {
+const HomeController = () => {
   const { navigate, goBack } = useContext(NavContext);
   const toast = useToast();
   const showFinishConfirmationAlert = useFinishConfirmationAlert();
   const showLeaveConfirmationAlert = useShowLeaveConfirmationAlert();
+
+  let { sample } = useSample<Sample>();
+  sample = useRemoteSample(sample, () => userModel.isLoggedIn(), Sample);
+
   const checkSampleStatus = useValidateCheck(sample);
   const { pathname } = useLocation();
   const { url } = useRouteMatch();
 
   const increaseCount = async (taxon: any, is5x: boolean) => {
-    if (sample.isUploaded()) return;
+    if (sample!.isUploaded) return;
 
-    if (sample.hasZeroAbundance(taxon.id)) {
+    if (sample!.hasZeroAbundance(taxon.id)) {
       const byTaxonId = (smp: Sample) =>
-        smp.occurrences[0].attrs.taxon.id === taxon.id;
-      const smp = sample.samples.find(byTaxonId)!;
+        smp.occurrences[0].data.taxon.id === taxon.id;
+      const smp = sample!.samples.find(byTaxonId)!;
       // eslint-disable-next-line no-param-reassign
-      smp.occurrences[0].attrs.zeroAbundance = undefined;
+      smp.occurrences[0].data.zeroAbundance = undefined;
       // eslint-disable-next-line no-param-reassign
-      smp.occurrences[0].attrs.stage = sample.attrs.stage;
+      smp.occurrences[0].data.stage = sample!.data.stage;
       smp.startGPS();
 
-      sample.save();
+      sample!.save();
       return;
     }
 
-    const survey = sample.getSurvey();
-    const { stage } = sample.attrs;
+    const survey = sample!.getSurvey();
+    const { stage } = sample!.data;
     const zeroAbundance = null;
 
     const addOneCount = async () => {
@@ -110,9 +118,9 @@ const HomeController = ({ sample }: Props) => {
         zeroAbundance,
         stage,
       });
-      newSubSample.startGPS();
+      newSubSample!.startGPS();
 
-      sample.samples.push(newSubSample);
+      sample!.samples.push(newSubSample);
     };
 
     if (is5x) {
@@ -120,7 +128,7 @@ const HomeController = ({ sample }: Props) => {
     } else {
       await addOneCount();
     }
-    sample.save();
+    sample!.save();
 
     isPlatform('hybrid') && hapticsImpact();
   };
@@ -132,20 +140,20 @@ const HomeController = ({ sample }: Props) => {
     const finishSurvey = await showFinishConfirmationAlert();
     if (!finishSurvey) return;
 
-    appModel.attrs['draftId:single-species-count'] = null; // eslint-disable-line
+    appModel.data['draftId:single-species-count'] = null; // eslint-disable-line
     await appModel.save();
 
     // eslint-disable-next-line no-param-reassign
-    sample.metadata.saved = Date.now();
+    sample!.metadata.saved = Date.now();
 
     // eslint-disable-next-line no-param-reassign
-    sample.attrs.duration =
-      sample.metadata.saved -
-      new Date(sample.attrs.startTime).getTime() -
-      new Date(sample.metadata.pausedTime).getTime();
+    sample!.data.duration =
+      sample!.metadata.saved -
+      new Date(sample!.data.startTime).getTime() -
+      new Date(sample!.metadata.pausedTime).getTime();
 
-    sample.cleanUp();
-    sample.save();
+    sample!.cleanUp();
+    sample!.save();
 
     navigate(`/home/surveys`, 'root');
   };
@@ -157,12 +165,12 @@ const HomeController = ({ sample }: Props) => {
       return;
     }
 
-    sample.upload().catch(toast.error);
+    sample!.upload().catch(toast.error);
     navigate(`/home/surveys`, 'root');
   };
 
   const onFinish = async () => {
-    if (!sample.metadata.saved) {
+    if (!sample!.metadata.saved) {
       await _processDraft();
       return;
     }
@@ -179,7 +187,7 @@ const HomeController = ({ sample }: Props) => {
     }
 
     const canPauseTimer =
-      !sample.metadata.saved && !sample.metadata.timerPausedTime;
+      !sample!.metadata.saved && !sample!.metadata.timerPausedTime;
 
     if (canPauseTimer) {
       await showLeaveConfirmationAlert();
@@ -187,13 +195,15 @@ const HomeController = ({ sample }: Props) => {
 
     if (canPauseTimer) {
       // eslint-disable-next-line no-param-reassign
-      sample.metadata.timerPausedTime = new Date();
-      sample.save();
+      sample!.metadata.timerPausedTime = new Date();
+      sample!.save();
     }
 
     navigate(`/home/surveys`, 'root', 'pop'); // root instead of back because of some url mess up
   };
   useOnBackButton(onLeave);
+
+  if (!sample) return null;
 
   return (
     <Page id="single-species-count-home">

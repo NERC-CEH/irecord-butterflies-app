@@ -12,7 +12,7 @@ import {
   IonItemSliding,
   IonIcon,
 } from '@ionic/react';
-import VerificationIcon from 'common/Components/VerificationIcon';
+import VerificationStatus from 'common/Components/VerificationStatus';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import Sample from 'models/sample';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
@@ -38,12 +38,12 @@ const MainComponent = ({
   deleteSample,
   samples,
 }: Props) => {
-  const isDisabled = sample.isUploaded();
+  const isDisabled = sample.isUploaded;
   const match = useRouteMatch<{ taxa: string }>();
 
   const warehouseId = parseInt(match.params.taxa, 10);
   const byTaxon = (smp: Sample) =>
-    smp.occurrences[0].attrs.taxon.warehouseId === warehouseId;
+    smp.occurrences[0].data.taxon.warehouseId === warehouseId;
   const occurrences = sample.samples
     .slice()
     .filter(byTaxon)
@@ -55,7 +55,7 @@ const MainComponent = ({
       .toLocaleTimeString()
       .replace(/(:\d{2}| [AP]M)$/, '');
 
-    const { stage } = occ.attrs;
+    const { stage } = occ.data;
 
     let location;
     if (smp.hasLoctionMissingAndIsnotLocating()) {
@@ -81,7 +81,7 @@ const MainComponent = ({
           <IonLabel className="location" slot="end">
             {location}
           </IonLabel>
-          <VerificationIcon occ={occ} />
+          <VerificationStatus occ={occ} />
         </IonItem>
         {!isDisabled && (
           <IonItemOptions side="end">
@@ -107,7 +107,7 @@ const MainComponent = ({
       </Main>
     );
   }
-  const species = samples[0].occurrences[0].attrs.taxon.commonName;
+  const species = samples[0].occurrences[0].data.taxon.commonName;
 
   return (
     <Main id="area-count-occurrence-edit">

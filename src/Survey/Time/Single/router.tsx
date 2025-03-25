@@ -1,5 +1,5 @@
-import { RouteWithModels, AttrPage } from '@flumens';
-import savedSamples from 'models/collections/samples';
+import { Route } from 'react-router-dom';
+import { AttrPage, withSample } from '@flumens';
 import AreaAttr from 'Survey/Time/common/Components/Area';
 import Details from 'Survey/Time/common/Components/Details';
 import OccurrenceHome from 'Survey/Time/common/Components/OccurrenceHome';
@@ -21,16 +21,21 @@ const SpeciesWrap = (props: any) => (
 const routes = [
   [`${baseURL}`, StartNewSurvey.with(survey), true],
   [`${baseURL}/:smpId`, Home],
-  [`${baseURL}/:smpId/:attr`, AttrPageFromRoute],
+  [`${baseURL}/:smpId/:attr`, withSample(AttrPageFromRoute)],
   [`${baseURL}/:smpId/area`, AreaAttr],
   [`${baseURL}/:smpId/details`, Details],
-  [`${baseURL}/:smpId/details/:attr`, AttrPageFromRoute],
+  [`${baseURL}/:smpId/details/:attr`, withSample(AttrPageFromRoute)],
   [`${baseURL}/:smpId/species`, SpeciesWrap],
   [`${baseURL}/:smpId/speciesOccurrences/:taxa`, SpeciesOccurrences],
   [`${baseURL}/:smpId/speciesOccurrences/:taxa/taxon`, Species],
   [`${baseURL}/:smpId/samples/:subSmpId/occ/:occId`, OccurrenceHome],
-  [`${baseURL}/:smpId/samples/:subSmpId/occ/:occId/:attr`, AttrPageFromRoute],
+  [
+    `${baseURL}/:smpId/samples/:subSmpId/occ/:occId/:attr`,
+    withSample(AttrPageFromRoute),
+  ],
   [`${baseURL}/:smpId/samples/:subSmpId/location`, ModelLocation],
-];
+].map(([route, component]: any) => (
+  <Route key={route} path={route} component={component} exact />
+));
 
-export default RouteWithModels.fromArray(savedSamples, routes);
+export default routes;

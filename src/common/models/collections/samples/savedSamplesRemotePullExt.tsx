@@ -3,58 +3,28 @@
 /* eslint-disable camelcase */
 import { observable, set } from 'mobx';
 import axios, { AxiosRequestConfig } from 'axios';
-import { device, isAxiosNetworkError } from '@flumens';
+import { ElasticOccurrence, device, isAxiosNetworkError } from '@flumens';
 import CONFIG from 'common/config';
+import { matchAppSurveys } from 'common/services/ES';
 import { AppModel } from 'models/app';
 import SavedSamplesProps from 'models/collections/samples';
 import Occurrence from 'models/occurrence';
 import Sample from 'models/sample';
 import { UserModel } from 'models/user';
-import pointSurvey from 'Survey/Point/config';
-import singleSpeciesSurvey from 'Survey/Time/Single/config';
 
-// export type
-interface API_Occurrence {
-  source_system_key: string;
-}
-
-interface Verifier {
-  id?: string;
-  name?: string;
-}
-
-interface AutoChecks {
-  result: string;
-  enabled: string;
-  output: any[];
-}
-
-export interface Identification {
-  verifier?: Verifier;
-  auto_checks: AutoChecks;
-  verification_decision_source: string;
-  verification_substatus: string;
-  verified_on: string;
-  verification_status: string;
+interface Hit {
+  _source: ElasticOccurrence;
 }
 
 export type Verification = {
   timestamp: number | null;
-  count: number;
+  updated: Occurrence[];
 };
-
-interface Source {
-  identification: Identification;
-  occurrence: API_Occurrence;
-}
-interface Hit {
-  _source: Source;
-}
 
 const SQL_TO_ES_LAG = 15 * 60 * 1000; // 15mins
 const SYNC_WAIT = SQL_TO_ES_LAG;
 
-const getRecordsQuery = (timestamp: number) => {
+const getRecordsQuery = (timestamp: any) => {
   const lastFetchTime = new Date(timestamp - SQL_TO_ES_LAG);
 
   const dateFormat = new Intl.DateTimeFormat('en-GB', {
@@ -78,26 +48,16 @@ const getRecordsQuery = (timestamp: number) => {
     query: {
       bool: {
         must: [
-          {
-            bool: {
-              should: [
-                {
-                  match: {
-                    'metadata.survey.id': pointSurvey.id,
-                  },
-                },
-                {
-                  match: {
-                    'metadata.survey.id': singleSpeciesSurvey.id,
-                  },
-                },
-              ],
-            },
-          },
+          matchAppSurveys,
 
           {
             bool: {
               should: [
+                {
+                  match_phrase: {
+                    'identification.query': 'Q',
+                  },
+                },
                 {
                   match_phrase: {
                     'identification.verification_status': 'C',
@@ -136,15 +96,14 @@ const getRecordsQuery = (timestamp: number) => {
   });
 };
 
-async function fetchUpdatedRemoteSamples(
-  userModel: UserModel,
-  timestamp: number
-) {
+type UpdatedSamples = Record<string, Hit>;
+
+async function fetchUpdatedRemoteSamples(userModel: UserModel, timestamp: any) {
   console.log('SavedSamples: pulling remote verified surveys');
 
-  const samples: { [key: string]: Hit } = {};
+  const samples: UpdatedSamples = {};
 
-  const OPTIONS: AxiosRequestConfig = {
+  const options: AxiosRequestConfig = {
     method: 'post',
     url: CONFIG.backend.occurrenceServiceURL,
     headers: {
@@ -157,7 +116,7 @@ async function fetchUpdatedRemoteSamples(
 
   let data;
   try {
-    const res = await axios(OPTIONS);
+    const res = await axios(options);
     data = res.data;
   } catch (error: any) {
     if (isAxiosNetworkError(error)) return samples;
@@ -177,33 +136,37 @@ async function fetchUpdatedRemoteSamples(
   return samples;
 }
 
-function updateLocalSamples(
-  savedSamples: typeof SavedSamplesProps,
-  updatedRemoteSamples: any
-) {
-  const nonPendingUpdatedSamples: any = [];
+function updateLocalOccurrences(
+  samples: Sample[],
+  updatedRemoteSamples: UpdatedSamples
+): Occurrence[] {
+  const nonPendingUpdatedOccurrences: Occurrence[] = [];
 
-  if (updatedRemoteSamples.length <= 0) return nonPendingUpdatedSamples;
+  if (Object.keys(updatedRemoteSamples).length <= 0)
+    return nonPendingUpdatedOccurrences;
 
   const findMatchingLocalSamples = (sample: Sample) => {
     const appendVerification = (occ: Occurrence) => {
-      const updatedSample = updatedRemoteSamples[occ.cid];
-      if (!updatedSample) return;
+      const updatedOccurrence = updatedRemoteSamples[occ.cid];
+      if (!updatedOccurrence) return;
 
-      const newVerification = updatedSample._source.identification;
+      const newVerification = updatedOccurrence._source.identification;
 
       const hasNotChanged =
-        newVerification.verified_on === occ.metadata.verification?.verified_on;
+        newVerification.verified_on ===
+          occ.metadata.verification?.verified_on &&
+        newVerification.query === occ.metadata.verification?.query;
       if (hasNotChanged) return; // there is a window when the same update can be returned. We don't want to change the record in that case.
 
       occ.metadata.verification = { ...newVerification };
 
       const isNonPending =
         newVerification.verification_status === 'C' &&
-        newVerification.verification_substatus === '0';
+        newVerification.verification_substatus === '0' &&
+        !newVerification.query;
       if (isNonPending) return;
 
-      nonPendingUpdatedSamples.push(updatedSample);
+      nonPendingUpdatedOccurrences.push(occ);
     };
 
     const hasSubSample = sample.samples.length;
@@ -218,62 +181,57 @@ function updateLocalSamples(
     sample.save();
   };
 
-  savedSamples.forEach(findMatchingLocalSamples);
+  samples.forEach(findMatchingLocalSamples);
 
-  return nonPendingUpdatedSamples;
+  return nonPendingUpdatedOccurrences;
 }
 
-function getEarliestTimestamp(savedSamples: typeof SavedSamplesProps) {
+function getEarliestTimestamp(samples: Sample[]) {
   const byTime = (s1: Sample, s2: Sample) =>
     new Date(s1.createdAt).getTime() - new Date(s2.createdAt).getTime();
-  const firstSample = [...savedSamples].sort(byTime)[0];
 
+  const [firstSample] = [...samples].sort(byTime);
   if (!firstSample) return new Date().getTime(); // should never happen
 
-  const currentTime = new Date(firstSample.createdAt);
-  currentTime.setHours(0, 0, 0, 0); // midnight
+  let earliestTimestamp = new Date(firstSample.createdAt);
 
-  return currentTime.getTime();
+  const oneMonthAgo = new Date();
+  oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+  if (earliestTimestamp.getTime() < oneMonthAgo.getTime()) {
+    // we don't want existing users with lots of records to pull all updates at once
+    earliestTimestamp = oneMonthAgo;
+  }
+
+  return earliestTimestamp.setHours(0, 0, 0, 0); // midnight
 }
 
 async function init(
-  savedSamples: typeof SavedSamplesProps,
+  allSamples: typeof SavedSamplesProps,
   userModel: UserModel,
   appModel: AppModel
 ) {
   // in-memory observable to use in reports and other views
-  savedSamples.verified = observable({ count: 0, timestamp: null });
+  allSamples.verified = observable({ updated: [], timestamp: null });
 
-  const originalResetDefaults = savedSamples.reset;
+  const originalResetDefaults = allSamples.reset;
   // eslint-disable-next-line @getify/proper-arrows/name
-  savedSamples.reset = () => {
-    set(savedSamples.verified, { count: 0, timestamp: null });
+  allSamples.reset = () => {
+    set(allSamples.verified, { count: 0, timestamp: null });
     return originalResetDefaults();
   };
 
   async function sync() {
+    const samples: Sample[] = allSamples.filter(smp => smp.isStored);
     if (
-      !savedSamples.length ||
+      !samples.length ||
       !userModel.isLoggedIn() ||
-      !userModel.attrs.verified ||
+      !userModel.data.verified ||
       !device.isOnline
     )
       return;
 
-    let lastSyncTime =
-      appModel.attrs.verifiedRecordsTimestamp ||
-      getEarliestTimestamp(savedSamples);
-
-    if (!Number.isFinite(lastSyncTime)) {
-      console.error(
-        'SavedSamples lastSyncTime is not finite',
-        lastSyncTime,
-        appModel.attrs.verifiedRecordsTimestamp,
-        getEarliestTimestamp(savedSamples)
-      );
-
-      lastSyncTime = new Date().getTime();
-    }
+    const lastSyncTime =
+      appModel.data.verifiedRecordsTimestamp || getEarliestTimestamp(samples);
 
     const shouldSyncWait = new Date().getTime() - lastSyncTime < SQL_TO_ES_LAG;
     if (shouldSyncWait) return;
@@ -283,7 +241,7 @@ async function init(
       lastSyncTime
     );
 
-    appModel.attrs.verifiedRecordsTimestamp = new Date().getTime();
+    appModel.data.verifiedRecordsTimestamp = new Date().getTime();
     appModel.save();
 
     if (!Object.keys(updatedRemoteSamples).length) return;
@@ -292,21 +250,25 @@ async function init(
       'SavedSamples: pulled remote verified surveys. New ones found.'
     );
 
-    const updatedLocalSamples = await updateLocalSamples(
-      savedSamples,
+    const updatedLocalOccurrences = await updateLocalOccurrences(
+      samples,
       updatedRemoteSamples
     );
 
-    if (!updatedLocalSamples?.length) return;
+    if (!updatedLocalOccurrences.length) return;
     console.log(
       'SavedSamples: pulled remote verified surveys and found local matches'
     );
 
-    savedSamples.verified.count = updatedLocalSamples?.length;
-    savedSamples.verified.timestamp = appModel.attrs.verifiedRecordsTimestamp;
+    const newVerified: Verification = {
+      updated: updatedLocalOccurrences,
+      timestamp: appModel.data.verifiedRecordsTimestamp,
+    };
+
+    set(allSamples.verified, newVerified);
   }
 
-  savedSamples.ready.then(sync);
+  allSamples.ready.then(sync);
   setInterval(sync, SYNC_WAIT);
 }
 

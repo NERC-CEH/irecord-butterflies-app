@@ -17,19 +17,13 @@ import pointSurvey from 'Survey/Point/config';
 import multiSurvey from 'Survey/Time/Multi/config';
 import timeSurvey from 'Survey/Time/Single/config';
 import { Survey } from 'Survey/common/config';
+import { getSurveyConfigs } from 'Survey/common/surveyConfigs';
 import Media from '../image';
 import Occurrence from '../occurrence';
 import { samplesStore } from '../store';
 import BackgroundGPSExtension from './sampleBackgroundGPSExt';
 import GPSExtension from './sampleGPSExt';
 import MetOfficeExtension from './sampleMetofficeExt';
-
-const surveyConfig = {
-  point: pointSurvey,
-  list: listSurvey,
-  'single-species-count': timeSurvey,
-  'multi-species-count': multiSurvey,
-};
 
 type Attrs = SampleAttrs & {
   surveyId: any;
@@ -53,14 +47,9 @@ type Metadata = SampleMetadata & {
   timerPausedTime?: Date;
   pausedTime: number;
   saved?: number | boolean;
-  survey?: string;
 };
 
 export default class Sample extends SampleOriginal<Attrs, Metadata> {
-  static fromJSON(json: any) {
-    return super.fromJSON(json, Occurrence, Sample, Media);
-  }
-
   declare occurrences: IObservableArray<Occurrence>;
 
   declare samples: IObservableArray<Sample>;
@@ -68,8 +57,6 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
   declare media: IObservableArray<Media>;
 
   declare parent?: Sample;
-
-  declare survey: Survey;
 
   startMetOfficePull: any; // from extension
 
@@ -87,6 +74,8 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
 
   isGPSRunning: any; // from extension
 
+  gps: any; // from extension
+
   toggleBackgroundGPS: any; // from extension
 
   hasLoctionMissingAndIsnotLocating: any; // from extension
@@ -94,15 +83,10 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
   isBackgroundGPSRunning: any; // from extension
 
   constructor(options: SampleOptions<Attrs>) {
-    super({ ...options, store: samplesStore });
-    this.remote.url = `${config.backend.indicia.url}/index.php/services/rest`;
-    // eslint-disable-next-line
-    this.remote.headers = async () => ({
-      Authorization: `Bearer ${await userModel.getAccessToken()}`,
-    });
+    super({ ...options, Occurrence, Media, store: samplesStore });
 
-    this.survey =
-      surveyConfig[this.metadata.survey as keyof typeof surveyConfig];
+    this.remote.url = config.backend.indicia.url;
+    this.remote.getAccessToken = () => userModel.getAccessToken();
 
     Object.assign(this, GPSExtension);
     Object.assign(this, BackgroundGPSExtension);
@@ -120,7 +104,7 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
 
     if (id) {
       const byTaxonId = (smp: Sample) =>
-        smp.occurrences[0].attrs.taxon.id === id;
+        smp.occurrences[0].data.taxon.id === id;
       const smp = this.samples.find(byTaxonId)!;
       return hasZeroAbundance(smp);
     }
@@ -149,7 +133,7 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
   }
 
   getTimerEndTime = () => {
-    const startTime = new Date(this.attrs.startTime!);
+    const startTime = new Date(this.data.startTime!);
     const DEFAULT_SURVEY_TIME = 15 * 60 * 1000; // 15 mins
 
     return (
@@ -164,37 +148,38 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
   };
 
   isSurveySingleSpeciesTimedCount() {
-    return this.metadata.survey === 'single-species-count';
+    return this.data.surveyId === timeSurvey.id;
   }
 
   isSurveyMultiSpeciesTimedCount() {
-    return this.metadata.survey === 'multi-species-count';
+    return this.data.surveyId === multiSurvey.id;
   }
 
   getCurrentEditRoute() {
-    const hasTimerStarted = this.attrs.startTime;
+    const hasTimerStarted = this.data.startTime;
+    const surveyName = this.getSurvey().name;
 
     if (!hasTimerStarted && this.isSurveyMultiSpeciesTimedCount()) {
-      return `/survey/${this.metadata.survey}/${this.cid}/details`;
+      return `/survey/${surveyName}/${this.id || this.cid}/details`;
     }
 
     if (!this.isSurveySingleSpeciesTimedCount())
-      return `/survey/${this.metadata.survey}/${this.cid}`;
+      return `/survey/${surveyName}/${this.id || this.cid}`;
 
     const hasTaxonBeenSelected = this.samples.length;
     if (!hasTaxonBeenSelected) {
-      return `/survey/${this.metadata.survey}/${this.cid}/species`;
+      return `/survey/${surveyName}/${this.id || this.cid}/species`;
     }
 
     if (!hasTimerStarted) {
-      return `/survey/${this.metadata.survey}/${this.cid}/details`;
+      return `/survey/${surveyName}/${this.id || this.cid}/details`;
     }
 
-    return `/survey/${this.metadata.survey}/${this.cid}`;
+    return `/survey/${surveyName}/${this.id || this.cid}`;
   }
 
   async upload(skipRefreshUploadCountStat?: boolean) {
-    if (this.remote.synchronising || this.isUploaded()) return true;
+    if (this.isSynchronising || this.isUploaded) return true;
 
     const invalids = this.validateRemote();
     if (invalids) return false;
@@ -215,24 +200,39 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
   }
 
   getSurvey() {
-    try {
-      return super.getSurvey() as Survey;
-    } catch (error) {
-      console.error(`Survey config was missing ${this.attrs.surveyId}`);
-      return {} as Survey;
+    let { surveyId } = this.data;
+
+    // backwards compatible, remove once everyone uploads their surveys
+    if ((this.metadata as any).survey) {
+      if ((this.metadata as any).survey === 'point') surveyId = pointSurvey.id;
+      if ((this.metadata as any).survey === 'list') surveyId = listSurvey.id;
+      if ((this.metadata as any).survey === 'single-species-count')
+        surveyId = timeSurvey.id;
+      if ((this.metadata as any).survey === 'multi-species-count')
+        surveyId = multiSurvey.id;
+
+      if (!this.data.surveyId && !this.parent) {
+        this.data.surveyId = surveyId;
+      }
     }
+
+    const survey = getSurveyConfigs()[surveyId];
+
+    const isSubSample = this.parent;
+    if (isSubSample) return (survey.smp || {}) as Survey;
+
+    return survey as Survey;
   }
 
   async setSpecies(species: Species, occurrence: Occurrence): Promise<string> {
     const survey = this.getSurvey();
-
     if (survey.name === 'point') {
-      this.occurrences[0].attrs.taxon = species; // eslint-disable-line
+      this.occurrences[0].data.taxon = species; // eslint-disable-line
     }
 
     if (survey.name === 'single-species-count') {
       const zeroAbundance = 't';
-      const { stage } = this.attrs;
+      const { stage } = this.data;
       const newSubSample = await survey.smp!.create!({
         Sample,
         Occurrence,
@@ -266,7 +266,7 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
     }
 
     if (survey.name === 'multi-species-count') {
-      const { stage } = this.attrs;
+      const { stage } = this.data;
       const newSubSample = await survey.smp!.create!({
         Sample,
         Occurrence,
@@ -280,7 +280,7 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
 
     if (survey.name === 'list') {
       if (occurrence) {
-        occurrence.attrs.taxon = species; // eslint-disable-line
+        occurrence.data.taxon = species; // eslint-disable-line
       } else {
         const occ = await survey.occ!.create!({ Occurrence, taxon: species });
         this.occurrences.push(occ);
@@ -305,15 +305,15 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
 
       const getSamples = (subSample: Sample) => {
         status =
-          this.isUploaded() && !!subSample.occurrences.some(hasBeenVerified);
+          this.isUploaded && !!subSample.occurrences.some(hasBeenVerified);
         return status;
       };
 
       this.samples.some(getSamples);
-      return this.isUploaded() && !!status;
+      return this.isUploaded && !!status;
     }
 
-    return this.isUploaded() && !!this.occurrences.some(hasBeenVerified);
+    return this.isUploaded && !!this.occurrences.some(hasBeenVerified);
   }
 
   getSurveySpeciesFilters() {
@@ -328,12 +328,12 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
   }
 }
 
-export const useValidateCheck = (sample: Sample) => {
+export const useValidateCheck = (sample?: Sample) => {
   const alert = useAlert();
   const { t } = useTranslation();
 
   const showValidateCheck = () => {
-    const invalids = sample.validateRemote();
+    const invalids = sample?.validateRemote();
     if (invalids) {
       alert({
         header: t('Survey incomplete'),

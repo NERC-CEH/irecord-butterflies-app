@@ -12,9 +12,9 @@ function SpeciesGuideController() {
       <Header
         onSearch={setSearchPhrase}
         toggleFilter={appModel.toggleFilter}
-        filters={appModel.attrs.filters}
+        filters={appModel.data.filters}
       />
-      <Main searchPhrase={searchPhrase} filters={appModel.attrs.filters} />
+      <Main searchPhrase={searchPhrase} filters={appModel.data.filters} />
     </Page>
   );
 }

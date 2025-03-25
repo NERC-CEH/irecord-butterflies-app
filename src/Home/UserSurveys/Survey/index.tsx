@@ -9,12 +9,11 @@ import {
   IonItemOptions,
   IonItemOption,
   IonIcon,
-  IonAvatar,
   NavContext,
 } from '@ionic/react';
-import VerificationIcon from 'common/Components/VerificationIcon';
-import VerificationListIcon from 'common/Components/VerificationListIcon';
-import species, { Species } from 'common/data/species';
+import VerificationListStatus from 'common/Components/VerificationListStatus';
+import VerificationStatus from 'common/Components/VerificationStatus';
+import species, { byIdsAndName } from 'common/data/species';
 import getFormattedDuration from 'common/helpers/getFormattedDuration';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import Occurrence from 'models/occurrence';
@@ -49,37 +48,31 @@ function useSurveyDeletePrompt(sample: Sample) {
 function getSampleInfo(sample: Sample) {
   const survey = sample.getSurvey();
 
-  const prettyDate = getRelativeDate(sample.attrs.date);
-  const isOutsideUK = sample.attrs.location && !sample.attrs.location.gridref;
+  const prettyDate = getRelativeDate(sample.data.date);
+  const isOutsideUK = sample.data.location && !sample.data.location.gridref;
 
   if (survey.name === 'point') {
     const occ = sample.occurrences[0];
-    if (!occ) {
-      console.error('No occurrence found when showing record');
-      // TODO: remove this check after Beta
-      sample.destroy();
-      return null;
-    }
+    const taxon = occ.data.taxon || {};
+    const label = taxon.commonName || taxon.scientificName;
 
-    const taxon = occ.attrs.taxon || {};
-    const label = taxon.commonName;
-
-    const byId = ({ id: speciesID }: Species) => speciesID === taxon.id;
-    const fullSpeciesProfile: any = species.find(byId) || {};
+    const fullSpeciesProfile: any = species.find(byIdsAndName(taxon)) || {};
 
     const { thumbnail } = fullSpeciesProfile;
 
     let avatar = <IonIcon icon={butterflyIcon} color="warning" />;
     if (occ.media.length) {
       const image = occ.media[0];
-      avatar = <img src={image.getURL()} />;
+      avatar = (
+        <img src={image.getURL()} className="h-full w-full object-cover" />
+      );
     } else if (thumbnail) {
       avatar = <img src={thumbnail} />;
     }
 
     return (
       <>
-        <IonAvatar className="shrink-0">{avatar}</IonAvatar>
+        <div className="list-avatar ml-2 mr-4">{avatar}</div>
 
         <div className="flex w-full flex-col">
           <div className={clsx('species-name', !label && 'text-warning')}>
@@ -88,7 +81,7 @@ function getSampleInfo(sample: Sample) {
 
           <div className="text-sm">{prettyDate}</div>
 
-          {isOutsideUK && (
+          {isOutsideUK && !sample.isDisabled && (
             <Badge color="warning" size="small">
               Check location
             </Badge>
@@ -105,11 +98,10 @@ function getSampleInfo(sample: Sample) {
       !smp?.occurrences[0]?.hasZeroAbundance();
     const count = sample?.samples?.filter(nonZeroAbundance).length;
 
-    const taxon = occ?.attrs?.taxon || {};
+    const taxon = occ?.data?.taxon || {};
     const label = 'Single timed count';
 
-    const byId = ({ id: speciesID }: Species) => speciesID === taxon.id;
-    const fullSpeciesProfile: any = species.find(byId) || {};
+    const fullSpeciesProfile: any = species.find(byIdsAndName(taxon)) || {};
 
     const { thumbnail } = fullSpeciesProfile;
 
@@ -117,13 +109,15 @@ function getSampleInfo(sample: Sample) {
     let avatar = <IonIcon icon={butterflyIcon} color="warning" />;
 
     if (image) {
-      avatar = <img src={image.getURL()} />;
+      avatar = (
+        <img src={image.getURL()} className="h-full w-full object-cover" />
+      );
     } else if (thumbnail) {
       avatar = <img src={thumbnail} />;
     }
 
     const durationTime = (
-      <span>{getFormattedDuration(sample.attrs.duration)}</span>
+      <span>{getFormattedDuration(sample.data.duration)}</span>
     );
 
     const showSurveyDuration = sample.metadata.saved ? (
@@ -134,7 +128,7 @@ function getSampleInfo(sample: Sample) {
 
     return (
       <>
-        <IonAvatar className="shrink-0">{avatar}</IonAvatar>
+        <div className="list-avatar ml-2 mr-4 shrink-0">{avatar}</div>
 
         <div className="flex w-full flex-col">
           <div className={clsx('species-name', !label && 'text-warning')}>
@@ -165,7 +159,7 @@ function getSampleInfo(sample: Sample) {
     const speciesCount = sample.samples.length;
 
     const durationTime = (
-      <span>{getFormattedDuration(sample.attrs.duration)}</span>
+      <span>{getFormattedDuration(sample.data.duration)}</span>
     );
 
     const showSurveyDuration = sample.metadata.saved ? (
@@ -190,7 +184,7 @@ function getSampleInfo(sample: Sample) {
   }
 
   const speciesCount = sample.occurrences.length;
-  const location = sample.attrs.location || {};
+  const location = sample.data.location || {};
   const locationName = location.name || 'List';
 
   return (
@@ -203,7 +197,7 @@ function getSampleInfo(sample: Sample) {
       <div className="flex w-full flex-col">
         <div className="location-name">{locationName}</div>
         <div className="text-sm">{prettyDate}</div>
-        {isOutsideUK && (
+        {isOutsideUK && !sample.isDisabled && (
           <Badge color="warning" size="small">
             Check location
           </Badge>
@@ -226,9 +220,9 @@ const Survey = ({ sample, uploadIsPrimary, ...props }: Props) => {
   const checkSampleStatus = useValidateCheck(sample);
   const checkUserStatus = useUserStatusCheck();
 
-  const { synchronising } = sample.remote;
-
-  const href = !synchronising ? sample.getCurrentEditRoute() : undefined;
+  const href = !sample.isSynchronising
+    ? sample.getCurrentEditRoute()
+    : undefined;
 
   const deleteSurveyWrap = () => deleteSurvey();
   const onUpload = async () => {
@@ -243,27 +237,24 @@ const Survey = ({ sample, uploadIsPrimary, ...props }: Props) => {
   };
 
   const getVerificationIconForPointSurvey = (occ: Occurrence) => (
-    <VerificationIcon occ={occ} key={occ.cid} />
+    <VerificationStatus occ={occ} key={occ.cid} />
   );
 
   const verificationIcon =
-    sample.metadata.survey === 'point' ? (
+    sample.getSurvey().name === 'point' ? (
       sample.occurrences.map(getVerificationIconForPointSurvey)
     ) : (
-      <VerificationListIcon sample={sample} key={sample.cid} />
+      <VerificationListStatus sample={sample} key={sample.cid} />
     );
 
   const openItem = () => {
-    if (sample.remote.synchronising) return; // fixes button onPressUp and other accidental navigation
+    if (sample.isSynchronising) return; // fixes button onPressUp and other accidental navigation
     navigate(href!);
   };
 
   return (
     <IonItemSliding class="survey-list-item" {...props}>
-      <IonItem
-        onClick={openItem}
-        detail={!synchronising && !sample.hasOccurrencesBeenVerified()}
-      >
+      <IonItem onClick={openItem} detail={false}>
         {getSampleInfo(sample)}
 
         <OnlineStatus

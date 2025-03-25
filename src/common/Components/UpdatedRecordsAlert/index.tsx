@@ -12,17 +12,17 @@ const UpdatedRecordsDialog = () => {
   const alert = useAlert();
   const { navigate } = useContext(NavContext);
 
-  const { showVerifiedRecordsNotification } = appModel.attrs;
+  const { showVerifiedRecordsNotification } = appModel.data;
 
   const onToggleAlert = (e: any) => {
     // eslint-disable-next-line no-param-reassign
-    appModel.attrs.showVerifiedRecordsNotification = !e.detail.checked;
+    appModel.data.showVerifiedRecordsNotification = !e.detail.checked;
   };
 
   const showAlert = () => {
     if (!showVerifiedRecordsNotification || isPopupVisible) return;
 
-    const verifiedRecordsCount = savedSamples.verified?.count;
+    const verifiedRecordsCount = savedSamples.verified?.updated?.length;
     if (!verifiedRecordsCount) return;
 
     isPopupVisible = true;

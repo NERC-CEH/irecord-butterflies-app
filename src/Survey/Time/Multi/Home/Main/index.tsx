@@ -22,7 +22,7 @@ import {
   IonItem,
   NavContext,
 } from '@ionic/react';
-import VerificationListIcon from 'common/Components/VerificationListIcon';
+import VerificationListStatus from 'common/Components/VerificationListStatus';
 import Sample from 'models/sample';
 import Stopwatch from 'Survey/Time/common/Components/Stopwatch';
 import DisabledRecordMessage from 'Survey/common/Components/DisabledRecordMessage';
@@ -38,7 +38,7 @@ type Props = {
 const getDefaultTaxonCount = (taxon: any) => ({ count: 0, taxon });
 
 const buildSpeciesCount = (agg: any, smp: Sample) => {
-  const taxon = toJS(smp.occurrences[0].attrs.taxon);
+  const taxon = toJS(smp.occurrences[0].data.taxon);
   const id = taxon.warehouseId;
 
   agg[id] = agg[id] || getDefaultTaxonCount(taxon); // eslint-disable-line
@@ -67,13 +67,11 @@ const buildSpeciesCount = (agg: any, smp: Sample) => {
 const HomeMain = ({ sample, increaseCount, deleteSpecies }: Props) => {
   const { url } = useRouteMatch();
   const { navigate } = useContext(NavContext);
-  const { area } = sample.attrs.location || {};
-  const isDisabled = sample.isUploaded();
+  const { area } = sample.data.location || {};
+  const isDisabled = sample.isUploaded;
   const isTimerPaused = sample.isTimerPaused();
 
-  let areaPretty: JSX.Element | string = (
-    <IonIcon icon={warningOutline} color="danger" />
-  );
+  let areaPretty: any = <IonIcon icon={warningOutline} color="danger" />;
 
   if (Number.isFinite(area) || sample.isBackgroundGPSRunning()) {
     areaPretty = area ? `${area} m²` : '';
@@ -121,7 +119,7 @@ const HomeMain = ({ sample, increaseCount, deleteSpecies }: Props) => {
             {location}
           </IonLabel>
 
-          <VerificationListIcon sample={sample} key={sample.cid} />
+          <VerificationListStatus sample={sample} key={sample.cid} />
         </IonItem>
 
         {!isDisabled && (

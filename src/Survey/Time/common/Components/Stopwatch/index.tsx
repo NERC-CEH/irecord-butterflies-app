@@ -14,7 +14,7 @@ import Sample from 'models/sample';
 import './styles.scss';
 
 const getTimeSpent = (sample: Sample) => {
-  const startTime = new Date(sample.attrs.startTime).getTime();
+  const startTime = new Date(sample.data.startTime).getTime();
   const pauseTime = new Date(sample.metadata.pausedTime).getTime();
   const timestamp = sample.metadata.timerPausedTime
     ? new Date(sample.metadata.timerPausedTime).getTime()

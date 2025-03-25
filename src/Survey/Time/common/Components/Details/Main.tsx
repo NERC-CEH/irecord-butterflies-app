@@ -22,17 +22,17 @@ import Sample from 'models/sample';
 
 type Props = {
   sample: Sample;
-  onChangeCounter: (value: number) => void;
+  onChangeCounter: (value: number | null) => void;
 };
 
 const MainDetails = ({ sample, onChangeCounter }: Props) => {
   const { url } = useRouteMatch();
 
-  const isDisabled = sample.isUploaded();
+  const isDisabled = sample.isUploaded;
   const { comment, sun, temperature, windDirection, windSpeed, recorders } =
-    sample.attrs;
+    sample.data;
 
-  const species = sample?.samples[0]?.occurrences[0]?.attrs?.taxon?.commonName;
+  const species = sample?.samples[0]?.occurrences[0]?.data?.taxon?.commonName;
 
   return (
     <Main>

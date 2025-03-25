@@ -30,8 +30,8 @@ const Records = ({ sample }: Props) => {
       geometry: {
         type: 'Point',
         coordinates: [
-          (smp.attrs.location as any).longitude,
-          (smp.attrs.location as any).latitude,
+          (smp.data.location as any).longitude,
+          (smp.data.location as any).latitude,
           0.0,
         ],
       },

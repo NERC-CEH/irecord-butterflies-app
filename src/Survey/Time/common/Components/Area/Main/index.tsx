@@ -52,14 +52,14 @@ const AreaAttr = ({
   isDisabled,
 }: Props) => {
   // eslint-disable-next-line prefer-destructuring
-  const location = sample.attrs.location as any;
+  const location = sample.data.location as any;
 
   const initialViewState = { ...location };
 
   const shouldDeleteShape = useDeletePropt();
 
   const isFinished =
-    sample.isDisabled() || sample.metadata.saved || sample.isTimerFinished();
+    sample.isDisabled || sample.metadata.saved || sample.isTimerFinished();
 
   const onShapeChange = async (newShape: any) => {
     if (!newShape) {

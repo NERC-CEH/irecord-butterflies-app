@@ -8,7 +8,7 @@
     --padding-start: 0;
     --border-style: none;
     --border-radius: 10px;
-
+    --inner-padding-end: 5px;
     --min-height: 75px; // must match LIST_ITEM_HEIGHT
     max-height: 75px; // must match LIST_ITEM_HEIGHT
 
@@ -16,10 +16,6 @@
     .species-name {
       display: block !important; // for ellipses
       font-weight: 500;
-    }
-
-    ion-avatar + ion-label {
-      margin-top: 4px;
     }
 
     ion-label {
@@ -60,21 +56,6 @@
     .label {
       font-size: 0.6em;
       text-align: center;
-    }
-  }
-
-  ion-avatar {
-    margin: 5px 10px;
-    background: var(--avatar-background);
-    width: 50px;
-    height: 50px;
-
-    ion-icon {
-      padding: 10px;
-      width: calc(100% - 20px);
-      height: calc(100% - 20px);
-
-      --ionicon-stroke-width: 20px;
     }
   }
 }

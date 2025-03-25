@@ -18,11 +18,11 @@ const Species = (props: any) => {
     if (taxa) {
       const selectedTaxon = ({ occurrences }: Sample) => {
         const [occ] = occurrences; // always one
-        return occ.attrs.taxon.warehouseId === parseInt(taxa, 10);
+        return occ.data.taxon.warehouseId === parseInt(taxa, 10);
       };
       const assignTaxon = ({ occurrences }: Sample) => {
         const [occ] = occurrences; // always one
-        occ.attrs.taxon = species;
+        occ.data.taxon = species;
       };
       sample.samples.filter(selectedTaxon).forEach(assignTaxon);
 
@@ -34,7 +34,7 @@ const Species = (props: any) => {
 
     if (occurrence) {
       // eslint-disable-next-line
-      occurrence.attrs.taxon = species;
+      occurrence.data.taxon = species;
     } else {
       const newSample = survey.smp.create(
         Sample,

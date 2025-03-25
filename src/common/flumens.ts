@@ -19,12 +19,12 @@ export {
 export {
   default as MapContainer,
   useMapStyles,
-} from '@flumens/ionic/dist/components/Map/Container';
+} from '@flumens/tailwind/dist/components/Map/Container';
+export * from '@flumens/tailwind/dist/components/Map/utils';
 export { default as MapHeader } from '@flumens/ionic/dist/components/Map/Header';
 export { default as MapSettingsPanel } from '@flumens/ionic/dist/components/Map/SettingsPanel';
-export { default as MapDraw } from '@flumens/ionic/dist/components/Map/Draw';
-export { default as CircleMarker } from '@flumens/ionic/dist/components/Map/Container/LocationMarker/CircleMarker';
-export * from '@flumens/ionic/dist/components/Map/utils';
+export { default as MapDraw } from '@flumens/tailwind/dist/components/Map/Draw';
+export { default as CircleMarker } from '@flumens/tailwind/dist/components/Map/Container/LocationMarker/CircleMarker';
 export { default as Gallery } from '@flumens/ionic/dist/components/Gallery';
 export {
   default as RadioInput,
@@ -33,7 +33,7 @@ export {
 export { default as CheckboxInput } from '@flumens/tailwind/dist/components/Checkbox';
 export { default as NumberInput } from '@flumens/tailwind/dist/components/NumberInput';
 export { default as LongPressFabButton } from '@flumens/ionic/dist/components/LongPressFabButton';
-export { default as VirtualList } from '@flumens/ionic/dist/components/VirtualList';
+export { default as VirtualList } from '@flumens/tailwind/dist/components/VirtualList';
 export {
   default as Input,
   type Props as InputProps,
@@ -61,28 +61,28 @@ export { default as SampleCollection } from '@flumens/models/dist/Indicia/Sample
 export * from '@flumens/models/dist/Indicia/helpers';
 export {
   default as Model,
-  type Attrs as ModelAttrs,
+  type Data as ModelAttrs,
 } from '@flumens/models/dist/Model';
 export {
   default as Sample,
-  type Attrs as SampleAttrs,
+  type Data as SampleAttrs,
   type Metadata as SampleMetadata,
   type Options as SampleOptions,
   type RemoteConfig,
 } from '@flumens/models/dist/Indicia/Sample';
 export {
   default as Media,
-  type Attrs as MediaAttrs,
+  type Data as MediaAttrs,
 } from '@flumens/models/dist/Indicia/Media';
 export {
   default as Occurrence,
-  type Attrs as OccurrenceAttrs,
+  type Data as OccurrenceAttrs,
   type Metadata as OccurrenceMetadata,
   type Options as OccurrenceOptions,
 } from '@flumens/models/dist/Indicia/Occurrence';
 export {
   default as DrupalUserModel,
-  type Attrs as DrupalUserModelAttrs,
+  type Data as DrupalUserModelAttrs,
 } from '@flumens/models/dist/Drupal/User';
 // export { default as UserFeedbackRequest } from '@flumens/ionic/dist/components/UserFeedbackRequest';
 export {
@@ -108,10 +108,16 @@ export {
   type ContextValue as TailwindContextValue,
 } from '@flumens/tailwind/dist/components/Context';
 export {
-  type Block as BlockT,
+  type BlockConf as BlockT,
   type ChoiceValues,
 } from '@flumens/tailwind/dist/Survey';
 export {
   default as TailwindBlockContext,
   defaultContext,
 } from '@flumens/tailwind/dist/components/Block/Context';
+export {
+  default as useSample,
+  withSample,
+  SamplesContext,
+} from '@flumens/ionic/dist/hooks/useSample';
+export { default as useRemoteSample } from '@flumens/ionic/dist/hooks/useRemoteSample';

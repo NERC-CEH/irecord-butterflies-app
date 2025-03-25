@@ -12,11 +12,11 @@ type Props = {
 const ImageTitle = ({ image }: Props) => {
   if (image.identification.identifying) return null; // for re-rendering, this line must be first because this is the only observable in the media model
 
-  const identifierWasNotUsed = !image.attrs.species;
+  const identifierWasNotUsed = !image.data.species;
   if (identifierWasNotUsed) return null;
 
   const doesTaxonMatchParent = image.getIdentifiedTaxonThatMatchParent();
-  const identifierFoundNoSpecies = !image.attrs?.species?.length;
+  const identifierFoundNoSpecies = !image.data?.species?.length;
 
   let message;
   if (identifierFoundNoSpecies) {

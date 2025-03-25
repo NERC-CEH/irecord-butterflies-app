@@ -17,6 +17,7 @@ type Metadata = OccurrenceMetadata & {
   verification?: {
     verification_status: any;
     verification_substatus: any;
+    query?: string;
     verified_on: any;
     verifier?: { name: string };
   };
@@ -31,13 +32,9 @@ type Attrs = OccurrenceAttrs & {
   zeroAbundance?: 't' | 'f' | null;
 };
 
-const defaultAttrs: Attrs = { taxon: null };
+const defaultData: Attrs = { taxon: null };
 
 export default class Occurrence extends OccurrenceOriginal<Attrs, Metadata> {
-  static fromJSON(json: any) {
-    return super.fromJSON(json, Media);
-  }
-
   declare media: IObservableArray<Media>;
 
   declare parent?: Sample;
@@ -45,14 +42,14 @@ export default class Occurrence extends OccurrenceOriginal<Attrs, Metadata> {
   validateRemote = validateRemoteModel;
 
   constructor(options: OccurrenceOptions) {
-    super({ ...options, attrs: { ...defaultAttrs, ...options.attrs } });
+    super({ ...options, Media, data: { ...defaultData, ...options.data } });
 
     const setOnlyMinimalSpeciesValues = (change: any) => {
       const { warehouseId, id, scientificName, commonName } = change.newValue;
       change.newValue = { warehouseId, id, scientificName, commonName }; // eslint-disable-line
       return change;
     };
-    intercept(this.attrs, 'taxon', setOnlyMinimalSpeciesValues);
+    intercept(this.data, 'taxon', setOnlyMinimalSpeciesValues);
   }
 
   setSpecies(speciesId: Species['id']) {
@@ -63,7 +60,7 @@ export default class Occurrence extends OccurrenceOriginal<Attrs, Metadata> {
       return;
     }
 
-    this.attrs.taxon = sp;
+    this.data.taxon = sp;
   }
 
   getVerificationStatus() {
@@ -85,9 +82,7 @@ export default class Occurrence extends OccurrenceOriginal<Attrs, Metadata> {
       this.metadata?.verification?.verification_status === 'C' &&
       this.metadata?.verification?.verification_substatus !== '3';
 
-    return (
-      this.isUploaded() && this.metadata?.verification && !isRecordInReview
-    );
+    return this.isUploaded && this.metadata?.verification && !isRecordInReview;
   }
 
   getVerificationStatusMessage() {
@@ -116,14 +111,10 @@ export default class Occurrence extends OccurrenceOriginal<Attrs, Metadata> {
 
   hasZeroAbundance() {
     return (
-      this.attrs.zeroAbundance === 't' ||
+      this.data.zeroAbundance === 't' ||
       // backwards compatible
-      (this.attrs as any).zero_abundance === 't'
+      (this.data as any).zero_abundance === 't'
     );
-  }
-
-  isDisabled() {
-    return this.isUploaded();
   }
 
   getAllUniqueIdentifiedSpecies() {
@@ -135,7 +126,7 @@ export default class Occurrence extends OccurrenceOriginal<Attrs, Metadata> {
       return p2 - p1;
     };
 
-    const getAllIdentifiedSpecies = (image: Media) => image.attrs.species;
+    const getAllIdentifiedSpecies = (image: Media) => image.data.species;
 
     const uniqueSpecies = new Set();
     const removeDuplicates = (sp: any) => {
@@ -157,5 +148,12 @@ export default class Occurrence extends OccurrenceOriginal<Attrs, Metadata> {
       .sort(byHightestProbability)
       .filter(removeDuplicates)
       .filter(withLowProbability);
+  }
+
+  getPrettyName() {
+    const { taxon } = this.data;
+    if (!taxon) return '';
+
+    return taxon?.commonName || taxon?.scientificName;
   }
 }

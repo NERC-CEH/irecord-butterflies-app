@@ -84,9 +84,9 @@
 
   --avatar-background: var(--ion-page-background);
 
-  --ion-verification-success: #33794f;
-  --ion-verification-plausible: #f18a29;
-  --ion-verification-rejected: #d33939;
+  --verification-success: var(--color-primary);
+  --verification-plausible: #fcb500;
+  --verification-rejected: var(--color-danger);
 
   --ion-classifier-success: #33794f;
   --classifier-success: var(--ion-color-primary-dark);
@@ -226,48 +226,6 @@ a {
   color: var(--ion-color-warning);
 }
 
-// VERIFICATION START
-ion-label.verification-list-icons {
-  display: flex !important;
-  flex-direction: row !important;
-  opacity: 1 !important;
-  margin-left: 0 !important;
-  margin: 0;
-  border-radius: 5px;
-  max-width: max-content !important;
-
-  ion-label[slot='end'].verificationIcon {
-    opacity: 1 !important;
-    margin: 0;
-    margin-left: 0 !important;
-    width: 25px !important;
-    max-width: 25px !important;
-    color: white !important;
-    font-weight: 500 !important;
-    text-align: center !important;
-  }
-
-  .id-green {
-    background: var(--ion-verification-success) !important;
-  }
-
-  .id-amber {
-    background: var(--ion-verification-plausible) !important;
-  }
-
-  .id-red {
-    background: var(--ion-verification-rejected) !important;
-  }
-}
-
-ion-icon[slot='end'].verificationIcon {
-  border-radius: 5px !important;
-  --ionicon-stroke-width: 2em;
-  margin: 0;
-  margin-left: 5px;
-  font-size: 1.6em;
-}
-
 // ACCESSIBILITY IMPROVEMENTS START
 ion-button:not(.button-has-icon-only),
 ion-item {
@@ -402,22 +360,6 @@ ion-accordion ion-icon[slot='start'].md {
 .input-list-attr-item input.plain-input {
   width: 100%;
 }
-
-// TODO:
-// .verificationIcon {
-//   &.id-green {
-//     color: var(--ion-verification-success) !important;
-//   }
-
-//   &.id-amber {
-//     color: var(--ion-verification-plausible) !important;
-//   }
-
-//   &.id-red {
-//     color: var(--ion-verification-rejected) !important;
-//   }
-// }
-// VERIFICATION END
 
 #location-page-header {
   --ion-color-primary-contrast: var(--form-value-color);

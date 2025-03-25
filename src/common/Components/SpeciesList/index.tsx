@@ -26,11 +26,11 @@ const useShowMothInformationDialog = (mothSpecies: any) => {
   const { navigate } = useContext(NavContext);
 
   const showMothInformationDialog = () => {
-    const { useMoths, showMothSpeciesTip } = appModel.attrs;
+    const { useMoths, showMothSpeciesTip } = appModel.data;
 
     if (!mothSpecies?.length || useMoths || !showMothSpeciesTip) return;
 
-    appModel.attrs.showMothSpeciesTip = false;
+    appModel.data.showMothSpeciesTip = false;
     appModel.save();
 
     alert({
@@ -68,7 +68,7 @@ function organiseByProbability(
   week?: number,
   hectad?: string
 ) {
-  const hectadName = hectad || appModel.attrs?.location?.gridref;
+  const hectadName = hectad || appModel.data?.location?.gridref;
 
   const weekNo = week || getCurrentWeekNumber();
 
@@ -106,7 +106,7 @@ function organiseByProbability(
 }
 
 // const shouldShowFeedback = () => false; // TODO: enable this back
-// const { feedbackGiven, appSession } = appModel.attrs;
+// const { feedbackGiven, appSession } = appModel.data;
 // if (feedbackGiven) {
 //   return false;
 // }
@@ -146,7 +146,7 @@ const SpeciesList = ({
   useShowMothInformationDialog(mothSpecies);
 
   // const onFeedbackDone = () => {
-  //   appModel.attrs.feedbackGiven = true;
+  //   appModel.data.feedbackGiven = true;
   //   appModel.save();
   // };
 
@@ -154,7 +154,7 @@ const SpeciesList = ({
 
   const onSpeciesRecord = (sp: any) => {
     hideSpeciesModal();
-    navigate(`/survey/point?species=${sp.id}`);
+    navigate(`/survey/point?speciesId=${sp.id}`);
   };
 
   const getSpeciesTile = (sp: Species, i: number) => {
@@ -215,7 +215,7 @@ const SpeciesList = ({
   };
 
   const getSpeciesData = () => {
-    const { useMoths } = appModel.attrs;
+    const { useMoths } = appModel.data;
 
     let filteredSpecies: Species[] = [...species];
 
@@ -277,7 +277,7 @@ const SpeciesList = ({
   const getSpecies = () => {
     const speciesData = getSpeciesData();
 
-    const { useProbabilitiesForGuide, useSmartSorting } = appModel.attrs;
+    const { useProbabilitiesForGuide, useSmartSorting } = appModel.data;
 
     const [speciesHereAndNow, speciesHere, speciesNow, remainingSpecies] =
       organiseByProbability(speciesData, week, hectad);

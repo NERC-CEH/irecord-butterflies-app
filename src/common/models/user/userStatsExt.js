@@ -66,7 +66,7 @@ const extension = {
     const stats = await fetchStatsWithButterflyFilter(this);
     if (!stats) return;
 
-    this.attrs.stats = stats; // eslint-disable-line
+    this.data.stats = stats; // eslint-disable-line
 
     this.save();
   },
@@ -85,7 +85,10 @@ const extension = {
   },
 
   getAchievedStatsMilestone() {
-    const { lastThankYouMilestoneShown } = this.attrs;
+    if (!this.data.lastThankYouMilestoneShown)
+      this.data.lastThankYouMilestoneShown = {};
+
+    const { lastThankYouMilestoneShown } = this.data;
 
     const currentYear = new Date().getFullYear();
     const lastThankYouMilestoneShownThisYear =

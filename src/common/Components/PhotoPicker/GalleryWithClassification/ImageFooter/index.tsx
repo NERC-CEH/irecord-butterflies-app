@@ -15,7 +15,7 @@ const ImageFooter = ({ onCrop, image, identifyImage }: Props) => {
   const onCropWrap = () => onCrop(image);
 
   const allowToEdit =
-    !image.parent?.isDisabled() && !image.identification.identifying;
+    !image.parent?.isDisabled && !image.identification.identifying;
 
   const cropButton = (
     <IonButton

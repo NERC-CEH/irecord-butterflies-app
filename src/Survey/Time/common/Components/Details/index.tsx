@@ -1,15 +1,11 @@
 import { useContext, useState } from 'react';
 import { observer } from 'mobx-react';
 import { useRouteMatch, useLocation } from 'react-router';
-import { Page, Header, useAlert, useOnBackButton } from '@flumens';
+import { Page, Header, useAlert, useOnBackButton, useSample } from '@flumens';
 import { NavContext, IonButton, IonButtons } from '@ionic/react';
 import Sample, { useValidateCheck } from 'models/sample';
 import HeaderButton from 'Survey/common/Components/HeaderButton';
 import Main from './Main';
-
-type Props = {
-  sample: Sample;
-};
 
 function useDeleteSurveyPrompt(alert: any) {
   const deleteSurveyPromt = (resolve: (param: boolean) => void) => {
@@ -37,30 +33,33 @@ function useDeleteSurveyPrompt(alert: any) {
   return deleteSurveyPromtWrap;
 }
 
-const DetailsController = ({ sample }: Props) => {
+const DetailsController = () => {
   const alert = useAlert();
   const { navigate, goBack } = useContext(NavContext);
   const { url } = useRouteMatch();
   const location = useLocation();
+
+  const { sample } = useSample<Sample>();
+
   const checkSampleStatus = useValidateCheck(sample);
   const [isAlertPresent, setIsAlertPresent] = useState(false);
   const shouldDeleteSurvey = useDeleteSurveyPrompt(alert);
 
-  const hasTimerStarted = sample.attrs.startTime;
+  const hasTimerStarted = sample!.data.startTime;
 
   const onStartTimer = () => {
     const isValid = checkSampleStatus();
     if (!isValid) return;
 
     // eslint-disable-next-line no-param-reassign
-    sample.attrs.startTime = new Date();
-    sample.save();
+    sample!.data.startTime = new Date();
+    sample!.save();
 
     const path = url.replace('/details', '');
     navigate(path, 'forward', 'replace');
   };
 
-  const isValid = !sample.validateRemote();
+  const isValid = !sample!.validateRemote();
 
   const startTimerButton = !hasTimerStarted && (
     <HeaderButton
@@ -85,7 +84,7 @@ const DetailsController = ({ sample }: Props) => {
 
     const change = await shouldDeleteSurvey();
     if (change) {
-      await sample.destroy();
+      await sample!.destroy();
 
       setIsAlertPresent(false);
       navigate('/home/surveys', 'root', 'push', undefined, {
@@ -99,6 +98,8 @@ const DetailsController = ({ sample }: Props) => {
 
   useOnBackButton(onDeleteSurvey);
 
+  if (!sample) return null;
+
   // eslint-disable-next-line react/no-unstable-nested-components
   const cancelButtonWrap = () => (
     <IonButtons slot="start">
@@ -108,10 +109,11 @@ const DetailsController = ({ sample }: Props) => {
     </IonButtons>
   );
 
-  const onChangeCounter = (value: number) => {
+  const onChangeCounter = (value: number | null) => {
+    if (!Number.isFinite(value)) return;
     // eslint-disable-next-line no-param-reassign
-    sample.attrs.recorders = value;
-    sample.save();
+    sample!.data.recorders = value!;
+    sample!.save();
   };
 
   return (

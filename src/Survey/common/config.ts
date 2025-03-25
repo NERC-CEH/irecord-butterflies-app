@@ -190,6 +190,7 @@ export interface Survey extends SampleConfig {
     Sample: typeof Sample;
     Occurrence?: typeof Occurrence;
     taxon?: Taxon;
+    speciesId?: any;
     image?: Media | null;
     skipLocation?: boolean;
     skipGPS?: boolean;

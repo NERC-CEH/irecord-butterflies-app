@@ -17,7 +17,7 @@ const DisabledRecordMessage = ({ sample }: Props) => {
   }
 
   return (
-    <InfoMessage className="mx-2" skipTranslation color="secondary">
+    <InfoMessage skipTranslation color="secondary">
       <T>
         This record has been submitted and cannot be edited within this App.
       </T>

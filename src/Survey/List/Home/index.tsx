@@ -1,12 +1,19 @@
 import { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useRouteMatch } from 'react-router';
-import { Page, Header, useAlert, useToast } from '@flumens';
+import {
+  Page,
+  Header,
+  useAlert,
+  useToast,
+  useSample,
+  useRemoteSample,
+} from '@flumens';
 import { NavContext } from '@ionic/react';
 import appModel from 'models/app';
 import Occurrence from 'models/occurrence';
 import Sample, { useValidateCheck } from 'models/sample';
-import { useUserStatusCheck } from 'models/user';
+import userModel, { useUserStatusCheck } from 'models/user';
 import SurveyHeaderButton from 'Survey/common/Components/SurveyHeaderButton';
 import Main from './Main';
 import buttonWithExplanationImage from './buttonWithExplanationImage.png';
@@ -62,7 +69,7 @@ function showListSurveyTip(alert: any) {
   });
 }
 function increaseCount(occ: Occurrence, is5x: boolean) {
-  const addOneCount = () => (occ.attrs.count as number)++; // eslint-disable-line no-param-reassign
+  const addOneCount = () => (occ.data.count as number)++; // eslint-disable-line no-param-reassign
 
   if (is5x) {
     [...Array(5)].forEach(addOneCount);
@@ -74,7 +81,7 @@ function increaseCount(occ: Occurrence, is5x: boolean) {
 }
 
 function deleteOccurrence(occ: Occurrence, alert: any) {
-  const { commonName } = occ.attrs.taxon;
+  const { commonName } = occ.data.taxon;
 
   alert({
     header: 'Delete',
@@ -95,30 +102,30 @@ function deleteOccurrence(occ: Occurrence, alert: any) {
   });
 }
 
-type Props = {
-  sample: Sample;
-};
-
-const Home = ({ sample }: Props) => {
+const Home = () => {
   const match = useRouteMatch();
   const alert = useAlert();
   const toast = useToast();
   const { navigate } = useContext(NavContext);
+
+  let { sample } = useSample<Sample>();
+  sample = useRemoteSample(sample, () => userModel.isLoggedIn(), Sample);
+
   const checkSampleStatus = useValidateCheck(sample);
 
   const checkUserStatus = useUserStatusCheck();
 
   const showListSurveyTipOnce = () => {
-    if (appModel.attrs.showListSurveyTip) {
-      appModel.attrs.showListSurveyTip = false; // eslint-disable-line
+    if (appModel.data.showListSurveyTip) {
+      appModel.data.showListSurveyTip = false; // eslint-disable-line
 
       appModel.save();
       showListSurveyTip(alert);
     }
 
-    const firstOccAdded = sample.occurrences.length === 1;
-    if (appModel.attrs.showListSurveyHiddenButtonTip && firstOccAdded) {
-      appModel.attrs.showListSurveyHiddenButtonTip = false; // eslint-disable-line
+    const firstOccAdded = sample?.occurrences.length === 1;
+    if (appModel.data.showListSurveyHiddenButtonTip && firstOccAdded) {
+      appModel.data.showListSurveyHiddenButtonTip = false; // eslint-disable-line
 
       appModel.save();
       showListSurveyHiddenButtonTip(alert);
@@ -127,9 +134,7 @@ const Home = ({ sample }: Props) => {
 
   useEffect(showListSurveyTipOnce);
 
-  if (!sample) {
-    return null;
-  }
+  if (!sample) return null;
 
   const _processSubmission = async () => {
     const isUserOK = await checkUserStatus();
@@ -143,7 +148,7 @@ const Home = ({ sample }: Props) => {
     const isValid = checkSampleStatus();
     if (!isValid) return;
 
-    appModel.attrs['draftId:list'] = null; // eslint-disable-line
+    appModel.data['draftId:list'] = null; // eslint-disable-line
     await appModel.save();
 
     sample.metadata.saved = true; // eslint-disable-line
@@ -161,16 +166,16 @@ const Home = ({ sample }: Props) => {
     await _processSubmission();
   };
 
-  const isDisabled = sample.isUploaded();
+  const isDisabled = sample.isUploaded;
 
   const navigateToOccurrence = (occ: Occurrence) => {
     navigate(`${match.url}/occ/${occ.cid}`);
   };
 
   const toggleSpeciesSort = () => {
-    const { listSurveyListSortedByTime } = appModel.attrs;
+    const { listSurveyListSortedByTime } = appModel.data;
     // eslint-disable-next-line
-    appModel.attrs.listSurveyListSortedByTime = !listSurveyListSortedByTime;
+    appModel.data.listSurveyListSortedByTime = !listSurveyListSortedByTime;
     appModel.save();
   };
 
@@ -191,7 +196,7 @@ const Home = ({ sample }: Props) => {
         navigateToOccurrence={navigateToOccurrence}
         increaseCount={increaseCount}
         deleteOccurrence={deleteOccurrenceWrap}
-        listSurveyListSortedByTime={appModel.attrs.listSurveyListSortedByTime}
+        listSurveyListSortedByTime={appModel.data.listSurveyListSortedByTime}
       />
     </Page>
   );

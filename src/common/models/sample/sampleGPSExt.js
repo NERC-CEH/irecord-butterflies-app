@@ -7,7 +7,7 @@ const DEFAULT_ACCURACY_LIMIT = 50; // meters
 const extension = {
   // eslint-disable-next-line default-param-last
   setLocation([longitude, latitude], source = 'map', accuracy) {
-    this.attrs.location = {
+    this.data.location = {
       latitude,
       longitude,
       source,
@@ -70,7 +70,7 @@ const extension = {
 
   hasLoctionMissingAndIsnotLocating() {
     return (
-      (!this.attrs.location || !this.attrs.location.latitude) &&
+      (!this.data.location || !this.data.location.latitude) &&
       !this.isGPSRunning()
     );
   },

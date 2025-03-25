@@ -22,7 +22,7 @@ import {
   NavContext,
 } from '@ionic/react';
 import InfoBackgroundMessage from 'common/Components/InfoBackgroundMessage';
-import VerificationIcon from 'common/Components/VerificationIcon';
+import VerificationStatus from 'common/Components/VerificationStatus';
 import Occurrence from 'models/occurrence';
 import Sample from 'models/sample';
 import DisabledRecordMessage from 'Survey/common/Components/DisabledRecordMessage';
@@ -31,10 +31,10 @@ import IncrementalButton from 'Survey/common/Components/IncrementalButton';
 import MenuDateAttr from 'Survey/common/Components/MenuDateAttr';
 
 const speciesNameSort = (occ1: Occurrence, occ2: Occurrence) => {
-  const taxon1 = occ1.attrs.taxon;
+  const taxon1 = occ1.data.taxon;
   const taxonName1 = taxon1.commonName;
 
-  const taxon2 = occ2.attrs.taxon;
+  const taxon2 = occ2.data.taxon;
   const taxonName2 = taxon2.commonName;
 
   return taxonName1.localeCompare(taxonName2);
@@ -69,7 +69,7 @@ const HomeMain = ({
   const { navigate } = useContext(NavContext);
 
   const getLocationButton = () => {
-    const location = sample.attrs.location || {};
+    const location = sample.data.location || {};
     const hasLocation = location.latitude;
     const hasName = location.name;
     const empty = !hasLocation || !hasName;
@@ -143,7 +143,7 @@ const HomeMain = ({
     const occurrences = [...sample.occurrences].sort(sort);
 
     const getSpeciesEntry = (occ: Occurrence) => {
-      const isSpeciesDisabled = !occ.attrs.count;
+      const isSpeciesDisabled = !occ.data.count;
 
       const increaseCountWrap = () => increaseCount(occ);
       const increase5xCountWrap = () => increaseCount(occ, true);
@@ -152,22 +152,23 @@ const HomeMain = ({
         !isSpeciesDisabled && navigateToOccurrence(occ);
       const deleteOccurrenceWrap = () => deleteOccurrence(occ);
 
+      const speciesName =
+        occ.data.taxon?.commonName || occ.data.taxon?.scientificName;
+
       return (
         <IonItemSliding key={occ.cid}>
           <IonItem
             detail={!isSpeciesDisabled && !occ.hasOccurrenceBeenVerified()}
           >
-            <VerificationIcon occ={occ} />
+            <VerificationStatus occ={occ} />
 
             <IncrementalButton
               onClick={increaseCountWrap}
               onLongClick={increase5xCountWrap}
-              value={occ.attrs.count as number}
+              value={occ.data.count as number}
               disabled={isDisabled}
             />
-            <IonLabel onClick={navToOccurrenceWrap}>
-              {occ.attrs.taxon.commonName}
-            </IonLabel>
+            <IonLabel onClick={navToOccurrenceWrap}>{speciesName}</IonLabel>
           </IonItem>
           {!isDisabled && (
             <IonItemOptions side="end">
@@ -220,7 +221,7 @@ const HomeMain = ({
 
         <h3 className="list-title">Details</h3>
         <div className="rounded-list">
-          <MenuDateAttr record={sample.attrs} isDisabled={isDisabled} />
+          <MenuDateAttr record={sample.data} isDisabled={isDisabled} />
           {getLocationButton()}
           <MenuAttrItemFromModel model={sample} attr="area" />
         </div>

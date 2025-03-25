@@ -54,18 +54,19 @@ async function getNewSample(
     return { ...agg, [key]: val };
   };
   const options = params.replace('?', '').split('&').reduce(toParam, {});
+
   const sample = await survey.create({ Sample, Occurrence, ...options });
   await sample.save();
 
   savedSamples.push(sample);
-  (appModel as any).attrs[draftIdKey] = sample.cid;
+  (appModel as any).data[draftIdKey] = sample.cid;
   await appModel.save();
 
   return sample;
 }
 
 async function getDraft(draftIdKey: string, alert: any) {
-  const draftID = (appModel as any).attrs[draftIdKey];
+  const draftID = (appModel as any).data[draftIdKey];
   if (draftID) {
     const byId = ({ cid }: any) => cid === draftID;
     const draftSample = savedSamples.find(byId);
@@ -94,7 +95,7 @@ function StartNewSurvey({ survey, location }: any) {
   const pickDraftOrCreateSampleWrap = () => {
     // eslint-disable-next-line
     (async () => {
-      let sample: Sample = await getDraft(draftIdKey, alert);
+      let sample = await getDraft(draftIdKey, alert);
       if (!sample) {
         sample = await getNewSample(survey, draftIdKey, location.search);
       }

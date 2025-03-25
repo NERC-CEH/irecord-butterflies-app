@@ -13,13 +13,10 @@ import {
   mapEventToLocation,
   toggleGPS,
   mapFlyToLocation,
+  useSample,
 } from '@flumens';
 import config from 'common/config';
-
-type Props = {
-  subSample?: any;
-  sample: any;
-};
+import Sample from 'common/models/sample';
 
 // TODO:
 // function showLocationGPSTip(alert) {
@@ -35,14 +32,14 @@ type Props = {
 //   });
 // }
 
-// const getLocation = sample => sample.attrs.location || {};
+// const getLocation = sample => sample.data.location || {};
 
 // const ModelLocationWithInfo = props => {
 //   const alert = useAlert();
 
 //   const showLocationGPSTipOnce = () => {
-//     if (appModel.attrs.showLocationGPSTip) {
-//       appModel.attrs.showLocationGPSTip = false; // eslint-disable-line
+//     if (appModel.data.showLocationGPSTip) {
+//       appModel.data.showLocationGPSTip = false; // eslint-disable-line
 
 //       appModel.save();
 //       showLocationGPSTip(alert);
@@ -51,23 +48,25 @@ type Props = {
 
 //   useEffect(showLocationGPSTipOnce);
 
-const ModelLocation = ({ subSample, sample }: Props) => {
-  const model = subSample || sample;
-  const location = model.attrs.location || {};
-  const parentLocation = model.parent?.attrs.location;
+const ModelLocation = () => {
+  const { sample, subSample } = useSample<Sample>();
+  const model = subSample || sample!;
+
+  const location = model.data.location || {};
+  const parentLocation = model.parent?.data.location;
 
   const setLocation = async (newLocation: any) => {
     if (!newLocation) return;
     if (model.isGPSRunning()) model.stopGPS();
 
-    model.attrs.location = { ...model.attrs.location, ...newLocation };
+    model.data.location = { ...model.data.location, ...newLocation };
   };
 
   const onManuallyTypedLocationChange = (e: any) =>
     setLocation(textToLocation(e?.target?.value));
 
   const onLocationNameChange = ({ name }: any) => {
-    model.attrs.location = { ...model.attrs.location, name };
+    model.data.location = { ...model.data.location, name };
   };
 
   const [showSettings, setShowSettings] = useState(false);

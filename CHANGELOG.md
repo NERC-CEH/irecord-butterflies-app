@@ -1,5 +1,6 @@
 ## 2.6.0
 
+Added the ability to view all uploaded records, including those from other devices.
 Updated libraries.
 
 ## 2.5.4

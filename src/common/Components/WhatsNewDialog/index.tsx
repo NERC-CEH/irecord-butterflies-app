@@ -9,12 +9,12 @@ import croppingVideo from './cropping.mp4';
 import './styles.scss';
 
 const WhatsNewDialog = () => {
-  const { showWhatsNew, showWhatsNewInVersion250, appSession } = appModel.attrs;
+  const { showWhatsNew, showWhatsNewInVersion250, appSession } = appModel.data;
 
   const skipShowingDialogOnFreshInstall = () => {
     const isFreshInstall = appSession <= 1;
     if (isFreshInstall) {
-      appModel.attrs.showWhatsNewInVersion250 = false; // eslint-disable-line
+      appModel.data.showWhatsNewInVersion250 = false; // eslint-disable-line
     }
   };
   useEffect(skipShowingDialogOnFreshInstall, [appSession]);
@@ -24,11 +24,11 @@ const WhatsNewDialog = () => {
   if (!showWhatsNewInVersion250) return null;
 
   const closeDialog = () => {
-    appModel.attrs.showWhatsNewInVersion250 = false; // eslint-disable-line
+    appModel.data.showWhatsNewInVersion250 = false; // eslint-disable-line
   };
 
   const hideFutureDialogs = () => {
-    appModel.attrs.showWhatsNew = false; // eslint-disable-line
+    appModel.data.showWhatsNew = false; // eslint-disable-line
   };
 
   return (

@@ -48,7 +48,7 @@ const survey: Survey = {
 
     create({ Occurrence }) {
       return new Occurrence({
-        attrs: {
+        data: {
           count: 1,
           comment: null,
           stage: 'Adult',
@@ -63,12 +63,9 @@ const survey: Survey = {
       }).safeParse(attrs).error,
   },
 
-  async create({ Sample, Occurrence, taxon }) {
+  async create({ Sample, Occurrence, speciesId }) {
     const sample = new Sample({
-      metadata: {
-        survey: survey.name,
-      },
-      attrs: {
+      data: {
         surveyId: survey.id,
         date: new Date().toISOString(),
         enteredSrefSystem: 4326,
@@ -80,8 +77,8 @@ const survey: Survey = {
 
     const occ = await survey.occ!.create!({ Occurrence: Occurrence! });
 
-    if (taxon) {
-      occ?.setSpecies(taxon.id);
+    if (speciesId) {
+      occ?.setSpecies(speciesId);
     }
 
     sample.occurrences.push(occ);
@@ -94,7 +91,11 @@ const survey: Survey = {
   verify: (attrs: any) =>
     object({
       location: object(
-        { latitude: z.number(), longitude: z.number(), name: z.string() },
+        {
+          latitude: z.number(),
+          longitude: z.number(),
+          name: z.string({ required_error: 'Location name missing' }),
+        },
         { invalid_type_error: 'Please select location.' }
       ),
     }).safeParse(attrs).error,

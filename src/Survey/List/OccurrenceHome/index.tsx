@@ -1,16 +1,12 @@
 import { observer } from 'mobx-react';
-import { Page, Header } from '@flumens';
+import { Page, Header, useSample } from '@flumens';
 import Occurrence from 'models/occurrence';
 import Main from './Main';
 import './styles.scss';
 
-type Props = {
-  occurrence: Occurrence;
-};
-const OccurrenceHome = ({ occurrence }: Props) => {
-  if (!occurrence) {
-    return null;
-  }
+const OccurrenceHome = () => {
+  const { occurrence } = useSample<any, Occurrence>();
+  if (!occurrence) return null;
 
   return (
     <Page id="survey-list-occurrence-edit">

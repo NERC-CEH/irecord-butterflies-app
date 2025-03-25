@@ -1,23 +1,25 @@
 import { useContext } from 'react';
 import { observer } from 'mobx-react';
-import { Page, Header, useToast } from '@flumens';
+import { Page, Header, useToast, useSample, useRemoteSample } from '@flumens';
 import { NavContext } from '@ionic/react';
 import appModel from 'models/app';
 import Sample, { useValidateCheck } from 'models/sample';
-import { useUserStatusCheck } from 'models/user';
+import userModel, { useUserStatusCheck } from 'models/user';
 import SurveyHeaderButton from 'Survey/common/Components/SurveyHeaderButton';
 import Main from './Main';
 import './styles.scss';
 
-type Props = {
-  sample: Sample;
-};
-
-const Home = ({ sample }: Props) => {
+const Home = () => {
   const toast = useToast();
   const { navigate } = useContext(NavContext);
-  const checkSampleStatus = useValidateCheck(sample);
   const checkUserStatus = useUserStatusCheck();
+
+  let { sample } = useSample<Sample>();
+  sample = useRemoteSample(sample, () => userModel.isLoggedIn(), Sample);
+
+  const checkSampleStatus = useValidateCheck(sample);
+
+  if (!sample) return null;
 
   const _processSubmission = async () => {
     const isUserOK = await checkUserStatus();
@@ -34,7 +36,7 @@ const Home = ({ sample }: Props) => {
     const isValid = checkSampleStatus();
     if (!isValid) return;
 
-    appModel.attrs['draftId:point'] = null;
+    appModel.data['draftId:point'] = null;
     await appModel.save();
 
     // eslint-disable-next-line no-param-reassign
@@ -56,7 +58,7 @@ const Home = ({ sample }: Props) => {
   // occurrences are destroyed first before samples
   if (!sample?.occurrences?.[0]) return null;
 
-  const isDisabled = sample.isUploaded();
+  const isDisabled = sample.isUploaded;
 
   return (
     <Page id="survey-point-edit">

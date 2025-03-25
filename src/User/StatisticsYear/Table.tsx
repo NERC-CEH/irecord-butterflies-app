@@ -1,43 +1,48 @@
-import { arrowDown, arrowUp } from 'ionicons/icons';
-import {
-  useTable,
-  useSortBy,
-  HeaderGroup,
-  Row,
-  Cell,
-  TableOptions,
-} from 'react-table';
+import { useState } from 'react';
 import { IonIcon, IonAvatar } from '@ionic/react';
+import {
+  createColumnHelper,
+  useReactTable,
+  getSortedRowModel,
+  getCoreRowModel,
+  flexRender,
+  SortingState,
+} from '@tanstack/react-table';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import './styles.scss';
 
+const columnHelper = createColumnHelper<any>();
+
 const columns: any = [
-  {
-    accessor: 'thumbnail',
-    disableSortBy: true,
-    className: 'avatar',
-    Cell: ({ value }: Cell<any>) => (
+  columnHelper.accessor('thumbnail', {
+    enableSorting: false,
+    header: () => '',
+
+    cell: value => (
       <IonAvatar>
         {value ? (
-          <img src={value} />
+          <img src={value.getValue()} />
         ) : (
           <IonIcon className="default-thumbnail" icon={butterflyIcon} />
         )}
       </IonAvatar>
     ),
-  },
-  {
-    Header: 'Species',
-    accessor: 'name',
-  },
-  {
-    Header: 'Records',
-    accessor: 'record_count',
-  },
-  {
-    Header: 'Count',
-    accessor: 'total_individual_count',
-  },
+  }),
+  columnHelper.accessor('name', {
+    header: () => 'Species',
+    cell: ({ getValue, row }) => {
+      const isSubsSpecies = row.original?.taxon_rank === 'Subspecies';
+      const italicFontStyle = isSubsSpecies ? 'italic' : '';
+
+      return <span className={italicFontStyle}>{getValue()}</span>;
+    },
+  }),
+  columnHelper.accessor('record_count', {
+    header: () => 'Records',
+  }),
+  columnHelper.accessor('total_individual_count', {
+    header: () => 'Count',
+  }),
 ];
 
 type Props = {
@@ -45,61 +50,53 @@ type Props = {
 };
 
 const Table = ({ data }: Props) => {
-  const tableOptions: TableOptions<any> = {
+  const [sorting, setSorting] = useState<SortingState>([
+    { id: 'record_count', desc: true },
+  ]);
+
+  const { getHeaderGroups, getRowModel } = useReactTable({
     columns,
     data,
-    initialState: {
-      sortBy: [
-        {
-          id: 'record_count',
-          desc: true,
-        },
-      ],
-    } as any,
-  };
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable(tableOptions, useSortBy);
-
-  const getColumn = (column: any) => (
-    <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-      {column.render('Header')}
-
-      <span>
-        {column.isSorted && column.isSortedDesc && <IonIcon src={arrowUp} />}
-        {column.isSorted && !column.isSortedDesc && <IonIcon src={arrowDown} />}
-      </span>
-    </th>
-  );
-
-  const getHeaderGroup = (headerGroup: HeaderGroup) => (
-    <tr {...headerGroup.getHeaderGroupProps()}>
-      {headerGroup.headers.map(getColumn)}
-    </tr>
-  );
-
-  const getRow = (row: Row) => {
-    prepareRow(row);
-
-    const getCell = (cell: any) => {
-      const isSubsSpecies =
-        cell.column.Header === 'Species' &&
-        cell.row.original?.taxon_rank === 'Subspecies';
-      const italicFontStyle = isSubsSpecies ? 'italics' : '';
-
-      return (
-        <td {...cell.getCellProps({ className: italicFontStyle })}>
-          {cell.render('Cell')}
-        </td>
-      );
-    };
-    return <tr {...row.getRowProps()}>{row.cells.map(getCell)}</tr>;
-  };
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    onSortingChange: setSorting,
+    state: {
+      sorting,
+    },
+  });
 
   return (
     <div className="my-5 w-full max-w-full overflow-scroll px-2">
-      <table {...getTableProps()}>
-        <thead>{headerGroups.map(getHeaderGroup)}</thead>
-        <tbody {...getTableBodyProps()}>{rows.map(getRow)}</tbody>
+      <table>
+        <thead>
+          {getHeaderGroups().map(headerGroup => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map(header => (
+                <th
+                  key={header.id}
+                  onClick={header.column.getToggleSortingHandler()}
+                >
+                  {flexRender(
+                    header.column.columnDef.header,
+                    header.getContext()
+                  )}
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+
+        <tbody>
+          {getRowModel().rows.map(row => (
+            <tr key={row.id}>
+              {row.getVisibleCells().map(cell => (
+                <td key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

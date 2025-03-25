@@ -6,7 +6,7 @@ export default async function fetchStats(userModel, year) {
   console.log(`Statistics: fetching recorded-taxa-list for ${year} year`);
 
   const normalizedYear = year === 'all' ? '' : year;
-  const url = `${config.backend.url}/api/v2/advanced_reports/recorded-taxa-list?survey_id=${surveyConfig.id}&year=${normalizedYear}&user_id=${userModel.attrs.indiciaUserId}`;
+  const url = `${config.backend.url}/api/v2/advanced_reports/recorded-taxa-list?survey_id=${surveyConfig.id}&year=${normalizedYear}&user_id=${userModel.data.indiciaUserId}`;
 
   const options = {
     headers: {

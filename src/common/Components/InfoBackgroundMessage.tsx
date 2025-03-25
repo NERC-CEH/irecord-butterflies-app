@@ -10,12 +10,12 @@ interface Props {
 }
 
 const InfoBackgroundMessage = ({ name, children, ...props }: Props) => {
-  if (name && !appModel.attrs[name]) {
+  if (name && !appModel.data[name]) {
     return null;
   }
 
   const hideMessage = () => {
-    (appModel.attrs as any)[name as any] = false;
+    (appModel.data as any)[name as any] = false;
     return {};
   };
 

@@ -15,7 +15,7 @@ const config = {
   build: process.env.APP_BUILD as string,
   feedbackEmail: 'apps%40ceh.ac.uk',
 
-  sentryDNS: process.env.APP_SENTRY_KEY as string,
+  sentryDSN: process.env.APP_SENTRY_KEY as string,
 
   map: {
     mapboxApiKey: process.env.APP_MAPBOX_MAP_KEY as string,

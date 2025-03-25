@@ -188,9 +188,9 @@ const survey: Survey = {
             if (!Number.isFinite(value)) value = 0; // eslint-disable-line
 
             // eslint-disable-next-line no-param-reassign
-            sample.attrs.cloud = 100 - value;
+            sample.data.cloud = 100 - value;
             // eslint-disable-next-line no-param-reassign
-            sample.attrs.sun = value;
+            sample.data.sun = value;
             sample.save();
           },
           input: 'slider',
@@ -256,7 +256,7 @@ const survey: Survey = {
             const getSamples = (subSample: any) => {
               const setDefaultStageValueToOcc = (occ: any) => {
                 // eslint-disable-next-line no-param-reassign
-                occ.attrs.stage = value;
+                occ.data.stage = value;
                 occ.save();
               };
               subSample.occurrences.forEach(setDefaultStageValueToOcc);
@@ -264,7 +264,7 @@ const survey: Survey = {
             sample.samples.forEach(getSamples);
 
             // eslint-disable-next-line no-param-reassign
-            sample.attrs.stage = value;
+            sample.data.stage = value;
             sample.save();
           },
           input: 'radio',
@@ -303,10 +303,7 @@ const survey: Survey = {
 
     async create({ Sample, Occurrence, taxon, zeroAbundance, stage }) {
       const sample = new Sample({
-        metadata: {
-          survey: survey.name,
-        },
-        attrs: {
+        data: {
           surveyId: survey.id,
           enteredSrefSystem: 4326,
           location: {},
@@ -320,8 +317,8 @@ const survey: Survey = {
 
       sample.occurrences.push(occurrence);
 
-      sample.occurrences[0].attrs.zeroAbundance = zeroAbundance;
-      sample.occurrences[0].attrs.stage = stage;
+      sample.occurrences[0].data.zeroAbundance = zeroAbundance;
+      sample.occurrences[0].data.stage = stage;
 
       return sample;
     },
@@ -343,9 +340,9 @@ const survey: Survey = {
             id: 780,
             values: (value: any, _: any, model: any) => {
               const hasZeroAbundance =
-                model.attrs.zeroAbundance ||
+                model.data.zeroAbundance ||
                 // backwards compatible
-                model.attrs.zero_abundance;
+                model.data.zero_abundance;
 
               return hasZeroAbundance ? null : value;
             },
@@ -364,7 +361,7 @@ const survey: Survey = {
 
       create({ Occurrence, taxon }) {
         return new Occurrence({
-          attrs: {
+          data: {
             comment: null,
             taxon,
             count: 1,
@@ -408,12 +405,11 @@ const survey: Survey = {
   async create({ Sample }) {
     const sample = new Sample({
       metadata: {
-        survey: survey.name,
         pausedTime: 0,
         timerPausedTime: null,
         startStopwatchTime: null,
       },
-      attrs: {
+      data: {
         surveyId: survey.id,
         date: new Date().toISOString(),
         enteredSrefSystem: 4326,

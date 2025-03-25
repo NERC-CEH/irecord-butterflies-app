@@ -19,7 +19,7 @@ type Props = {
 
 const OccurrenceMain = ({ subSample, occurrence }: Props) => {
   const { url } = useRouteMatch();
-  const isDisabled = subSample.isUploaded();
+  const isDisabled = subSample.isUploaded;
 
   const sampleBaseUrl = url.split('/occ');
   sampleBaseUrl.pop();
@@ -31,11 +31,17 @@ const OccurrenceMain = ({ subSample, occurrence }: Props) => {
     location = <GridRefValue sample={subSample} />;
   }
 
+  const hasPhotos = !!occurrence.media.length;
+
   return (
     <Main id="area-count-occurrence-edit">
-      {isDisabled && <VerificationMessage occurrence={occurrence} />}
-
       <IonList lines="full">
+        {isDisabled && (
+          <div className="rounded-list mb-2">
+            <VerificationMessage occurrence={occurrence} />
+          </div>
+        )}
+
         <h3 className="list-title">
           <T>Details</T>
         </h3>
@@ -46,7 +52,7 @@ const OccurrenceMain = ({ subSample, occurrence }: Props) => {
               disabled={isDisabled}
               icon={butterflyIcon}
               label="Species"
-              value={occurrence.attrs.taxon.commonName}
+              value={occurrence.data.taxon.commonName}
             />
           )}
 
@@ -74,12 +80,15 @@ const OccurrenceMain = ({ subSample, occurrence }: Props) => {
           />
         </div>
 
-        <h3 className="list-title">
-          <T>Species Photo</T>
-        </h3>
-        <div className="rounded-list">
-          <PhotoPicker model={occurrence} />
-        </div>
+        {hasPhotos ||
+          (!isDisabled && (
+            <>
+              <h3 className="list-title">Species Photo</h3>
+              <div className="rounded-list">
+                <PhotoPicker model={occurrence} />
+              </div>
+            </>
+          ))}
       </IonList>
     </Main>
   );

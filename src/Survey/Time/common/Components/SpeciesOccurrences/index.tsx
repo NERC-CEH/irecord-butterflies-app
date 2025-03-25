@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { observer } from 'mobx-react';
 import { useRouteMatch } from 'react-router';
-import { Page, Header, useAlert } from '@flumens';
+import { Page, Header, useAlert, useSample } from '@flumens';
 import { NavContext, useIonViewWillEnter } from '@ionic/react';
 import Occurrence from 'models/occurrence';
 import Sample from 'models/sample';
@@ -35,10 +35,6 @@ const useDeleteConfirmation = () => {
   return promptWrap;
 };
 
-type Props = {
-  sample: Sample;
-};
-
 function byCreationDate(s1: Sample, s2: Sample) {
   const date1 = new Date(s1.updatedAt);
   const date2 = new Date(s2.updatedAt);
@@ -46,12 +42,33 @@ function byCreationDate(s1: Sample, s2: Sample) {
   return date2.getTime() - date1.getTime();
 }
 
-const SpeciesController = ({ sample }: Props) => {
+const SpeciesController = () => {
   const match = useRouteMatch();
+  const { taxa }: any = match.params;
+
   const { goBack, navigate } = useContext(NavContext);
   const confirmDelete = useDeleteConfirmation();
 
-  const { taxa }: any = match.params;
+  const { sample } = useSample<Sample>();
+
+  const getSamples = () => {
+    const matchesTaxa = ({ occurrences }: any) => {
+      const [occ] = occurrences; // always one
+      return occ.data.taxon.warehouseId === parseInt(taxa, 10);
+    };
+
+    const samples = sample!.samples.filter(matchesTaxa).sort(byCreationDate);
+
+    return samples;
+  };
+
+  const navigateBackIfNoRemainingSamples = () => {
+    const samples = getSamples();
+    if (!samples.length) goBack();
+  };
+  useIonViewWillEnter(navigateBackIfNoRemainingSamples);
+
+  if (!sample) return null;
 
   const navigateToOccurrence = (smp: Sample) => {
     const urlPath = match.url.split('/speciesOccurrences');
@@ -65,11 +82,11 @@ const SpeciesController = ({ sample }: Props) => {
     const shouldDelete = await confirmDelete();
     if (!shouldDelete) return;
 
-    const taxon = { ...smp.occurrences[0].attrs.taxon };
+    const taxon = { ...smp.occurrences[0].data.taxon };
     await smp.destroy();
 
     const byTaxonId = (s: Sample) =>
-      s.occurrences[0].attrs.taxon.id === taxon.id;
+      s.occurrences[0].data.taxon.id === taxon.id;
 
     const isLastSampleDeleted = !sample.samples.filter(byTaxonId).length;
 
@@ -81,7 +98,7 @@ const SpeciesController = ({ sample }: Props) => {
     if (isLastSampleDeleted) {
       const survey = sample.getSurvey();
 
-      const { stage } = sample.attrs;
+      const { stage } = sample.data;
       const zeroAbundance = 't';
       const newSubSample = await survey.smp!.create!({
         Sample,
@@ -96,23 +113,6 @@ const SpeciesController = ({ sample }: Props) => {
       goBack();
     }
   };
-
-  const getSamples = () => {
-    const matchesTaxa = ({ occurrences }: any) => {
-      const [occ] = occurrences; // always one
-      return occ.attrs.taxon.warehouseId === parseInt(taxa, 10);
-    };
-
-    const samples = sample.samples.filter(matchesTaxa).sort(byCreationDate);
-
-    return samples;
-  };
-
-  const navigateBackIfNoRemainingSamples = () => {
-    const samples = getSamples();
-    if (!samples.length) goBack();
-  };
-  useIonViewWillEnter(navigateBackIfNoRemainingSamples);
 
   return (
     <Page id="species-count-taxon-group">
