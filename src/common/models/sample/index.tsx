@@ -41,6 +41,7 @@ type Attrs = SampleAttrs & {
   device?: any;
   appVersion?: any;
   recorders?: number;
+  groupId?: string;
 };
 
 type Metadata = SampleMetadata & {

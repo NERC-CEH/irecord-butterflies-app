@@ -1,6 +1,7 @@
 ## 2.6.0
 
 Added the ability to view all uploaded records, including those from other devices.
+Added an option to join and leave activities.
 Updated libraries.
 
 ## 2.5.4

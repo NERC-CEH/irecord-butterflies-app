@@ -60,7 +60,12 @@ function getSampleInfo(sample: Sample) {
 
     const { thumbnail } = fullSpeciesProfile;
 
-    let avatar = <IonIcon icon={butterflyIcon} color="warning" />;
+    let avatar = (
+      <IonIcon
+        icon={butterflyIcon}
+        className="size-7 [--ionicon-stroke-width:17px]"
+      />
+    );
     if (occ.media.length) {
       const image = occ.media[0];
       avatar = (
@@ -106,7 +111,12 @@ function getSampleInfo(sample: Sample) {
     const { thumbnail } = fullSpeciesProfile;
 
     const image = occ?.media[0];
-    let avatar = <IonIcon icon={butterflyIcon} color="warning" />;
+    let avatar = (
+      <IonIcon
+        icon={butterflyIcon}
+        className="size-7 [--ionicon-stroke-width:17px]"
+      />
+    );
 
     if (image) {
       avatar = (

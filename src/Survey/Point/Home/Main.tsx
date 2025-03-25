@@ -18,6 +18,7 @@ import Sample from 'models/sample';
 import DisabledRecordMessage from 'Survey/common/Components/DisabledRecordMessage';
 import GridRefValue from 'Survey/common/Components/GridRefValue';
 import MenuDateAttr from 'Survey/common/Components/MenuDateAttr';
+import MenuGroupAttr from 'Survey/common/Components/MenuGroupAttr';
 import VerificationMessage from 'Survey/common/Components/VerificationMessage';
 
 type Props = {
@@ -137,6 +138,7 @@ const MainComponent = ({ sample, isDisabled }: Props) => {
           {getSpeciesButton()}
           <MenuDateAttr record={sample.data} isDisabled={isDisabled} />
           {getLocationButton()}
+          <MenuGroupAttr sample={sample} />
         </div>
 
         <h3 className="list-title">Other</h3>

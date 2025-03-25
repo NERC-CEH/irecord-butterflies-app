@@ -55,6 +55,8 @@ export interface Attrs extends ModelAttrs {
   verifiedRecordsTimestamp: null | number;
   useSpeciesImageClassifier: boolean;
 
+  lastGroupId?: number | string;
+
   filters: Filters;
 }
 
