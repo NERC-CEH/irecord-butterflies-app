@@ -90,15 +90,16 @@ const DetailsController = () => {
 
   const isValid = !sample?.validateRemote();
 
-  const startTimerButton = !hasTimerStarted && (
-    <HeaderButton
-      onClick={onStartTimer}
-      color={isValid ? 'primary' : 'medium'}
-      className="px-2"
-    >
-      Start Count
-    </HeaderButton>
-  );
+  const startTimerButton = !hasTimerStarted &&
+    !sample.isSurveyMultiSpeciesTimedCount() && (
+      <HeaderButton
+        onClick={onStartTimer}
+        color={isValid ? 'primary' : 'medium'}
+        className="px-2"
+      >
+        Start Count
+      </HeaderButton>
+    );
 
   // eslint-disable-next-line react/no-unstable-nested-components
   const cancelButtonWrap = () => (
@@ -116,15 +117,29 @@ const DetailsController = () => {
     sample!.save();
   };
 
+  const onChangeSensitivityStatus = (value: boolean) => {
+    // eslint-disable-next-line no-param-reassign
+    sample.data.privacyPrecision = value ? 0 : undefined;
+    sample.save();
+  };
+
   return (
     <Page id="species-count-detail">
       <Header
-        BackButton={!hasTimerStarted ? cancelButtonWrap : undefined}
+        BackButton={
+          !hasTimerStarted && !sample.isSurveyMultiSpeciesTimedCount()
+            ? cancelButtonWrap
+            : undefined
+        }
         title="Survey Details"
         rightSlot={startTimerButton}
       />
 
-      <Main sample={sample} onChangeCounter={onChangeCounter} />
+      <Main
+        sample={sample}
+        onChangeCounter={onChangeCounter}
+        onChangeSensitivityStatus={onChangeSensitivityStatus}
+      />
     </Page>
   );
 };

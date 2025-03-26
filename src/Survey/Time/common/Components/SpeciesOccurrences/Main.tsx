@@ -101,9 +101,7 @@ const MainComponent = ({
   if (!samples[0]) {
     return (
       <Main id="area-count-occurrence-edit">
-        <IonList id="list" lines="full">
-          <InfoBackgroundMessage>No species added</InfoBackgroundMessage>
-        </IonList>
+        <InfoBackgroundMessage>No species added</InfoBackgroundMessage>
       </Main>
     );
   }
@@ -124,8 +122,8 @@ const MainComponent = ({
           </div>
         )}
 
-        <div className="rounded-list">
-          <div className="list-divider gap-4">
+        <div className="rounded-list mt-5">
+          <div className="list-divider gap-10">
             <div>
               <T>Time</T>
             </div>

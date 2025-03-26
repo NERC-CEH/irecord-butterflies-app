@@ -130,11 +130,7 @@ const HomeMain = ({
 
   const getSpeciesList = () => {
     if (!sample.occurrences.length) {
-      return (
-        <IonList id="list" lines="full">
-          <InfoBackgroundMessage>No species added</InfoBackgroundMessage>
-        </IonList>
-      );
+      return <InfoBackgroundMessage>No species added</InfoBackgroundMessage>;
     }
 
     const sort = listSurveyListSortedByTime

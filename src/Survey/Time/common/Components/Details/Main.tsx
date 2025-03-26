@@ -4,6 +4,7 @@ import {
   thermometerOutline,
   sunnyOutline,
   personOutline,
+  eyeOffOutline,
 } from 'ionicons/icons';
 import { Trans as T } from 'react-i18next';
 import { useRouteMatch } from 'react-router';
@@ -13,6 +14,7 @@ import {
   InfoMessage,
   MenuAttrItemFromModel,
   NumberInput,
+  Toggle,
 } from '@flumens';
 import { IonList, IonLabel, IonItem, IonIcon } from '@ionic/react';
 import PhotoPicker from 'common/Components/PhotoPicker';
@@ -24,9 +26,14 @@ import MenuGroupAttr from 'Survey/common/Components/MenuGroupAttr';
 type Props = {
   sample: Sample;
   onChangeCounter: (value: number | null) => void;
+  onChangeSensitivityStatus: (value: boolean) => void;
 };
 
-const MainDetails = ({ sample, onChangeCounter }: Props) => {
+const MainDetails = ({
+  sample,
+  onChangeCounter,
+  onChangeSensitivityStatus,
+}: Props) => {
   const { url } = useRouteMatch();
 
   const isDisabled = sample.isUploaded;
@@ -35,6 +42,8 @@ const MainDetails = ({ sample, onChangeCounter }: Props) => {
 
   const species = sample?.samples[0]?.occurrences[0]?.data?.taxon?.commonName;
 
+  const isMultiSpecies = sample.isSurveyMultiSpeciesTimedCount();
+
   return (
     <Main>
       <IonList lines="full">
@@ -42,26 +51,38 @@ const MainDetails = ({ sample, onChangeCounter }: Props) => {
           <T>Details</T>
         </h3>
         <div className="rounded-list">
-          {!sample.isSurveyMultiSpeciesTimedCount() && (
-            <IonItem detail={false} disabled className="menu-attr-item">
-              <IonIcon slot="start" icon={butterflyIcon} />
-              <IonLabel>Species</IonLabel>
-              <IonLabel slot="end">{species}</IonLabel>
-            </IonItem>
-          )}
+          {!isMultiSpecies && (
+            <>
+              <IonItem detail={false} disabled className="menu-attr-item">
+                <IonIcon slot="start" icon={butterflyIcon} />
+                <IonLabel>Species</IonLabel>
+                <IonLabel slot="end">{species}</IonLabel>
+              </IonItem>
 
-          <MenuAttrItemFromModel
-            model={sample as any}
-            attr="site"
-            skipValueTranslation
-            required
-          />
-          <MenuAttrItemFromModel
-            model={sample as any}
-            attr="stage"
-            skipValueTranslation
-          />
+              <MenuAttrItemFromModel
+                model={sample as any}
+                attr="site"
+                skipValueTranslation
+                required
+              />
+
+              <MenuAttrItemFromModel
+                model={sample as any}
+                attr="stage"
+                skipValueTranslation
+              />
+            </>
+          )}
           <MenuGroupAttr sample={sample} />
+          {isMultiSpecies && (
+            <Toggle
+              prefix={<IonIcon src={eyeOffOutline} className="size-6" />}
+              label="Sensitive"
+              defaultSelected={Number.isFinite(sample.data.privacyPrecision)}
+              onChange={onChangeSensitivityStatus}
+              isDisabled={isDisabled}
+            />
+          )}
           <MenuAttrItem
             routerLink={`${url}/comment`}
             disabled={isDisabled}
@@ -90,7 +111,7 @@ const MainDetails = ({ sample, onChangeCounter }: Props) => {
         </div>
 
         <h3 className="list-title">
-          <T>Weather details</T>
+          <T>Weather conditions</T>
         </h3>
         <div className="rounded-list">
           <MenuAttrItem
@@ -100,7 +121,7 @@ const MainDetails = ({ sample, onChangeCounter }: Props) => {
             label="Temperature"
             value={temperature}
             skipValueTranslation
-            required
+            required={!isMultiSpecies}
           />
 
           <MenuAttrItem
@@ -110,7 +131,7 @@ const MainDetails = ({ sample, onChangeCounter }: Props) => {
             label="Sun"
             value={sun}
             skipValueTranslation
-            required
+            required={!isMultiSpecies}
           />
 
           <MenuAttrItem
@@ -119,7 +140,7 @@ const MainDetails = ({ sample, onChangeCounter }: Props) => {
             icon={windIcon}
             label="Wind Direction"
             value={windDirection}
-            required
+            required={!isMultiSpecies}
           />
 
           <MenuAttrItem
@@ -128,14 +149,14 @@ const MainDetails = ({ sample, onChangeCounter }: Props) => {
             icon={windIcon}
             label="Wind Speed"
             value={windSpeed}
-            required
+            required={!isMultiSpecies}
           />
         </div>
 
         <h3 className="list-title">
           <T>Photo</T>
         </h3>
-        <div className="rounded-list">
+        <div className="rounded-list mb-2">
           <PhotoPicker model={sample} disableClassifier />
           <InfoMessage inline>
             Representative photo of where the survey was made

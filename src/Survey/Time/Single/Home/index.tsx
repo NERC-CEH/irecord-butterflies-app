@@ -208,7 +208,7 @@ const HomeController = () => {
   return (
     <Page id="single-species-count-home">
       <Header
-        title="Survey"
+        title="Single species count"
         onLeave={onLeave}
         rightSlot={<SurveyHeaderButton onClick={onFinish} sample={sample} />}
       />

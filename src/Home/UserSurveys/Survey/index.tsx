@@ -104,7 +104,6 @@ function getSampleInfo(sample: Sample) {
     const count = sample?.samples?.filter(nonZeroAbundance).length;
 
     const taxon = occ?.data?.taxon || {};
-    const label = 'Single timed count';
 
     const fullSpeciesProfile: any = species.find(byIdsAndName(taxon)) || {};
 
@@ -141,24 +140,20 @@ function getSampleInfo(sample: Sample) {
         <div className="list-avatar ml-2 mr-4 shrink-0">{avatar}</div>
 
         <div className="flex w-full flex-col">
-          <div className={clsx('species-name', !label && 'text-warning')}>
-            {label || 'Species missing'}
-          </div>
-          <div>
-            <div className="text-sm">
-              {prettyDate}
+          <div className="species-name">Single species count</div>
+          <div className="flex items-center gap-1 text-sm">
+            {prettyDate}
 
-              {!!count && (
-                <Badge
-                  skipTranslation
-                  className="ml-1"
-                  prefix={<IonIcon src={butterflyIcon} />}
-                >
-                  {count}
-                </Badge>
-              )}
-              {showSurveyDuration}
-            </div>
+            {!!count && (
+              <Badge
+                skipTranslation
+                className="ml-1"
+                prefix={<IonIcon src={butterflyIcon} />}
+              >
+                {count}
+              </Badge>
+            )}
+            {showSurveyDuration}
           </div>
         </div>
       </>
@@ -168,26 +163,22 @@ function getSampleInfo(sample: Sample) {
   if (sample.isSurveyMultiSpeciesTimedCount()) {
     const speciesCount = sample.samples.length;
 
-    const durationTime = (
-      <span>{getFormattedDuration(sample.data.duration)}</span>
-    );
-
-    const showSurveyDuration = sample.metadata.saved ? (
-      <Badge className="ml-1" prefix={<IonIcon src={timeOutline} />}>
-        {durationTime}
-      </Badge>
-    ) : null;
-
     return (
       <>
-        <div className="count">
-          <div className="number">{speciesCount}</div>
-          <div className="label">Count</div>
+        <div className="my-2.5 ml-4 mr-6 shrink-0">
+          <div className="mx-auto my-0 h-10 w-10 rounded-full bg-neutral-100 text-center leading-10">
+            {speciesCount}
+          </div>
+          <div className="text-center text-xs">Count</div>
         </div>
-        <div className="flex flex-col">
-          <div className="species-name">Multi timed count</div>
+        <div className="flex w-full flex-col">
+          <div className="species-name">15-min count</div>
           <div className="text-sm">{prettyDate}</div>
-          <div className="badge-wrapper">{showSurveyDuration}</div>
+          {isOutsideUK && !sample.isDisabled && (
+            <Badge color="warning" size="small">
+              Check location
+            </Badge>
+          )}
         </div>
       </>
     );
@@ -199,9 +190,11 @@ function getSampleInfo(sample: Sample) {
 
   return (
     <>
-      <div className="count shrink-0">
-        <div className="number">{speciesCount}</div>
-        <div className="label">Species</div>
+      <div className="my-2.5 ml-4 mr-6 shrink-0">
+        <div className="mx-auto my-0 h-10 w-10 rounded-full bg-neutral-100 text-center leading-10">
+          {speciesCount}
+        </div>
+        <div className="text-center text-xs">Species</div>
       </div>
 
       <div className="flex w-full flex-col">

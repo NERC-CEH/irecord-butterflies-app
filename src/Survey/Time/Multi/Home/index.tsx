@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { useContext } from 'react';
 import { observer } from 'mobx-react';
 import { useRouteMatch, useLocation } from 'react-router';
@@ -72,6 +73,20 @@ function useShowLeaveConfirmationAlert() {
   return confirmationPromptWrap;
 }
 
+function toggleTimer(sample: Sample) {
+  if (sample.isTimerFinished()) return;
+
+  if (sample.metadata.timerPausedTime) {
+    const pausedTime =
+      Date.now() - new Date(sample.metadata.timerPausedTime).getTime();
+    sample.metadata.pausedTime! += pausedTime;
+    delete sample.metadata.timerPausedTime;
+    sample.save();
+    return;
+  }
+  sample.metadata.timerPausedTime = new Date();
+}
+
 const hapticsImpact = async () => {
   await Haptics.impact({ style: ImpactStyle.Light });
 };
@@ -132,7 +147,9 @@ const HomeController = () => {
     }
 
     const canPauseTimer =
-      !sample!.metadata.saved && !sample!.metadata.timerPausedTime;
+      !sample!.metadata.saved &&
+      !sample!.metadata.timerPausedTime &&
+      !sample?.isTimerFinished();
 
     if (canPauseTimer) {
       await showLeaveConfirmationAlert();
@@ -241,7 +258,7 @@ const HomeController = () => {
   return (
     <Page id="multi-species-count-home">
       <Header
-        title="Survey"
+        title="15min count"
         onLeave={onLeave}
         rightSlot={<SurveyHeaderButton onClick={onFinish} sample={sample} />}
       />
@@ -249,6 +266,7 @@ const HomeController = () => {
         sample={sample}
         increaseCount={increaseCount}
         deleteSpecies={deleteSpecies}
+        toggleTimer={toggleTimer}
       />
     </Page>
   );

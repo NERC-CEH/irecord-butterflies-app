@@ -11,7 +11,7 @@
   }
 
   ion-label[slot='end'] {
-    opacity: 0.5;
+    margin-right: 0;
     max-width: 45%;
     text-align: right;
   }
@@ -26,10 +26,6 @@
 
     ion-list {
       margin-bottom: 0;
-    }
-    .item-disabled #countdown {
-      opacity: 0.5;
-      margin-right: 10px;
     }
 
     #countdown {

@@ -2,15 +2,19 @@ import { useContext } from 'react';
 import { useRouteMatch } from 'react-router';
 import { NavContext } from '@ionic/react';
 import { Species as SpeciesType } from 'common/data/species';
+import { useSample } from 'common/flumens';
 import Occurrence from 'models/occurrence';
 import Sample from 'models/sample';
 import SpeciesComponent from 'Survey/common/Components/Species';
 import survey from './config';
 
 const Species = (props: any) => {
-  const { sample, occurrence } = props;
+  const { sample, occurrence } = useSample<Sample>();
+
   const match = useRouteMatch();
   const { goBack } = useContext(NavContext);
+
+  if (!sample) return null;
 
   async function onSelect(species: SpeciesType) {
     const { taxa }: any = match.params;
@@ -24,9 +28,9 @@ const Species = (props: any) => {
         const [occ] = occurrences; // always one
         occ.data.taxon = species;
       };
-      sample.samples.filter(selectedTaxon).forEach(assignTaxon);
+      sample!.samples.filter(selectedTaxon).forEach(assignTaxon);
 
-      await sample.save();
+      await sample!.save();
 
       goBack();
       return;
@@ -36,18 +40,17 @@ const Species = (props: any) => {
       // eslint-disable-next-line
       occurrence.data.taxon = species;
     } else {
-      const newSample = survey.smp.create(
+      const newSample = await survey.smp.create({
         Sample,
         Occurrence,
-        species,
-        null,
-        'Adult'
-      );
+        taxon: species,
+        stage: 'Adult',
+      });
 
-      sample.samples.push(newSample);
+      sample!.samples.push(newSample);
     }
 
-    await sample.save();
+    await sample!.save();
 
     goBack();
   }

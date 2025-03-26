@@ -87,11 +87,11 @@ const SurveyButton = ({
             className="fixed bottom-[20%] left-1/2 z-10 max-w-80 -translate-x-1/2 items-start gap-0 py-8 pr-2 pt-2"
             name="showSurveyOptionsTip"
           >
-            <div
-              className="flex flex-col gap-6 pt-8 text-left"
-              onClick={onPrimarySurveyWrap}
-            >
-              <div className="flex items-center gap-4">
+            <div className="flex flex-col gap-6 pt-8 text-left">
+              <div
+                className="flex items-center gap-4"
+                onClick={onPrimarySurveyWrap}
+              >
                 <IonIcon
                   src={addOutline}
                   className="size-7 shrink-0 rounded-full bg-primary-700 p-1 text-white shadow-md ring-[0.5px] ring-primary-800 [--ionicon-stroke-width:24px]"

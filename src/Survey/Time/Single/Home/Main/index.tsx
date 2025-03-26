@@ -1,5 +1,6 @@
 import { toJS } from 'mobx';
 import { observer } from 'mobx-react';
+import clsx from 'clsx';
 import { mapOutline, warningOutline, clipboardOutline } from 'ionicons/icons';
 import { Trans as T } from 'react-i18next';
 import { useRouteMatch } from 'react-router';
@@ -20,9 +21,9 @@ import {
 import VerificationListStatus from 'common/Components/VerificationListStatus';
 import UKBMSlogo from 'common/images/UKBMSlogo.png';
 import Sample from 'models/sample';
-import Stopwatch from 'Survey/Time/common/Components/Stopwatch';
 import DisabledRecordMessage from 'Survey/common/Components/DisabledRecordMessage';
 import IncrementalButton from 'Survey/common/Components/IncrementalButton';
+import Stopwatch from './Stopwatch';
 import './styles.scss';
 
 type Props = {
@@ -113,11 +114,7 @@ const HomeMain = ({ sample, increaseCount }: Props) => {
 
   const getSpeciesList = () => {
     if (!sample.samples.length) {
-      return (
-        <IonList id="list" lines="full">
-          <InfoBackgroundMessage>No species added</InfoBackgroundMessage>
-        </IonList>
-      );
+      return <InfoBackgroundMessage>No species added</InfoBackgroundMessage>;
     }
 
     const speciesCounts = [...sample.samples].reduce(buildSpeciesCount, {});
@@ -131,7 +128,12 @@ const HomeMain = ({ sample, increaseCount }: Props) => {
     return (
       <IonList id="list" lines="full">
         <div className="rounded-list">
-          <div className="list-divider gap-4">
+          <div
+            className={clsx(
+              'list-divider gap-4',
+              isTimerPaused && 'opacity-70'
+            )}
+          >
             <div>
               <T>Count</T>
             </div>

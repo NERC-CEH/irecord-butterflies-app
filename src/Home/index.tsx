@@ -8,6 +8,7 @@ import {
 import { Trans as T } from 'react-i18next';
 import { Route, Redirect } from 'react-router-dom';
 import { App as AppPlugin } from '@capacitor/app';
+import { useAlert } from '@flumens/ionic/dist/hooks';
 import {
   IonTabs,
   IonTabButton,
@@ -30,10 +31,27 @@ import './styles.scss';
 const HomeComponent = () => {
   const { navigate } = useContext(NavContext);
   const ionRouter = useIonRouter();
+  const alert = useAlert();
 
   const navigateToPrimarySurvey = () => navigate(`/survey/point`);
   const navigateToListSurvey = () => navigate(`/survey/list`);
-  const navigateToTimedSurvey = () => navigate(`/survey/single-species-count`);
+  const navigateToTimedSurvey = () => {
+    alert({
+      header: 'Single or multiple species',
+      message: 'Are you recording a single species or multiple?',
+      backdropDismiss: false,
+      buttons: [
+        {
+          text: 'Single',
+          handler: () => navigate(`/survey/single-species-count`),
+        },
+        {
+          text: 'Multiple',
+          handler: () => navigate(`/survey/multi-species-count`),
+        },
+      ],
+    });
+  };
 
   const exitApp = () => {
     const onExitApp = () => !ionRouter.canGoBack() && AppPlugin.exitApp();

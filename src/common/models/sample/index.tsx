@@ -24,6 +24,7 @@ import { samplesStore } from '../store';
 import BackgroundGPSExtension from './sampleBackgroundGPSExt';
 import GPSExtension from './sampleGPSExt';
 import MetOfficeExtension from './sampleMetofficeExt';
+import VibrateExtension from './vibrateExt';
 
 type Attrs = SampleAttrs & {
   surveyId: any;
@@ -45,7 +46,13 @@ type Attrs = SampleAttrs & {
 };
 
 type Metadata = SampleMetadata & {
+  /**
+   * The time when the timer was paused.
+   */
   timerPausedTime?: Date;
+  /**
+   * How long the survey was paused in milliseconds.
+   */
   pausedTime: number;
   saved?: number | boolean;
 };
@@ -83,6 +90,10 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
 
   isBackgroundGPSRunning: any; // from extension
 
+  startVibrateCounter: any; // from extension
+
+  stopVibrateCounter: any; // from extension
+
   constructor(options: SampleOptions<Attrs>) {
     super({ ...options, Occurrence, Media, store: samplesStore });
 
@@ -92,6 +103,7 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
     Object.assign(this, GPSExtension);
     Object.assign(this, BackgroundGPSExtension);
     Object.assign(this, MetOfficeExtension);
+    Object.assign(this, VibrateExtension);
 
     this.gpsExtensionInit();
     this.backgroundGPSExtensionInit();
@@ -121,6 +133,7 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
   cleanUp() {
     this.stopGPS();
     this.stopBackgroundGPS();
+    this.stopVibrateCounter();
 
     const stopGPS = (smp: Sample) => {
       smp.stopGPS();
@@ -160,8 +173,8 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
     const hasTimerStarted = this.data.startTime;
     const surveyName = this.getSurvey().name;
 
-    if (!hasTimerStarted && this.isSurveyMultiSpeciesTimedCount()) {
-      return `/survey/${surveyName}/${this.id || this.cid}/details`;
+    if (this.isSurveyMultiSpeciesTimedCount()) {
+      return `/survey/${surveyName}/${this.id || this.cid}`;
     }
 
     if (!this.isSurveySingleSpeciesTimedCount())

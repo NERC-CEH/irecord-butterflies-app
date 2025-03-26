@@ -1,14 +1,14 @@
 #stopwatch {
   ion-label[slot='end'] {
     opacity: 1 !important;
-    color: var(--color-primary);
+    color: var(--form-value-color);
   }
 
   &.paused {
     --detail-icon-color: var(--form-value-color);
 
     ion-label[slot='end'] {
-      color: var(--form-value-color);
+      color: var(--color-neutral-500);
     }
   }
 
