@@ -45,7 +45,7 @@ const DetailsController = () => {
   const [isAlertPresent, setIsAlertPresent] = useState(false);
   const shouldDeleteSurvey = useDeleteSurveyPrompt(alert);
 
-  const hasTimerStarted = sample!.data.startTime;
+  const hasTimerStarted = sample?.data.startTime;
 
   const onStartTimer = () => {
     const isValid = checkSampleStatus();
@@ -58,18 +58,6 @@ const DetailsController = () => {
     const path = url.replace('/details', '');
     navigate(path, 'forward', 'replace');
   };
-
-  const isValid = !sample!.validateRemote();
-
-  const startTimerButton = !hasTimerStarted && (
-    <HeaderButton
-      onClick={onStartTimer}
-      color={isValid ? 'primary' : 'medium'}
-      className="px-2"
-    >
-      Start Count
-    </HeaderButton>
-  );
 
   // Entering details/:attr page, but match still showing details page match.url.
   const isDetailsPage = url !== location.pathname;
@@ -99,6 +87,18 @@ const DetailsController = () => {
   useOnBackButton(onDeleteSurvey);
 
   if (!sample) return null;
+
+  const isValid = !sample?.validateRemote();
+
+  const startTimerButton = !hasTimerStarted && (
+    <HeaderButton
+      onClick={onStartTimer}
+      color={isValid ? 'primary' : 'medium'}
+      className="px-2"
+    >
+      Start Count
+    </HeaderButton>
+  );
 
   // eslint-disable-next-line react/no-unstable-nested-components
   const cancelButtonWrap = () => (

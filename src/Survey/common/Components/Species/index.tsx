@@ -99,19 +99,6 @@ const SpeciesSelect = ({ title, showCancelButton, onSelect }: Props) => {
 
   const week = getCurrentWeekNumber(sample?.data.date);
 
-  const getIdentifiedSpeciesList = () => {
-    if (!occurrence && sample!.getSurvey().name === 'point')
-      return sample?.occurrences[0]?.getAllUniqueIdentifiedSpecies();
-
-    if (!occurrence && sample?.getSurvey().name === 'list') return [];
-
-    if (!occurrence) return [];
-
-    return occurrence.getAllUniqueIdentifiedSpecies();
-  };
-
-  const identifiedSpeciesList = getIdentifiedSpeciesList();
-
   const alert = useAlert();
   const [isAlertPresent, setIsAlertPresent] = useState(false);
 
@@ -144,7 +131,7 @@ const SpeciesSelect = ({ title, showCancelButton, onSelect }: Props) => {
 
   const [searchPhrase, setSearchPhrase] = useState('');
   const [surveyFilters, setSurveyFilters] = useState<Filters | null>(
-    sample!.getSurveySpeciesFilters()
+    sample?.getSurveySpeciesFilters() || null
   );
 
   const filters = { ...surveyFilters, ...appModel.data.filters };
@@ -180,7 +167,7 @@ const SpeciesSelect = ({ title, showCancelButton, onSelect }: Props) => {
 
   const showTimeSurveyTipOnce = () => {
     if (
-      sample!.isSurveySingleSpeciesTimedCount() &&
+      sample?.isSurveySingleSpeciesTimedCount() &&
       appModel.data.showTimeSurveyTip
     ) {
       appModel.data.showTimeSurveyTip = false; // eslint-disable-line
@@ -191,6 +178,19 @@ const SpeciesSelect = ({ title, showCancelButton, onSelect }: Props) => {
   useEffect(showTimeSurveyTipOnce);
 
   if (!sample) return null;
+
+  const getIdentifiedSpeciesList = () => {
+    if (!occurrence && sample!.getSurvey().name === 'point')
+      return sample?.occurrences[0]?.getAllUniqueIdentifiedSpecies();
+
+    if (!occurrence && sample?.getSurvey().name === 'list') return [];
+
+    if (!occurrence) return [];
+
+    return occurrence.getAllUniqueIdentifiedSpecies();
+  };
+
+  const identifiedSpeciesList = getIdentifiedSpeciesList();
 
   return (
     <Page id="species-attr">
