@@ -4,6 +4,7 @@ import AreaAttr from 'Survey/Time/common/Components/Area';
 import Details from 'Survey/Time/common/Components/Details';
 import OccurrenceHome from 'Survey/Time/common/Components/OccurrenceHome';
 import SpeciesOccurrences from 'Survey/Time/common/Components/SpeciesOccurrences';
+import Group from 'Survey/common/Components/GroupAttrPage';
 import ModelLocation from 'Survey/common/Components/ModelLocation';
 import Species from 'Survey/common/Components/Species';
 import StartNewSurvey from 'Survey/common/Components/StartNewSurvey';
@@ -25,6 +26,7 @@ const routes = [
   [`${baseURL}/:smpId/area`, AreaAttr],
   [`${baseURL}/:smpId/details`, Details],
   [`${baseURL}/:smpId/details/:attr`, withSample(AttrPageFromRoute)],
+  [`${baseURL}/:smpId/details/group`, Group],
   [`${baseURL}/:smpId/species`, SpeciesWrap],
   [`${baseURL}/:smpId/speciesOccurrences/:taxa`, SpeciesOccurrences],
   [`${baseURL}/:smpId/speciesOccurrences/:taxa/taxon`, Species],

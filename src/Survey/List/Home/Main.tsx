@@ -29,6 +29,7 @@ import DisabledRecordMessage from 'Survey/common/Components/DisabledRecordMessag
 import GridRefValue from 'Survey/common/Components/GridRefValue';
 import IncrementalButton from 'Survey/common/Components/IncrementalButton';
 import MenuDateAttr from 'Survey/common/Components/MenuDateAttr';
+import MenuGroupAttr from 'Survey/common/Components/MenuGroupAttr';
 
 const speciesNameSort = (occ1: Occurrence, occ2: Occurrence) => {
   const taxon1 = occ1.data.taxon;
@@ -224,6 +225,7 @@ const HomeMain = ({
           <MenuDateAttr record={sample.data} isDisabled={isDisabled} />
           {getLocationButton()}
           <MenuAttrItemFromModel model={sample} attr="area" />
+          <MenuGroupAttr sample={sample} />
         </div>
 
         {getSpeciesAddButton()}

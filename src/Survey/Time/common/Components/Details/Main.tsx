@@ -19,6 +19,7 @@ import PhotoPicker from 'common/Components/PhotoPicker';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import windIcon from 'common/images/wind.svg';
 import Sample from 'models/sample';
+import MenuGroupAttr from 'Survey/common/Components/MenuGroupAttr';
 
 type Props = {
   sample: Sample;
@@ -60,6 +61,7 @@ const MainDetails = ({ sample, onChangeCounter }: Props) => {
             attr="stage"
             skipValueTranslation
           />
+          <MenuGroupAttr sample={sample} />
           <MenuAttrItem
             routerLink={`${url}/comment`}
             disabled={isDisabled}
