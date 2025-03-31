@@ -4,5 +4,8 @@
 	"bundledWebRuntime": false,
 	"npmClient": "npm",
 	"webDir": "build",
-	"cordova": {}
+	"cordova": {},
+	"android": {
+		"adjustMarginsForEdgeToEdge": "force"
+	}
 }
