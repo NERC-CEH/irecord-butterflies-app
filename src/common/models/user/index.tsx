@@ -29,6 +29,11 @@ export interface Attrs extends DrupalUserModelAttrs {
   statsYears: any;
 
   /**
+   * If user has agreed to BC marketing comms.
+   */
+  agreeBcComms?: boolean | [];
+
+  /**
    * @deprecated
    */
   password?: any;

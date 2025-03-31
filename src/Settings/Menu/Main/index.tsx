@@ -8,6 +8,7 @@ import {
   locationOutline,
   filterOutline,
   cameraOutline,
+  mailOutline,
 } from 'ionicons/icons';
 import { Main, useAlert, InfoMessage, Toggle } from '@flumens';
 import {
@@ -102,9 +103,11 @@ type Props = {
   useProbabilitiesForGuide?: boolean;
   useLocationForGuide?: boolean;
   sendAnalytics?: boolean;
+  allowMarketing?: boolean;
   currentLocation?: string;
   adminChangeWeek?: any;
   adminChangeLocation?: any;
+  updateMarketingSetting?: any;
 };
 
 const MenuMain = ({
@@ -124,6 +127,8 @@ const MenuMain = ({
   adminChangeLocation,
   adminChangeWeek,
   useSpeciesImageClassifier,
+  allowMarketing,
+  updateMarketingSetting,
 }: Props) => {
   const alert = useAlert();
   const showUserDeleteDialog = useUserDeleteDialog(deleteUser);
@@ -238,6 +243,16 @@ const MenuMain = ({
           </div>
 
           <div className="rounded-list">
+            <Toggle
+              prefix={<IonIcon src={mailOutline} className="size-6" />}
+              label="Receive BC news"
+              isSelected={allowMarketing}
+              onChange={updateMarketingSetting}
+            />
+            <InfoMessage inline>
+              Allow Butterfly Conservation to keep you updated with news about
+              campaigns and other work by email.
+            </InfoMessage>
             <Toggle
               prefix={<IonIcon src={shareSocialOutline} className="size-6" />}
               label="Share with app developers"

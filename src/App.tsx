@@ -11,6 +11,7 @@ import { IonApp, IonRouterOutlet, isPlatform } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import ThankYouAlert from 'common/Components/ThankYouAlert';
 import UpdatedRecordsAlert from 'common/Components/UpdatedRecordsAlert';
+import UserMarketingDialog from 'common/Components/UserMarketingDialog';
 import samples from 'common/models/collections/samples';
 import 'common/theme.scss';
 import Home from './Home';
@@ -35,6 +36,7 @@ const HomeRedirect = () => <Redirect to="home" />;
 const App = () => (
   <IonApp>
     <OnboardingScreens>
+      <UserMarketingDialog />
       <ThankYouAlert />
       <TailwindContext.Provider value={tailwindContext}>
         <TailwindBlockContext.Provider value={tailwindBlockContext}>

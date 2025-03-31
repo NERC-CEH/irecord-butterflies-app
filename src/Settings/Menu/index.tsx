@@ -64,6 +64,8 @@ function onToggle(
 const MenuController = () => {
   const resetApp = useResetApp();
   const deleteUser = useDeleteUser();
+  const loader = useLoader();
+  const toast = useToast();
 
   const resetApplication = () => resetApp();
 
@@ -76,6 +78,8 @@ const MenuController = () => {
     useMoths,
     useSpeciesImageClassifier,
   } = appModel.data;
+
+  const { agreeBcComms } = userModel.data;
 
   const onToggleGuideLocation = (checked: boolean) => {
     onToggle('useLocationForGuide', checked);
@@ -117,6 +121,22 @@ const MenuController = () => {
     console.log('setting week', (window as any).admin.currentWeek);
   };
 
+  const updateMarketingSetting = async (value: boolean) => {
+    await loader.show('Please wait...');
+
+    const originalValue = userModel.data.agreeBcComms;
+
+    try {
+      userModel.data.agreeBcComms = value;
+      await userModel.updateRemote({ field_agree_bc_comms: [{ value }] });
+    } catch (error: any) {
+      toast.error(error);
+      userModel.data.agreeBcComms = originalValue;
+    }
+
+    loader.hide();
+  };
+
   return (
     <Page id="settings">
       <Header title="Settings" />
@@ -138,6 +158,8 @@ const MenuController = () => {
         // admin controls
         adminChangeLocation={adminChangeLocation}
         adminChangeWeek={adminChangeWeek}
+        updateMarketingSetting={updateMarketingSetting}
+        allowMarketing={agreeBcComms === true}
       />
     </Page>
   );
