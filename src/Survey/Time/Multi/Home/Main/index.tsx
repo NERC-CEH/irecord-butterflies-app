@@ -233,7 +233,7 @@ const HomeMain = ({
           </IonLabel>
           <CountdownClock isPaused={isTimerPaused} countdown={timerEndTime} />
         </IonItem>
-        {isTimerPaused && (
+        {!isDisabled && isTimerPaused && (
           <InfoMessage color="secondary">
             To continue surveying, please restart the timer.
           </InfoMessage>
@@ -244,9 +244,13 @@ const HomeMain = ({
 
   return (
     <Main>
-      {isDisabled && <DisabledRecordMessage sample={sample} />}
-
       <IonList lines="full">
+        {isDisabled && (
+          <div className="rounded-list mb-2">
+            <DisabledRecordMessage sample={sample} />
+          </div>
+        )}
+
         <h3 className="list-title">
           <T>Details</T>
         </h3>

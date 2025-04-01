@@ -214,7 +214,11 @@ const HomeMain = ({
   return (
     <Main>
       <IonList lines="full">
-        {isDisabled && <DisabledRecordMessage sample={sample} />}
+        {isDisabled && (
+          <div className="rounded-list mb-2">
+            <DisabledRecordMessage sample={sample} />
+          </div>
+        )}
 
         <h3 className="list-title">Details</h3>
         <div className="rounded-list">

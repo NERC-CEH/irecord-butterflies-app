@@ -152,10 +152,14 @@ const HomeMain = ({ sample, increaseCount }: Props) => {
 
   return (
     <Main>
-      {isDisabled && <DisabledRecordMessage sample={sample} />}
-
       <IonImg src={UKBMSlogo} />
       <IonList lines="full">
+        {isDisabled && (
+          <div className="rounded-list mb-2">
+            <DisabledRecordMessage sample={sample} />
+          </div>
+        )}
+
         <h3 className="list-title">
           <T>Details</T>
         </h3>
@@ -169,7 +173,7 @@ const HomeMain = ({ sample, increaseCount }: Props) => {
           />
 
           <Stopwatch sample={sample} />
-          {isTimerPaused && (
+          {!isDisabled && isTimerPaused && (
             <InfoMessage color="secondary">
               To continue surveying, please restart the timer.
             </InfoMessage>
