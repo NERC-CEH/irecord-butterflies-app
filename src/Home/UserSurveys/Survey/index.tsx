@@ -125,9 +125,12 @@ function getSampleInfo(sample: Sample) {
       avatar = <img src={thumbnail} />;
     }
 
-    const durationTime = (
-      <span>{getFormattedDuration(sample.data.duration)}</span>
-    );
+    const { duration } = sample.data;
+    const formattedDuration =
+      typeof duration === 'string'
+        ? duration // from remote
+        : getFormattedDuration(duration);
+    const durationTime = <span>{formattedDuration}</span>;
 
     const showSurveyDuration = sample.metadata.saved ? (
       <Badge className="ml-1" prefix={<IonIcon src={timeOutline} />}>
@@ -250,6 +253,8 @@ const Survey = ({ sample, uploadIsPrimary, ...props }: Props) => {
       <VerificationListStatus sample={sample} key={sample.cid} />
     );
 
+  const allowDeletion = sample.isStored;
+
   const openItem = () => {
     if (sample.isSynchronising) return; // fixes button onPressUp and other accidental navigation
     navigate(href!);
@@ -269,11 +274,13 @@ const Survey = ({ sample, uploadIsPrimary, ...props }: Props) => {
         {verificationIcon}
       </IonItem>
 
-      <IonItemOptions side="end">
-        <IonItemOption color="danger" onClick={deleteSurveyWrap}>
-          Delete
-        </IonItemOption>
-      </IonItemOptions>
+      {allowDeletion && (
+        <IonItemOptions side="end">
+          <IonItemOption color="danger" onClick={deleteSurveyWrap}>
+            Delete
+          </IonItemOption>
+        </IonItemOptions>
+      )}
     </IonItemSliding>
   );
 };

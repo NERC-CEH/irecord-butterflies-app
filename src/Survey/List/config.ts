@@ -1,4 +1,4 @@
-import { chatboxOutline, expandOutline } from 'ionicons/icons';
+import { chatboxOutline } from 'ionicons/icons';
 import { z, object } from 'zod';
 import { isPlatform } from '@ionic/react';
 import config from 'common/config';
@@ -9,22 +9,8 @@ import {
   appVersionAttr,
   stageAttr,
   Survey,
+  areaSizeAttr,
 } from 'Survey/common/config';
-
-const areaOptions = [
-  {
-    id: 3068,
-    value: 'Point location',
-  },
-  {
-    id: 3069,
-    value: '100m x 100m',
-  },
-  {
-    id: 3070,
-    value: '1km x 1km',
-  },
-];
 
 const survey: Survey = {
   id: 792,
@@ -35,22 +21,7 @@ const survey: Survey = {
     ...locationAttrs,
     device: deviceAttr,
     appVersion: appVersionAttr,
-
-    area: {
-      menuProps: {
-        required: true,
-        icon: expandOutline,
-        label: 'Area size',
-      },
-      pageProps: {
-        attrProps: {
-          input: 'radio',
-          info: 'Please select the approximate size of your survey area.',
-          inputProps: { options: areaOptions },
-        },
-      },
-      remote: { id: 323, values: areaOptions },
-    },
+    area: areaSizeAttr,
   },
 
   occ: {

@@ -89,10 +89,11 @@ const HomeMain = ({
   const isTimerPaused = sample.isTimerPaused();
   const isTimerFinished = sample.isTimerFinished();
 
-  let areaPretty: any = <IonIcon icon={warningOutline} color="danger" />;
-
+  let areaPretty: any;
   if (Number.isFinite(area) || sample.isBackgroundGPSRunning()) {
     areaPretty = area ? `${area} m²` : '';
+  } else if (!isDisabled) {
+    areaPretty = <IonIcon icon={warningOutline} color="danger" />;
   }
 
   const getSpeciesEntry = ([id, species]: any) => {
@@ -100,7 +101,7 @@ const HomeMain = ({
 
     const { taxon } = species;
 
-    const speciesName = taxon.commonName;
+    const speciesName = taxon.commonName || taxon.scientificName;
 
     const increaseCountWrap = () => increaseCount(taxon);
     const increase5xCountWrap = () => increaseCount(taxon, true);

@@ -426,24 +426,6 @@ const survey: Survey = {
 
     return sample;
   },
-
-  modifySubmission(submission: any) {
-    const subSamples = submission.samples;
-    submission.samples = []; // eslint-disable-line
-
-    const removeSubSamplesLayerIfNoLocation = (subSample: any) => {
-      const locationIsMissing = !subSample.values.entered_sref;
-      if (locationIsMissing) {
-        submission.occurrences.push(subSample.occurrences[0]);
-        return;
-      }
-      submission.samples.push(subSample);
-    };
-
-    subSamples.forEach(removeSubSamplesLayerIfNoLocation);
-
-    return submission;
-  },
 };
 
 export default survey;

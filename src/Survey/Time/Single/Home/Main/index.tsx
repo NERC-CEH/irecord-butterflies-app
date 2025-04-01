@@ -66,10 +66,11 @@ const HomeMain = ({ sample, increaseCount }: Props) => {
   const isDisabled = sample.isUploaded;
   const isTimerPaused = sample.isTimerPaused();
 
-  let areaPretty: any = <IonIcon icon={warningOutline} color="danger" />;
-
+  let areaPretty: any;
   if (Number.isFinite(area) || sample.isBackgroundGPSRunning()) {
     areaPretty = area ? `${area} m²` : '';
+  } else if (!isDisabled) {
+    areaPretty = <IonIcon icon={warningOutline} color="danger" />;
   }
 
   const getSpeciesEntry = ([id, species]: any) => {
@@ -77,15 +78,16 @@ const HomeMain = ({ sample, increaseCount }: Props) => {
 
     const { taxon } = species;
 
-    const speciesName = taxon.commonName;
+    const speciesName = taxon.commonName || taxon.scientificName;
 
-    // const isShallow = !species.count;
     const increaseCountWrap = () => increaseCount(taxon);
     const increase5xCountWrap = () => increaseCount(taxon, true);
 
     let location;
     if (species.hasLocationMissing) {
-      location = <IonIcon icon={warningOutline} color="danger" />;
+      if (!isDisabled) {
+        location = <IonIcon icon={warningOutline} color="danger" />;
+      }
     } else if (species.isGeolocating) {
       location = <IonSpinner />;
     }

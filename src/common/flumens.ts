@@ -20,6 +20,7 @@ export {
   default as MapContainer,
   useMapStyles,
 } from '@flumens/tailwind/dist/components/Map/Container';
+export { type default as ElasticSample } from '@flumens/models/dist/Indicia/ElasticSample.d';
 export * from '@flumens/tailwind/dist/components/Map/utils';
 export { default as MapHeader } from '@flumens/ionic/dist/components/Map/Header';
 export { default as MapSettingsPanel } from '@flumens/ionic/dist/components/Map/SettingsPanel';

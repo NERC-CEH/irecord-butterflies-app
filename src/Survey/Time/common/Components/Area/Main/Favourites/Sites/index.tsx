@@ -46,9 +46,7 @@ const Sites = ({ onSelect, selectedLocationId }: Props) => {
           {entries}
         </>
       ) : (
-        <InfoBackgroundMessage>
-          You have no previous tracks.
-        </InfoBackgroundMessage>
+        <InfoBackgroundMessage>You have no saved sites.</InfoBackgroundMessage>
       )}
     </IonList>
   );

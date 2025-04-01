@@ -18,9 +18,15 @@ const DisabledRecordMessage = ({ sample }: Props) => {
 
   return (
     <InfoMessage skipTranslation color="secondary">
-      <T>
-        This record has been submitted and cannot be edited within this App.
-      </T>
+      <div className="mb-2">
+        <T>
+          This record has been submitted and cannot be edited within this App.
+        </T>
+      </div>
+      <div>
+        <T>To view the full record, please visit the iRecord website.</T>
+      </div>
+
       <Button href={href} className="mt-2 p-1" color="primary">
         iRecord website
       </Button>

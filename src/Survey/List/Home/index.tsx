@@ -135,6 +135,7 @@ const Home = () => {
   useEffect(showListSurveyTipOnce);
 
   if (!sample) return null;
+  console.log(sample);
 
   const _processSubmission = async () => {
     const isUserOK = await checkUserStatus();
@@ -185,7 +186,7 @@ const Home = () => {
   return (
     <Page id="survey-list-edit">
       <Header
-        title="New List"
+        title="List survey"
         rightSlot={<SurveyHeaderButton onClick={onFinish} sample={sample} />}
         defaultHref="/home/surveys"
       />

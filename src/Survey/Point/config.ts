@@ -10,6 +10,7 @@ import {
   appVersionAttr,
   stageAttr,
   Survey,
+  areaSizeAttr,
 } from 'Survey/common/config';
 
 const survey: Survey = {
@@ -23,6 +24,11 @@ const survey: Survey = {
     ...locationAttrs,
     device: deviceAttr,
     appVersion: appVersionAttr,
+
+    /**
+     * @deprecated we only use this for old list surveys that were assigned id=101
+     */
+    area: areaSizeAttr,
   },
 
   occ: {

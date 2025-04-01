@@ -43,6 +43,18 @@ function calculateLineLenght(lineString) {
   return result;
 }
 
+export const calculateArea = shape => {
+  let area;
+
+  if (shape.type === 'Polygon') {
+    area = geojsonArea.geometry(shape);
+  } else {
+    area = DEFAULT_TRANSECT_BUFFER * calculateLineLenght(shape.coordinates);
+  }
+
+  return Math.floor(area);
+};
+
 function getShape(sample) {
   const oldLocation = sample.data.location || {};
 
@@ -151,22 +163,15 @@ const extension = {
       return this.save();
     }
 
-    let area;
-    let [longitude, latitude] = shape.coordinates[0];
-
-    if (shape.type === 'Polygon') {
-      area = geojsonArea.geometry(shape);
-      [longitude, latitude] = shape.coordinates[0][0]; // eslint-disable-line
-    } else {
-      area = DEFAULT_TRANSECT_BUFFER * calculateLineLenght(shape.coordinates);
-    }
-
-    area = Math.floor(area);
+    const [longitude, latitude] =
+      shape.type === 'Polygon'
+        ? shape.coordinates[0][shape.coordinates[0].length - 1]
+        : shape.coordinates[shape.coordinates.length - 1];
 
     this.data.location = {
       latitude,
       longitude,
-      area,
+      area: calculateArea(shape),
       shape,
       source: 'map',
       accuracy,

@@ -26,10 +26,6 @@ const getTimeSpent = (sample: Sample) => {
   return referenceTime - startTime - pauseTime;
 };
 
-const getFormattedTime = (duration: number) => (
-  <span>{getFormattedDuration(duration)}</span>
-);
-
 type Props = {
   sample: Sample;
 };
@@ -66,7 +62,8 @@ const Stopwatch = ({ sample }: Props) => {
     sample.save();
   };
 
-  const timeSpent = getTimeSpent(sample);
+  const duration =
+    sample.data.duration || getFormattedDuration(getTimeSpent(sample));
 
   const initComponentRefresh = () => {
     setStopwatchID(startStopwatch());
@@ -104,7 +101,9 @@ const Stopwatch = ({ sample }: Props) => {
       <IonLabel>
         <T>Duration</T>
       </IonLabel>
-      <IonLabel slot="end">{getFormattedTime(timeSpent)}</IonLabel>
+      <IonLabel slot="end">
+        <span>{duration}</span>
+      </IonLabel>
     </IonItem>
   );
 };

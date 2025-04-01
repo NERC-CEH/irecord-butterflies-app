@@ -63,7 +63,7 @@ const Home = () => {
   return (
     <Page id="survey-point-edit">
       <Header
-        title="New Sighting"
+        title="Record"
         rightSlot={<SurveyHeaderButton onClick={onFinish} sample={sample} />}
         defaultHref="/home/surveys"
       />

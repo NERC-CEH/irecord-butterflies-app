@@ -26,7 +26,9 @@ const OccurrenceMain = ({ subSample, occurrence }: Props) => {
 
   let location;
   if (subSample.hasLoctionMissingAndIsnotLocating()) {
-    location = <IonIcon icon={warningOutline} color="danger" />;
+    if (!isDisabled) {
+      location = <IonIcon icon={warningOutline} color="danger" />;
+    }
   } else {
     location = <GridRefValue sample={subSample} />;
   }

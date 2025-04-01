@@ -8,6 +8,7 @@ import {
   ModelValidationMessage,
   device,
   useAlert,
+  ElasticSample,
 } from '@flumens';
 import config from 'common/config';
 import speciesProfiles, { Species } from 'common/data/species';
@@ -21,7 +22,9 @@ import { getSurveyConfigs } from 'Survey/common/surveyConfigs';
 import Media from '../image';
 import Occurrence from '../occurrence';
 import { samplesStore } from '../store';
-import BackgroundGPSExtension from './sampleBackgroundGPSExt';
+import BackgroundGPSExtension, {
+  calculateArea,
+} from './sampleBackgroundGPSExt';
 import GPSExtension from './sampleGPSExt';
 import MetOfficeExtension from './sampleMetofficeExt';
 import VibrateExtension from './vibrateExt';
@@ -59,6 +62,15 @@ type Metadata = SampleMetadata & {
 };
 
 export default class Sample extends SampleOriginal<Attrs, Metadata> {
+  static fromElasticDTO(json: ElasticSample, options: any, survey?: any) {
+    const parsed = super.fromElasticDTO(json, options, survey) as any;
+    if (parsed.data?.location?.shape) {
+      parsed.data.location.area = calculateArea(parsed.data?.location?.shape);
+    }
+
+    return parsed;
+  }
+
   declare occurrences: IObservableArray<Occurrence>;
 
   declare samples: IObservableArray<Sample>;
@@ -163,11 +175,13 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
   };
 
   isSurveySingleSpeciesTimedCount() {
-    return this.data.surveyId === timeSurvey.id;
+    // eslint-disable-next-line eqeqeq
+    return this.data.surveyId == timeSurvey.id;
   }
 
   isSurveyMultiSpeciesTimedCount() {
-    return this.data.surveyId === multiSurvey.id;
+    // eslint-disable-next-line eqeqeq
+    return this.data.surveyId == multiSurvey.id;
   }
 
   getCurrentEditRoute() {
@@ -182,11 +196,11 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
       return `/survey/${surveyName}/${this.id || this.cid}`;
 
     const hasTaxonBeenSelected = this.samples.length;
-    if (!hasTaxonBeenSelected) {
+    if (this.isStored && !hasTaxonBeenSelected) {
       return `/survey/${surveyName}/${this.id || this.cid}/species`;
     }
 
-    if (!hasTimerStarted) {
+    if (this.isStored && !hasTimerStarted) {
       return `/survey/${surveyName}/${this.id || this.cid}/details`;
     }
 

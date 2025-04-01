@@ -59,7 +59,9 @@ const MainComponent = ({
 
     let location;
     if (smp.hasLoctionMissingAndIsnotLocating()) {
-      location = <IonIcon icon={warningOutline} color="danger" />;
+      if (!isDisabled) {
+        location = <IonIcon icon={warningOutline} color="danger" />;
+      }
     } else {
       location = <GridRefValue sample={smp} />;
     }

@@ -1,4 +1,8 @@
-import { calendarOutline, locationOutline } from 'ionicons/icons';
+import {
+  calendarOutline,
+  expandOutline,
+  locationOutline,
+} from 'ionicons/icons';
 import {
   dateFormat,
   PageProps,
@@ -98,6 +102,37 @@ export const stageAttr = {
     },
   },
   remote: { id: 293, values: stageOptions },
+};
+
+const areaOptions = [
+  {
+    id: 3068,
+    value: 'Point location',
+  },
+  {
+    id: 3069,
+    value: '100m x 100m',
+  },
+  {
+    id: 3070,
+    value: '1km x 1km',
+  },
+];
+
+export const areaSizeAttr = {
+  menuProps: {
+    required: true,
+    icon: expandOutline,
+    label: 'Area size',
+  },
+  pageProps: {
+    attrProps: {
+      input: 'radio',
+      info: 'Please select the approximate size of your survey area.',
+      inputProps: { options: areaOptions },
+    },
+  },
+  remote: { id: 323, values: areaOptions },
 };
 
 type MenuProps = MenuAttrItemFromModelMenuProps;

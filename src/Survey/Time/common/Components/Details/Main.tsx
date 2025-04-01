@@ -44,6 +44,8 @@ const MainDetails = ({
 
   const isMultiSpecies = sample.isSurveyMultiSpeciesTimedCount();
 
+  const showPhotoPicker = !isDisabled || !!sample.media.length;
+
   return (
     <Main>
       <IonList lines="full">
@@ -63,7 +65,7 @@ const MainDetails = ({
                 model={sample as any}
                 attr="site"
                 skipValueTranslation
-                required
+                required={!isDisabled}
               />
 
               <MenuAttrItemFromModel
@@ -109,7 +111,6 @@ const MainDetails = ({
             </>
           )}
         </div>
-
         <h3 className="list-title">
           <T>Weather conditions</T>
         </h3>
@@ -153,15 +154,19 @@ const MainDetails = ({
           />
         </div>
 
-        <h3 className="list-title">
-          <T>Photo</T>
-        </h3>
-        <div className="rounded-list mb-2">
-          <PhotoPicker model={sample} disableClassifier />
-          <InfoMessage inline>
-            Representative photo of where the survey was made
-          </InfoMessage>
-        </div>
+        {showPhotoPicker && (
+          <>
+            <h3 className="list-title">
+              <T>Photo</T>
+            </h3>
+            <div className="rounded-list mb-2">
+              <PhotoPicker model={sample} disableClassifier />
+              <InfoMessage inline>
+                Representative photo of where the survey was made
+              </InfoMessage>
+            </div>
+          </>
+        )}
       </IonList>
     </Main>
   );

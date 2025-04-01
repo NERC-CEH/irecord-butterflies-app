@@ -118,6 +118,8 @@ const MainComponent = ({ sample, isDisabled }: Props) => {
 
   const hasPhotos = !!occ.media.length;
 
+  const showPhotoPicker = hasPhotos || !isDisabled;
+
   return (
     <Main>
       <IonList lines="full">
@@ -166,15 +168,14 @@ const MainComponent = ({ sample, isDisabled }: Props) => {
           />
         </div>
 
-        {hasPhotos ||
-          (!isDisabled && (
-            <>
-              <h3 className="list-title">Species Photo</h3>
-              <div className="rounded-list">
-                <PhotoPicker model={occ} />
-              </div>
-            </>
-          ))}
+        {showPhotoPicker && (
+          <>
+            <h3 className="list-title">Species Photo</h3>
+            <div className="rounded-list">
+              <PhotoPicker model={occ} />
+            </div>
+          </>
+        )}
       </IonList>
     </Main>
   );
