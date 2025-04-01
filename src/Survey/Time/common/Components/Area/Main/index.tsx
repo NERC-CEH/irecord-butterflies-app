@@ -7,9 +7,11 @@ import {
   useAlert,
   mapFlyToLocation,
 } from '@flumens';
+import { IonSpinner } from '@ionic/react';
 import GeolocateButton from 'common/Components/GeolocateButton';
 import config from 'common/config';
 import Sample from 'models/sample';
+import Favourites from './Favourites';
 import FinishPointMarker from './FinishPointMarker';
 import Records from './Records';
 import StartingPointMarker from './StartingPointMarker';
@@ -43,6 +45,9 @@ type Props = {
   setLocation: any;
   isGPSTracking: boolean;
   isDisabled?: boolean;
+  onCreateSite: any;
+  onSelectSite: any;
+  isFetchingLocations: any;
 };
 
 const AreaAttr = ({
@@ -50,11 +55,21 @@ const AreaAttr = ({
   setLocation,
   isGPSTracking,
   isDisabled,
+  onCreateSite,
+  onSelectSite,
+  isFetchingLocations,
 }: Props) => {
   // eslint-disable-next-line prefer-destructuring
   const location = sample.data.location as any;
 
   const initialViewState = { ...location };
+
+  const selectedLocationId = sample.data.locationId;
+
+  const [showPastLocations, setShowPastLocations] = useState(
+    !!selectedLocationId && !sample.isDisabled
+  );
+  const toggleFavourites = () => setShowPastLocations(!showPastLocations);
 
   const shouldDeleteShape = useDeletePropt();
 
@@ -89,6 +104,8 @@ const AreaAttr = ({
         initialViewState={initialViewState}
         maxZoom={19}
       >
+        {!isDisabled && <Favourites.Control onClick={toggleFavourites} />}
+
         <GeolocateButton />
 
         <MapDraw shape={location?.shape as any} onChange={onShapeChange}>
@@ -107,8 +124,26 @@ const AreaAttr = ({
           </MapDraw.Context.Consumer>
         </MapDraw>
 
+        <MapContainer.Control>
+          {isFetchingLocations ? (
+            <IonSpinner color="medium" className="mx-auto block" />
+          ) : (
+            <div />
+          )}
+        </MapContainer.Control>
+
         <Records sample={sample} />
       </MapContainer>
+
+      <Favourites
+        isOpen={showPastLocations}
+        onClose={() => setShowPastLocations(false)}
+        currentLocation={location}
+        isGPSTracking={isGPSTracking}
+        onCreateGroupLocation={onCreateSite}
+        onSelectGroupLocation={onSelectSite}
+        selectedLocationId={selectedLocationId}
+      />
     </Main>
   );
 };

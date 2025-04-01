@@ -20,16 +20,10 @@ export default class Media extends MediaOriginal<Attrs> {
   identification = observable({ identifying: false });
 
   constructor(options: any) {
-    super(options);
-
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    this.remote.url = `${config.backend.indicia.url}/index.php/services/rest`;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    // eslint-disable-next-line
-    this.remote.headers = async () => ({
-      Authorization: `Bearer ${await userModel.getAccessToken()}`,
+    super({
+      ...options,
+      url: config.backend.indicia.url,
+      getAccessToken: () => userModel.getAccessToken(),
     });
   }
 

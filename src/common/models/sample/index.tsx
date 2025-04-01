@@ -28,6 +28,7 @@ import VibrateExtension from './vibrateExt';
 
 type Attrs = SampleAttrs & {
   surveyId: any;
+  locationId?: any;
   date?: any;
   location: any;
   stage?: any;

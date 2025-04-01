@@ -62,7 +62,17 @@ export {
   default as GroupCollection,
   byGroupMembershipStatus,
 } from '@flumens/models/dist/Indicia/GroupCollection';
-export { default as Group } from '@flumens/models/dist/Indicia/Group';
+export {
+  default as Group,
+  type LocationData as GroupLocationData,
+} from '@flumens/models/dist/Indicia/Group';
+export {
+  default as LocationModel,
+  type Data as LocationData,
+  type Options as LocationOptions,
+  dtoSchema as locationDtoSchema,
+  LocationType,
+} from '@flumens/models/dist/Indicia/Location';
 export * from '@flumens/models/dist/Indicia/helpers';
 export {
   default as Model,
@@ -104,6 +114,11 @@ export { default as UUID, hashCode } from '@flumens/utils/dist/uuid';
 export { default as Store } from '@flumens/models/dist/Stores/SQLiteStore';
 export { default as Collection } from '@flumens/models/dist/Collection';
 export {
+  default as LocationCollection,
+  byLocationType,
+  type Options as LocationCollectionOptions,
+} from '@flumens/models/dist/Indicia/LocationCollection';
+export {
   type default as ElasticOccurrence,
   type Media as ElasticOccurrenceMedia,
 } from '@flumens/models/dist/Indicia/ElasticOccurrence.d';
@@ -116,6 +131,7 @@ export {
   type BlockConf as BlockT,
   type ChoiceValues,
 } from '@flumens/tailwind/dist/Survey';
+export { default as Block } from '@flumens/tailwind/dist/components/Block';
 export {
   default as TailwindBlockContext,
   defaultContext,

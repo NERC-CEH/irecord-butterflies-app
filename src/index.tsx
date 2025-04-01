@@ -11,6 +11,7 @@ import { setupIonicReact, isPlatform } from '@ionic/react';
 import * as SentryBrowser from '@sentry/browser';
 import config from 'common/config';
 import groups from 'common/models/collections/groups';
+import locations from 'common/models/collections/locations';
 import migrate from 'common/models/migrate';
 import { db } from 'common/models/store';
 import appModel from 'models/app';
@@ -39,6 +40,7 @@ mobxConfig({ enforceActions: 'never' });
   await userModel.fetch();
   await appModel.fetch();
   await samples.fetch();
+  await locations.fetch();
   await groups.fetch();
 
   appModel.data.sendAnalytics &&
