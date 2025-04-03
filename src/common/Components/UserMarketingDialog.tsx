@@ -52,8 +52,14 @@ const UserMarketingDialog = () => {
             details to anyone.
           </p>
           <p>
-            For more details about this, see Butterfly Conservation’s Privacy
-            Policy [linked].
+            For more details about this, see Butterfly Conservation’s{' '}
+            <a
+              href="https://butterfly-conservation.org/privacy-and-cookies"
+              className=""
+            >
+              Privacy Policy
+            </a>
+            .
           </p>
           <p>
             Please note this opt in does not include the communications you may
