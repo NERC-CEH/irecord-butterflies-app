@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import clsx from 'clsx';
 import { addOutline, closeOutline, timeOutline } from 'ionicons/icons';
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import { isPlatform } from '@ionic/core';
 import { IonIcon } from '@ionic/react';
 import InfoBackgroundMessage from 'common/Components/InfoBackgroundMessage';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import listSurveyIcon from 'common/images/listSurveyIcon.svg';
+
+const vibrate = () =>
+  isPlatform('hybrid') && Haptics.impact({ style: ImpactStyle.Light });
 
 type Props = {
   onPrimarySurvey: any;
@@ -18,7 +23,10 @@ const SurveyButton = ({
   onTimedSurvey,
 }: Props) => {
   const [showOptions, setShowOptions] = useState(false);
-  const toggleOptions = () => setShowOptions(!showOptions);
+  const toggleOptions = () => {
+    !showOptions && vibrate();
+    setShowOptions(!showOptions);
+  };
 
   const onPrimarySurveyWrap = () => {
     setShowOptions(false);
