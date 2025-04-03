@@ -97,6 +97,8 @@ export function updateSampleArea(sample, location) {
   }
 
   coordinates.push([longitude, latitude]);
+  if (coordinates.length === 1) coordinates.push([longitude, latitude]); // can't have just one point
+
   return sample.setAreaLocation(shape, accuracy, altitude, altitudeAccuracy);
 }
 
