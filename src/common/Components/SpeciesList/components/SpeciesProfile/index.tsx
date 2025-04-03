@@ -124,7 +124,7 @@ const SpeciesProfile = ({ species, onRecord, onNavBack, isSurvey }: Props) => {
                 shape="round"
                 onPress={onRecordWrap}
                 color="primary"
-                className="py-2"
+                className="shrink-0 py-2"
               >
                 Record
               </Button>

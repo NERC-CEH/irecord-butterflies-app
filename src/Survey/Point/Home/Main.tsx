@@ -58,7 +58,7 @@ const MainComponent = ({ sample, isDisabled }: Props) => {
           <IonAvatar>
             <img src={thumbnail} />
           </IonAvatar>
-          <div className="m-0 flex flex-col items-end justify-center text-[var(--form-value-color)]">
+          <div className="m-0 flex flex-col items-end justify-center pr-1 text-[var(--form-value-color)]">
             <div>
               <b>{commonName}</b>
             </div>
