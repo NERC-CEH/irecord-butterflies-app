@@ -41,6 +41,37 @@ const SurveyButton = ({
     onTimedSurvey();
   };
 
+  const infoMessage = (
+    <InfoBackgroundMessage
+      className="fixed bottom-[20%] left-1/2 z-10 max-w-80 -translate-x-1/2 items-start gap-0 py-8 pr-2 pt-2"
+      name="showSurveyOptionsTip"
+    >
+      <div className="flex flex-col gap-6 pt-8 text-left">
+        <div className="flex items-center gap-4" onClick={onPrimarySurveyWrap}>
+          <IonIcon
+            src={addOutline}
+            className="size-7 shrink-0 rounded-full bg-primary-700 p-1 text-white shadow-md ring-[0.5px] ring-primary-800 [--ionicon-stroke-width:24px]"
+          />
+          <span>Add a new record</span>
+        </div>
+        <div className="flex items-center gap-4" onClick={onListSurveyWrap}>
+          <IonIcon
+            src={listSurveyIcon}
+            className="size-7 shrink-0 rounded-full bg-primary-700 p-1 text-white shadow-md ring-[0.5px] ring-primary-800"
+          />
+          <span>Create a species list survey</span>
+        </div>
+        <div className="flex items-center gap-4" onClick={onTimedSurveyWrap}>
+          <IonIcon
+            src={timeOutline}
+            className="size-7 shrink-0 rounded-full bg-primary-700 p-1 text-white shadow-md ring-[0.5px] ring-primary-800 [--ionicon-stroke-width:24px]"
+          />
+          <span>Start a timed-count survey</span>
+        </div>
+      </div>
+    </InfoBackgroundMessage>
+  );
+
   return (
     <>
       <div className="fixed bottom-3 left-1/2 z-50 -translate-x-1/2 pb-[var(--ion-safe-area-bottom,0)]">
@@ -64,70 +95,31 @@ const SurveyButton = ({
 
       {showOptions && (
         <>
-          <div className="fixed bottom-3 left-1/2 z-50 w-[200px] -translate-x-1/2 pb-[var(--ion-safe-area-bottom,0)]">
+          <div className="fixed bottom-[calc(var(--ion-safe-area-bottom,0)+0.5rem)] left-1/2 z-50 w-[200px] -translate-x-1/2">
             <button
-              className="absolute bottom-10 left-0 flex items-center justify-center rounded-full bg-primary-700 p-2 text-white shadow-md ring-[0.5px] ring-primary-800"
+              className="absolute bottom-10 left-0 flex size-14 items-center justify-center rounded-full bg-primary-700 p-2 text-white shadow-md ring-[0.5px] ring-primary-800"
               onClick={onPrimarySurveyWrap}
             >
-              <IonIcon
-                src={addOutline}
-                className="size-10 [--ionicon-stroke-width:24px]"
-              />
+              <IonIcon src={addOutline} className="size-full" />
             </button>
+
             <button
-              className="absolute bottom-20 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full bg-primary-700 p-2 text-white shadow-md ring-[0.5px] ring-primary-800"
+              className="absolute bottom-20 left-1/2 flex size-14 -translate-x-1/2 items-center justify-center rounded-full bg-primary-700 p-2 text-white shadow-md ring-[0.5px] ring-primary-800"
               onClick={onListSurveyWrap}
             >
-              <IonIcon src={listSurveyIcon} className="size-10" />
+              <IonIcon src={listSurveyIcon} className="size-full" />
             </button>
+
             <button
-              className="absolute bottom-10 right-0 flex items-center justify-center rounded-full bg-primary-700 p-2 text-white shadow-md ring-[0.5px] ring-primary-800"
+              className="absolute bottom-10 right-0 flex size-14 items-center justify-center rounded-full bg-primary-700 p-2 text-white shadow-md ring-[0.5px] ring-primary-800"
               onClick={onTimedSurveyWrap}
             >
-              <IonIcon
-                src={timeOutline}
-                className="size-10 [--ionicon-stroke-width:24px]"
-              />
+              <IonIcon src={timeOutline} className="size-full" />
             </button>
           </div>
 
-          <InfoBackgroundMessage
-            className="fixed bottom-[20%] left-1/2 z-10 max-w-80 -translate-x-1/2 items-start gap-0 py-8 pr-2 pt-2"
-            name="showSurveyOptionsTip"
-          >
-            <div className="flex flex-col gap-6 pt-8 text-left">
-              <div
-                className="flex items-center gap-4"
-                onClick={onPrimarySurveyWrap}
-              >
-                <IonIcon
-                  src={addOutline}
-                  className="size-7 shrink-0 rounded-full bg-primary-700 p-1 text-white shadow-md ring-[0.5px] ring-primary-800 [--ionicon-stroke-width:24px]"
-                />
-                <span>Add a new record</span>
-              </div>
-              <div
-                className="flex items-center gap-4"
-                onClick={onListSurveyWrap}
-              >
-                <IonIcon
-                  src={listSurveyIcon}
-                  className="size-7 shrink-0 rounded-full bg-primary-700 p-1 text-white shadow-md ring-[0.5px] ring-primary-800"
-                />
-                <span>Create a species list survey</span>
-              </div>
-              <div
-                className="flex items-center gap-4"
-                onClick={onTimedSurveyWrap}
-              >
-                <IonIcon
-                  src={timeOutline}
-                  className="size-7 shrink-0 rounded-full bg-primary-700 p-1 text-white shadow-md ring-[0.5px] ring-primary-800 [--ionicon-stroke-width:24px]"
-                />
-                <span>Start a timed-count survey</span>
-              </div>
-            </div>
-          </InfoBackgroundMessage>
+          {infoMessage}
+
           <div
             className="fixed inset-0 bg-black/30 transition-opacity"
             aria-hidden="true"

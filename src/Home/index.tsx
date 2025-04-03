@@ -93,7 +93,7 @@ const HomeComponent = () => {
           <PendingSurveysBadge />
         </IonTabButton>
 
-        <IonTabButton>
+        <IonTabButton className="z-10">
           <SurveyButton
             onPrimarySurvey={navigateToPrimarySurvey}
             onListSurvey={navigateToListSurvey}
