@@ -1,5 +1,7 @@
 ## 2.6.0
 
+Added 15min-count survey.
+Added ability to create and select fixed sites for timed surveys.
 Added the ability to view all uploaded records, including those from other devices.
 Added an option to join and leave activities.
 Updated libraries.
