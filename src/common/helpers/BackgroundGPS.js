@@ -1,6 +1,9 @@
+import i18n from 'i18next';
 import { Modals, registerPlugin } from '@capacitor/core';
 import { Geolocation } from '@capacitor/geolocation';
 import { isPlatform } from '@ionic/react';
+
+export const GPS_DISABLED_ERROR_MESSAGE = 'Location services are not enabled';
 
 const BackgroundGeolocation = registerPlugin('BackgroundGeolocation');
 
@@ -44,8 +47,8 @@ const API = {
     if (accuracy > 50) return;
 
     const location = {
-      latitude: position.latitude.toFixed(8),
-      longitude: position.longitude.toFixed(8),
+      latitude: parseFloat(position.latitude.toFixed(8)),
+      longitude: parseFloat(position.longitude.toFixed(8)),
       accuracy,
       altitude,
       altitudeAccuracy,
@@ -84,8 +87,8 @@ const API = {
 
     API._watchId = await BackgroundGeolocation.addWatcher(
       {
-        backgroundTitle: 'Using your location.',
-        backgroundMessage: 'Cancel to prevent battery drain.',
+        backgroundTitle: i18n.t('Using your location.'),
+        backgroundMessage: i18n.t('Cancel to prevent battery drain.'),
         requestPermissions: true,
         stale: false,
       },

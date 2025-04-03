@@ -31,7 +31,7 @@ const AreaController = () => {
   };
 
   const location = sample.data.location || {};
-  const isGPSTracking = sample.isGPSRunning();
+  const isGPSTracking = sample.isBackgroundGPSRunning();
   const { area } = location;
 
   let infoText;

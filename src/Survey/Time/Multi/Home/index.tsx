@@ -195,7 +195,7 @@ const HomeController = () => {
         zeroAbundance,
         stage,
       });
-      newSubSample.startGPS();
+      newSubSample.startBackgroundGPS();
 
       sample.samples.push(newSubSample);
     };

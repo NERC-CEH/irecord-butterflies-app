@@ -43,18 +43,6 @@ function calculateLineLenght(lineString) {
   return result;
 }
 
-export const calculateArea = shape => {
-  let area;
-
-  if (shape.type === 'Polygon') {
-    area = geojsonArea.geometry(shape);
-  } else {
-    area = DEFAULT_TRANSECT_BUFFER * calculateLineLenght(shape.coordinates);
-  }
-
-  return Math.floor(area);
-};
-
 function getShape(sample) {
   const oldLocation = sample.data.location || {};
 
@@ -102,7 +90,53 @@ export function updateSampleArea(sample, location) {
   return sample.setAreaLocation(shape, accuracy, altitude, altitudeAccuracy);
 }
 
+export const calculateArea = shape => {
+  let area;
+
+  if (shape.type === 'Polygon') {
+    area = geojsonArea.geometry(shape);
+  } else {
+    area = DEFAULT_TRANSECT_BUFFER * calculateLineLenght(shape.coordinates);
+  }
+
+  return Math.floor(area);
+};
+
 const extension = {
+  setAreaLocation(shape, accuracy, altitude, altitudeAccuracy) {
+    if (!shape) {
+      this.data.location = null;
+      return this.save();
+    }
+
+    const [longitude, latitude] =
+      shape.type === 'Polygon'
+        ? shape.coordinates[0][shape.coordinates[0].length - 1]
+        : shape.coordinates[shape.coordinates.length - 1];
+
+    this.data.location = {
+      latitude,
+      longitude,
+      area: calculateArea(shape),
+      shape,
+      source: 'map',
+      accuracy,
+      altitude,
+      altitudeAccuracy,
+    };
+
+    return this.save();
+  },
+
+  toggleBackgroundGPS(state) {
+    if (this.isBackgroundGPSRunning() || state === false) {
+      this.stopBackgroundGPS();
+      return;
+    }
+
+    this.startBackgroundGPS();
+  },
+
   backgroundGPSExtensionInit() {
     this.backgroundGPS = observable({ locating: null });
   },
@@ -144,44 +178,6 @@ const extension = {
 
   isBackgroundGPSRunning() {
     return !!(this.backgroundGPS.locating || this.backgroundGPS.locating === 0);
-  },
-
-  toggleBackgroundGPS(state) {
-    if (this.isBackgroundGPSRunning() || state === false) {
-      this.stopBackgroundGPS();
-      return;
-    }
-
-    this.startBackgroundGPS();
-  },
-
-  /**
-   * Other helper functions.
-   */
-
-  setAreaLocation(shape, accuracy, altitude, altitudeAccuracy) {
-    if (!shape) {
-      this.data.location = null;
-      return this.save();
-    }
-
-    const [longitude, latitude] =
-      shape.type === 'Polygon'
-        ? shape.coordinates[0][shape.coordinates[0].length - 1]
-        : shape.coordinates[shape.coordinates.length - 1];
-
-    this.data.location = {
-      latitude,
-      longitude,
-      area: calculateArea(shape),
-      shape,
-      source: 'map',
-      accuracy,
-      altitude,
-      altitudeAccuracy,
-    };
-
-    return this.save();
   },
 };
 

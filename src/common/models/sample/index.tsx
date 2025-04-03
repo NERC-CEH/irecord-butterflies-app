@@ -89,13 +89,15 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
 
   stopGPS: any; // from extension
 
-  stopBackgroundGPS: any; // from extension
-
   setAreaLocation: any; // from extension
 
   isGPSRunning: any; // from extension
 
   gps: any; // from extension
+
+  startBackgroundGPS: any; // from extension
+
+  stopBackgroundGPS: any; // from extension
 
   toggleBackgroundGPS: any; // from extension
 
