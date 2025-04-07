@@ -60,7 +60,7 @@ const AreaAttr = ({
   isFetchingLocations,
 }: Props) => {
   // eslint-disable-next-line prefer-destructuring
-  const location = sample.data.location as any;
+  const location = (sample.data.location as any) || {};
 
   const initialViewState = { ...location };
 
