@@ -24,7 +24,7 @@ export type Verification = {
 const SQL_TO_ES_LAG = 15 * 60 * 1000; // 15mins
 const SYNC_WAIT = SQL_TO_ES_LAG;
 
-const getRecordsQuery = (timestamp: any) => {
+const getRecordsQuery = (timestamp: number) => {
   const lastFetchTime = new Date(timestamp - SQL_TO_ES_LAG);
 
   const dateFormat = new Intl.DateTimeFormat('en-GB', {
@@ -98,7 +98,10 @@ const getRecordsQuery = (timestamp: any) => {
 
 type UpdatedSamples = Record<string, Hit>;
 
-async function fetchUpdatedRemoteSamples(userModel: UserModel, timestamp: any) {
+async function fetchUpdatedRemoteSamples(
+  userModel: UserModel,
+  timestamp: number
+) {
   console.log('SavedSamples: pulling remote verified surveys');
 
   const samples: UpdatedSamples = {};
@@ -230,10 +233,19 @@ async function init(
     )
       return;
 
-    const lastSyncTime =
+    let lastSyncTime: number =
       appModel.data.verifiedRecordsTimestamp || getEarliestTimestamp(samples);
 
-    const shouldSyncWait = new Date().getTime() - lastSyncTime < SQL_TO_ES_LAG;
+    if (!Number.isFinite(lastSyncTime)) {
+      // should never happen, added because during the migration it was throwing errors, maybe because createdOn => createdAt
+      console.error(
+        `Could not get a valid first sample sync time ${lastSyncTime}, ${appModel.data.verifiedRecordsTimestamp}`
+      );
+      appModel.data.verifiedRecordsTimestamp = Date.now();
+      lastSyncTime = appModel.data.verifiedRecordsTimestamp;
+    }
+
+    const shouldSyncWait = Date.now() - lastSyncTime < SQL_TO_ES_LAG;
     if (shouldSyncWait) return;
 
     const updatedRemoteSamples = await fetchUpdatedRemoteSamples(
@@ -241,7 +253,7 @@ async function init(
       lastSyncTime
     );
 
-    appModel.data.verifiedRecordsTimestamp = new Date().getTime();
+    appModel.data.verifiedRecordsTimestamp = Date.now();
     appModel.save();
 
     if (!Object.keys(updatedRemoteSamples).length) return;
