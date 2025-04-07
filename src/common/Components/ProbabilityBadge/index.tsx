@@ -1,5 +1,5 @@
 import { camera } from 'ionicons/icons';
-import { IonLabel, IonIcon, IonBadge } from '@ionic/react';
+import { IonIcon } from '@ionic/react';
 import CONFIG from 'common/config';
 import './styles.scss';
 
@@ -22,10 +22,12 @@ const ProbabilityBadge = ({ probability }: Props) => {
   }
 
   return (
-    <IonBadge className={`badge badge-${color}`}>
-      <IonIcon icon={camera} className="icon" />
-      <IonLabel className="text">{roundedProbability}%</IonLabel>
-    </IonBadge>
+    <div
+      className={`badge items-center justify-center bg-white badge-${color}`}
+    >
+      <IonIcon icon={camera} className="mx-1 size-4 shrink-0" />
+      <div className="text-sm">{roundedProbability}%</div>
+    </div>
   );
 };
 

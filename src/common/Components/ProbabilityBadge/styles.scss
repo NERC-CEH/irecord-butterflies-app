@@ -5,34 +5,22 @@
   padding: 3px;
   width: fit-content;
   height: fit-content;
-
-  .icon {
-    margin-right: 3px !important;
-    font-size: 1em !important;
-  }
-
-  .text {
-    display: flex;
-    justify-content: revert;
-    align-items: center;
-    font-size: 0.8em;
-  }
 }
 
 .badge-success {
-  border: 1px solid var(--ion-classifier-success);
-  background: var(--ion-classifier-success-background);
-  color: var(--ion-classifier-success);
+  border: 1px solid var(--classifier-success);
+  background: var(--classifier-success-background);
+  color: var(--classifier-success);
 }
 
 .badge-plausible {
-  border: 1px solid var(--ion-classifier-plausible);
-  background: var(--ion-classifier-plausible-background);
-  color: var(--ion-classifier-plausible);
+  border: 1px solid var(--classifier-plausible);
+  background: var(--classifier-plausible-background);
+  color: var(--classifier-plausible);
 }
 
 .badge-unlikely {
-  border: 1px solid var(--ion-classifier-unlikely);
-  background: var(--ion-classifier-unlikely-background);
-  color: var(--ion-classifier-unlikely);
+  border: 1px solid var(--classifier-unlikely);
+  background: var(--classifier-unlikely-background);
+  color: var(--classifier-unlikely);
 }
