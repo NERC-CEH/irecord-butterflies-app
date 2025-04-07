@@ -113,7 +113,7 @@ const PendingSurveys = () => {
 
   if (!surveys.length) {
     return (
-      <InfoBackgroundMessage className="mt-20">
+      <InfoBackgroundMessage className="mt-40">
         <div onClick={navigateToPrimarySurvey}>
           You have no finished surveys.
           <br />
