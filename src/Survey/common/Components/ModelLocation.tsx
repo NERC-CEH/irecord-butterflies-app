@@ -16,6 +16,7 @@ import {
   useSample,
 } from '@flumens';
 import config from 'common/config';
+import samples from 'common/models/collections/samples';
 import Sample from 'common/models/sample';
 
 // TODO:
@@ -86,6 +87,10 @@ const ModelLocation = () => {
   const flyToLocation = () => mapFlyToLocation(mapRef, location);
   useEffect(flyToLocation, [mapRef, location]);
 
+  const getLocation = (smp: Sample) => smp.data.location || {};
+  const byLocal = (smp: Sample) => smp.isStored;
+  const locationNameSuggestions = samples.filter(byLocal).map(getLocation);
+
   return (
     <Page id="model-location">
       <MapHeader>
@@ -93,11 +98,13 @@ const ModelLocation = () => {
           location={location}
           onChange={onManuallyTypedLocationChange}
           useGridRef
+          backButtonProps={{ text: 'Back', className: 'pr-2' }}
         />
         <MapHeader.LocationName
           onChange={onLocationNameChange}
           value={location.name}
           placeholder="Site name e.g. nearby village"
+          suggestions={locationNameSuggestions}
         />
       </MapHeader>
       <Main className="[--padding-bottom:0px] [--padding-top:0px]">
