@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { addOutline } from 'ionicons/icons';
 import { useToast, getRelativeDate, VirtualList, Button } from '@flumens';
 import { IonIcon, IonLabel, IonList, NavContext } from '@ionic/react';
+import butterflyIcon from 'common/images/butterflyIcon.svg';
 import samplesCollection, {
   bySurveyDate,
   uploadAllSamples,
@@ -109,7 +109,7 @@ const PendingSurveys = () => {
     return uploadAllSamples(toast);
   };
 
-  const navigateToPrimarySurvey = () => navigate(`/survey/default`);
+  const navigateToPrimarySurvey = () => navigate(`/survey/point`);
 
   if (!surveys.length) {
     return (
@@ -120,8 +120,8 @@ const PendingSurveys = () => {
           <br />
           Press{' '}
           <IonIcon
-            icon={addOutline}
-            className="rounded-full bg-primary-600 text-white"
+            icon={butterflyIcon}
+            className="-mb-2 rounded-md bg-primary-500 p-1 text-white"
           />{' '}
           to add one
         </div>
