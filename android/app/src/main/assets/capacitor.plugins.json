@@ -4,10 +4,6 @@
 		"classpath": "com.equimaps.capacitor_background_geolocation.BackgroundGeolocation"
 	},
 	{
-		"pkg": "@capacitor-community/camera-preview",
-		"classpath": "com.ahm.capacitor.camera.preview.CameraPreview"
-	},
-	{
 		"pkg": "@capacitor-community/sqlite",
 		"classpath": "com.getcapacitor.community.database.sqlite.CapacitorSQLitePlugin"
 	},

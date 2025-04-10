@@ -5,9 +5,11 @@
 	"npmClient": "npm",
 	"webDir": "build",
 	"cordova": {},
+	"android": {
+		"adjustMarginsForEdgeToEdge": "force"
+	},
 	"packageClassList": [
 		"BackgroundGeolocation",
-		"CameraPreview",
 		"CapacitorSQLitePlugin",
 		"AppPlugin",
 		"CAPCameraPlugin",
