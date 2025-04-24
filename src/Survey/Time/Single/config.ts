@@ -147,7 +147,7 @@ const survey: Survey = {
       },
     },
 
-    site: {
+    locationName: {
       menuProps: { icon: business, label: 'Site name' },
       pageProps: {
         headerProps: { title: 'Site name' },
@@ -156,7 +156,6 @@ const survey: Survey = {
           info: 'Site name, e.g. nearby village',
         },
       },
-      remote: { id: 'location_name' },
     },
 
     duration: {
@@ -390,7 +389,9 @@ const survey: Survey = {
     }
 
     return object({
-      site: z.string({ required_error: 'Required site name' }).nullable(),
+      locationName: z
+        .string({ required_error: 'Required site name' })
+        .nullable(),
       sun: z.number({ required_error: 'Required sun' }).nullable(),
       windDirection: z
         .string({ required_error: 'Required wind direction' })

@@ -63,18 +63,19 @@ const MainDetails = ({
 
               <MenuAttrItemFromModel
                 model={sample as any}
-                attr="site"
-                skipValueTranslation
-                required={!isDisabled}
-              />
-
-              <MenuAttrItemFromModel
-                model={sample as any}
                 attr="stage"
                 skipValueTranslation
               />
             </>
           )}
+
+          <MenuAttrItemFromModel
+            model={sample as any}
+            attr="locationName"
+            skipValueTranslation
+            required={!isDisabled && !isMultiSpecies}
+          />
+
           <MenuGroupAttr sample={sample} />
           {isMultiSpecies && (
             <Toggle
