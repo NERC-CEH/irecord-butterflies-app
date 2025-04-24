@@ -53,6 +53,8 @@ function getSampleInfo(sample: Sample) {
 
   if (survey.name === 'point') {
     const occ = sample.occurrences[0];
+    if (!occ) return null; // in case occ is null when fetched from remote
+
     const taxon = occ.data.taxon || {};
     const label = taxon.commonName || taxon.scientificName;
 
