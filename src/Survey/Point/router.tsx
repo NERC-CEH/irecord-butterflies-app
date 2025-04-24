@@ -16,7 +16,7 @@ const routes = [
   [`${baseURL}/:smpId`, Home],
   [`${baseURL}/:smpId/:attr`, withSample(AttrPageFromRoute)],
   [`${baseURL}/:smpId/occ/:occId/:attr`, withSample(AttrPageFromRoute)],
-  [`${baseURL}/:smpId/location`, ModelLocation],
+  [`${baseURL}/:smpId/location`, ModelLocation.WithName],
   [`${baseURL}/:smpId/group`, Group],
   [`${baseURL}/:smpId/species`, Species],
 ].map(([route, component]: any) => (

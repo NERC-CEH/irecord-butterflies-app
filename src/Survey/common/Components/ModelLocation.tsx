@@ -19,37 +19,11 @@ import config from 'common/config';
 import samples from 'common/models/collections/samples';
 import Sample from 'common/models/sample';
 
-// TODO:
-// function showLocationGPSTip(alert) {
-//   alert({
-//     header: 'Geolocate',
-//     message: (
-//       <p className="geolocation-tip">
-//         Tapping <IonIcon src={locateOutline} /> button will centre the map on
-//         your current location. This may take a little time.
-//       </p>
-//     ),
-//     buttons: [{ text: 'OK, got it' }],
-//   });
-// }
+type Props = {
+  withName?: boolean;
+};
 
-// const getLocation = sample => sample.data.location || {};
-
-// const ModelLocationWithInfo = props => {
-//   const alert = useAlert();
-
-//   const showLocationGPSTipOnce = () => {
-//     if (appModel.data.showLocationGPSTip) {
-//       appModel.data.showLocationGPSTip = false; // eslint-disable-line
-
-//       appModel.save();
-//       showLocationGPSTip(alert);
-//     }
-//   };
-
-//   useEffect(showLocationGPSTipOnce);
-
-const ModelLocation = () => {
+const ModelLocation = ({ withName }: Props) => {
   const { sample, subSample } = useSample<Sample>();
   const model = subSample || sample!;
 
@@ -100,12 +74,14 @@ const ModelLocation = () => {
           useGridRef
           backButtonProps={{ text: 'Back', className: 'pr-2' }}
         />
-        <MapHeader.LocationName
-          onChange={onLocationNameChange}
-          value={location.name}
-          placeholder="Site name e.g. nearby village"
-          suggestions={locationNameSuggestions}
-        />
+        {withName && (
+          <MapHeader.LocationName
+            onChange={onLocationNameChange}
+            value={location.name}
+            placeholder="Site name e.g. nearby village"
+            suggestions={locationNameSuggestions}
+          />
+        )}
       </MapHeader>
       <Main className="[--padding-bottom:0px] [--padding-top:0px]">
         <MapContainer
@@ -144,4 +120,9 @@ const ModelLocation = () => {
   );
 };
 
-export default observer(ModelLocation);
+const ModelLocationWithObserver: any = observer(ModelLocation);
+ModelLocationWithObserver.WithName = () => (
+  <ModelLocationWithObserver withName />
+);
+
+export default ModelLocationWithObserver;
