@@ -100,7 +100,7 @@ const HomeController = () => {
       smp.occurrences[0].data.zeroAbundance = undefined;
       // eslint-disable-next-line no-param-reassign
       smp.occurrences[0].data.stage = sample!.data.stage;
-      smp.startBackgroundGPS();
+      smp.startGPS();
 
       sample!.save();
       return;
@@ -118,7 +118,7 @@ const HomeController = () => {
         zeroAbundance,
         stage,
       });
-      newSubSample!.startBackgroundGPS();
+      newSubSample!.startGPS();
 
       sample!.samples.push(newSubSample);
     };

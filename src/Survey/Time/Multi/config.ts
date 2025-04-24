@@ -24,6 +24,7 @@ const speciesSurvey: any = merge({}, survey, {
       sample.occurrences.push(occurrence);
 
       sample.occurrences[0].data.stage = stage;
+      sample.startGPS();
 
       return sample;
     },
