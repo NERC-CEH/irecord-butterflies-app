@@ -11,7 +11,10 @@ const DisabledRecordMessage = ({ sample }: Props) => {
   let href = `${config.backend.url}`;
   if (sample.getSurvey().name === 'list') {
     const [occ] = sample.occurrences;
-    href = `${config.backend.url}/record-details?occurrence_id=${occ.id}`;
+    if (occ) {
+      // check in case of incomplete pull from remote
+      href = `${config.backend.url}/record-details?occurrence_id=${occ.id}`;
+    }
   } else if (sample.getSurvey().name === 'point') {
     href = `${config.backend.url}/sample-details?sample_id=${sample.id}`;
   }
