@@ -16,8 +16,10 @@ import {
 import { IonRefresherContent, IonRefresher } from '@ionic/react';
 import species, { Species } from 'common/data/species';
 import userModel from 'models/user';
+import listSurveyConfig from 'Survey/List/config';
+import surveyConfig from 'Survey/Point/config';
 import Table from './Table';
-import fetchStatsService from './services';
+import fetchStatsService, { SpeciesStats } from './services';
 import './styles.scss';
 
 function useFetchStats(year: string) {
@@ -32,9 +34,32 @@ function useFetchStats(year: string) {
     await loader.show('Please wait...');
 
     try {
-      const stats = await fetchStatsService(userModel, year);
+      const stats = await fetchStatsService(userModel, surveyConfig.id, year);
+      const listStats = await fetchStatsService(
+        userModel,
+        listSurveyConfig.id,
+        year
+      );
+
       if (!userModel.data.statsYears) userModel.data.statsYears = {};
-      userModel.data.statsYears[year] = stats; // eslint-disable-line
+
+      // join both stats arrays by taxon_meaning_id
+      // and merge the record_count and total_individual_count
+      const statsMap = new Map<string, SpeciesStats>();
+      stats.forEach(sp => statsMap.set(sp.taxon_meaning_id, sp));
+      listStats.forEach(sp => {
+        const existing = statsMap.get(sp.taxon_meaning_id);
+        if (existing) {
+          existing.record_count += sp.record_count;
+          existing.total_individual_count += sp.total_individual_count;
+          return;
+        }
+
+        statsMap.set(sp.taxon_meaning_id, sp);
+      });
+      const mergedStats = Array.from(statsMap.values());
+
+      userModel.data.statsYears[year] = mergedStats;
       userModel.save();
     } catch (err: any) {
       toast.error(err);
@@ -62,7 +87,7 @@ const StatisticsYear = () => {
   const fetchStats = useFetchStats(year);
 
   const list = userModel.data.statsYears?.[year] || [];
-  const getEntryWithSpeciesImage = (entry: any) => {
+  const getEntryWithSpeciesImage = (entry: SpeciesStats) => {
     const scientificNameWithoutSubSpecies = entry.accepted_name
       .split(' ')
       .slice(0, 2)

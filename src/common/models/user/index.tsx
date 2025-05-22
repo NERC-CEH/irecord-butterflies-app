@@ -3,6 +3,7 @@
  **************************************************************************** */
 import { useContext } from 'react';
 import { observable } from 'mobx';
+import { SpeciesStats } from 'src/User/StatisticsYear/services';
 import { z, object } from 'zod';
 import {
   DrupalUserModel,
@@ -16,7 +17,7 @@ import { NavContext } from '@ionic/react';
 import * as Sentry from '@sentry/browser';
 import CONFIG from 'common/config';
 import { mainStore } from '../store';
-import serviceExtension from './userStatsExt';
+import serviceExtension, { UserStats } from './userStatsExt';
 
 export interface Attrs extends DrupalUserModelAttrs {
   firstName?: string;
@@ -25,8 +26,8 @@ export interface Attrs extends DrupalUserModelAttrs {
 
   lastThankYouMilestoneShown: any;
 
-  stats: null;
-  statsYears: any;
+  stats?: UserStats | null;
+  statsYears: Record<string, SpeciesStats[]>;
 
   /**
    * If user has agreed to BC marketing comms.

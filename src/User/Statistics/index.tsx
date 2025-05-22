@@ -67,11 +67,6 @@ const Statistics = () => {
       myProjectSpecies,
       myProjectRecordsThisYear,
       myProjectSpeciesThisYear,
-      // myTotalRecords,
-      // projectSpeciesCount,
-      // myProjectSpeciesRatio,
-      // myProjectActivityRatio,
-      // myProjectRarityMetric,
     } = userModel.data.stats;
 
     const yearName = new Date().getFullYear();
