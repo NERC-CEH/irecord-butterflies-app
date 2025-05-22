@@ -372,8 +372,12 @@ const survey: Survey = {
 
   verify(attrs) {
     // surveys details page dont set area attr
+    // this block always runs for the multi-species survey
     if (attrs.startTime) {
       return object({
+        locationName: z
+          .string({ required_error: 'Required site name' })
+          .nullable(),
         location: z.any().refine(
           d =>
             object({
