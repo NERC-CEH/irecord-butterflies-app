@@ -24,7 +24,7 @@ const MenuGroupAttr = ({ sample }: Props) => {
     >
       <IonIcon src={peopleOutline} slot="start" />
       <IonLabel>Activity</IonLabel>
-      <div className="text-[var(--form-value-color)]">{title}</div>
+      <div className="text-right text-[var(--form-value-color)]">{title}</div>
     </IonItem>
   );
 };
