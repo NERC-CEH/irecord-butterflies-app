@@ -1,8 +1,9 @@
-import { settingsOutline, arrowUndoOutline } from 'ionicons/icons';
+import { settingsOutline, arrowUndoOutline, timeOutline } from 'ionicons/icons';
 import { Header, Page, Main, Collapse } from '@flumens';
 import { IonIcon, IonImg, IonList } from '@ionic/react';
 import butterflyIcon from 'common/images/butterflyIcon.svg';
 import 'common/images/flumens.svg';
+import listSurveyIcon from 'common/images/listSurveyIcon.svg';
 import deleteOccExplanationImage from './deleteOccExplanationImage.png';
 import './styles.scss';
 
@@ -26,16 +27,65 @@ export default () => (
             </span>
           </Collapse>
           <Collapse title="Can I record multiple species at a site?">
-            <span>
-              Yes. Hold down the 'Record' button{' '}
+            <div>
+              Yes. Tap the ‘Record’ button{' '}
               <IonIcon
                 icon={butterflyIcon}
                 className="long-tap-tip-message-icon"
               />{' '}
-              for a second or two and an option to start a Species list will
-              appear. This allows you to record multiple species at a site on a
-              particular date.
-            </span>
+              to reveal different recording modes. You can choose to start a
+              Species List survey{' '}
+              <IonIcon
+                icon={listSurveyIcon}
+                className="long-tap-tip-message-icon"
+              />{' '}
+              or a Timed Count{' '}
+              <IonIcon
+                icon={timeOutline}
+                className="long-tap-tip-message-icon"
+              />
+              .{' '}
+              <p>
+                When doing the Timed Count select “multiple” species. This
+                allows you to record multiple species at a site on a particular
+                date.
+              </p>
+              <p>
+                Once selected, the timer starts and runs for a maximum of 15
+                minutes – you may wish to pause the timer while you complete the
+                other details, and then resume the timer.
+              </p>
+              <p>
+                Complete the Area details using the tools provided. Complete as
+                many of the Survey Details as possible including Site name. You
+                can associate your survey with an iRecord “Activity” at this
+                point if you wish (read more in the FAQs). If your device has a
+                data connection (e.g. 4G) then the weather data should appear
+                automatically after a few moments, otherwise please add or
+                adjust them manually.
+              </p>
+              <p>
+                Once these details have been completed, and you are ready to
+                resume the timer and survey your site.
+              </p>
+              <p>
+                When you encounter a species, click the Add species button and
+                select the correct species from the gallery (NB review species
+                ID details now if needed, as once that species is added they
+                cannot be revisited during this survey). Click on the species
+                name in your list to add additional details for a sighting,
+                including the stage (adult, egg, larva).
+              </p>
+              <p>
+                Add any other species you see. If you see a repeat sighting of a
+                species, you can increase the ‘count’ in your list by clicking
+                on the green total number.
+              </p>
+              <p>
+                Click the Finish button on the top right of the screen to stop
+                the survey and timer.
+              </p>
+            </div>
           </Collapse>
           <Collapse title="Why are species missing from the 'in my area' list?">
             <span>
