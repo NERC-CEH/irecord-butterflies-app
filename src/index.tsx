@@ -12,7 +12,7 @@ import * as SentryBrowser from '@sentry/browser';
 import config from 'common/config';
 import groups from 'common/models/collections/groups';
 import locations from 'common/models/collections/locations';
-import migrate from 'common/models/migrate';
+import migrate, { fixRecords } from 'common/models/migrate';
 import { db } from 'common/models/store';
 import appModel from 'models/app';
 import samples from 'models/collections/samples';
@@ -38,6 +38,13 @@ mobxConfig({ enforceActions: 'never' });
     (await loadingController.create({ message: 'Upgrading...' })).present();
     await migrate();
     localStorage.setItem('sqliteMigrated', 'true');
+    window.location.reload();
+    return;
+  }
+
+  if (isPlatform('hybrid') && !localStorage.getItem('sqliteMigrationFixed')) {
+    await fixRecords();
+    localStorage.setItem('sqliteMigrationFixed', 'true');
     window.location.reload();
     return;
   }
