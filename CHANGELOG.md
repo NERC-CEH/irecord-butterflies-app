@@ -1,3 +1,7 @@
+## 2.6.2
+
+Bug fixes.
+
 ## 2.6.1
 
 Bug fixes.

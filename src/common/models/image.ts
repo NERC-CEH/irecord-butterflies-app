@@ -67,6 +67,8 @@ export default class Media extends MediaOriginal<Attrs> {
       return name;
     }
 
+    if (name.startsWith('https://warehouse')) return name;
+
     return Capacitor.convertFileSrc(`${config.dataPath}/${name}`);
   }
 
