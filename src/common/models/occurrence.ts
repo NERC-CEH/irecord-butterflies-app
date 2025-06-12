@@ -6,8 +6,11 @@ import {
   validateRemoteModel,
   Sample,
   OccurrenceMetadata,
+  ElasticOccurrence,
 } from '@flumens';
 import species, { Species } from 'common/data/species';
+import speciesNameIndex from 'common/data/species/cache/nameIndex.json';
+import speciesWarehouseIndex from 'common/data/species/cache/warehouseIDIndex.json';
 // import { Result } from 'common/serv';
 import Media from './image';
 
@@ -35,6 +38,28 @@ type Attrs = OccurrenceAttrs & {
 const defaultData: Attrs = { taxon: null };
 
 export default class Occurrence extends OccurrenceOriginal<Attrs, Metadata> {
+  static fromElasticDTO(json: ElasticOccurrence, options: any, survey?: any) {
+    // fix missing common names
+    const index = (speciesWarehouseIndex as any)[
+      json.taxon?.taxa_taxon_list_id
+    ];
+    const commonNameIndex = (speciesNameIndex as any)[
+      json.taxon?.species || ''
+    ];
+    if (Number.isFinite(index)) {
+      // eslint-disable-next-line no-param-reassign
+      json.taxon.taxon_name = species[index]?.commonName;
+    } else if (Number.isFinite(commonNameIndex)) {
+      // eslint-disable-next-line no-param-reassign
+      json.taxon.taxon_name = species[commonNameIndex]?.commonName;
+    }
+
+    console.log(json.taxon?.species);
+    const parsed = super.fromElasticDTO(json, options, survey) as any;
+
+    return parsed;
+  }
+
   declare media: IObservableArray<Media>;
 
   declare parent?: Sample;

@@ -6,6 +6,22 @@ const drive =
 
 const file = '01UPL42ZXKCJ4BYXCWVJGYIWBOAQUXNNTK';
 
+const getSpeciesWarehouseIDIndex = species => {
+  const index = {};
+  species.forEach((s, id) => {
+    if (s.warehouseId) index[s.warehouseId] = id;
+  });
+  return index;
+};
+
+const getSpeciesNameIndex = species => {
+  const index = {};
+  species.forEach((s, id) => {
+    if (s.warehouseId) index[s.scientificName] = id;
+  });
+  return index;
+};
+
 function saveToFile(data, name) {
   const saveSpeciesToFileWrap = (resolve, reject) => {
     const fileName = `./cache/${name}.json`;
@@ -36,6 +52,12 @@ const getData = async () => {
 
   await fetchAndSave('species');
   await fetchAndSave('photos');
+
+  const warehouseIDIndex = await getSpeciesWarehouseIDIndex(species);
+  saveToFile(warehouseIDIndex, 'warehouseIDIndex');
+
+  const nameIndex = await getSpeciesNameIndex(species);
+  saveToFile(nameIndex, 'nameIndex');
 
   console.log('All done! 🚀');
 };
