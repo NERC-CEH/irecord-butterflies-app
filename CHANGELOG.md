@@ -1,3 +1,7 @@
+## 2.6.3
+
+Fixed password reset.
+
 ## 2.6.2
 
 Bug fixes.
