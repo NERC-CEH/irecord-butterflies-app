@@ -1,3 +1,7 @@
+## 2.6.4
+
+Fixed photo picker.
+
 ## 2.6.3
 
 Fixed password reset.

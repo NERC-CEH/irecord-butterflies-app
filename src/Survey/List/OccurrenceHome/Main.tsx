@@ -56,7 +56,7 @@ const OccurrenceHomeMain = ({ occurrence }: Props) => {
     );
   };
 
-  const hasPhotos = !!occurrence.media.length;
+  const showPhotoPicker = !!occurrence.media.length || !isDisabled;
 
   return (
     <Main>
@@ -95,15 +95,14 @@ const OccurrenceHomeMain = ({ occurrence }: Props) => {
           />
         </div>
 
-        {hasPhotos ||
-          (!isDisabled && (
-            <>
-              <h3 className="list-title">Species Photo</h3>
-              <div className="rounded-list">
-                <PhotoPicker model={occurrence} />
-              </div>
-            </>
-          ))}
+        {showPhotoPicker && (
+          <>
+            <h3 className="list-title">Species Photo</h3>
+            <div className="rounded-list">
+              <PhotoPicker model={occurrence} />
+            </div>
+          </>
+        )}
       </IonList>
     </Main>
   );

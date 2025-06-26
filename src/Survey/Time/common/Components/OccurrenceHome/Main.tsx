@@ -33,7 +33,7 @@ const OccurrenceMain = ({ subSample, occurrence }: Props) => {
     location = <GridRefValue sample={subSample} />;
   }
 
-  const hasPhotos = !!occurrence.media.length;
+  const showPhotoPicker = !!occurrence.media.length || !isDisabled;
 
   return (
     <Main id="area-count-occurrence-edit">
@@ -82,15 +82,14 @@ const OccurrenceMain = ({ subSample, occurrence }: Props) => {
           />
         </div>
 
-        {hasPhotos ||
-          (!isDisabled && (
-            <>
-              <h3 className="list-title">Species Photo</h3>
-              <div className="rounded-list">
-                <PhotoPicker model={occurrence} />
-              </div>
-            </>
-          ))}
+        {showPhotoPicker && (
+          <>
+            <h3 className="list-title">Species Photo</h3>
+            <div className="rounded-list">
+              <PhotoPicker model={occurrence} />
+            </div>
+          </>
+        )}
       </IonList>
     </Main>
   );

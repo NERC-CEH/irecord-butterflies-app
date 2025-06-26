@@ -1,6 +1,6 @@
 {
   "name": "irecord-butterflies",
-  "version": "2.6.3",
+  "version": "2.6.4",
   "title": "iRecord Butterflies",
   "scripts": {
     "prepare": "husky",
