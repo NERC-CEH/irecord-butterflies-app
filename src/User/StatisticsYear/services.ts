@@ -27,7 +27,7 @@ export interface SpeciesStats extends Species {
 // fetchStats fetches and processes statistics for a user and year
 const fetchStats = async (
   userModel: UserModel,
-  surveyId: number,
+  surveyId: number[],
   year: string
 ): Promise<SpeciesStats[]> => {
   // log fetching action
@@ -37,7 +37,7 @@ const fetchStats = async (
   const normalizedYear = year === 'all' ? '' : year;
 
   // build API url
-  const url = `${config.backend.url}/api/v2/advanced_reports/recorded-taxa-list?survey_id=${surveyId}&year=${normalizedYear}&user_id=${userModel.data.indiciaUserId}`;
+  const url = `${config.backend.url}/api/v2/advanced_reports/recorded-taxa-list?survey_id=${surveyId.join(',')}&year=${normalizedYear}&user_id=${userModel.data.indiciaUserId}`;
 
   // set request options
   const options = {

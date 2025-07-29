@@ -30,7 +30,7 @@ export interface UserStats {
    * count of all records matching the filter
    */
   projectRecordsCount: number;
-  
+
   /**
    * count of user's recorded species matching the filter
    */
@@ -53,14 +53,14 @@ let requestCancelToken: CancelTokenSource | undefined;
 
 async function fetchStats(
   userModel: UserModel,
-  surveyId: number,
+  surveyId: number[],
   onlyButterflies?: boolean
 ): Promise<UserStats | null> {
   console.log('Statistics: fetching user-stats');
 
   const filterButterflies = onlyButterflies ? '&taxon_group_id=104' : '';
 
-  const url = `${config.backend.url}/api/v2/advanced_reports/user-stats?survey_id=${surveyId}${filterButterflies}`;
+  const url = `${config.backend.url}/api/v2/advanced_reports/user-stats?survey_id=${surveyId.join(',')}${filterButterflies}`;
 
   if (requestCancelToken) {
     requestCancelToken.cancel();
@@ -94,44 +94,32 @@ async function fetchStats(
 async function fetchStatsWithButterflyFilter(
   userModel: UserModel
 ): Promise<UserStats | null> {
-  const statsPromise = fetchStats(userModel, surveyConfig.id);
-  const statsListPromise = fetchStats(userModel, listSurveyConfig.id);
-  const butterflyStatsPromise = fetchStats(userModel, surveyConfig.id, true);
-  const butterflyListStatsPromise = fetchStats(
-    userModel,
+  const statsPromise = fetchStats(userModel, [
+    surveyConfig.id,
     listSurveyConfig.id,
+  ]);
+  const butterflyStatsPromise = fetchStats(
+    userModel,
+    [surveyConfig.id, listSurveyConfig.id],
     true
   );
 
   // parallelize the requests
-  const [stats, statsList, butterflyStats, butterflyListStats] =
-    await Promise.all([
-      statsPromise,
-      statsListPromise,
-      butterflyStatsPromise,
-      butterflyListStatsPromise,
-    ]);
+  const [stats, butterflyStats] = await Promise.all([
+    statsPromise,
+    butterflyStatsPromise,
+  ]);
 
-  if (!stats || !statsList || !butterflyStats || !butterflyListStats)
-    return null;
+  if (!stats || !butterflyStats) return null;
 
   return {
     // species counts should be butterfly-only
-    projectRecordsCount:
-      butterflyStats.projectRecordsCount +
-      butterflyListStats.projectRecordsCount,
-
-    myProjectSpecies:
-      butterflyStats.myProjectSpecies + butterflyListStats.myProjectSpecies,
-
-    myProjectSpeciesThisYear:
-      butterflyStats.myProjectSpeciesThisYear +
-      butterflyListStats.myProjectSpeciesThisYear,
-
+    projectRecordsCount: butterflyStats.projectRecordsCount,
+    myProjectSpecies: butterflyStats.myProjectSpecies,
+    myProjectSpeciesThisYear: butterflyStats.myProjectSpeciesThisYear,
     // keep top level record stats for all the species
-    myProjectRecords: stats.myProjectRecords + statsList.myProjectRecords,
-    myProjectRecordsThisYear:
-      stats.myProjectRecordsThisYear + statsList.myProjectRecordsThisYear,
+    myProjectRecords: stats.myProjectRecords,
+    myProjectRecordsThisYear: stats.myProjectRecordsThisYear,
   };
 }
 
@@ -146,7 +134,10 @@ const extension: any = {
 
   async refreshUploadCountStat() {
     try {
-      const stats = await fetchStats(this, surveyConfig.id);
+      const stats = await fetchStats(this, [
+        surveyConfig.id,
+        listSurveyConfig.id,
+      ]);
       if (!stats) return;
       // we store this temporarily because to use the stats thank you message only after upload action instead of stats page refresh
       this.uploadCounter.count = stats?.myProjectRecordsThisYear ?? 0;

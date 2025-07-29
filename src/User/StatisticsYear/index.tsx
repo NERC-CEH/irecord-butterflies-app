@@ -34,32 +34,15 @@ function useFetchStats(year: string) {
     await loader.show('Please wait...');
 
     try {
-      const stats = await fetchStatsService(userModel, surveyConfig.id, year);
-      const listStats = await fetchStatsService(
+      const stats = await fetchStatsService(
         userModel,
-        listSurveyConfig.id,
+        [surveyConfig.id, listSurveyConfig.id],
         year
       );
 
       if (!userModel.data.statsYears) userModel.data.statsYears = {};
 
-      // join both stats arrays by taxon_meaning_id
-      // and merge the record_count and total_individual_count
-      const statsMap = new Map<string, SpeciesStats>();
-      stats.forEach(sp => statsMap.set(sp.taxon_meaning_id, sp));
-      listStats.forEach(sp => {
-        const existing = statsMap.get(sp.taxon_meaning_id);
-        if (existing) {
-          existing.record_count += sp.record_count;
-          existing.total_individual_count += sp.total_individual_count;
-          return;
-        }
-
-        statsMap.set(sp.taxon_meaning_id, sp);
-      });
-      const mergedStats = Array.from(statsMap.values());
-
-      userModel.data.statsYears[year] = mergedStats;
+      userModel.data.statsYears[year] = stats;
       userModel.save();
     } catch (err: any) {
       toast.error(err);

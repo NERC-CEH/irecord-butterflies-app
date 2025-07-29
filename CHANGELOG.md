@@ -1,3 +1,7 @@
+## 2.6.5
+
+Fixed stats page.
+
 ## 2.6.4
 
 Fixed photo picker.
