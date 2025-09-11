@@ -1,3 +1,7 @@
+## 2.6.6
+
+Fixed Android startup bug.
+
 ## 2.6.5
 
 Fixed stats page.

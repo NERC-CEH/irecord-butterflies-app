@@ -1,6 +1,6 @@
 {
   "name": "irecord-butterflies",
-  "version": "2.6.5",
+  "version": "2.6.6",
   "title": "iRecord Butterflies",
   "scripts": {
     "prepare": "husky",
@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@capacitor-community/background-geolocation": "^1.2.22",
-    "@capacitor-community/sqlite": "^7.0.0",
+    "@capacitor-community/sqlite": "^7.0.1",
     "@capacitor/android": "7.2.0",
     "@capacitor/app": "7.0.1",
     "@capacitor/camera": "7.0.1",
