@@ -17,13 +17,7 @@ import Media from './image';
 const POSSIBLE_THRESHOLD = 0.2;
 
 type Metadata = OccurrenceMetadata & {
-  verification?: {
-    verification_status: any;
-    verification_substatus: any;
-    query?: string;
-    verified_on: any;
-    verifier?: { name: string };
-  };
+  verification?: ElasticOccurrence['identification'];
 };
 
 export type Taxon = Species;
@@ -54,7 +48,6 @@ export default class Occurrence extends OccurrenceOriginal<Attrs, Metadata> {
       json.taxon.taxon_name = species[commonNameIndex]?.commonName;
     }
 
-    console.log(json.taxon?.species);
     const parsed = super.fromElasticDTO(json, options, survey) as any;
 
     return parsed;
