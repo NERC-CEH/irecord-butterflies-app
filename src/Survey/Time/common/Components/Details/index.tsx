@@ -50,8 +50,6 @@ const DetailsController = () => {
   const onStartTimer = () => {
     const isValid = checkSampleStatus();
     if (!isValid) return;
-
-    // eslint-disable-next-line no-param-reassign
     sample!.data.startTime = new Date();
     sample!.save();
 
@@ -100,8 +98,6 @@ const DetailsController = () => {
         Start Count
       </HeaderButton>
     );
-
-  // eslint-disable-next-line react/no-unstable-nested-components
   const cancelButtonWrap = () => (
     <IonButtons slot="start">
       <IonButton color="dark" onClick={onDeleteSurvey}>
@@ -112,13 +108,12 @@ const DetailsController = () => {
 
   const onChangeCounter = (value: number | null) => {
     if (!Number.isFinite(value)) return;
-    // eslint-disable-next-line no-param-reassign
-    sample!.data.recorders = value!;
-    sample!.save();
+
+    sample.data.recorders = value!;
+    sample.save();
   };
 
   const onChangeSensitivityStatus = (value: boolean) => {
-    // eslint-disable-next-line no-param-reassign
     sample.data.privacyPrecision = value ? 0 : undefined;
     sample.save();
   };

@@ -4,7 +4,7 @@ import listSurveyConfig from 'Survey/List/config';
 import surveyConfig from 'Survey/Point/config';
 import { UserModel } from '.';
 
-export interface UserStats {
+export type UserStats = {
   /**
    * count of all records for the user (unfiltered)
    */
@@ -47,7 +47,7 @@ export interface UserStats {
    * count of user' records matching the filter this year
    */
   myProjectRecordsThisYear: number;
-}
+};
 
 let requestCancelToken: CancelTokenSource | undefined;
 
@@ -128,7 +128,7 @@ const extension: any = {
     const stats = await fetchStatsWithButterflyFilter(this);
     if (!stats) return;
 
-    this.data.stats = stats; // eslint-disable-line
+    this.data.stats = stats;
     this.save();
   },
 

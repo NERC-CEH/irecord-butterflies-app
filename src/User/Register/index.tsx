@@ -22,10 +22,12 @@ const RegisterContainer = () => {
     const email = details.email.trim();
     const { password, firstName, secondName } = details;
 
+    /* eslint-disable @typescript-eslint/naming-convention */
     const otherDetails = {
       field_first_name: [{ value: firstName?.trim() }],
       field_last_name: [{ value: secondName?.trim() }],
     };
+    /* eslint-enable @typescript-eslint/naming-convention */
 
     if (!device.isOnline) {
       toast.warn("Sorry, looks like you're offline.");
@@ -36,8 +38,8 @@ const RegisterContainer = () => {
     try {
       await userModel.register(email, password, otherDetails);
 
-      userModel.data.firstName = firstName; // eslint-disable-line
-      userModel.data.lastName = secondName; // eslint-disable-line
+      userModel.data.firstName = firstName;
+      userModel.data.lastName = secondName;
       userModel.save();
 
       alert({

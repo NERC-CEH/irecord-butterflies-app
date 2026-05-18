@@ -44,8 +44,6 @@ const getSurveys = (surveys: Sample[], showUploadAll?: boolean) => {
     counter.count += 1;
     groupedSurveys.push(survey);
   });
-
-  // eslint-disable-next-line react/no-unstable-nested-components
   const Item = ({ index, ...itemProps }: { index: number }) => {
     if (dateIndices.includes(index)) {
       const { date, count } = groupedSurveys[index];
@@ -102,14 +100,14 @@ const PendingSurveys = () => {
   const onUploadAll = () => {
     const isLoggedIn = userModel.isLoggedIn();
     if (!isLoggedIn) {
-      navigate(`/user/login`);
+      navigate('/user/login');
       return null;
     }
 
     return uploadAllSamples(toast);
   };
 
-  const navigateToPrimarySurvey = () => navigate(`/survey/point`);
+  const navigateToPrimarySurvey = () => navigate('/survey/point');
 
   if (!surveys.length) {
     return (

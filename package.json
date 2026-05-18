@@ -16,7 +16,7 @@
     "test": "jest --silent --passWithNoTests",
     "test:watch": "jest --watchAll",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand --watch test",
-    "test:eslint": "eslint src --quiet --ext .jsx --ext .ts --ext .tsx --ext .js && echo '\\033[37;42;1m PASS \\033[00m'",
+    "test:eslint": "eslint src --quiet && echo '\\033[37;42;1m PASS \\033[00m'",
     "fetch:data": "cd src/common/data/species && node make.js"
   },
   "dependencies": {
@@ -95,7 +95,7 @@
     "@babel/preset-react": "7.28.5",
     "@babel/preset-typescript": "7.28.5",
     "@capacitor/cli": "8.3.1",
-    "@flumens/eslint-config": "^2.1.1",
+    "@flumens/eslint-config": "^3.0.2",
     "@flumens/fetch-onedrive-excel": "0.3.4",
     "@flumens/prettier-config": "0.4.0",
     "@flumens/webpack-config": "6.0.4",
@@ -114,7 +114,7 @@
     "copy-webpack-plugin": "14.0.0",
     "cordova-res": "0.15.4",
     "dotenv": "17.4.2",
-    "eslint": "8.57.0",
+    "eslint": "9.39.2",
     "fast-csv": "5.0.5",
     "husky": "9.1.7",
     "jest": "30.3.0",
@@ -198,18 +198,6 @@
       "@babel/transform-exponentiation-operator",
       "@babel/syntax-dynamic-import"
     ]
-  },
-  "eslintConfig": {
-    "extends": [
-      "@flumens",
-      "plugin:react/jsx-runtime"
-    ],
-    "rules": {
-      "@getify/proper-arrows/name": 0,
-      "react/function-component-definition": 0,
-      "react/jsx-no-bind": 0,
-      "@typescript-eslint/no-var-requires": 0
-    }
   },
   "prettier": "@flumens/prettier-config",
   "jest": {

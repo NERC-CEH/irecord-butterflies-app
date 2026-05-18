@@ -215,11 +215,11 @@ function getSampleInfo(sample: Sample) {
   );
 }
 
-interface Props {
+type Props = {
   sample: Sample;
   uploadIsPrimary?: boolean;
   style?: any;
-}
+};
 
 const Survey = ({ sample, uploadIsPrimary, ...props }: Props) => {
   const { navigate } = useContext(NavContext);
@@ -241,7 +241,7 @@ const Survey = ({ sample, uploadIsPrimary, ...props }: Props) => {
     if (!isValid) return;
 
     sample.upload().catch(toast.error);
-    navigate(`/home/surveys`, 'root');
+    navigate('/home/surveys', 'root');
   };
 
   const getVerificationIconForPointSurvey = (occ: Occurrence) => (

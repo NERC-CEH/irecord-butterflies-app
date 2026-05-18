@@ -3,12 +3,12 @@ import { Button, InfoMessage } from '@flumens';
 import config from 'common/config';
 import Sample from 'models/sample';
 
-interface Props {
+type Props = {
   sample: Sample;
-}
+};
 
 const DisabledRecordMessage = ({ sample }: Props) => {
-  let href = `${config.backend.url}`;
+  let href = config.backend.url;
   if (sample.getSurvey().name === 'list') {
     const [occ] = sample.occurrences;
     if (occ) {

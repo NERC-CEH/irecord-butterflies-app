@@ -50,14 +50,14 @@ export const locationAttrs = {
           location;
 
         // add other location related attributes
-        // eslint-disable-next-line
+
         submission.values = { ...submission.values };
 
-        submission.values['smpAttr:760'] = source; // eslint-disable-line
-        submission.values['smpAttr:335'] = gridref; // eslint-disable-line
-        submission.values['smpAttr:282'] = accuracy; // eslint-disable-line
-        submission.values['smpAttr:283'] = altitude; // eslint-disable-line
-        submission.values['smpAttr:284'] = altitudeAccuracy; // eslint-disable-line
+        submission.values['smpAttr:760'] = source;
+        submission.values['smpAttr:335'] = gridref;
+        submission.values['smpAttr:282'] = accuracy;
+        submission.values['smpAttr:283'] = altitude;
+        submission.values['smpAttr:284'] = altitudeAccuracy;
         submission.values['location_name'] = name; // eslint-disable-line
 
         const lat = parseFloat(location.latitude);
@@ -143,9 +143,7 @@ export type AttrConfig = {
   remote?: RemoteConfig;
 };
 
-interface Attrs {
-  [key: string]: AttrConfig;
-}
+type Attrs = Record<string, AttrConfig>;
 
 type OccurrenceConfig = {
   render?: any[] | ((model: Occurrence) => any[]);
@@ -175,6 +173,7 @@ export type SampleConfig = {
     skipGPS?: boolean;
     zeroAbundance?: any;
     stage?: any;
+    speciesId?: any;
   }) => Promise<Sample>;
   verify?: (attrs: any) => any;
   modifySubmission?: (submission: any, model: any) => any;
@@ -182,7 +181,7 @@ export type SampleConfig = {
   occ?: OccurrenceConfig;
 };
 
-export interface Survey extends SampleConfig {
+export type Survey = {
   /**
    * Survey version.
    */
@@ -231,4 +230,4 @@ export interface Survey extends SampleConfig {
     skipGPS?: boolean;
     alert?: any;
   }) => Promise<Sample>;
-}
+} & SampleConfig;

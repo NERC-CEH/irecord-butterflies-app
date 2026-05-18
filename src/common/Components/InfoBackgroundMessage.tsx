@@ -3,11 +3,11 @@ import clsx from 'clsx';
 import { InfoBackgroundMessage as InfoBackgroundMessageOrig } from '@flumens';
 import appModel, { Attrs } from 'models/app';
 
-interface Props {
+type Props = {
   name?: keyof Attrs;
   children: any;
   className?: any;
-}
+};
 
 const InfoBackgroundMessage = ({ name, children, ...props }: Props) => {
   if (name && !appModel.data[name]) {

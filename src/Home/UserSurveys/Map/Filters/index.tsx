@@ -70,10 +70,10 @@ const Filter = ({
   );
 };
 
-interface MapFiltersProps {
+type MapFiltersProps = {
   children: ReactNode;
   className?: string;
-}
+};
 
 const MapFilters = ({ children, className }: MapFiltersProps) => (
   <div className={clsx('map-filters', className)}>{children}</div>

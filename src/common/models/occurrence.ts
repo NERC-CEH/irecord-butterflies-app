@@ -41,10 +41,8 @@ export default class Occurrence extends OccurrenceOriginal<Attrs, Metadata> {
       json.taxon?.species || ''
     ];
     if (Number.isFinite(index)) {
-      // eslint-disable-next-line no-param-reassign
       json.taxon.taxon_name = species[index]?.commonName;
     } else if (Number.isFinite(commonNameIndex)) {
-      // eslint-disable-next-line no-param-reassign
       json.taxon.taxon_name = species[commonNameIndex]?.commonName;
     }
 
@@ -64,7 +62,7 @@ export default class Occurrence extends OccurrenceOriginal<Attrs, Metadata> {
 
     const setOnlyMinimalSpeciesValues = (change: any) => {
       const { warehouseId, id, scientificName, commonName } = change.newValue;
-      change.newValue = { warehouseId, id, scientificName, commonName }; // eslint-disable-line
+      change.newValue = { warehouseId, id, scientificName, commonName };
       return change;
     };
     intercept(this.data, 'taxon', setOnlyMinimalSpeciesValues);
@@ -104,7 +102,7 @@ export default class Occurrence extends OccurrenceOriginal<Attrs, Metadata> {
   }
 
   getVerificationStatusMessage() {
-    const codes: { [keyof: string]: string } = {
+    const codes: Record<string, string> = {
       V: 'Accepted',
       V1: 'Accepted as correct',
       V2: 'Accepted as considered correct',

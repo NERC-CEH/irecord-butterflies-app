@@ -62,7 +62,7 @@ const MainDetails = ({
               </IonItem>
 
               <MenuAttrItemFromModel
-                model={sample as any}
+                model={sample}
                 attr="stage"
                 skipValueTranslation
               />
@@ -70,7 +70,7 @@ const MainDetails = ({
           )}
 
           <MenuAttrItemFromModel
-            model={sample as any}
+            model={sample}
             attr="locationName"
             skipValueTranslation
             required={!isDisabled && !isMultiSpecies}

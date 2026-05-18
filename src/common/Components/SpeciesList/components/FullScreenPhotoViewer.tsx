@@ -1,4 +1,3 @@
-/* eslint-disable @getify/proper-arrows/name */
 import clsx from 'clsx';
 import 'swiper/css';
 import 'swiper/css/pagination';

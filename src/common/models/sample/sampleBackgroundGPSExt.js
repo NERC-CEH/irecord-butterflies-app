@@ -143,8 +143,6 @@ const extension = {
 
   startBackgroundGPS() {
     console.log('SampleModel:Background GPS start');
-
-    // eslint-disable-next-line
     const onPosition = (error, location) => {
       if (error) {
         console.error('Background GPS: error', error);

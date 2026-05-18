@@ -29,7 +29,7 @@ const Home = () => {
     if (!isValid) return;
 
     sample.upload().catch(toast.error);
-    navigate(`/home/surveys`, 'root');
+    navigate('/home/surveys', 'root');
   };
 
   const _processDraft = async () => {
@@ -38,12 +38,10 @@ const Home = () => {
 
     appModel.data['draftId:point'] = null;
     await appModel.save();
-
-    // eslint-disable-next-line no-param-reassign
     sample.metadata.saved = true;
     sample.save();
 
-    navigate(`/home/surveys`, 'root');
+    navigate('/home/surveys', 'root');
   };
 
   const onFinish = async () => {

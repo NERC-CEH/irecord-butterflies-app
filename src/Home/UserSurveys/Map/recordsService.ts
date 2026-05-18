@@ -1,14 +1,40 @@
 import axios, { AxiosRequestConfig } from 'axios';
+import z from 'zod';
 import { HandledError, isAxiosNetworkError, ElasticOccurrence } from '@flumens';
 import CONFIG from 'common/config';
 import { matchAppSurveys } from 'common/services/ES';
 import userModel from 'models/user';
 
-export interface Square {
+/* eslint-disable @typescript-eslint/naming-convention */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const dtoSchema = z.object({
+  aggregations: z.object({
+    bySrid: z.object({
+      buckets: z
+        .object({
+          doc_count: z.number(),
+          bySquare: z.object({
+            buckets: z
+              .object({
+                key: z.string(),
+                doc_count: z.number(),
+              })
+              .array(),
+          }),
+        })
+        .array(),
+    }),
+  }),
+});
+/* eslint-enable @typescript-eslint/naming-convention */
+
+export type DTO = z.infer<typeof dtoSchema>;
+
+export type Square = {
   key: string;
-  doc_count: number;
+  docCount: number;
   size: number; // in meters
-}
+};
 
 type LatLng = { lat: number; lng: number };
 
@@ -72,6 +98,7 @@ const getRecordsQuery = ({
     });
   }
 
+  /* eslint-disable @typescript-eslint/naming-convention */
   return JSON.stringify({
     size: 1000,
     query: {
@@ -88,6 +115,7 @@ const getRecordsQuery = ({
       },
     },
   });
+  /* eslint-enable @typescript-eslint/naming-convention */
 };
 
 let requestCancelToken: any;
@@ -161,6 +189,7 @@ const getSquaresQuery = ({
 
   const squareSizeInKm = squareSize / 1000;
 
+  /* eslint-disable @typescript-eslint/naming-convention */
   return JSON.stringify({
     size: 0,
     query: {
@@ -177,10 +206,10 @@ const getSquaresQuery = ({
       },
     },
     aggs: {
-      by_srid: {
+      bySrid: {
         terms: { field: 'location.grid_square.srid', size: 1000 },
         aggs: {
-          by_square: {
+          bySquare: {
             terms: {
               field: `location.grid_square.${squareSizeInKm}km.centre`,
               size: 100000,
@@ -191,6 +220,7 @@ const getSquaresQuery = ({
     },
     sort: [{ 'event.date_start': 'desc' }],
   });
+  /* eslint-enable @typescript-eslint/naming-convention */
 };
 
 export async function fetchSquares(
@@ -214,12 +244,16 @@ export async function fetchSquares(
     data: getSquaresQuery(options),
   };
 
-  let records = [];
-
   try {
-    const { data } = await axios(OPTIONS);
+    const { data } = await axios<DTO>(OPTIONS);
 
-    records = data;
+    return data?.aggregations?.bySrid?.buckets[0]?.bySquare?.buckets.map(
+      (square): Square => ({
+        ...square,
+        size: options.squareSize,
+        docCount: square.doc_count,
+      })
+    );
   } catch (error: any) {
     if (axios.isCancel(error)) return null;
 
@@ -230,14 +264,4 @@ export async function fetchSquares(
 
     throw error;
   }
-
-  const addSize = (square: Square): Square => ({
-    ...square,
-    size: options.squareSize,
-  });
-
-  const squares =
-    records?.aggregations?.by_srid?.buckets[0]?.by_square?.buckets.map(addSize);
-
-  return squares || [];
 }

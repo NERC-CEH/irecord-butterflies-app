@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import axios, { AxiosResponse } from 'axios';
 import config from 'common/config';
 import species, { Species } from 'common/data/species';

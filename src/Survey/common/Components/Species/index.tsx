@@ -94,7 +94,7 @@ const SpeciesSelect = ({ title, showCancelButton, onSelect }: Props) => {
 
   const location = JSON.parse(JSON.stringify(sample?.data.location || {}));
   location.accuracy = 1000000; // make it hectad
-  location.gridref = locationToGrid(location); // eslint-disable-line
+  location.gridref = locationToGrid(location);
   const hectad = location.gridref;
 
   const week = getCurrentWeekNumber(sample?.data.date);
@@ -150,10 +150,10 @@ const SpeciesSelect = ({ title, showCancelButton, onSelect }: Props) => {
     goBack();
   }
 
-  const getSpeciesID = (occ: Occurrence) => (occ.data.taxon || {}).id;
+  const getSpeciesID = (occ: Occurrence) => occ.data.taxon?.id;
   const getSampleSpeciesID = (smp: Sample) => smp.occurrences[0].data.taxon.id;
   const currentSpecies = sample?.isSurveyMultiSpeciesTimedCount()
-    ? sample!.samples.map(getSampleSpeciesID)
+    ? sample.samples.map(getSampleSpeciesID)
     : sample?.occurrences.map(getSpeciesID);
 
   const toggleFilter = (type: FilterGroup, value: Filter) => {
@@ -170,7 +170,7 @@ const SpeciesSelect = ({ title, showCancelButton, onSelect }: Props) => {
       sample?.isSurveySingleSpeciesTimedCount() &&
       appModel.data.showTimeSurveyTip
     ) {
-      appModel.data.showTimeSurveyTip = false; // eslint-disable-line
+      appModel.data.showTimeSurveyTip = false;
       appModel.save();
       showTimeSurveyTip();
     }
@@ -180,7 +180,7 @@ const SpeciesSelect = ({ title, showCancelButton, onSelect }: Props) => {
   if (!sample) return null;
 
   const getIdentifiedSpeciesList = () => {
-    if (!occurrence && sample!.getSurvey().name === 'point')
+    if (!occurrence && sample.getSurvey().name === 'point')
       return sample?.occurrences[0]?.getAllUniqueIdentifiedSpecies();
 
     if (!occurrence && sample?.getSurvey().name === 'list') return [];

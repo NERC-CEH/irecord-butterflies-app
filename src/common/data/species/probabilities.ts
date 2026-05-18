@@ -1,12 +1,12 @@
+import { Species } from '.';
 import hectads from './cache/hectads.json';
 import probByHectadData from './cache/probabilityByHectad.json';
 import probByWeekData from './cache/probabilityByWeek.json';
 import species from './cache/species.json';
-import { Species } from './index';
 
 type Probabilites = string[];
 
-const cache: { [key: string]: Probabilites[] } = {};
+const cache: Record<string, Probabilites[]> = {};
 
 function mapProbIdToSpeciesId(probId: number) {
   const byProbId = (sp: Species) => sp.probabilityId === probId;
@@ -52,7 +52,7 @@ export default function getProbablities(
 
     speciesNowAndHere = probsForHectadWeeksNormalized[weekNo] || [];
     const notInNowAndHereList = (sp: string) =>
-      !speciesNowAndHere || !speciesNowAndHere.includes(sp);
+      !speciesNowAndHere?.includes(sp);
     speciesHere = Array.from(
       new Set(probsForHectadWeeksNormalized.flat())
     ).filter(notInNowAndHereList);

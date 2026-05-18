@@ -1,4 +1,3 @@
-/* eslint-disable @getify/proper-arrows/name */
 import {
   generateWeeklyProbabilities,
   generateHectadProbabilities,

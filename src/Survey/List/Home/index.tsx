@@ -69,7 +69,7 @@ function showListSurveyTip(alert: any) {
   });
 }
 function increaseCount(occ: Occurrence, is5x: boolean) {
-  const addOneCount = () => (occ.data.count as number)++; // eslint-disable-line no-param-reassign
+  const addOneCount = () => (occ.data.count as number)++;
 
   if (is5x) {
     [...Array(5)].forEach(addOneCount);
@@ -117,7 +117,7 @@ const Home = () => {
 
   const showListSurveyTipOnce = () => {
     if (appModel.data.showListSurveyTip) {
-      appModel.data.showListSurveyTip = false; // eslint-disable-line
+      appModel.data.showListSurveyTip = false;
 
       appModel.save();
       showListSurveyTip(alert);
@@ -125,7 +125,7 @@ const Home = () => {
 
     const firstOccAdded = sample?.occurrences.length === 1;
     if (appModel.data.showListSurveyHiddenButtonTip && firstOccAdded) {
-      appModel.data.showListSurveyHiddenButtonTip = false; // eslint-disable-line
+      appModel.data.showListSurveyHiddenButtonTip = false;
 
       appModel.save();
       showListSurveyHiddenButtonTip(alert);
@@ -142,20 +142,20 @@ const Home = () => {
     if (!isUserOK) return;
 
     sample.upload().catch(toast.error);
-    navigate(`/home/surveys`, 'root');
+    navigate('/home/surveys', 'root');
   };
 
   const _processDraft = async () => {
     const isValid = checkSampleStatus();
     if (!isValid) return;
 
-    appModel.data['draftId:list'] = null; // eslint-disable-line
+    appModel.data['draftId:list'] = null;
     await appModel.save();
 
     sample.metadata.saved = true; // eslint-disable-line
     sample.save();
 
-    navigate(`/home/surveys`, 'root');
+    navigate('/home/surveys', 'root');
   };
 
   const onFinish = async () => {
@@ -175,7 +175,7 @@ const Home = () => {
 
   const toggleSpeciesSort = () => {
     const { listSurveyListSortedByTime } = appModel.data;
-    // eslint-disable-next-line
+
     appModel.data.listSurveyListSortedByTime = !listSurveyListSortedByTime;
     appModel.save();
   };

@@ -16,7 +16,7 @@ const { AttrPageFromRoute } = AttrPage;
 const baseURL = `/survey/${survey.name}`;
 
 const routes = [
-  [`${baseURL}`, StartNewSurvey.with(survey), true],
+  [baseURL, StartNewSurvey.with(survey), true],
   [`${baseURL}/:smpId`, Home],
   [`${baseURL}/:smpId/:attr`, withSample(AttrPageFromRoute)],
   [`${baseURL}/:smpId/area`, AreaAttr],

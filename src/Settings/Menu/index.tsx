@@ -55,7 +55,7 @@ function onToggle(
   setting: keyof PickByType<AppModelAttrs, boolean>,
   checked: boolean
 ) {
-  appModel.data[setting] = checked; // eslint-disable-line
+  appModel.data[setting] = checked;
   appModel.save();
 
   isPlatform('hybrid') && Haptics.impact({ style: ImpactStyle.Light });
@@ -85,7 +85,6 @@ const MenuController = () => {
     onToggle('useLocationForGuide', checked);
 
     if (!checked) {
-      // eslint-disable-next-line no-param-reassign
       appModel.data.location = null;
       appModel.updateCurrentLocation(false); // stops any current runs
     } else {
@@ -101,15 +100,13 @@ const MenuController = () => {
   const onToggleProbabilitiesForGuide = (checked: boolean) =>
     onToggle('useProbabilitiesForGuide', checked);
 
-  const currentLocation = location && location.gridref;
+  const currentLocation = location?.gridref;
 
   const adminChangeLocation = (e: any) => {
     if (!appModel.data.location) {
-      // eslint-disable-next-line no-param-reassign
       appModel.data.location = {};
     }
 
-    // eslint-disable-next-line no-param-reassign
     appModel.data.location.gridref = e.target.value;
     console.log('setting hectad', appModel.data.location.gridref);
     appModel.save();
@@ -128,6 +125,7 @@ const MenuController = () => {
 
     try {
       userModel.data.agreeBcComms = value;
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       await userModel.updateRemote({ field_agree_bc_comms: [{ value }] });
     } catch (error: any) {
       toast.error(error);

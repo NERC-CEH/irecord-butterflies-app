@@ -96,9 +96,9 @@ const HomeController = () => {
       const byTaxonId = (smp: Sample) =>
         smp.occurrences[0].data.taxon.id === taxon.id;
       const smp = sample!.samples.find(byTaxonId)!;
-      // eslint-disable-next-line no-param-reassign
+
       smp.occurrences[0].data.zeroAbundance = undefined;
-      // eslint-disable-next-line no-param-reassign
+
       smp.occurrences[0].data.stage = sample!.data.stage;
       smp.startGPS();
 
@@ -118,7 +118,7 @@ const HomeController = () => {
         zeroAbundance,
         stage,
       });
-      newSubSample!.startGPS();
+      newSubSample.startGPS();
 
       sample!.samples.push(newSubSample);
     };
@@ -140,13 +140,10 @@ const HomeController = () => {
     const finishSurvey = await showFinishConfirmationAlert();
     if (!finishSurvey) return;
 
-    appModel.data['draftId:single-species-count'] = null; // eslint-disable-line
+    appModel.data['draftId:single-species-count'] = null;
     await appModel.save();
-
-    // eslint-disable-next-line no-param-reassign
     sample!.metadata.saved = Date.now();
 
-    // eslint-disable-next-line no-param-reassign
     sample!.data.duration =
       sample!.metadata.saved -
       new Date(sample!.data.startTime).getTime() -
@@ -155,18 +152,18 @@ const HomeController = () => {
     sample!.cleanUp();
     sample!.save();
 
-    navigate(`/home/surveys`, 'root');
+    navigate('/home/surveys', 'root');
   };
 
   const _processSubmission = () => {
     const isLoggedIn = userModel.isLoggedIn();
     if (!isLoggedIn) {
-      navigate(`/user/login`);
+      navigate('/user/login');
       return;
     }
 
     sample!.upload().catch(toast.error);
-    navigate(`/home/surveys`, 'root');
+    navigate('/home/surveys', 'root');
   };
 
   const onFinish = async () => {
@@ -194,12 +191,11 @@ const HomeController = () => {
     }
 
     if (canPauseTimer) {
-      // eslint-disable-next-line no-param-reassign
       sample!.metadata.timerPausedTime = new Date();
       sample!.save();
     }
 
-    navigate(`/home/surveys`, 'root', 'pop'); // root instead of back because of some url mess up
+    navigate('/home/surveys', 'root', 'pop'); // root instead of back because of some url mess up
   };
   useOnBackButton(onLeave);
 

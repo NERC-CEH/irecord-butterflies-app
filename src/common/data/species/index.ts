@@ -2,6 +2,7 @@ import butterflyThumbnail from 'common/images/butterflyIcon.svg';
 import mothThumbnail from 'common/images/mothThumbnailSmall.svg';
 import photos from './cache/photos.json';
 import species from './cache/species.json';
+// eslint-disable-next-line import-x/no-namespace
 import * as resources from './other';
 import './photos';
 // webpack-loading only
@@ -9,7 +10,7 @@ import './photos-moth';
 
 // webpack-loading only
 
-export interface SpeciesInfo {
+export type SpeciesInfo = {
   probabilityId: number;
   id: string;
   type: string;
@@ -34,23 +35,23 @@ export interface SpeciesInfo {
   survey?: string;
   confusionSpecies?: string[];
   taxonMeaningId: number;
-}
+};
 
-interface Photo {
+type Photo = {
   speciesID: string;
   file: string;
   author: string;
   title: string;
-}
+};
 
-interface Resource {
+type Resource = {
   thumbnail: string;
   thumbnailBackground?: string;
   map?: string;
   lifechart?: string;
-}
+};
 
-const speciesResources: { [key: string]: Resource } = resources;
+const speciesResources: Record<string, Resource> = resources;
 
 export type Species = SpeciesInfo &
   Resource & { images: Photo[]; country: string[] };

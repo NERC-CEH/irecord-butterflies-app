@@ -82,7 +82,6 @@ export default class Media extends MediaOriginal<Attrs> {
     return this.data.species.find(byWarehouseId);
   }
 
-  // eslint-disable-next-line class-methods-use-this
   validateRemote() {
     return null;
   }

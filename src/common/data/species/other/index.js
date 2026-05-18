@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 export { default as AdonisBlue } from './AdonisBlue';
 export { default as BlackHairstreak } from './BlackHairstreak';
 export { default as Brimstone } from './Brimstone';

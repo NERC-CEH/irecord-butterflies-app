@@ -162,12 +162,10 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
   }
 
   getTimerEndTime = () => {
-    const startTime = new Date(this.data.startTime!);
+    const startTime = new Date(this.data.startTime);
     const DEFAULT_SURVEY_TIME = 15 * 60 * 1000; // 15 mins
 
-    return (
-      startTime.getTime() + DEFAULT_SURVEY_TIME + this.metadata.pausedTime!
-    );
+    return startTime.getTime() + DEFAULT_SURVEY_TIME + this.metadata.pausedTime;
   };
 
   isTimerFinished = () => {
@@ -255,7 +253,7 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
     if (!survey) {
       console.log(JSON.stringify(this.metadata));
       console.log(JSON.stringify(this.data));
-      console.error(`Survey config was missing`);
+      console.error('Survey config was missing');
       return {} as Survey;
     }
 
@@ -265,7 +263,7 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
   async setSpecies(species: Species, occurrence: Occurrence): Promise<string> {
     const survey = this.getSurvey();
     if (survey.name === 'point') {
-      this.occurrences[0].data.taxon = species; // eslint-disable-line
+      this.occurrences[0].data.taxon = species;
     }
 
     if (survey.name === 'single-species-count') {
@@ -318,7 +316,7 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
 
     if (survey.name === 'list') {
       if (occurrence) {
-        occurrence.data.taxon = species; // eslint-disable-line
+        occurrence.data.taxon = species;
       } else {
         const occ = await survey.occ!.create!({ Occurrence, taxon: species });
         this.occurrences.push(occ);

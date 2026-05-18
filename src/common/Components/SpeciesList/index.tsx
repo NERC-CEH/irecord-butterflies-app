@@ -140,7 +140,7 @@ const SpeciesList = ({
   const [speciesProfile, setSpeciesProfile] = useState<Species | null>(null);
 
   const byMoth = (sp: any) =>
-    sp.type === 'moth' && sp.probability > config.POSITIVE_THRESHOLD;
+    sp.type === 'moth' && sp.probability > config.positiveThreshold;
   const mothSpecies = identifiedSpeciesList?.filter(byMoth);
 
   useShowMothInformationDialog(mothSpecies);
@@ -179,7 +179,7 @@ const SpeciesList = ({
       setSpeciesProfile(sp);
     };
 
-    const selectSpecies = () => onSelect && onSelect(sp);
+    const selectSpecies = () => onSelect?.(sp);
 
     const onClick = isSurvey ? selectSpecies : viewSpecies;
 

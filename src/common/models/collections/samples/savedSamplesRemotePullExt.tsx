@@ -1,6 +1,3 @@
-/* eslint-disable no-param-reassign */
-
-/* eslint-disable camelcase */
 import { observable, set } from 'mobx';
 import axios, { AxiosRequestConfig } from 'axios';
 import { ElasticOccurrence, device, isAxiosNetworkError } from '@flumens';
@@ -12,9 +9,10 @@ import Occurrence from 'models/occurrence';
 import Sample from 'models/sample';
 import { UserModel } from 'models/user';
 
-interface Hit {
+type Hit = {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   _source: ElasticOccurrence;
-}
+};
 
 export type Verification = {
   timestamp: number | null;
@@ -43,6 +41,7 @@ const getRecordsQuery = (timestamp: number) => {
   const time = timeFormat.format(lastFetchTime);
   const formattedTimestamp = `${date} ${time}`;
 
+  /* eslint-disable @typescript-eslint/naming-convention */
   return JSON.stringify({
     size: 1000, // fetch only 1k of the last created. Note, not updated_on, since we mostly care for any last user uploaded records.
     query: {
@@ -94,6 +93,7 @@ const getRecordsQuery = (timestamp: number) => {
       },
     ],
   });
+  /* eslint-enable @typescript-eslint/naming-convention */
 };
 
 type UpdatedSamples = Record<string, Hit>;
@@ -127,8 +127,6 @@ async function fetchUpdatedRemoteSamples(
     console.error(error);
     return samples;
   }
-
-  // eslint-disable-next-line no-param-reassign
 
   const normalizeResponse = ({ ...hit }: Hit) => {
     samples[hit._source.occurrence.source_system_key] = { ...hit };
@@ -217,7 +215,7 @@ async function init(
   allSamples.verified = observable({ updated: [], timestamp: null });
 
   const originalResetDefaults = allSamples.reset;
-  // eslint-disable-next-line @getify/proper-arrows/name
+
   allSamples.reset = () => {
     set(allSamples.verified, { count: 0, timestamp: null });
     return originalResetDefaults();

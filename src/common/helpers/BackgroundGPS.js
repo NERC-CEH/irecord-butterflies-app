@@ -8,16 +8,16 @@ export const GPS_DISABLED_ERROR_MESSAGE = 'Location services are not enabled';
 const BackgroundGeolocation = registerPlugin('BackgroundGeolocation');
 
 const API = {
-  _watchId: null,
+  watchId: null,
 
-  _clientCallbackId: 0,
+  clientCallbackId: 0,
 
-  _clientCallbacks: {
+  clientCallbacks: {
     // _clientCallbackId: onPosition
   },
 
   _onWatchPosition(position, err) {
-    const clientCallbacks = Object.values(API._clientCallbacks);
+    const clientCallbacks = Object.values(API.clientCallbacks);
 
     if (err) {
       if (err.code === 'NOT_AUTHORIZED') {
@@ -31,13 +31,13 @@ const API = {
       }
 
       console.error(err);
-      // eslint-disable-next-line @getify/proper-arrows/name
+
       clientCallbacks.forEach(callback => callback(err));
       return;
     }
 
     if (!isPlatform('hybrid')) {
-      position = position.coords; // eslint-disable-line
+      position = position.coords;
     }
 
     const accuracy = parseInt(position.accuracy, 10);
@@ -54,28 +54,27 @@ const API = {
       altitudeAccuracy,
     };
 
-    // eslint-disable-next-line @getify/proper-arrows/name
     clientCallbacks.forEach(callback => callback(null, location));
   },
 
   async _clearWatch() {
     if (!isPlatform('hybrid')) {
-      Geolocation.clearWatch({ id: API._watchId });
-      API._watchId = null;
+      Geolocation.clearWatch({ id: API.watchId });
+      API.watchId = null;
       return;
     }
 
-    const id = await API._watchId;
+    const id = await API.watchId;
     BackgroundGeolocation.removeWatcher({
       id,
     });
 
-    API._watchId = null;
+    API.watchId = null;
   },
 
   async _startWatch() {
     if (!isPlatform('hybrid')) {
-      API._watchId = Geolocation.watchPosition(
+      API.watchId = Geolocation.watchPosition(
         {
           enableHighAccuracy: true,
           maximumAge: 0,
@@ -85,7 +84,7 @@ const API = {
       return;
     }
 
-    API._watchId = await BackgroundGeolocation.addWatcher(
+    API.watchId = await BackgroundGeolocation.addWatcher(
       {
         backgroundTitle: i18n.t('Using your location.'),
         backgroundMessage: i18n.t('Cancel to prevent battery drain.'),
@@ -101,15 +100,15 @@ const API = {
       throw new Error('GPS start callback is missing');
     }
 
-    if (!API._watchId) {
+    if (!API.watchId) {
       API._startWatch();
     }
 
-    API._clientCallbackId++;
+    API.clientCallbackId++;
 
-    API._clientCallbacks[API._clientCallbackId] = onPosition;
+    API.clientCallbacks[API.clientCallbackId] = onPosition;
 
-    return API._clientCallbackId;
+    return API.clientCallbackId;
   },
 
   stop(id) {
@@ -117,9 +116,9 @@ const API = {
       throw new Error('GPS stop callback id is missing');
     }
 
-    delete API._clientCallbacks[id];
+    delete API.clientCallbacks[id];
 
-    const clientCallbacks = Object.values(API._clientCallbacks);
+    const clientCallbacks = Object.values(API.clientCallbacks);
     if (!clientCallbacks.length) {
       API._clearWatch();
     }

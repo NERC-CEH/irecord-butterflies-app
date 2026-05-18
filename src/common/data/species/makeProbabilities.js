@@ -1,7 +1,9 @@
+/* eslint-disable no-undef */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 const fs = require('fs');
-// eslint-disable-next-line import/no-extraneous-dependencies
+
+// eslint-disable-next-line import-x/no-extraneous-dependencies
 const csv = require('@fast-csv/parse');
 
 const WEEKS_PER_YEAR = 53;

@@ -93,7 +93,6 @@ function StartNewSurvey({ survey, location }: any) {
   const draftIdKey = `draftId:${survey.name}`;
 
   const pickDraftOrCreateSampleWrap = () => {
-    // eslint-disable-next-line
     (async () => {
       let sample = await getDraft(draftIdKey, alert);
       if (!sample) {
@@ -111,7 +110,6 @@ function StartNewSurvey({ survey, location }: any) {
   return null;
 }
 
-// eslint-disable-next-line @getify/proper-arrows/name
 StartNewSurvey.with = (survey: any) => {
   const StartNewSurveyWrap = ({ location }: any) => (
     <StartNewSurvey survey={survey} location={location} />

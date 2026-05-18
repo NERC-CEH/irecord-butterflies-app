@@ -18,9 +18,9 @@ const SpeciesTile = ({ sp, index }: any) => {
   } = sp;
 
   let color;
-  if (probability > CONFIG.POSITIVE_THRESHOLD) {
+  if (probability > CONFIG.positiveThreshold) {
     color = 'success';
-  } else if (probability > CONFIG.POSSIBLE_THRESHOLD) {
+  } else if (probability > CONFIG.possibleThreshold) {
     color = 'warning';
   } else {
     color = 'danger';

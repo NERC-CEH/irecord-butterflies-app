@@ -30,8 +30,8 @@ const Records = ({ sample }: Props) => {
       geometry: {
         type: 'Point',
         coordinates: [
-          (smp.data.location as any).longitude,
-          (smp.data.location as any).latitude,
+          smp.data.location.longitude,
+          smp.data.location.latitude,
           0.0,
         ],
       },
@@ -43,11 +43,7 @@ const Records = ({ sample }: Props) => {
     };
   };
 
-  const data = useMemo(
-    // eslint-disable-next-line @getify/proper-arrows/name
-    () => getGeoJSONfromRecords(sample.samples),
-    [sample]
-  );
+  const data = useMemo(() => getGeoJSONfromRecords(sample.samples), [sample]);
 
   return (
     <MapContainer.Cluster data={data}>

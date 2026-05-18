@@ -37,7 +37,7 @@ export class LocationsCollection extends LocationCollectionBase<Location> {
       }
     };
 
-    this.ready && this.ready.then(fetchFirstTime);
+    this.ready?.then(fetchFirstTime);
 
     const onLoginChange = async (newEmail: any) => {
       if (!newEmail) return;
@@ -85,6 +85,7 @@ export class LocationsCollection extends LocationCollectionBase<Location> {
 
     const token = await userModel.getAccessToken();
 
+    /* eslint-disable @typescript-eslint/naming-convention */
     const options = {
       params: {
         location_type_id: locationTypeId,
@@ -94,6 +95,7 @@ export class LocationsCollection extends LocationCollectionBase<Location> {
       headers: { Authorization: `Bearer ${token}` },
       timeout: 80000,
     };
+    /* eslint-enable @typescript-eslint/naming-convention */
 
     try {
       const res = await axios.get(url, options);

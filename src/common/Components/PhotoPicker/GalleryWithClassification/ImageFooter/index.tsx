@@ -5,11 +5,11 @@ import Media from 'models/image';
 import SpeciesSuggestions from './SpeciesSuggestions';
 import './styles.scss';
 
-interface Props {
+type Props = {
   onCrop: any;
   image: Media;
   identifyImage?: any;
-}
+};
 
 const ImageFooter = ({ onCrop, image, identifyImage }: Props) => {
   const onCropWrap = () => onCrop(image);

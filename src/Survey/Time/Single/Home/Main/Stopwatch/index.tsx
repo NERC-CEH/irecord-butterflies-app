@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { useState, useEffect } from 'react';
 import { observer } from 'mobx-react';
 import {
@@ -31,6 +30,7 @@ type Props = {
 };
 
 const Stopwatch = ({ sample }: Props) => {
+  // eslint-disable-next-line react/hook-use-state
   const [, setRefresh] = useState(0);
   const [stopwatchID, setStopwatchID] = useState<any>(null);
 
@@ -68,7 +68,6 @@ const Stopwatch = ({ sample }: Props) => {
   const initComponentRefresh = () => {
     setStopwatchID(startStopwatch());
 
-    // eslint-disable-next-line @getify/proper-arrows/name
     return () => {
       clearInterval(stopwatchID);
       setStopwatchID(null);

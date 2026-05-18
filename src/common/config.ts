@@ -7,8 +7,8 @@ const indiciaUrl =
   process.env.APP_BACKEND_INDICIA_URL || 'https://warehouse1.indicia.org.uk';
 
 const config = {
-  POSITIVE_THRESHOLD: 0.7,
-  POSSIBLE_THRESHOLD: 0.2,
+  positiveThreshold: 0.7,
+  possibleThreshold: 0.2,
 
   environment: process.env.NODE_ENV as string,
   version: process.env.APP_VERSION as string,

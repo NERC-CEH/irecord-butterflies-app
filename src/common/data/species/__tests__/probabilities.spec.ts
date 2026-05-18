@@ -1,4 +1,3 @@
-/* eslint-disable @getify/proper-arrows/name */
 import getProbablities from '../probabilities';
 
 describe('getProbablities', () => {

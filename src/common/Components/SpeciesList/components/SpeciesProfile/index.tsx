@@ -1,4 +1,3 @@
-/* eslint-disable @getify/proper-arrows/name */
 import { useState } from 'react';
 import { expandOutline } from 'ionicons/icons';
 import { Trans as T } from 'react-i18next';

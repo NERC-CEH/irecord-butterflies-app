@@ -11,13 +11,12 @@ import './styles.scss';
 export type FilterOption = FilterOptionType;
 export type FilterGroup = string;
 export type Filter = string;
-export type Filters = {
-  [key in FilterGroup]?: Filter[];
-};
+export type Filters = Partial<Record<FilterGroup, Filter[]>>;
 
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 export type FilterGroupWithText = FilterGroup & 'text';
 
-interface Props {
+type Props = {
   /**
    * What filters to show.
    */
@@ -33,7 +32,7 @@ interface Props {
   onSearch: any;
   onSearchEnd: any;
   isOpen?: boolean;
-}
+};
 
 const FiltersToolbar = ({
   values,

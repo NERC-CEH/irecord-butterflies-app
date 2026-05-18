@@ -33,8 +33,8 @@ const HomeComponent = () => {
   const ionRouter = useIonRouter();
   const alert = useAlert();
 
-  const navigateToPrimarySurvey = () => navigate(`/survey/point`);
-  const navigateToListSurvey = () => navigate(`/survey/list`);
+  const navigateToPrimarySurvey = () => navigate('/survey/point');
+  const navigateToListSurvey = () => navigate('/survey/list');
   const navigateToTimedSurvey = () => {
     alert({
       header: 'Single or multiple species',
@@ -43,11 +43,11 @@ const HomeComponent = () => {
       buttons: [
         {
           text: 'Single',
-          handler: () => navigate(`/survey/single-species-count`),
+          handler: () => navigate('/survey/single-species-count'),
         },
         {
           text: 'Multiple',
-          handler: () => navigate(`/survey/multi-species-count`),
+          handler: () => navigate('/survey/multi-species-count'),
         },
       ],
     });
@@ -56,7 +56,6 @@ const HomeComponent = () => {
   const exitApp = () => {
     const onExitApp = () => !ionRouter.canGoBack() && AppPlugin.exitApp();
 
-    // eslint-disable-next-line @getify/proper-arrows/name
     document.addEventListener('ionBackButton', (ev: any) =>
       ev.detail.register(-1, onExitApp)
     );

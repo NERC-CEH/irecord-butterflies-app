@@ -1,13 +1,13 @@
 import { Geolocation } from '@capacitor/geolocation';
 
-const API = {
-  GPS_ACCURACY_LIMIT: 100, // meters
+const GPS_ACCURACY_LIMIT = 100; // meters
 
+const API = {
   running: false,
 
   start(options = {}) {
     const { callback, onUpdate } = options;
-    const accuracyLimit = options.accuracyLimit || API.GPS_ACCURACY_LIMIT;
+    const accuracyLimit = options.accuracyLimit || GPS_ACCURACY_LIMIT;
 
     // geolocation config
     const GPSoptions = {
@@ -16,7 +16,7 @@ const API = {
 
     const onPosition = (position, err) => {
       if (err) {
-        callback && callback(new Error(err.message));
+        callback?.(new Error(err.message));
         return;
       }
 
@@ -29,9 +29,9 @@ const API = {
       };
 
       if (location.accuracy <= accuracyLimit) {
-        callback && callback(null, location);
+        callback?.(null, location);
       } else {
-        onUpdate && onUpdate(location);
+        onUpdate?.(location);
       }
     };
 

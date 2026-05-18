@@ -141,7 +141,7 @@ const MainComponent = ({ sample, isDisabled }: Props) => {
           <MenuDateAttr
             label="Date"
             value={sample.data.date}
-            // eslint-disable-next-line no-return-assign, no-param-reassign
+            // eslint-disable-next-line no-return-assign
             onChange={val => (sample.data.date = val)}
             isDisabled={isDisabled}
           />

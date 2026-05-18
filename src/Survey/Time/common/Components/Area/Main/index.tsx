@@ -59,8 +59,7 @@ const AreaAttr = ({
   onSelectSite,
   isFetchingLocations,
 }: Props) => {
-  // eslint-disable-next-line prefer-destructuring
-  const location = (sample.data.location as any) || {};
+  const location = sample.data.location || {};
 
   const initialViewState = { ...location };
 
@@ -90,7 +89,7 @@ const AreaAttr = ({
   const flyToLocation = () => {
     const locationToFly = { ...location };
     if (isGPSTracking) delete locationToFly?.shape;
-    mapFlyToLocation(mapRef, locationToFly as any);
+    mapFlyToLocation(mapRef, locationToFly);
   };
   useEffect(flyToLocation, [mapRef, location]);
 
@@ -108,7 +107,7 @@ const AreaAttr = ({
 
         <GeolocateButton />
 
-        <MapDraw shape={location?.shape as any} onChange={onShapeChange}>
+        <MapDraw shape={location?.shape} onChange={onShapeChange}>
           {!isDisabled && !isGPSTracking && <MapDraw.Control line polygon />}
 
           <MapDraw.Context.Consumer>

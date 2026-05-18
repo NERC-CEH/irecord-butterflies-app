@@ -2,7 +2,8 @@ import axios from 'axios';
 import config from 'common/config';
 import { UserModel } from 'common/models/user';
 
-interface Species {
+/* eslint-disable @typescript-eslint/naming-convention */
+type Species = {
   taxon_rank: 'Subspecies' | 'Species';
   accepted_name: string;
   vernacular_name?: string;
@@ -18,11 +19,12 @@ interface Species {
   // last_date
   // order
   // taxon_rank
-}
+};
+/* eslint-enable @typescript-eslint/naming-convention */
 
-export interface SpeciesStats extends Species {
+export type SpeciesStats = {
   name: string;
-}
+} & Species;
 
 // fetchStats fetches and processes statistics for a user and year
 const fetchStats = async (
@@ -62,7 +64,7 @@ const fetchStats = async (
 
   // sort species alphabetically
   const alphabetically = (sp1: SpeciesStats, sp2: SpeciesStats) =>
-    sp1.name!.localeCompare(sp2.name!);
+    sp1.name.localeCompare(sp2.name);
 
   // filter only butterfly insects
   const onlyButterflyInsects = (sp: Species) =>

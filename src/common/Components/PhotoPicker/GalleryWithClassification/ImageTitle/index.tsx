@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { observer } from 'mobx-react';
 import clsx from 'clsx';
 import { IonLabel, IonNote, isPlatform } from '@ionic/react';

@@ -19,7 +19,7 @@ const speciesSurvey: any = merge({}, survey, {
       const occurrence = await survey.smp!.occ!.create!({
         Occurrence: Occurrence!,
         taxon,
-      })!;
+      });
 
       sample.occurrences.push(occurrence);
 

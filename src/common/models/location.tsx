@@ -24,8 +24,8 @@ class Location extends LocationModel<Data> {
     const parsedRemoteJSON: any = {
       cid: externalKey || UUIDv7(),
       id,
-      createdAt: new Date(createdOn!).getTime(),
-      updatedAt: new Date(updatedOn!).getTime(),
+      createdAt: new Date(createdOn).getTime(),
+      updatedAt: new Date(updatedOn).getTime(),
       data: {
         id,
         createdAt: createdOn,
@@ -61,7 +61,7 @@ class Location extends LocationModel<Data> {
     const toSnakeCase = (attrs: any) =>
       Object.entries(attrs).reduce((agg: any, [attr, value]): any => {
         const attrModified = attr.includes('locAttr:') ? attr : snakeCase(attr);
-        agg[attrModified] = value; // eslint-disable-line no-param-reassign
+        agg[attrModified] = value;
         return agg;
       }, {});
 
@@ -69,6 +69,7 @@ class Location extends LocationModel<Data> {
 
     const submission: any = {
       values: {
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         external_key: this.cid,
         ...data,
       },

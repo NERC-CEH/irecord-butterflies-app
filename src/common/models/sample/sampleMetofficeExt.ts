@@ -4,18 +4,18 @@ import config from 'common/config';
 
 // TODO get values from config
 
-interface API_TYPES {
+type API_TYPES = {
   main: { temp: string };
   wind: { speed: string; deg: string };
   clouds: { all: string };
-}
+};
 
-interface WEATHER_TYPES {
+type WEATHER_TYPES = {
   cloud: number | null;
   temperature: string | number | null;
   windDirection: string | null;
   windSpeed: string | null;
-}
+};
 
 const url = config.weatherSiteUrl;
 
@@ -125,10 +125,10 @@ const fetchWeatherData = ({
 };
 
 const normaliseResponseValues = ({ main, wind, clouds }: API_TYPES) => ({
-  temperature: getCelsiusTemperature((main || {}).temp),
-  windSpeed: getWindSpeed((wind || {}).speed),
-  windDirection: getWindDirection((wind || {}).deg),
-  cloud: getCloud((clouds || {}).all),
+  temperature: getCelsiusTemperature(main?.temp),
+  windSpeed: getWindSpeed(wind?.speed),
+  windDirection: getWindDirection(wind?.deg),
+  cloud: getCloud(clouds?.all),
 });
 
 function setNewWeatherValues(sample: any, newWeatherValues: WEATHER_TYPES) {
@@ -136,20 +136,20 @@ function setNewWeatherValues(sample: any, newWeatherValues: WEATHER_TYPES) {
     !Number.isFinite(sample.data.temperature) &&
     Number.isFinite(newWeatherValues.temperature)
   ) {
-    sample.data.temperature = newWeatherValues.temperature; // eslint-disable-line
+    sample.data.temperature = newWeatherValues.temperature;
   }
   if (!sample.data.windDirection && newWeatherValues.windDirection) {
-    sample.data.windDirection = newWeatherValues.windDirection; // eslint-disable-line
+    sample.data.windDirection = newWeatherValues.windDirection;
   }
   if (!sample.data.windSpeed && newWeatherValues.windSpeed) {
-    sample.data.windSpeed = newWeatherValues.windSpeed; // eslint-disable-line
+    sample.data.windSpeed = newWeatherValues.windSpeed;
   }
   if (
     !Number.isFinite(sample.data.cloud) &&
     Number.isFinite(newWeatherValues.cloud)
   ) {
-    sample.data.cloud = newWeatherValues.cloud; // eslint-disable-line
-    sample.data.sun = 100 - sample.data.cloud; // eslint-disable-line
+    sample.data.cloud = newWeatherValues.cloud;
+    sample.data.sun = 100 - sample.data.cloud;
   }
   sample.save();
 }
@@ -166,8 +166,7 @@ const extension: any = {
       if (
         !device.isOnline ||
         sampleWasSetForSubmission ||
-        !newValue ||
-        !newValue.longitude
+        !newValue?.longitude
       ) {
         return;
       }

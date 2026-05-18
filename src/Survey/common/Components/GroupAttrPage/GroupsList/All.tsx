@@ -25,7 +25,8 @@ const Item = ({ index, data, ...itemProps }: ItemProps<Data>) => {
 
   const hasDescription = !!group.data.description;
   const sanitizedDescription = hasDescription
-    ? DOMPurify.sanitize(group.data.description!, { ALLOWED_TAGS: [] })
+    ? // eslint-disable-next-line @typescript-eslint/naming-convention
+      DOMPurify.sanitize(group.data.description!, { ALLOWED_TAGS: [] })
     : '';
 
   return (
@@ -64,6 +65,7 @@ const AllGroups = ({ groups, onJoin, onScroll }: Props) => {
       const hasDescription = !!group.data.description;
       const sanitizedDescription = hasDescription
         ? DOMPurify.sanitize(group.data.description!, {
+            // eslint-disable-next-line @typescript-eslint/naming-convention
             ALLOWED_TAGS: ['b', 'strong', 'i', 'a'],
           })
         : '';

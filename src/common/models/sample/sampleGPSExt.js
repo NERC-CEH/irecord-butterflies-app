@@ -31,12 +31,10 @@ const extension = {
   },
 
   async startGPS(accuracyLimit = DEFAULT_ACCURACY_LIMIT) {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const that = this;
     const options = {
       accuracyLimit,
 
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
       onUpdate() {},
 
       callback(error, location) {

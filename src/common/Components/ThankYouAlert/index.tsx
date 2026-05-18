@@ -25,7 +25,7 @@ const ThankYouAlert = () => {
   const currentYear = new Date().getFullYear();
 
   const closeAlert = () => {
-    userModel.data.lastThankYouMilestoneShown[currentYear] = milestone; // eslint-disable-line
+    userModel.data.lastThankYouMilestoneShown[currentYear] = milestone;
   };
 
   return (

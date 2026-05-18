@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { useContext } from 'react';
 import { observer } from 'mobx-react';
 import { useRouteMatch, useLocation } from 'react-router';
@@ -79,7 +78,7 @@ function toggleTimer(sample: Sample) {
   if (sample.metadata.timerPausedTime) {
     const pausedTime =
       Date.now() - new Date(sample.metadata.timerPausedTime).getTime();
-    sample.metadata.pausedTime! += pausedTime;
+    sample.metadata.pausedTime += pausedTime;
     delete sample.metadata.timerPausedTime;
     sample.save();
     return;
@@ -156,12 +155,11 @@ const HomeController = () => {
     }
 
     if (canPauseTimer) {
-      // eslint-disable-next-line no-param-reassign
       sample!.metadata.timerPausedTime = new Date();
       sample!.save();
     }
 
-    navigate(`/home/surveys`, 'root', 'pop'); // root instead of back because of some url mess up
+    navigate('/home/surveys', 'root', 'pop'); // root instead of back because of some url mess up
   };
   useOnBackButton(onLeave);
 
@@ -216,13 +214,10 @@ const HomeController = () => {
     const finishSurvey = await showFinishConfirmationAlert();
     if (!finishSurvey) return;
 
-    appModel.data['draftId:multi-species-count'] = null; // eslint-disable-line
+    appModel.data['draftId:multi-species-count'] = null;
     await appModel.save();
-
-    // eslint-disable-next-line no-param-reassign
     sample.metadata.saved = Date.now();
 
-    // eslint-disable-next-line no-param-reassign
     sample.data.duration =
       sample.metadata.saved -
       new Date(sample.data.startTime).getTime() -
@@ -231,18 +226,18 @@ const HomeController = () => {
     sample.cleanUp();
     sample.save();
 
-    navigate(`/home/surveys`, 'root');
+    navigate('/home/surveys', 'root');
   };
 
   const _processSubmission = () => {
     const isLoggedIn = userModel.isLoggedIn();
     if (!isLoggedIn) {
-      navigate(`/user/login`);
+      navigate('/user/login');
       return;
     }
 
     sample.upload().catch(toast.error);
-    navigate(`/home/surveys`, 'root');
+    navigate('/home/surveys', 'root');
   };
 
   const onFinish = async () => {

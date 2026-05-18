@@ -15,7 +15,6 @@ const UpdatedRecordsDialog = () => {
   const { showVerifiedRecordsNotification } = appModel.data;
 
   const onToggleAlert = (e: any) => {
-    // eslint-disable-next-line no-param-reassign
     appModel.data.showVerifiedRecordsNotification = !e.detail.checked;
   };
 

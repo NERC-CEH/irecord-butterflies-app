@@ -20,7 +20,6 @@ class SampleCollection extends SampleCollectionBase<Sample> {
         smp.occurrences.length > 1 &&
         smp.data.surveyId == pointSurveyConf.id // eslint-disable-line eqeqeq
       ) {
-        // eslint-disable-next-line no-param-reassign
         smp.data.surveyId = listSurveyConf.id;
       }
     };

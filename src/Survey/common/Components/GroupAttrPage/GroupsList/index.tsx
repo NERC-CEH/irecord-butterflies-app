@@ -47,7 +47,7 @@ const GroupsList = ({
       await loader.show('Please wait...');
       await group.join();
       await groups.fetchRemote({ type: 'member', form: [surveyForm] });
-      await groups.fetchRemote({ type: 'pending' as any, form: [surveyForm] });
+      await groups.fetchRemote({ type: 'pending', form: [surveyForm] });
       await groups.fetchRemote({ type: 'joinable', form: [surveyForm] });
 
       toast.success('Successfully joined the activity.');
@@ -66,7 +66,7 @@ const GroupsList = ({
       await loader.show('Please wait...');
       await group.leave();
       await groups.fetchRemote({ type: 'member', form: [surveyForm] });
-      await groups.fetchRemote({ type: 'pending' as any, form: [surveyForm] });
+      await groups.fetchRemote({ type: 'pending', form: [surveyForm] });
       await groups.fetchRemote({ type: 'joinable', form: [surveyForm] });
 
       delete appModel.data.lastGroupId;
@@ -96,7 +96,7 @@ const GroupsList = ({
       await groups.fetchRemote({ type, form: [surveyForm] });
       if (type === 'member') {
         await groups.fetchRemote({
-          type: 'pending' as any,
+          type: 'pending',
           form: [surveyForm],
         });
       }
@@ -155,7 +155,7 @@ const GroupsList = ({
       {showAll && (
         <AllGroups
           groups={filteredGroups}
-          onJoin={joinGroup!}
+          onJoin={joinGroup}
           onScroll={onScroll}
         />
       )}

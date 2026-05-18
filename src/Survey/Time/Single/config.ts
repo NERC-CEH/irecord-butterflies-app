@@ -119,17 +119,15 @@ const survey: Survey = {
         id: 'entered_sref',
         values(location: any, submission: any) {
           const { accuracy, altitude, altitudeAccuracy } = location;
-
-          // eslint-disable-next-line
           submission.values = {
             ...submission.values,
             geom: getGeomString(location.shape),
           };
 
-          submission.values['smpAttr:282'] = accuracy; // eslint-disable-line
-          submission.values['smpAttr:283'] = altitude; // eslint-disable-line
-          submission.values['smpAttr:284'] = altitudeAccuracy; // eslint-disable-line
-          submission.values['smpAttr:723'] = location.area; // eslint-disable-line
+          submission.values['smpAttr:282'] = accuracy;
+          submission.values['smpAttr:283'] = altitude;
+          submission.values['smpAttr:284'] = altitudeAccuracy;
+          submission.values['smpAttr:723'] = location.area;
 
           return `${parseFloat(location.latitude).toFixed(7)}, ${parseFloat(
             location.longitude
@@ -184,11 +182,10 @@ const survey: Survey = {
         attrProps: {
           set: (value: any, sample: any) => {
             // check if value was actually set
-            if (!Number.isFinite(value)) value = 0; // eslint-disable-line
+            if (!Number.isFinite(value)) value = 0;
 
-            // eslint-disable-next-line no-param-reassign
             sample.data.cloud = 100 - value;
-            // eslint-disable-next-line no-param-reassign
+
             sample.data.sun = value;
             sample.save();
           },
@@ -254,7 +251,6 @@ const survey: Survey = {
           set: (value: string, sample: any) => {
             const getSamples = (subSample: any) => {
               const setDefaultStageValueToOcc = (occ: any) => {
-                // eslint-disable-next-line no-param-reassign
                 occ.data.stage = value;
                 occ.save();
               };
@@ -262,7 +258,6 @@ const survey: Survey = {
             };
             sample.samples.forEach(getSamples);
 
-            // eslint-disable-next-line no-param-reassign
             sample.data.stage = value;
             sample.save();
           },
@@ -284,9 +279,9 @@ const survey: Survey = {
           values(location: any, submission: any) {
             const { accuracy, altitude, altitudeAccuracy } = location;
 
-            submission.values['smpAttr:282'] = accuracy; // eslint-disable-line
-            submission.values['smpAttr:283'] = altitude; // eslint-disable-line
-            submission.values['smpAttr:284'] = altitudeAccuracy; // eslint-disable-line
+            submission.values['smpAttr:282'] = accuracy;
+            submission.values['smpAttr:283'] = altitude;
+            submission.values['smpAttr:284'] = altitudeAccuracy;
 
             if (!location.latitude) {
               return null; // if missing then sub-sample will be removed

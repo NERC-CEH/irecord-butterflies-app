@@ -23,7 +23,7 @@ const AreaController = () => {
   if (!sample) throw new Error('Sample is missing');
 
   const toggleGPStracking = (on: boolean) => {
-    sample!.toggleBackgroundGPS(on);
+    sample.toggleBackgroundGPS(on);
   };
 
   const setLocation = (shape: any) => {
@@ -59,7 +59,7 @@ const AreaController = () => {
 
   const isAreaShape = location.shape?.type === 'Polygon';
 
-  const [isNewLocationModalOpen, setNewLocationModalOpen] = useState(false);
+  const [newLocationModalOpen, setNewLocationModalOpen] = useState(false);
 
   const modal = useRef<HTMLIonModalElement>(null);
   const onCreateSite = () => modal.current?.present();
@@ -102,7 +102,7 @@ const AreaController = () => {
 
       const newSite = new LocationModel({
         skipStore: true,
-        data: newSiteAttrs as any, // any - to fix Moth trap attrs
+        data: newSiteAttrs, // any - to fix Moth trap attrs
         media,
       });
       await newSite.saveRemote();
@@ -140,7 +140,7 @@ const AreaController = () => {
       <NewLocationModal
         ref={modal}
         presentingElement={presentingElement}
-        isOpen={isNewLocationModalOpen}
+        isOpen={newLocationModalOpen}
         onCancel={onCloseLocationModal}
         onSave={onSaveNewLocation}
         shape={location.shape}

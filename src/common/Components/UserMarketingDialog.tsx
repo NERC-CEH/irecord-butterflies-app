@@ -15,6 +15,7 @@ const UserMarketingDialog = () => {
 
     try {
       userModel.data.agreeBcComms = value;
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       await userModel.updateRemote({ field_agree_bc_comms: [{ value }] });
     } catch (error: any) {
       userModel.data.agreeBcComms = originalValue;
@@ -34,7 +35,7 @@ const UserMarketingDialog = () => {
     if (agreeBcComms === false || agreeBcComms === true) return;
 
     alert({
-      header: `Butterfly Conservation news`,
+      header: 'Butterfly Conservation news',
       cssClass:
         '[&>div>.alert-message]:h-full [&>div>.alert-message]:max-h-full',
       message: (

@@ -22,9 +22,9 @@ import list from './images/list.png';
 import peacock from './images/peacock.jpg';
 import './styles.scss';
 
-interface Props {
+type Props = {
   children: ReactNode;
-}
+};
 
 const OnBoardingScreens = ({ children }: Props) => {
   const [moreSlidesExist, setMoreSlidesExist] = useState(true);
@@ -33,22 +33,21 @@ const OnBoardingScreens = ({ children }: Props) => {
   const { showedWelcome } = appModel.data;
 
   if (showedWelcome) {
-    return <>{children}</>; // eslint-disable-line react/jsx-no-useless-fragment
+    return <>{children}</>;
   }
 
   function exit() {
-    // eslint-disable-next-line no-param-reassign
     appModel.data.showedWelcome = true;
   }
 
   const handleSlideChangeStart = async () => {
-    const isEnd = controlledSwiper && controlledSwiper.isEnd;
+    const isEnd = controlledSwiper?.isEnd;
     setMoreSlidesExist(!isEnd);
   };
 
   const slideNextOrClose = () => {
     if (moreSlidesExist) {
-      controlledSwiper && controlledSwiper.slideNext();
+      controlledSwiper?.slideNext();
       return;
     }
 

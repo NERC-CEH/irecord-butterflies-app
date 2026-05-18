@@ -3,9 +3,9 @@ import { IonIcon } from '@ionic/react';
 import CONFIG from 'common/config';
 import './styles.scss';
 
-interface Props {
+type Props = {
   probability?: number;
-}
+};
 
 const ProbabilityBadge = ({ probability }: Props) => {
   if (!probability) return null;
@@ -13,9 +13,9 @@ const ProbabilityBadge = ({ probability }: Props) => {
   const roundedProbability = (probability * 100).toFixed();
 
   let color;
-  if (probability > CONFIG.POSITIVE_THRESHOLD) {
+  if (probability > CONFIG.positiveThreshold) {
     color = 'success';
-  } else if (probability > CONFIG.POSSIBLE_THRESHOLD) {
+  } else if (probability > CONFIG.possibleThreshold) {
     color = 'plausible';
   } else {
     color = 'unlikely';

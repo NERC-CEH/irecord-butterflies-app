@@ -37,22 +37,21 @@ const buildSpeciesCount = (agg: any, smp: Sample) => {
   const taxon = toJS(smp.occurrences[0].data.taxon);
   const id = taxon.warehouseId;
 
-  agg[id] = agg[id] || getDefaultTaxonCount(taxon); // eslint-disable-line
+  agg[id] = agg[id] || getDefaultTaxonCount(taxon);
 
   if (smp.hasZeroAbundance(taxon.id)) {
     return agg;
   }
 
-  agg[id].count++; // eslint-disable-line
-  agg[id].isGeolocating = agg[id].isGeolocating || smp.isBackgroundGPSRunning(); // eslint-disable-line
-  // eslint-disable-next-line
+  agg[id].count++;
+  agg[id].isGeolocating = agg[id].isGeolocating || smp.isBackgroundGPSRunning();
+
   agg[id].hasLocationMissing =
-    agg[id].hasLocationMissing || smp.hasLoctionMissingAndIsnotLocating(); // eslint-disable-line
+    agg[id].hasLocationMissing || smp.hasLoctionMissingAndIsnotLocating();
 
   const wasCreatedBeforeCurrent =
     new Date(agg[id].updatedOn).getTime() - new Date(smp.updatedAt).getTime();
 
-  // eslint-disable-next-line
   agg[id].updatedOn = !wasCreatedBeforeCurrent
     ? agg[id].updatedOn
     : smp.updatedAt;

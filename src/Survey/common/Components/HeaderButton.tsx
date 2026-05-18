@@ -3,13 +3,13 @@ import { observer } from 'mobx-react';
 import clsx from 'clsx';
 import { Button } from '@flumens';
 
-interface Props {
+type Props = {
   children: ReactNode;
   onClick: any;
   isInvalid?: boolean;
   className?: string;
   color?: string;
-}
+};
 
 const HeaderButton = ({
   children,

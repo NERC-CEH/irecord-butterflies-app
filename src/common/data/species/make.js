@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 const fs = require('fs');
 const fetchSheet = require('@flumens/fetch-onedrive-excel'); // eslint-disable-line
 

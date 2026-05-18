@@ -10,11 +10,9 @@ export type FilterGroup =
   | 'country'
   | 'survey';
 export type Filter = string;
-export type Filters = {
-  [key in FilterGroup]?: Filter[];
-};
+export type Filters = Partial<Record<FilterGroup, Filter[]>>;
 
-export interface Attrs extends ModelAttrs {
+export type Attrs = {
   sendAnalytics: boolean;
   appSession: 0;
   useProbabilitiesForGuide: boolean;
@@ -58,7 +56,7 @@ export interface Attrs extends ModelAttrs {
   lastGroupId?: number | string;
 
   filters: Filters;
-}
+} & ModelAttrs;
 
 const defaults: Attrs = {
   sendAnalytics: true,
@@ -107,14 +105,13 @@ export class AppModel extends Model<Attrs> {
     super({ ...options, data: { ...defaults, ...options.data } });
   }
 
-  // eslint-disable-next-line @getify/proper-arrows/name
   toggleFilter = (type: FilterGroup, value: Filter) => {
     const { filters } = this.data;
     if (!filters[type]) {
       filters[type] = [];
     }
 
-    const foundIndex = filters[type]?.indexOf(value) as number;
+    const foundIndex = filters[type]?.indexOf(value);
     if (foundIndex >= 0) {
       filters[type]?.splice(foundIndex, 1);
     } else {
@@ -124,7 +121,6 @@ export class AppModel extends Model<Attrs> {
     this.save();
   };
 
-  // eslint-disable-next-line @getify/proper-arrows/name
   updateCurrentLocation = async (stop?: boolean) => {
     if (stop) {
       if (!this._gettingLocation) {
@@ -155,10 +151,8 @@ export class AppModel extends Model<Attrs> {
       }
 
       console.log('AppModel: setting new location.');
-
-      // eslint-disable-next-line
       newLocation.accuracy = 1000000; // make it hectad
-      newLocation.gridref = locationToGrid(newLocation); // eslint-disable-line
+      newLocation.gridref = locationToGrid(newLocation);
       this.data.location = newLocation;
       this.save();
 

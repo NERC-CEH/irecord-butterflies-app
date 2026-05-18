@@ -30,11 +30,11 @@ const UserGroups = ({
   const { t } = useTranslation();
 
   // force update the radio styles
-  const [currentValue, forceRefresh] = useState(currentValueProp);
+  const [selectedValue, setSelectedValue] = useState(currentValueProp);
 
   const onSelectWrap = (e: any) => {
     onSelect(e.detail.value);
-    forceRefresh(e.detail.value);
+    setSelectedValue(e.detail.value);
   };
 
   const groupOptions: (Group | null)[] = [...groups];
@@ -51,7 +51,7 @@ const UserGroups = ({
 
     const onLeaveGroupWrap = () => onLeave(group!);
 
-    const isSelected = currentValue === value;
+    const isSelected = selectedValue === value;
 
     const isMembershipPending = group?.data.userIsPending === 't';
 
@@ -111,7 +111,7 @@ const UserGroups = ({
   return (
     <IonList lines="full" className="radio-input-attr">
       <IonRadioGroup
-        value={currentValue}
+        value={selectedValue}
         allowEmptySelection
         onIonChange={onSelectWrap}
       >
