@@ -112,9 +112,9 @@ const SpeciesProfile = ({ species, onRecord, onNavBack, isSurvey }: Props) => {
         {getSlides()}
 
         <IonCardHeader>
-          <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center justify-between gap-2 p-4">
             <div className="title">
-              <h1>{species.commonName}</h1>
+              <h1 className="m-0!">{species.commonName}</h1>
               <h3 className="font-light">
                 <i>{species.scientificName}</i>
               </h3>

@@ -27,14 +27,12 @@
     }
 
     #list {
-      font-weight: bold;
-
       .species-list-header {
         background: #e6e6e6 !important;
-
         padding-left: 7px;
         color: #777777;
         --inner-padding-end: 0;
+
         &.ios {
           padding-top: 5px;
           padding-bottom: 5px;

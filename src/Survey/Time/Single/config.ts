@@ -375,9 +375,7 @@ const survey: Survey = {
     // this block always runs for the multi-species survey
     if (attrs.startTime) {
       return object({
-        locationName: z
-          .string({ required_error: 'Required site name' })
-          .nullable(),
+        locationName: z.string({ error: 'Required site name' }).nullable(),
         location: z.any().refine(
           d =>
             object({
@@ -393,17 +391,11 @@ const survey: Survey = {
     }
 
     return object({
-      locationName: z
-        .string({ required_error: 'Required site name' })
-        .nullable(),
-      sun: z.number({ required_error: 'Required sun' }).nullable(),
-      windDirection: z
-        .string({ required_error: 'Required wind direction' })
-        .nullable(),
-      windSpeed: z.string({ required_error: 'Required wind speed' }).nullable(),
-      temperature: z
-        .number({ required_error: 'Required temperature' })
-        .nullable(),
+      locationName: z.string({ error: 'Required site name' }).nullable(),
+      sun: z.number({ error: 'Required sun' }).nullable(),
+      windDirection: z.string({ error: 'Required wind direction' }).nullable(),
+      windSpeed: z.string({ error: 'Required wind speed' }).nullable(),
+      temperature: z.number({ error: 'Required temperature' }).nullable(),
     }).safeParse(attrs).error;
   },
 

@@ -21,7 +21,7 @@ const GridRefValue = ({ sample, requiredMessage }: Props) => {
   const value = getValue(sample);
   if (!value) return requiredMessage;
 
-  return <div className="gridref-label">{value}</div>;
+  return <div className="gridref-label text-sm">{value}</div>;
 };
 
 export default observer(GridRefValue);

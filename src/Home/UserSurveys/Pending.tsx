@@ -80,8 +80,8 @@ const getSurveys = (surveys: Sample[], showUploadAll?: boolean) => {
 
   return (
     <VirtualList
-      itemCount={itemCount}
-      itemSize={getItemSize}
+      rowCount={itemCount}
+      rowHeight={getItemSize}
       Item={Item}
       topPadding={LIST_PADDING}
       bottomPadding={LIST_ITEM_HEIGHT / 2}
@@ -121,7 +121,7 @@ const PendingSurveys = () => {
           Press{' '}
           <IonIcon
             icon={butterflyIcon}
-            className="-mb-2 rounded-md bg-primary-500 p-1 text-white"
+            className="bg-primary-500 -mb-2 rounded-md p-1 text-white"
           />{' '}
           to add one
         </div>
@@ -137,7 +137,7 @@ const PendingSurveys = () => {
 
       {showUploadAll && (
         <Button
-          className="absolute bottom-0 right-0 mx-auto my-2.5 px-5 py-2 shadow-xl"
+          className="absolute right-0 bottom-0 mx-auto my-2.5 px-5 py-2 shadow-xl"
           color="secondary"
           onPress={onUploadAll}
           preventDefault

@@ -70,7 +70,7 @@ const useDismissHandler = (newLocation: any) => {
 
 const getNewSiteSeed = (shape?: Location['shape']): Partial<Site> => {
   const seed: any = {
-    locationTypeId: LocationType.GroupSite,
+    locationTypeId: LocationType.Site,
     boundaryGeom: shape ? getGeomWKT(shape) : undefined,
     lat: shape ? `${getGeomCenter(shape)[1]}` : undefined,
     lon: shape ? `${getGeomCenter(shape)[0]}` : undefined,

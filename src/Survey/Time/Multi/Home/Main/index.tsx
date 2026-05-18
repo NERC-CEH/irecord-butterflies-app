@@ -170,7 +170,7 @@ const HomeMain = ({
         <div className="rounded-list">
           <div
             className={clsx(
-              'list-divider gap-4',
+              'list-divider gap-4 text-base!',
               isTimerPaused && 'opacity-70'
             )}
           >

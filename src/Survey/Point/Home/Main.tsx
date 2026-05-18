@@ -138,7 +138,13 @@ const MainComponent = ({ sample, isDisabled }: Props) => {
         <h3 className="list-title">Details</h3>
         <div className="rounded-list">
           {getSpeciesButton()}
-          <MenuDateAttr record={sample.data} isDisabled={isDisabled} />
+          <MenuDateAttr
+            label="Date"
+            value={sample.data.date}
+            // eslint-disable-next-line no-return-assign, no-param-reassign
+            onChange={val => (sample.data.date = val)}
+            isDisabled={isDisabled}
+          />
           {getLocationButton()}
           <MenuGroupAttr sample={sample} />
         </div>

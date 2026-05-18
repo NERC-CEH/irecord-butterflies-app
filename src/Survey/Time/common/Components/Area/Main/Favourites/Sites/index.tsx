@@ -25,9 +25,7 @@ const Sites = ({ onSelect, selectedLocationId }: Props) => {
     />
   );
 
-  const entries = locations
-    .filter(byType(LocationType.GroupSite))
-    .map(getEntry);
+  const entries = locations.filter(byType(LocationType.Site)).map(getEntry);
 
   const noLocationEntry = (
     <Entry

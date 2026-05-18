@@ -12,9 +12,8 @@ export const fixRecords = async () => {
   const hasModels = tables.find((t: any) => t.name === 'models');
   if (hasModels) {
     await db.query({
-      sql: `INSERT OR IGNORE INTO samples (id, cid, data, created_at, updated_at, synced_at)
+      sql: `INSERT OR IGNORE INTO samples (cid, data, created_at, updated_at, synced_at)
       SELECT
-            json(value) ->> "$.id",
             key,
             json(value),
             COALESCE(json(value) ->> "$.metadata.createdOn", CAST((julianday('now') - 2440587.5)*86400000 AS INTEGER)),
@@ -73,9 +72,8 @@ export default async () => {
     const hasModels = tables.find((t: any) => t.name === 'models');
     if (hasModels) {
       await db.query({
-        sql: `INSERT OR IGNORE INTO samples (id, cid, data, created_at, updated_at, synced_at)
+        sql: `INSERT OR IGNORE INTO samples ( cid, data, created_at, updated_at, synced_at)
         SELECT
-              json(value) ->> "$.id",
               key,
               json(value),
               COALESCE(json(value) ->> "$.metadata.createdOn", CAST((julianday('now') - 2440587.5)*86400000 AS INTEGER)),

@@ -190,7 +190,7 @@ const HomeMain = ({
 
         <IonList id="list" lines="full">
           <div className="rounded-list">
-            <div className="list-divider gap-4">
+            <div className="list-divider gap-4 text-base!">
               <div>Count</div>
               <div className="flex w-full justify-between">
                 <div>Species</div>
@@ -222,7 +222,13 @@ const HomeMain = ({
 
         <h3 className="list-title">Details</h3>
         <div className="rounded-list">
-          <MenuDateAttr record={sample.data} isDisabled={isDisabled} />
+          <MenuDateAttr
+            label="Date"
+            value={sample.data.date}
+            // eslint-disable-next-line no-return-assign, no-param-reassign
+            onChange={val => (sample.data.date = val)}
+            isDisabled={isDisabled}
+          />
           {getLocationButton()}
           <MenuAttrItemFromModel model={sample} attr="area" />
           <MenuGroupAttr sample={sample} />

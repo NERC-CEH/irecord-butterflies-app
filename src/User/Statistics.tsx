@@ -3,7 +3,6 @@ import { observer } from 'mobx-react';
 import { chevronDownOutline } from 'ionicons/icons';
 import { Page, Header, Main, useToast, useLoader } from '@flumens';
 import {
-  IonLabel,
   IonList,
   IonItem,
   IonRefresherContent,
@@ -11,7 +10,6 @@ import {
 } from '@ionic/react';
 import InfoBackgroundMessage from 'common/Components/InfoBackgroundMessage';
 import userModel, { useUserStatusCheck } from 'models/user';
-import './styles.scss';
 
 function useFetchStats() {
   const toast = useToast();
@@ -75,71 +73,73 @@ const Statistics = () => {
       <IonList lines="none">
         <div className="rounded-list">
           <div className="list-divider">My totals</div>
-          <IonItem lines="full" className="list-header-labels">
-            <IonLabel>
+          <div className="flex items-center justify-between bg-white px-4 py-3">
+            <div>
               <small>Records (total)</small>
-            </IonLabel>
-            <IonLabel class="ion-text-right">
+            </div>
+            <div className="text-right">
               <small>
                 <b>{myProjectRecords}</b>
               </small>
-            </IonLabel>
-          </IonItem>
+            </div>
+          </div>
 
-          <IonItem lines="full" className="list-header-labels">
-            <IonLabel>
+          <div className="flex items-center justify-between bg-white px-4 py-3">
+            <div>
               <small>Records ({yearName})</small>
-            </IonLabel>
-            <IonLabel class="ion-text-right">
+            </div>
+            <div className="text-right">
               <small>
                 <b>{myProjectRecordsThisYear}</b>
               </small>
-            </IonLabel>
-          </IonItem>
+            </div>
+          </div>
 
           <IonItem
-            lines="full"
-            className="list-header-labels"
             routerLink="/user/statistics/details"
             detail
+            className="[--padding-start:0] font-normal!"
           >
-            <IonLabel className="ion-text-wrap">
-              <small>Butterfly species recorded (total)</small>
-            </IonLabel>
-            <IonLabel class="ion-text-right">
-              <small>
-                <b>{myProjectSpecies}</b>/64
-              </small>
-            </IonLabel>
+            <div className="flex items-center justify-between bg-white px-4 py-3 w-full">
+              <div className="ion-text-wrap">
+                <small>Butterfly species recorded (total)</small>
+              </div>
+              <div className="text-right">
+                <small>
+                  <b>{myProjectSpecies}</b>/64
+                </small>
+              </div>
+            </div>
           </IonItem>
 
           <IonItem
-            lines="full"
-            className="list-header-labels"
             routerLink={`/user/statistics/details/${yearName}`}
             detail
+            className="[--padding-start:0] font-normal!"
           >
-            <IonLabel className="ion-text-wrap">
-              <small>Butterfly species recorded ({yearName})</small>
-            </IonLabel>
-            <IonLabel class="ion-text-right">
-              <small>
-                <b>{myProjectSpeciesThisYear}</b>/64
-              </small>
-            </IonLabel>
+            <div className="flex items-center justify-between bg-white px-4 py-3 w-full">
+              <div className="ion-text-wrap">
+                <small>Butterfly species recorded ({yearName})</small>
+              </div>
+              <div className="text-right">
+                <small>
+                  <b>{myProjectSpeciesThisYear}</b>/64
+                </small>
+              </div>
+            </div>
           </IonItem>
 
           <div className="list-divider">App totals</div>
-          <IonItem lines="full" className="list-header-labels">
-            <IonLabel>
+          <div className="flex items-center justify-between bg-white px-4 py-3">
+            <div>
               <small>Records (total)</small>
-            </IonLabel>
-            <IonLabel class="ion-text-right">
+            </div>
+            <div className="text-right">
               <small>
                 <b>{projectRecordsCount}</b>
               </small>
-            </IonLabel>
-          </IonItem>
+            </div>
+          </div>
         </div>
 
         <InfoBackgroundMessage>

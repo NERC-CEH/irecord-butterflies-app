@@ -55,7 +55,7 @@ export class LocationsCollection extends LocationCollectionBase<Location> {
     console.log(`📚 Collection: ${this.id} collection fetching`);
     this.remote.synchronising = true;
 
-    const sites = await this.fetchRemoteByType(LocationType.GroupSite);
+    const sites = await this.fetchRemoteByType(LocationType.Site);
 
     this.remote.synchronising = false;
 

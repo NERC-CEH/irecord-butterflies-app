@@ -23,12 +23,6 @@
       max-width: 100%;
     }
 
-    p,
-    h2 {
-      margin-top: 1.1rem;
-      text-align: center;
-    }
-
     h2 {
       padding: 0 10px;
       color: var(--ion-color-light);
@@ -70,6 +64,7 @@
     top: -0;
     left: 0;
     z-index: 10000;
+    margin: 0;
     background: white;
     padding: 10px;
     padding-top: calc(var(--ion-safe-area-top, 0) + 10px);

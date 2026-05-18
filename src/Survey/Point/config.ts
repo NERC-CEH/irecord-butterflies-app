@@ -65,7 +65,7 @@ const survey: Survey = {
 
     verify: (attrs: any) =>
       object({
-        taxon: object({}, { invalid_type_error: 'Species is missing.' }),
+        taxon: object({}, { error: 'Species is missing.' }),
       }).safeParse(attrs).error,
   },
 
@@ -100,9 +100,9 @@ const survey: Survey = {
         {
           latitude: z.number(),
           longitude: z.number(),
-          name: z.string({ required_error: 'Location name missing' }),
+          name: z.string({ error: 'Location name missing' }),
         },
-        { invalid_type_error: 'Please select location.' }
+        { error: 'Please select location.' }
       ),
     }).safeParse(attrs).error,
 };

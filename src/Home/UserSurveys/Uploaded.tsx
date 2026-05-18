@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
-import InfiniteLoader from 'react-window-infinite-loader';
+import { useInfiniteLoader } from 'react-window-infinite-loader';
 import { device, getRelativeDate, VirtualList, useToast } from '@flumens';
 import {
   IonItem,
@@ -149,7 +149,7 @@ const UploadedSurveys = ({ isOpen }: Props) => {
   const onScroll = ({ scrollOffset }: any) =>
     setReachedTopOfList(scrollOffset < 80);
 
-  const loadMoreItems = (from: number, to: number) => {
+  const loadMoreItems = async (from: number, to: number) => {
     if (cachedPages * PAGE_SIZE < to && !isLoading) {
       fetchSurveys(cachedPages * PAGE_SIZE);
     }
@@ -160,18 +160,6 @@ const UploadedSurveys = ({ isOpen }: Props) => {
     const sample = groupedSurveys[index];
     return !!sample;
   };
-
-  if (!isOpen) return null;
-
-  if (!surveys.length && !isLoading) {
-    return (
-      <IonList>
-        <InfoBackgroundMessage className="mb-[10vh] mt-[20vh]">
-          No uploaded surveys
-        </InfoBackgroundMessage>
-      </IonList>
-    );
-  }
 
   const onListRefreshPull = async (e: any) => {
     if (!device.isOnline) {
@@ -188,6 +176,24 @@ const UploadedSurveys = ({ isOpen }: Props) => {
     e?.detail?.complete(); // refresh pull update
   };
 
+  const onRowsRendered = useInfiniteLoader({
+    isRowLoaded: isItemLoaded,
+    rowCount: itemCount,
+    loadMoreRows: loadMoreItems,
+  });
+
+  if (!isOpen) return null;
+
+  if (!surveys.length && !isLoading) {
+    return (
+      <IonList>
+        <InfoBackgroundMessage className="mt-[20vh] mb-[10vh]">
+          No uploaded surveys
+        </InfoBackgroundMessage>
+      </IonList>
+    );
+  }
+
   return (
     <>
       <IonRefresher
@@ -201,24 +207,15 @@ const UploadedSurveys = ({ isOpen }: Props) => {
       </IonRefresher>
 
       <IonList>
-        <InfiniteLoader
-          isItemLoaded={isItemLoaded}
-          itemCount={itemCount}
-          loadMoreItems={loadMoreItems}
-        >
-          {({ onItemsRendered, ref }: any) => (
-            <VirtualList
-              ref={ref}
-              onItemsRendered={onItemsRendered}
-              itemCount={itemCount}
-              itemSize={getItemSize}
-              Item={Item}
-              topPadding={LIST_PADDING}
-              bottomPadding={LIST_ITEM_HEIGHT / 2}
-              onScroll={onScroll}
-            />
-          )}
-        </InfiniteLoader>
+        <VirtualList
+          onRowsRendered={onRowsRendered}
+          rowCount={itemCount}
+          rowHeight={getItemSize}
+          Item={Item}
+          topPadding={LIST_PADDING}
+          bottomPadding={LIST_ITEM_HEIGHT / 2}
+          onScroll={onScroll}
+        />
       </IonList>
     </>
   );

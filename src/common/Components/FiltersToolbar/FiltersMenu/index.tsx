@@ -44,7 +44,12 @@ const Menu = ({ searchPhrase, values, onSelect, options }: Props) => {
       const filterLabel = render ? render(value) : value;
 
       return (
-        <IonCol key={value} size="6" onClick={toggleFilterWrap}>
+        <IonCol
+          key={value}
+          size="6"
+          onClick={toggleFilterWrap}
+          className="items-center"
+        >
           {filterLabel}
         </IonCol>
       );

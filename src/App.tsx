@@ -13,7 +13,7 @@ import ThankYouAlert from 'common/Components/ThankYouAlert';
 import UpdatedRecordsAlert from 'common/Components/UpdatedRecordsAlert';
 import UserMarketingDialog from 'common/Components/UserMarketingDialog';
 import samples from 'common/models/collections/samples';
-import 'common/theme.scss';
+import 'common/theme.css';
 import Home from './Home';
 import OnboardingScreens from './Info/OnBoardingScreens';
 import Info from './Info/router';
