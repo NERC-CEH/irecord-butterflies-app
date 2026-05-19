@@ -1,3 +1,7 @@
+## 2.6.8
+
+Maintenance update.
+
 ## 2.6.6
 
 Fixed Android startup bug.
