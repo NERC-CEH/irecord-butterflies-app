@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { observer } from 'mobx-react';
 import clsx from 'clsx';
 import { timeOutline } from 'ionicons/icons';
-import { Badge, getRelativeDate, useAlert, useToast } from '@flumens';
+import { Badge, useAlert, useToast } from '@flumens';
 import {
   IonItem,
   IonItemSliding,
@@ -48,7 +48,6 @@ function useSurveyDeletePrompt(sample: Sample) {
 function getSampleInfo(sample: Sample) {
   const survey = sample.getSurvey();
 
-  const prettyDate = getRelativeDate(sample.data.date);
   const isOutsideUK = sample.data.location && !sample.data.location.gridref;
 
   if (survey.name === 'point') {
@@ -85,8 +84,6 @@ function getSampleInfo(sample: Sample) {
           <div className={clsx('species-name', !label && 'text-warning')}>
             {label || 'Species missing'}
           </div>
-
-          <div className="text-sm">{prettyDate}</div>
 
           {isOutsideUK && !sample.isDisabled && (
             <Badge color="warning" size="small">
@@ -147,8 +144,6 @@ function getSampleInfo(sample: Sample) {
         <div className="flex w-full flex-col">
           <div className="species-name">Single species count</div>
           <div className="flex items-center gap-1 text-sm">
-            {prettyDate}
-
             {!!count && (
               <Badge
                 skipTranslation
@@ -178,7 +173,6 @@ function getSampleInfo(sample: Sample) {
         </div>
         <div className="flex w-full flex-col">
           <div className="species-name">15-min count</div>
-          <div className="text-sm">{prettyDate}</div>
           {isOutsideUK && !sample.isDisabled && (
             <Badge color="warning" size="small">
               Check location
@@ -204,7 +198,6 @@ function getSampleInfo(sample: Sample) {
 
       <div className="flex w-full flex-col">
         <div className="location-name">{locationName}</div>
-        <div className="text-sm">{prettyDate}</div>
         {isOutsideUK && !sample.isDisabled && (
           <Badge color="warning" size="small">
             Check location

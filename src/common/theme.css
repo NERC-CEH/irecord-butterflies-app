@@ -161,6 +161,10 @@
   --classifier-unlikely: var(--color-danger);
 
   --form-value-color: var(--color-secondary-800);
+
+  /* for reading using JS from */
+  /* https://stackoverflow.com/questions/47112393/getting-the-iphone-x-safe-area-using-javascript */
+  --sat: env(safe-area-inset-top);
 }
 
 /* FONTS START */

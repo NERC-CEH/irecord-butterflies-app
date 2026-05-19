@@ -188,7 +188,7 @@ const HomeMain = ({
           </IonButton>
         </div>
 
-        <IonList id="list" lines="full">
+        <IonList id="list" lines="none">
           <div className="rounded-list">
             <div className="list-divider gap-4 text-base!">
               <div>Count</div>
@@ -212,7 +212,7 @@ const HomeMain = ({
   };
 
   return (
-    <Main>
+    <Main className="[--padding-bottom:40px]">
       <IonList lines="full">
         {isDisabled && (
           <div className="rounded-list mb-2">

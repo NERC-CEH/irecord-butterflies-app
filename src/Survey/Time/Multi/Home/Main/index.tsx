@@ -243,7 +243,7 @@ const HomeMain = ({
   };
 
   return (
-    <Main>
+    <Main className="[--padding-bottom:40px]">
       <IonList lines="full">
         {isDisabled && (
           <div className="rounded-list mb-2">

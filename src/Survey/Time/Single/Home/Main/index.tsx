@@ -152,7 +152,7 @@ const HomeMain = ({ sample, increaseCount }: Props) => {
   };
 
   return (
-    <Main>
+    <Main className="[--padding-bottom:40px]">
       <IonImg src={UKBMSlogo} />
       <IonList lines="full">
         {isDisabled && (

@@ -107,7 +107,10 @@ const SpeciesProfile = ({ species, onRecord, onNavBack, isSurvey }: Props) => {
         showMap={showMap}
       />
 
-      <Main id="species-profile" className="ion-padding">
+      <Main
+        id="species-profile"
+        className="[--padding-top:env(safe-area-inset-top)] [--padding-bottom:40px]"
+      >
         {getSlides()}
 
         <IonCardHeader>
