@@ -1,3 +1,7 @@
+## 2.6.9
+
+Bug fixes.
+
 ## 2.6.8
 
 Maintenance update.

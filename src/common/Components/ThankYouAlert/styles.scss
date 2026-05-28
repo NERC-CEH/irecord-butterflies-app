@@ -17,6 +17,8 @@ $light-primary: #e1f0e7;
     padding: 0;
     width: 75%;
     max-width: 400px;
+    max-height: calc(85vh);
+    overflow: scroll;
 
     p {
       margin: 0;
